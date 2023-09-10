@@ -3,6 +3,7 @@ import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_not
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
+import 'package:snabb_business/screen/budget/BudgetView.dart';
 import 'package:snabb_business/screen/chartsScreens/purchaseChart.dart';
 import 'package:snabb_business/screen/drawerscreen/userProfile.dart';
 import 'package:snabb_business/screen/homeScreen.dart';
@@ -28,7 +29,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   final fabKey = GlobalKey<AnimatedFloatingActionButtonState>();
   int maxCount = 5;
   var _selectedTab = 0;
-  GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+  final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   /// widget list
@@ -174,7 +175,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         HomeScreen(),
         BottomWallet(),
         PurchaseChart(),
-        Budget(),
+        BudgetView(),
         UserProfile()
       ],
     );

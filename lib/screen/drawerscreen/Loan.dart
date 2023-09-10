@@ -5,7 +5,7 @@ import 'package:snabb_business/utils/colors.dart';
 
 import '../../utils/appbarwidget.dart';
 import '../../utils/color.dart';
-import '../BudgetScreen.dart';
+import '../budget/BudgetAdd.dart';
 
 class Loan extends StatelessWidget {
   const Loan({super.key});
@@ -133,15 +133,11 @@ class Loan extends StatelessWidget {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-           
-
-
-
-          },
-          shape: ShapeBorder.lerp(CircleBorder(), CircleBorder(), 0),
+          onPressed: () {},
+          shape:
+              ShapeBorder.lerp(const CircleBorder(), const CircleBorder(), 0),
           backgroundColor: Colors.red,
-          child: Icon(Icons.add, color: Colors.white),
+          child: const Icon(Icons.add, color: Colors.white),
         ),
       ),
     );

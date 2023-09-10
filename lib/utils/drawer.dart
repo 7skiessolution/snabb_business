@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/screen/auth/loginScreen.dart';
+import 'package:snabb_business/screen/budget/BudgetView.dart';
 import 'package:snabb_business/screen/dashboardScreen.dart';
 import 'package:snabb_business/screen/drawerscreen/Calender.dart';
 import 'package:snabb_business/screen/debit/debit.dart';
-import 'package:snabb_business/screen/drawerscreen/MonthlyBudgets.dart';
 import 'package:snabb_business/screen/transaction_schedule/ShaduleTransactionScreen.dart';
 import 'package:snabb_business/screen/drawerscreen/summeryScreen.dart';
 import 'package:snabb_business/screen/drawerscreen/transactionScreen.dart';
@@ -134,7 +134,7 @@ class DrawerScreen extends StatelessWidget {
               onTap: () {
                 obj.drawermenueclose();
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const MonthlyBudgets()));
+                    MaterialPageRoute(builder: (_) => const BudgetView()));
               },
               child: ListTile(
                 leading: SizedBox(
@@ -205,10 +205,12 @@ class DrawerScreen extends StatelessWidget {
             obj.category == true
                 ? InkWell(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => Categories()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const Categories()));
                     },
-                    child: Container(
+                    child: SizedBox(
                       height: height * 0.05,
                       width: width,
                       //  alignment: Alignment.center,
@@ -225,21 +227,23 @@ class DrawerScreen extends StatelessWidget {
                                     "images/Groupgraph.png",
                                     color: darkblue,
                                   )),
-                              Text("Catagery"),
+                              const Text("Catagery"),
                             ]),
                       ),
 
                       //     const Icon(Icons.keyboard_arrow_down_outlined),
                     ),
                   )
-                : SizedBox(),
+                : const SizedBox(),
             obj.expensecata == true
                 ? InkWell(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => ExpencePieChart()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const ExpencePieChart()));
                     },
-                    child: Container(
+                    child: SizedBox(
                       height: height * 0.05,
                       width: width,
                       child: Padding(
@@ -255,20 +259,20 @@ class DrawerScreen extends StatelessWidget {
                                     "images/chartexpenseicon.png",
                                     color: darkblue,
                                   )),
-                              Text("Expense"),
+                              const Text("Expense"),
                             ]),
                       ),
 
                       //     const Icon(Icons.keyboard_arrow_down_outlined),
                     ))
-                : SizedBox(),
+                : const SizedBox(),
             obj.expensecata == true
                 ? InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context, MaterialPageRoute(builder: (_) => Time()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => const Time()));
                     },
-                    child: Container(
+                    child: SizedBox(
                       height: height * 0.05,
                       width: width,
                       child: Padding(
@@ -284,13 +288,13 @@ class DrawerScreen extends StatelessWidget {
                                     "images/chartexpenseicon.png",
                                     color: darkblue,
                                   )),
-                              Text("Time"),
+                              const Text("Time"),
                             ]),
                       ),
 
                       //     const Icon(Icons.keyboard_arrow_down_outlined),
                     ))
-                : SizedBox(),
+                : const SizedBox(),
             // InkWell(
             //   onTap: () {
             //     Navigator.push(context,
@@ -311,7 +315,7 @@ class DrawerScreen extends StatelessWidget {
             InkWell(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => CalenderScreen()));
+                    MaterialPageRoute(builder: (_) => const CalenderScreen()));
               },
               child: ListTile(
                 leading: Icon(
@@ -388,9 +392,10 @@ class DrawerScreen extends StatelessWidget {
                 for (String key in preferences.getKeys()) {
                   preferences.remove(key);
                 }
-                Future.delayed(Duration(seconds: 2), () {
+                Future.delayed(const Duration(seconds: 2), () {
                   Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()),
                       (Route<dynamic> route) => false);
                 });
               },
@@ -402,7 +407,7 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: const Text(
                     "LogOut",
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 14,
                     ),
                   )),
@@ -418,12 +423,12 @@ class DrawerScreen extends StatelessWidget {
               child: Container(
                 height: height * 0.061,
                 width: width * 0.15,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     // color: AppColors.whitecolor.withOpacity(0.9),
                     //  borderRadius: BorderRadius.circular(20),
                     //border: Border.all(width: 2, color: white),
-                    image: const DecorationImage(
-                        image: AssetImage("images/logo.png"))),
+                    image:
+                        DecorationImage(image: AssetImage("images/logo.png"))),
               ),
             ),
           ),

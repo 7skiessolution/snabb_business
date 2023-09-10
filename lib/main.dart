@@ -19,7 +19,7 @@ void main() async {
   runApp(const MyApp());
   String? locale = await Devicelocale.currentLocale;
   getLocation();
-  print("local----- ${locale}");
+  print("local----- $locale");
 }
 
 Locale mainlocale = const Locale("en");
@@ -75,21 +75,21 @@ Future<void> getLocation() async {
     print("-------------------------------");
     print("hello");
     if (value.toLowerCase() == "ita") {
-      mainlocale = Locale("it");
+      mainlocale = const Locale("it");
     } else if (value.toLowerCase() == "fra") {
-      mainlocale = Locale("fr");
+      mainlocale = const Locale("fr");
     } else if (value.toLowerCase() == "dnk") {
-      mainlocale = Locale("da");
+      mainlocale = const Locale("da");
     } else if (value.toLowerCase() == "deu") {
-      mainlocale = Locale("de");
+      mainlocale = const Locale("de");
     } else if (value.toLowerCase() == "esp") {
-      mainlocale = Locale("es");
+      mainlocale = const Locale("es");
     } else if (value.toLowerCase() == "pol") {
-      mainlocale = Locale("pl");
+      mainlocale = const Locale("pl");
     } else if (value.toLowerCase() == "swe") {
-      mainlocale = Locale("sv");
+      mainlocale = const Locale("sv");
     } else {
-      mainlocale = Locale("en");
+      mainlocale = const Locale("en");
     }
   }
 }
@@ -149,35 +149,35 @@ Future<void> getcurrentLocation(double lat, double long) async {
     List<p.Placemark> placemark = await p.placemarkFromCoordinates(lat, long);
     String? countrycode = placemark[0].isoCountryCode;
     String? countryname = placemark[0].country;
-    print("--------countrycode-------${countrycode}");
-    print("--------countryname-------${countryname}");
+    print("--------countrycode-------$countrycode");
+    print("--------countryname-------$countryname");
     if (countrycode!.toLowerCase() == "ita") {
-      mainlocale = Locale("it");
+      mainlocale = const Locale("it");
       prefer.setString("local", "ita");
     } else if (countrycode.toLowerCase() == "fra") {
-      mainlocale = Locale("fr");
+      mainlocale = const Locale("fr");
       prefer.setString("local", "fra");
     } else if (countrycode.toLowerCase() == "dnk") {
-      mainlocale = Locale("dn");
+      mainlocale = const Locale("dn");
       prefer.setString("local", "dnk");
     } else if (countrycode.toLowerCase() == "deu") {
-      mainlocale = Locale("de");
+      mainlocale = const Locale("de");
       prefer.setString("local", "deu");
     } else if (countrycode.toLowerCase() == "esp") {
-      mainlocale = Locale("es");
+      mainlocale = const Locale("es");
       prefer.setString("local", "esp");
     } else if (countrycode.toLowerCase() == "pol") {
-      mainlocale = Locale("pl");
+      mainlocale = const Locale("pl");
       prefer.setString("local", "pol");
     } else if (countrycode.toLowerCase() == "swe") {
-      mainlocale = Locale("sv");
+      mainlocale = const Locale("sv");
       prefer.setString("local", "swe");
     } else {
-      mainlocale = Locale("en");
+      mainlocale = const Locale("en");
       prefer.setString("local", "en");
     }
   } catch (e) {
-    print("exception ${e}");
+    print("exception $e");
   }
 }
 
@@ -201,15 +201,15 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       setLocale(mainlocale);
     });
     // TODO: implement initState
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
-    final lan = AppLocalizations.of(context);
     return MultiProvider(
         providers: [
           ChangeNotifierProvider<BritnessProvider>(
@@ -228,7 +228,7 @@ class _MyAppState extends State<MyApp> {
                 primarySwatch: generateMaterialColor(AppColors.blue)
                 // useMaterial3: true,
                 ),
-            home: SplashScreen(),
+            home: const SplashScreen(),
             supportedLocales: L10n.all,
             locale: mainlocale,
             localizationsDelegates: const [

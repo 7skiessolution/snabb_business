@@ -11,6 +11,7 @@ import 'package:snabb_business/l10n/l10n.dart';
 import 'package:snabb_business/screen/splash_screen.dart';
 import 'package:location/location.dart' as loc;
 import 'package:geocoding/geocoding.dart' as p;
+import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/materialColor.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -222,7 +223,7 @@ class _MyAppState extends State<MyApp> {
                 brightness: britnessProvider.britness == AppBritness.light
                     ? Brightness.light
                     : Brightness.dark,
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                colorScheme: ColorScheme.fromSeed(seedColor: darkblue),
                 fontFamily: GoogleFonts.montserrat().fontFamily,
                 primaryColor: AppColors.blue,
                 primarySwatch: generateMaterialColor(AppColors.blue)

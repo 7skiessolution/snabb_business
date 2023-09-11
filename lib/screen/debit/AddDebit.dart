@@ -1,329 +1,369 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:snabb_business/controller/debit-credit/add_debit_controller.dart';
+import 'package:snabb_business/controller/homeController.dart';
+import 'package:snabb_business/models/add_debit_model.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
+import 'package:snabb_business/utils/spinkit.dart';
 
 class AddDebit extends StatefulWidget {
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  DebitCreditData? deta;
+  String? id;
+  int? type;
+  num? remaing;
+  AddDebit({super.key, this.deta, this.remaing, this.id, this.type});
 
-  AddDebit({super.key});
   @override
   State<AddDebit> createState() => _AddDebitState();
 }
 
 class _AddDebitState extends State<AddDebit> {
-  final GlobalKey _formKey = GlobalKey<FormState>();
-  TextEditingController _balanceController = TextEditingController();
-  TextEditingController _person = TextEditingController();
-  TextEditingController _currentDateController = TextEditingController();
-  TextEditingController _dueDateController = TextEditingController();
-  TextEditingController _notesController = TextEditingController();
-  DateTime _currentDate = DateTime.now();
-  DateTime _dueDate = DateTime.now();
+  TextEditingController valuecontrol = TextEditingController();
+  TextEditingController notecontrol = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  //final String userId = FirebaseAuth.instance.currentUser!.uid;
+  double updatamount = 0;
+
+  updateamount() async {
+    try {
+      double paidAmount = double.parse(widget.deta!.paidAmount.toString()) ??
+          0.0; // Default to 0 if paidAmount is null
+      double newValue = double.tryParse(valuecontrol.text) ??
+          0.0; // Default to 0 if parsing fails
+
+      updatamount = paidAmount + newValue;
+
+      print('Updated Amount: $updatamount');
+    } catch (e) {
+      print('Error updating amount: $e');
+    }
+  }
+
+  bool switchvalue = false;
 
   @override
+  void initState() {
+    Get.put(HomeController());
+    // TODO: implement initState
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    Future<void> _selectDate(BuildContext context,
-        TextEditingController controller, DateTime initialDate) async {
-      final DateTime? selectedDate = await showDatePicker(
-        context: context,
-        initialDate: initialDate,
-        firstDate: DateTime(2000),
-        lastDate: DateTime(2100),
-      );
-
-      if (selectedDate != null) {
-        setState(() {
-          controller.text = DateFormat.yMMMd().format(selectedDate);
-          if (controller == _currentDateController) {
-            _currentDate = selectedDate;
-          } else if (controller == _dueDateController) {
-            _dueDate = selectedDate;
-          }
-        });
-      }
-    }
-
-    Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: backgroundColor,
-        body: Column(children: [
-          Expanded(
+        resizeToAvoidBottomInset: false,
+        body: GetBuilder<AddDebitController>(builder: (obj) {
+          return Form(
+            key: _formKey,
             child: Stack(
               children: [
-                Container(
-                  height: height * 0.15,
-                  color: darkblue,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 18.0),
-                          child: Icon(
-                            Icons.arrow_back_rounded,
-                            color: white,
-                          ),
+                SizedBox(
+                  height: height,
+                  width: width,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: height * 0.07,
+                        width: width * 0.9,
+                        decoration: BoxDecoration(
+                            color: darkblue,
+                            borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(20),
+                                bottomRight: Radius.circular(20))),
+                        child: Row(
+                          // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            SizedBox(
+                              width: width * 0.07,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Icon(
+                                Icons.arrow_back,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(
+                              width: width * 0.2,
+                            ),
+                            widget.type == 0
+                                ? Text(
+                                    AppLocalizations.of(context)!.paybackcredit,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: width * 0.035,
+                                        color: Colors.white),
+                                  )
+                                : Text(
+                                    AppLocalizations.of(context)!.paybackdebit,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: width * 0.035,
+                                        color: Colors.white),
+                                  ),
+                          ],
                         ),
-                        SizedBox(
-                          width: width * 0.1,
-                        ),
-                        Text(
-                          'New Debit',
-                          style: TextStyle(
-                              color: white,
-                              fontSize: 19,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: height * 0.1,
-                  left: width * 0.025,
-                  child: Container(
-                    height: height * 0.9,
-                    width: width * 0.95,
-                    color: white,
-                    child: SingleChildScrollView(
-                      child: Form(
-                        key: _formKey,
-                        child: Container(
-                          height: height,
-                          width: width,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                SizedBox(
-                                  height: height * 0.07,
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        child: TextFormField(
-                                          controller: _balanceController,
-                                          keyboardType:
-                                              TextInputType.numberWithOptions(
-                                                  decimal: true),
-                                          decoration: InputDecoration(
-                                              labelText: "Balance Amount",
-                                              labelStyle: TextStyle(
-                                                  fontSize: 20,
-                                                  color: lightgray
-                                                      .withOpacity(0.4))),
-                                          validator: (value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return 'Please enter the balance amount';
-                                            }
-                                            return null;
-                                          },
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: height * 0.02,
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      "Create the associated \ntransaction (Debit)",
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: height * 0.06,
-                                  child: Row(
-                                    children: [
-                                      IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(Icons.wallet)),
-                                      Text(
-                                        "Wellet:",
-                                        style: TextStyle(fontSize: 20),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: height * 0.09,
-                                  child: InkWell(
-                                    onTap: () => _selectDate(context,
-                                        _currentDateController, _currentDate),
-                                    child: IgnorePointer(
-                                      child: TextFormField(
-                                        controller: _currentDateController,
-                                        decoration: InputDecoration(
-                                          labelText: 'Date',
-                                          prefixIcon:
-                                              Icon(Icons.calendar_today),
-                                        ),
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Please enter the current date';
-                                          }
-                                          return null;
-                                        },
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: height * 0.09,
-                                  child: InkWell(
-                                    onTap: () => _selectDate(
-                                        context, _dueDateController, _dueDate),
-                                    child: IgnorePointer(
-                                      child: TextFormField(
-                                        controller: _dueDateController,
-                                        decoration: InputDecoration(
-                                          labelText: 'Payback Date',
-                                          prefixIcon:
-                                              Icon(Icons.calendar_today),
-                                        ),
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Please enter the due date';
-                                          }
-                                          return null;
-                                        },
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: height * 0.08,
-                                  child: TextFormField(
-                                    controller: _person,
-                                    decoration: InputDecoration(
-                                      labelText: 'From',
-                                      prefixIcon: Icon(Icons.person),
-                                    ),
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Please enter a name';
-                                      }
+                      ),
+
+                      SizedBox(
+                        height: height * 0.05,
+                      ),
+
+                      SizedBox(
+                        height: height * 0.07,
+                        width: width,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            SizedBox(
+                                width: width * 0.3,
+                                child: TextFormField(
+                                  keyboardType: TextInputType.number,
+                                  validator: (value) {
+                                    if (value == null) {
+                                      return AppLocalizations.of(context)!
+                                          .enteramount;
+                                    } else {
                                       return null;
-                                    },
+                                    }
+                                  },
+                                  controller: valuecontrol,
+                                  decoration: InputDecoration(
+                                    hintText: "${widget.remaing}",
+                                  ),
+                                )),
+                            Text(HomeController.to.curency),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  AppLocalizations.of(context)!.residualamount,
+                                  style: TextStyle(
+                                    fontSize: width * 0.03,
                                   ),
                                 ),
-                                SizedBox(
-                                  height: height * 0.03,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Icon(
-                                      Icons.movie_edit,
-                                      color: darkblue,
-                                      size: 30,
-                                    ),
-                                    Card(
-                                      elevation: 5,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: white,
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            border:
-                                                Border.all(color: darkblue)),
-                                        height: height * 0.1,
-                                        width: width * 0.7,
-                                        child: TextFormField(
-                                          controller: _notesController,
-                                          decoration: InputDecoration(
-                                            contentPadding:
-                                                EdgeInsets.only(left: 20),
-                                            labelText: 'notes',
-                                            fillColor: white,
-                                            enabledBorder: InputBorder.none,
-                                            focusedBorder: InputBorder.none,
-                                          ),
-                                          validator: (value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return 'Please enter a name';
-                                            }
-                                            return null;
-                                          },
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: height * 0.03,
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.file_present_outlined,
-                                      color: darkblue,
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.05,
-                                    ),
-                                    Card(
-                                      child: Container(
-                                        width: width * 0.25,
-                                        height: height * 0.06,
-                                        child: Center(
-                                            child: Text(
-                                          "Add File",
-                                          style: TextStyle(color: white),
-                                        )),
-                                        decoration: BoxDecoration(
-                                            color: darkblue,
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Card(
-                                  child: Container(
-                                    width: width * 0.55,
-                                    height: height * 0.06,
-                                    child: Center(
-                                        child: Text(
-                                      "Add",
-                                      style: TextStyle(color: white),
-                                    )),
-                                    decoration: BoxDecoration(
-                                        color: darkblue,
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
+                                Text(
+                                  "${widget.remaing}",
+                                  style: TextStyle(
+                                    fontSize: width * 0.03,
                                   ),
-                                )
+                                ),
                               ],
                             ),
+                          ],
+                        ),
+                      ),
+                      ListTile(
+                        leading: CircleAvatar(
+                          backgroundImage: widget.type != 1
+                              ? const AssetImage("assets/images/paid.png")
+                              : const AssetImage("assets/images/notpaid.png"),
+                        ),
+                        title: widget.type == 0
+                            ? Text(
+                                AppLocalizations.of(context)!
+                                    .credit
+                                    .toUpperCase(),
+                                style: TextStyle(
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            : Text(
+                                AppLocalizations.of(context)!
+                                    .debit
+                                    .toUpperCase(),
+                                style: TextStyle(
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                      ),
+                      Text(
+                        "${AppLocalizations.of(context)!.total}"
+                        " ${valuecontrol.text}  ${HomeController.to.curency}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: width * 0.03,
+                        ),
+                      ),
+                      ListTile(
+                        leading: const Icon(
+                          Icons.home,
+                          size: 30,
+                        ),
+                        title: Text(
+                          AppLocalizations.of(context)!.wallet,
+                          style: TextStyle(
+                              fontSize: width * 0.03,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      ListTile(
+                        leading: const Icon(
+                          Icons.calendar_month,
+                          size: 30,
+                        ),
+                        title: InkWell(
+                          onTap: () {
+                            // _selectDate(context, date as DateTime);
+                          },
+                          child: Text(
+                            //   widget.debt!.backDate!.substring(0, 10),
+                            widget.deta!.payBackDate!,
+                            style: TextStyle(
+                                fontSize: width * 0.03,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
-                    ),
+                      ListTile(
+                        leading: const Icon(
+                          Icons.person,
+                          size: 30,
+                        ),
+                        title: Text(
+                          widget.deta!.person.toString(),
+                          style: TextStyle(
+                              fontSize: width * 0.03,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      ListTile(
+                        leading: const Icon(
+                          Icons.edit,
+                          size: 30,
+                        ),
+                        title: TextFormField(
+                          controller: notecontrol,
+                          keyboardType: TextInputType.text,
+                          validator: (value) {
+                            if (value == null) {
+                              return AppLocalizations.of(context)!.enteramount;
+                            } else {
+                              return null;
+                            }
+                          },
+                          decoration: InputDecoration(
+                              hintText:
+                                  AppLocalizations.of(context)!.noteoptional,
+                              hintStyle: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: width * 0.03,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                      ListTile(
+                        title: Text(AppLocalizations.of(context)!.checked),
+                        trailing: Switch(
+                          value: switchvalue,
+                          onChanged: (value) {
+                            setState(() {
+                              switchvalue = value;
+                            });
+                            print("value $switchvalue");
+                          },
+                        ),
+                      ),
+                      const Divider(),
+                      // const Row(
+                      //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      //   children: [
+                      //     Icon(Icons.camera_alt, color: Colors.grey, size: 30),
+                      //     Icon(
+                      //       Icons.file_copy,
+                      //       color: Colors.grey,
+                      //       size: 30,
+                      //     )
+                      //   ],
+                      // ),
+                      SizedBox(
+                        height: height * 0.02,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: darkblue,
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 20, horizontal: 40)),
+                            onPressed: () {
+                              valuecontrol.clear();
+                              notecontrol.clear();
+                              Navigator.pop(context);
+                            },
+                            child: Center(
+                              child: Text(
+                                AppLocalizations.of(context)!.cancel,
+                                style: TextStyle(
+                                  fontSize: width * 0.03,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: darkblue,
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 20, horizontal: 50)),
+                            onPressed: () {
+                              if ((double.parse(valuecontrol.text)) >
+                                  widget.remaing!) {
+                                //   print("update amount ${updatamount}");
+                                Fluttertoast.showToast(
+                                    msg: "Invalid Amount ",
+                                    backgroundColor: darkblue,
+                                    textColor: Colors.grey);
+                              } else {
+                                updateamount();
+                                final data = {
+                                  "amount": updatamount,
+                                  "note": notecontrol.text,
+                                  "date": widget.deta!.payBackDate,
+                                  "isCash": switchvalue,
+                                  "debitCreditId": widget.id,
+                                };
+                                obj.paydebitcredit(data, context);
+                              }
+                            },
+                            child: Center(
+                              child: Text(
+                                AppLocalizations.of(context)!.save,
+                                style: TextStyle(
+                                  fontSize: width * 0.03,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
                   ),
-                )
+                ),
+                obj.isLoading == false
+                    ? SizedBox()
+                    : Center(
+                        child: Container(
+                          height: height,
+                          width: width,
+                          color: darkblue.withOpacity(0.2),
+                          child: Center(
+                            child: SpinKit.loadSpinkit,
+                          ),
+                        ),
+                      )
               ],
             ),
-          ),
-        ]),
+          );
+        }),
       ),
     );
   }

@@ -5,11 +5,11 @@ import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/screen/auth/loginScreen.dart';
 import 'package:snabb_business/screen/budget/BudgetView.dart';
 import 'package:snabb_business/screen/dashboardScreen.dart';
+import 'package:snabb_business/screen/debit/deptsscreen.dart';
 import 'package:snabb_business/screen/drawerscreen/Calender.dart';
-import 'package:snabb_business/screen/debit/debit.dart';
 import 'package:snabb_business/screen/transaction_schedule/ShaduleTransactionScreen.dart';
-import 'package:snabb_business/screen/drawerscreen/summeryScreen.dart';
-import 'package:snabb_business/screen/drawerscreen/transactionScreen.dart';
+import 'package:snabb_business/screen/summary/summeryScreen.dart';
+import 'package:snabb_business/screen/transactions/transactionScreen.dart';
 import 'package:snabb_business/screen/drawerscreen/walletScreen.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/colors.dart';
@@ -27,7 +27,9 @@ class DrawerScreen extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
-    return GetBuilder<HomeController>(builder: (obj) {
+    return GetBuilder<HomeController>(initState: (state) {
+      Get.put(HomeController());
+    }, builder: (obj) {
       return Column(children: [
         Container(
           height: height * 0.2,
@@ -150,8 +152,8 @@ class DrawerScreen extends StatelessWidget {
             InkWell(
               onTap: () {
                 obj.drawermenueclose();
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const DebitScreen()));
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => DebitScreen()));
               },
               child: ListTile(
                 leading: SizedBox(

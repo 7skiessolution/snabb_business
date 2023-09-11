@@ -26,7 +26,6 @@ class DashBoardScreen extends StatefulWidget {
 class _DashBoardScreenState extends State<DashBoardScreen> {
   //final PageController _pageController = PageController(initialPage: 0);
   //final _controller = NotchBottomBarController(index: 0);
-  final fabKey = GlobalKey<AnimatedFloatingActionButtonState>();
   int maxCount = 5;
   var _selectedTab = 0;
   final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();

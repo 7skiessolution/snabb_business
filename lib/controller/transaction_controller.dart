@@ -38,8 +38,11 @@ import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/main.dart';
 import 'package:snabb_business/models/add_debit_model.dart';
 import 'package:snabb_business/models/currency_model.dart';
+import 'package:snabb_business/models/daily_transaction_model.dart' as dTra;
+import 'package:snabb_business/models/monthly_transaction_model.dart' as mTra;
 import 'package:snabb_business/models/user_wallet_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wal;
+import 'package:snabb_business/models/yearly_transaction_model.dart' as yTra;
 import 'package:snabb_business/screen/sale/get_categories_model.dart';
 import 'package:snabb_business/screen/sale/user_category_model.dart';
 import 'package:snabb_business/static_data.dart';
@@ -54,6 +57,12 @@ import '../models/user_wallet_model.dart';
 class TransactionController extends GetxController {
   static TransactionController get to => Get.find();
 
+  dTra.UserDailyTransaction? dailyTransaction;
+  List<dTra.Data> dailyTransactionList = [];
+  mTra.UserMonthTransaction? monthTransaction;
+  List<mTra.Data> monthTransactionList = [];
+  yTra.UserYearTransaction? yearTransaction;
+  List<yTra.Data> yearTransactionList = [];
   GetCategoriesModel? model;
 
   List<int> mounthamount = [];
@@ -803,5 +812,61 @@ class TransactionController extends GetxController {
     } else {
       print("No data");
     }
+  }
+
+////////////////// GET TRANSACTION
+
+  Future getUserMonthTransactiondata() async {
+    isdailyLoad = true;
+    monthTransactionList.clear();
+    var res = await httpClient().get(StaticValues.getMonthTrasaction);
+    if (res.statusCode == 200) {
+      isdailyLoad = false;
+      monthTransaction = mTra.UserMonthTransaction.fromMap(res.data);
+      print("-=-=-=-=-= ${monthTransaction!.data.toString()}");
+      for (var data in monthTransaction!.data!) {
+        monthTransactionList.add(data);
+      }
+    }
+    print(monthTransactionList.length);
+
+    update();
+  }
+
+  Future getUserYearTransactiondata() async {
+    isdailyLoad = true;
+    yearTransactionList.clear();
+    var res = await httpClient().get(StaticValues.getYearTrasaction);
+    if (res.statusCode == 200) {
+      isdailyLoad = false;
+      yearTransaction = yTra.UserYearTransaction.fromMap(res.data);
+      for (var data in yearTransaction!.data!) {
+        yearTransactionList.add(data);
+      }
+    }
+    print(yearTransactionList.length);
+
+    update();
+  }
+
+  Future getUserDailyTransactiondata() async {
+    isdailyLoad = true;
+    dailyTransactionList.clear();
+    var res = await httpClient().get(StaticValues.getDailyTrasaction);
+    if (res.statusCode == 200) {
+      isdailyLoad = false;
+      dailyTransaction = dTra.UserDailyTransaction.fromMap(res.data);
+      print("dailty    ${dailyTransaction}");
+      try {
+        for (var data in dailyTransaction!.data!) {
+          dailyTransactionList.add(data);
+        }
+      } catch (e) {
+        print("no data");
+      }
+    }
+    print(dailyTransactionList.length);
+
+    update();
   }
 }

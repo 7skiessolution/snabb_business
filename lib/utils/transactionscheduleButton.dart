@@ -4,9 +4,6 @@ import 'package:snabb_business/screen/transaction_schedule/add_purchase_schedule
 import 'package:snabb_business/screen/transaction_schedule/add_sale-schedule.dart';
 import 'package:snabb_business/utils/color.dart';
 
-import '../screen/debit/AddCredit.dart';
-import '../screen/debit/AddDebit.dart';
-
 class TransactionSechduleButton extends StatefulWidget {
   const TransactionSechduleButton({
     super.key,

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:snabb_business/screen/debit/add_debit_credit.dart';
 import 'package:snabb_business/utils/color.dart';
-
-import '../screen/debit/AddCredit.dart';
-import '../screen/debit/AddDebit.dart';
 
 class DebitfloatingButton extends StatefulWidget {
   const DebitfloatingButton({
@@ -65,7 +63,8 @@ class _DebitfloatingButtonState extends State<DebitfloatingButton>
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AddDebit(),
+                      builder: (context) =>
+                          AddCreditDebitScreen(balanceType: "Debit"),
                     ));
               },
               heroTag: null,
@@ -80,7 +79,8 @@ class _DebitfloatingButtonState extends State<DebitfloatingButton>
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AddCredit(),
+                    builder: (context) =>
+                        AddCreditDebitScreen(balanceType: "Credit"),
                   ));
             },
             heroTag: null,

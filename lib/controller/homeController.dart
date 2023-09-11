@@ -160,10 +160,10 @@ class HomeController extends GetxController {
     if (res.statusCode == 200) {
       profilemodel = UserProfileModel.fromMap(res.data);
 
-      totalExpanse = profilemodel!.data!.expense!;
-      totalPurchase = profilemodel!.data!.purchase!;
+      totalExpanse = profilemodel!.data!.expense ?? 0.0;
+      totalPurchase = profilemodel!.data!.purchase ?? 0.0;
 
-      totalSale = profilemodel!.data!.sale!;
+      totalSale = profilemodel!.data!.sale ?? 0.0;
     }
     print(profilemodel.toString());
     update();

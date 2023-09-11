@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/controller/budget/budget_controller.dart';
 import 'package:snabb_business/models/budget_model.dart';
+import 'package:snabb_business/screen/budget/BudgetAdd.dart';
+import 'package:snabb_business/screen/budget/budget_transaction.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/utils/spinkit.dart';
@@ -157,11 +159,11 @@ class _BudgetViewState extends State<BudgetView> {
                     flex: 0,
                     child: IconButton(
                         onPressed: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => const AddBudget(),
-                          //     ));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const AddBudget(),
+                              ));
                           // showAddDialog(context);
                         },
                         icon: const Icon(
@@ -589,31 +591,31 @@ class _BudgetViewState extends State<BudgetView> {
         child: InkWell(
           onTap: () {
             if (payable < amount) {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => bugetTransaction(
-              //         data: BudgetData(
-              //       amount: amount,
-              //       budgetId: id,
-              //       category: category,
-              //       image: image,
-              //       paidAmount: payable,
-              //       transactions: transactions,
-              //       duration: duration,
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BugetTransaction(
+                      data: BudgetData(
+                    amount: amount,
+                    budgetId: id,
+                    category: category,
+                    image: image,
+                    paidAmount: payable,
+                    transactions: transactions,
+                    duration: duration,
 
-              //       // date: date,
-              //       // budgetAmount: amount.toInt(),
-              //       // payableamount: payable.toInt(),
-              //       // duration: duration,
-              //       // ctagoryName: category,
-              //       // ctagoryImage: image,
-              //       // budgetID: id,
-              //       // from: '',
-              //       // notes: '',
-              //     )),
-              //   ),
-              // );
+                    //       // date: date,
+                    //       // budgetAmount: amount.toInt(),
+                    //       // payableamount: payable.toInt(),
+                    //       // duration: duration,
+                    //       // ctagoryName: category,
+                    //       // ctagoryImage: image,
+                    //       // budgetID: id,
+                    //       // from: '',
+                    //       // notes: '',
+                  )),
+                ),
+              );
             } else {
               BudgetController.to.showtoast("Budget Limit Full");
             }

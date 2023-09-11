@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/models/daily_transaction_model.dart' as dTra;
 
@@ -181,7 +180,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                 height: MediaQuery.of(context).size.height,
                                 width: MediaQuery.of(context).size.width,
                                 child: Text(
-                                  obj.note!,
+                                  obj.note ?? "",
                                   style: TextStyle(
                                     fontSize: width * 0.03,
                                   ),

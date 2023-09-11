@@ -196,7 +196,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                   height: MediaQuery.of(context).size.height,
                                   width: MediaQuery.of(context).size.width,
                                   child: Text(
-                                    obj.note!,
+                                    obj.note ?? "",
                                     style: TextStyle(
                                       fontSize: width * 0.03,
                                     ),
@@ -403,7 +403,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
               ),
             )
           : Padding(
-              padding: EdgeInsets.all(80.0),
+              padding: const EdgeInsets.all(80.0),
               child: Center(
                   child: Text(
                 AppLocalizations.of(context)!.notransactions,

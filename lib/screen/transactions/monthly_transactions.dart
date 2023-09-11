@@ -197,7 +197,7 @@ class _MonthlyTransactionsState extends State<MonthlyTransactions> {
                                   height: MediaQuery.of(context).size.height,
                                   width: MediaQuery.of(context).size.width,
                                   child: Text(
-                                    obj.note!,
+                                    obj.note ?? "",
                                     style: TextStyle(
                                       fontSize: width * 0.03,
                                     ),
@@ -307,7 +307,7 @@ class _MonthlyTransactionsState extends State<MonthlyTransactions> {
                   List<mTra.Transactions> specificTrans = [];
                   specificTrans =
                       obj.monthTransactionList[index].transactions!.toList();
-                  var month;
+                  String? month;
                   try {
                     month = obj.monthTransactionList[index].month;
                   } catch (e) {
@@ -410,7 +410,7 @@ class _MonthlyTransactionsState extends State<MonthlyTransactions> {
               ),
             )
           : Padding(
-              padding: EdgeInsets.all(80.0),
+              padding: const EdgeInsets.all(80.0),
               child: Center(
                   child: Text(AppLocalizations.of(context)!.notransactions)),
             );

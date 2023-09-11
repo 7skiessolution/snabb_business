@@ -1,5 +1,3 @@
-import 'package:animated_floating_buttons/widgets/animated_floating_action_button.dart';
-import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
@@ -13,8 +11,6 @@ import 'package:snabb_business/utils/navigation/curvenavigationbar.dart';
 import '../utils/demonshape.dart';
 import '../utils/drawer.dart';
 import 'bottomscreen/bottomWalletScreen.dart';
-import 'bottomscreen/budget.dart';
-import 'sale/Sale.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);

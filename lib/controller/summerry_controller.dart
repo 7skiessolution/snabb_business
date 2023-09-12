@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:snabb_business/api/ApiStore.dart';
+import 'package:snabb_business/models/search_summary.dart' as summary;
+import 'package:snabb_business/static_data.dart';
 
-class SummeryController extends GetConnect {
-  SummeryController get instance => Get.find();
+class SummeryController extends GetxController {
+  static SummeryController get to => Get.find();
+  double totalbalance = 0.0;
+  calculateTotalBalance(List<summary.Data> a) {
+    totalbalance = 0.0;
 
-  var fromDate = DateTime.now().obs;
-  var toDate = DateTime.now().obs;
-
-  chosefromdate(context) async {
-    DateTime? pickdate = await showDatePicker(
-        context: context,
-        initialDate: fromDate.value,
-        firstDate: DateTime(2000),
-        lastDate: DateTime.now());
-    if (pickdate != null && pickdate != fromDate.value) {
-      fromDate.value = pickdate;
+    for (int i = 0; i < a.length; i++) {
+      if (a[i].type == 1) {
+        totalbalance += a[i].amount!;
+      } else {
+        totalbalance -= a[i].amount!;
+      }
     }
+    Future.delayed(Duration(seconds: 2), () {
+      update();
+    });
   }
 
-  chosetodate(context) async {
-    DateTime? pickdate = await showDatePicker(
-        context: context,
-        initialDate: toDate.value,
-        firstDate: DateTime(2000),
-        lastDate: DateTime.now());
-    if (pickdate != null && pickdate != toDate.value) {
-      toDate.value = pickdate;
-    }
+  Future<summary.SearchSummary> getcategory(
+      int type, String start, String end) async {
+    var res = await httpClient().get(
+        "${StaticValues.searchSummary}$type&StartDate=$start&EndDate=$end");
+    print("-------search ${res.data}");
+    return summary.SearchSummary.fromMap(res.data);
   }
 }

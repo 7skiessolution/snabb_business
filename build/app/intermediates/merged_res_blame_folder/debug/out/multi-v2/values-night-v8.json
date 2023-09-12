@@ -4,7 +4,7 @@
             "outputFile": "com.sevenskiessolutions.snabb_busniess.app-mergeDebugResources-22:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "D:\\Git projects\\snabb_business\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "G:\\projects\\Snabb_Business\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

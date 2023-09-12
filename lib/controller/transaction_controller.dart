@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:path/path.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart' hide Transaction;
 import 'package:flutter/material.dart';
@@ -37,8 +38,11 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/main.dart';
 import 'package:snabb_business/models/add_debit_model.dart';
+import 'package:snabb_business/models/calnder_model.dart' as cTra;
 import 'package:snabb_business/models/currency_model.dart';
 import 'package:snabb_business/models/daily_transaction_model.dart' as dTra;
+import 'package:snabb_business/models/get_all_user_transaction_model.dart'
+    as tran;
 import 'package:snabb_business/models/monthly_transaction_model.dart' as mTra;
 import 'package:snabb_business/models/user_wallet_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wal;
@@ -51,8 +55,7 @@ import '../models/user_wallet_model.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:vector_math/vector_math.dart' as math;
 import 'package:dio/dio.dart' as deo;
-
-import '../models/user_wallet_model.dart';
+import 'package:cell_calendar/cell_calendar.dart';
 
 class TransactionController extends GetxController {
   static TransactionController get to => Get.find();
@@ -64,6 +67,7 @@ class TransactionController extends GetxController {
   yTra.UserYearTransaction? yearTransaction;
   List<yTra.Data> yearTransactionList = [];
   GetCategoriesModel? model;
+  List<CalendarEvent> calanderEventList = [];
 
   List<int> mounthamount = [];
   List<int> mounthamountmap = [];
@@ -106,6 +110,7 @@ class TransactionController extends GetxController {
   File? compressedFile;
   XFile? pickImage;
   String pathFile = "";
+  cTra.GetCalanderData? calanderTransaction;
 
   final picker = ImagePicker();
   Future<File> _createFile(Uint8List data) async {
@@ -660,6 +665,32 @@ class TransactionController extends GetxController {
     return max;
   }
 
+  Future getUserCalanderTransactiondata() async {
+    calanderEventList.clear();
+    var res = await httpClient().get(StaticValues.getCalanderTransaction);
+    if (res.statusCode == 200) {
+      calanderTransaction = cTra.GetCalanderData.fromMap(res.data);
+
+      try {
+        for (var data in calanderTransaction!.data!) {
+          DateTime date = DateFormat("dd-MM-yyyy").parse(data.dateTime!);
+
+          CalendarEvent event = CalendarEvent(
+              eventName: data.totalIncome.toString(),
+              eventDate: date,
+              eventBackgroundColor: darkblue,
+              eventTextStyle:
+                  const TextStyle(color: Colors.white, fontSize: 10));
+          calanderEventList.add(event);
+        }
+      } catch (e) {
+        print("no data");
+      }
+    }
+
+    update();
+  }
+
 ///////////\\]]]]]
   // checking(List<int> myList) {
   //   list = [const FlSpot(0, 0)];
@@ -815,6 +846,16 @@ class TransactionController extends GetxController {
   }
 
 ////////////////// GET TRANSACTION
+  List<tran.Data> userAllTransaction = [];
+
+  Future fetchTransaction() async {
+    var res = await httpClient().get(StaticValues.getAllTransaction);
+    tran.GetUserAllTransaction model =
+        tran.GetUserAllTransaction.fromMap(res.data);
+    userAllTransaction = model.data!;
+
+    update();
+  }
 
   Future getUserMonthTransactiondata() async {
     isdailyLoad = true;

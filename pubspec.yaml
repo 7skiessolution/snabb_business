@@ -71,6 +71,9 @@ dependencies:
   percent_indicator: 
   velocity_x: ^4.0.0
   fl_chart:
+  d_chart:
+  flutter_switch:
+
   
   
 dev_dependencies:

@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     Get.put(HomeController());
     TransactionController.to.getCatagoriesdata("income");
+    TransactionController.to.getUserCalanderTransactiondata();
     HomeController.to.getUserProfile();
     HomeController.to.getWalletdata();
     super.initState();

@@ -25,6 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     Get.put(HomeController());
+    HomeController.to.saleListOFChart();
+    HomeController.to.expenseAndPurchaseListOfchart();
     TransactionController.to.getCatagoriesdata("income");
     TransactionController.to.getUserCalanderTransactiondata();
     HomeController.to.getUserProfile();
@@ -266,11 +268,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                           height: height * 0.14,
                                           width: width,
                                           child: SfCartesianChart(
-                                            primaryYAxis: NumericAxis(
-                                              minimum: 0,
-                                              interval: 15,
-                                              desiredIntervals:
-                                                  7, // Set this to the number of desired ticks (7 in this case)
+                                            primaryYAxis: CategoryAxis(
+                                              title: AxisTitle(
+                                                  text: 'Total Amount'),
                                             ),
                                             backgroundColor: Colors.white,
                                             selectionGesture:
@@ -278,7 +278,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                             enableMultiSelection: true,
                                             enableAxisAnimation: true,
                                             primaryXAxis: DateTimeAxis(),
-                                            series: <ChartSeries>[
+                                            series: <ChartSeries<SalesData,
+                                                DateTime>>[
                                               LineSeries<SalesData, DateTime>(
                                                 legendIconType:
                                                     LegendIconType.rectangle,
@@ -370,7 +371,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             primaryXAxis: CategoryAxis(),
                                             primaryYAxis: NumericAxis(
                                               minimum: 0,
-                                              interval: 15,
+                                              interval: 50,
                                               desiredIntervals:
                                                   7, // Set this to the number of desired ticks (7 in this case)
                                             ),

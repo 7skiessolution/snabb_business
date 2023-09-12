@@ -754,57 +754,6 @@ class TransactionController extends GetxController {
     return sum;
   }
 
-  int findMaxBetweenTwoValues(int a, int b) {
-    return max(a, b);
-  }
-
-  int findMaxValueWithIndex(List<int> numbers) {
-    if (numbers.isEmpty) {
-      throw ArgumentError('The list is empty');
-    }
-
-    int max = numbers[0];
-    int maxIndex = 0;
-
-    for (int i = 1; i < numbers.length; i++) {
-      if (numbers[i] > max) {
-        max = numbers[i];
-        maxIndex = i;
-      }
-    }
-    return max;
-  }
-
-  void main() {
-    int num1 = 10;
-    int num2 = 20;
-
-    int maxNumber = findMaxBetweenTwoValues(num1, num2);
-    print('The maximum number between $num1 and $num2 is: $maxNumber');
-  }
-
-  String convertToKMBa(num value1) {
-    if (value1 >= 1000000000000000) {
-      return '${(value1 / 1000000000000000).toStringAsFixed(0)}Q';
-    } else if (value1 >= 10000000000000) {
-      return '${(value1 / 10000000000000).toStringAsFixed(0)}T';
-    } else if (value1 >= 1000000000) {
-      return '${(value1 / 1000000000).toStringAsFixed(0)}B';
-    } else if (value1 >= 1000000) {
-      return '${(value1 / 1000000).toStringAsFixed(0)}M';
-    } else if (value1 >= 1000) {
-      return '${(value1 / 1000).toStringAsFixed(0)}K';
-    } else if (value1 >= 100) {
-      return '${(value1 / 100).toStringAsFixed(0)}H';
-    } else if (value1 > 0) {
-      return value1.toString();
-    } else if (value1 < 0) {
-      return '-${convertToKMBa(-value1)}';
-    } else {
-      return '0';
-    }
-  }
-
   //-----------------Get Wallets------------
   //----------------------------------------
 

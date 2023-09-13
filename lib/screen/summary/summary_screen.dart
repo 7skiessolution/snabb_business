@@ -3,8 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:material_segmented_control/material_segmented_control.dart';
 import 'package:snabb_business/screen/summary/category_widget.dart';
 import 'package:snabb_business/screen/summary/summary_widget.dart';
+import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:snabb_business/utils/colors.dart';
 
 class SummeryScreen extends StatefulWidget {
   static const routeName = "summary-screen";
@@ -54,84 +56,229 @@ class _SummeryScreenState extends State<SummeryScreen> {
     List<Widget> children = [SummaryWidget(), CategoryWidget(months: months)];
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: backgroundColor,
           key: scaffoldKey,
-          body: SizedBox(
-            width: double.infinity,
-            child: Column(
-              children: [
-                Container(
-                  height: height * 0.13,
-                  width: width * 0.9,
-                  decoration: BoxDecoration(
-                      color: darkblue,
-                      borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20))),
-                  child: Padding(
-                    padding: EdgeInsets.only(top: height * 0.025),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                            size: width * 0.065,
-                          ),
-                        ),
-                        SizedBox(
-                          width: width * 0.1,
-                        ),
-                        Text(
-                          AppLocalizations.of(context)!.summary,
-                          style: TextStyle(
-                              fontSize: width * 0.04,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        SizedBox(
-                          width: width * 0.23,
-                        )
-                      ],
+          body: Column(
+            children: [
+               AppBarWidgt(text: AppLocalizations.of(context)!
+                      .summary),
+
+
+                      SizedBox(
+                         height: height * 0.85,
+                width: width,
+                        
+                        child: Stack(
+                        children: [
+                           Container(
+                      width: width,
+                      height: height * 0.15,
+                      color: AppColors.topcard,
+                 
+           
                     ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                MaterialSegmentedControl(
-                  verticalOffset: 12,
-                  selectionIndex: _currentSelection,
-                  borderColor: darkblue,
-                  selectedColor: darkblue,
-                  unselectedColor: Colors.white,
-                  selectedTextStyle: TextStyle(
-                    // ignore: unrelated_type_equality_checks
-                    color: Colors.white,
-                  ),
-                  unselectedTextStyle: TextStyle(
-                    color: darkblue,
-                  ),
-                  borderWidth: 0.7,
-                  borderRadius: 32.0,
-                  disabledChildren: const [3],
-                  onSegmentTapped: (index) {
-                    setState(() {
-                      _currentSelection = index;
-                    });
-                  },
-                  children: children0,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Expanded(child: children[_currentSelection])
-              ],
-            ),
+
+
+                     Positioned(
+              
+              
+                        top: height * 0.05,
+                       right: width * 0.1,
+                       left: width * 0.1,
+                        child: Container(
+                            height: height * 0.8,
+                            width: width * 0.7,
+
+                            child: Column(children: [
+
+
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: SizedBox(
+                                      //height: height,
+                                      // width: width,
+                                      child:
+                                          _currentSelection ==
+                                                  0
+                                              ? Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .end,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .center,
+                                                  children: [
+                                                    Text(
+                                                      'Summary',
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          // fontWeight: FontWeight.bold,
+                                                          fontSize: width * 0.05),
+                                                    ),
+                                                    Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: width * 0.12,
+                                                          right: width * 0.12),
+                                                      child:
+                                                          Divider(
+                                                        color:
+                                                            red,
+                                                        thickness:
+                                                            3,
+                                                      ),
+                                                    )
+                                                  ],
+                                                )
+                                              : Padding(
+                                                  padding: EdgeInsets.only(
+                                                      top: height *
+                                                          0.00),
+                                                  child:
+                                                      Center(
+                                                    child:
+                                                        InkWell(
+                                                      onTap:
+                                                          () {
+                                                       _currentSelection =0;
+                                                       setState(() {
+                                                         
+                                                       });
+                                                      },
+                                                      child:
+                                                          Text(
+                                                        'Summary',
+                                                        style:
+                                                            TextStyle(color: white, fontSize: width * 0.05),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: SizedBox(
+                                     // height: height*0.01,
+                                      // width: width,
+                                      child:
+                                         _currentSelection ==
+                                                  1
+                                              ? Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .end,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .center,
+                                                  children: [
+                                                    Text(
+                                                      'Category',
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: width * 0.05),
+                                                    ),
+                                                    Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: width * 0.1,
+                                                          right: width * 0.1),
+                                                      child:
+                                                          Divider(
+                                                        color:
+                                                            red,
+                                                        thickness:
+                                                            3,
+                                                      ),
+                                                    )
+                                                  ],
+                                                )
+                                              : Padding(
+                                                  padding: EdgeInsets.only(
+                                                      top: height *
+                                                          0.00),
+                                                  child:
+                                                      Center(
+                                                    child:
+                                                        InkWell(
+                                                      onTap:
+                                                          () {
+                                                        _currentSelection = 1;
+                                                        setState(() {
+                                                          
+                                                        });
+                                                      },
+                                                      child:
+                                                          Text(
+                                                        'Category',
+                                                        style:
+                                                            TextStyle(color: white, fontSize: width * 0.05),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            
+                            
+                            
+                            
+
+
+
+
+
+
+                                
+                              Expanded(
+                                  child: children[
+                                      _currentSelection]
+                                      
+                                      
+                                      )
+            
+            
+
+
+                              
+                            ],),
+                           
+                            
+
+                        ))
+                   
+                   
+                   
+                        ],
+                      ),
+                      
+                      )
+                      ,
+                      
+
+                      
+
+
+
+                    
+
+
+
+                      
+
+
+
+
+        
+          
+             
+             
+            
+           
+       
+       
+       
+            ],
           )),
     );
   }

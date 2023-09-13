@@ -15,6 +15,23 @@ class WalletScreen extends StatefulWidget {
 }
 
 class _WalletScreenState extends State<WalletScreen> {
+      List<bool> switchValues = [];
+
+
+   @override
+  void initState() {
+    // Initialize the switchValues list with the initial values
+    switchValues = List.generate(
+        HomeController.to.walletList.length, (index) => false);
+    super.initState();
+  }
+
+void toggleSwitch(int index) {
+    setState(() {
+      switchValues[index] = !switchValues[index];
+    });
+  }
+
   TextEditingController mName = TextEditingController();
   TextEditingController mAmount = TextEditingController();
   TextEditingController mCurrency = TextEditingController();
@@ -36,6 +53,7 @@ class _WalletScreenState extends State<WalletScreen> {
 
     return SafeArea(
       child: Scaffold(
+      
         resizeToAvoidBottomInset: false,
         floatingActionButton: FloatingActionButton(
           backgroundColor: red,
@@ -186,7 +204,7 @@ class _WalletScreenState extends State<WalletScreen> {
         body: GetBuilder<HomeController>(builder: (obj) {
           return Column(
             children: [
-              AppBarWidgt(text: "Wallet"),
+             AppBarWidgt(text: "Wallet"),
               SizedBox(
                   height: height * 0.85,
                   width: width,
@@ -208,6 +226,7 @@ class _WalletScreenState extends State<WalletScreen> {
                         ),
                       ),
                       Positioned(
+                
                           top: height * 0.12,
                           right: width * 0.1,
                           left: width * 0.1,
@@ -276,7 +295,7 @@ class _WalletScreenState extends State<WalletScreen> {
                                                           scale: 0.5,
                                                           child: Switch(
                                                             onChanged: (val) {
-                                                              isTure = val;
+                                                              toggleSwitch(index);
                                                               setState(() {});
                                                             },
                                                             value: isTure,
@@ -685,6 +704,13 @@ class _WalletScreenState extends State<WalletScreen> {
                           ),
                     ],
                   )),
+       
+       
+       
+
+
+
+       
             ],
           );
         }),

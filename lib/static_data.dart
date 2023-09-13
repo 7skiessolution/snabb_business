@@ -38,6 +38,8 @@ class StaticValues {
   static const updatedebitcredit = "DebitCredit/Update";
   static const deletedebitcredit = "DebitCredit/Delete";
   static const addcscheduleTransaction = "Transaction/AddSceduleTransaction";
+  static const getSalePurchaseType = "Wallet/GetMonthWiseSalePurchaseExpense/";
+  static const getSaledatatype = "Transaction/GetYearTransactions/";
   static const getscheduleTransaction =
       "Transaction/GetAllScheduleTransactions";
   static const getCalanderTransaction = "Transaction/GetCalenderTransactions";

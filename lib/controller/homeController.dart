@@ -3,6 +3,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/models/currency_model.dart';
+import 'package:snabb_business/models/get_data_year_type_model.dart' as sp;
+import 'package:snabb_business/models/get_sale_purchase.dart';
 import 'package:snabb_business/models/pagemodel.dart';
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
@@ -25,33 +27,34 @@ class HomeController extends GetxController {
   double totalPurchase = 0.0;
   String curency = "USD";
 
-  late List<Chartdata> data;
+  List<Chartdata> expensedata = [];
+  List<Chartdata> purchasedata = [];
   late TooltipBehavior tooltip;
-  final List<SalesData> chartData = [
-    SalesData(DateTime(2010), 54),
-    SalesData(DateTime(2011), 65),
-    SalesData(DateTime(2012), 45),
-    SalesData(DateTime(2013), 55),
-    SalesData(DateTime(2014), 76),
-    SalesData(DateTime(2015), 45),
-    SalesData(DateTime(2016), 57),
-    SalesData(DateTime(2017), 65),
-    SalesData(DateTime(2019), 78),
-    SalesData(DateTime(2019), 45),
-    SalesData(DateTime(2020), 100),
+  List<SalesData> chartData = [
+    // SalesData(DateTime(2010), 54),
+    // SalesData(DateTime(2011), 65),
+    // SalesData(DateTime(2012), 45),
+    // SalesData(DateTime(2013), 55),
+    // SalesData(DateTime(2014), 76),
+    // SalesData(DateTime(2015), 45),
+    // SalesData(DateTime(2016), 57),
+    // SalesData(DateTime(2017), 65),
+    // SalesData(DateTime(2019), 78),
+    // SalesData(DateTime(2019), 45),
+    // SalesData(DateTime(2020), 100),
   ];
-  final List<SalesData> chart = [
-    SalesData(DateTime(2010), 15),
-    SalesData(DateTime(2011), 25),
-    SalesData(DateTime(2012), 38),
-    SalesData(DateTime(2013), 24),
-    SalesData(DateTime(2014), 40),
-    SalesData(DateTime(2015), 34),
-    SalesData(DateTime(2016), 12),
-    SalesData(DateTime(2017), 35),
-    SalesData(DateTime(2018), 23),
-    SalesData(DateTime(2019), 34),
-    SalesData(DateTime(2020), 50),
+  List<SalesData> chart = [
+    // SalesData(DateTime(2010), 15),
+    // SalesData(DateTime(2011), 25),
+    // SalesData(DateTime(2012), 38),
+    // SalesData(DateTime(2013), 24),
+    // SalesData(DateTime(2014), 40),
+    // SalesData(DateTime(2015), 34),
+    // SalesData(DateTime(2016), 12),
+    // SalesData(DateTime(2017), 35),
+    // SalesData(DateTime(2018), 23),
+    // SalesData(DateTime(2019), 34),
+    // SalesData(DateTime(2020), 50),
   ];
 
   wm.UserWalletModel? walletModel;
@@ -123,20 +126,20 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    data = [
-      Chartdata('JAN', 30),
-      Chartdata('FEB', 90),
-      Chartdata('MAR', 60),
-      Chartdata('APR', 100),
-      Chartdata('MAY', 80),
-      Chartdata('JUN', 28),
-      Chartdata('JUL', 80),
-      Chartdata('AUG', 90),
-      Chartdata('SEP', 50),
-      Chartdata('OCT', 70),
-      Chartdata('NOV', 80),
-      Chartdata('DEC', 40)
-    ];
+    // data = [
+    //   Chartdata('JAN', 30),
+    //   Chartdata('FEB', 90),
+    //   Chartdata('MAR', 60),
+    //   Chartdata('APR', 100),
+    //   Chartdata('MAY', 80),
+    //   Chartdata('JUN', 28),
+    //   Chartdata('JUL', 80),
+    //   Chartdata('AUG', 90),
+    //   Chartdata('SEP', 50),
+    //   Chartdata('OCT', 70),
+    //   Chartdata('NOV', 80),
+    //   Chartdata('DEC', 40)
+    // ];
     tooltip = TooltipBehavior(enable: true);
     drawermenueclose();
     super.onInit();
@@ -195,57 +198,92 @@ class HomeController extends GetxController {
     }
   }
 
+  double totalAmountType1 = 0.0;
+  List<yTra.Transactions> salesTransaction = [];
   saleListOFChart() async {
     var res = await httpClient().get(StaticValues.getYearTrasaction);
     if (res.statusCode == 200) {
+      chartData.clear();
       yTra.UserYearTransaction yearTransaction =
           yTra.UserYearTransaction.fromMap(res.data);
       yearTransaction.data!.forEach((element) {
         List<yTra.Transactions> transactions = element.transactions ?? [];
-        List<yTra.Transactions> type1Transactions =
+        salesTransaction =
             transactions.where((transaction) => transaction.type == 1).toList();
         // Calculate total amounts for each type after subtracting partial amounts
-        double totalAmountType1 = type1Transactions
+        totalAmountType1 = salesTransaction
             .map((transaction) =>
                 transaction.amount! - (transaction.partialAmount ?? 0))
             .fold(0, (prev, curr) => prev + curr);
-        print("-0=-=-=-=-=- ${convertToKMBa(totalAmountType1)}");
+        print("-0=-=-=-=-=- ${totalAmountType1}");
+        chartData.add(
+          SalesData(DateTime(element.year!), totalAmountType1),
+        );
+
+        // chart = [
+        //   SalesData(DateTime(element.year!), totalAmountType1),
+        // ];
       });
 
       update();
     }
   }
 
-  expenseAndPurchaseListOfchart() async {
-    var res = await httpClient().get(StaticValues.getMonthTrasaction);
+  expenseList(int type) async {
+    DateTime a = DateTime.now();
+    var res = await httpClient()
+        .get("${StaticValues.getSalePurchaseType}$type/${a.year}");
     if (res.statusCode == 200) {
-      mTra.UserMonthTransaction monthTransaction =
-          mTra.UserMonthTransaction.fromMap(res.data);
-// purchase
-      for (int i = 0; i < monthTransaction.data!.length; i++) {
-        var element = monthTransaction.data![i];
-        List<mTra.Transactions> transactions = element.transactions ?? [];
-        List<mTra.Transactions> type0Transactions =
-            transactions.where((transaction) => transaction.type == 0).toList();
-        // Calculate total amounts for each type after subtracting partial amounts
-        double totalAmountType0 = type0Transactions
-            .map((transaction) =>
-                transaction.amount! - (transaction.partialAmount ?? 0))
-            .fold(0, (prev, curr) => prev + curr);
-        print("-1=-=-=-=-=- ${convertToKMBa(totalAmountType0)}");
-
-        //expense
-
-        List<mTra.Transactions> type2Transactions =
-            transactions.where((transaction) => transaction.type == 2).toList();
-        // Calculate total amounts for each type after subtracting partial amounts
-        double totalAmountType2 = type2Transactions
-            .map((transaction) =>
-                transaction.amount! - (transaction.partialAmount ?? 0))
-            .fold(0, (prev, curr) => prev + curr);
-        print("-2=-=-=-=-=- ${convertToKMBa(totalAmountType2)}");
-        print("month convert ${convertToAbbreviatedMonth(i + 1)}");
+      if (type == 2) {
+        expensedata.clear();
+      } else if (type == 0) {
+        purchasedata.clear();
       }
+      GetSalePurhase salepurchasemodel = GetSalePurhase.fromMap(res.data);
+      for (int i = 0; i < salepurchasemodel.data!.length; i++) {
+        var e = salepurchasemodel.data![i];
+        if (type == 2) {
+          expensedata.add(
+            Chartdata(convertToAbbreviatedMonth(i + 1), e),
+          );
+        } else if (type == 0) {
+          purchasedata.add(
+            Chartdata(convertToAbbreviatedMonth(i + 1), e),
+          );
+        }
+        update();
+      }
+      print("purchase ${purchasedata.length}");
+      print("expense ${expensedata.length}");
+    }
+  }
+
+  List<sp.Data> expenseData = [];
+  List<sp.Data> purchaseData = [];
+
+  getexpensePurchase(int type) async {
+    DateTime a = DateTime.now();
+    var res = await httpClient()
+        .get("${StaticValues.getSaledatatype}${a.year}/$type");
+    if (res.statusCode == 200) {
+      if (type == 2) {
+        expenseData.clear();
+      } else if (type == 0) {
+        purchaseData.clear();
+      }
+      sp.GetDataYearType expensepurchasemodel =
+          sp.GetDataYearType.fromMap(res.data);
+      for (int i = 0; i < expensepurchasemodel.data!.length; i++) {
+        var e = expensepurchasemodel.data![i];
+        if (type == 2) {
+          expenseData.add(e);
+        } else if (type == 0) {
+          purchaseData.add(e);
+        }
+        update();
+      }
+      print("purchase list ${purchaseData.length}");
+      print("expense list ${expenseData.length}");
     }
   }
 
@@ -289,5 +327,5 @@ class Chartdata {
   );
 
   final String x;
-  final double y;
+  final int y;
 }

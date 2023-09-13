@@ -54,7 +54,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                             tooltipBehavior: obj.tooltip,
                             series: <ChartSeries<Chartdata, String>>[
                               ColumnSeries<Chartdata, String>(
-                                dataSource: obj.data,
+                                dataSource: obj.purchasedata,
                                 xValueMapper: (Chartdata data, _) => data.x,
                                 yValueMapper: (Chartdata data, _) => data.y,
                                 name: 'Purchase',
@@ -84,8 +84,9 @@ class _PurchaseChartState extends State<PurchaseChart> {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: obj.purchaseData.length,
                   itemBuilder: (context, index) {
+                    var data = obj.purchaseData[index];
                     return Padding(
                       padding: EdgeInsets.only(top: height * 0.015),
                       child: Stack(
@@ -104,17 +105,17 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                     MainAxisAlignment.spaceAround,
                                 children: [
                                   Text(
-                                    "Recieve Payment 11,000 PKR ",
+                                    "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency} ",
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: width * 0.025,
                                         color: white),
                                   ),
                                   Text(
-                                    "Balamce Amount: 11,000 PKR ",
+                                    "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: width * 0.025,
                                         color: white),
                                   )
                                 ],
@@ -134,12 +135,12 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                 CircleAvatar(
                                   backgroundColor: darkblue,
                                   child: Image.asset(
-                                    "images/wallet.png",
+                                    data.imageUrl!,
                                     color: white,
                                   ),
                                 ),
                                 Text(
-                                  "Product 1",
+                                  "${data.category}",
                                   style: TextStyle(
                                       fontSize: width * 0.04,
                                       fontWeight: FontWeight.bold,
@@ -161,7 +162,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                         ),
                                         child: Center(
                                           child: Text(
-                                            "27,0000 PKR",
+                                            "${data.amount}",
                                             style: TextStyle(
                                                 fontSize: width * 0.02,
                                                 fontWeight: FontWeight.bold,
@@ -173,7 +174,9 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                         height: height * 0.01,
                                       ),
                                       Text(
-                                        "06/07/2023",
+                                        data.dateTime
+                                            .toString()
+                                            .substring(0, 10),
                                         style: TextStyle(
                                             fontSize: width * 0.02,
                                             fontWeight: FontWeight.bold,

@@ -26,7 +26,11 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     Get.put(HomeController());
     HomeController.to.saleListOFChart();
-    HomeController.to.expenseAndPurchaseListOfchart();
+    HomeController.to.expenseList(0);
+    HomeController.to.expenseList(2);
+    HomeController.to.getexpensePurchase(2);
+    HomeController.to.getexpensePurchase(0);
+
     TransactionController.to.getCatagoriesdata("income");
     TransactionController.to.getUserCalanderTransactiondata();
     HomeController.to.getUserProfile();
@@ -39,427 +43,425 @@ class _HomeScreenState extends State<HomeScreen> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return GetBuilder<HomeController>(builder: (obj) {
-      return sale == false
-          ? purchase == false
-              ? expense == false
-                  ? SingleChildScrollView(
-                      child: SizedBox(
-                        height: height,
-                        width: width,
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Column(children: [
+      return Scaffold(
+        body: SizedBox(
+          height: height,
+          width: width,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(children: [
+                Container(
+                  height: height * 0.13,
+                  width: width,
+                  decoration: BoxDecoration(
+                      color: white, borderRadius: BorderRadius.circular(8)),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        height: height * 0.15,
+                        width: width * 0.3,
+                        child: Column(
+                          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
                             Container(
-                              height: height * 0.13,
-                              width: width,
-                              decoration: BoxDecoration(
-                                  color: white,
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    height: height * 0.15,
-                                    width: width * 0.3,
-                                    child: Column(
-                                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Container(
-                                          height: height * 0.1,
-                                          width: width * 0.2,
-                                          decoration: const BoxDecoration(
-                                              image: DecorationImage(
-                                            image: AssetImage(
-                                                "images/images__1_-removebg-preview (1).png"),
-                                            //   fit: BoxFit.cover,
-                                          )),
-                                        ),
-                                        Text(
-                                          "July 2023",
-                                          style: TextStyle(
-                                              fontSize: width * 0.02,
-                                              color: lightgray),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.15,
-                                    width: width * 0.5,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "Summary",
-                                          style: TextStyle(
-                                              fontSize: width * 0.04,
-                                              color: darkblue,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        Expanded(
-                                          child: SizedBox(
-                                            height: height,
-                                            width: width,
-                                            child: Row(
-                                              children: [
-                                                Expanded(
-                                                  child: Container(
-                                                    height: height,
-                                                    width: width,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Text(
-                                                      "Sale",
-                                                      style: TextStyle(
-                                                          fontSize:
-                                                              width * 0.03,
-                                                          color: darkblue),
-                                                    ),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: width * 0.02,
-                                                ),
-                                                Expanded(
-                                                  child: Container(
-                                                    height: height,
-                                                    width: width,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Text(
-                                                      "${obj.totalSale.toString()} ${obj.curency}",
-                                                      style: TextStyle(
-                                                          fontSize:
-                                                              width * 0.03,
-                                                          color: darkblue),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: SizedBox(
-                                            height: height,
-                                            width: width,
-                                            child: Row(
-                                              children: [
-                                                Expanded(
-                                                  child: Container(
-                                                    height: height,
-                                                    width: width,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Text(
-                                                      "Purchase",
-                                                      style: TextStyle(
-                                                          fontSize:
-                                                              width * 0.03,
-                                                          color: darkblue),
-                                                    ),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: width * 0.02,
-                                                ),
-                                                Expanded(
-                                                  child: Container(
-                                                    height: height,
-                                                    width: width,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Text(
-                                                      "${obj.totalPurchase.toString()} ${obj.curency}",
-                                                      style: TextStyle(
-                                                          fontSize:
-                                                              width * 0.03,
-                                                          color: darkblue),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: SizedBox(
-                                            height: height,
-                                            width: width,
-                                            child: Row(
-                                              children: [
-                                                Expanded(
-                                                  child: Container(
-                                                    height: height,
-                                                    width: width,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Text(
-                                                      "Expenses",
-                                                      style: TextStyle(
-                                                          fontSize:
-                                                              width * 0.03,
-                                                          color: darkblue),
-                                                    ),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: width * 0.02,
-                                                ),
-                                                Expanded(
-                                                  child: Container(
-                                                    height: height,
-                                                    width: width,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Text(
-                                                      "${obj.totalExpanse.toString()} ${obj.curency}",
-                                                      style: TextStyle(
-                                                          fontSize:
-                                                              width * 0.03,
-                                                          color: darkblue),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
+                              height: height * 0.1,
+                              width: width * 0.2,
+                              decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                image: AssetImage(
+                                    "images/images__1_-removebg-preview (1).png"),
+                                //   fit: BoxFit.cover,
+                              )),
                             ),
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  sale = true;
-                                  purchase = false;
-                                  expense = false;
-                                });
-                                print("value of sale $sale");
-                                print("value of sale $purchase");
-                                print("value of sale $expense");
-                              },
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 6, bottom: 6),
-                                child: Container(
-                                  height: height * 0.20,
-                                  width: width,
-                                  decoration: BoxDecoration(
-                                      color: white,
-                                      borderRadius: BorderRadius.circular(8)),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Text(
-                                        "Sale",
-                                        style: TextStyle(
-                                            fontSize: width * 0.04,
-                                            fontWeight: FontWeight.w800,
-                                            color: lightgreen),
-                                      ),
-                                      SizedBox(
-                                          height: height * 0.14,
-                                          width: width,
-                                          child: SfCartesianChart(
-                                            primaryYAxis: CategoryAxis(
-                                              title: AxisTitle(
-                                                  text: 'Total Amount'),
-                                            ),
-                                            backgroundColor: Colors.white,
-                                            selectionGesture:
-                                                ActivationMode.doubleTap,
-                                            enableMultiSelection: true,
-                                            enableAxisAnimation: true,
-                                            primaryXAxis: DateTimeAxis(),
-                                            series: <ChartSeries<SalesData,
-                                                DateTime>>[
-                                              LineSeries<SalesData, DateTime>(
-                                                legendIconType:
-                                                    LegendIconType.rectangle,
-                                                animationDuration: 5,
-                                                animationDelay: 3,
-                                                name: "Sale",
-                                                color: lightgreen,
-                                                markerSettings: MarkerSettings(
-                                                  isVisible: true,
-                                                  width: 5,
-                                                  height: 5,
-                                                  borderWidth: 0.5,
-                                                  color: lightgreen,
-                                                ),
-                                                // dataLabelSettings: DataLabelSettings(
-                                                //   isVisible:
-                                                //       true, // Show data labels (optional)
-                                                // ),
-                                                enableTooltip: true,
-                                                isVisible: true,
-                                                dataSource: obj.chartData,
-                                                xValueMapper:
-                                                    (SalesData sales, _) =>
-                                                        sales.year,
-                                                yValueMapper:
-                                                    (SalesData sales, _) =>
-                                                        sales.sales,
-                                              ),
-                                              LineSeries<SalesData, DateTime>(
-                                                legendIconType:
-                                                    LegendIconType.rectangle,
-                                                animationDuration: 5,
-                                                animationDelay: 3,
-                                                color: lightgreen,
-                                                markerSettings: MarkerSettings(
-                                                  isVisible: true,
-                                                  width: 5,
-                                                  height: 5,
-                                                  borderWidth: 0.5,
-                                                  color: lightgreen,
-                                                ),
-                                                enableTooltip: true,
-                                                isVisible: true,
-                                                dataSource: obj.chart,
-                                                xValueMapper:
-                                                    (SalesData sales, _) =>
-                                                        sales.year,
-                                                yValueMapper:
-                                                    (SalesData sales, _) =>
-                                                        sales.sales,
-                                              )
-                                            ],
-                                          ))
-                                    ],
-                                  ),
-                                ),
-                              ),
+                            Text(
+                              "July 2023",
+                              style: TextStyle(
+                                  fontSize: width * 0.02, color: lightgray),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: height * 0.15,
+                        width: width * 0.5,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Summary",
+                              style: TextStyle(
+                                  fontSize: width * 0.04,
+                                  color: darkblue,
+                                  fontWeight: FontWeight.bold),
                             ),
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  sale = false;
-                                  purchase = true;
-                                  expense = false;
-                                });
-                                print("value of sale $sale");
-                                print("value of sale $purchase");
-                                print("value of sale $expense");
-                              },
-                              child: Container(
-                                height: height * 0.21,
+                            Expanded(
+                              child: SizedBox(
+                                height: height,
                                 width: width,
-                                decoration: BoxDecoration(
-                                    color: white,
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Column(
+                                child: Row(
                                   children: [
-                                    Text(
-                                      "Purchase",
-                                      style: TextStyle(
-                                          fontSize: width * 0.04,
-                                          fontWeight: FontWeight.w800,
-                                          color: darkblue),
+                                    Expanded(
+                                      child: Container(
+                                        height: height,
+                                        width: width,
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "Sale",
+                                          style: TextStyle(
+                                              fontSize: width * 0.03,
+                                              color: darkblue),
+                                        ),
+                                      ),
                                     ),
                                     SizedBox(
-                                        height: height * 0.16,
+                                      width: width * 0.02,
+                                    ),
+                                    Expanded(
+                                      child: Container(
+                                        height: height,
                                         width: width,
-                                        child: SfCartesianChart(
-                                            primaryXAxis: CategoryAxis(),
-                                            primaryYAxis: NumericAxis(
-                                              minimum: 0,
-                                              interval: 50,
-                                              desiredIntervals:
-                                                  7, // Set this to the number of desired ticks (7 in this case)
-                                            ),
-                                            tooltipBehavior: obj.tooltip,
-                                            series: <ChartSeries<Chartdata,
-                                                String>>[
-                                              ColumnSeries<Chartdata, String>(
-                                                dataSource: obj.data,
-                                                xValueMapper:
-                                                    (Chartdata data, _) =>
-                                                        data.x,
-                                                yValueMapper:
-                                                    (Chartdata data, _) =>
-                                                        data.y,
-                                                name: 'Purchase',
-                                                color: const Color.fromRGBO(
-                                                    8, 142, 255, 1),
-                                              ),
-                                            ])),
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "${obj.totalSale.toString()} ${obj.curency}",
+                                          style: TextStyle(
+                                              fontSize: width * 0.03,
+                                              color: darkblue),
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  sale = false;
-                                  purchase = false;
-                                  expense = true;
-                                });
-                                print("value of sale $sale");
-                                print("value of sale $purchase");
-                                print("value of sale $expense");
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 6),
-                                child: Container(
-                                  height: height * 0.26,
-                                  width: width,
-                                  decoration: BoxDecoration(
-                                      color: white,
-                                      borderRadius: BorderRadius.circular(8)),
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        "Expenses",
-                                        style: TextStyle(
-                                            fontSize: width * 0.04,
-                                            fontWeight: FontWeight.w800,
-                                            color: expensecolor),
+                            Expanded(
+                              child: SizedBox(
+                                height: height,
+                                width: width,
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        height: height,
+                                        width: width,
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "Purchase",
+                                          style: TextStyle(
+                                              fontSize: width * 0.03,
+                                              color: darkblue),
+                                        ),
                                       ),
-                                      SizedBox(
-                                          height: height * 0.2,
-                                          width: width,
-                                          child: SfCartesianChart(
-                                              primaryXAxis: CategoryAxis(),
-                                              primaryYAxis: NumericAxis(
-                                                minimum: 0,
-                                                interval: 5,
-                                                desiredIntervals:
-                                                    7, // Set this to the number of desired ticks (7 in this case)
-                                              ),
-                                              tooltipBehavior: obj.tooltip,
-                                              series: <ChartSeries<Chartdata,
-                                                  String>>[
-                                                BarSeries<Chartdata, String>(
-                                                    dataSource: obj.data,
-                                                    xValueMapper:
-                                                        (Chartdata data, _) =>
-                                                            data.x,
-                                                    yValueMapper:
-                                                        (Chartdata data, _) =>
-                                                            data.y,
-                                                    name: 'Expesense',
-                                                    color: expensecolor)
-                                              ]))
-                                    ],
-                                  ),
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.02,
+                                    ),
+                                    Expanded(
+                                      child: Container(
+                                        height: height,
+                                        width: width,
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "${obj.totalPurchase.toString()} ${obj.curency}",
+                                          style: TextStyle(
+                                              fontSize: width * 0.03,
+                                              color: darkblue),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            )
-                          ]),
+                            ),
+                            Expanded(
+                              child: SizedBox(
+                                height: height,
+                                width: width,
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        height: height,
+                                        width: width,
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "Expenses",
+                                          style: TextStyle(
+                                              fontSize: width * 0.03,
+                                              color: darkblue),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.02,
+                                    ),
+                                    Expanded(
+                                      child: Container(
+                                        height: height,
+                                        width: width,
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "${obj.totalExpanse.toString()} ${obj.curency}",
+                                          style: TextStyle(
+                                              fontSize: width * 0.03,
+                                              color: darkblue),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
+                      )
+                    ],
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SalesChart(),
+                        ));
+                    // setState(() {
+                    //   sale = true;
+                    //   purchase = false;
+                    //   expense = false;
+                    // });
+                    print("value of sale $sale");
+                    print("value of sale $purchase");
+                    print("value of sale $expense");
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 6, bottom: 6),
+                    child: Container(
+                      height: height * 0.20,
+                      width: width,
+                      decoration: BoxDecoration(
+                          color: white, borderRadius: BorderRadius.circular(8)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            "Sale",
+                            style: TextStyle(
+                                fontSize: width * 0.04,
+                                fontWeight: FontWeight.w800,
+                                color: lightgreen),
+                          ),
+                          SizedBox(
+                              height: height * 0.14,
+                              width: width,
+                              // child: SfCartesianChart(
+                              //   primaryXAxis: DateTimeAxis(
+                              //     title: AxisTitle(text: 'Year'),
+                              //   ),
+                              //   primaryYAxis: NumericAxis(
+                              //     title: AxisTitle(text: 'Total Sales'),
+                              //   ),
+                              //   series: <ChartSeries<SalesData, DateTime>>[
+                              //     LineSeries<SalesData, DateTime>(
+                              //       dataSource: obj.chartData,
+                              //       xValueMapper: (SalesData sales, _) =>
+                              //           sales.year,
+                              //       yValueMapper: (SalesData sales, _) =>
+                              //           sales.sales,
+                              //       name: 'Total Sales',
+                              //     ),
+                              //   ],
+                              // ),
+                              child: SfCartesianChart(
+                                // margin: EdgeInsets.all(20.0),
+                                primaryYAxis: NumericAxis(
+                                    minimum: 0,
+                                    interval: 10,
+                                    desiredIntervals:
+                                        7 // Set this to the number of desired ticks (7 in this case)
+                                    // visibleMaximum: obj.chartData.last.sales
+                                    ),
+                                backgroundColor: Colors.white,
+                                selectionGesture: ActivationMode.doubleTap,
+                                enableMultiSelection: true,
+                                enableAxisAnimation: true,
+                                primaryXAxis: DateTimeAxis(),
+                                series: <ChartSeries<SalesData, DateTime>>[
+                                  LineSeries<SalesData, DateTime>(
+                                    legendIconType: LegendIconType.rectangle,
+                                    animationDuration: 5,
+                                    animationDelay: 3,
+                                    name: "Sale",
+                                    color: lightgreen,
+                                    markerSettings: MarkerSettings(
+                                      isVisible: true,
+                                      width: 2,
+                                      height: 3,
+                                      borderWidth: 0.5,
+                                      color: lightgreen,
+                                    ),
+                                    dataLabelSettings: DataLabelSettings(
+                                      isVisible:
+                                          true, // Show data labels (optional)
+                                    ),
+                                    enableTooltip: true,
+                                    isVisible: true,
+                                    dataSource: obj.chartData,
+                                    xValueMapper: (SalesData sales, _) =>
+                                        sales.year,
+                                    yValueMapper: (SalesData sales, _) =>
+                                        sales.sales,
+                                  ),
+                                  LineSeries<SalesData, DateTime>(
+                                    legendIconType: LegendIconType.rectangle,
+                                    animationDuration: 5,
+                                    animationDelay: 3,
+                                    color: lightgreen,
+                                    markerSettings: MarkerSettings(
+                                      isVisible: true,
+                                      width: 2,
+                                      height: 3,
+                                      borderWidth: 0.5,
+                                      color: lightgreen,
+                                    ),
+                                    enableTooltip: true,
+                                    isVisible: true,
+                                    dataSource: obj.chart,
+                                    xValueMapper: (SalesData sales, _) =>
+                                        sales.year,
+                                    yValueMapper: (SalesData sales, _) =>
+                                        sales.sales,
+                                  )
+                                ],
+                              ))
+                        ],
                       ),
-                    )
-                  : const ExpenseChart()
-              : const PurchaseChart()
-          : const SalesChart();
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PurchaseChart(),
+                        ));
+                    // setState(() {
+                    //   sale = false;
+                    //   purchase = true;
+                    //   expense = false;
+                    // });
+                    // print("value of sale $sale");
+                    // print("value of sale $purchase");
+                    // print("value of sale $expense");
+                  },
+                  child: Container(
+                    height: height * 0.21,
+                    width: width,
+                    decoration: BoxDecoration(
+                        color: white, borderRadius: BorderRadius.circular(8)),
+                    child: Column(
+                      children: [
+                        Text(
+                          "Purchase",
+                          style: TextStyle(
+                              fontSize: width * 0.04,
+                              fontWeight: FontWeight.w800,
+                              color: darkblue),
+                        ),
+                        SizedBox(
+                            height: height * 0.16,
+                            width: width,
+                            child: SfCartesianChart(
+                                primaryXAxis: CategoryAxis(),
+                                primaryYAxis: NumericAxis(
+                                  minimum: 0,
+                                  interval: 50,
+                                  desiredIntervals:
+                                      7, // Set this to the number of desired ticks (7 in this case)
+                                ),
+                                tooltipBehavior: obj.tooltip,
+                                series: <ChartSeries<Chartdata, String>>[
+                                  ColumnSeries<Chartdata, String>(
+                                    dataSource: obj.purchasedata,
+                                    xValueMapper: (Chartdata data, _) => data.x,
+                                    yValueMapper: (Chartdata data, _) => data.y,
+                                    name: 'Purchase',
+                                    color: const Color.fromRGBO(8, 142, 255, 1),
+                                  ),
+                                ])),
+                      ],
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ExpenseChart(),
+                        ));
+                    // setState(() {
+                    //   sale = false;
+                    //   purchase = false;
+                    //   expense = true;
+                    // });
+                    // print("value of sale $sale");
+                    // print("value of sale $purchase");
+                    // print("value of sale $expense");
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 6),
+                    child: Container(
+                      height: height * 0.26,
+                      width: width,
+                      decoration: BoxDecoration(
+                          color: white, borderRadius: BorderRadius.circular(8)),
+                      child: Column(
+                        children: [
+                          Text(
+                            "Expenses",
+                            style: TextStyle(
+                                fontSize: width * 0.04,
+                                fontWeight: FontWeight.w800,
+                                color: expensecolor),
+                          ),
+                          SizedBox(
+                              height: height * 0.2,
+                              width: width,
+                              child: SfCartesianChart(
+                                  primaryXAxis: CategoryAxis(),
+                                  primaryYAxis: NumericAxis(
+                                    minimum: 0,
+                                    interval: 5,
+                                    desiredIntervals:
+                                        7, // Set this to the number of desired ticks (7 in this case)
+                                  ),
+                                  tooltipBehavior: obj.tooltip,
+                                  series: <ChartSeries<Chartdata, String>>[
+                                    BarSeries<Chartdata, String>(
+                                        dataSource: obj.expensedata,
+                                        xValueMapper: (Chartdata data, _) =>
+                                            data.x,
+                                        yValueMapper: (Chartdata data, _) =>
+                                            data.y,
+                                        name: 'Expesense',
+                                        color: expensecolor)
+                                  ]))
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ]),
+            ),
+          ),
+        ),
+      );
+      //         : const ExpenseChart()
+      //     : const PurchaseChart()
+      // : const SalesChart();
     });
   }
 }

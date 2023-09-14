@@ -5,13 +5,11 @@ import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/models/currency_model.dart';
 import 'package:snabb_business/models/get_data_year_type_model.dart' as sp;
 import 'package:snabb_business/models/get_sale_purchase.dart';
-import 'package:snabb_business/models/pagemodel.dart';
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
 import 'package:snabb_business/static_data.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:snabb_business/models/yearly_transaction_model.dart' as yTra;
-import 'package:snabb_business/models/monthly_transaction_model.dart' as mTra;
 
 import '../models/dataclassgraphModel.dart';
 
@@ -118,7 +116,7 @@ class HomeController extends GetxController {
       isLoadData = false;
       curency = walletList[0].currency!;
       update();
-      print("totalbalancexczvzx${totalbalance}");
+      print("totalbalancexczvzx$totalbalance");
     } else {
       print("nodata ");
     }
@@ -206,7 +204,7 @@ class HomeController extends GetxController {
       chartData.clear();
       yTra.UserYearTransaction yearTransaction =
           yTra.UserYearTransaction.fromMap(res.data);
-      yearTransaction.data!.forEach((element) {
+      for (var element in yearTransaction.data!) {
         List<yTra.Transactions> transactions = element.transactions ?? [];
         salesTransaction =
             transactions.where((transaction) => transaction.type == 1).toList();
@@ -215,7 +213,7 @@ class HomeController extends GetxController {
             .map((transaction) =>
                 transaction.amount! - (transaction.partialAmount ?? 0))
             .fold(0, (prev, curr) => prev + curr);
-        print("-0=-=-=-=-=- ${totalAmountType1}");
+        print("-0=-=-=-=-=- $totalAmountType1");
         chartData.add(
           SalesData(DateTime(element.year!), totalAmountType1),
         );
@@ -223,7 +221,7 @@ class HomeController extends GetxController {
         // chart = [
         //   SalesData(DateTime(element.year!), totalAmountType1),
         // ];
-      });
+      }
 
       update();
     }
@@ -256,6 +254,7 @@ class HomeController extends GetxController {
       print("purchase ${purchasedata.length}");
       print("expense ${expensedata.length}");
     }
+    update();
   }
 
   List<sp.Data> expenseData = [];
@@ -285,6 +284,7 @@ class HomeController extends GetxController {
       print("purchase list ${purchaseData.length}");
       print("expense list ${expenseData.length}");
     }
+    update();
   }
 
   // Function to convert full month names to lowercase abbreviated month names

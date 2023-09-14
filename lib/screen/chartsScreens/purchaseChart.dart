@@ -27,6 +27,27 @@ class _PurchaseChartState extends State<PurchaseChart> {
     var width = MediaQuery.of(context).size.width;
     return GetBuilder<HomeController>(builder: (obj) {
       return Scaffold(
+        appBar: AppBar(
+          backgroundColor: darkblue,
+          leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+              size: width * 0.065,
+            ),
+          ),
+          centerTitle: true,
+          title: Text(
+            "Purchase",
+            style: TextStyle(
+                fontSize: width * 0.04,
+                fontWeight: FontWeight.w800,
+                color: white),
+          ),
+        ),
         body: SizedBox(
           height: height,
           width: width,
@@ -41,13 +62,6 @@ class _PurchaseChartState extends State<PurchaseChart> {
                       color: white, borderRadius: BorderRadius.circular(8)),
                   child: Column(
                     children: [
-                      Text(
-                        "Purchase",
-                        style: TextStyle(
-                            fontSize: width * 0.04,
-                            fontWeight: FontWeight.w800,
-                            color: darkblue),
-                      ),
                       SizedBox(
                         height: height * 0.16,
                         width: width,

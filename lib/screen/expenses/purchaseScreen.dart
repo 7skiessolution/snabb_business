@@ -5,20 +5,50 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../controller/homeController.dart';
 
-class PurchaseScreen extends StatefulWidget {
-  const PurchaseScreen({super.key});
+class PurchaseChart extends StatefulWidget {
+  const PurchaseChart({super.key});
 
   @override
-  State<PurchaseScreen> createState() => _PurchaseScreenState();
+  State<PurchaseChart> createState() => _PurchaseChartState();
 }
 
-class _PurchaseScreenState extends State<PurchaseScreen> {
+class _PurchaseChartState extends State<PurchaseChart> {
+  @override
+  void initState() {
+    Get.put(HomeController());
+    // TODO: implement initState
+    HomeController.to.getexpensePurchase(0);
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return GetBuilder<HomeController>(builder: (obj) {
       return Scaffold(
+        appBar: AppBar(
+          backgroundColor: darkblue,
+          leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+              size: width * 0.065,
+            ),
+          ),
+          centerTitle: true,
+          title: Text(
+            "Purchase",
+            style: TextStyle(
+                fontSize: width * 0.04,
+                fontWeight: FontWeight.w800,
+                color: white),
+          ),
+        ),
         body: SizedBox(
           height: height,
           width: width,
@@ -33,34 +63,28 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
                       color: white, borderRadius: BorderRadius.circular(8)),
                   child: Column(
                     children: [
-                      Text(
-                        "Purchase",
-                        style: TextStyle(
-                            fontSize: width * 0.04,
-                            fontWeight: FontWeight.w800,
-                            color: darkblue),
-                      ),
                       SizedBox(
-                          height: height * 0.16,
-                          width: width,
-                          child: SfCartesianChart(
-                              primaryXAxis: CategoryAxis(),
-                              primaryYAxis: NumericAxis(
-                                minimum: 0,
-                                interval: 15,
-                                desiredIntervals:
-                                    7, // Set this to the number of desired ticks (7 in this case)
+                        height: height * 0.16,
+                        width: width,
+                        child: SfCartesianChart(
+                            primaryXAxis: CategoryAxis(),
+                            primaryYAxis: NumericAxis(
+                              minimum: 0,
+                              interval: 15,
+                              desiredIntervals:
+                                  7, // Set this to the number of desired ticks (7 in this case)
+                            ),
+                            tooltipBehavior: obj.tooltip,
+                            series: <ChartSeries<Chartdata, String>>[
+                              ColumnSeries<Chartdata, String>(
+                                dataSource: obj.purchasedata,
+                                xValueMapper: (Chartdata data, _) => data.x,
+                                yValueMapper: (Chartdata data, _) => data.y,
+                                name: 'Purchase',
+                                color: darkblue,
                               ),
-                              tooltipBehavior: obj.tooltip,
-                              series: <ChartSeries<Chartdata, String>>[
-                                ColumnSeries<Chartdata, String>(
-                                  dataSource: obj.purchasedata,
-                                  xValueMapper: (Chartdata data, _) => data.x,
-                                  yValueMapper: (Chartdata data, _) => data.y,
-                                  name: 'Purchase',
-                                  color: darkblue,
-                                ),
-                              ])),
+                            ]),
+                      ),
                     ],
                   ),
                 ),
@@ -84,8 +108,9 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: 10,
+                    itemCount: obj.purchaseData.length,
                     itemBuilder: (context, index) {
+                      var data = obj.purchaseData[index];
                       return Padding(
                         padding: EdgeInsets.only(top: height * 0.015),
                         child: Stack(
@@ -104,17 +129,17 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     Text(
-                                      "Recieve Payment 11,000 PKR ",
+                                      "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency} ",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: width * 0.03,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: width * 0.025,
                                           color: white),
                                     ),
                                     Text(
-                                      "Balamce Amount: 11,000 PKR ",
+                                      "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: width * 0.03,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: width * 0.025,
                                           color: white),
                                     )
                                   ],
@@ -135,18 +160,18 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
                                   CircleAvatar(
                                     backgroundColor: darkblue,
                                     child: Image.asset(
-                                      "images/wallet.png",
+                                      data.imageUrl!,
                                       color: white,
                                     ),
                                   ),
                                   Text(
-                                    "Product 1",
+                                    "${data.category}",
                                     style: TextStyle(
                                         fontSize: width * 0.04,
                                         fontWeight: FontWeight.bold,
                                         color: darkblue),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     height: height * 0.1,
                                     width: width * 0.3,
                                     child: Column(
@@ -163,7 +188,7 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
                                           ),
                                           child: Center(
                                             child: Text(
-                                              "27,0000 PKR",
+                                              "${data.amount}",
                                               style: TextStyle(
                                                   fontSize: width * 0.02,
                                                   fontWeight: FontWeight.bold,
@@ -175,7 +200,9 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
                                           height: height * 0.01,
                                         ),
                                         Text(
-                                          "06/07/2023",
+                                          data.dateTime
+                                              .toString()
+                                              .substring(0, 10),
                                           style: TextStyle(
                                               fontSize: width * 0.02,
                                               fontWeight: FontWeight.bold,

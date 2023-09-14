@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snabb_business/utils/color.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../controller/homeController.dart';
 
@@ -27,6 +28,27 @@ class _ExpenseChartState extends State<ExpenseChart> {
     var width = MediaQuery.of(context).size.width;
     return GetBuilder<HomeController>(builder: (obj) {
       return Scaffold(
+        appBar: AppBar(
+          backgroundColor: darkblue,
+          leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+              size: width * 0.065,
+            ),
+          ),
+          centerTitle: true,
+          title: Text(
+            "Expenses",
+            style: TextStyle(
+                fontSize: width * 0.04,
+                fontWeight: FontWeight.w800,
+                color: white),
+          ),
+        ),
         body: SizedBox(
           height: height,
           width: width,
@@ -43,35 +65,26 @@ class _ExpenseChartState extends State<ExpenseChart> {
                         color: white, borderRadius: BorderRadius.circular(8)),
                     child: Column(
                       children: [
-                        Text(
-                          "Expenses",
-                          style: TextStyle(
-                              fontSize: width * 0.04,
-                              fontWeight: FontWeight.w800,
-                              color: expensecolor),
-                        ),
                         SizedBox(
                           height: height * 0.2,
                           width: width,
-                          // child: SfCartesianChart(
-                          //     primaryXAxis: CategoryAxis(),
-                          //     primaryYAxis: NumericAxis(
-                          //       minimum: 0,
-                          //       interval: 5,
-                          //       desiredIntervals:
-                          //           7, // Set this to the number of desired ticks (7 in this case)
-                          //     ),
-                          //     tooltipBehavior: obj.tooltip,
-                          //     series: <ChartSeries<Chartdata, String>>[
-                          //       BarSeries<Chartdata, String>(
-                          //           dataSource: obj.expensedata,
-                          //           xValueMapper: (Chartdata data, _) =>
-                          //               data.x,
-                          //           yValueMapper: (Chartdata data, _) =>
-                          //               data.y,
-                          //           name: 'Expesense',
-                          //           color: expensecolor)
-                          //     ]),
+                          child: SfCartesianChart(
+                              primaryXAxis: CategoryAxis(),
+                              primaryYAxis: NumericAxis(
+                                minimum: 0,
+                                interval: 5,
+                                desiredIntervals:
+                                    7, // Set this to the number of desired ticks (7 in this case)
+                              ),
+                              tooltipBehavior: obj.tooltip,
+                              series: <ChartSeries<Chartdata, String>>[
+                                BarSeries<Chartdata, String>(
+                                    dataSource: obj.expensedata,
+                                    xValueMapper: (Chartdata data, _) => data.x,
+                                    yValueMapper: (Chartdata data, _) => data.y,
+                                    name: 'Expesense',
+                                    color: expensecolor)
+                              ]),
                         )
                       ],
                     ),

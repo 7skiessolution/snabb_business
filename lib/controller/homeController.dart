@@ -195,36 +195,86 @@ class HomeController extends GetxController {
       return '0';
     }
   }
+// ...
+
+  // double totalAmountType1 = 0.0;
+  // List<yTra.Transactions> salesTransaction = [];
+  // saleListOFChart() async {
+  //   var res = await httpClient().get(StaticValues.getYearTrasaction);
+  //   if (res.statusCode == 200) {
+  //     chartData.clear();
+  //     yTra.UserYearTransaction yearTransaction =
+  //         yTra.UserYearTransaction.fromMap(res.data);
+  //     for (var element in yearTransaction.data!) {
+  //       List<yTra.Transactions> transactions = element.transactions ?? [];
+  //       salesTransaction =
+  //           transactions.where((transaction) => transaction.type == 1).toList();
+  //       // Calculate total amounts for each type after subtracting partial amounts
+  //       totalAmountType1 = salesTransaction
+  //           .map((transaction) =>
+  //               transaction.amount! - (transaction.partialAmount ?? 0))
+  //           .fold(0, (prev, curr) => prev + curr);
+  //       print("-0=-=-=-=-=- $totalAmountType1");
+  //       chartData.add(
+  //         SalesData(DateTime(element.year!), totalAmountType1),
+  //       );
+
+  //       print("chart data ${chartData[1].sales}");
+  //       print("chart data ${chartData[1].year}");
+  //     }
+
+  //     update();
+  //   }
+  // }
+// ...
 
   double totalAmountType1 = 0.0;
-  List<yTra.Transactions> salesTransaction = [];
-  saleListOFChart() async {
-    var res = await httpClient().get(StaticValues.getYearTrasaction);
-    if (res.statusCode == 200) {
-      chartData.clear();
-      yTra.UserYearTransaction yearTransaction =
-          yTra.UserYearTransaction.fromMap(res.data);
-      for (var element in yearTransaction.data!) {
-        List<yTra.Transactions> transactions = element.transactions ?? [];
-        salesTransaction =
-            transactions.where((transaction) => transaction.type == 1).toList();
-        // Calculate total amounts for each type after subtracting partial amounts
-        totalAmountType1 = salesTransaction
-            .map((transaction) =>
-                transaction.amount! - (transaction.partialAmount ?? 0))
-            .fold(0, (prev, curr) => prev + curr);
-        print("-0=-=-=-=-=- $totalAmountType1");
-        chartData.add(
-          SalesData(DateTime(element.year!), totalAmountType1),
-        );
+//List<SalesData> chartData = [];
 
-        // chart = [
-        //   SalesData(DateTime(element.year!), totalAmountType1),
-        // ];
+  Future<void> saleListOFChart() async {
+    final int currentYear = DateTime.now().year;
+
+    // Clear existing chart data
+    chartData.clear();
+
+    for (int year = currentYear; year >= currentYear - 11; year--) {
+      final String apiUrl = '${StaticValues.getYearTrasaction}/$year';
+
+      try {
+        final response = await httpClient().get(apiUrl);
+
+        if (response.statusCode == 200) {
+          yTra.UserYearTransaction yearTransaction =
+              yTra.UserYearTransaction.fromMap(response.data);
+
+          List<yTra.Transactions> transactions =
+              yearTransaction.data?.first?.transactions ?? [];
+
+          // Calculate total amounts for type 1 after subtracting partial amounts
+          double totalAmountType1 = transactions
+              .where((transaction) => transaction.type == 1)
+              .map((transaction) =>
+                  transaction.amount! - (transaction.partialAmount ?? 0))
+              .fold(0, (prev, curr) => prev + curr);
+
+          // Add the data to chartData
+          chartData.add(
+            SalesData(DateTime(year), totalAmountType1),
+          );
+
+          print("Year: $year, Total Amount Type 1: $totalAmountType1");
+        } else {
+          // Handle API request error
+          print("Failed to fetch data for year $year");
+        }
+      } catch (e) {
+        // Handle exceptions (e.g., network error)
+        print("Error fetching data for year $year: $e");
       }
-
-      update();
     }
+
+    // Update the UI if necessary
+    update();
   }
 
   expenseList(int type) async {

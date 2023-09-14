@@ -143,7 +143,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             ),
           ],
           color: AppColors.blue,
-          buttonBackgroundColor: AppColors.blue,
+          buttonBackgroundColor: AppColors.redcolor,
           backgroundColor: AppColors.backgroundColor,
           animationCurve: Curves.easeInOut,
           animationDuration: const Duration(milliseconds: 400),

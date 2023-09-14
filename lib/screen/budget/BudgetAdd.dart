@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 import 'package:snabb_business/controller/budget/add_budget_controller.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/screen/sale/user_category_model.dart';
+import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
+import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/daimond_shape.dart';
 
 class AddBudget extends StatefulWidget {
@@ -48,46 +50,16 @@ class _AddBudgetState extends State<AddBudget> {
     return SafeArea(
       child: GetBuilder<AddBudgetController>(builder: (obj1) {
         return Scaffold(
+          backgroundColor: AppColors.backgroundColor,
           body: Center(
               child: SizedBox(
             height: height,
             width: width * 0.9,
             child: Column(
               children: [
-                Container(
-                  width: width * 0.9,
-                  height: height * 0.07,
-                  decoration: BoxDecoration(
-                    color: darkblue,
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                          onPressed: () => Navigator.pop(context),
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                            size: width * 0.065,
-                          )),
-                      Text(
-                        AppLocalizations.of(context)!.budget,
-                        style: TextStyle(
-                            fontSize: width * 0.04,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      SizedBox(
-                        width: width * 0.045,
-                      )
-                    ],
-                  ),
-                ),
+                 AppBarWidgt(text: "Add Buget"),
+          
+       
                 GetBuilder<TransactionController>(builder: (obj) {
                   return ListTile(
                     onTap: () {

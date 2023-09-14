@@ -82,9 +82,9 @@ class _SummeryScreenState extends State<SummeryScreen> {
                      Positioned(
               
               
-                        top: height * 0.05,
-                       right: width * 0.1,
-                       left: width * 0.1,
+                        top: height * 0.03,
+                       right: width * 0.03,
+                       left: width * 0.03,
                         child: Container(
                             height: height * 0.8,
                             width: width * 0.7,
@@ -92,132 +92,138 @@ class _SummeryScreenState extends State<SummeryScreen> {
                             child: Column(children: [
 
 
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: SizedBox(
-                                      //height: height,
-                                      // width: width,
-                                      child:
-                                          _currentSelection ==
-                                                  0
-                                              ? Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .end,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .center,
-                                                  children: [
-                                                    Text(
-                                                      'Summary',
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          // fontWeight: FontWeight.bold,
-                                                          fontSize: width * 0.05),
-                                                    ),
-                                                    Padding(
-                                                      padding: EdgeInsets.only(
-                                                          left: width * 0.12,
-                                                          right: width * 0.12),
-                                                      child:
-                                                          Divider(
-                                                        color:
-                                                            red,
-                                                        thickness:
-                                                            3,
-                                                      ),
-                                                    )
-                                                  ],
-                                                )
-                                              : Padding(
-                                                  padding: EdgeInsets.only(
-                                                      top: height *
-                                                          0.00),
-                                                  child:
-                                                      Center(
-                                                    child:
-                                                        InkWell(
-                                                      onTap:
-                                                          () {
-                                                       _currentSelection =0;
-                                                       setState(() {
-                                                         
-                                                       });
-                                                      },
-                                                      child:
-                                                          Text(
+                              SizedBox(
+                                width:width,
+                                height:height*0.08,
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: SizedBox(
+                                      
+                                        
+                                        //height: height,
+                                        // width: width,
+                                        child:
+                                            _currentSelection ==
+                                                    0
+                                                ? Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .end,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
                                                         'Summary',
-                                                        style:
-                                                            TextStyle(color: white, fontSize: width * 0.05),
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            // fontWeight: FontWeight.bold,
+                                                            fontSize: width * 0.05),
                                                       ),
-                                                    ),
-                                                  ),
-                                                ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: SizedBox(
-                                     // height: height*0.01,
-                                      // width: width,
-                                      child:
-                                         _currentSelection ==
-                                                  1
-                                              ? Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .end,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .center,
-                                                  children: [
-                                                    Text(
-                                                      'Category',
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: width * 0.05),
-                                                    ),
-                                                    Padding(
-                                                      padding: EdgeInsets.only(
-                                                          left: width * 0.1,
-                                                          right: width * 0.1),
-                                                      child:
-                                                          Divider(
-                                                        color:
-                                                            red,
-                                                        thickness:
-                                                            3,
-                                                      ),
-                                                    )
-                                                  ],
-                                                )
-                                              : Padding(
-                                                  padding: EdgeInsets.only(
-                                                      top: height *
-                                                          0.00),
-                                                  child:
-                                                      Center(
+                                                      Padding(
+                                                        padding: EdgeInsets.only(
+                                                            left: width * 0.12,
+                                                            right: width * 0.12),
+                                                        child:
+                                                            Divider(
+                                                          color:
+                                                              red,
+                                                          thickness:
+                                                              3,
+                                                        ),
+                                                      )
+                                                    ],
+                                                  )
+                                                : Padding(
+                                                    padding: EdgeInsets.only(
+                                                        top: height *
+                                                            0.00),
                                                     child:
-                                                        InkWell(
-                                                      onTap:
-                                                          () {
-                                                        _currentSelection = 1;
-                                                        setState(() {
-                                                          
-                                                        });
-                                                      },
+                                                        Center(
                                                       child:
-                                                          Text(
-                                                        'Category',
-                                                        style:
-                                                            TextStyle(color: white, fontSize: width * 0.05),
+                                                          InkWell(
+                                                        onTap:
+                                                            () {
+                                                         _currentSelection =0;
+                                                         setState(() {
+                                                           
+                                                         });
+                                                        },
+                                                        child:
+                                                            Text(
+                                                          'Summary',
+                                                          style:
+                                                              TextStyle(color: white, fontSize: width * 0.05),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    Expanded(
+                                      child: SizedBox(
+                                       // height: height*0.01,
+                                        // width: width,
+                                        child:
+                                           _currentSelection ==
+                                                    1
+                                                ? Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .end,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        'Category',
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: width * 0.05),
+                                                      ),
+                                                      Padding(
+                                                        padding: EdgeInsets.only(
+                                                            left: width * 0.1,
+                                                            right: width * 0.1),
+                                                        child:
+                                                            Divider(
+                                                          color:
+                                                              red,
+                                                          thickness:
+                                                              3,
+                                                        ),
+                                                      )
+                                                    ],
+                                                  )
+                                                : Padding(
+                                                    padding: EdgeInsets.only(
+                                                        top: height *
+                                                            0.00),
+                                                    child:
+                                                        Center(
+                                                      child:
+                                                          InkWell(
+                                                        onTap:
+                                                            () {
+                                                          _currentSelection = 1;
+                                                          setState(() {
+                                                            
+                                                          });
+                                                        },
+                                                        child:
+                                                            Text(
+                                                          'Category',
+                                                          style:
+                                                              TextStyle(color: white, fontSize: width * 0.05),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             
                             

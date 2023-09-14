@@ -7,7 +7,9 @@ import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/controller/schedule_controller.dart';
 import 'package:snabb_business/models/scheduled_transaction.dart';
 import 'package:snabb_business/static_data.dart';
+import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
+import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/schedule_ex.dart';
 
 class ShaduleTransactionScreen extends StatefulWidget {
@@ -291,6 +293,7 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
     width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       key: scaffoldKey,
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton:
@@ -301,107 +304,68 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
         }, builder: (obj) {
           return Column(
             children: [
+               AppBarWidgt(
+                  text: "Shadule Transaction"),
+            
               Container(
-                height: height * 0.13,
-                width: width * 0.9,
-                decoration: BoxDecoration(
-                    color: darkblue,
-                    borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20))),
-                child: Padding(
-                  padding: EdgeInsets.only(top: height * 0.025),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                          size: width * 0.065,
+               
+                  height: height * 0.1,
+                  width: width * 0.9,
+                  decoration:
+                      BoxDecoration(
+                         color: white,
+                        borderRadius: BorderRadius.circular(7)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)!.thismonth.capitalize!,
+                              style: TextStyle(
+                                  fontSize: width * 0.033,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "${obj.thisMonth} ${HomeController.to.curency}",
+                              style: TextStyle(
+                                color: Colors.black
+                                // color: obj.thisMonth >= 0
+                                //     ? Colors.green
+                                //     : Colors.red,
+                              ),
+                            )
+                          ],
                         ),
-                      ),
-                      SizedBox(
-                        width: width * 0.1,
-                      ),
-                      Text(
-                        AppLocalizations.of(context)!.scheduledtransaction,
-                        style: TextStyle(
-                            fontSize: width * 0.04,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      SizedBox(
-                        width: width * 0.11,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Card(
-                shadowColor: darkblue,
-                elevation: 7,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7)),
-                child: Container(
-                    height: height * 0.15,
-                    width: width * 0.9,
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(7)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                AppLocalizations.of(context)!.thismonth,
-                                style: TextStyle(
-                                    fontSize: width * 0.033,
-                                    color: darkblue,
-                                    fontWeight: FontWeight.bold),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)!.nextmonth.capitalize!,
+                              style: TextStyle(
+                                  fontSize: width * 0.033,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "${obj.nextMonth} ${HomeController.to.curency}",
+                              style: TextStyle(
+                                color: obj.nextMonth >= 0
+                                    ? Colors.green
+                                    : Colors.red,
                               ),
-                              Text(
-                                "${obj.thisMonth}",
-                                style: TextStyle(
-                                  color: obj.thisMonth >= 0
-                                      ? Colors.green
-                                      : Colors.red,
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                AppLocalizations.of(context)!.nextmonth,
-                                style: TextStyle(
-                                    fontSize: width * 0.033,
-                                    color: darkblue,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                "${obj.nextMonth}",
-                                style: TextStyle(
-                                  color: obj.nextMonth >= 0
-                                      ? Colors.green
-                                      : Colors.red,
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    )),
-              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  )),
               SizedBox(
-                height: height * 0.02,
+                height: height * 0.01,
               ),
               obj.transactions.isNotEmpty
                   ? Expanded(
@@ -413,50 +377,201 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                             ScheduleTransactionData transaction =
                                 obj.transactions[index];
                             return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Card(
-                                shadowColor: darkblue,
-                                elevation: 2,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: ListTile(
-                                  onTap: () {
-                                    showImageDialog(context, transaction);
-                                  },
-                                  leading: Container(
-                                      decoration: BoxDecoration(
-                                          color: darkblue,
-                                          shape: BoxShape.circle),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Image.asset(
-                                          transaction.imageUrl!,
+                              padding: const EdgeInsets.only(top: 8),
+                              child: Container(
+                                color: white,
+                                child: Column(
+                                  children: [
+                              
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Container(
+                                            color: AppColors.backgroundColor,
+                                            //height: height,
+                                            width: width,
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
+                                                  // crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      mainAxisSize:
+                                                          MainAxisSize
+                                                              .max,
+                                                      children: [
+                                                        Text(
+                                                            "123",
+                                                            style:
+                                                                TextStyle(
+                                                              color:
+                                                                  Colors.grey,
+                                                              fontSize:
+                                                                  12,
+                                                            )),
+                                                        Text(
+                                                            '"persentage" %',
+                                                            style: const TextStyle(
+                                                                fontSize:
+                                                                    12,
+                                                                fontWeight:
+                                                                    FontWeight.w700)),
+                                                        Text("date",
+                                                            style:
+                                                                TextStyle(
+                                                              color:
+                                                                  Colors.grey,
+                                                              fontSize:
+                                                                  12,
+                                                            )),
+                                                      ],
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                    SliderTheme(
+                                                      data: const SliderThemeData(
+                                                          trackHeight:
+                                                              3,
+                                                          overlayShape: RoundSliderOverlayShape(
+                                                              overlayRadius:
+                                                                  0),
+                                                          thumbShape:
+                                                              RoundSliderThumbShape(
+                                                                  enabledThumbRadius: 0)),
+                                                      child: Slider(
+                                                        inactiveColor:
+                                                            Colors
+                                                                .grey,
+                                                        activeColor:
+                                                            darkblue,
+                                                        value:
+                                                            1,
+                                                        onChanged:
+                                                            (double
+                                                                value) {},
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      mainAxisSize:
+                                                          MainAxisSize
+                                                              .max,
+                                                      children: [
+                                                        Text('0',
+                                                            style:
+                                                                TextStyle(
+                                                              color:
+                                                                  Colors.grey,
+                                                              fontSize:
+                                                                  12,
+                                                            )),
+                                                        Text(
+                                                            "payable"
+                                                                .toString(),
+                                                            style:
+                                                                TextStyle(
+                                                              color:
+                                                                  Colors.red,
+                                                              fontSize:
+                                                                  12,
+                                                            )),
+                                                        Text(
+                                                            "amount"
+                                                                .toString(),
+                                                            style:
+                                                                TextStyle(
+                                                              color:
+                                                                  Colors.grey,
+                                                              fontSize:
+                                                                  12,
+                                                            )),
+                                                      ],
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Align(
+                                                          alignment:
+                                                              Alignment
+                                                                  .centerLeft,
+                                                          child: Text(
+                                                              '${AppLocalizations.of(context)!.residualamount.capitalize!}: "residual"',
+                                                              style:
+                                                                  TextStyle(
+                                                                color:
+                                                                    Colors.black,
+                                                                fontSize:
+                                                                    12,
+                                                              )),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ]),
+                                            ),
+                                          ),
                                         ),
-                                      )),
-                                  title: Text(
-                                    transaction.category!,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  subtitle: Text(transaction.name!),
-                                  trailing: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text(
-                                          transaction.type == 1
-                                              ? "+${HomeController.to.curency}${transaction.amount}"
-                                              : "-${HomeController.to.curency}${transaction.amount}",
-                                          style: TextStyle(
-                                              color: transaction.type == 1
-                                                  ? Colors.green
-                                                  : Colors.red,
-                                              fontWeight: FontWeight.bold)),
-                                      Text(transaction.schedule!.secondDateTime
-                                          .toString()
-                                          .substring(0, 10))
-                                    ],
-                                  ),
+                                                 
+                                                 
+                              
+                                    Container(
+                                      color: white,
+                                      child: ListTile(
+                                        onTap: () {
+                                          showImageDialog(context, transaction);
+                                        },
+                                        leading: Container(
+                                            decoration: BoxDecoration(
+                                                color: darkblue,
+                                                shape: BoxShape.circle),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Image.asset(
+                                                transaction.imageUrl!,
+                                              ),
+                                            )),
+                                        title: Text(
+                                          transaction.category!,
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        subtitle: Text(transaction.name!),
+                                        trailing: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Text(
+                                                transaction.type == 1
+                                                    ? "+${HomeController.to.curency}${transaction.amount}"
+                                                    : "-${HomeController.to.curency}${transaction.amount}",
+                                                style: TextStyle(
+                                                    color: transaction.type == 1
+                                                        ? Colors.green
+                                                        : Colors.red,
+                                                    fontWeight: FontWeight.bold)),
+                                            Text(transaction.schedule!.secondDateTime
+                                                .toString()
+                                                .substring(0, 10))
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             );
@@ -475,6 +590,10 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                             fontWeight: FontWeight.w500),
                       )),
                     ),
+       
+       
+       
+       
             ],
           );
         }),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:snabb_business/models/get_all_user_transaction_model.dart';
 
@@ -15,6 +16,7 @@ class TransactionCard extends StatefulWidget {
 }
 
 class _TransactionCardState extends State<TransactionCard> {
+    
   Future<void> showImageDialog(
       BuildContext context, Data obj, var height, var width) async {
     return showDialog<void>(
@@ -281,59 +283,68 @@ class _TransactionCardState extends State<TransactionCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shadowColor: darkblue,
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      child: ListTile(
-        onTap: () {
-          showImageDialog(
-              context,
-              widget.transaction,
-              MediaQuery.of(context).size.height,
-              MediaQuery.of(context).size.width);
-        },
-        leading: Container(
-            decoration: const BoxDecoration(shape: BoxShape.circle),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(
-                widget.transaction.imageUrl!,
-              ),
-            )),
-        title: Text(
-          widget.transaction.name!,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-        subtitle: Text(widget.transaction.dateTime!),
-        // .substring(0, 10)),
-        trailing: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-                // ignore: unrelated_type_equality_checks
-                widget.transaction.type == 1
-                    ? "+ ${widget.transaction.amount}"
-                    : "-${widget.transaction.amount}",
-                style: TextStyle(
-                    // ignore: unrelated_type_equality_checks
-                    color: widget.transaction.type == 1
-                        ? Colors.green
-                        : Colors.red,
-                    fontWeight: FontWeight.bold)),
-            Text(
-                // ignore: unrelated_type_equality_checks
-                widget.transaction.type == 1
-                    ? widget.transaction.currency!
-                    : widget.transaction.currency!,
-                style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.bold,
-                  color:
-                      widget.transaction.type == 1 ? Colors.green : Colors.red,
-                )),
-          ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Container(
+        color: white,
+        child: ListTile(
+          onTap: () {
+            showImageDialog(
+                context,
+                widget.transaction,
+                MediaQuery.of(context).size.height,
+                MediaQuery.of(context).size.width);
+          },
+          leading: Container(
+              decoration:  BoxDecoration(
+                color: darkblue,
+                            
+
+
+                shape: BoxShape.circle),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  widget.transaction.imageUrl!,
+                  fit: BoxFit.cover,
+                  width: 30,
+                  height: 30,
+                ),
+              )),
+          title: Text(
+            widget.transaction.name!,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(widget.transaction.dateTime!.substring(0,11)),
+          // .substring(0, 10)),
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                  // ignore: unrelated_type_equality_checks
+                  widget.transaction.type == 1
+                      ? "+ ${widget.transaction.amount}"
+                      : "-${widget.transaction.amount}",
+                  style: TextStyle(
+                      // ignore: unrelated_type_equality_checks
+                      color: widget.transaction.type == 1
+                          ? Colors.green
+                          : Colors.red,
+                      fontWeight: FontWeight.bold)),
+              Text(
+                  // ignore: unrelated_type_equality_checks
+                  widget.transaction.type == 1
+                      ? widget.transaction.currency!
+                      : widget.transaction.currency!,
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.bold,
+                    color:
+                        widget.transaction.type == 1 ? Colors.green : Colors.red,
+                  )),
+            ],
+          ),
         ),
       ),
     );

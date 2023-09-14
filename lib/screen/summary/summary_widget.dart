@@ -247,7 +247,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                             child: Card(
                               elevation: 5,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(4),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),

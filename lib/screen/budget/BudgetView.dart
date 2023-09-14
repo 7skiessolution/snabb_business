@@ -6,8 +6,10 @@ import 'package:snabb_business/controller/budget/budget_controller.dart';
 import 'package:snabb_business/models/budget_model.dart';
 import 'package:snabb_business/screen/budget/BudgetAdd.dart';
 import 'package:snabb_business/screen/budget/budget_transaction.dart';
+import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/spinkit.dart';
 
 class BudgetView extends StatefulWidget {
@@ -18,7 +20,9 @@ class BudgetView extends StatefulWidget {
 }
 
 class _BudgetViewState extends State<BudgetView> {
-  String selectedValue = 'One Month';
+  int  index = 0;
+  List<String> cat = ["One Month","Three Month ","Six Month","Yealy"];
+ 
 
   var height, width;
   void showDeleteConfirmationDialog(BuildContext context, id) {
@@ -123,448 +127,328 @@ class _BudgetViewState extends State<BudgetView> {
     width = MediaQuery.of(context).size.width;
     return SafeArea(
         child: Scaffold(
-            body: Center(
-      child: SizedBox(
-        child: Column(
-          children: [
-            Container(
-              width: width * 0.9,
-              height: height * 0.13,
-              decoration: BoxDecoration(
-                color: darkblue,
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                      onPressed: () => Navigator.pop(context),
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: width * 0.065,
-                      )),
-                  Text(
-                    AppLocalizations.of(context)!.budget,
-                    style: TextStyle(
-                        fontSize: width * 0.04,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  Expanded(
-                    flex: 0,
-                    child: IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const AddBudget(),
-                              ));
-                          // showAddDialog(context);
-                        },
-                        icon: const Icon(
-                          Icons.add,
-                          color: Colors.white,
-                        )),
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Expanded(
-              child: SizedBox(
-                  height: height,
-                  width: width,
-                  child: GetBuilder<BudgetController>(initState: (state) {
-                    BudgetController.to.getbudgets();
-                  }, builder: (obj) {
-                    return obj.budgetList.isEmpty
-                        ? Center(
-                            child: Text(
-                            AppLocalizations.of(context)!.notransaction,
-                          ))
-                        : Stack(
-                            children: [
-                              SizedBox(
-                                height: height,
-                                width: width,
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      obj.displayOneMonthStatusItems.isEmpty
-                                          ? const SizedBox()
-                                          : Container(
-                                              height: height * 0.05,
-                                              width: width * 0.9,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      const BorderRadius.all(
-                                                          Radius.circular(5)),
-                                                  color: darkblue),
-                                              child: const Row(
-                                                children: [
-                                                  Expanded(
-                                                    child: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                                horizontal:
-                                                                    15.0),
-                                                        child: Center(
-                                                          child: Text(
-                                                            'One Month',
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 16),
-                                                          ),
-                                                        )),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      obj.displayOneMonthStatusItems.isEmpty
-                                          ? const SizedBox()
-                                          : ListView.builder(
-                                              physics:
-                                                  const NeverScrollableScrollPhysics(),
-                                              shrinkWrap: true,
-                                              primary: false,
-                                              itemCount: obj
-                                                  .displayOneMonthStatusItems
-                                                  .length,
-                                              itemBuilder: (context, index) {
-                                                updateDurationDate(obj
-                                                    .displayOneMonthStatusItems[
-                                                        index]
-                                                    .duration!);
-                                                return customListTile(
-                                                  transactions: obj
-                                                      .displayOneMonthStatusItems[
-                                                          index]
-                                                      .transactions!,
-                                                  id: obj
-                                                      .displayOneMonthStatusItems[
-                                                          index]
-                                                      .budgetId!,
-                                                  duration: obj
-                                                      .displayOneMonthStatusItems[
-                                                          index]
-                                                      .duration!,
-                                                  category: obj
-                                                      .displayOneMonthStatusItems[
-                                                          index]
-                                                      .category!,
-                                                  image: obj
-                                                      .displayOneMonthStatusItems[
-                                                          index]
-                                                      .image!,
-                                                  date: formattedDate!,
-                                                  amount: obj
-                                                      .displayOneMonthStatusItems[
-                                                          index]
-                                                      .amount!,
-                                                  payable: obj
-                                                      .displayOneMonthStatusItems[
-                                                          index]
-                                                      .paidAmount!,
-                                                );
-                                              },
-                                            ),
-                                      obj.displayThreeMonthStatusItems.isEmpty
-                                          ? const SizedBox()
-                                          : SizedBox(
-                                              height: height * 0.02,
-                                            ),
-                                      ///////////////////////////////////
-                                      obj.displayThreeMonthStatusItems.isEmpty
-                                          ? const SizedBox()
-                                          : Container(
-                                              height: height * 0.05,
-                                              width: width * 0.9,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      const BorderRadius.all(
-                                                          Radius.circular(5)),
-                                                  color: darkblue),
-                                              child: const Row(
-                                                children: [
-                                                  Expanded(
-                                                    child: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                                horizontal:
-                                                                    15.0),
-                                                        child: Center(
-                                                          child: Text(
-                                                            "Three Month",
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 16),
-                                                          ),
-                                                        )),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      ListView.builder(
-                                        primary: false,
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        shrinkWrap: true,
-                                        itemCount: obj
-                                            .displayThreeMonthStatusItems
-                                            .length,
-                                        itemBuilder: (context, index) {
-                                          updateDurationDate(obj
-                                              .displayThreeMonthStatusItems[
-                                                  index]
-                                              .duration!);
-                                          return customListTile(
-                                            transactions: obj
-                                                .displayThreeMonthStatusItems[
-                                                    index]
-                                                .transactions!,
-                                            id: obj
-                                                .displayThreeMonthStatusItems[
-                                                    index]
-                                                .budgetId!,
-                                            duration: obj
-                                                .displayThreeMonthStatusItems[
-                                                    index]
-                                                .duration!,
-                                            category: obj
-                                                .displayThreeMonthStatusItems[
-                                                    index]
-                                                .category!,
-                                            image: obj
-                                                .displayThreeMonthStatusItems[
-                                                    index]
-                                                .image!,
-                                            date: formattedDate!,
-                                            amount: obj
-                                                .displayThreeMonthStatusItems[
-                                                    index]
-                                                .amount!,
-                                            payable: obj
-                                                .displayThreeMonthStatusItems[
-                                                    index]
-                                                .paidAmount!,
-                                          );
-                                        },
-                                      ),
-                                      obj.displaySixMonthtatusItems.isEmpty
-                                          ? const SizedBox()
-                                          : SizedBox(
-                                              height: height * 0.02,
-                                            ),
-                                      /////////////////// otherrrr
-                                      obj.displaySixMonthtatusItems.isEmpty
-                                          ? const SizedBox()
-                                          : Container(
-                                              height: height * 0.05,
-                                              width: width * 0.9,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      const BorderRadius.all(
-                                                          Radius.circular(5)),
-                                                  color: darkblue),
-                                              child: const Row(
-                                                children: [
-                                                  Expanded(
-                                                    child: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                                horizontal:
-                                                                    15.0),
-                                                        child: Center(
-                                                          child: Text(
-                                                            "Six Month",
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 16),
-                                                          ),
-                                                        )),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      obj.displaySixMonthtatusItems.isEmpty
-                                          ? const SizedBox()
-                                          : ListView.builder(
-                                              physics:
-                                                  const NeverScrollableScrollPhysics(),
-                                              shrinkWrap: true,
-                                              itemCount: obj
-                                                  .displaySixMonthtatusItems
-                                                  .length,
-                                              itemBuilder: (context, index) {
-                                                updateDurationDate(obj
-                                                    .displaySixMonthtatusItems[
-                                                        index]
-                                                    .duration!);
-                                                return customListTile(
-                                                  transactions: obj
-                                                      .displaySixMonthtatusItems[
-                                                          index]
-                                                      .transactions!,
-                                                  id: obj
-                                                      .displaySixMonthtatusItems[
-                                                          index]
-                                                      .budgetId!,
-                                                  duration: obj
-                                                      .displaySixMonthtatusItems[
-                                                          index]
-                                                      .duration!,
-                                                  category: obj
-                                                      .displaySixMonthtatusItems[
-                                                          index]
-                                                      .category!,
-                                                  image: obj
-                                                      .displaySixMonthtatusItems[
-                                                          index]
-                                                      .image!,
-                                                  date: formattedDate!,
-                                                  amount: obj
-                                                      .displaySixMonthtatusItems[
-                                                          index]
-                                                      .amount!,
-                                                  payable: obj
-                                                      .displaySixMonthtatusItems[
-                                                          index]
-                                                      .paidAmount!,
-                                                );
-                                              },
-                                            ),
-                                      obj.displayyearlytatusItems.isEmpty
-                                          ? const SizedBox()
-                                          : SizedBox(
-                                              height: height * 0.02,
-                                            ),
-                                      // /////////////////////// yearly
-                                      obj.displayyearlytatusItems.isEmpty
-                                          ? const SizedBox()
-                                          : Container(
-                                              height: height * 0.05,
-                                              width: width * 0.9,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      const BorderRadius.all(
-                                                          Radius.circular(5)),
-                                                  color: darkblue),
-                                              child: Row(
-                                                children: [
-                                                  Expanded(
-                                                    child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                horizontal:
-                                                                    15.0),
-                                                        child: Center(
-                                                          child: Text(
-                                                            AppLocalizations.of(
-                                                                    context)!
-                                                                .yearly,
-                                                            style: const TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 16),
-                                                          ),
-                                                        )),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
+            backgroundColor: backgroundColor,
+          floatingActionButton: FloatingActionButton(backgroundColor: red, onPressed: (){
+            Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const AddBudget(),
+                    ));
 
-                                      obj.displayyearlytatusItems.isEmpty
-                                          ? const SizedBox()
-                                          : ListView.builder(
-                                              physics:
-                                                  const NeverScrollableScrollPhysics(),
-                                              shrinkWrap: true,
-                                              itemCount: obj
-                                                  .displayyearlytatusItems
-                                                  .length,
-                                              itemBuilder: (context, index) {
-                                                updateDurationDate(obj
-                                                    .displayyearlytatusItems[
-                                                        index]
-                                                    .duration!);
-                                                return customListTile(
-                                                  transactions: obj
+          } ,child: Icon(Icons.add),),
+            body: SizedBox(
+              width: width,
+              height: height,
+              child: Column(
+                children: [
+                     AppBarWidgt(text: "Budget"),
+
+
+
+                           SizedBox(
+                      height: height * 0.85,
+                      width: width,
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: width,
+                            height: height * 0.15,
+                            color: AppColors.topcard,
+                            child: Padding(
+                              padding: const EdgeInsets
+                                  .symmetric(
+                                  horizontal: 20.0),
+                              child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                     
+                                  children: [
+
+                                    IconButton(onPressed: (){
+                                      if(index>0){
+                                        setState(() {
+                                          index --;
+                                        });
+                                      }
+
+                                    }, icon: Icon(Icons.arrow_back_ios,color: white,)),
+                                    Text(cat[index].toString(),style: TextStyle(color: white),),
+                                    IconButton(onPressed: (){
+                                      
+                                      if (index < 3) {
+                                            setState(() {
+                                              index++;
+                                            });
+                                          }
+
+                                      
+
+                                    }, icon: Icon(Icons.arrow_forward_ios,color: white,)),
+                                   
+                                  ]),
+                            ),
+                          ),
+                    
+                    
+                    
+                    
+                          Positioned(
+                              top: height * 0.13,
+                              right: width * 0.015,
+                              left: width * 0.015,
+                              child: SizedBox(
+                                  height: height * 0.7,
+                                  width: width ,
+
+                            
+                                  child:      Expanded(
+                    child: GetBuilder<BudgetController>(initState: (state) {
+                      BudgetController.to.getbudgets();
+                    }, builder: (obj) {
+                      return obj.budgetList.isEmpty
+                          ? Center(
+                              child: Text(
+                              AppLocalizations.of(context)!.notransaction,
+                            ))
+                          : Stack(
+                              children: [
+                                SizedBox(
+                                  height: height,
+                                  width: width,
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      children: [
+
+                                        obj.displayOneMonthStatusItems.isNotEmpty && index ==0
+                                         
+                                            ?  ListView.builder(
+                                                physics:
+                                                    const NeverScrollableScrollPhysics(),
+                                                shrinkWrap: true,
+                                                primary: false,
+                                                itemCount: obj
+                                                    .displayOneMonthStatusItems
+                                                    .length,
+                                                itemBuilder: (context, index) {
+                                                  updateDurationDate(obj
+                                                      .displayOneMonthStatusItems[
+                                                          index]
+                                                      .duration!);
+                                                  return customListTile(
+                                                    transactions: obj
+                                                        .displayOneMonthStatusItems[
+                                                            index]
+                                                        .transactions!,
+                                                    id: obj
+                                                        .displayOneMonthStatusItems[
+                                                            index]
+                                                        .budgetId!,
+                                                    duration: obj
+                                                        .displayOneMonthStatusItems[
+                                                            index]
+                                                        .duration!,
+                                                    category: obj
+                                                        .displayOneMonthStatusItems[
+                                                            index]
+                                                        .category!,
+                                                    image: obj
+                                                        .displayOneMonthStatusItems[
+                                                            index]
+                                                        .image!,
+                                                    date: formattedDate!,
+                                                    amount: obj
+                                                        .displayOneMonthStatusItems[
+                                                            index]
+                                                        .amount!,
+                                                    payable: obj
+                                                        .displayOneMonthStatusItems[
+                                                            index]
+                                                        .paidAmount!,
+                                                  );
+                                                },
+                                              ):const SizedBox()
+                                            ,
+                                        
+                                        obj.displayThreeMonthStatusItems.isNotEmpty && index ==1
+                                            ? 
+                                        
+                                        ListView.builder(
+                                          primary: false,
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          shrinkWrap: true,
+                                          itemCount: obj
+                                              .displayThreeMonthStatusItems
+                                              .length,
+                                          itemBuilder: (context, index) {
+                                            updateDurationDate(obj
+                                                .displayThreeMonthStatusItems[
+                                                    index]
+                                                .duration!);
+                                            return customListTile(
+                                              transactions: obj
+                                                  .displayThreeMonthStatusItems[
+                                                      index]
+                                                  .transactions!,
+                                              id: obj
+                                                  .displayThreeMonthStatusItems[
+                                                      index]
+                                                  .budgetId!,
+                                              duration: obj
+                                                  .displayThreeMonthStatusItems[
+                                                      index]
+                                                  .duration!,
+                                              category: obj
+                                                  .displayThreeMonthStatusItems[
+                                                      index]
+                                                  .category!,
+                                              image: obj
+                                                  .displayThreeMonthStatusItems[
+                                                      index]
+                                                  .image!,
+                                              date: formattedDate!,
+                                              amount: obj
+                                                  .displayThreeMonthStatusItems[
+                                                      index]
+                                                  .amount!,
+                                              payable: obj
+                                                  .displayThreeMonthStatusItems[
+                                                      index]
+                                                  .paidAmount!,
+                                            );
+                                          },
+                                        ):SizedBox(),
+                                     
+                                        obj.displaySixMonthtatusItems.isNotEmpty && index ==2
+                                            ? ListView.builder(
+                                                physics:
+                                                    const NeverScrollableScrollPhysics(),
+                                                shrinkWrap: true,
+                                                itemCount: obj
+                                                    .displaySixMonthtatusItems
+                                                    .length,
+                                                itemBuilder: (context, index) {
+                                                  updateDurationDate(obj
+                                                      .displaySixMonthtatusItems[
+                                                          index]
+                                                      .duration!);
+                                                  return customListTile(
+                                                    transactions: obj
+                                                        .displaySixMonthtatusItems[
+                                                            index]
+                                                        .transactions!,
+                                                    id: obj
+                                                        .displaySixMonthtatusItems[
+                                                            index]
+                                                        .budgetId!,
+                                                    duration: obj
+                                                        .displaySixMonthtatusItems[
+                                                            index]
+                                                        .duration!,
+                                                    category: obj
+                                                        .displaySixMonthtatusItems[
+                                                            index]
+                                                        .category!,
+                                                    image: obj
+                                                        .displaySixMonthtatusItems[
+                                                            index]
+                                                        .image!,
+                                                    date: formattedDate!,
+                                                    amount: obj
+                                                        .displaySixMonthtatusItems[
+                                                            index]
+                                                        .amount!,
+                                                    payable: obj
+                                                        .displaySixMonthtatusItems[
+                                                            index]
+                                                        .paidAmount!,
+                                                  );
+                                                },
+                                              ):SizedBox(),
+                                       
+
+                                        obj.displayyearlytatusItems.isNotEmpty && index ==3
+                                            ?  ListView.builder(
+                                                physics:
+                                                    const NeverScrollableScrollPhysics(),
+                                                shrinkWrap: true,
+                                                itemCount: obj
+                                                    .displayyearlytatusItems
+                                                    .length,
+                                                itemBuilder: (context, index) {
+                                                  updateDurationDate(obj
                                                       .displayyearlytatusItems[
                                                           index]
-                                                      .transactions!,
-                                                  id: obj
-                                                      .displayyearlytatusItems[
-                                                          index]
-                                                      .budgetId!,
-                                                  duration: obj
-                                                      .displayyearlytatusItems[
-                                                          index]
-                                                      .duration!,
-                                                  category: obj
-                                                      .displayyearlytatusItems[
-                                                          index]
-                                                      .category!,
-                                                  image: obj
-                                                      .displayyearlytatusItems[
-                                                          index]
-                                                      .image!,
-                                                  date: formattedDate!,
-                                                  amount: obj
-                                                      .displayyearlytatusItems[
-                                                          index]
-                                                      .amount!,
-                                                  payable: obj
-                                                      .displayyearlytatusItems[
-                                                          index]
-                                                      .paidAmount!,
-                                                );
-                                              },
-                                            ),
-                                    ],
+                                                      .duration!);
+                                                  return customListTile(
+                                                    transactions: obj
+                                                        .displayyearlytatusItems[
+                                                            index]
+                                                        .transactions!,
+                                                    id: obj
+                                                        .displayyearlytatusItems[
+                                                            index]
+                                                        .budgetId!,
+                                                    duration: obj
+                                                        .displayyearlytatusItems[
+                                                            index]
+                                                        .duration!,
+                                                    category: obj
+                                                        .displayyearlytatusItems[
+                                                            index]
+                                                        .category!,
+                                                    image: obj
+                                                        .displayyearlytatusItems[
+                                                            index]
+                                                        .image!,
+                                                    date: formattedDate!,
+                                                    amount: obj
+                                                        .displayyearlytatusItems[
+                                                            index]
+                                                        .amount!,
+                                                    payable: obj
+                                                        .displayyearlytatusItems[
+                                                            index]
+                                                        .paidAmount!,
+                                                  );
+                                                },
+                                              ):SizedBox(),
+                                      ],
+                                    ),
                                   ),
                                 ),
+                                isLoading == true
+                                    ? Container(
+                                        height: height,
+                                        width: width,
+                                        color: darkblue.withOpacity(0.2),
+                                        child: Center(
+                                          child: SpinKit.loadSpinkit,
+                                        ),
+                                      )
+                                    : const SizedBox()
+                              ],
+                            );
+                    }),
+                  )
+           
+                                 
+
                               ),
-                              isLoading == true
-                                  ? Container(
-                                      height: height,
-                                      width: width,
-                                      color: darkblue.withOpacity(0.2),
-                                      child: Center(
-                                        child: SpinKit.loadSpinkit,
-                                      ),
-                                    )
-                                  : const SizedBox()
-                            ],
-                          );
-                  })),
-            )
-          ],
-        ),
-      ),
-    )));
+                          )
+                        ],
+                      )),
+       
+       
+
+
+
+                     
+              
+                 
+                 ],
+              ),
+            )));
   }
 
   Widget customListTile({
@@ -583,11 +467,10 @@ class _BudgetViewState extends State<BudgetView> {
     sliderCurrentValue = persentage / 100;
 
     return Padding(
-      padding: EdgeInsets.only(left: width * 0.05, right: width * 0.05),
+      padding: EdgeInsets.only(left: width * 0.02, right: width * 0.02),
       child: Card(
-        elevation: 2,
-        shadowColor: darkblue,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         child: InkWell(
           onTap: () {
             if (payable < amount) {
@@ -621,124 +504,141 @@ class _BudgetViewState extends State<BudgetView> {
             }
           },
           child: Container(
-            height: height * 0.12,
-            width: width,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              children: [
-                SizedBox(
-                  height: height,
-                  width: width * 0.2,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(category, style: TextStyle(fontSize: width * 0.03)),
-                      SizedBox(
-                        height: height * 0.01,
-                      ),
-                      CircleAvatar(child: Image.asset(image)),
-                    ],
-                  ),
+            color: white,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                padding: EdgeInsets.all(8),
+                
+                height: height * 0.16,
+                width: width,
+                decoration: BoxDecoration(
+                  color: AppColors.backgroundColor,
+                 // borderRadius: BorderRadius.circular(10),
                 ),
-                Expanded(
-                  child: SizedBox(
-                    height: height,
-                    width: width,
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: height,
+                      width: width * 0.2,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            mainAxisSize: MainAxisSize.max,
+                          Text(category, style: TextStyle(fontSize: width * 0.035,fontWeight: FontWeight.bold)),
+                          SizedBox(
+                            height: height * 0.01,
+                          ),
+                          CircleAvatar(child: Image.asset(image)),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: SizedBox(
+                        height: height,
+                        width: width,
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                           // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(dateString(),
-                                  style: TextStyle(
-                                    color: darkblue,
-                                    fontSize: 12,
-                                  )),
-                              Text('$persentage %',
-                                  style: const TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w700)),
-                              Text(date,
-                                  style: TextStyle(
-                                    color: darkblue,
-                                    fontSize: 12,
-                                  )),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          SliderTheme(
-                            data: const SliderThemeData(
-                                trackHeight: 3,
-                                overlayShape:
-                                    RoundSliderOverlayShape(overlayRadius: 0),
-                                thumbShape: RoundSliderThumbShape(
-                                    enabledThumbRadius: 0)),
-                            child: Slider(
-                              inactiveColor: Colors.grey,
-                              activeColor: darkblue,
-                              value: sliderCurrentValue,
-                              onChanged: (double value) {},
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text('0',
-                                  style: TextStyle(
-                                    color: darkblue,
-                                    fontSize: 12,
-                                  )),
-                              Text(payable.toString(),
-                                  style: TextStyle(
-                                    color: darkblue,
-                                    fontSize: 12,
-                                  )),
-                              Text(amount.toString(),
-                                  style: TextStyle(
-                                    color: darkblue,
-                                    fontSize: 12,
-                                  )),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text(
-                                  '${AppLocalizations.of(context)!.residualamount}: $residual',
-                                  style: TextStyle(
-                                    color: darkblue,
-                                    fontSize: 12,
-                                  )),
-                            ],
-                          ),
-                        ]),
-                  ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(dateString(),
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 12,
+                                      )),
+                                  Text('$persentage %',
+                                      style: const TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700)),
+                                  Text(date,
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 12,
+                                      )),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              SliderTheme(
+                                data: const SliderThemeData(
+                                    trackHeight: 3,
+                                    overlayShape:
+                                        RoundSliderOverlayShape(overlayRadius: 0),
+                                    thumbShape: RoundSliderThumbShape(
+                                        enabledThumbRadius: 0)),
+                                child: Slider(
+                                  inactiveColor: Colors.grey,
+                                  activeColor: darkblue,
+                                  value: sliderCurrentValue,
+                                  onChanged: (double value) {},
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text('0',
+                                      style: TextStyle(
+                                      color: Colors.grey,
+                                        fontSize: 12,
+                                      )),
+                                  Text(payable.toString(),
+                                      style: TextStyle(
+                                      color: Colors.red,
+                                        fontSize: 12,
+                                      )),
+                                  Text(amount.toString(),
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 12,
+                                      )),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                               
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                        '${AppLocalizations.of(context)!.residualamount.capitalize!}: $residual',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 12,
+                                        )),
+                                  ),
+                                ],
+                              ),
+                            ]),
+                      ),
+                    ),
+                   
+                   
+                   
+                    SizedBox(
+                      height: height,
+                      width: width * 0.1,
+                      child: IconButton(
+                          onPressed: () {
+                            showDeleteConfirmationDialog(context, id);
+                          },
+                          icon: const Icon(Icons.delete_forever)),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  height: height,
-                  width: width * 0.1,
-                  child: IconButton(
-                      onPressed: () {
-                        showDeleteConfirmationDialog(context, id);
-                      },
-                      icon: const Icon(Icons.delete_forever)),
-                ),
-              ],
+              ),
             ),
           ),
         ),

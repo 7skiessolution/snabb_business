@@ -208,17 +208,23 @@ class HomeController extends GetxController {
           yTra.UserYearTransaction.fromMap(res.data);
       yearTransaction.data!.forEach((element) {
         List<yTra.Transactions> transactions = element.transactions ?? [];
+          print("bal match ${transactions}");
         salesTransaction =
             transactions.where((transaction) => transaction.type == 1).toList();
+            print("sale list ${salesTransaction}");
         // Calculate total amounts for each type after subtracting partial amounts
-        totalAmountType1 = salesTransaction
+         totalAmountType1 = salesTransaction
             .map((transaction) =>
-                transaction.amount! - (transaction.partialAmount ?? 0))
+                transaction.amount! -
+                (transaction.partialAmount ?? 0))
             .fold(0, (prev, curr) => prev + curr);
+
         print("-0=-=-=-=-=- ${totalAmountType1}");
-        chartData.add(
-          SalesData(DateTime(element.year!), totalAmountType1),
+         chartData.add(
+          SalesData(
+              DateTime(element.year!), totalAmountType1),
         );
+        update();
 
         // chart = [
         //   SalesData(DateTime(element.year!), totalAmountType1),
@@ -246,10 +252,13 @@ class HomeController extends GetxController {
           expensedata.add(
             Chartdata(convertToAbbreviatedMonth(i + 1), e),
           );
+          update();
         } else if (type == 0) {
           purchasedata.add(
             Chartdata(convertToAbbreviatedMonth(i + 1), e),
+            
           );
+          update();
         }
         update();
       }

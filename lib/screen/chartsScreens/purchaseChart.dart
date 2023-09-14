@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -53,9 +54,11 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                 primaryXAxis: CategoryAxis(),
                                 primaryYAxis: NumericAxis(
                                   minimum: 0,
-                                  interval: 1000,
-                                  desiredIntervals:
-                                      7, // Set this to the number of desired ticks (7 in this case)
+                                   numberFormat: NumberFormat
+                                      .compact(),
+                                  // interval: 1000,
+                                  // desiredIntervals:
+                                  //     7, // Set this to the number of desired ticks (7 in this case)
                                 ),
                                 tooltipBehavior: obj.tooltip,
                                 series: <ChartSeries<Chartdata, String>>[

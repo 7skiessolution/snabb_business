@@ -278,22 +278,25 @@ class _SaleScreenState extends State<SaleScreen> {
                                                     )),
                                               ],
                                             ),
-                                            TextFormField(
-                                              controller:
-                                                  partialAmountController,
-                                              keyboardType: const TextInputType
-                                                      .numberWithOptions(
-                                                  decimal: true),
-                                              decoration: const InputDecoration(
-                                                  labelText: "Amount",
-                                                  suffix: Text("PKR")),
-                                              validator: (value) {
-                                                if (value == null ||
-                                                    value.isEmpty) {
-                                                  return 'Please enter the balance amount';
-                                                }
-                                                return null;
-                                              },
+                                            Flexible(
+                                              flex: 1,
+                                              child: TextFormField(
+                                                controller:
+                                                    partialAmountController,
+                                                keyboardType: const TextInputType
+                                                        .numberWithOptions(
+                                                    decimal: true),
+                                                decoration: const InputDecoration(
+                                                    labelText: "Amount",
+                                                    suffix: Text("PKR")),
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Please enter the balance amount';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
                                             ),
                                           ],
                                         )),
@@ -1869,74 +1872,86 @@ class _SaleScreenState extends State<SaleScreen> {
                             ),
                           ),
                           SizedBox(
-                            height: height * 0.03,
+                            height: height * 0.015,
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: width * 0.025),
-                            child: InkWell(
-                              onTap: () {
-                                SaleController.to
-                                    .selectImage(context, height, width);
-                              },
-                              child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Icon(
-                                    Icons.image,
-                                    size: 28,
-                                    color: Colors.grey.shade700,
-                                  )),
-                            ),
-                          ),
-                          SizedBox(
-                            height: height * 0.03,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10.0),
+                            padding: const EdgeInsets.only(left: 9),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Container(
-                                      height: height * 0.05,
-                                      width: width * 0.3,
-                                      color: Colors.red,
-                                      child: const Center(
-                                          child: Text(
-                                        'Cancel',
-                                        style: TextStyle(color: Colors.white),
-                                      ))),
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    TransactionController.to.addTransaction(
-                                        _person.text,
-                                        _noteController.text,
-                                        double.parse(balanceController.text),
-                                        double.parse(
-                                            partialAmountController.text),
-                                        formatTime,
-                                        widget.type!,
-                                        paymentMethod!,
-                                        selectedcatId!,
-                                        HomeController.to.curency,
-                                        walletID!);
-                                  },
-                                  child: Container(
-                                      height: height * 0.05,
-                                      width: width * 0.3,
-                                      color: Colors.green,
-                                      child: const Center(
-                                          child: Text(
-                                        'Save',
-                                        style: TextStyle(color: Colors.white),
-                                      ))),
-                                ),
-                              ],
-                            ),
-                          )
+                                        children: [
+                                          Icon(
+                                            Icons.file_present_outlined,
+                                            color: darkblue,
+                                          ),
+                                          SizedBox(
+                                            width: width * 0.05,
+                                          ),
+                                          InkWell(
+                                            onTap: (){
+                          SaleController.to
+                                      .selectImage(context, height, width);
+                                            },
+                                            child: Card(
+                                              child: Container(
+                                                width: width * 0.25,
+                                                height: height * 0.05,
+                                                child: Center(
+                                                    child: Text(
+                                                  "Add File",
+                                                  style: TextStyle(color: white),
+                                                )),
+                                                decoration: BoxDecoration(
+                                                    color: darkblue,
+                                                    borderRadius:
+                                                        BorderRadius.circular(10)),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                          ),
+                                   
+                                       
+                                        InkWell(
+                                          onTap: (){
+TransactionController.to
+                                  .addTransaction(
+                                      _person.text,
+                                      _noteController.text,
+                                      double.parse(
+                                          balanceController
+                                              .text),
+                                      double.parse(
+                                          partialAmountController
+                                              .text),
+                                      formatTime,
+                                      widget.type!,
+                                      paymentMethod!,
+                                      selectedcatId!,
+                                      HomeController
+                                          .to.curency,
+                                      walletID!);
+                                          },
+                                          child: Card(
+                                            child: Container(
+                                              width: width * 0.4,
+                                              height: height * 0.06,
+                                              child: Center(
+                                                  child: Text(
+                                                "Add",
+                                                style: TextStyle(color: white),
+                                              )),
+                                              decoration: BoxDecoration(
+                                                  color: darkblue,
+                                                  borderRadius:
+                                                      BorderRadius.circular(10)),
+                                            ),
+                                          ),
+                                        )
+                                  ,
+
+
+
+                        
                         ],
                       ),
                     ),

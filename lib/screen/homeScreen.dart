@@ -315,8 +315,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: SfCartesianChart(
                                 primaryYAxis: NumericAxis(
                                   minimum: 0,
-                                  // numberFormat: NumberFormat
-                                  //     .compact(),
+                                  numberFormat: NumberFormat
+                                      .compact(),
                                   // interval: 100,
                                   // desiredIntervals:
                                   //     100,
@@ -375,7 +375,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       width: 5,
                                       height: 5,
                                       borderWidth: 0.5,
-                                      color: red,
+                                      color: lightgreen,
                                     ),
                                     enableTooltip: true,
                                     isVisible: true,
@@ -437,9 +437,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                     CategoryAxis(),
                                 primaryYAxis: NumericAxis(
                                   minimum: 0,
-                                  interval: 1000,
-                                  desiredIntervals:
-                                      7, // Set this to the number of desired ticks (7 in this case)
+                                   numberFormat: NumberFormat
+                                      .compact(),
+                                  // interval: 1000,
+                                  // desiredIntervals:
+                                  //     7, // Set this to the number of desired ticks (7 in this case)
                                 ),
                                 tooltipBehavior:
                                     obj.tooltip,
@@ -510,9 +512,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                       CategoryAxis(),
                                   primaryYAxis: NumericAxis(
                                     minimum: 0,
-                                    interval: 1000,
-                                    desiredIntervals:
-                                        7, // Set this to the number of desired ticks (7 in this case)
+                                     numberFormat:
+                                        NumberFormat
+                                            .compact(),
+                                    // interval: 1000,
+                                    // desiredIntervals:
+                                    //     7, // Set this to the number of desired ticks (7 in this case)
                                   ),
                                   tooltipBehavior:
                                       obj.tooltip,

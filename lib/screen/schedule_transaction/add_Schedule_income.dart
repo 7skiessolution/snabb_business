@@ -2050,8 +2050,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                             ),
                                           ),
                                           Text(
-                                            AppLocalizations.of(context)!
-                                                .zeroimesmeanslimitless,
+                                           "Zero Time Means Limit",
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: darkblue,

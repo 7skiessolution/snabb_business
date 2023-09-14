@@ -230,9 +230,9 @@ class _SalesChartState extends State<SalesChart> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: [
-                                    CircleAvatar(
-                                        backgroundColor: lightgreen,
-                                        child: Image.asset(data.imageUrl!)),
+                                    // CircleAvatar(
+                                    //     backgroundColor: lightgreen,
+                                    //     child: Image.asset(data.imageUrl!)),
                                     Text(
                                       "${data.category}",
                                       style: TextStyle(

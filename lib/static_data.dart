@@ -43,6 +43,7 @@ class StaticValues {
   static const getscheduleTransaction =
       "Transaction/GetAllScheduleTransactions";
   static const getCalanderTransaction = "Transaction/GetCalenderTransactions";
+  static const gettransaction= "Transaction/GetTransactions/";
   static String apikey =
       "G8I8cS9Uyncyl0GIXHZfPIosrXnqyTwBZa4Z0utvWG5FrnTGdvxD482MFcDSJLjb8JAjZsqpt4SYyjj3VimcQXTKxcyXsQTjvTJVhRQ9rUDHVzIds2x88oLfFwDtpudS";
 }

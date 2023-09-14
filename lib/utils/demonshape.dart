@@ -148,7 +148,7 @@ class _ExpandableFloatingActionButtonState
                   context,
                   MaterialPageRoute(
                     builder: (context) => SaleScreen(
-                      type: 1,
+                      type: 0,
                     ),
                   ));
             },

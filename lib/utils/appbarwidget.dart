@@ -17,7 +17,7 @@ class AppBarWidgt extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     return Container(
       height: height * 0.09,
-      color: Colors.red,
+      // color: Colors.red,
       child: Column(
         children: [
           SizedBox(
@@ -37,7 +37,7 @@ class AppBarWidgt extends StatelessWidget {
                         Navigator.pop(context);
                       },
                       child: Icon(
-                        Icons.arrow_back,
+                        Icons.arrow_back_ios,
                         color: darkblue,
                         size: 25,
                       ),

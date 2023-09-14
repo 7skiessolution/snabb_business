@@ -13,51 +13,51 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->G:\projects\Snabb_Business\android\app\src\debug\AndroidManifest.xml:6:5-66
-15-->G:\projects\Snabb_Business\android\app\src\debug\AndroidManifest.xml:6:22-64
+15-->C:\Users\ayan3\OneDrive\Documents\snabb_business\android\app\src\debug\AndroidManifest.xml:6:5-66
+15-->C:\Users\ayan3\OneDrive\Documents\snabb_business\android\app\src\debug\AndroidManifest.xml:6:22-64
 16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-16-->[:file_picker] G:\projects\Snabb_Business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-80
-16-->[:file_picker] G:\projects\Snabb_Business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-77
+16-->[:file_picker] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-80
+16-->[:file_picker] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-77
 17
 18    <queries>
-18-->[:file_picker] G:\projects\Snabb_Business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-17:15
+18-->[:file_picker] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-17:15
 19        <intent>
-19-->[:file_picker] G:\projects\Snabb_Business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:12:9-16:18
+19-->[:file_picker] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:12:9-16:18
 20            <action android:name="android.intent.action.GET_CONTENT" />
-20-->[:file_picker] G:\projects\Snabb_Business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-72
-20-->[:file_picker] G:\projects\Snabb_Business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:13:21-69
+20-->[:file_picker] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-72
+20-->[:file_picker] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:13:21-69
 21
 22            <data android:mimeType="*/*" />
-22-->[:file_picker] G:\projects\Snabb_Business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-44
-22-->[:file_picker] G:\projects\Snabb_Business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:15:19-41
+22-->[:file_picker] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-44
+22-->[:file_picker] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:15:19-41
 23        </intent>
 24    </queries>
 25
 26    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-26-->[:connectivity_plus] G:\projects\Snabb_Business\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-79
-26-->[:connectivity_plus] G:\projects\Snabb_Business\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-76
+26-->[:connectivity_plus] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-79
+26-->[:connectivity_plus] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-76
 27    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-27-->[:location] G:\projects\Snabb_Business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-81
-27-->[:location] G:\projects\Snabb_Business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-78
+27-->[:location] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-81
+27-->[:location] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-78
 28    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-28-->[:location] G:\projects\Snabb_Business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-79
-28-->[:location] G:\projects\Snabb_Business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-76
+28-->[:location] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-79
+28-->[:location] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-76
 29
 30    <permission
-30-->[androidx.core:core:1.10.1] C:\Users\7skiessolutions\.gradle\caches\transforms-3\4ab0b25f2936ac957b0ca7ada1d0a013\transformed\core-1.10.1\AndroidManifest.xml:22:5-24:47
+30-->[androidx.core:core:1.10.1] C:\Users\ayan3\.gradle\caches\transforms-3\4ab0b25f2936ac957b0ca7ada1d0a013\transformed\core-1.10.1\AndroidManifest.xml:22:5-24:47
 31        android:name="com.sevenskiessolutions.snabb_busniess.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-31-->[androidx.core:core:1.10.1] C:\Users\7skiessolutions\.gradle\caches\transforms-3\4ab0b25f2936ac957b0ca7ada1d0a013\transformed\core-1.10.1\AndroidManifest.xml:23:9-81
+31-->[androidx.core:core:1.10.1] C:\Users\ayan3\.gradle\caches\transforms-3\4ab0b25f2936ac957b0ca7ada1d0a013\transformed\core-1.10.1\AndroidManifest.xml:23:9-81
 32        android:protectionLevel="signature" />
-32-->[androidx.core:core:1.10.1] C:\Users\7skiessolutions\.gradle\caches\transforms-3\4ab0b25f2936ac957b0ca7ada1d0a013\transformed\core-1.10.1\AndroidManifest.xml:24:9-44
+32-->[androidx.core:core:1.10.1] C:\Users\ayan3\.gradle\caches\transforms-3\4ab0b25f2936ac957b0ca7ada1d0a013\transformed\core-1.10.1\AndroidManifest.xml:24:9-44
 33
 34    <uses-permission android:name="com.sevenskiessolutions.snabb_busniess.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-34-->[androidx.core:core:1.10.1] C:\Users\7skiessolutions\.gradle\caches\transforms-3\4ab0b25f2936ac957b0ca7ada1d0a013\transformed\core-1.10.1\AndroidManifest.xml:26:5-97
-34-->[androidx.core:core:1.10.1] C:\Users\7skiessolutions\.gradle\caches\transforms-3\4ab0b25f2936ac957b0ca7ada1d0a013\transformed\core-1.10.1\AndroidManifest.xml:26:22-94
+34-->[androidx.core:core:1.10.1] C:\Users\ayan3\.gradle\caches\transforms-3\4ab0b25f2936ac957b0ca7ada1d0a013\transformed\core-1.10.1\AndroidManifest.xml:26:5-97
+34-->[androidx.core:core:1.10.1] C:\Users\ayan3\.gradle\caches\transforms-3\4ab0b25f2936ac957b0ca7ada1d0a013\transformed\core-1.10.1\AndroidManifest.xml:26:22-94
 35
 36    <application
 37        android:name="android.app.Application"
 38        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-38-->[androidx.core:core:1.10.1] C:\Users\7skiessolutions\.gradle\caches\transforms-3\4ab0b25f2936ac957b0ca7ada1d0a013\transformed\core-1.10.1\AndroidManifest.xml:28:18-86
+38-->[androidx.core:core:1.10.1] C:\Users\ayan3\.gradle\caches\transforms-3\4ab0b25f2936ac957b0ca7ada1d0a013\transformed\core-1.10.1\AndroidManifest.xml:28:18-86
 39        android:debuggable="true"
 40        android:icon="@mipmap/ic_launcher"
 41        android:label="snabb_business" >
@@ -95,125 +95,125 @@
 73            android:value="2" />
 74
 75        <service
-75-->[:geolocator_android] G:\projects\Snabb_Business\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:56
+75-->[:geolocator_android] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:56
 76            android:name="com.baseflow.geolocator.GeolocatorLocationService"
-76-->[:geolocator_android] G:\projects\Snabb_Business\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-77
+76-->[:geolocator_android] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-77
 77            android:enabled="true"
-77-->[:geolocator_android] G:\projects\Snabb_Business\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-35
+77-->[:geolocator_android] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-35
 78            android:exported="false"
-78-->[:geolocator_android] G:\projects\Snabb_Business\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+78-->[:geolocator_android] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
 79            android:foregroundServiceType="location" />
-79-->[:geolocator_android] G:\projects\Snabb_Business\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-53
+79-->[:geolocator_android] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-53
 80
 81        <provider
-81-->[:image_picker_android] G:\projects\Snabb_Business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+81-->[:image_picker_android] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
 82            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-82-->[:image_picker_android] G:\projects\Snabb_Business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
+82-->[:image_picker_android] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
 83            android:authorities="com.sevenskiessolutions.snabb_busniess.flutter.image_provider"
-83-->[:image_picker_android] G:\projects\Snabb_Business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
+83-->[:image_picker_android] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
 84            android:exported="false"
-84-->[:image_picker_android] G:\projects\Snabb_Business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+84-->[:image_picker_android] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
 85            android:grantUriPermissions="true" >
-85-->[:image_picker_android] G:\projects\Snabb_Business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+85-->[:image_picker_android] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
 86            <meta-data
-86-->[:image_picker_android] G:\projects\Snabb_Business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
+86-->[:image_picker_android] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
 87                android:name="android.support.FILE_PROVIDER_PATHS"
-87-->[:image_picker_android] G:\projects\Snabb_Business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+87-->[:image_picker_android] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
 88                android:resource="@xml/flutter_image_picker_file_paths" />
-88-->[:image_picker_android] G:\projects\Snabb_Business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
+88-->[:image_picker_android] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
 89        </provider>
 90
 91        <service
-91-->[:location] G:\projects\Snabb_Business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:13:9-17:56
+91-->[:location] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:13:9-17:56
 92            android:name="com.lyokone.location.FlutterLocationService"
-92-->[:location] G:\projects\Snabb_Business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-71
+92-->[:location] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-71
 93            android:enabled="true"
-93-->[:location] G:\projects\Snabb_Business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-35
+93-->[:location] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-35
 94            android:exported="false"
-94-->[:location] G:\projects\Snabb_Business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-37
+94-->[:location] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-37
 95            android:foregroundServiceType="location" />
-95-->[:location] G:\projects\Snabb_Business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-53
+95-->[:location] C:\Users\ayan3\OneDrive\Documents\snabb_business\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-53
 96
 97        <activity
-97-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\f57dbfe2770670a03d5afc752698cd27\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
+97-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\ayan3\.gradle\caches\transforms-3\f57dbfe2770670a03d5afc752698cd27\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
 98            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-98-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\f57dbfe2770670a03d5afc752698cd27\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:19-85
+98-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\ayan3\.gradle\caches\transforms-3\f57dbfe2770670a03d5afc752698cd27\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:19-85
 99            android:exported="false"
-99-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\f57dbfe2770670a03d5afc752698cd27\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:22:19-43
+99-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\ayan3\.gradle\caches\transforms-3\f57dbfe2770670a03d5afc752698cd27\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:22:19-43
 100            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-100-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\f57dbfe2770670a03d5afc752698cd27\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:21:19-78
+100-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\ayan3\.gradle\caches\transforms-3\f57dbfe2770670a03d5afc752698cd27\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:21:19-78
 101
 102        <meta-data
-102-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\186a8130e5eac619b70b073533995544\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+102-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\ayan3\.gradle\caches\transforms-3\186a8130e5eac619b70b073533995544\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
 103            android:name="com.google.android.gms.version"
-103-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\186a8130e5eac619b70b073533995544\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+103-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\ayan3\.gradle\caches\transforms-3\186a8130e5eac619b70b073533995544\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
 104            android:value="@integer/google_play_services_version" />
-104-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\186a8130e5eac619b70b073533995544\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+104-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\ayan3\.gradle\caches\transforms-3\186a8130e5eac619b70b073533995544\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
 105
 106        <uses-library
-106-->[androidx.window:window:1.0.0-beta04] C:\Users\7skiessolutions\.gradle\caches\transforms-3\0c46284c74981e8fd056d25c40e1e900\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+106-->[androidx.window:window:1.0.0-beta04] C:\Users\ayan3\.gradle\caches\transforms-3\0c46284c74981e8fd056d25c40e1e900\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 107            android:name="androidx.window.extensions"
-107-->[androidx.window:window:1.0.0-beta04] C:\Users\7skiessolutions\.gradle\caches\transforms-3\0c46284c74981e8fd056d25c40e1e900\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+107-->[androidx.window:window:1.0.0-beta04] C:\Users\ayan3\.gradle\caches\transforms-3\0c46284c74981e8fd056d25c40e1e900\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
 108            android:required="false" />
-108-->[androidx.window:window:1.0.0-beta04] C:\Users\7skiessolutions\.gradle\caches\transforms-3\0c46284c74981e8fd056d25c40e1e900\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+108-->[androidx.window:window:1.0.0-beta04] C:\Users\ayan3\.gradle\caches\transforms-3\0c46284c74981e8fd056d25c40e1e900\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
 109        <uses-library
-109-->[androidx.window:window:1.0.0-beta04] C:\Users\7skiessolutions\.gradle\caches\transforms-3\0c46284c74981e8fd056d25c40e1e900\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+109-->[androidx.window:window:1.0.0-beta04] C:\Users\ayan3\.gradle\caches\transforms-3\0c46284c74981e8fd056d25c40e1e900\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
 110            android:name="androidx.window.sidecar"
-110-->[androidx.window:window:1.0.0-beta04] C:\Users\7skiessolutions\.gradle\caches\transforms-3\0c46284c74981e8fd056d25c40e1e900\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+110-->[androidx.window:window:1.0.0-beta04] C:\Users\ayan3\.gradle\caches\transforms-3\0c46284c74981e8fd056d25c40e1e900\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
 111            android:required="false" />
-111-->[androidx.window:window:1.0.0-beta04] C:\Users\7skiessolutions\.gradle\caches\transforms-3\0c46284c74981e8fd056d25c40e1e900\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+111-->[androidx.window:window:1.0.0-beta04] C:\Users\ayan3\.gradle\caches\transforms-3\0c46284c74981e8fd056d25c40e1e900\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
 112
 113        <provider
-113-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+113-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
 114            android:name="androidx.startup.InitializationProvider"
-114-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:25:13-67
+114-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:25:13-67
 115            android:authorities="com.sevenskiessolutions.snabb_busniess.androidx-startup"
-115-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:26:13-68
+115-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:26:13-68
 116            android:exported="false" >
-116-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:27:13-37
+116-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:27:13-37
 117            <meta-data
-117-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+117-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
 118                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-118-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+118-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
 119                android:value="androidx.startup" />
-119-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+119-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
 120        </provider>
 121
 122        <receiver
-122-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+122-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
 123            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-123-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+123-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
 124            android:directBootAware="false"
-124-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+124-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
 125            android:enabled="true"
-125-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+125-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
 126            android:exported="true"
-126-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+126-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
 127            android:permission="android.permission.DUMP" >
-127-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+127-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
 128            <intent-filter>
-128-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+128-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
 129                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-129-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
-129-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+129-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+129-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
 130            </intent-filter>
 131            <intent-filter>
-131-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+131-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
 132                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-132-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
-132-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+132-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+132-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
 133            </intent-filter>
 134            <intent-filter>
-134-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+134-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
 135                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-135-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
-135-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+135-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+135-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
 136            </intent-filter>
 137            <intent-filter>
-137-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+137-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
 138                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-138-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
-138-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\7skiessolutions\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+138-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+138-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ayan3\.gradle\caches\transforms-3\93b430a9305b2fcd1766b0535d7b1515\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
 139            </intent-filter>
 140        </receiver>
 141    </application>

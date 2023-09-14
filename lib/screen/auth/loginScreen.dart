@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snabb_business/controller/logincontroller.dart';
 import 'package:snabb_business/models/signup_model.dart';
-import 'package:snabb_business/screen/homeScreen.dart';
 import 'package:snabb_business/utils/TextfieldLogin.dart';
-import 'package:snabb_business/screen/drawerscreen/categories.dart';
-import 'package:snabb_business/screen/dashboardScreen.dart';
-import 'package:snabb_business/screen/drawerscreen/time.dart';
 import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/spinkit.dart';
 
@@ -23,18 +19,38 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKeysignup = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKeyforget = GlobalKey<FormState>();
+  List gender = ["Male", "Female", "Other"];
 
   bool obsCheck = false;
   bool isLogin = true;
   bool islodding = false;
-
   String errMsg = "";
   TextEditingController mPassword = TextEditingController();
   TextEditingController mEmail = TextEditingController();
-
   TextEditingController mEmailsignup = TextEditingController();
   TextEditingController mNamesignup = TextEditingController();
   TextEditingController mpasssignup = TextEditingController();
+  String? select;
+
+  Row addRadioButton(int btnValue, String title) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Radio(
+          activeColor: Colors.blue[900],
+          value: gender[btnValue],
+          groupValue: select,
+          onChanged: (value) {
+            setState(() {
+              print(value);
+              select = value;
+            });
+          },
+        ),
+        Text(title)
+      ],
+    );
+  }
 
   clear() {
     mpasssignup.clear();
@@ -50,7 +66,6 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  //* For Password Show Or Not
   bool obscureText = true;
 
   Widget setLoginUnderLineColor() {
@@ -146,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
         resizeToAvoidBottomInset: false,
         backgroundColor: backgroundColor,
         body: GetBuilder<LoginController>(builder: (obj) {
-          return Container(
+          return SizedBox(
             height: height,
             width: width,
             child: InkWell(
@@ -154,11 +169,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 FocusScope.of(context).unfocus();
               },
               child: Stack(children: [
+                Container(
+                  height: height * 0.4,
+                  width: width,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage("images/dollar.jpg"))),
+                ),
                 Column(children: [
                   Container(
                     height: height * 0.4,
                     width: width,
-                    color: darkblue,
+                    color: Colors.blue[900]!.withOpacity(0.9),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 30.0),
                       child: Column(
@@ -205,7 +228,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
+                      SizedBox(
                         height: height * 0.05,
                         width: width * 0.8,
                         child: const Image(
@@ -462,15 +485,27 @@ class _LoginScreenState extends State<LoginScreen> {
                                                         value!);
                                                   },
                                                 ),
-                                                const Text(
-                                                  "Create Account",
-                                                  style: TextStyle(
-                                                    decoration: TextDecoration
-                                                        .underline,
-                                                  ),
-                                                ),
                                                 SizedBox(
-                                                  height: height * 0.05,
+                                                  height: height * 0.07,
+                                                  width: width * 0.85,
+                                                  child: Row(
+                                                    children: [
+                                                      Text(
+                                                        "Select Gender",
+                                                        style: TextStyle(
+                                                            color: Colors
+                                                                .blue[900],
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      addRadioButton(0, 'Male'),
+                                                      addRadioButton(
+                                                          1, 'Female'),
+                                                      addRadioButton(
+                                                          2, 'Others'),
+                                                    ],
+                                                  ),
                                                 )
                                               ],
                                             ),
@@ -609,12 +644,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       ? Positioned(
                           top: height * 0.67,
                           left: width * 0.45,
-                          child: Container(
-                              height: height * 0.11,
-                              width: width * 0.21,
+                          child: SizedBox(
+                              height: height * 0.1,
+                              width: width * 0.2,
                               // color: white,
                               child: CircleAvatar(
-                                radius: 30,
+                                radius: 25,
                                 backgroundColor: white,
                                 child: InkWell(
                                   onTap: isLoggingIn
@@ -645,33 +680,31 @@ class _LoginScreenState extends State<LoginScreen> {
                                             });
                                           }
                                         },
-                                  child: Container(
-                                    child: CircleAvatar(
-                                      radius: 27,
-                                      backgroundColor: darkblue,
-                                      child: Center(
-                                        child: Icon(
-                                          Icons.arrow_forward,
-                                          color: white,
-                                          size: 35,
-                                        ),
-
-                                        // decoration:
-                                        //     BoxDecoration shape: BoxShape.circle),
+                                  child: CircleAvatar(
+                                    radius: 27,
+                                    backgroundColor: darkblue,
+                                    child: Center(
+                                      child: Icon(
+                                        Icons.arrow_forward,
+                                        color: white,
+                                        size: 35,
                                       ),
+
+                                      // decoration:
+                                      //     BoxDecoration shape: BoxShape.circle),
                                     ),
                                   ),
                                 ),
                               )))
                       : Positioned(
-                          top: height * 0.67,
+                          top: height * 0.7,
                           left: width * 0.45,
-                          child: Container(
-                              height: height * 0.11,
-                              width: width * 0.21,
+                          child: SizedBox(
+                              height: height * 0.1,
+                              width: width * 0.2,
                               // color: white,
                               child: CircleAvatar(
-                                radius: 30,
+                                radius: 25,
                                 backgroundColor: white,
                                 child: InkWell(
                                   onTap: islodding
@@ -685,7 +718,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 email: mEmailsignup.text.trim(),
                                                 name: mNamesignup.text.trim(),
                                                 password:
-                                                    mpasssignup.text.trim());
+                                                    mpasssignup.text.trim(),
+                                                gender: select);
                                             obj.signup(model).then((value) {
                                               changeLodingStatus(false);
                                               obj.changeLogin(true);
@@ -693,20 +727,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                             });
                                           }
                                         },
-                                  child: Container(
-                                    child: CircleAvatar(
-                                      radius: 27,
-                                      backgroundColor: darkblue,
-                                      child: Center(
-                                        child: Icon(
-                                          Icons.arrow_forward,
-                                          color: white,
-                                          size: 35,
-                                        ),
-
-                                        // decoration:
-                                        //     BoxDecoration shape: BoxShape.circle),
+                                  child: CircleAvatar(
+                                    radius: 27,
+                                    backgroundColor: darkblue,
+                                    child: Center(
+                                      child: Icon(
+                                        Icons.arrow_forward,
+                                        color: white,
+                                        size: 35,
                                       ),
+
+                                      // decoration:
+                                      //     BoxDecoration shape: BoxShape.circle),
                                     ),
                                   ),
                                 ),
@@ -716,7 +748,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Positioned(
                       top: height * 0.64,
                       left: width * 0.38,
-                      child: Container(
+                      child: SizedBox(
                           height: height * 0.11,
                           width: width * 0.21,
                           // color: white,
@@ -730,12 +762,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                       if (_formKeyforget.currentState!
                                           .validate()) {
                                         changeLodingStatus(true);
-                                        obj.resetPassword(context, mEmail)
-                                          ..then((value) {
-                                            changeLodingStatus(false);
-                                            obj.changeLogin(true);
-                                            clear();
-                                          });
+                                        obj
+                                            .resetPassword(context, mEmail)
+                                            .then((value) {
+                                          changeLodingStatus(false);
+                                          obj.changeLogin(true);
+                                          clear();
+                                        });
 
                                         //   Future.delayed(Duration(seconds: 3),
                                         //       () {
@@ -747,20 +780,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                         //       "Failed to send password reset email");
                                       }
                                     },
-                              child: Container(
-                                child: CircleAvatar(
-                                  radius: 27,
-                                  backgroundColor: darkblue,
-                                  child: Center(
-                                    child: Icon(
-                                      Icons.arrow_forward,
-                                      color: white,
-                                      size: 35,
-                                    ),
-
-                                    // decoration:
-                                    //     BoxDecoration shape: BoxShape.circle),
+                              child: CircleAvatar(
+                                radius: 27,
+                                backgroundColor: darkblue,
+                                child: Center(
+                                  child: Icon(
+                                    Icons.arrow_forward,
+                                    color: white,
+                                    size: 35,
                                   ),
+
+                                  // decoration:
+                                  //     BoxDecoration shape: BoxShape.circle),
                                 ),
                               ),
                             ),

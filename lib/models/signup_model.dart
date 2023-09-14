@@ -5,21 +5,25 @@ class SignupModel {
   String? name;
   String? email;
   String? password;
+  String? gender;
   SignupModel({
     this.name,
     this.email,
     this.password,
+    this.gender,
   });
 
   SignupModel copyWith({
     String? name,
     String? email,
     String? password,
+    String? gender,
   }) {
     return SignupModel(
       name: name ?? this.name,
       email: email ?? this.email,
       password: password ?? this.password,
+      gender: gender ?? this.gender,
     );
   }
 
@@ -28,6 +32,7 @@ class SignupModel {
       'name': name,
       'email': email,
       'password': password,
+      'gender': gender,
     };
   }
 
@@ -36,6 +41,7 @@ class SignupModel {
       name: map['name'] != null ? map['name'] as String : null,
       email: map['email'] != null ? map['email'] as String : null,
       password: map['password'] != null ? map['password'] as String : null,
+      gender: map['gender'] != null ? map['gender'] as String : null,
     );
   }
 
@@ -45,8 +51,9 @@ class SignupModel {
       SignupModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() =>
-      'SignupModel(name: $name, email: $email, password: $password)';
+  String toString() {
+    return 'SignupModel(name: $name, email: $email, password: $password, gender: $gender)';
+  }
 
   @override
   bool operator ==(covariant SignupModel other) {
@@ -54,9 +61,12 @@ class SignupModel {
 
     return other.name == name &&
         other.email == email &&
-        other.password == password;
+        other.password == password &&
+        other.gender == gender;
   }
 
   @override
-  int get hashCode => name.hashCode ^ email.hashCode ^ password.hashCode;
+  int get hashCode {
+    return name.hashCode ^ email.hashCode ^ password.hashCode ^ gender.hashCode;
+  }
 }

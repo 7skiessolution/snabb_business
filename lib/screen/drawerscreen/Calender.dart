@@ -15,6 +15,15 @@ class CalenderScreen extends StatefulWidget {
 }
 
 class _CalenderScreenState extends State<CalenderScreen> {
+  @override
+  void initState() {
+    Get.put(TransactionController());
+    TransactionController.to.getUserCalanderTransactiondata();
+
+    // TODO: implement initState
+    super.initState();
+  }
+
   var height, width;
   @override
   Widget build(BuildContext context) {
@@ -52,7 +61,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
                     width: width * 0.1,
                   ),
                   Text(
-                    "${AppLocalizations.of(context)!.calendar}",
+                    AppLocalizations.of(context)!.calendar,
                     style: TextStyle(
                         fontSize: width * 0.04,
                         color: Colors.white,

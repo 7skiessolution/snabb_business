@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snabb_business/controller/homeController.dart';
-import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-
-import '../../models/dataclassgraphModel.dart';
 
 class SalesChart extends StatefulWidget {
   const SalesChart({super.key});
@@ -22,6 +18,7 @@ class _SalesChartState extends State<SalesChart> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
@@ -65,68 +62,69 @@ class _SalesChartState extends State<SalesChart> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         SizedBox(
-                            height: height * 0.14,
-                            width: width,
-                            child: SfCartesianChart(
-                              primaryYAxis: NumericAxis(
-                                minimum: 0,
-                                interval: 15,
-                                desiredIntervals:
-                                    7, // Set this to the number of desired ticks (7 in this case)
-                              ),
-                              backgroundColor: Colors.white,
-                              selectionGesture: ActivationMode.doubleTap,
-                              enableMultiSelection: true,
-                              enableAxisAnimation: true,
-                              primaryXAxis: DateTimeAxis(),
-                              series: <ChartSeries>[
-                                LineSeries<SalesData, DateTime>(
-                                  legendIconType: LegendIconType.rectangle,
-                                  animationDuration: 5,
-                                  animationDelay: 3,
-                                  name: "Sale",
-                                  color: lightgreen,
-                                  markerSettings: MarkerSettings(
-                                    isVisible: true,
-                                    width: 5,
-                                    height: 5,
-                                    borderWidth: 0.5,
-                                    color: lightgreen,
-                                  ),
-                                  // dataLabelSettings: DataLabelSettings(
-                                  //   isVisible:
-                                  //       true, // Show data labels (optional)
-                                  // ),
-                                  enableTooltip: true,
-                                  isVisible: true,
-                                  dataSource: obj.chartData,
-                                  xValueMapper: (SalesData sales, _) =>
-                                      sales.year,
-                                  yValueMapper: (SalesData sales, _) =>
-                                      sales.sales,
-                                ),
-                                LineSeries<SalesData, DateTime>(
-                                  legendIconType: LegendIconType.rectangle,
-                                  animationDuration: 5,
-                                  animationDelay: 3,
-                                  color: lightgreen,
-                                  markerSettings: MarkerSettings(
-                                    isVisible: true,
-                                    width: 5,
-                                    height: 5,
-                                    borderWidth: 0.5,
-                                    color: lightgreen,
-                                  ),
-                                  enableTooltip: true,
-                                  isVisible: true,
-                                  dataSource: obj.chart,
-                                  xValueMapper: (SalesData sales, _) =>
-                                      sales.year,
-                                  yValueMapper: (SalesData sales, _) =>
-                                      sales.sales,
-                                )
-                              ],
-                            ))
+                          height: height * 0.14,
+                          width: width,
+                          // child: SfCartesianChart(
+                          //   primaryYAxis: NumericAxis(
+                          //     minimum: 0,
+                          //     interval: 15,
+                          //     desiredIntervals:
+                          //         7, // Set this to the number of desired ticks (7 in this case)
+                          //   ),
+                          //   backgroundColor: Colors.white,
+                          //   selectionGesture: ActivationMode.doubleTap,
+                          //   enableMultiSelection: true,
+                          //   enableAxisAnimation: true,
+                          //   primaryXAxis: DateTimeAxis(),
+                          //   series: <ChartSeries>[
+                          //     LineSeries<SalesData, DateTime>(
+                          //       legendIconType: LegendIconType.rectangle,
+                          //       animationDuration: 5,
+                          //       animationDelay: 3,
+                          //       name: "Sale",
+                          //       color: lightgreen,
+                          //       markerSettings: MarkerSettings(
+                          //         isVisible: true,
+                          //         width: 5,
+                          //         height: 5,
+                          //         borderWidth: 0.5,
+                          //         color: lightgreen,
+                          //       ),
+                          //       // dataLabelSettings: DataLabelSettings(
+                          //       //   isVisible:
+                          //       //       true, // Show data labels (optional)
+                          //       // ),
+                          //       enableTooltip: true,
+                          //       isVisible: true,
+                          //       dataSource: obj.chartData,
+                          //       xValueMapper: (SalesData sales, _) =>
+                          //           sales.year,
+                          //       yValueMapper: (SalesData sales, _) =>
+                          //           sales.sales,
+                          //     ),
+                          //     LineSeries<SalesData, DateTime>(
+                          //       legendIconType: LegendIconType.rectangle,
+                          //       animationDuration: 5,
+                          //       animationDelay: 3,
+                          //       color: lightgreen,
+                          //       markerSettings: MarkerSettings(
+                          //         isVisible: true,
+                          //         width: 5,
+                          //         height: 5,
+                          //         borderWidth: 0.5,
+                          //         color: lightgreen,
+                          //       ),
+                          //       enableTooltip: true,
+                          //       isVisible: true,
+                          //       dataSource: obj.chart,
+                          //       xValueMapper: (SalesData sales, _) =>
+                          //           sales.year,
+                          //       yValueMapper: (SalesData sales, _) =>
+                          //           sales.sales,
+                          //     )
+                          //   ],
+                          // ),
+                        )
                       ],
                     ),
                   ),

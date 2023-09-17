@@ -29,6 +29,7 @@ class HomeController extends GetxController {
 
   List<Chartdata> expensedata = [];
   List<Chartdata> purchasedata = [];
+  List<Chartdata> saledatalist = [];
   late TooltipBehavior tooltip;
   List<SalesData> chartData = [
     // SalesData(DateTime(2010), 54),
@@ -118,7 +119,7 @@ class HomeController extends GetxController {
       isLoadData = false;
       curency = walletList[0].currency!;
       update();
-      print("totalbalancexczvzx${totalbalance}");
+      print("totalbalancexczvzx$totalbalance");
     } else {
       print("nodata ");
     }
@@ -206,30 +207,28 @@ class HomeController extends GetxController {
       chartData.clear();
       yTra.UserYearTransaction yearTransaction =
           yTra.UserYearTransaction.fromMap(res.data);
-      yearTransaction.data!.forEach((element) {
+      for (var element in yearTransaction.data!) {
         List<yTra.Transactions> transactions = element.transactions ?? [];
-          print("bal match ${transactions}");
+        print("bal match $transactions");
         salesTransaction =
             transactions.where((transaction) => transaction.type == 1).toList();
-            print("sale list ${salesTransaction}");
+        print("sale list $salesTransaction");
         // Calculate total amounts for each type after subtracting partial amounts
-         totalAmountType1 = salesTransaction
+        totalAmountType1 = salesTransaction
             .map((transaction) =>
-                transaction.amount! -
-                (transaction.partialAmount ?? 0))
+                transaction.amount! - (transaction.partialAmount ?? 0))
             .fold(0, (prev, curr) => prev + curr);
 
-        print("-0=-=-=-=-=- ${totalAmountType1}");
-         chartData.add(
-          SalesData(
-              DateTime(element.year!), totalAmountType1),
+        print("-0=-=-=-=-=- $totalAmountType1");
+        chartData.add(
+          SalesData(DateTime(element.year!), totalAmountType1),
         );
         update();
 
         // chart = [
         //   SalesData(DateTime(element.year!), totalAmountType1),
         // ];
-      });
+      }
 
       update();
     }
@@ -244,6 +243,8 @@ class HomeController extends GetxController {
         expensedata.clear();
       } else if (type == 0) {
         purchasedata.clear();
+      } else if (type == 1) {
+        saledatalist.clear();
       }
       GetSalePurhase salepurchasemodel = GetSalePurhase.fromMap(res.data);
       for (int i = 0; i < salepurchasemodel.data!.length; i++) {
@@ -256,7 +257,11 @@ class HomeController extends GetxController {
         } else if (type == 0) {
           purchasedata.add(
             Chartdata(convertToAbbreviatedMonth(i + 1), e),
-            
+          );
+          update();
+        } else if (type == 1) {
+          saledatalist.add(
+            Chartdata(convertToAbbreviatedMonth(i + 1), e),
           );
           update();
         }
@@ -264,11 +269,13 @@ class HomeController extends GetxController {
       }
       print("purchase ${purchasedata.length}");
       print("expense ${expensedata.length}");
+      print("sale ${saledatalist.length}");
     }
   }
 
   List<sp.Data> expenseData = [];
   List<sp.Data> purchaseData = [];
+  List<sp.Data> salaDatalist = [];
 
   getexpensePurchase(int type) async {
     DateTime a = DateTime.now();
@@ -279,6 +286,8 @@ class HomeController extends GetxController {
         expenseData.clear();
       } else if (type == 0) {
         purchaseData.clear();
+      } else if (type == 1) {
+        salaDatalist.clear();
       }
       sp.GetDataYearType expensepurchasemodel =
           sp.GetDataYearType.fromMap(res.data);
@@ -288,11 +297,14 @@ class HomeController extends GetxController {
           expenseData.add(e);
         } else if (type == 0) {
           purchaseData.add(e);
+        } else if (type == 1) {
+          salaDatalist.add(e);
         }
         update();
       }
       print("purchase list ${purchaseData.length}");
       print("expense list ${expenseData.length}");
+      print("sale list ${salaDatalist.length}");
     }
   }
 

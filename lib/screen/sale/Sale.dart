@@ -272,9 +272,9 @@ class _SaleScreenState extends State<SaleScreen> {
                                                   radius: 7,
                                                 ),
                                                 SizedBox(width: width * 0.02),
-                                                const Text("Partial Payment",
+                                                Text("Partial Payment",
                                                     style: TextStyle(
-                                                      fontSize: 15,
+                                                      fontSize: width * 0.03,
                                                     )),
                                               ],
                                             ),
@@ -1357,184 +1357,191 @@ class _SaleScreenState extends State<SaleScreen> {
                               ),
                             );
                           }),
-                          SizedBox(
-                            height: height * 0.07,
-                            width: width * 0.95,
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: InkWell(
-                                    onTap: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            content: Container(
-                                              color: Colors.grey.shade300,
-                                              height: height * 0.35,
-                                              width: width * 0.8,
-                                              child: Stack(
-                                                children: [
-                                                  Container(
-                                                    height: height * 0.15,
-                                                    width: width,
-                                                    decoration: const BoxDecoration(
-                                                        image: DecorationImage(
-                                                            fit: BoxFit.cover,
-                                                            image: AssetImage(
-                                                                "images/dollar.jpg"))),
-                                                  ),
-                                                  Container(
-                                                    height: height * 0.15,
-                                                    width: width,
-                                                    color: Colors.blue[900]!
-                                                        .withOpacity(0.9),
-                                                    child: Padding(
-                                                      padding: EdgeInsets.only(
-                                                          top: height * 0.03,
-                                                          left: width * 0.02),
-                                                      child: Text(
-                                                        "Select Wallet ",
-                                                        style: TextStyle(
-                                                            color: white,
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding: EdgeInsets.only(
-                                                        top: height * 0.07),
-                                                    child: Center(
-                                                      child: Card(
-                                                        elevation: 10,
-                                                        shadowColor:
-                                                            Colors.blue[900],
-                                                        child: Container(
-                                                          height: height * 0.3,
-                                                          width: width * 0.7,
-                                                          color: white,
-                                                          child: Center(
-                                                            child: ListView
-                                                                .builder(
-                                                                    itemCount: HomeController
-                                                                        .to
-                                                                        .walletList
-                                                                        .length,
-                                                                    itemBuilder:
-                                                                        (context,
-                                                                            index) {
-                                                                      return Padding(
-                                                                        padding:
-                                                                            const EdgeInsets.all(8.0),
-                                                                        child:
-                                                                            GestureDetector(
-                                                                          onTap:
-                                                                              () {
-                                                                            setState(() {
-                                                                              walletID = HomeController.to.walletList[index].walletId;
+                          InkWell(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    content: Container(
+                                      color: Colors.grey.shade300,
+                                      height: height * 0.35,
+                                      width: width * 0.8,
+                                      child: Stack(
+                                        children: [
+                                          Container(
+                                            height: height * 0.15,
+                                            width: width,
+                                            decoration: const BoxDecoration(
+                                                image: DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    image: AssetImage(
+                                                        "images/dollar.jpg"))),
+                                          ),
+                                          Container(
+                                            height: height * 0.15,
+                                            width: width,
+                                            color: Colors.blue[900]!
+                                                .withOpacity(0.9),
+                                            child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: height * 0.03,
+                                                  left: width * 0.02),
+                                              child: Text(
+                                                "Select Wallet ",
+                                                style: TextStyle(
+                                                    color: white,
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                                top: height * 0.07),
+                                            child: Center(
+                                              child: Card(
+                                                elevation: 10,
+                                                shadowColor: Colors.blue[900],
+                                                child: Container(
+                                                  height: height * 0.3,
+                                                  width: width * 0.7,
+                                                  color: white,
+                                                  child: Center(
+                                                    child: ListView.builder(
+                                                        itemCount:
+                                                            HomeController
+                                                                .to
+                                                                .walletList
+                                                                .length,
+                                                        itemBuilder:
+                                                            (context, index) {
+                                                          return Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                setState(() {
+                                                                  walletID = HomeController
+                                                                      .to
+                                                                      .walletList[
+                                                                          index]
+                                                                      .walletId;
 
-                                                                              walletName = HomeController.to.walletList[index].name;
-                                                                              paymentMethod = index;
-                                                                            });
-                                                                            Navigator.pop(context);
-                                                                          },
+                                                                  walletName =
+                                                                      HomeController
+                                                                          .to
+                                                                          .walletList[
+                                                                              index]
+                                                                          .name;
+                                                                  paymentMethod =
+                                                                      index;
+                                                                });
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: Card(
+                                                                elevation: 10,
+                                                                child: SizedBox(
+                                                                  height:
+                                                                      height *
+                                                                          0.08,
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      SizedBox(
+                                                                        width: width *
+                                                                            0.11,
+                                                                        height: height *
+                                                                            0.11,
+                                                                        child:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .wallet,
+                                                                          color: Colors
+                                                                              .grey
+                                                                              .shade700,
+                                                                          size:
+                                                                              25,
+                                                                        ),
+                                                                      ),
+                                                                      Expanded(
+                                                                        child:
+                                                                            Container(
+                                                                          alignment:
+                                                                              Alignment.centerLeft,
+                                                                          height:
+                                                                              height,
+                                                                          width:
+                                                                              width,
                                                                           child:
-                                                                              Card(
-                                                                            elevation:
-                                                                                10,
-                                                                            child:
-                                                                                SizedBox(
-                                                                              height: height * 0.08,
-                                                                              child: Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.start,
-                                                                                children: [
-                                                                                  SizedBox(
-                                                                                    width: width * 0.11,
-                                                                                    height: height * 0.11,
-                                                                                    child: Icon(
-                                                                                      Icons.wallet,
-                                                                                      color: Colors.grey.shade700,
-                                                                                      size: 25,
-                                                                                    ),
-                                                                                  ),
-                                                                                  Expanded(
-                                                                                    child: Container(
-                                                                                      alignment: Alignment.centerLeft,
-                                                                                      height: height,
-                                                                                      width: width,
-                                                                                      child: Text(
-                                                                                        "${HomeController.to.walletList[index].name}",
-                                                                                        style: TextStyle(
-                                                                                          fontSize: width * 0.03,
-                                                                                          fontWeight: FontWeight.bold,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
+                                                                              Text(
+                                                                            "${HomeController.to.walletList[index].name}",
+                                                                            style:
+                                                                                TextStyle(
+                                                                              fontSize: width * 0.03,
+                                                                              fontWeight: FontWeight.bold,
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                      );
-                                                                    }),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }),
                                                   ),
-                                                  // Align(
-                                                  //   alignment: Alignment.topRight,
-                                                  //   child: Container(
-                                                  //     height: height * 0.05,
-                                                  //     width: width * 0.1,
-                                                  //     decoration:
-                                                  //         const BoxDecoration(
-                                                  //             shape:
-                                                  //                 BoxShape.circle,
-                                                  //             color: Colors.grey),
-                                                  //     child: Icon(
-                                                  //         Icons.cancel_outlined),
-                                                  //   ),
-                                                  // )
-                                                ],
+                                                ),
                                               ),
                                             ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                    child: IgnorePointer(
-                                      child: TextFormField(
-                                        style: const TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w700),
-                                        controller: _dueDateController,
-                                        decoration: InputDecoration(
-                                          enabledBorder: InputBorder.none,
-                                          labelText: 'Wallet',
-                                          labelStyle: const TextStyle(
-                                              fontWeight: FontWeight.w700),
-                                          prefixIcon: Icon(
-                                            Icons.wallet,
-                                            color: Colors.grey.shade700,
-                                            size: 25,
                                           ),
-                                        ),
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Please Select Wallet';
-                                          }
-                                          return null;
-                                        },
+                                          // Align(
+                                          //   alignment: Alignment.topRight,
+                                          //   child: Container(
+                                          //     height: height * 0.05,
+                                          //     width: width * 0.1,
+                                          //     decoration:
+                                          //         const BoxDecoration(
+                                          //             shape:
+                                          //                 BoxShape.circle,
+                                          //             color: Colors.grey),
+                                          //     child: Icon(
+                                          //         Icons.cancel_outlined),
+                                          //   ),
+                                          // )
+                                        ],
                                       ),
                                     ),
-                                  ),
+                                  );
+                                },
+                              );
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.only(left: width * 0.038),
+                              child: SizedBox(
+                                height: height * 0.07,
+                                width: width * 0.95,
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.wallet,
+                                      color: Colors.grey.shade700,
+                                      size: width * 0.07,
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.03,
+                                    ),
+                                    Text(walletName ?? "Select Walle"),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -1889,22 +1896,22 @@ class _SaleScreenState extends State<SaleScreen> {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    SaleController.to
-                                        .selectImage(context, height, width);
+                                    TransactionController.to
+                                        .selectImages(context, height, width);
                                   },
                                   child: Card(
                                     child: Container(
                                       width: width * 0.25,
                                       height: height * 0.05,
+                                      decoration: BoxDecoration(
+                                          color: darkblue,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
                                       child: Center(
                                           child: Text(
                                         "Add File",
                                         style: TextStyle(color: white),
                                       )),
-                                      decoration: BoxDecoration(
-                                          color: darkblue,
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
                                     ),
                                   ),
                                 )
@@ -1913,7 +1920,7 @@ class _SaleScreenState extends State<SaleScreen> {
                           ),
                           InkWell(
                             onTap: () {
-                              TransactionController.to.addTransaction(
+                                 TransactionController.to.addTransaction(
                                   _person.text,
                                   _noteController.text,
                                   double.parse(balanceController.text),
@@ -1924,19 +1931,22 @@ class _SaleScreenState extends State<SaleScreen> {
                                   selectedcatId!,
                                   HomeController.to.curency,
                                   walletID!);
+                              Fluttertoast.showToast(
+                                  msg: "Transaction Add Successfully");
+                              Navigator.of(context).pop();
                             },
                             child: Card(
                               child: Container(
                                 width: width * 0.4,
                                 height: height * 0.06,
+                                decoration: BoxDecoration(
+                                    color: darkblue,
+                                    borderRadius: BorderRadius.circular(10)),
                                 child: Center(
                                     child: Text(
                                   "Add",
                                   style: TextStyle(color: white),
                                 )),
-                                decoration: BoxDecoration(
-                                    color: darkblue,
-                                    borderRadius: BorderRadius.circular(10)),
                               ),
                             ),
                           ),

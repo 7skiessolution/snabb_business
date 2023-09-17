@@ -1,6 +1,6 @@
 class StaticValues {
   static String token = "";
-  static const imageUrl = "https://snabbbusniess.7skiessolutions.net/api/";
+  static const imageUrl = "https://snabbbusniess.7skiessolutions.net";
   static const registerUser = 'UserApi/RegsiterUser';
   static const loginUser = 'UserApi/UserLogin';
   static const forgotpassword = "UserApi/ForgotPassword?email=";
@@ -43,7 +43,7 @@ class StaticValues {
   static const getscheduleTransaction =
       "Transaction/GetAllScheduleTransactions";
   static const getCalanderTransaction = "Transaction/GetCalenderTransactions";
-  static const gettransaction= "Transaction/GetTransactions/";
+  static const gettransaction = "Transaction/GetTransactions/";
   static String apikey =
       "G8I8cS9Uyncyl0GIXHZfPIosrXnqyTwBZa4Z0utvWG5FrnTGdvxD482MFcDSJLjb8JAjZsqpt4SYyjj3VimcQXTKxcyXsQTjvTJVhRQ9rUDHVzIds2x88oLfFwDtpudS";
 }

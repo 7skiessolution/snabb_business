@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:io';
-import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_picker/image_picker.dart';
@@ -39,7 +38,6 @@ import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/main.dart';
 import 'package:snabb_business/models/add_debit_model.dart';
 import 'package:snabb_business/models/calnder_model.dart' as cTra;
-import 'package:snabb_business/models/currency_model.dart';
 import 'package:snabb_business/models/daily_transaction_model.dart' as dTra;
 import 'package:snabb_business/models/get_all_user_transaction_model.dart'
     as tran;
@@ -189,7 +187,7 @@ class TransactionController extends GetxController {
     }
   }
 
-  Future<void> selectImage(
+  Future<void> selectImages(
       BuildContext context, double height, double width) async {
     final PermissionStatus status = await Permission.camera.request();
     final PermissionStatus status1 = await Permission.storage.request();
@@ -264,6 +262,7 @@ class TransactionController extends GetxController {
                             Navigator.of(context).pop();
                             pickImage = await picker.pickImage(
                                 source: ImageSource.camera);
+                            print("my imge ${pickImage.toString()}");
                             // Handle the picked image
                             if (pickImage != null) {
                               pathFile = pickImage!.path;
@@ -278,7 +277,7 @@ class TransactionController extends GetxController {
                         TextButton(
                           child: Text(
                             AppLocalizations.of(context)!.cancel,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.w600, color: Colors.red),
                           ),
                           onPressed: () async {
@@ -527,6 +526,7 @@ class TransactionController extends GetxController {
 
     print("...............url............. = ${StaticValues.addTransaction}");
     try {
+      print("image file ${pickImage!.path}");
       deo.FormData data = pathFile.isEmpty
           ? deo.FormData.fromMap({
               "Name": name,
@@ -738,7 +738,7 @@ class TransactionController extends GetxController {
     var res = await httpClient().get(StaticValues.getWalletList);
     walletModel = UserWalletModel.fromMap(res.data);
 
-    walletttt = await walletModel.data!;
+    walletttt = walletModel.data!;
     print("accont  ${walletttt.length} ");
     update();
     return walletModel;
@@ -846,7 +846,7 @@ class TransactionController extends GetxController {
     if (res.statusCode == 200) {
       isdailyLoad = false;
       dailyTransaction = dTra.UserDailyTransaction.fromMap(res.data);
-      print("dailty    ${dailyTransaction}");
+      print("dailty    $dailyTransaction");
       try {
         for (var data in dailyTransaction!.data!) {
           dailyTransactionList.add(data);

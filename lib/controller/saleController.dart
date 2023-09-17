@@ -1,12 +1,16 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/colors.dart';
 
 class SaleController extends GetxController {
@@ -29,67 +33,68 @@ class SaleController extends GetxController {
 
     return file;
   }
-  // Future<File?> compressImage(XFile img) async {
-  //   pathFile = img.path;
-  //   update();
 
-  //   final File imageFile = File(img.path);
-  //   // Get the original image bytes
-  //   List<int> imageBytes = await imageFile.readAsBytes();
+  Future<File?> compressImage(XFile img) async {
+    pathFile = img.path;
+    update();
 
-  //   // Check if the image is already smaller than 300KB
-  //   if (imageBytes.length <= 300 * 1024) {
-  //     return imageFile;
-  //   } else if (imageBytes.length >= 300 * 1024 &&
-  //       imageBytes.length <= 600 * 1024) {
-  //     Uint8List uint8List = Uint8List.fromList(imageBytes);
-  //     // Compress the image to 75% quality
-  //     List<int> compressedBytes = await FlutterImageCompress.compressWithList(
-  //       uint8List,
-  //       quality: 25,
-  //     );
+    final File imageFile = File(img.path);
+    // Get the original image bytes
+    List<int> imageBytes = await imageFile.readAsBytes();
 
-  //     // Convert the compressed bytes to a Uint8List
-  //     ///compressedBytes
-  //     Uint8List compressedData = Uint8List.fromList("");
+    // Check if the image is already smaller than 300KB
+    if (imageBytes.length <= 300 * 1024) {
+      return imageFile;
+    } else if (imageBytes.length >= 300 * 1024 &&
+        imageBytes.length <= 600 * 1024) {
+      Uint8List uint8List = Uint8List.fromList(imageBytes);
+      // Compress the image to 75% quality
+      List<int> compressedBytes = await FlutterImageCompress.compressWithList(
+        uint8List,
+        quality: 25,
+      );
 
-  //     // Create a file from the compressed data
-  //     compressedFile = await _createFile(compressedData);
+      // Convert the compressed bytes to a Uint8List
+      ///compressedBytes
+      Uint8List compressedData = Uint8List.fromList(compressedBytes);
 
-  //     return compressedFile;
-  //   } else if (imageBytes.length >= 600 * 1024 &&
-  //       imageBytes.length <= 999 * 1024) {
-  //     Uint8List uint8List = Uint8List.fromList(imageBytes);
-  //     // Compress the image to 75% quality
-  //     List<int> compressedBytes = await FlutterImageCompress.compressWithList(
-  //       uint8List,
-  //       quality: 10,
-  //     );
+      // Create a file from the compressed data
+      compressedFile = await _createFile(compressedData);
 
-  //     // Convert the compressed bytes to a Uint8List
-  //     Uint8List compressedData = Uint8List.fromList(compressedBytes);
+      return compressedFile;
+    } else if (imageBytes.length >= 600 * 1024 &&
+        imageBytes.length <= 999 * 1024) {
+      Uint8List uint8List = Uint8List.fromList(imageBytes);
+      // Compress the image to 75% quality
+      List<int> compressedBytes = await FlutterImageCompress.compressWithList(
+        uint8List,
+        quality: 10,
+      );
 
-  //     // Create a file from the compressed data
-  //     File compressedFile = await _createFile(compressedData);
+      // Convert the compressed bytes to a Uint8List
+      Uint8List compressedData = Uint8List.fromList(compressedBytes);
 
-  //     return compressedFile;
-  //   } else {
-  //     Uint8List uint8List = Uint8List.fromList(imageBytes);
-  //     // Compress the image to 75% quality
-  //     List<int> compressedBytes = await FlutterImageCompress.compressWithList(
-  //       uint8List,
-  //       quality: 5,
-  //     );
+      // Create a file from the compressed data
+      File compressedFile = await _createFile(compressedData);
 
-  //     // Convert the compressed bytes to a Uint8List
-  //     Uint8List compressedData = Uint8List.fromList(compressedBytes);
+      return compressedFile;
+    } else {
+      Uint8List uint8List = Uint8List.fromList(imageBytes);
+      // Compress the image to 75% quality
+      List<int> compressedBytes = await FlutterImageCompress.compressWithList(
+        uint8List,
+        quality: 5,
+      );
 
-  //     // Create a file from the compressed data
-  //     File compressedFile = await _createFile(compressedData);
+      // Convert the compressed bytes to a Uint8List
+      Uint8List compressedData = Uint8List.fromList(compressedBytes);
 
-  //     return compressedFile;
-  //   }
-  // }
+      // Create a file from the compressed data
+      File compressedFile = await _createFile(compressedData);
+
+      return compressedFile;
+    }
+  }
 
   Future<void> selectImage(
       BuildContext context, double height, double width) async {
@@ -98,7 +103,7 @@ class SaleController extends GetxController {
     if (status.isGranted && status1.isGranted) {
       showModalBottomSheet(
         context: context,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
         builder: (context) {
@@ -137,9 +142,9 @@ class SaleController extends GetxController {
                       children: [
                         TextButton(
                           child: Text(AppLocalizations.of(context)!.gallery,
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  color: AppColors.whitecolor)),
+                                  color: darkblue)),
                           onPressed: () async {
                             //Navigator.of(context).pop();
                             //getImage(ImgSource.Gallery);
@@ -148,9 +153,10 @@ class SaleController extends GetxController {
 
                             // Handle the picked image
                             if (pickImage != null) {
-                              compressedFile = await pickImage as File?;
+                              // ignore: await_only_futures
+                              // compressedFile = await pickImage;
 
-                              //  await compressImage(pickImage as XFile);
+                              await compressImage(pickImage as XFile);
 
                               // Do something with the picked image
                               // For example, you can display it in an Image widget
@@ -162,7 +168,7 @@ class SaleController extends GetxController {
                           child: Text(AppLocalizations.of(context)!.camera,
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  color: AppColors.whitecolor)),
+                                  color: darkblue)),
                           onPressed: () async {
                             Navigator.of(context).pop();
                             pickImage = await picker.pickImage(

@@ -82,10 +82,7 @@ class _CategoriesState extends State<Categories> {
 
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    List<String> dropdownItems = <String>[
-      'Purchase',
-      'sale',
-    ];
+    List<String> dropdownItems = <String>['Purchase', 'sale', "Expense"];
 
     List<String> dropdownItems1 = <String>[
       'This Month',
@@ -286,15 +283,15 @@ class _CategoriesState extends State<Categories> {
                                           setState(() {
                                             dropdownValue1 = newValue;
                                           });
-                                          print("value  ${dropdownValue1}");
+                                          print("value  $dropdownValue1");
                                         },
                                         value: dropdownValue1,
                                         items:
                                             dropdownItems1.map((String value) {
                                           print("ww $value");
-                                          return new DropdownMenuItem<String>(
+                                          return DropdownMenuItem<String>(
                                             value: value,
-                                            child: new Text(value),
+                                            child: Text(value),
                                           );
                                         }).toList()),
                                   ),
@@ -375,8 +372,9 @@ class _CategoriesState extends State<Categories> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ExpenceByCategory(),
+                                      builder: (context) => ExpenceByCategory(
+                                        type: dropdownValue,
+                                      ),
                                     ));
                               } else {
                                 Navigator.push(

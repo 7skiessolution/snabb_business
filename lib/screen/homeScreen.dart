@@ -31,9 +31,10 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeController.to.saleListOFChart();
     HomeController.to.expenseList(0);
     HomeController.to.expenseList(2);
+    HomeController.to.expenseList(1);
     HomeController.to.getexpensePurchase(2);
     HomeController.to.getexpensePurchase(0);
-
+    HomeController.to.getexpensePurchase(1);
     TransactionController.to.getCatagoriesdata("income");
     TransactionController.to.getUserCalanderTransactiondata();
     HomeController.to.getUserProfile();
@@ -144,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           "${obj.totalSale.toString()} ${obj.curency}",
                                           style: TextStyle(
                                               fontSize: width * 0.03,
-                                              color: darkblue),
+                                              color: Colors.lightGreen),
                                         ),
                                       ),
                                     ),
@@ -259,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: TextStyle(
                                 fontSize: width * 0.04,
                                 fontWeight: FontWeight.w800,
-                                color: lightgreen),
+                                color: Colors.lightGreen),
                           ),
                           SizedBox(
                               height: height * 0.16,
@@ -301,7 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     animationDuration: 5,
                                     animationDelay: 3,
                                     name: "Sale",
-                                    color: lightgreen,
+                                    color: Colors.lightGreen,
                                     markerSettings: MarkerSettings(
                                       isVisible: true,
                                       width: 5,
@@ -407,7 +408,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ExpenseChart(),
+                            builder: (context) => const ExpenseChart(),
                           ));
                     },
                     child: Container(

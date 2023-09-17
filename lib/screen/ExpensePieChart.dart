@@ -43,51 +43,54 @@ class _ExpencePieChartState extends State<ExpencePieChart> {
                   child: AppBarWidgt(text: "Chart")),
               Padding(
                 padding: EdgeInsets.only(top: height * 0.1),
-                child: SizedBox(
-                  height: height * 0.3,
-                  width: width,
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: height * 0.3,
-                        width: width,
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage("images/dollar.jpg"))),
-                      ),
-                      Container(
-                        height: height * 0.3,
-                        color: Colors.blue[900]!.withOpacity(0.9),
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 15.0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0),
-                                child: Text(
-                                  "Expence By Category",
-                                  style: TextStyle(
-                                      color: white,
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold),
+                child: Expanded(
+                  child: SizedBox(
+                    height: height * 0.3,
+                    width: width,
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: height * 0.3,
+                          width: width,
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage("images/dollar.jpg"))),
+                        ),
+                        Container(
+                          height: height * 0.3,
+                          width: width,
+                          color: Colors.blue[900]!.withOpacity(0.9),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 15.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20.0),
+                                  child: Text(
+                                    "Expence By Category",
+                                    style: TextStyle(
+                                        color: white,
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: width * 0.3,
-                              ),
-                              Icon(
-                                Icons.insert_chart_outlined_sharp,
-                                color: white,
-                              )
-                            ],
+                                SizedBox(
+                                  width: width * 0.28,
+                                ),
+                                Icon(
+                                  Icons.insert_chart_outlined_sharp,
+                                  color: white,
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -172,7 +175,7 @@ class _ExpencePieChartState extends State<ExpencePieChart> {
                                       MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    CircleAvatar(
+                                    const CircleAvatar(
                                         backgroundImage:
                                             AssetImage("images/expensive.png")),
                                     SizedBox(
@@ -183,9 +186,9 @@ class _ExpencePieChartState extends State<ExpencePieChart> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
+                                            const Text(
                                               "Expenses",
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.bold),
                                             ),

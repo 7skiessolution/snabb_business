@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:snabb_business/models/get_all_user_transaction_model.dart';
 
@@ -202,18 +203,15 @@ class _TransactionCardState extends State<TransactionCard> {
                             child: obj.file != null && obj.file != ""
                                 // ? Image.network(
                                 //     "${StaticValues.imageUrl}${obj.file!}")
-                                ? Hero(
-                                    tag: obj.file!,
-                                    child: FadeInImage.assetNetwork(
-                                      fit: BoxFit.cover,
-                                      placeholder: 'assets/images/bell.png',
-                                      image:
-                                          "${StaticValues.imageUrl}${obj.file!}",
-                                      placeholderErrorBuilder:
-                                          (context, error, stackTrace) {
-                                        return const CircularProgressIndicator();
-                                      },
-                                    ),
+                                ? FadeInImage.assetNetwork(
+                                    fit: BoxFit.cover,
+                                    placeholder: 'assets/images/bell.png',
+                                    image:
+                                        "${StaticValues.imageUrl}${obj.file!}",
+                                    placeholderErrorBuilder:
+                                        (context, error, stackTrace) {
+                                      return const CircularProgressIndicator();
+                                    },
                                   )
                                 : Text(
                                     AppLocalizations.of(context)!
@@ -281,59 +279,65 @@ class _TransactionCardState extends State<TransactionCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shadowColor: darkblue,
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      child: ListTile(
-        onTap: () {
-          showImageDialog(
-              context,
-              widget.transaction,
-              MediaQuery.of(context).size.height,
-              MediaQuery.of(context).size.width);
-        },
-        leading: Container(
-            decoration: const BoxDecoration(shape: BoxShape.circle),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(
-                widget.transaction.imageUrl!,
-              ),
-            )),
-        title: Text(
-          widget.transaction.name!,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-        subtitle: Text(widget.transaction.dateTime!),
-        // .substring(0, 10)),
-        trailing: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-                // ignore: unrelated_type_equality_checks
-                widget.transaction.type == 1
-                    ? "+ ${widget.transaction.amount}"
-                    : "-${widget.transaction.amount}",
-                style: TextStyle(
-                    // ignore: unrelated_type_equality_checks
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Container(
+        color: white,
+        child: ListTile(
+          onTap: () {
+            showImageDialog(
+                context,
+                widget.transaction,
+                MediaQuery.of(context).size.height,
+                MediaQuery.of(context).size.width);
+          },
+          leading: Container(
+              decoration:
+                  BoxDecoration(color: darkblue, shape: BoxShape.circle),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  widget.transaction.imageUrl!,
+                  fit: BoxFit.cover,
+                  width: 30,
+                  height: 30,
+                ),
+              )),
+          title: Text(
+            widget.transaction.name!,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(widget.transaction.dateTime!.substring(0, 11)),
+          // .substring(0, 10)),
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                  // ignore: unrelated_type_equality_checks
+                  widget.transaction.type == 1
+                      ? "+ ${widget.transaction.amount}"
+                      : "-${widget.transaction.amount}",
+                  style: TextStyle(
+                      // ignore: unrelated_type_equality_checks
+                      color: widget.transaction.type == 1
+                          ? Colors.green
+                          : Colors.red,
+                      fontWeight: FontWeight.bold)),
+              Text(
+                  // ignore: unrelated_type_equality_checks
+                  widget.transaction.type == 1
+                      ? widget.transaction.currency!
+                      : widget.transaction.currency!,
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.bold,
                     color: widget.transaction.type == 1
                         ? Colors.green
                         : Colors.red,
-                    fontWeight: FontWeight.bold)),
-            Text(
-                // ignore: unrelated_type_equality_checks
-                widget.transaction.type == 1
-                    ? widget.transaction.currency!
-                    : widget.transaction.currency!,
-                style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.bold,
-                  color:
-                      widget.transaction.type == 1 ? Colors.green : Colors.red,
-                )),
-          ],
+                  )),
+            ],
+          ),
         ),
       ),
     );
@@ -356,15 +360,12 @@ class TransactionImageScreen extends StatelessWidget {
       body: Center(
         // ignore: unnecessary_null_comparison
         child: imageUrl != null
-            ? Hero(
-                tag: imageUrl,
-                child: FadeInImage.assetNetwork(
-                  placeholder: 'assets/images/bell.png',
-                  image: imageUrl,
-                  placeholderErrorBuilder: (context, error, stackTrace) {
-                    return const CircularProgressIndicator();
-                  },
-                ),
+            ? FadeInImage.assetNetwork(
+                placeholder: 'assets/images/bell.png',
+                image: imageUrl,
+                placeholderErrorBuilder: (context, error, stackTrace) {
+                  return const CircularProgressIndicator();
+                },
               )
             : Text(
                 AppLocalizations.of(context)!.transactions,

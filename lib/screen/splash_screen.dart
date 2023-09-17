@@ -77,17 +77,15 @@ class _SplashScreenState extends State<SplashScreen>
         height: height,
         width: width,
         color: AppColors.blue,
-        child: Center(
-          child: ScaleTransition(
-            scale: animation!,
-            alignment: Alignment.center,
-            child: Image.asset(
-              'images/logo.png',
-              fit: BoxFit.contain,
-              height: height * 0.6,
-              width: width * 0.6,
-              color: Colors.white,
-            ),
+        child: ScaleTransition(
+          scale: animation!,
+          alignment: Alignment.center,
+          child: Image.asset(
+            'images/logo.png',
+            fit: BoxFit.contain,
+            height: height * 0.6,
+            width: width * 0.6,
+            color: Colors.white,
           ),
         ),
       ),

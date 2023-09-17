@@ -15,18 +15,17 @@ class WalletScreen extends StatefulWidget {
 }
 
 class _WalletScreenState extends State<WalletScreen> {
-      List<bool> switchValues = [];
+  List<bool> switchValues = [];
 
-
-   @override
+  @override
   void initState() {
     // Initialize the switchValues list with the initial values
-    switchValues = List.generate(
-        HomeController.to.walletList.length, (index) => false);
+    switchValues =
+        List.generate(HomeController.to.walletList.length, (index) => false);
     super.initState();
   }
 
-void toggleSwitch(int index) {
+  void toggleSwitch(int index) {
     setState(() {
       switchValues[index] = !switchValues[index];
     });
@@ -53,7 +52,6 @@ void toggleSwitch(int index) {
 
     return SafeArea(
       child: Scaffold(
-      
         resizeToAvoidBottomInset: false,
         floatingActionButton: FloatingActionButton(
           backgroundColor: red,
@@ -204,7 +202,7 @@ void toggleSwitch(int index) {
         body: GetBuilder<HomeController>(builder: (obj) {
           return Column(
             children: [
-             AppBarWidgt(text: "Wallet"),
+              AppBarWidgt(text: "Wallet"),
               SizedBox(
                   height: height * 0.85,
                   width: width,
@@ -213,7 +211,15 @@ void toggleSwitch(int index) {
                       Container(
                         width: width,
                         height: height * 0.15,
-                        color: AppColors.topcard,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage("images/dollar.jpg"))),
+                      ),
+                      Container(
+                        width: width,
+                        height: height * 0.15,
+                        color: AppColors.topcard.withOpacity(0.9),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
                           child: Row(mainAxisSize: MainAxisSize.min, children: [
@@ -226,7 +232,6 @@ void toggleSwitch(int index) {
                         ),
                       ),
                       Positioned(
-                
                           top: height * 0.12,
                           right: width * 0.1,
                           left: width * 0.1,
@@ -295,7 +300,8 @@ void toggleSwitch(int index) {
                                                           scale: 0.5,
                                                           child: Switch(
                                                             onChanged: (val) {
-                                                              toggleSwitch(index);
+                                                              toggleSwitch(
+                                                                  index);
                                                               setState(() {});
                                                             },
                                                             value: isTure,
@@ -534,7 +540,7 @@ void toggleSwitch(int index) {
                                                                                 // Close the dialog when Cancel is pressed
                                                                                 Navigator.of(context).pop();
                                                                               },
-                                                                              child: const Text(
+                                                                              child: Text(
                                                                                 'Cancel',
                                                                                 style: TextStyle(
                                                                                   color:
@@ -704,13 +710,6 @@ void toggleSwitch(int index) {
                           ),
                     ],
                   )),
-       
-       
-       
-
-
-
-       
             ],
           );
         }),

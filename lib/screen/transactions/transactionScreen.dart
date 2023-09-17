@@ -8,7 +8,9 @@ import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/screen/transactions/daily_transactions.dart';
 import 'package:snabb_business/screen/transactions/monthly_transactions.dart';
 import 'package:snabb_business/screen/transactions/yearly_transactions.dart';
+import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
+import 'package:snabb_business/utils/colors.dart';
 
 class TransactionScreen extends StatefulWidget {
   static const routeName = "transactions-screen";
@@ -21,6 +23,12 @@ class TransactionScreen extends StatefulWidget {
 }
 
 class _TransactionScreenState extends State<TransactionScreen> {
+  int index = 0;
+  List<String> cat = [
+    "Dalily",
+    "Monthly",
+    "Yearly",
+  ];
   int _currentSelection = 0;
   int check = 0;
 
@@ -78,93 +86,84 @@ class _TransactionScreenState extends State<TransactionScreen> {
       ),
     };
 
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.backgroundColor,
         body: SizedBox(
-      height: height,
-      width: width,
-      child: Stack(
-        children: [
-          Container(
-            height: height * 0.25,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20)),
-              color: darkblue,
-            ),
             width: width,
-            child: Column(
-              children: [
-                SizedBox(
-                  height: height * 0.1,
-                  width: width,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      IconButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          icon: const Icon(
-                            Icons.arrow_back_rounded,
-                            color: Colors.white,
-                          )),
-                      Expanded(
-                        child: Container(
-                          height: height,
-                          width: width,
-                          alignment: Alignment.center,
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                right: width * 0.1, top: height * 0.05),
-                            child: Text(
-                              AppLocalizations.of(context)!.transactions,
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
+            height: height,
+            child: Column(children: [
+              AppBarWidgt(text: "Transactions"),
+              SizedBox(
+                height: height * 0.85,
+                width: width,
+                child: Stack(
+                  children: [
+                    Container(
+                      width: width,
+                      height: height * 0.15,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("images/dollar.jpg"))),
+                    ),
+                    Container(
+                      width: width,
+                      height: height * 0.15,
+                      color: Colors.blue[900]!.withOpacity(0.9),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              IconButton(
+                                  onPressed: () {
+                                    if (index > 0) {
+                                      setState(() {
+                                        index--;
+                                      });
+                                    }
+                                  },
+                                  icon: Icon(
+                                    Icons.arrow_back_ios,
+                                    color: white,
+                                  )),
+                              Text(
+                                cat[index].toString(),
+                                style: TextStyle(
+                                    fontSize: width * 0.04,
+                                    color: white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              IconButton(
+                                  onPressed: () {
+                                    if (index < 2) {
+                                      setState(() {
+                                        index++;
+                                      });
+                                    }
+                                  },
+                                  icon: Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: white,
+                                  )),
+                            ]),
                       ),
-                    ],
-                  ),
+                    ),
+                    Positioned(
+                        top: height * 0.1,
+                        right: width * 0.015,
+                        left: width * 0.015,
+                        child: SizedBox(
+                          height: height * 0.7,
+                          width: width,
+                          child: pagechildren[index],
+                        ))
+                  ],
                 ),
-                SizedBox(
-                  height: height * 0.03,
-                ),
-                MaterialSegmentedControl(
-                  verticalOffset: height * 0.02,
-                  children: _children,
-                  selectionIndex: _currentSelection,
-                  borderColor: Colors.white,
-                  selectedColor: darkblue,
-                  unselectedColor: Colors.white.withOpacity(0.3),
-                  selectedTextStyle: const TextStyle(color: Colors.white),
-                  unselectedTextStyle: const TextStyle(color: Colors.white),
-                  borderWidth: 0.7,
-                  borderRadius: 10.0,
-                  disabledChildren: const [3],
-                  onSegmentTapped: (index) {
-                    setState(() {
-                      _currentSelection = index;
-                    });
-                  },
-                ),
-              ],
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: SizedBox(
-              height: height * 0.75,
-              width: width,
-              child: pagechildren[_currentSelection],
-            ),
-          ),
-        ],
+              )
+            ])),
       ),
-    ));
+    );
   }
 }

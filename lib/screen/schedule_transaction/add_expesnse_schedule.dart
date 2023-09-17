@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/utils/color.dart';
 
-class AddPurchaseTransaction extends StatefulWidget {
-  const AddPurchaseTransaction({super.key});
+class AddExpenseTransaction extends StatefulWidget {
+  const AddExpenseTransaction({super.key});
 
   @override
-  State<AddPurchaseTransaction> createState() => _AddPurchaseTransactionState();
+  State<AddExpenseTransaction> createState() => _AddExpenseTransactionState();
 }
 
-class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
+class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
   String? dropdownValue = 'Payment Method';
   List<String> dropdownItems = <String>[
     'Purchase',
@@ -105,12 +105,12 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                           ),
                         ),
                         SizedBox(
-                          width: width * 0.1,
+                          width: width * 0.07,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
                           child: Text(
-                            "Add Purchase Transaction",
+                            "Add Expense Transaction ",
                             style: TextStyle(
                                 color: white,
                                 fontSize: 17,
@@ -316,7 +316,7 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                                                 SizedBox(
                                                                                   width: width * 0.11,
                                                                                   height: height * 0.11,
-                                                                                  child: Image(image: AssetImage("images/bank.jpeg")),
+                                                                                  child: Image(image: AssetImage("assets/bank.jpeg")),
                                                                                 ),
                                                                                 Text(
                                                                                   "BANK",
@@ -335,7 +335,7 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                                                 SizedBox(
                                                                                   width: width * 0.11,
                                                                                   height: height * 0.11,
-                                                                                  child: Image(image: AssetImage("images/group1.jpg")),
+                                                                                  child: Image(image: AssetImage("assets/group1.jpg")),
                                                                                 ),
                                                                                 Text(
                                                                                   "CASH",
@@ -354,7 +354,7 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                                                 SizedBox(
                                                                                   width: width * 0.11,
                                                                                   height: height * 0.11,
-                                                                                  child: Image(image: AssetImage("images/group2.jpg")),
+                                                                                  child: Image(image: AssetImage("assets/group2.jpg")),
                                                                                 ),
                                                                                 Text(
                                                                                   "OTHERS",

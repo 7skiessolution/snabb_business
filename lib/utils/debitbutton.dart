@@ -59,15 +59,15 @@ class _DebitfloatingButtonState extends State<DebitfloatingButton>
         if (_isExpanded)
           if (_isExpanded)
             FloatingActionButton(
+              heroTag: "dincome",
               onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          AddCreditDebitScreen(balanceType: "Debit"),
+                          const AddCreditDebitScreen(balanceType: "Debit"),
                     ));
               },
-              heroTag: null,
               backgroundColor: Colors.red,
               child: const ImageIcon(AssetImage("images/minus.png")),
             ),
@@ -75,15 +75,15 @@ class _DebitfloatingButtonState extends State<DebitfloatingButton>
         if (_isExpanded) const SizedBox(height: 10),
         if (_isExpanded)
           FloatingActionButton(
+            heroTag: "dexpance",
             onPressed: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        AddCreditDebitScreen(balanceType: "Credit"),
+                        const AddCreditDebitScreen(balanceType: "Credit"),
                   ));
             },
-            heroTag: null,
             backgroundColor: Colors.green,
             child: const Icon(Icons.add),
           ),

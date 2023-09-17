@@ -10,12 +10,12 @@ Widget float1() {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-            color: backgroundColor, width: 8), // Customize border color
+            color: backgroundColor!, width: 8), // Customize border color
       ),
       child: FloatingActionButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
         onPressed: () {},
-        heroTag: "btn1",
+
         tooltip: 'First button',
         backgroundColor: Colors.red,
         child: Image.asset("images/minus.png"), // Change background color
@@ -32,7 +32,7 @@ Widget float2() {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-            color: backgroundColor, width: 8), // Customize border color
+            color: backgroundColor!, width: 8), // Customize border color
       ),
       child: FloatingActionButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
@@ -40,7 +40,7 @@ Widget float2() {
           // Perform action for float1 button
           print('Float 1 Pressed');
         },
-        heroTag: "btn1",
+
         tooltip: 'First button',
         backgroundColor: Colors.red,
         child: Icon(
@@ -120,7 +120,7 @@ class _ExpandableFloatingActionButtonState
                       ),
                     ));
               },
-              heroTag: null,
+              heroTag: "saleTag",
               backgroundColor: Colors.green,
               child: const Icon(Icons.add),
             ),
@@ -136,7 +136,7 @@ class _ExpandableFloatingActionButtonState
                     ),
                   ));
             },
-            heroTag: null,
+            heroTag: "expenseTag",
             backgroundColor: Colors.red,
             child: const ImageIcon(AssetImage("images/minus.png")),
           ),
@@ -148,11 +148,11 @@ class _ExpandableFloatingActionButtonState
                   context,
                   MaterialPageRoute(
                     builder: (context) => SaleScreen(
-                      type: 1,
+                      type: 0,
                     ),
                   ));
             },
-            heroTag: null,
+            heroTag: "purchaseTag",
             backgroundColor: Colors.purple,
             child: const Icon(Icons.add),
           ),

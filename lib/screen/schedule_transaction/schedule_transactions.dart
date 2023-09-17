@@ -7,7 +7,9 @@ import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/controller/schedule_controller.dart';
 import 'package:snabb_business/models/scheduled_transaction.dart';
 import 'package:snabb_business/static_data.dart';
+import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
+import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/schedule_ex.dart';
 
 class ShaduleTransactionScreen extends StatefulWidget {
@@ -211,18 +213,15 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                           width: MediaQuery.of(context).size.width,
                           child: Center(
                             child: obj.file != null && obj.file != ""
-                                ? Hero(
-                                    tag: obj.file!,
-                                    child: FadeInImage.assetNetwork(
-                                      fit: BoxFit.cover,
-                                      placeholder: 'assets/images/bell.png',
-                                      image:
-                                          '${StaticValues.imageUrl}${obj.file!}',
-                                      placeholderErrorBuilder:
-                                          (context, error, stackTrace) {
-                                        return const CircularProgressIndicator();
-                                      },
-                                    ),
+                                ? FadeInImage.assetNetwork(
+                                    fit: BoxFit.cover,
+                                    placeholder: 'assets/images/bell.png',
+                                    image:
+                                        '${StaticValues.imageUrl}${obj.file!}',
+                                    placeholderErrorBuilder:
+                                        (context, error, stackTrace) {
+                                      return const CircularProgressIndicator();
+                                    },
                                   )
                                 : Text(AppLocalizations.of(context)!
                                     .nofileforthistransaction),
@@ -291,6 +290,8 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
     width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      // backgroundColor: Colors.red,
+      backgroundColor: AppColors.backgroundColor,
       key: scaffoldKey,
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton:
@@ -301,56 +302,15 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
         }, builder: (obj) {
           return Column(
             children: [
-              Container(
-                height: height * 0.13,
-                width: width * 0.9,
-                decoration: BoxDecoration(
-                    color: darkblue,
-                    borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20))),
-                child: Padding(
-                  padding: EdgeInsets.only(top: height * 0.025),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                          size: width * 0.065,
-                        ),
-                      ),
-                      SizedBox(
-                        width: width * 0.1,
-                      ),
-                      Text(
-                        AppLocalizations.of(context)!.scheduledtransaction,
-                        style: TextStyle(
-                            fontSize: width * 0.04,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      SizedBox(
-                        width: width * 0.11,
-                      )
-                    ],
-                  ),
-                ),
-              ),
+              AppBarWidgt(text: "Shadule Transaction"),
               Card(
-                shadowColor: darkblue,
-                elevation: 7,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7)),
+                elevation: 5,
+                shadowColor: AppColors.blue,
                 child: Container(
-                    height: height * 0.15,
+                    height: height * 0.1,
                     width: width * 0.9,
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(7)),
+                    decoration: BoxDecoration(
+                        color: white, borderRadius: BorderRadius.circular(7)),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -360,19 +320,17 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                AppLocalizations.of(context)!.thismonth,
+                                AppLocalizations.of(context)!
+                                    .thismonth
+                                    .capitalize!,
                                 style: TextStyle(
                                     fontSize: width * 0.033,
-                                    color: darkblue,
+                                    color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "${obj.thisMonth}",
-                                style: TextStyle(
-                                  color: obj.thisMonth >= 0
-                                      ? Colors.green
-                                      : Colors.red,
-                                ),
+                                "${obj.thisMonth} ${HomeController.to.curency}",
+                                style: const TextStyle(color: Colors.black),
                               )
                             ],
                           ),
@@ -380,14 +338,16 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                AppLocalizations.of(context)!.nextmonth,
+                                AppLocalizations.of(context)!
+                                    .nextmonth
+                                    .capitalize!,
                                 style: TextStyle(
                                     fontSize: width * 0.033,
-                                    color: darkblue,
+                                    color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "${obj.nextMonth}",
+                                "${obj.nextMonth} ${HomeController.to.curency}",
                                 style: TextStyle(
                                   color: obj.nextMonth >= 0
                                       ? Colors.green
@@ -400,9 +360,6 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                       ),
                     )),
               ),
-              SizedBox(
-                height: height * 0.02,
-              ),
               obj.transactions.isNotEmpty
                   ? Expanded(
                       child: SizedBox(
@@ -413,49 +370,51 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                             ScheduleTransactionData transaction =
                                 obj.transactions[index];
                             return Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.only(top: 8),
                               child: Card(
-                                shadowColor: darkblue,
-                                elevation: 2,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: ListTile(
-                                  onTap: () {
-                                    showImageDialog(context, transaction);
-                                  },
-                                  leading: Container(
-                                      decoration: BoxDecoration(
-                                          color: darkblue,
-                                          shape: BoxShape.circle),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Image.asset(
-                                          transaction.imageUrl!,
-                                        ),
-                                      )),
-                                  title: Text(
-                                    transaction.category!,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  subtitle: Text(transaction.name!),
-                                  trailing: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text(
-                                          transaction.type == 1
-                                              ? "+${HomeController.to.curency}${transaction.amount}"
-                                              : "-${HomeController.to.curency}${transaction.amount}",
-                                          style: TextStyle(
-                                              color: transaction.type == 1
-                                                  ? Colors.green
-                                                  : Colors.red,
-                                              fontWeight: FontWeight.bold)),
-                                      Text(transaction.schedule!.secondDateTime
-                                          .toString()
-                                          .substring(0, 10))
-                                    ],
+                                elevation: 5,
+                                shadowColor: AppColors.blue,
+                                child: Container(
+                                  color: white,
+                                  child: ListTile(
+                                    onTap: () {
+                                      showImageDialog(context, transaction);
+                                    },
+                                    leading: Container(
+                                        decoration: BoxDecoration(
+                                            color: darkblue,
+                                            shape: BoxShape.circle),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Image.asset(
+                                            transaction.imageUrl!,
+                                          ),
+                                        )),
+                                    title: Text(
+                                      transaction.category!,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    subtitle: Text(transaction.name!),
+                                    trailing: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Text(
+                                            transaction.type == 1
+                                                ? "+${HomeController.to.curency}${transaction.amount}"
+                                                : "-${HomeController.to.curency}${transaction.amount}",
+                                            style: TextStyle(
+                                                color: transaction.type == 1
+                                                    ? Colors.green
+                                                    : Colors.red,
+                                                fontWeight: FontWeight.bold)),
+                                        Text(transaction
+                                            .schedule!.secondDateTime
+                                            .toString()
+                                            .substring(0, 10))
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -475,6 +434,12 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                             fontWeight: FontWeight.w500),
                       )),
                     ),
+              SizedBox(
+                height: height * 0.01,
+              ),
+              SizedBox(
+                height: height * 0.01,
+              ),
             ],
           );
         }),

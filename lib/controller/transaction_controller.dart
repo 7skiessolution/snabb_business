@@ -212,7 +212,7 @@ class TransactionController extends GetxController {
                     style: TextStyle(
                         fontSize: width * 0.04,
                         fontWeight: FontWeight.bold,
-                        color: darkblue),
+                        color: darkblue!),
                   ),
                   SizedBox(
                     height: height * 0.02,
@@ -237,7 +237,7 @@ class TransactionController extends GetxController {
                           child: Text(AppLocalizations.of(context)!.gallery,
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  color: darkblue)),
+                                  color: darkblue!)),
                           onPressed: () async {
                             //Navigator.of(context).pop();
                             //getImage(ImgSource.Gallery);
@@ -259,7 +259,7 @@ class TransactionController extends GetxController {
                           child: Text(AppLocalizations.of(context)!.camera,
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  color: darkblue)),
+                                  color: darkblue!)),
                           onPressed: () async {
                             Navigator.of(context).pop();
                             pickImage = await picker.pickImage(
@@ -306,7 +306,7 @@ class TransactionController extends GetxController {
       //           child: Text('Gallery',
       //               style: TextStyle(
       //                   fontWeight: FontWeight.w600,
-      //                   color: darkblue)),
+      //                   color: darkblue!)),
       //           onPressed: () async {
       //             //Navigator.of(context).pop();
       //             //getImage(ImgSource.Gallery);
@@ -328,7 +328,7 @@ class TransactionController extends GetxController {
       //           child: Text('Camera',
       //               style: TextStyle(
       //                   fontWeight: FontWeight.w600,
-      //                   color: darkblue)),
+      //                   color: darkblue!)),
       //           onPressed: () async {
       //             Navigator.of(context).pop();
       //             pickImage =
@@ -420,10 +420,10 @@ class TransactionController extends GetxController {
           title: Text(
             // AppLocalizations.of(context)!.confor,
             AppLocalizations.of(context)!.confirmdeletion,
-            style: TextStyle(color: darkblue, fontWeight: FontWeight.bold),
+            style: TextStyle(color: darkblue!, fontWeight: FontWeight.bold),
           ),
           elevation: 10,
-          shadowColor: darkblue,
+          shadowColor: darkblue!,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           content: Text(AppLocalizations.of(context)!.areyousuredeletedata),
@@ -441,7 +441,7 @@ class TransactionController extends GetxController {
               child: Text(
                 //     AppLocalizations.of(context)!.co,
                 AppLocalizations.of(context)!.confirm,
-                style: TextStyle(color: darkblue),
+                style: TextStyle(color: darkblue!),
               ),
               onPressed: () {
                 confirmed = true;
@@ -471,10 +471,10 @@ class TransactionController extends GetxController {
             // AppLocalizations.of(context)!.confor,
 
             "Recover Transaction",
-            style: TextStyle(color: darkblue, fontWeight: FontWeight.bold),
+            style: TextStyle(color: darkblue!, fontWeight: FontWeight.bold),
           ),
           elevation: 10,
-          shadowColor: darkblue,
+          shadowColor: darkblue!,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           content: const Text("Are You Sure You Want To Recover Transaction"),
@@ -492,7 +492,7 @@ class TransactionController extends GetxController {
               child: Text(
                 //     AppLocalizations.of(context)!.co,
                 AppLocalizations.of(context)!.confirm,
-                style: TextStyle(color: darkblue),
+                style: TextStyle(color: darkblue!),
               ),
               onPressed: () {
                 confirmed = true;
@@ -588,7 +588,7 @@ class TransactionController extends GetxController {
           angle: math.radians(a1.value * 360),
           child: AlertDialog(
             elevation: 10,
-            shadowColor: darkblue,
+            shadowColor: darkblue!,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             content: SizedBox(
@@ -601,14 +601,14 @@ class TransactionController extends GetxController {
                     AppLocalizations.of(context)!.changelanguage,
                     style: TextStyle(
                         fontSize: width * 0.04,
-                        color: darkblue,
+                        color: darkblue!,
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
                     AppLocalizations.of(context)!.changelanguage,
                     style: TextStyle(
                         fontSize: width * 0.03,
-                        color: darkblue,
+                        color: darkblue!,
                         fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -632,7 +632,7 @@ class TransactionController extends GetxController {
               TextButton(
                 child: Text(
                   AppLocalizations.of(context)!.confirm,
-                  style: TextStyle(color: darkblue),
+                  style: TextStyle(color: darkblue!),
                 ),
                 onPressed: () {
                   MyApp.setLocale(context, Locale(value));
@@ -678,7 +678,7 @@ class TransactionController extends GetxController {
           CalendarEvent event = CalendarEvent(
               eventName: data.totalIncome.toString(),
               eventDate: date,
-              eventBackgroundColor: darkblue,
+              eventBackgroundColor: darkblue!,
               eventTextStyle:
                   const TextStyle(color: Colors.white, fontSize: 10));
           calanderEventList.add(event);

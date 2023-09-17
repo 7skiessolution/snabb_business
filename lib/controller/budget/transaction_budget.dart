@@ -24,6 +24,7 @@ class TransactionBudgetController extends GetxController {
   final TextEditingController subcatagorycontroller = TextEditingController();
   final TextEditingController fromcontroller = TextEditingController();
   final TextEditingController notescontroller = TextEditingController();
+  final TextEditingController datecontroller = TextEditingController();
 
   DateTime _selectedDate = DateTime.now();
 
@@ -36,8 +37,8 @@ class TransactionBudgetController extends GetxController {
       builder: (context, child) {
         return Theme(
             data: ThemeData.light().copyWith(
-              primaryColor: darkblue,
-              colorScheme: ColorScheme.light(primary: darkblue),
+              primaryColor: darkblue!,
+              colorScheme: ColorScheme.light(primary: darkblue!),
               buttonTheme:
                   const ButtonThemeData(textTheme: ButtonTextTheme.primary),
             ),
@@ -47,14 +48,16 @@ class TransactionBudgetController extends GetxController {
 
     if (pickedDate != null) {
       _selectedDate = pickedDate;
+      datecontroller.text = DateFormat("dd-MM-yyyy").format(_selectedDate);
       print(_selectedDate);
     }
+    update();
   }
 
   void showtoast(String msg) {
     Fluttertoast.showToast(
         msg: msg,
-        backgroundColor: darkblue,
+        backgroundColor: darkblue!,
         textColor: Colors.white,
         gravity: ToastGravity.BOTTOM,
         fontSize: 17,
@@ -115,8 +118,8 @@ class TransactionBudgetController extends GetxController {
       builder: (context, child) {
         return Theme(
             data: ThemeData.light().copyWith(
-              primaryColor: darkblue,
-              colorScheme: ColorScheme.light(primary: darkblue),
+              primaryColor: darkblue!,
+              colorScheme: ColorScheme.light(primary: darkblue!),
               buttonTheme:
                   const ButtonThemeData(textTheme: ButtonTextTheme.primary),
             ),

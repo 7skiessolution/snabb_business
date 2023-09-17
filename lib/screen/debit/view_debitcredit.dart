@@ -6,6 +6,7 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:snabb_business/controller/debit-credit/deptviewchartController.dart';
 import 'package:snabb_business/models/add_debit_model.dart';
+import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
@@ -143,43 +144,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                height: height * 0.07,
-                width: width * 0.9,
-                decoration: BoxDecoration(
-                    color: darkblue,
-                    borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: width * 0.065,
-                      ),
-                    ),
-                    SizedBox(
-                      width: width * 0.1,
-                    ),
-                    Text(
-                      "${AppLocalizations.of(context)!.dr}/${AppLocalizations.of(context)!.cr}",
-                      style: TextStyle(
-                          fontSize: width * 0.04,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    SizedBox(
-                      width: width * 0.23,
-                    )
-                  ],
-                ),
-              ),
+              AppBarWidgt(text: "Dr/Cr"),
               SizedBox(
                 height: height * 0.01,
               ),

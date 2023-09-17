@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:snabb_business/models/items_model.dart';
+import 'package:snabb_business/screen/invoice/company_model.dart';
+import 'package:snabb_business/screen/invoice/items_model.dart';
 import 'package:snabb_business/utils/color.dart';
 
 class InvoiceController extends GetxController {
@@ -17,6 +18,18 @@ class InvoiceController extends GetxController {
   String totalInvoceAmount = "0.0";
 
   TextEditingController message = TextEditingController();
+  CompanyModel companyModel = CompanyModel();
+  CompanyModel toCompanyModel = CompanyModel();
+
+  saveCompanyInfo(
+    CompanyModel model1,
+    CompanyModel model2,
+  ) {
+    companyModel = model1;
+    toCompanyModel = model2;
+    update();
+  }
+
   Future<void> selectDate(BuildContext context, bool start) async {
     DateTime? pickedDate = await showDatePicker(
       context: context,
@@ -26,8 +39,8 @@ class InvoiceController extends GetxController {
       builder: (context, child) {
         return Theme(
             data: ThemeData.light().copyWith(
-              primaryColor: darkblue,
-              colorScheme: ColorScheme.light(primary: darkblue),
+              primaryColor: darkblue!,
+              colorScheme: ColorScheme.light(primary: darkblue!),
               buttonTheme:
                   const ButtonThemeData(textTheme: ButtonTextTheme.primary),
             ),
@@ -74,7 +87,7 @@ class InvoiceController extends GetxController {
         builder: (BuildContext context) {
           return StatefulBuilder(builder: (context, st) {
             return Theme(
-              data: ThemeData(cardColor: Colors.white, shadowColor: darkblue),
+              data: ThemeData(cardColor: Colors.white, shadowColor: darkblue!),
               child: AlertDialog(
                   elevation: 10,
                   shadowColor: Colors.white,
@@ -87,7 +100,7 @@ class InvoiceController extends GetxController {
                       Text(
                         'Add Item:',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, color: darkblue),
+                            fontWeight: FontWeight.bold, color: darkblue!),
                       ),
                       InkWell(
                         splashColor: Colors.grey.withOpacity(0.15),
@@ -97,7 +110,7 @@ class InvoiceController extends GetxController {
                         child: Icon(
                           Icons.clear,
                           size: width * 0.06,
-                          color: darkblue,
+                          color: darkblue!,
                         ),
                       ),
                     ],
@@ -124,7 +137,7 @@ class InvoiceController extends GetxController {
                                           borderRadius:
                                               BorderRadius.circular(10)),
                                       elevation: 2,
-                                      shadowColor: darkblue,
+                                      shadowColor: darkblue!,
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Column(
@@ -237,7 +250,7 @@ class InvoiceController extends GetxController {
                                                   },
                                                   child: Icon(
                                                     Icons.edit,
-                                                    color: darkblue,
+                                                    color: darkblue!,
                                                   ),
                                                 ),
                                                 InkWell(
@@ -316,7 +329,7 @@ class InvoiceController extends GetxController {
                   borderRadius: BorderRadius.circular(20)),
               title: Text(
                 edit ? 'Edit Item :' : 'Add Item :',
-                style: TextStyle(fontWeight: FontWeight.bold, color: darkblue),
+                style: TextStyle(fontWeight: FontWeight.bold, color: darkblue!),
               ),
               content: SizedBox(
                 height: size.height * 0.26,
@@ -368,7 +381,7 @@ class InvoiceController extends GetxController {
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50),
                                 borderSide: BorderSide(
-                                  color: darkblue,
+                                  color: darkblue!,
                                   width: 1.5,
                                   style: BorderStyle.solid,
                                 ),
@@ -432,7 +445,7 @@ class InvoiceController extends GetxController {
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50),
                                 borderSide: BorderSide(
-                                  color: darkblue,
+                                  color: darkblue!,
                                   width: 1.5,
                                   style: BorderStyle.solid,
                                 ),
@@ -497,7 +510,7 @@ class InvoiceController extends GetxController {
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50),
                                 borderSide: BorderSide(
-                                  color: darkblue,
+                                  color: darkblue!,
                                   width: 1.5,
                                   style: BorderStyle.solid,
                                 ),
@@ -562,7 +575,7 @@ class InvoiceController extends GetxController {
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50),
                                 borderSide: BorderSide(
-                                  color: darkblue,
+                                  color: darkblue!,
                                   width: 1.5,
                                   style: BorderStyle.solid,
                                 ),
@@ -638,7 +651,7 @@ class InvoiceController extends GetxController {
                   child: Text(
                     "Save",
                     style: TextStyle(
-                        color: darkblue,
+                        color: darkblue!,
                         fontWeight: FontWeight.w500,
                         fontSize: size.width * 0.045),
                   ),

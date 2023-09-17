@@ -38,14 +38,24 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
         width: width,
         child: Stack(
           children: [
-            Container(
-              height: height * 0.3,
-              width: width,
-              decoration: BoxDecoration(
-                  color: darkblue,
-                  borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20))),
+            Padding(
+              padding: EdgeInsets.only(top: height * 0.13),
+              child: Container(
+                height: height * 0.3,
+                width: width,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage("images/dollar.jpg"))),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: height * 0.13),
+              child: Container(
+                height: height * 0.3,
+                width: width,
+                color: Colors.blue[900]!.withOpacity(0.9),
+              ),
             ),
             widget.type == "Expense"
                 ? Padding(
@@ -55,12 +65,12 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
                         elevation: 2,
                         shadowColor: darkblue,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
+                            borderRadius: BorderRadius.circular(10)),
                         child: Container(
                           height: height * 0.5,
                           width: width * 0.9,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(10),
                             color: Colors.white,
                           ),
                           child: pie.PieChart(
@@ -97,12 +107,12 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
                             elevation: 2,
                             shadowColor: darkblue,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
+                                borderRadius: BorderRadius.circular(10)),
                             child: Container(
                               height: height * 0.5,
                               width: width * 0.9,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(10),
                                 color: Colors.white,
                               ),
                               child: pie.PieChart(
@@ -139,12 +149,12 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
                             elevation: 2,
                             shadowColor: darkblue,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
+                                borderRadius: BorderRadius.circular(10)),
                             child: Container(
                               height: height * 0.5,
                               width: width * 0.9,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(10),
                                 color: Colors.white,
                               ),
                               child: pie.PieChart(
@@ -174,110 +184,110 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
                           ),
                         ),
                       ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                height: height * 0.1,
-                width: width,
-                decoration: BoxDecoration(
-                    color: darkblue,
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20))),
-                child: Row(
-                  children: [
-                    widget.type == "expence"
-                        ? Expanded(
-                            child: SizedBox(
-                              height: height,
-                              width: width,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: width * 0.05,
-                                  ),
-                                  Container(
-                                    height: height * 0.04,
-                                    width: width * 0.06,
-                                    decoration: const BoxDecoration(
-                                        color: Colors.red,
-                                        shape: BoxShape.circle),
-                                  ),
-                                  SizedBox(
-                                    width: width * 0.03,
-                                  ),
-                                  Text(
-                                    AppLocalizations.of(context)!.expense,
-                                    style: TextStyle(
-                                        fontSize: width * 0.04,
-                                        color: Colors.red,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  height: height * 0.1,
+                  width: width * 0.9,
+                  decoration: BoxDecoration(
+                      color: darkblue, borderRadius: BorderRadius.circular(10)),
+                  child: Row(
+                    children: [
+                      widget.type == "expence"
+                          ? Expanded(
+                              child: SizedBox(
+                                height: height,
+                                width: width,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: width * 0.05,
+                                    ),
+                                    Container(
+                                      height: height * 0.04,
+                                      width: width * 0.06,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.red,
+                                          shape: BoxShape.circle),
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.03,
+                                    ),
+                                    Text(
+                                      AppLocalizations.of(context)!.expense,
+                                      style: TextStyle(
+                                          fontSize: width * 0.04,
+                                          color: Colors.red,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          : Expanded(
+                              child: SizedBox(
+                                height: height,
+                                width: width,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: width * 0.05,
+                                    ),
+                                    Container(
+                                      height: height * 0.04,
+                                      width: width * 0.06,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.green,
+                                          shape: BoxShape.circle),
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.03,
+                                    ),
+                                    Text(
+                                      widget.type,
+                                      style: TextStyle(
+                                          fontSize: width * 0.04,
+                                          color: Colors.green,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
-                          )
-                        : Expanded(
-                            child: SizedBox(
-                              height: height,
-                              width: width,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: width * 0.05,
-                                  ),
-                                  Container(
-                                    height: height * 0.04,
-                                    width: width * 0.06,
-                                    decoration: const BoxDecoration(
-                                        color: Colors.green,
-                                        shape: BoxShape.circle),
-                                  ),
-                                  SizedBox(
-                                    width: width * 0.03,
-                                  ),
-                                  Text(
-                                    widget.type,
-                                    style: TextStyle(
-                                        fontSize: width * 0.04,
-                                        color: Colors.green,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
+                      Expanded(
+                        child: SizedBox(
+                            height: height,
+                            width: width,
+                            child: Center(
+                              child: Text(
+                                "100%",
+                                style: TextStyle(
+                                    fontSize: width * 0.04,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
                               ),
-                            ),
-                          ),
-                    Expanded(
-                      child: SizedBox(
-                          height: height,
-                          width: width,
-                          child: Center(
-                            child: Text(
-                              "100%",
-                              style: TextStyle(
-                                  fontSize: width * 0.04,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )),
-                    ),
-                    Expanded(
-                      child: SizedBox(
-                          height: height,
-                          width: width,
-                          child: Center(
-                            child: Text(
-                              "${widget.curency} ${widget.ammount}",
-                              style: TextStyle(
-                                  fontSize: width * 0.04,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )),
-                    ),
-                  ],
+                            )),
+                      ),
+                      Expanded(
+                        child: SizedBox(
+                            height: height,
+                            width: width,
+                            child: Center(
+                              child: Text(
+                                "${widget.curency} ${widget.ammount}",
+                                style: TextStyle(
+                                    fontSize: width * 0.04,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

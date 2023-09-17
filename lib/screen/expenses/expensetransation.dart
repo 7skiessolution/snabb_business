@@ -5,50 +5,21 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../controller/homeController.dart';
 
-class ExpenseChart extends StatefulWidget {
-  const ExpenseChart({super.key});
+class ExpenseTransaction extends StatefulWidget {
+  const ExpenseTransaction({super.key});
 
   @override
-  State<ExpenseChart> createState() => _ExpenseChartState();
+  State<ExpenseTransaction> createState() => _ExpenseTransactionState();
 }
 
-class _ExpenseChartState extends State<ExpenseChart> {
-  @override
-  void initState() {
-    Get.put(HomeController());
-    HomeController.to.getexpensePurchase(2);
-
-    super.initState();
-  }
-
+class _ExpenseTransactionState extends State<ExpenseTransaction> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return GetBuilder<HomeController>(builder: (obj) {
       return Scaffold(
-        appBar: AppBar(
-          backgroundColor: darkblue,
-          leading: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-              size: width * 0.065,
-            ),
-          ),
-          centerTitle: true,
-          title: Text(
-            "Expenses",
-            style: TextStyle(
-                fontSize: width * 0.04,
-                fontWeight: FontWeight.w800,
-                color: white),
-          ),
-        ),
-        body: SizedBox(
+        body: Container(
           height: height,
           width: width,
           child: Padding(
@@ -64,27 +35,33 @@ class _ExpenseChartState extends State<ExpenseChart> {
                         color: white, borderRadius: BorderRadius.circular(8)),
                     child: Column(
                       children: [
-                        SizedBox(
-                          height: height * 0.2,
-                          width: width,
-                          // child: SfCartesianChart(
-                          //     primaryXAxis: CategoryAxis(),
-                          //     primaryYAxis: NumericAxis(
-                          //       minimum: 0,
-                          //       interval: 5,
-                          //       desiredIntervals:
-                          //           7, // Set this to the number of desired ticks (7 in this case)
-                          //     ),
-                          //     tooltipBehavior: obj.tooltip,
-                          //     series: <ChartSeries<Chartdata, String>>[
-                          //       BarSeries<Chartdata, String>(
-                          //           dataSource: obj.expensedata,
-                          //           xValueMapper: (Chartdata data, _) => data.x,
-                          //           yValueMapper: (Chartdata data, _) => data.y,
-                          //           name: 'Expesense',
-                          //           color: expensecolor)
-                          //     ]),
-                        )
+                        Text(
+                          "Expenses",
+                          style: TextStyle(
+                              fontSize: width * 0.04,
+                              fontWeight: FontWeight.w800,
+                              color: expensecolor),
+                        ),
+                        Container(
+                            height: height * 0.2,
+                            width: width,
+                            child: SfCartesianChart(
+                                primaryXAxis: CategoryAxis(),
+                                primaryYAxis: NumericAxis(
+                                  minimum: 0,
+                                  interval: 5,
+                                  desiredIntervals:
+                                      7, // Set this to the number of desired ticks (7 in this case)
+                                ),
+                                tooltipBehavior: obj.tooltip,
+                                series: <ChartSeries<Chartdata, String>>[
+                                  BarSeries<Chartdata, String>(
+                                      dataSource: obj.expensedata,
+                                      xValueMapper: (Chartdata data, _) => data.x,
+                                      yValueMapper: (Chartdata data, _) => data.y,
+                                      name: 'Expesense',
+                                      color: expensecolor)
+                                ]))
                       ],
                     ),
                   ),
@@ -109,9 +86,8 @@ class _ExpenseChartState extends State<ExpenseChart> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: obj.expenseData.length,
+                    itemCount: 10,
                     itemBuilder: (context, index) {
-                      var data = obj.expenseData[index];
                       return Padding(
                         padding: EdgeInsets.only(top: height * 0.015),
                         child: Stack(
@@ -125,29 +101,25 @@ class _ExpenseChartState extends State<ExpenseChart> {
                               ),
                               child: Align(
                                 alignment: Alignment.bottomCenter,
-                                child: Padding(
-                                  padding:
-                                      EdgeInsets.only(bottom: height * 0.005),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Text(
-                                        "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency} ",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: width * 0.025,
-                                            color: white),
-                                      ),
-                                      Text(
-                                        "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: width * 0.025,
-                                            color: white),
-                                      )
-                                    ],
-                                  ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                      "Recieve Payment 11,000 PKR ",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: width * 0.03,
+                                          color: white),
+                                    ),
+                                    Text(
+                                      "Balamce Amount: 11,000 PKR ",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: width * 0.03,
+                                          color: white),
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
@@ -159,29 +131,27 @@ class _ExpenseChartState extends State<ExpenseChart> {
                                 borderRadius: BorderRadius.circular(6),
                               ),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
                                   CircleAvatar(
                                     backgroundColor: expensecolor,
                                     child: Image.asset(
-                                      data.imageUrl!,
+                                      "images/wallet.png",
                                       color: white,
                                     ),
                                   ),
                                   Text(
-                                    "${data.category}",
+                                    "Product 1",
                                     style: TextStyle(
                                         fontSize: width * 0.04,
                                         fontWeight: FontWeight.bold,
                                         color: expensecolor),
                                   ),
-                                  SizedBox(
+                                  Container(
                                     height: height * 0.1,
                                     width: width * 0.3,
                                     child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Container(
                                           height: height * 0.02,
@@ -193,7 +163,7 @@ class _ExpenseChartState extends State<ExpenseChart> {
                                           ),
                                           child: Center(
                                             child: Text(
-                                              "${data.amount}",
+                                              "27,0000 PKR",
                                               style: TextStyle(
                                                   fontSize: width * 0.02,
                                                   fontWeight: FontWeight.bold,
@@ -205,9 +175,7 @@ class _ExpenseChartState extends State<ExpenseChart> {
                                           height: height * 0.01,
                                         ),
                                         Text(
-                                          data.dateTime
-                                              .toString()
-                                              .substring(0, 10),
+                                          "06/07/2023",
                                           style: TextStyle(
                                               fontSize: width * 0.02,
                                               fontWeight: FontWeight.bold,

@@ -29,7 +29,6 @@ class _SummaryWidgetState extends State<SummaryWidget> {
 
     print("date ${res.data}");
     return model!;
-    // Adjust the delay as needed.
   }
 
   Future<void> showImageDialog(
@@ -46,7 +45,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
           elevation: 10,
           shadowColor: darkblue,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           content: SizedBox(
             height: MediaQuery.of(context).size.height * 0.3,
             width: MediaQuery.of(context).size.width * 0.5,
@@ -58,6 +57,9 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      SizedBox(
+                        height: height * 0.01,
+                      ),
                       InkWell(
                         onTap: () {
                           Navigator.pop(context);
@@ -68,7 +70,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                               ));
                         },
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.07,
+                          height: MediaQuery.of(context).size.height * 0.045,
                           width: MediaQuery.of(context).size.width * 0.4,
                           decoration: BoxDecoration(
                               color: darkblue,
@@ -99,7 +101,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                               ));
                         },
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.05,
+                          height: MediaQuery.of(context).size.height * 0.045,
                           width: MediaQuery.of(context).size.width * 0.4,
                           decoration: BoxDecoration(
                               color: darkblue,
@@ -130,7 +132,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                               ));
                         },
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.05,
+                          height: MediaQuery.of(context).size.height * 0.045,
                           width: MediaQuery.of(context).size.width * 0.4,
                           decoration: BoxDecoration(
                               color: darkblue,
@@ -161,7 +163,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                               ));
                         },
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.05,
+                          height: MediaQuery.of(context).size.height * 0.045,
                           width: MediaQuery.of(context).size.width * 0.4,
                           decoration: BoxDecoration(
                               color: darkblue,
@@ -182,7 +184,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
+                  padding: const EdgeInsets.only(left: 20.0, bottom: 20.0),
                   child: Align(
                     alignment: Alignment.topRight,
                     child: InkWell(
@@ -213,9 +215,12 @@ class _SummaryWidgetState extends State<SummaryWidget> {
     );
   }
 
+  var height, width;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
 
     return SizedBox(
         height: size.height - 150,
@@ -247,7 +252,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                             child: Card(
                               elevation: 5,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(4),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -277,8 +282,8 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                             },
                                             colorList: const [
                                               Color.fromRGBO(124, 179, 66, 1),
-                                              Color.fromRGBO(74, 199, 221, 1),
                                               Color.fromRGBO(255, 59, 59, 1),
+                                              Color.fromRGBO(74, 199, 221, 1),
                                             ],
                                             legendOptions: const LegendOptions(
                                               showLegends: false,
@@ -293,82 +298,161 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                     ),
                                     Column(
                                       children: [
-                                        Text(
-                                          "Sale",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                          textAlign: TextAlign.left,
+                                        SizedBox(
+                                          height: height * 0.035,
+                                          width: width * 0.45,
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                height: height,
+                                                width: width * 0.2,
+                                                alignment: Alignment.centerLeft,
+                                                child: const Text(
+                                                  "Sale",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                  textAlign: TextAlign.left,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.01,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  height: height,
+                                                  width: width,
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text(
+                                                    " ${HomeController.to.curency} ${snapshot.data!.data![index].transactions!.sale!}",
+                                                    style: const TextStyle(
+                                                        color: Colors.green,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                         SizedBox(
-                                          width: 30,
-                                        ),
-                                        Text(
-                                          "Purchase",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                          textAlign: TextAlign.left,
+                                          height: height * 0.035,
+                                          width: width * 0.45,
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                height: height,
+                                                width: width * 0.2,
+                                                alignment: Alignment.centerLeft,
+                                                child: const Text(
+                                                  "Purchase",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                  textAlign: TextAlign.left,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.01,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  height: height,
+                                                  width: width,
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text(
+                                                    "-${HomeController.to.curency} ${model!.data![index].transactions!.purchase!}",
+                                                    style: const TextStyle(
+                                                        color: Colors.red,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                         SizedBox(
-                                          width: 30,
-                                        ),
-                                        Text(
-                                          "Expense",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                          textAlign: TextAlign.left,
+                                          height: height * 0.035,
+                                          width: width * 0.45,
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                height: height,
+                                                width: width * 0.2,
+                                                alignment: Alignment.centerLeft,
+                                                child: const Text(
+                                                  "Expense",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                  textAlign: TextAlign.left,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.01,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  height: height,
+                                                  width: width,
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text(
+                                                    "-${HomeController.to.curency} ${model!.data![index].transactions!.expense!}",
+                                                    style: const TextStyle(
+                                                        color: Colors.blue,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                         SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          AppLocalizations.of(context)!.total,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                          textAlign: TextAlign.left,
+                                          height: height * 0.05,
+                                          width: width * 0.45,
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                height: height,
+                                                width: width * 0.2,
+                                                alignment: Alignment.centerLeft,
+                                                child: const Text(
+                                                  "Total",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                  textAlign: TextAlign.left,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.01,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  height: height,
+                                                  width: width,
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text(
+                                                    balance > 0
+                                                        ? "${HomeController.to.curency} $balance"
+                                                        : "${HomeController.to.curency} $balance",
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          " ${HomeController.to.curency}${snapshot.data!.data![index].transactions!.sale!}",
-                                          style: const TextStyle(
-                                              color: Colors.green,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "-${HomeController.to.curency}${model!.data![index].transactions!.purchase!}",
-                                          style: const TextStyle(
-                                              color: Colors.red,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "-${HomeController.to.curency}${model!.data![index].transactions!.purchase!}",
-                                          style: TextStyle(
-                                              color: Colors.blue.shade300,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          balance > 0
-                                              ? "+${HomeController.to.curency}$balance"
-                                              : "${HomeController.to.curency}$balance",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: balance > 0
-                                                  ? Colors.green
-                                                  : Colors.red),
-                                        ),
-                                      ],
-                                    )
                                   ],
                                 ),
                               ),

@@ -88,7 +88,7 @@ class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
               children: [
                 Container(
                   height: height * 0.3,
-                  color: darkblue,
+                  color: darkblue!,
                   child: Padding(
                     padding: const EdgeInsets.only(top: 15.0),
                     child: Row(
@@ -171,14 +171,14 @@ class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                   borderSide: BorderSide(
-                                                      color: darkblue),
+                                                      color: darkblue!),
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                   borderSide: BorderSide(
-                                                      color: darkblue),
+                                                      color: darkblue!),
                                                 ),
                                               ),
                                             ),
@@ -213,14 +213,14 @@ class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                   borderSide: BorderSide(
-                                                      color: darkblue),
+                                                      color: darkblue!),
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                   borderSide: BorderSide(
-                                                      color: darkblue),
+                                                      color: darkblue!),
                                                 ),
                                               ),
                                             ),
@@ -269,7 +269,7 @@ class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
                                                                         width *
                                                                             0.8,
                                                                     color:
-                                                                        darkblue,
+                                                                        darkblue!,
                                                                     child:
                                                                         Padding(
                                                                       padding: const EdgeInsets
@@ -438,7 +438,7 @@ class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
                                                         BorderRadius.circular(
                                                             10),
                                                     borderSide: BorderSide(
-                                                        color: darkblue),
+                                                        color: darkblue!),
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
@@ -446,7 +446,7 @@ class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
                                                         BorderRadius.circular(
                                                             10),
                                                     borderSide: BorderSide(
-                                                        color: darkblue),
+                                                        color: darkblue!),
                                                   ),
                                                 ),
                                               ),
@@ -473,7 +473,7 @@ class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
                                                         BorderRadius.circular(
                                                             10),
                                                     border: Border.all(
-                                                        color: darkblue)),
+                                                        color: darkblue!)),
                                                 child: Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment
@@ -515,14 +515,14 @@ class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                   borderSide: BorderSide(
-                                                      color: darkblue),
+                                                      color: darkblue!),
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                   borderSide: BorderSide(
-                                                      color: darkblue),
+                                                      color: darkblue!),
                                                 ),
                                               ),
                                             ),
@@ -561,13 +561,13 @@ class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               borderSide:
-                                                  BorderSide(color: darkblue),
+                                                  BorderSide(color: darkblue!),
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               borderSide:
-                                                  BorderSide(color: darkblue),
+                                                  BorderSide(color: darkblue!),
                                             ),
                                           ),
                                         ),
@@ -598,13 +598,13 @@ class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               borderSide:
-                                                  BorderSide(color: darkblue),
+                                                  BorderSide(color: darkblue!),
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               borderSide:
-                                                  BorderSide(color: darkblue),
+                                                  BorderSide(color: darkblue!),
                                             ),
                                           ),
                                         ),
@@ -684,7 +684,7 @@ class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
                                       children: [
                                         Icon(
                                           Icons.file_present_outlined,
-                                          color: darkblue,
+                                          color: darkblue!,
                                         ),
                                         SizedBox(
                                           width: width * 0.05,
@@ -699,7 +699,7 @@ class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
                                               style: TextStyle(color: white),
                                             )),
                                             decoration: BoxDecoration(
-                                                color: darkblue,
+                                                color: darkblue!,
                                                 borderRadius:
                                                     BorderRadius.circular(10)),
                                           ),
@@ -720,7 +720,7 @@ class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
                                               style: TextStyle(color: white),
                                             )),
                                             decoration: BoxDecoration(
-                                                color: darkblue,
+                                                color: darkblue!,
                                                 borderRadius:
                                                     BorderRadius.circular(10)),
                                           ),
@@ -735,7 +735,7 @@ class _AddExpenseTransactionState extends State<AddExpenseTransaction> {
                                               style: TextStyle(color: white),
                                             )),
                                             decoration: BoxDecoration(
-                                                color: darkblue,
+                                                color: darkblue!,
                                                 borderRadius:
                                                     BorderRadius.circular(10)),
                                           ),

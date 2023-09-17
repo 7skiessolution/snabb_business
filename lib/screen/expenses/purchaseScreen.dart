@@ -4,52 +4,23 @@ import 'package:snabb_business/utils/color.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../controller/homeController.dart';
+import '../../models/dataclassgraphModel.dart';
 
-class PurchaseChart extends StatefulWidget {
-  const PurchaseChart({super.key});
+class PurchaseScreen extends StatefulWidget {
+  const PurchaseScreen({super.key});
 
   @override
-  State<PurchaseChart> createState() => _PurchaseChartState();
+  State<PurchaseScreen> createState() => _PurchaseScreenState();
 }
 
-class _PurchaseChartState extends State<PurchaseChart> {
-  @override
-  void initState() {
-    Get.put(HomeController());
-    // TODO: implement initState
-    HomeController.to.getexpensePurchase(0);
-
-    super.initState();
-  }
-
+class _PurchaseScreenState extends State<PurchaseScreen> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return GetBuilder<HomeController>(builder: (obj) {
       return Scaffold(
-        appBar: AppBar(
-          backgroundColor: darkblue,
-          leading: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-              size: width * 0.065,
-            ),
-          ),
-          centerTitle: true,
-          title: Text(
-            "Purchase",
-            style: TextStyle(
-                fontSize: width * 0.04,
-                fontWeight: FontWeight.w800,
-                color: white),
-          ),
-        ),
-        body: SizedBox(
+        body: Container(
           height: height,
           width: width,
           child: Padding(
@@ -63,28 +34,34 @@ class _PurchaseChartState extends State<PurchaseChart> {
                       color: white, borderRadius: BorderRadius.circular(8)),
                   child: Column(
                     children: [
-                      SizedBox(
-                        height: height * 0.16,
-                        width: width,
-                        child: SfCartesianChart(
-                            primaryXAxis: CategoryAxis(),
-                            primaryYAxis: NumericAxis(
-                              minimum: 0,
-                              interval: 15,
-                              desiredIntervals:
-                                  7, // Set this to the number of desired ticks (7 in this case)
-                            ),
-                            tooltipBehavior: obj.tooltip,
-                            series: <ChartSeries<Chartdata, String>>[
-                              ColumnSeries<Chartdata, String>(
-                                dataSource: obj.purchasedata,
-                                xValueMapper: (Chartdata data, _) => data.x,
-                                yValueMapper: (Chartdata data, _) => data.y,
-                                name: 'Purchase',
-                                color: darkblue,
-                              ),
-                            ]),
+                      Text(
+                        "Purchase",
+                        style: TextStyle(
+                            fontSize: width * 0.04,
+                            fontWeight: FontWeight.w800,
+                            color: darkblue),
                       ),
+                      Container(
+                          height: height * 0.16,
+                          width: width,
+                          child: SfCartesianChart(
+                              primaryXAxis: CategoryAxis(),
+                              primaryYAxis: NumericAxis(
+                                minimum: 0,
+                                interval: 15,
+                                desiredIntervals:
+                                    7, // Set this to the number of desired ticks (7 in this case)
+                              ),
+                              tooltipBehavior: obj.tooltip,
+                              series: <ChartSeries<Chartdata, String>>[
+                                ColumnSeries<Chartdata, String>(
+                                  dataSource: obj.purchasedata,
+                                  xValueMapper: (Chartdata data, _) => data.x,
+                                  yValueMapper: (Chartdata data, _) => data.y,
+                                  name: 'Purchase',
+                                  color: darkblue,
+                                ),
+                              ])),
                     ],
                   ),
                 ),
@@ -108,9 +85,8 @@ class _PurchaseChartState extends State<PurchaseChart> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: obj.purchaseData.length,
+                    itemCount: 10,
                     itemBuilder: (context, index) {
-                      var data = obj.purchaseData[index];
                       return Padding(
                         padding: EdgeInsets.only(top: height * 0.015),
                         child: Stack(
@@ -129,17 +105,17 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     Text(
-                                      "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency} ",
+                                      "Recieve Payment 11,000 PKR ",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: width * 0.025,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: width * 0.03,
                                           color: white),
                                     ),
                                     Text(
-                                      "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
+                                      "Balamce Amount: 11,000 PKR ",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: width * 0.025,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: width * 0.03,
                                           color: white),
                                     )
                                   ],
@@ -160,18 +136,18 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                   CircleAvatar(
                                     backgroundColor: darkblue,
                                     child: Image.asset(
-                                      data.imageUrl!,
+                                      "images/wallet.png",
                                       color: white,
                                     ),
                                   ),
                                   Text(
-                                    "${data.category}",
+                                    "Product 1",
                                     style: TextStyle(
                                         fontSize: width * 0.04,
                                         fontWeight: FontWeight.bold,
                                         color: darkblue),
                                   ),
-                                  SizedBox(
+                                  Container(
                                     height: height * 0.1,
                                     width: width * 0.3,
                                     child: Column(
@@ -188,7 +164,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                           ),
                                           child: Center(
                                             child: Text(
-                                              "${data.amount}",
+                                              "27,0000 PKR",
                                               style: TextStyle(
                                                   fontSize: width * 0.02,
                                                   fontWeight: FontWeight.bold,
@@ -200,9 +176,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                           height: height * 0.01,
                                         ),
                                         Text(
-                                          data.dateTime
-                                              .toString()
-                                              .substring(0, 10),
+                                          "06/07/2023",
                                           style: TextStyle(
                                               fontSize: width * 0.02,
                                               fontWeight: FontWeight.bold,

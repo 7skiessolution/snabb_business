@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/get_core.dart';
-import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 import 'package:snabb_business/models/get_all_user_transaction_model.dart' as T;
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/controller/summerry_controller.dart';
 import 'package:snabb_business/models/search_summary.dart';
 import 'package:snabb_business/screen/transaction_schedule/transaction_card.dart';
-import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/color.dart';
 
 class CategoryWidget extends StatefulWidget {
@@ -31,8 +28,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
       builder: (context, child) {
         return Theme(
             data: ThemeData.light().copyWith(
-              primaryColor: darkblue,
-              colorScheme: ColorScheme.light(primary: darkblue),
+              primaryColor: darkblue!,
+              colorScheme: ColorScheme.light(primary: darkblue!),
               buttonTheme:
                   const ButtonThemeData(textTheme: ButtonTextTheme.primary),
             ),
@@ -68,6 +65,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
   bool dateToPicked = false;
   DateTime selectedDateFrom = DateTime.now();
   DateTime selectedDateTo = DateTime.now();
+
   List<String> types = [
     "All",
     'Sale',
@@ -88,186 +86,182 @@ class _CategoryWidgetState extends State<CategoryWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final selectedFormatfrom =
+        DateFormat('dd/MM/yyyy').format(selectedDateFrom);
+    final selectedFormetTo = DateFormat('dd/MM/yyyy').format(selectedDateTo);
     Size size = MediaQuery.of(context).size;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
     return GetBuilder<SummeryController>(builder: (obj) {
       return Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Column(
               children: [
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      AppLocalizations.of(context)!.type,
-                      style: TextStyle(
-                          color: darkblue,
-                          fontWeight: FontWeight.bold,
-                          fontSize: size.width * 0.035),
-                    )),
-                const SizedBox(
-                  height: 10,
-                ),
                 Card(
-                  elevation: 7,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                  child: Container(
-                    height: size.height * 0.07,
-                    width: size.width * 0.9,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(7),
-                      border: Border.all(
-                        color: darkblue,
-                      ),
-                    ),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton<String>(
-                        dropdownColor: Colors.white,
-                        focusColor: darkblue,
-                        value: selectedType,
-                        style: TextStyle(
-                            color: darkblue,
-                            fontWeight: FontWeight.bold,
-                            fontSize: size.width * 0.035),
-                        onChanged: (newValue) {
-                          setState(() {
-                            selectedType = newValue as String;
-                          });
-                        },
-                        items:
-                            types.map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(
-                              value,
-                              style: TextStyle(
-                                  color: darkblue,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: size.width * 0.035),
-                            ),
-                          );
-                        }).toList(),
-                        hint: Text(AppLocalizations.of(context)!.selecttype),
-                        icon: Icon(
-                          Icons.arrow_drop_down,
-                          color: darkblue,
-                        ),
-                        elevation: 1,
-                        isExpanded: true,
-                        isDense: true,
-                        selectedItemBuilder: (BuildContext context) {
-                          return types.map<Widget>((String value) {
-                            return Container(
-                              alignment: Alignment.centerLeft,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Text(
-                                  value,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: darkblue,
-                                      fontWeight: FontWeight.bold),
+                  color: white,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: width,
+                      child: Column(
+                        children: [
+                          Text(
+                            "Compare the values of the categories",
+                            style: TextStyle(
+                                fontSize: width * 0.03,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: height * 0.02,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context)!.type.capitalize!,
+                                style: TextStyle(
+                                  fontSize: width * 0.03,
+                                  color: Colors.black,
                                 ),
                               ),
-                            );
-                          }).toList();
-                        },
+                              Container(
+                                height: size.height * 0.04,
+                                width: size.width * 0.25,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey.withOpacity(0.5)),
+                                child: DropdownButtonHideUnderline(
+                                  child: DropdownButton<String>(
+                                    dropdownColor: Colors.white,
+                                    focusColor: Colors.black,
+                                    value: selectedType,
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: size.width * 0.035),
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        selectedType = newValue as String;
+                                      });
+                                    },
+                                    items: types.map<DropdownMenuItem<String>>(
+                                        (String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(
+                                          value,
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: size.width * 0.035),
+                                        ),
+                                      );
+                                    }).toList(),
+                                    hint: Text(AppLocalizations.of(context)!
+                                        .selecttype
+                                        .capitalize!),
+                                    icon: Icon(
+                                      Icons.arrow_drop_down,
+                                      color: Colors.black,
+                                    ),
+                                    elevation: 1,
+                                    isExpanded: true,
+                                    isDense: true,
+                                    selectedItemBuilder:
+                                        (BuildContext context) {
+                                      return types.map<Widget>((String value) {
+                                        return Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 8.0),
+                                            child: Text(
+                                              value,
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }).toList();
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: height * 0.01,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context)!.from.capitalize!,
+                                style: TextStyle(
+                                    fontSize: width * 0.04,
+                                    color: Colors.black),
+                              ),
+                              Container(
+                                height: size.height * 0.04,
+                                width: size.width * 0.25,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey.withOpacity(0.5)),
+                                child: TextButton(
+                                    onPressed: () {
+                                      _selectDate(context, true);
+                                    },
+                                    child: Text(
+                                      !dateFromPicked
+                                          ? AppLocalizations.of(context)!.select
+                                          : selectedFormatfrom,
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: size.width * 0.03),
+                                    )),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: height * 0.01,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context)!.to.capitalize!,
+                                style: TextStyle(
+                                  fontSize: width * 0.04,
+                                ),
+                              ),
+                              Container(
+                                height: size.height * 0.04,
+                                width: size.width * 0.25,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey.withOpacity(0.5)),
+                                child: TextButton(
+                                    onPressed: () {
+                                      _selectDate(context, false);
+                                    },
+                                    child: Text(
+                                      !dateToPicked
+                                          ? AppLocalizations.of(context)!.select
+                                          : selectedFormetTo,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: width * 0.03,
+                                      ),
+                                    )),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      width: size.width / 3,
-                      child: Column(
-                        children: [
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                AppLocalizations.of(context)!.from,
-                                style: TextStyle(
-                                    color: darkblue,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: size.width * 0.035),
-                              )),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            width: size.width / 3,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                color: darkblue,
-                              ),
-                            ),
-                            child: TextButton(
-                                onPressed: () {
-                                  _selectDate(context, true);
-                                },
-                                child: Text(
-                                  !dateFromPicked
-                                      ? AppLocalizations.of(context)!.select
-                                      : " ${selectedDateFrom.day} ${widget.months[selectedDateFrom.month - 1]} ${selectedDateFrom.year} ",
-                                  style: TextStyle(
-                                      color: darkblue,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: size.width * 0.03),
-                                )),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: size.width / 3,
-                      child: Column(
-                        children: [
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                AppLocalizations.of(context)!.to,
-                                style: TextStyle(
-                                    color: darkblue,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: size.width * 0.035),
-                              )),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            width: size.width / 3,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                color: darkblue,
-                              ),
-                            ),
-                            child: TextButton(
-                                onPressed: () {
-                                  _selectDate(context, false);
-                                },
-                                child: Text(
-                                  !dateToPicked
-                                      ? AppLocalizations.of(context)!.select
-                                      : " ${selectedDateTo.day} ${widget.months[selectedDateTo.month - 1]} ${selectedDateFrom.year}",
-                                  style: TextStyle(
-                                    color: darkblue,
-                                  ),
-                                )),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                )
               ],
             ),
           ),
@@ -281,27 +275,18 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                       SizedBox(
                         height: size.height * 0.015,
                       ),
-                      Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            AppLocalizations.of(context)!.results,
-                            style: TextStyle(
-                                color: darkblue,
-                                fontWeight: FontWeight.bold,
-                                fontSize: size.width * 0.035),
-                          )),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            AppLocalizations.of(context)!.total,
+                            AppLocalizations.of(context)!.total.capitalize!,
                             style: TextStyle(
-                                color: darkblue,
+                                color: Colors.black,
                                 fontWeight: FontWeight.bold,
                                 fontSize: size.width * 0.035),
                           ),
                           Text(
-                            '${HomeController.to.curency} ${obj.totalbalance}',
+                            ' ${obj.totalbalance} ${HomeController.to.curency}',
                             style: TextStyle(
                                 color: obj.totalbalance < 0
                                     ? Colors.red
@@ -310,6 +295,9 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                 fontSize: size.width * 0.035),
                           ),
                         ],
+                      ),
+                      SizedBox(
+                        height: height * 0.02,
                       ),
                       startdate != null
                           ? FutureBuilder(
@@ -366,7 +354,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                               AppLocalizations.of(context)!
                                                   .notransaction,
                                               style: TextStyle(
-                                                  color: darkblue,
+                                                  color: darkblue!,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: size.width * 0.035),
                                               textAlign: TextAlign.center,
@@ -381,7 +369,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                   child: Text(
                                 "No Transaction Found !",
                                 style: TextStyle(
-                                    color: darkblue,
+                                    color: darkblue!,
                                     fontWeight: FontWeight.bold,
                                     fontSize: size.width * 0.035),
                                 textAlign: TextAlign.center,

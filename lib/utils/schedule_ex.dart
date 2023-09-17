@@ -2,9 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:snabb_business/screen/schedule_transaction/add_Schedule_income.dart';
-import 'package:snabb_business/screen/schedule_transaction/add_schedule_expense.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'daimond_shape.dart';
 
 class ScheduleFB extends StatefulWidget {
   final num balance;
@@ -64,24 +62,24 @@ class _ScheduleFBState extends State<ScheduleFB>
       children: [
         if (_isExpanded)
           FloatingActionButton(
+            heroTag: "Sincome",
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => ScheduleIncome(income: false),
               ));
             },
-            heroTag: null,
             backgroundColor: Colors.red,
             child: const ImageIcon(AssetImage("assets/images/minus.png")),
           ),
         if (_isExpanded) const SizedBox(height: 16),
         if (_isExpanded)
           FloatingActionButton(
+            heroTag: "SExpanse",
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => ScheduleIncome(income: true),
               ));
             },
-            heroTag: null,
             backgroundColor: Colors.green,
             child: const Icon(Icons.add),
           ),
@@ -98,7 +96,7 @@ class _ScheduleFBState extends State<ScheduleFB>
                 // shape: RoundedRectangleBorder(
                 //   borderRadius: BorderRadius.circular(40.0),
                 // ),
-                //  heroTag: null,
+
                 child: AnimatedIcon(
                   icon: AnimatedIcons.add_event,
                   progress: _animation,

@@ -223,7 +223,7 @@ class _MyAppState extends State<MyApp> {
                 brightness: britnessProvider.britness == AppBritness.light
                     ? Brightness.light
                     : Brightness.dark,
-                colorScheme: ColorScheme.fromSeed(seedColor: darkblue),
+                colorScheme: ColorScheme.fromSeed(seedColor: darkblue!),
                 fontFamily: GoogleFonts.montserrat().fontFamily,
                 primaryColor: AppColors.blue,
                 primarySwatch: generateMaterialColor(AppColors.blue)

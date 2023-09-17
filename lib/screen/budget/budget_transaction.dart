@@ -8,7 +8,9 @@ import 'package:snabb_business/controller/budget/budget_controller.dart';
 import 'package:snabb_business/controller/budget/transaction_budget.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/models/budget_model.dart';
+import 'package:snabb_business/models/payment_type_model.dart';
 import 'package:snabb_business/static_data.dart';
+import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/spinkit.dart';
 
@@ -22,6 +24,7 @@ class BugetTransaction extends StatefulWidget {
 }
 
 class _BugetTransactionState extends State<BugetTransaction> {
+  final TextEditingController selectPaymentMethod = TextEditingController();
   @override
   void initState() {
     Get.put(TransactionBudgetController());
@@ -34,6 +37,9 @@ class _BugetTransactionState extends State<BugetTransaction> {
     super.initState();
   }
 
+  String? selectedimage;
+  String? selectedname;
+  int? paymentMethod;
   var height, width;
 
   @override
@@ -45,203 +51,358 @@ class _BugetTransactionState extends State<BugetTransaction> {
         return Scaffold(
           body: Stack(
             children: [
-              Column(
-                children: [
-                  Container(
-                    width: width * 0.9,
-                    height: height * 0.13,
-                    decoration: BoxDecoration(
-                      color: darkblue,
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
+              Align(
+                  alignment: Alignment.topCenter,
+                  child: AppBarWidgt(text: "Budget")),
+              Padding(
+                padding: EdgeInsets.only(top: height * 0.1),
+                child: SizedBox(
+                  width: width,
+                  height: height * 0.15,
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: width,
+                        height: height * 0.15,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage("images/dollar.jpg"))),
                       ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                            onPressed: () => Navigator.pop(context),
-                            icon: Icon(
-                              Icons.arrow_back,
-                              color: Colors.white,
-                              size: width * 0.065,
-                            )),
-                        Text(
-                          AppLocalizations.of(context)!.budget,
-                          style: TextStyle(
-                              fontSize: width * 0.04,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        SizedBox(
-                          width: width * 0.045,
-                        )
-                      ],
-                    ),
+                      Container(
+                        width: width,
+                        height: height * 0.15,
+                        color: Colors.blue[900]!.withOpacity(0.9),
+                      ),
+                    ],
                   ),
-                  SingleChildScrollView(
-                    reverse: true,
-                    child: Column(
-                      children: [
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: height * 0.2),
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: Card(
+                    elevation: 10,
+                    shadowColor: Colors.blue[900],
+                    child: SizedBox(
+                      width: width * 0.9,
+                      height: height * 0.7,
+                      child: Stack(children: [
                         SizedBox(
-                          height: height * 0.1,
-                        ),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        SizedBox(
-                          height: height * 0.07,
+                          height: height,
                           width: width,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    Radio(
-                                      activeColor: darkblue,
-                                      value: "Cash",
-                                      groupValue: obj.paymentMethod,
-                                      onChanged: (value) {
-                                        print(value);
-                                        obj.paymentMethod = value;
-                                        obj.update();
-                                      },
-                                    ),
-                                    Text(
-                                      AppLocalizations.of(context)!.bycash,
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    Radio(
-                                      activeColor: darkblue,
-                                      value:
-                                          AppLocalizations.of(context)!.balance,
-                                      groupValue: obj.paymentMethod,
-                                      onChanged: (value) {
-                                        print(value);
-                                        obj.paymentMethod = value;
-                                        obj.update();
-                                      },
-                                    ),
-                                    Text(
-                                      AppLocalizations.of(context)!.bybank,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        Center(
-                            child: SizedBox(
-                          width: width * 0.9,
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Card(
-                                      elevation: 7,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: SizedBox(
-                                        width: width * 0.4,
-                                        child: TextFormField(
-                                          controller: obj.value,
-                                          keyboardType: TextInputType.number,
-                                          decoration: InputDecoration(
-                                            errorStyle: const TextStyle(
-                                                color: Colors.black),
-                                            contentPadding:
-                                                const EdgeInsets.symmetric(
-                                                    vertical: 0,
-                                                    horizontal: 20),
-                                            fillColor: Colors.grey,
-                                            hintText:
-                                                AppLocalizations.of(context)!
-                                                    .payable,
-                                            alignLabelWithHint: true,
-                                            enabledBorder: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              borderSide:
-                                                  BorderSide(color: darkblue),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              borderSide:
-                                                  BorderSide(color: darkblue),
+                                SizedBox(
+                                  height: height * 0.02,
+                                ),
+                                SizedBox(
+                                  width: width * 0.9,
+                                  height: height * 0.07,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Card(
+                                        elevation: 7,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: SizedBox(
+                                          width: width * 0.4,
+                                          child: TextFormField(
+                                            controller: obj.value,
+                                            keyboardType: TextInputType.number,
+                                            decoration: InputDecoration(
+                                              errorStyle: const TextStyle(
+                                                  color: Colors.black),
+                                              contentPadding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 0,
+                                                      horizontal: 20),
+                                              fillColor: Colors.grey,
+                                              hintText:
+                                                  AppLocalizations.of(context)!
+                                                      .payable,
+                                              alignLabelWithHint: true,
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                borderSide: BorderSide(
+                                                    color: darkblue!),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                borderSide: BorderSide(
+                                                    color: darkblue!),
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Container(
-                                        margin:
-                                            const EdgeInsets.only(right: 30),
-                                        child: Text(
-                                          HomeController.to.curency,
-                                          style: TextStyle(
-                                              fontSize: 24,
-                                              color: Colors.black87
-                                                  .withOpacity(0.7)),
-                                        ))
+                                      Container(
+                                          margin:
+                                              const EdgeInsets.only(right: 30),
+                                          child: Text(
+                                            HomeController.to.curency,
+                                            style: TextStyle(
+                                                fontSize: width * 0.04,
+                                                color: Colors.black87
+                                                    .withOpacity(0.7)),
+                                          ))
 
-                                    //...............................................
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: height * 0.01,
-                                ),
-                                SizedBox(
-                                  height: height * 0.01,
-                                ),
-
-                                Container(
-                                  margin: EdgeInsets.only(left: width * 0.02),
-                                  child: SizedBox(
-                                    width: width * 0.4,
-                                    child: InkWell(
-                                      onTap: () => obj.selectDate(context),
-                                      child: IgnorePointer(
-                                        child: TextFormField(
-                                          controller: TextEditingController(
-                                            text: ' 7/7/2000',
-                                          ),
-                                          decoration: InputDecoration(
-                                            labelText:
-                                                AppLocalizations.of(context)!
-                                                    .date,
-                                            labelStyle: TextStyle(
-                                                fontSize: width * 0.045,
-                                                color: darkblue,
-                                                fontWeight: FontWeight.w500),
-                                            prefix: Icon(
-                                              Icons.calendar_today,
-                                              color: darkblue,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
+                                      //...............................................
+                                    ],
                                   ),
                                 ),
 
                                 SizedBox(
-                                  height: height * 0.03,
+                                    height: height * 0.08,
+                                    width: width * 0.95,
+                                    // color: AppColors.backgroundColor,
+                                    child: InkWell(
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              content: Container(
+                                                color: Colors.grey.shade300,
+                                                height: height * 0.35,
+                                                width: width * 0.8,
+                                                child: Stack(
+                                                  children: [
+                                                    Container(
+                                                      height: height * 0.15,
+                                                      width: width,
+                                                      decoration: const BoxDecoration(
+                                                          image: DecorationImage(
+                                                              fit: BoxFit.cover,
+                                                              image: AssetImage(
+                                                                  "images/dollar.jpg"))),
+                                                    ),
+                                                    Container(
+                                                      height: height * 0.15,
+                                                      width: width,
+                                                      color: Colors.blue[900]!
+                                                          .withOpacity(0.9),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                top: height *
+                                                                    0.03,
+                                                                left: width *
+                                                                    0.02),
+                                                        child: Text(
+                                                          "Select Payment ",
+                                                          style: TextStyle(
+                                                              color: white,
+                                                              fontSize: 15,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: EdgeInsets.only(
+                                                          top: height * 0.07),
+                                                      child: Center(
+                                                        child: Card(
+                                                          elevation: 10,
+                                                          shadowColor:
+                                                              Colors.blue[900],
+                                                          child: Container(
+                                                            height:
+                                                                height * 0.3,
+                                                            width: width * 0.7,
+                                                            color: white,
+                                                            child: Center(
+                                                              child: ListView
+                                                                  .builder(
+                                                                      itemCount: PaymentTypeModel
+                                                                          .typemodellist
+                                                                          .length,
+                                                                      itemBuilder:
+                                                                          (context,
+                                                                              index) {
+                                                                        bool
+                                                                            isactive =
+                                                                            HomeController.to.paymenttypeindex ==
+                                                                                index;
+                                                                        return GestureDetector(
+                                                                          onTap:
+                                                                              () {
+                                                                            setState(() {
+                                                                              HomeController.to.paymenttypeindex = index;
+                                                                              paymentMethod = index;
+                                                                              selectedimage = PaymentTypeModel.typemodellist[HomeController.to.paymenttypeindex!].image;
+                                                                              selectPaymentMethod.text = PaymentTypeModel.typemodellist[HomeController.to.paymenttypeindex!].name!;
+                                                                            });
+                                                                            print("name $selectedname");
+                                                                            Navigator.pop(context);
+                                                                          },
+                                                                          child:
+                                                                              SizedBox(
+                                                                            height:
+                                                                                height * 0.08,
+                                                                            child:
+                                                                                Row(
+                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                              children: [
+                                                                                SizedBox(
+                                                                                  width: width * 0.11,
+                                                                                  height: height * 0.11,
+                                                                                  child: Image(image: AssetImage("${PaymentTypeModel.typemodellist[index].image}")),
+                                                                                ),
+                                                                                Text(
+                                                                                  "${PaymentTypeModel.typemodellist[index].name}",
+                                                                                  style: const TextStyle(
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                  ),
+                                                                                ),
+                                                                                SizedBox(
+                                                                                  width: width * 0.2,
+                                                                                )
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      }),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                      child: IgnorePointer(
+                                        child: TextFormField(
+                                          style: const TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w700),
+                                          controller: selectPaymentMethod,
+                                          decoration: InputDecoration(
+                                            enabledBorder: InputBorder.none,
+                                            labelText: 'Select Payment',
+                                            labelStyle: const TextStyle(
+                                                fontWeight: FontWeight.w700),
+                                            prefixIcon: Icon(
+                                              Icons.attach_money_outlined,
+                                              color: Colors.grey.shade700,
+                                              size: 25,
+                                            ),
+                                          ),
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.isEmpty) {
+                                              return 'Please Select Wallet';
+                                            }
+                                            return null;
+                                          },
+                                        ),
+                                      ),
+                                    )),
+                                SizedBox(
+                                    height: height * 0.08,
+                                    width: width * 0.95,
+                                    // color: AppColors.backgroundColor,
+                                    child: InkWell(
+                                      onTap: () {
+                                        obj.selectDate(context);
+                                      },
+                                      child: IgnorePointer(
+                                        child: TextFormField(
+                                          controller: obj.datecontroller,
+                                          style: const TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w700),
+                                          decoration: InputDecoration(
+                                            enabledBorder: InputBorder.none,
+                                            labelText: 'Select Date',
+                                            labelStyle: const TextStyle(
+                                                fontWeight: FontWeight.w700),
+                                            prefixIcon: Icon(
+                                              Icons.calendar_today,
+                                              color: Colors.grey.shade700,
+                                              size: 25,
+                                            ),
+                                          ),
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.isEmpty) {
+                                              return 'Please Select payment';
+                                            }
+                                            return null;
+                                          },
+                                        ),
+                                      ),
+                                    )),
+
+                                // SizedBox(
+                                //   height: height * 0.07,
+                                //   width: width,
+                                //   child: Row(
+                                //     children: [
+                                //       Expanded(
+                                //         child: Row(
+                                //           children: [
+                                //             Radio(
+                                //               activeColor: darkblue!,
+                                //               value: "Cash",
+                                //               groupValue: obj.paymentMethod,
+                                //               onChanged: (value) {
+                                //                 print(value);
+                                //                 obj.paymentMethod = value;
+                                //                 obj.update();
+                                //               },
+                                //             ),
+                                //             Text(
+                                //               AppLocalizations.of(context)!
+                                //                   .bycash,
+                                //             )
+                                //           ],
+                                //         ),
+                                //       ),
+                                //       Expanded(
+                                //         child: Row(
+                                //           children: [
+                                //             Radio(
+                                //               activeColor: darkblue!,
+                                //               value:
+                                //                   AppLocalizations.of(context)!
+                                //                       .balance,
+                                //               groupValue: obj.paymentMethod,
+                                //               onChanged: (value) {
+                                //                 print(value);
+                                //                 obj.paymentMethod = value;
+                                //                 obj.update();
+                                //               },
+                                //             ),
+                                //             Text(
+                                //               AppLocalizations.of(context)!
+                                //                   .bybank,
+                                //             )
+                                //           ],
+                                //         ),
+                                //       ),
+                                //     ],
+                                //   ),
+                                // ),
+
+                                SizedBox(
+                                  height: height * 0.01,
                                 ),
                                 //.........................................................................................................................
                                 obj.index == 1
@@ -278,7 +439,7 @@ class _BugetTransactionState extends State<BugetTransaction> {
                                                         BorderRadius.circular(
                                                             10),
                                                     borderSide: BorderSide(
-                                                        color: darkblue),
+                                                        color: darkblue!),
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
@@ -286,7 +447,7 @@ class _BugetTransactionState extends State<BugetTransaction> {
                                                         BorderRadius.circular(
                                                             10),
                                                     borderSide: BorderSide(
-                                                        color: darkblue),
+                                                        color: darkblue!),
                                                   ),
                                                 ),
                                               ),
@@ -326,7 +487,7 @@ class _BugetTransactionState extends State<BugetTransaction> {
                                                         BorderRadius.circular(
                                                             10),
                                                     borderSide: BorderSide(
-                                                        color: darkblue),
+                                                        color: darkblue!),
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
@@ -334,7 +495,7 @@ class _BugetTransactionState extends State<BugetTransaction> {
                                                         BorderRadius.circular(
                                                             10),
                                                     borderSide: BorderSide(
-                                                        color: darkblue),
+                                                        color: darkblue!),
                                                   ),
                                                 ),
                                               ),
@@ -381,7 +542,7 @@ class _BugetTransactionState extends State<BugetTransaction> {
                                                           BorderRadius.circular(
                                                               10),
                                                       borderSide: BorderSide(
-                                                          color: darkblue),
+                                                          color: darkblue!),
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
@@ -389,7 +550,7 @@ class _BugetTransactionState extends State<BugetTransaction> {
                                                           BorderRadius.circular(
                                                               10),
                                                       borderSide: BorderSide(
-                                                          color: darkblue),
+                                                          color: darkblue!),
                                                     ),
                                                   ),
                                                 ),
@@ -431,7 +592,7 @@ class _BugetTransactionState extends State<BugetTransaction> {
                                                           BorderRadius.circular(
                                                               10),
                                                       borderSide: BorderSide(
-                                                          color: darkblue),
+                                                          color: darkblue!),
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
@@ -439,7 +600,7 @@ class _BugetTransactionState extends State<BugetTransaction> {
                                                           BorderRadius.circular(
                                                               10),
                                                       borderSide: BorderSide(
-                                                          color: darkblue),
+                                                          color: darkblue!),
                                                     ),
                                                   ),
                                                 ),
@@ -468,7 +629,7 @@ class _BugetTransactionState extends State<BugetTransaction> {
                                           height: height * 0.05,
                                           width: width * 0.35,
                                           decoration: BoxDecoration(
-                                              color: darkblue,
+                                              color: Colors.red,
                                               borderRadius:
                                                   BorderRadius.circular(7)),
                                           child: Center(
@@ -495,7 +656,7 @@ class _BugetTransactionState extends State<BugetTransaction> {
                                           height: height * 0.05,
                                           width: width * 0.35,
                                           decoration: BoxDecoration(
-                                            color: darkblue,
+                                            color: darkblue!,
                                             borderRadius:
                                                 BorderRadius.circular(7),
                                           ),
@@ -513,28 +674,32 @@ class _BugetTransactionState extends State<BugetTransaction> {
                                       ),
                                     ],
                                   ),
-                                )
-                              ]),
-                        )),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: MediaQuery.of(context)
+                                          .viewInsets
+                                          .bottom),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
-                      ],
+                        obj.isLoading == true
+                            ? Container(
+                                height: height,
+                                width: width,
+                                color: darkblue!.withOpacity(0.3),
+                                child: Center(
+                                  child: SpinKit.loadSpinkit,
+                                ),
+                              )
+                            : const SizedBox()
+                      ]),
                     ),
                   ),
-                ],
-              ),
-              obj.isLoading == true
-                  ? Container(
-                      height: height,
-                      width: width,
-                      color: darkblue.withOpacity(0.3),
-                      child: Center(
-                        child: SpinKit.loadSpinkit,
-                      ),
-                    )
-                  : const SizedBox()
+                ),
+              )
             ],
           ),
         );

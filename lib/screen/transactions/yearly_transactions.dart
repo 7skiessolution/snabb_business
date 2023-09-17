@@ -7,6 +7,7 @@ import 'package:snabb_business/models/yearly_transaction_model.dart' as yTra;
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/color.dart';
+import 'package:snabb_business/utils/colors.dart';
 
 class YearlyTransactions extends StatefulWidget {
   const YearlyTransactions({super.key});
@@ -21,18 +22,6 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
-
-    // // Filter the months that have transactions
-    // List<int> monthsWithTransactions = [];
-    // for (int i = 0; i < widget.month.length; i++) {
-    //   final currentMonth = i + 1;
-    //   final filteredTransactions = TransactionController.to.transactions
-    //       .where((transaction) => transaction.date.month == currentMonth)
-    //       .toList();
-    //   if (filteredTransactions.isNotEmpty) {
-    //     monthsWithTransactions.add(i);
-    //   }
-    // }
     Future<void> showImageDialog(BuildContext context, yTra.Transactions obj,
         var height, var width) async {
       return showDialog<void>(
@@ -215,18 +204,15 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                             width: MediaQuery.of(context).size.width,
                             child: Center(
                               child: obj.file != null && obj.file != ""
-                                  ? Hero(
-                                      tag: obj.file!,
-                                      child: FadeInImage.assetNetwork(
-                                        fit: BoxFit.cover,
-                                        placeholder: 'assets/images/bell.png',
-                                        image:
-                                            "${StaticValues.imageUrl}${obj.file!}",
-                                        placeholderErrorBuilder:
-                                            (context, error, stackTrace) {
-                                          return const CircularProgressIndicator();
-                                        },
-                                      ),
+                                  ? FadeInImage.assetNetwork(
+                                      fit: BoxFit.cover,
+                                      placeholder: 'assets/images/bell.png',
+                                      image:
+                                          "${StaticValues.imageUrl}${obj.file!}",
+                                      placeholderErrorBuilder:
+                                          (context, error, stackTrace) {
+                                        return const CircularProgressIndicator();
+                                      },
                                     )
                                   : Text(
                                       AppLocalizations.of(context)!
@@ -307,97 +293,111 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                   specificTrans =
                       obj.yearTransactionList[index].transactions!.toList();
                   return Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child:
-                                // "${widget.month[DateTime.now().month - 1]}, ${DateTime.now().day}, ${DateTime.now().year}" ==
-                                //         widget.dates[index]
-                                //     ? const Text("Today")
-                                //     :
-                                Text(obj.yearTransactionList[index].year
-                                    .toString()),
-                          ),
-                          SizedBox(
-                            height: specificTrans.length * 80,
-                            //specificTrans.length == 1?80: specificTrans.length == 2?160: specificTrans.length == 3?240: specificTrans.length == 3?320 : 400 ,
-                            child: ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: specificTrans.length,
-                              itemBuilder: (context, i) {
-                                yTra.Transactions transaction =
-                                    specificTrans[i];
-                                // return TransactionCard(transaction: transaction);
-
-                                return Card(
-                                  shadowColor: darkblue,
-                                  elevation: 2,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: ListTile(
-                                    onTap: () {
-                                      showImageDialog(
-                                          context,
-                                          transaction,
-                                          MediaQuery.of(context).size.height,
-                                          MediaQuery.of(context).size.width);
-                                    },
-                                    leading: Container(
-                                        decoration: const BoxDecoration(
-                                            shape: BoxShape.circle),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Image.asset(
-                                            transaction.imageUrl!,
-                                          ),
-                                        )),
-                                    title: Text(
-                                      transaction.name!,
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    subtitle: Text(
-                                        transaction.dateTime!.substring(0, 10)),
-                                    trailing: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                            // ignore: unrelated_type_equality_checks
-                                            transaction.type == 1
-                                                ? "+ ${transaction.amount}"
-                                                : "-${transaction.amount}",
-                                            style: TextStyle(
-                                                // ignore: unrelated_type_equality_checks
-                                                color: transaction.type == 1
-                                                    ? Colors.green
-                                                    : Colors.red,
-                                                fontWeight: FontWeight.bold)),
-                                        Text(
-                                            // ignore: unrelated_type_equality_checks
-                                            transaction.type == 1
-                                                ? transaction.currency!
-                                                : transaction.currency!,
-                                            style: TextStyle(
-                                              fontSize: 11,
-                                              fontWeight: FontWeight.bold,
-                                              color: transaction.type == 1
-                                                  ? Colors.green
-                                                  : Colors.red,
-                                            )),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Container(
+                      color: white,
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(right: 8, bottom: 8),
+                              child: Align(
+                                alignment: Alignment.topRight,
+                                child:
+                                    // "${widget.month[DateTime.now().month - 1]}, ${DateTime.now().day}, ${DateTime.now().year}" ==
+                                    //         widget.dates[index]
+                                    //     ? const Text("Today")
+                                    //     :
+                                    Text(obj.yearTransactionList[index].year
+                                        .toString()),
+                              ),
                             ),
-                          )
-                        ]),
+                            SizedBox(
+                              height: specificTrans.length * 80,
+                              //specificTrans.length == 1?80: specificTrans.length == 2?160: specificTrans.length == 3?240: specificTrans.length == 3?320 : 400 ,
+                              child: ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: specificTrans.length,
+                                itemBuilder: (context, i) {
+                                  yTra.Transactions transaction =
+                                      specificTrans[i];
+                                  // return TransactionCard(transaction: transaction);
+
+                                  return Padding(
+                                    padding: const EdgeInsets.only(bottom: 8),
+                                    child: Container(
+                                      color: AppColors.backgroundColor,
+                                      child: ListTile(
+                                        onTap: () {
+                                          showImageDialog(
+                                              context,
+                                              transaction,
+                                              MediaQuery.of(context)
+                                                  .size
+                                                  .height,
+                                              MediaQuery.of(context)
+                                                  .size
+                                                  .width);
+                                        },
+                                        leading: Container(
+                                            decoration: const BoxDecoration(
+                                                color: Colors.grey,
+                                                shape: BoxShape.circle),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Image.asset(
+                                                transaction.imageUrl!,
+                                              ),
+                                            )),
+                                        title: Text(
+                                          transaction.name!,
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        subtitle: Text(transaction.dateTime!
+                                            .substring(0, 10)),
+                                        trailing: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                                // ignore: unrelated_type_equality_checks
+                                                transaction.type == 1
+                                                    ? "+ ${transaction.amount}"
+                                                    : "-${transaction.amount}",
+                                                style: TextStyle(
+                                                    // ignore: unrelated_type_equality_checks
+                                                    color: transaction.type == 1
+                                                        ? Colors.green
+                                                        : Colors.red,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                            Text(
+                                                // ignore: unrelated_type_equality_checks
+                                                transaction.type == 1
+                                                    ? transaction.currency!
+                                                    : transaction.currency!,
+                                                style: TextStyle(
+                                                  fontSize: 11,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: transaction.type == 1
+                                                      ? Colors.green
+                                                      : Colors.red,
+                                                )),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            )
+                          ]),
+                    ),
                   );
                 },
               ),

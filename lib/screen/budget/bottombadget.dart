@@ -12,14 +12,14 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/spinkit.dart';
 
-class BudgetView extends StatefulWidget {
-  const BudgetView({super.key});
+class BudgetView1 extends StatefulWidget {
+  const BudgetView1({super.key});
 
   @override
-  State<BudgetView> createState() => _BudgetViewState();
+  State<BudgetView1> createState() => _BudgetView1State();
 }
 
-class _BudgetViewState extends State<BudgetView> {
+class _BudgetView1State extends State<BudgetView1> {
   int index = 0;
   List<String> cat = ["One Month", "Three Month ", "Six Month", "Yealy"];
 
@@ -50,7 +50,7 @@ class _BudgetViewState extends State<BudgetView> {
                 child: Text(
                   'Cancel',
                   style: TextStyle(
-                    color: darkblue!,
+                    color: darkblue,
                   ),
                 ),
               ),
@@ -127,25 +127,13 @@ class _BudgetViewState extends State<BudgetView> {
     return SafeArea(
         child: Scaffold(
             backgroundColor: backgroundColor,
-            floatingActionButton: FloatingActionButton(
-              backgroundColor: red,
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AddBudget(),
-                    ));
-              },
-              child: const Icon(Icons.add),
-            ),
             body: SizedBox(
               width: width,
               height: height,
               child: Column(
                 children: [
-                  AppBarWidgt(text: "Budget"),
                   SizedBox(
-                      height: height * 0.85,
+                      height: height * 0.75,
                       width: width,
                       child: Stack(
                         children: [
@@ -586,7 +574,7 @@ class _BudgetViewState extends State<BudgetView> {
                                         enabledThumbRadius: 0)),
                                 child: Slider(
                                   inactiveColor: Colors.grey,
-                                  activeColor: darkblue!,
+                                  activeColor: darkblue,
                                   value: sliderCurrentValue,
                                   onChanged: (double value) {},
                                 ),
@@ -666,7 +654,7 @@ class _BudgetViewState extends State<BudgetView> {
       color: Colors.black.withOpacity(0.1),
       child: Center(
         child: SpinKitCircle(
-          color: darkblue!,
+          color: darkblue,
           size: 50.0,
         ),
       ),
@@ -704,7 +692,7 @@ class _BudgetViewState extends State<BudgetView> {
 //                 width: width,
 //                 height: height * 0.1,
 //                 decoration: BoxDecoration(
-//                     color: darkblue!,
+//                     color: darkblue,
 //                     borderRadius: const BorderRadius.only(
 //                         bottomLeft: Radius.circular(12),
 //                         bottomRight: Radius.circular(12))),
@@ -813,7 +801,7 @@ class _BudgetViewState extends State<BudgetView> {
 //                     onTap: () {},
 //                     child: Container(
 //                       decoration: BoxDecoration(
-//                           color: darkblue!,
+//                           color: darkblue,
 //                           borderRadius: BorderRadius.circular(6)),
 //                       width: width * 0.25,
 //                       height: height * 0.05,
@@ -832,7 +820,7 @@ class _BudgetViewState extends State<BudgetView> {
 //                     onTap: () {},
 //                     child: Container(
 //                       decoration: BoxDecoration(
-//                           color: darkblue!,
+//                           color: darkblue,
 //                           borderRadius: BorderRadius.circular(6)),
 //                       width: width * 0.25,
 //                       height: height * 0.05,

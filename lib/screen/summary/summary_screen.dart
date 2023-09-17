@@ -60,224 +60,144 @@ class _SummeryScreenState extends State<SummeryScreen> {
           key: scaffoldKey,
           body: Column(
             children: [
-               AppBarWidgt(text: AppLocalizations.of(context)!
-                      .summary),
-
-
-                      SizedBox(
-                         height: height * 0.85,
+              AppBarWidgt(text: AppLocalizations.of(context)!.summary),
+              SizedBox(
+                height: height * 0.85,
                 width: width,
-                        
-                        child: Stack(
-                        children: [
-                           Container(
+                child: Stack(
+                  children: [
+                    Container(
                       width: width,
                       height: height * 0.15,
-                      color: AppColors.topcard,
-                 
-           
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("images/dollar.jpg"))),
                     ),
-
-
-                     Positioned(
-              
-              
-                        top: height * 0.05,
-                       right: width * 0.1,
-                       left: width * 0.1,
-                        child: Container(
-                            height: height * 0.8,
-                            width: width * 0.7,
-
-                            child: Column(children: [
-
-
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: SizedBox(
-                                      //height: height,
-                                      // width: width,
-                                      child:
-                                          _currentSelection ==
-                                                  0
-                                              ? Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .end,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .center,
-                                                  children: [
-                                                    Text(
+                    Container(
+                      width: width,
+                      height: height * 0.15,
+                      color: Colors.blue[900]!.withOpacity(0.9),
+                    ),
+                    Positioned(
+                        top: height * 0.03,
+                        right: width * 0.03,
+                        left: width * 0.03,
+                        child: SizedBox(
+                          height: height * 0.8,
+                          width: width * 0.7,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                width: width,
+                                height: height * 0.08,
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: SizedBox(
+                                        child: _currentSelection == 0
+                                            ? Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    'Summary',
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        // fontWeight: FontWeight.bold,
+                                                        fontSize: width * 0.04),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: width * 0.12,
+                                                        right: width * 0.12),
+                                                    child: Divider(
+                                                      color: white,
+                                                      thickness: 3,
+                                                    ),
+                                                  )
+                                                ],
+                                              )
+                                            : Padding(
+                                                padding: EdgeInsets.only(
+                                                    top: height * 0.00),
+                                                child: Center(
+                                                  child: InkWell(
+                                                    onTap: () {
+                                                      _currentSelection = 0;
+                                                      setState(() {});
+                                                    },
+                                                    child: Text(
                                                       'Summary',
                                                       style: TextStyle(
-                                                          color: Colors.white,
-                                                          // fontWeight: FontWeight.bold,
-                                                          fontSize: width * 0.05),
-                                                    ),
-                                                    Padding(
-                                                      padding: EdgeInsets.only(
-                                                          left: width * 0.12,
-                                                          right: width * 0.12),
-                                                      child:
-                                                          Divider(
-                                                        color:
-                                                            red,
-                                                        thickness:
-                                                            3,
-                                                      ),
-                                                    )
-                                                  ],
-                                                )
-                                              : Padding(
-                                                  padding: EdgeInsets.only(
-                                                      top: height *
-                                                          0.00),
-                                                  child:
-                                                      Center(
-                                                    child:
-                                                        InkWell(
-                                                      onTap:
-                                                          () {
-                                                       _currentSelection =0;
-                                                       setState(() {
-                                                         
-                                                       });
-                                                      },
-                                                      child:
-                                                          Text(
-                                                        'Summary',
-                                                        style:
-                                                            TextStyle(color: white, fontSize: width * 0.05),
-                                                      ),
+                                                          color: white,
+                                                          fontSize:
+                                                              width * 0.04),
                                                     ),
                                                   ),
                                                 ),
+                                              ),
+                                      ),
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: SizedBox(
-                                     // height: height*0.01,
-                                      // width: width,
-                                      child:
-                                         _currentSelection ==
-                                                  1
-                                              ? Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .end,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .center,
-                                                  children: [
-                                                    Text(
+                                    Expanded(
+                                      child: SizedBox(
+                                        child: _currentSelection == 1
+                                            ? Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    'Category',
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: width * 0.04),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: width * 0.1,
+                                                        right: width * 0.1),
+                                                    child: Divider(
+                                                      color: white,
+                                                      thickness: 3,
+                                                    ),
+                                                  )
+                                                ],
+                                              )
+                                            : Padding(
+                                                padding: EdgeInsets.only(
+                                                    top: height * 0.00),
+                                                child: Center(
+                                                  child: InkWell(
+                                                    onTap: () {
+                                                      _currentSelection = 1;
+                                                      setState(() {});
+                                                    },
+                                                    child: Text(
                                                       'Category',
                                                       style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: width * 0.05),
-                                                    ),
-                                                    Padding(
-                                                      padding: EdgeInsets.only(
-                                                          left: width * 0.1,
-                                                          right: width * 0.1),
-                                                      child:
-                                                          Divider(
-                                                        color:
-                                                            red,
-                                                        thickness:
-                                                            3,
-                                                      ),
-                                                    )
-                                                  ],
-                                                )
-                                              : Padding(
-                                                  padding: EdgeInsets.only(
-                                                      top: height *
-                                                          0.00),
-                                                  child:
-                                                      Center(
-                                                    child:
-                                                        InkWell(
-                                                      onTap:
-                                                          () {
-                                                        _currentSelection = 1;
-                                                        setState(() {
-                                                          
-                                                        });
-                                                      },
-                                                      child:
-                                                          Text(
-                                                        'Category',
-                                                        style:
-                                                            TextStyle(color: white, fontSize: width * 0.05),
-                                                      ),
+                                                          color: white,
+                                                          fontSize:
+                                                              width * 0.04),
                                                     ),
                                                   ),
                                                 ),
+                                              ),
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            
-                            
-                            
-                            
-
-
-
-
-
-
-                                
-                              Expanded(
-                                  child: children[
-                                      _currentSelection]
-                                      
-                                      
-                                      )
-            
-            
-
-
-                              
-                            ],),
-                           
-                            
-
+                              Expanded(child: children[_currentSelection])
+                            ],
+                          ),
                         ))
-                   
-                   
-                   
-                        ],
-                      ),
-                      
-                      )
-                      ,
-                      
-
-                      
-
-
-
-                    
-
-
-
-                      
-
-
-
-
-        
-          
-             
-             
-            
-           
-       
-       
-       
+                  ],
+                ),
+              ),
             ],
           )),
     );

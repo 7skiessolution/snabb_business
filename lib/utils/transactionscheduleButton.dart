@@ -69,7 +69,6 @@ class _TransactionSechduleButtonState extends State<TransactionSechduleButton>
                       builder: (context) => AddSaleTransaction(),
                     ));
               },
-              heroTag: null,
               backgroundColor: Colors.red,
               child: const ImageIcon(AssetImage("images/minus.png")),
             ),
@@ -84,7 +83,6 @@ class _TransactionSechduleButtonState extends State<TransactionSechduleButton>
                     builder: (context) => AddPurchaseTransaction(),
                   ));
             },
-            heroTag: null,
             backgroundColor: Colors.green,
             child: const Icon(Icons.add),
           ),
@@ -98,7 +96,6 @@ class _TransactionSechduleButtonState extends State<TransactionSechduleButton>
                     builder: (context) => AddExpenseTransaction(),
                   ));
             },
-            heroTag: null,
             backgroundColor: Colors.green,
             child: const Icon(Icons.turn_sharp_left_sharp),
           ),

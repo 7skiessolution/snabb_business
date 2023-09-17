@@ -174,14 +174,14 @@ class _AddSaleTransactionState extends State<AddSaleTransaction> {
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                   borderSide: BorderSide(
-                                                      color: darkblue),
+                                                      color: darkblue!),
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                   borderSide: BorderSide(
-                                                      color: darkblue),
+                                                      color: darkblue!),
                                                 ),
                                               ),
                                             ),
@@ -216,14 +216,14 @@ class _AddSaleTransactionState extends State<AddSaleTransaction> {
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                   borderSide: BorderSide(
-                                                      color: darkblue),
+                                                      color: darkblue!),
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                   borderSide: BorderSide(
-                                                      color: darkblue),
+                                                      color: darkblue!),
                                                 ),
                                               ),
                                             ),
@@ -441,7 +441,7 @@ class _AddSaleTransactionState extends State<AddSaleTransaction> {
                                                         BorderRadius.circular(
                                                             10),
                                                     borderSide: BorderSide(
-                                                        color: darkblue),
+                                                        color: darkblue!),
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
@@ -449,7 +449,7 @@ class _AddSaleTransactionState extends State<AddSaleTransaction> {
                                                         BorderRadius.circular(
                                                             10),
                                                     borderSide: BorderSide(
-                                                        color: darkblue),
+                                                        color: darkblue!),
                                                   ),
                                                 ),
                                               ),
@@ -476,7 +476,7 @@ class _AddSaleTransactionState extends State<AddSaleTransaction> {
                                                         BorderRadius.circular(
                                                             10),
                                                     border: Border.all(
-                                                        color: darkblue)),
+                                                        color: darkblue!)),
                                                 child: Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment
@@ -518,14 +518,14 @@ class _AddSaleTransactionState extends State<AddSaleTransaction> {
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                   borderSide: BorderSide(
-                                                      color: darkblue),
+                                                      color: darkblue!),
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                   borderSide: BorderSide(
-                                                      color: darkblue),
+                                                      color: darkblue!),
                                                 ),
                                               ),
                                             ),
@@ -564,13 +564,13 @@ class _AddSaleTransactionState extends State<AddSaleTransaction> {
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               borderSide:
-                                                  BorderSide(color: darkblue),
+                                                  BorderSide(color: darkblue!),
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               borderSide:
-                                                  BorderSide(color: darkblue),
+                                                  BorderSide(color: darkblue!),
                                             ),
                                           ),
                                         ),
@@ -601,13 +601,13 @@ class _AddSaleTransactionState extends State<AddSaleTransaction> {
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               borderSide:
-                                                  BorderSide(color: darkblue),
+                                                  BorderSide(color: darkblue!),
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               borderSide:
-                                                  BorderSide(color: darkblue),
+                                                  BorderSide(color: darkblue!),
                                             ),
                                           ),
                                         ),

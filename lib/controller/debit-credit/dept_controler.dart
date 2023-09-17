@@ -63,7 +63,7 @@ class DeptScreenController extends GetxController {
   //         angle: math.radians(a1.value * 360),
   //         child: AlertDialog(
   //           elevation: 10,
-  //           shadowColor: darkblue,
+  //           shadowColor: darkblue!,
   //           shape:
   //               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
   //           content: SizedBox(
@@ -76,7 +76,7 @@ class DeptScreenController extends GetxController {
   //                   AppLocalizations.of(context)!.success,
   //                   style: TextStyle(
   //                       fontSize: width * 0.04,
-  //                       color: darkblue,
+  //                       color: darkblue!,
   //                       fontWeight: FontWeight.bold),
   //                 ),
   //                 SizedBox(
@@ -95,7 +95,7 @@ class DeptScreenController extends GetxController {
   //                     height: height * 0.05,
   //                     width: width * 0.2,
   //                     decoration: BoxDecoration(
-  //                         color: darkblue,
+  //                         color: darkblue!,
   //                         borderRadius: BorderRadius.circular(10)),
   //                     alignment: Alignment.center,
   //                     child: Text(
@@ -123,8 +123,8 @@ class DeptScreenController extends GetxController {
       builder: (context, child) {
         return Theme(
             data: ThemeData.light().copyWith(
-              primaryColor: darkblue,
-              colorScheme: ColorScheme.light(primary: darkblue),
+              primaryColor: darkblue!,
+              colorScheme: ColorScheme.light(primary: darkblue!),
               buttonTheme:
                   const ButtonThemeData(textTheme: ButtonTextTheme.primary),
             ),

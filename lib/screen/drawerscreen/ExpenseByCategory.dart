@@ -1,8 +1,12 @@
 // ignore_for_file: must_be_immutable, file_names
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+
+import '../../controller/homeController.dart';
 
 class ExpenceByCategory extends StatefulWidget {
   const ExpenceByCategory({super.key});
@@ -21,79 +25,123 @@ class _ExpenceByCategoryState extends State<ExpenceByCategory> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: backgroundColor,
-        body: Column(children: [
-          AppBarWidgt(text: "Chart"),
-          Expanded(
-            child: Stack(
-              children: [
-                Container(
-                  height: height * 0.3,
-                  color: darkblue,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 15.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Text(
-                            "Expence By Category",
-                            style: TextStyle(
-                                color: white,
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold),
+        body: SizedBox(
+          height: height,
+          width: width,
+          child: Column(children: [
+            Align(
+                alignment: Alignment.topCenter,
+                child: AppBarWidgt(text: "Chart")),
+            Expanded(
+              child: Stack(
+                children: [
+                  Container(
+                    height: height * 0.3,
+                    width: width,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage("images/dollar.jpg"))),
+                  ),
+                  Container(
+                    height: height * 0.3,
+                    color: Colors.blue[900]!.withOpacity(0.9),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 15.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Text(
+                              "Expence By Category",
+                              style: TextStyle(
+                                  color: white,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: width * 0.3,
-                        ),
-                        Icon(
-                          Icons.pie_chart,
-                          color: white,
-                        )
-                      ],
+                          SizedBox(
+                            width: width * 0.3,
+                          ),
+                          Icon(
+                            Icons.pie_chart,
+                            color: white,
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Positioned(
-                  top: height * 0.1,
-                  left: width * 0.15,
-                  child: Container(
-                    height: height * 0.35,
-                    width: width * 0.7,
-                    color: white,
+                  Positioned(
+                    top: height * 0.1,
+                    left: width * 0.05,
+                    child: Card(
+                      elevation: 10,
+                      shadowColor: Colors.blue[900],
+                      child: Container(
+                        height: height * 0.35,
+                        width: width * 0.9,
+                        color: white,
+                        child: SizedBox(
+                            height: height * 0.2,
+                            width: width,
+                            child: SfCartesianChart(
+                                primaryXAxis: CategoryAxis(),
+                                primaryYAxis: NumericAxis(
+                                  minimum: 0,
+                                  numberFormat: NumberFormat.compact(),
+                                  // interval: 1000,
+                                  // desiredIntervals:
+                                  //     7, // Set this to the number of desired ticks (7 in this case)
+                                ),
+                                tooltipBehavior: HomeController.to.tooltip,
+                                series: <ChartSeries<Chartdata, String>>[
+                                  BarSeries<Chartdata, String>(
+                                      dataSource: HomeController.to.expensedata,
+                                      xValueMapper: (Chartdata data, _) =>
+                                          data.x,
+                                      yValueMapper: (Chartdata data, _) =>
+                                          data.y,
+                                      name: 'Expesense',
+                                      color: expensecolor)
+                                ])),
+                      ),
+                    ),
                   ),
-                ),
-                Positioned(
-                  top: height * 0.47,
-                  left: width * 0.01,
-                  child: Container(
-                    height: height * 0.42,
-                    width: width * 0.98,
-                    color: Colors.transparent,
-                    child: ListView(
+                  Positioned(
+                    top: height * 0.47,
+                    left: width * 0.01,
+                    child: Container(
+                      height: height * 0.42,
+                      width: width * 0.98,
+                      color: Colors.transparent,
+                      child: ListView(
 
-                        // mainAxisAlignment: MainAxisAlignment.center,
-                        // crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          // cardOfExpence(
-                          //     rs: "-12000", subtitle: "100%", title: "expense"),
-                          // cardOfExpence(
-                          //     rs: "-12000", subtitle: "100%", title: "expense"),
-                          // cardOfExpence(
-                          //     rs: "-12000", subtitle: "100%", title: "expense"),
-                          // cardOfExpence(
-                          //     rs: "-12000", subtitle: "100%", title: "expense"),
-                          CardOfExpence(
-                              rs: "-12000", subtitle: "100%", title: "expense")
-                        ]),
-                  ),
-                )
-              ],
+                          // mainAxisAlignment: MainAxisAlignment.center,
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            // cardOfExpence(
+                            //     rs: "-12000", subtitle: "100%", title: "expense"),
+                            // cardOfExpence(
+                            //     rs: "-12000", subtitle: "100%", title: "expense"),
+                            // cardOfExpence(
+                            //     rs: "-12000", subtitle: "100%", title: "expense"),
+                            // cardOfExpence(
+                            //     rs: "-12000", subtitle: "100%", title: "expense"),
+                            CardOfExpence(
+                                rs: "-12000",
+                                subtitle: "100%",
+                                title: "expense")
+                          ]),
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-        ]),
+          ]),
+        ),
       ),
     );
   }

@@ -14,7 +14,9 @@ import 'package:snabb_business/screen/debit/edit_debit_credit.dart';
 import 'package:snabb_business/screen/debit/view_debitcredit.dart';
 import 'package:snabb_business/screen/homeScreen.dart';
 import 'package:snabb_business/utils/color.dart';
+import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/debitbutton.dart';
+import '../../utils/appbarwidget.dart';
 import '../../utils/spinkit.dart';
 
 class DebitScreen extends StatefulWidget {
@@ -50,116 +52,109 @@ class _DebitScreenState extends State<DebitScreen> {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      extendBody: true,
-      body: SizedBox(
-        height: height,
-        width: width,
-        child: Stack(
-          children: [
-            SingleChildScrollView(
-              child: GetBuilder<AddDebitController>(initState: (state) {
-                AddDebitController.to.getdebitcredit();
-              }, builder: (obj) {
-                return Column(
-                  children: [
-                    Container(
-                      width: width * 0.9,
-                      height: height * 0.13,
-                      decoration: BoxDecoration(
-                        color: darkblue,
-                        borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
+    return SafeArea(
+      child: Scaffold(
+        extendBody: true,
+        backgroundColor: AppColors.backgroundColor,
+        body: SizedBox(
+          height: height,
+          width: width,
+          child: Stack(
+            children: [
+              Align(
+                  alignment: Alignment.topCenter,
+                  child: AppBarWidgt(text: "Dr/Cr")),
+              Padding(
+                padding: EdgeInsets.only(top: height * 0.1),
+                child: SizedBox(
+                  height: height * 0.12,
+                  width: width,
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: height * 0.12,
+                        width: width,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage("images/dollar.jpg"))),
+                      ),
+                      Container(
+                        height: height * 0.12,
+                        width: width,
+                        color: Colors.blue[900]!.withOpacity(0.9),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: width * 0.1,
+                              top: height * 0.03,
+                              right: width * 0.1),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context)!.residualamount,
+                                style: TextStyle(
+                                    fontSize: width * 0.035,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                "$balance ${HomeController.to.curency}",
+                                style: TextStyle(
+                                    fontSize: width * 0.035,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500),
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Icon(
-                              Icons.arrow_back,
-                              color: Colors.white,
-                              size: width * 0.065,
-                            ),
-                          ),
-                          SizedBox(
-                            width: width * 0.1,
-                          ),
-                          Text(
-                            "${AppLocalizations.of(context)!.dr}/${AppLocalizations.of(context)!.cr}",
-                            style: TextStyle(
-                                fontSize: width * 0.04,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          SizedBox(
-                            width: width * 0.23,
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            AppLocalizations.of(context)!.residualamount,
-                            style: TextStyle(
-                                fontSize: width * 0.035,
-                                color: darkblue,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "$balance ${HomeController.to.curency}",
-                            style: TextStyle(
-                                fontSize: width * 0.035,
-                                color: darkblue,
-                                fontWeight: FontWeight.w500),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                        height: 600,
-                        width: size.width - 10,
-                        child: obj.debitcreditList.isEmpty
-                            ? Center(
-                                child: Text(
-                                AppLocalizations.of(context)!.nodatafound,
-                              ))
-                            : ListView.builder(
-                                itemCount: obj.debitcreditList.length,
-                                itemBuilder: (context, index) {
-                                  DebitCreditData data =
-                                      obj.debitcreditList[index];
-                                  return deptCard(data, context);
-                                },
-                              ))
-                  ],
-                );
-              }),
-            ),
-            Positioned(
-              bottom: height * 0.005,
-              right: width * 0.02,
-              child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: Transform.scale(
-                      scale: 0.8, child: const DebitfloatingButton())),
-            ),
-          ],
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: height * 0.17),
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: GetBuilder<AddDebitController>(initState: (state) {
+                    AddDebitController.to.getdebitcredit();
+                  }, builder: (obj) {
+                    return Card(
+                        elevation: 10,
+                        shadowColor: Colors.blue[900],
+                        child: SizedBox(
+                            height: height * 0.75,
+                            width: width * 0.9,
+                            child: obj.debitcreditList.isEmpty
+                                ? Center(
+                                    child: Text(
+                                    AppLocalizations.of(context)!.nodatafound,
+                                  ))
+                                : ListView.builder(
+                                    itemCount: obj.debitcreditList.length,
+                                    itemBuilder: (context, index) {
+                                      DebitCreditData data =
+                                          obj.debitcreditList[index];
+                                      return deptCard(data, context);
+                                    },
+                                  )));
+                  }),
+                ),
+              ),
+              Positioned(
+                bottom: height * 0.005,
+                right: width * 0.02,
+                child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: Transform.scale(
+                        scale: 0.8, child: const DebitfloatingButton())),
+              ),
+            ],
+          ),
         ),
       ),
-      // floatingActionButton: Align(
-      //     alignment: Alignment.bottomRight,
-      //     child:
-      //         Transform.scale(scale: 0.8, child: const DebitfloatingButton())),
     );
   }
 

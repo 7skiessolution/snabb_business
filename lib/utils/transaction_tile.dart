@@ -36,14 +36,14 @@ class TransactionTile extends StatelessWidget {
             subtitle: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Wallet"),
+                const Text("Wallet"),
                 Text("0/9/2023",
                     style: TextStyle(
                         fontSize: width * 0.03,
                         color: Colors.grey.withOpacity(0.5))),
               ],
             ),
-            trailing: const VerticalDivider(
+            trailing: VerticalDivider(
               color: AppColors.blue,
               thickness: 4,
             ),

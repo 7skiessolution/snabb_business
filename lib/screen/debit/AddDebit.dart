@@ -5,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/controller/debit-credit/add_debit_controller.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/models/add_debit_model.dart';
+import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/spinkit.dart';
 
@@ -67,51 +68,10 @@ class _AddDebitState extends State<AddDebit> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
-                        height: height * 0.07,
-                        width: width * 0.9,
-                        decoration: BoxDecoration(
-                            color: darkblue,
-                            borderRadius: const BorderRadius.only(
-                                bottomLeft: Radius.circular(20),
-                                bottomRight: Radius.circular(20))),
-                        child: Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            SizedBox(
-                              width: width * 0.07,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Icon(
-                                Icons.arrow_back,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              width: width * 0.2,
-                            ),
-                            widget.type == 0
-                                ? Text(
-                                    AppLocalizations.of(context)!.paybackcredit,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: width * 0.035,
-                                        color: Colors.white),
-                                  )
-                                : Text(
-                                    AppLocalizations.of(context)!.paybackdebit,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: width * 0.035,
-                                        color: Colors.white),
-                                  ),
-                          ],
-                        ),
-                      ),
-
+                      AppBarWidgt(
+                          text: widget.type == 0
+                              ? AppLocalizations.of(context)!.paybackcredit
+                              : AppLocalizations.of(context)!.paybackdebit),
                       SizedBox(
                         height: height * 0.05,
                       ),
@@ -290,9 +250,9 @@ class _AddDebitState extends State<AddDebit> {
                         children: [
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: darkblue,
+                                backgroundColor: Colors.red,
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 20, horizontal: 40)),
+                                    vertical: 15, horizontal: 40)),
                             onPressed: () {
                               valuecontrol.clear();
                               notecontrol.clear();
@@ -310,16 +270,16 @@ class _AddDebitState extends State<AddDebit> {
                           ),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: darkblue,
+                                backgroundColor: darkblue!,
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 20, horizontal: 50)),
+                                    vertical: 15, horizontal: 50)),
                             onPressed: () {
                               if ((double.parse(valuecontrol.text)) >
                                   widget.remaing!) {
                                 //   print("update amount ${updatamount}");
                                 Fluttertoast.showToast(
                                     msg: "Invalid Amount ",
-                                    backgroundColor: darkblue,
+                                    backgroundColor: darkblue!,
                                     textColor: Colors.grey);
                               } else {
                                 updateamount();
@@ -354,7 +314,7 @@ class _AddDebitState extends State<AddDebit> {
                         child: Container(
                           height: height,
                           width: width,
-                          color: darkblue.withOpacity(0.2),
+                          color: darkblue!.withOpacity(0.2),
                           child: Center(
                             child: SpinKit.loadSpinkit,
                           ),

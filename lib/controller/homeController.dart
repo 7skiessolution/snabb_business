@@ -5,11 +5,13 @@ import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/models/currency_model.dart';
 import 'package:snabb_business/models/get_data_year_type_model.dart' as sp;
 import 'package:snabb_business/models/get_sale_purchase.dart';
+import 'package:snabb_business/models/pagemodel.dart';
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
 import 'package:snabb_business/static_data.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:snabb_business/models/yearly_transaction_model.dart' as yTra;
+import 'package:snabb_business/models/monthly_transaction_model.dart' as mTra;
 
 import '../models/dataclassgraphModel.dart';
 
@@ -116,7 +118,7 @@ class HomeController extends GetxController {
       isLoadData = false;
       curency = walletList[0].currency!;
       update();
-      print("totalbalancexczvzx$totalbalance");
+      print("totalbalancexczvzx${totalbalance}");
     } else {
       print("nodata ");
     }
@@ -195,86 +197,42 @@ class HomeController extends GetxController {
       return '0';
     }
   }
-// ...
-
-  // double totalAmountType1 = 0.0;
-  // List<yTra.Transactions> salesTransaction = [];
-  // saleListOFChart() async {
-  //   var res = await httpClient().get(StaticValues.getYearTrasaction);
-  //   if (res.statusCode == 200) {
-  //     chartData.clear();
-  //     yTra.UserYearTransaction yearTransaction =
-  //         yTra.UserYearTransaction.fromMap(res.data);
-  //     for (var element in yearTransaction.data!) {
-  //       List<yTra.Transactions> transactions = element.transactions ?? [];
-  //       salesTransaction =
-  //           transactions.where((transaction) => transaction.type == 1).toList();
-  //       // Calculate total amounts for each type after subtracting partial amounts
-  //       totalAmountType1 = salesTransaction
-  //           .map((transaction) =>
-  //               transaction.amount! - (transaction.partialAmount ?? 0))
-  //           .fold(0, (prev, curr) => prev + curr);
-  //       print("-0=-=-=-=-=- $totalAmountType1");
-  //       chartData.add(
-  //         SalesData(DateTime(element.year!), totalAmountType1),
-  //       );
-
-  //       print("chart data ${chartData[1].sales}");
-  //       print("chart data ${chartData[1].year}");
-  //     }
-
-  //     update();
-  //   }
-  // }
-// ...
 
   double totalAmountType1 = 0.0;
-//List<SalesData> chartData = [];
+  List<yTra.Transactions> salesTransaction = [];
+  saleListOFChart() async {
+    var res = await httpClient().get(StaticValues.getYearTrasaction);
+    if (res.statusCode == 200) {
+      chartData.clear();
+      yTra.UserYearTransaction yearTransaction =
+          yTra.UserYearTransaction.fromMap(res.data);
+      yearTransaction.data!.forEach((element) {
+        List<yTra.Transactions> transactions = element.transactions ?? [];
+          print("bal match ${transactions}");
+        salesTransaction =
+            transactions.where((transaction) => transaction.type == 1).toList();
+            print("sale list ${salesTransaction}");
+        // Calculate total amounts for each type after subtracting partial amounts
+         totalAmountType1 = salesTransaction
+            .map((transaction) =>
+                transaction.amount! -
+                (transaction.partialAmount ?? 0))
+            .fold(0, (prev, curr) => prev + curr);
 
-  Future<void> saleListOFChart() async {
-    final int currentYear = DateTime.now().year;
+        print("-0=-=-=-=-=- ${totalAmountType1}");
+         chartData.add(
+          SalesData(
+              DateTime(element.year!), totalAmountType1),
+        );
+        update();
 
-    // Clear existing chart data
-    chartData.clear();
+        // chart = [
+        //   SalesData(DateTime(element.year!), totalAmountType1),
+        // ];
+      });
 
-    for (int year = currentYear; year >= currentYear - 11; year--) {
-      final String apiUrl = '${StaticValues.getYearTrasaction}/$year';
-
-      try {
-        final response = await httpClient().get(apiUrl);
-
-        if (response.statusCode == 200) {
-          yTra.UserYearTransaction yearTransaction =
-              yTra.UserYearTransaction.fromMap(response.data);
-
-          List<yTra.Transactions> transactions =
-              yearTransaction.data?.first?.transactions ?? [];
-
-          // Calculate total amounts for type 1 after subtracting partial amounts
-          double totalAmountType1 = transactions
-              .where((transaction) => transaction.type == 1)
-              .map((transaction) =>
-                  transaction.amount! - (transaction.partialAmount ?? 0))
-              .fold(0, (prev, curr) => prev + curr);
-
-          // Add the data to chartData
-          chartData.add(
-            SalesData(DateTime(year), totalAmountType1),
-          );
-
-          print("Year: $year, Total Amount Type 1: $totalAmountType1");
-        } else {
-          // Handle API request error
-          print("Failed to fetch data for year $year");
-        }
-      } catch (e) {
-        // Handle exceptions (e.g., network error)
-        print("Error fetching data for year $year: $e");
-      }
+      update();
     }
-
-    // Update the UI if necessary
-    update();
   }
 
   expenseList(int type) async {
@@ -294,17 +252,19 @@ class HomeController extends GetxController {
           expensedata.add(
             Chartdata(convertToAbbreviatedMonth(i + 1), e),
           );
+          update();
         } else if (type == 0) {
           purchasedata.add(
             Chartdata(convertToAbbreviatedMonth(i + 1), e),
+            
           );
+          update();
         }
         update();
       }
       print("purchase ${purchasedata.length}");
       print("expense ${expensedata.length}");
     }
-    update();
   }
 
   List<sp.Data> expenseData = [];
@@ -334,7 +294,6 @@ class HomeController extends GetxController {
       print("purchase list ${purchaseData.length}");
       print("expense list ${expenseData.length}");
     }
-    update();
   }
 
   // Function to convert full month names to lowercase abbreviated month names

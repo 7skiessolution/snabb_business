@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/screen/budget/BudgetView.dart';
 import 'package:snabb_business/screen/chartsScreens/purchaseChart.dart';
+import 'package:snabb_business/screen/chartsScreens/salesChart.dart';
 import 'package:snabb_business/screen/drawerscreen/userProfile.dart';
 import 'package:snabb_business/screen/homeScreen.dart';
 import 'package:snabb_business/utils/color.dart';
@@ -11,6 +12,7 @@ import 'package:snabb_business/utils/navigation/curvenavigationbar.dart';
 import '../utils/demonshape.dart';
 import '../utils/drawer.dart';
 import 'bottomscreen/bottomWalletScreen.dart';
+import 'budget/bottombadget.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
@@ -48,7 +50,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: backgroundColor,
         body: SizedBox(
           // height: height * 0.85,
           // width: width,
@@ -143,7 +144,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             ),
           ],
           color: AppColors.blue,
-          buttonBackgroundColor: AppColors.blue,
+          buttonBackgroundColor: AppColors.redcolor,
           backgroundColor: AppColors.backgroundColor,
           animationCurve: Curves.easeInOut,
           animationDuration: const Duration(milliseconds: 400),
@@ -166,11 +167,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   Widget getBody() {
     return IndexedStack(
       index: _selectedTab,
-      children: const [
+      children: [
         HomeScreen(),
         BottomWallet(),
-        PurchaseChart(),
-        BudgetView(),
+        PurchaseChart(home: true),
+        SalesChart(home: true),
         UserProfile()
       ],
     );

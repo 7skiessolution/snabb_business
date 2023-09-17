@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/utils/color.dart';
 
-class AddPurchaseTransaction extends StatefulWidget {
-  const AddPurchaseTransaction({super.key});
+class AddSaleTransaction extends StatefulWidget {
+  const AddSaleTransaction({super.key});
 
   @override
-  State<AddPurchaseTransaction> createState() => _AddPurchaseTransactionState();
+  State<AddSaleTransaction> createState() => _AddSaleTransactionState();
 }
 
-class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
+class _AddSaleTransactionState extends State<AddSaleTransaction> {
   String? dropdownValue = 'Payment Method';
   List<String> dropdownItems = <String>[
     'Purchase',
@@ -110,12 +110,15 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
                           child: Text(
-                            "Add Purchase Transaction",
+                            "Add Sale Transaction",
                             style: TextStyle(
                                 color: white,
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold),
                           ),
+                        ),
+                        SizedBox(
+                          width: width * 0.2,
                         ),
                       ],
                     ),
@@ -316,7 +319,7 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                                                 SizedBox(
                                                                                   width: width * 0.11,
                                                                                   height: height * 0.11,
-                                                                                  child: Image(image: AssetImage("images/bank.jpeg")),
+                                                                                  child: Image(image: AssetImage("assets/bank.jpeg")),
                                                                                 ),
                                                                                 Text(
                                                                                   "BANK",
@@ -335,7 +338,7 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                                                 SizedBox(
                                                                                   width: width * 0.11,
                                                                                   height: height * 0.11,
-                                                                                  child: Image(image: AssetImage("images/group1.jpg")),
+                                                                                  child: Image(image: AssetImage("assets/group1.jpg")),
                                                                                 ),
                                                                                 Text(
                                                                                   "CASH",
@@ -354,7 +357,7 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                                                 SizedBox(
                                                                                   width: width * 0.11,
                                                                                   height: height * 0.11,
-                                                                                  child: Image(image: AssetImage("images/group2.jpg")),
+                                                                                  child: Image(image: AssetImage("assets/group2.jpg")),
                                                                                 ),
                                                                                 Text(
                                                                                   "OTHERS",
@@ -531,9 +534,9 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                         SizedBox(
                                           width: width * 0.05,
                                         ),
-                                        SizedBox(
-                                            width: width * 0.4,
-                                            child: Text("Zero Time Means")),
+                                        // SizedBox(
+                                        //     width: width * 0.3,
+                                        //     child: Text("Zero Time Means")),
                                       ],
                                     ),
                                     SizedBox(

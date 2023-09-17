@@ -7,6 +7,7 @@ import 'package:snabb_business/screen/budget/BudgetView.dart';
 import 'package:snabb_business/screen/dashboardScreen.dart';
 import 'package:snabb_business/screen/debit/deptsscreen.dart';
 import 'package:snabb_business/screen/drawerscreen/Calender.dart';
+import 'package:snabb_business/screen/drawerscreen/userProfile.dart';
 import 'package:snabb_business/screen/schedule_transaction/schedule_transactions.dart';
 import 'package:snabb_business/screen/summary/summary_screen.dart';
 import 'package:snabb_business/screen/schedule_transaction/ShaduleTransactionScreen.dart';
@@ -36,9 +37,9 @@ class DrawerScreen extends StatelessWidget {
         Container(
           height: height * 0.2,
           width: width,
-          alignment: Alignment.bottomCenter,
-          color: darkblue,
+          color: Colors.blue[900],
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 height: height * 0.1,
@@ -70,7 +71,11 @@ class DrawerScreen extends StatelessWidget {
                   Icons.home_outlined,
                   color: darkblue,
                 ),
-                title: const Text("OverView"),
+                title: Text(
+                  "OverView",
+                  style: TextStyle(
+                      fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                ),
               ),
             ),
             InkWell(
@@ -84,7 +89,11 @@ class DrawerScreen extends StatelessWidget {
                   Icons.summarize_sharp,
                   color: darkblue,
                 ),
-                title: const Text("Summary"),
+                title: Text(
+                  "Summary",
+                  style: TextStyle(
+                      fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                ),
               ),
             ),
             InkWell(
@@ -100,7 +109,11 @@ class DrawerScreen extends StatelessWidget {
                   Icons.data_usage_rounded,
                   color: darkblue,
                 ),
-                title: const Text("Transaction"),
+                title: Text(
+                  "Transaction",
+                  style: TextStyle(
+                      fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                ),
               ),
             ),
 
@@ -117,7 +130,11 @@ class DrawerScreen extends StatelessWidget {
                   Icons.paid_outlined,
                   color: darkblue,
                 ),
-                title: const Text("Scheduled transactions"),
+                title: Text(
+                  "Scheduled transactions",
+                  style: TextStyle(
+                      fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                ),
               ),
             ),
             InkWell(
@@ -131,7 +148,11 @@ class DrawerScreen extends StatelessWidget {
                   Icons.account_balance_wallet_outlined,
                   color: darkblue,
                 ),
-                title: const Text("Wallet"),
+                title: Text(
+                  "Wallet",
+                  style: TextStyle(
+                      fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                ),
               ),
             ),
             InkWell(
@@ -141,14 +162,15 @@ class DrawerScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (_) => const BudgetView()));
               },
               child: ListTile(
-                leading: SizedBox(
-                    height: height * 0.1,
-                    width: width * 0.1,
-                    child: Image.asset(
-                      "images/images__1_-removebg-preview (1).png",
-                      color: darkblue,
-                    )),
-                title: const Text("Budgets"),
+                leading: Icon(
+                  Icons.add_home_work_sharp,
+                  color: darkblue,
+                ),
+                title: Text(
+                  "Budgets",
+                  style: TextStyle(
+                      fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                ),
               ),
             ),
             InkWell(
@@ -158,14 +180,15 @@ class DrawerScreen extends StatelessWidget {
                     context, MaterialPageRoute(builder: (_) => DebitScreen()));
               },
               child: ListTile(
-                leading: SizedBox(
-                    height: height * 0.1,
-                    width: width * 0.1,
-                    child: Image.asset(
-                      "images/dollar.png",
-                      color: darkblue,
-                    )),
-                title: const Text("Debts"),
+                leading: Icon(
+                  Icons.account_tree_sharp,
+                  color: darkblue,
+                ),
+                title: Text(
+                  "Debts",
+                  style: TextStyle(
+                      fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                ),
               ),
             ),
             InkWell(
@@ -175,130 +198,99 @@ class DrawerScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
               },
               child: ListTile(
-                leading: SizedBox(
-                    height: height * 0.1,
-                    width: width * 0.1,
-                    child: Image.asset(
-                      "images/invoices.png",
-                      //  color: Color.fromARGB(255, 7, 111, 197),
-                    )),
-                title: const Text("Invoice"),
+                leading: Icon(
+                  Icons.wysiwyg_outlined,
+                  color: darkblue,
+                ),
+                title: Text(
+                  "Invoice",
+                  style: TextStyle(
+                      fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                ),
               ),
             ),
             InkWell(
               onTap: () {
-                obj.drawermenue();
-              },
-              onDoubleTap: () {
-                obj.drawermenueclose();
-                // obj.category = false;
-                // obj.expensecata = false;
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const Categories()));
               },
               child: ListTile(
-                leading: SizedBox(
-                    height: height * 0.08,
-                    width: width * 0.08,
-                    child: Image.asset(
-                      "images/growth.png",
-                      color: darkblue,
-                    )),
-                title: const Text("Charts"),
-                trailing: const Icon(Icons.keyboard_arrow_down_outlined),
+                leading: Icon(
+                  Icons.donut_large,
+                  color: darkblue,
+                ),
+                title: Text(
+                  "Charts",
+                  style: TextStyle(
+                      fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                ),
               ),
             ),
-            obj.category == true
-                ? InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const Categories()));
-                    },
-                    child: SizedBox(
-                      height: height * 0.05,
-                      width: width,
-                      //  alignment: Alignment.center,
-                      child: Padding(
-                        padding: EdgeInsets.only(right: width * 0.1),
-                        child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              SizedBox(
-                                  height: height * 0.1,
-                                  width: width * 0.1,
-                                  child: Image.asset(
-                                    "images/Groupgraph.png",
-                                    color: darkblue,
-                                  )),
-                              const Text("Catagery"),
-                            ]),
-                      ),
+            // obj.category == true
+            //     ? InkWell(
+            //         onTap: () {
+            //           Navigator.push(
+            //               context,
+            //               MaterialPageRoute(
+            //                   builder: (_) => const Categories()));
+            //         },
+            //         child: SizedBox(
+            //           height: height * 0.05,
+            //           width: width,
+            //           //  alignment: Alignment.center,
+            //           child: Padding(
+            //             padding: EdgeInsets.only(right: width * 0.1),
+            //             child: Row(
+            //                 crossAxisAlignment: CrossAxisAlignment.center,
+            //                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //                 children: [
+            //                   SizedBox(
+            //                       height: height * 0.1,
+            //                       width: width * 0.1,
+            //                       child: Image.asset(
+            //                         "images/Groupgraph.png",
+            //                         color: darkblue,
+            //                       )),
+            //                   const Text("Catagery"),
+            //                 ]),
+            //           ),
 
-                      //     const Icon(Icons.keyboard_arrow_down_outlined),
-                    ),
-                  )
-                : const SizedBox(),
-            obj.expensecata == true
-                ? InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const ExpencePieChart()));
-                    },
-                    child: SizedBox(
-                      height: height * 0.05,
-                      width: width,
-                      child: Padding(
-                        padding: EdgeInsets.only(right: width * 0.1),
-                        child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              SizedBox(
-                                  height: height * 0.1,
-                                  width: width * 0.1,
-                                  child: Image.asset(
-                                    "images/chartexpenseicon.png",
-                                    color: darkblue,
-                                  )),
-                              const Text("Expense"),
-                            ]),
-                      ),
+            //           //     const Icon(Icons.keyboard_arrow_down_outlined),
+            //         ),
+            //       )
+            //     : const SizedBox(),
+            // obj.expensecata == true
+            //     ? InkWell(
+            //         onTap: () {
+            //           Navigator.push(
+            //               context,
+            //               MaterialPageRoute(
+            //                   builder: (_) => const ExpencePieChart()));
+            //         },
+            //         child: SizedBox(
+            //           height: height * 0.05,
+            //           width: width,
+            //           child: Padding(
+            //             padding: EdgeInsets.only(right: width * 0.1),
+            //             child: Row(
+            //                 crossAxisAlignment: CrossAxisAlignment.center,
+            //                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //                 children: [
+            //                   SizedBox(
+            //                       height: height * 0.1,
+            //                       width: width * 0.1,
+            //                       child: Image.asset(
+            //                         "images/chartexpenseicon.png",
+            //                         color: darkblue,
+            //                       )),
+            //                   const Text("Expense"),
+            //                 ]),
+            //           ),
 
-                      //     const Icon(Icons.keyboard_arrow_down_outlined),
-                    ))
-                : const SizedBox(),
-            obj.expensecata == true
-                ? InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => const Time()));
-                    },
-                    child: SizedBox(
-                      height: height * 0.05,
-                      width: width,
-                      child: Padding(
-                        padding: EdgeInsets.only(right: width * 0.15),
-                        child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              SizedBox(
-                                  height: height * 0.1,
-                                  width: width * 0.1,
-                                  child: Image.asset(
-                                    "images/chartexpenseicon.png",
-                                    color: darkblue,
-                                  )),
-                              const Text("Time"),
-                            ]),
-                      ),
+            //           //     const Icon(Icons.keyboard_arrow_down_outlined),
+            //         ))
+            //     : const SizedBox(),
 
-                      //     const Icon(Icons.keyboard_arrow_down_outlined),
-                    ))
-                : const SizedBox(),
             // InkWell(
             //   onTap: () {
             //     Navigator.push(context,
@@ -326,27 +318,34 @@ class DrawerScreen extends StatelessWidget {
                   Icons.calendar_month,
                   color: darkblue,
                 ),
-                title: const Text("Calendar"),
-              ),
-            ),
-            const Divider(),
-
-            InkWell(
-              onTap: () {
-                obj.drawermenueclose();
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (_) => const MonthlyBudgets()));
-              },
-              child: ListTile(
-                leading: Icon(
-                  Icons.construction,
-                  color: darkblue,
+                title: Text(
+                  "Calendar",
+                  style: TextStyle(
+                      fontSize: width * 0.03, fontWeight: FontWeight.w500),
                 ),
-                title: const Text("Tools"),
               ),
             ),
+            // const Divider(),
+
+            // InkWell(
+            //   onTap: () {
+            //     obj.drawermenueclose();
+            //     // Navigator.push(context,
+            //     //     MaterialPageRoute(builder: (_) => const MonthlyBudgets()));
+            //   },
+            //   child: ListTile(
+            //     leading: Icon(
+            //       Icons.construction,
+            //       color: darkblue,
+            //     ),
+            //     title: const Text("Tools"),
+            //   ),
+            // ),
             InkWell(
               onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const UserProfile()));
+
                 obj.drawermenueclose();
                 // Navigator.push(context,
                 //     MaterialPageRoute(builder: (_) => const UserProfile()));
@@ -356,24 +355,28 @@ class DrawerScreen extends StatelessWidget {
                   Icons.cloud,
                   color: darkblue,
                 ),
-                title: const Text("User"),
-              ),
-            ),
-            const Divider(),
-            InkWell(
-              onTap: () {
-                obj.drawermenueclose();
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (_) => const MonthlyBudgets()));
-              },
-              child: ListTile(
-                leading: Icon(
-                  Icons.help_rounded,
-                  color: darkblue,
+                title: Text(
+                  "User",
+                  style: TextStyle(
+                      fontSize: width * 0.03, fontWeight: FontWeight.w500),
                 ),
-                title: const Text("Frequently asked questions"),
               ),
             ),
+
+            // InkWell(
+            //   onTap: () {
+            //     obj.drawermenueclose();
+            //     // Navigator.push(context,
+            //     //     MaterialPageRoute(builder: (_) => const MonthlyBudgets()));
+            //   },
+            //   child: ListTile(
+            //     leading: Icon(
+            //       Icons.help_rounded,
+            //       color: darkblue,
+            //     ),
+            //     title: const Text("Frequently asked questions"),
+            //   ),
+            // ),
             InkWell(
               onTap: () {
                 obj.drawermenueclose();
@@ -385,7 +388,11 @@ class DrawerScreen extends StatelessWidget {
                   Icons.settings,
                   color: darkblue,
                 ),
-                title: const Text("Prefernces"),
+                title: Text(
+                  "Prefernces",
+                  style: TextStyle(
+                      fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                ),
               ),
             ),
             InkWell(
@@ -407,30 +414,25 @@ class DrawerScreen extends StatelessWidget {
                   leading: Icon(
                     Icons.logout_rounded,
                     color: darkblue,
-                    size: 32,
                   ),
-                  title: const Text(
+                  title: Text(
                     "LogOut",
                     style: TextStyle(
-                      fontSize: 14,
-                    ),
+                        fontSize: width * 0.03, fontWeight: FontWeight.w500),
                   )),
             ),
           ],
         )),
         Container(
-          color: AppColors.blue.withOpacity(0.7),
+          color: darkblue,
           child: Align(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: EdgeInsets.only(left: width * 0.02),
+              padding: EdgeInsets.only(left: width * 0.21),
               child: Container(
                 height: height * 0.061,
                 width: width * 0.15,
                 decoration: const BoxDecoration(
-                    // color: AppColors.whitecolor.withOpacity(0.9),
-                    //  borderRadius: BorderRadius.circular(20),
-                    //border: Border.all(width: 2, color: white),
                     image:
                         DecorationImage(image: AssetImage("images/logo.png"))),
               ),

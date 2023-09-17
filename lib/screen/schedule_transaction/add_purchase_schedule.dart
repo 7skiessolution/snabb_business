@@ -316,7 +316,7 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                                                 SizedBox(
                                                                                   width: width * 0.11,
                                                                                   height: height * 0.11,
-                                                                                  child: Image(image: AssetImage("images/bank.jpeg")),
+                                                                                  child: Image(image: AssetImage("assets/bank.jpeg")),
                                                                                 ),
                                                                                 Text(
                                                                                   "BANK",
@@ -335,7 +335,7 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                                                 SizedBox(
                                                                                   width: width * 0.11,
                                                                                   height: height * 0.11,
-                                                                                  child: Image(image: AssetImage("images/group1.jpg")),
+                                                                                  child: Image(image: AssetImage("assets/group1.jpg")),
                                                                                 ),
                                                                                 Text(
                                                                                   "CASH",
@@ -354,7 +354,7 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                                                 SizedBox(
                                                                                   width: width * 0.11,
                                                                                   height: height * 0.11,
-                                                                                  child: Image(image: AssetImage("images/group2.jpg")),
+                                                                                  child: Image(image: AssetImage("assets/group2.jpg")),
                                                                                 ),
                                                                                 Text(
                                                                                   "OTHERS",

@@ -380,8 +380,9 @@ class _CategoriesState extends State<Categories> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ExpencePieChart(),
+                                      builder: (context) => ExpencePieChart(
+                                        type: dropdownValue,
+                                      ),
                                     ));
                               }
                             },

@@ -122,14 +122,14 @@ class _TimeState extends State<Time> {
                                   setState(() {
                                     dropdownValue1 = newValue;
                                   });
-                                  print("value  ${dropdownValue1}");
+                                  print("value  $dropdownValue1");
                                 },
                                 value: dropdownValue1,
                                 items: dropdownItems1.map((String value) {
                                   print("ww $value");
-                                  return new DropdownMenuItem<String>(
+                                  return DropdownMenuItem<String>(
                                     value: value,
-                                    child: new Text(value),
+                                    child: Text(value),
                                   );
                                 }).toList()),
                           ),
@@ -209,7 +209,8 @@ class _TimeState extends State<Time> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ExpencePieChart(),
+                            builder: (context) =>
+                                ExpencePieChart(type: dropdownValue1),
                           ));
                     },
                   )

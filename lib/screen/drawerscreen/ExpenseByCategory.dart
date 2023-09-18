@@ -198,494 +198,473 @@ class _ExpenceByCategoryState extends State<ExpenceByCategory> {
                           width: width * 0.98,
                           color: Colors.transparent,
                           child: widget.type == "Expense"
-                              ? Expanded(
-                                  child: ListView.builder(
-                                    itemCount: obj.expenseData.length,
-                                    itemBuilder: (context, index) {
-                                      var data = obj.expenseData[index];
+                              ? ListView.builder(
+                                  itemCount: obj.expenseData.length,
+                                  itemBuilder: (context, index) {
+                                    var data = obj.expenseData[index];
 
-                                      return InkWell(
-                                        onTap: () {
-                                          // showImageDialog(context, obj.expenseData[index]);
-                                        },
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.015),
-                                          child: Stack(
-                                            children: [
-                                              Container(
-                                                height: height * 0.13,
-                                                width: width,
-                                                decoration: BoxDecoration(
-                                                  color: expensecolor,
-                                                  borderRadius:
-                                                      BorderRadius.circular(6),
-                                                ),
-                                                child: Align(
-                                                  alignment:
-                                                      Alignment.bottomCenter,
-                                                  child: Padding(
-                                                    padding: EdgeInsets.only(
-                                                        bottom: height * 0.005),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceAround,
-                                                      children: [
-                                                        Text(
-                                                          "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency} ",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              fontSize:
-                                                                  width * 0.025,
-                                                              color: white),
-                                                        ),
-                                                        Text(
-                                                          "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              fontSize:
-                                                                  width * 0.025,
-                                                              color: white),
-                                                        )
-                                                      ],
-                                                    ),
+                                    return InkWell(
+                                      onTap: () {
+                                        // showImageDialog(context, obj.expenseData[index]);
+                                      },
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            top: height * 0.015),
+                                        child: Stack(
+                                          children: [
+                                            Container(
+                                              height: height * 0.13,
+                                              width: width,
+                                              decoration: BoxDecoration(
+                                                color: expensecolor,
+                                                borderRadius:
+                                                    BorderRadius.circular(6),
+                                              ),
+                                              child: Align(
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                                child: Padding(
+                                                  padding: EdgeInsets.only(
+                                                      bottom: height * 0.005),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceAround,
+                                                    children: [
+                                                      Text(
+                                                        "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency} ",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize:
+                                                                width * 0.025,
+                                                            color: white),
+                                                      ),
+                                                      Text(
+                                                        "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize:
+                                                                width * 0.025,
+                                                            color: white),
+                                                      )
+                                                    ],
                                                   ),
                                                 ),
                                               ),
-                                              Container(
-                                                height: height * 0.1,
-                                                width: width,
-                                                decoration: BoxDecoration(
-                                                  color: white,
-                                                  borderRadius:
-                                                      BorderRadius.circular(6),
-                                                ),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  children: [
-                                                    CircleAvatar(
-                                                      backgroundColor:
-                                                          expensecolor,
-                                                      child: Image.asset(
-                                                        data.imageUrl!,
-                                                        color: white,
-                                                      ),
+                                            ),
+                                            Container(
+                                              height: height * 0.1,
+                                              width: width,
+                                              decoration: BoxDecoration(
+                                                color: white,
+                                                borderRadius:
+                                                    BorderRadius.circular(6),
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  CircleAvatar(
+                                                    backgroundColor:
+                                                        expensecolor,
+                                                    child: Image.asset(
+                                                      data.imageUrl!,
+                                                      color: white,
                                                     ),
-                                                    Text(
-                                                      "${data.category}",
-                                                      style: TextStyle(
-                                                          fontSize:
-                                                              width * 0.04,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: expensecolor),
+                                                  ),
+                                                  Text(
+                                                    "${data.category}",
+                                                    style: TextStyle(
+                                                        fontSize: width * 0.04,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: expensecolor),
+                                                  ),
+                                                  SizedBox(
+                                                    height: height * 0.1,
+                                                    width: width * 0.3,
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Container(
+                                                          height: height * 0.02,
+                                                          width: width * 0.2,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: expensecolor,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        2),
+                                                          ),
+                                                          child: Center(
+                                                            child: Text(
+                                                              "${data.amount}",
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.02,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color: white),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          height: height * 0.01,
+                                                        ),
+                                                        Text(
+                                                          data.dateTime
+                                                              .toString()
+                                                              .substring(0, 10),
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                                  width * 0.02,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              color: lightgray),
+                                                        )
+                                                      ],
                                                     ),
-                                                    SizedBox(
-                                                      height: height * 0.1,
-                                                      width: width * 0.3,
-                                                      child: Column(
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                )
+                              : widget.type == "Purchase"
+                                  ? ListView.builder(
+                                      itemCount: obj.purchaseData.length,
+                                      itemBuilder: (context, index) {
+                                        var data = obj.purchaseData[index];
+                                        return InkWell(
+                                          onTap: () {
+                                            /// showImageDialog(context, obj.purchaseData[index]);
+                                          },
+                                          child: Padding(
+                                            padding: EdgeInsets.only(
+                                                top: height * 0.015),
+                                            child: Stack(
+                                              children: [
+                                                Container(
+                                                  height: height * 0.13,
+                                                  width: width,
+                                                  decoration: BoxDecoration(
+                                                    color: darkblue,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            6),
+                                                  ),
+                                                  child: Align(
+                                                    alignment:
+                                                        Alignment.bottomCenter,
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 8,
+                                                              bottom: 8),
+                                                      child: Row(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
-                                                                .center,
+                                                                .spaceAround,
                                                         children: [
-                                                          Container(
-                                                            height:
-                                                                height * 0.02,
-                                                            width: width * 0.2,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color:
-                                                                  expensecolor,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          2),
-                                                            ),
-                                                            child: Center(
-                                                              child: Text(
-                                                                "${data.amount}",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        width *
-                                                                            0.02,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    color:
-                                                                        white),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          SizedBox(
-                                                            height:
-                                                                height * 0.01,
-                                                          ),
                                                           Text(
-                                                            data.dateTime
-                                                                .toString()
-                                                                .substring(
-                                                                    0, 10),
+                                                            "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency}",
                                                             style: TextStyle(
-                                                                fontSize:
-                                                                    width *
-                                                                        0.02,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .bold,
-                                                                color:
-                                                                    lightgray),
+                                                                        .w500,
+                                                                fontSize:
+                                                                    width *
+                                                                        0.025,
+                                                                color: white),
+                                                          ),
+                                                          Text(
+                                                            "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontSize:
+                                                                    width *
+                                                                        0.025,
+                                                                color: white),
                                                           )
                                                         ],
                                                       ),
-                                                    )
-                                                  ],
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                )
-                              : widget.type == "Purchase"
-                                  ? Expanded(
-                                      child: ListView.builder(
-                                        itemCount: obj.purchaseData.length,
-                                        itemBuilder: (context, index) {
-                                          var data = obj.purchaseData[index];
-                                          return InkWell(
-                                            onTap: () {
-                                              /// showImageDialog(context, obj.purchaseData[index]);
-                                            },
-                                            child: Padding(
-                                              padding: EdgeInsets.only(
-                                                  top: height * 0.015),
-                                              child: Stack(
-                                                children: [
-                                                  Container(
-                                                    height: height * 0.13,
-                                                    width: width,
-                                                    decoration: BoxDecoration(
-                                                      color: darkblue,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              6),
-                                                    ),
-                                                    child: Align(
-                                                      alignment: Alignment
-                                                          .bottomCenter,
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                top: 8,
-                                                                bottom: 8),
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceAround,
-                                                          children: [
-                                                            Text(
-                                                              "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency}",
-                                                              style: TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                  fontSize:
-                                                                      width *
-                                                                          0.025,
-                                                                  color: white),
-                                                            ),
-                                                            Text(
-                                                              "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
-                                                              style: TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                  fontSize:
-                                                                      width *
-                                                                          0.025,
-                                                                  color: white),
-                                                            )
-                                                          ],
+                                                Container(
+                                                  height: height * 0.1,
+                                                  width: width,
+                                                  decoration: BoxDecoration(
+                                                    color: white,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            6),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceAround,
+                                                    children: [
+                                                      CircleAvatar(
+                                                        backgroundColor:
+                                                            darkblue,
+                                                        child: Image.asset(
+                                                          data.imageUrl!,
+                                                          color: white,
                                                         ),
                                                       ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    height: height * 0.1,
-                                                    width: width,
-                                                    decoration: BoxDecoration(
-                                                      color: white,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              6),
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceAround,
-                                                      children: [
-                                                        CircleAvatar(
-                                                          backgroundColor:
-                                                              darkblue,
-                                                          child: Image.asset(
-                                                            data.imageUrl!,
-                                                            color: white,
-                                                          ),
-                                                        ),
-                                                        Text(
-                                                          "${data.category}",
-                                                          style: TextStyle(
-                                                              fontSize:
-                                                                  width * 0.04,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              color: darkblue),
-                                                        ),
-                                                        SizedBox(
-                                                          height: height * 0.1,
-                                                          width: width * 0.3,
-                                                          child: Column(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              Container(
-                                                                height: height *
-                                                                    0.02,
-                                                                width:
-                                                                    width * 0.2,
-                                                                decoration:
-                                                                    BoxDecoration(
+                                                      Text(
+                                                        "${data.category}",
+                                                        style: TextStyle(
+                                                            fontSize:
+                                                                width * 0.04,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color: darkblue),
+                                                      ),
+                                                      SizedBox(
+                                                        height: height * 0.1,
+                                                        width: width * 0.3,
+                                                        child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Container(
+                                                              height:
+                                                                  height * 0.02,
+                                                              width:
+                                                                  width * 0.2,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: darkblue,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            2),
+                                                              ),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "${data.amount} ${obj.curency}",
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          width *
+                                                                              0.02,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      color:
+                                                                          white),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                              height:
+                                                                  height * 0.01,
+                                                            ),
+                                                            Text(
+                                                              data.dateTime
+                                                                  .toString()
+                                                                  .substring(
+                                                                      0, 10),
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.02,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
                                                                   color:
-                                                                      darkblue,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              2),
-                                                                ),
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    "${data.amount} ${obj.curency}",
-                                                                    style: TextStyle(
-                                                                        fontSize:
-                                                                            width *
-                                                                                0.02,
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .bold,
-                                                                        color:
-                                                                            white),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              SizedBox(
-                                                                height: height *
-                                                                    0.01,
-                                                              ),
-                                                              Text(
-                                                                data.dateTime
-                                                                    .toString()
-                                                                    .substring(
-                                                                        0, 10),
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        width *
-                                                                            0.02,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    color:
-                                                                        lightgray),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    )
-                                  : Expanded(
-                                      child: ListView.builder(
-                                        itemCount: obj.salaDatalist.length,
-                                        itemBuilder: (context, index) {
-                                          var data = obj.salaDatalist[index];
-
-                                          return InkWell(
-                                            onTap: () {
-                                              // showImageDialog(context, obj.expenseData[index]);
-                                            },
-                                            child: Padding(
-                                              padding: EdgeInsets.only(
-                                                  top: height * 0.015),
-                                              child: Stack(
-                                                children: [
-                                                  Container(
-                                                    height: height * 0.13,
-                                                    width: width,
-                                                    decoration: BoxDecoration(
-                                                      color: Colors.lightGreen,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              6),
-                                                    ),
-                                                    child: Align(
-                                                      alignment: Alignment
-                                                          .bottomCenter,
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                bottom: height *
-                                                                    0.005),
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceAround,
-                                                          children: [
-                                                            Text(
-                                                              "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency} ",
-                                                              style: TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                  fontSize:
-                                                                      width *
-                                                                          0.025,
-                                                                  color: white),
-                                                            ),
-                                                            Text(
-                                                              "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
-                                                              style: TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                  fontSize:
-                                                                      width *
-                                                                          0.025,
-                                                                  color: white),
+                                                                      lightgray),
                                                             )
                                                           ],
                                                         ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    )
+                                  : ListView.builder(
+                                      itemCount: obj.salaDatalist.length,
+                                      itemBuilder: (context, index) {
+                                        var data = obj.salaDatalist[index];
+
+                                        return InkWell(
+                                          onTap: () {
+                                            // showImageDialog(context, obj.expenseData[index]);
+                                          },
+                                          child: Padding(
+                                            padding: EdgeInsets.only(
+                                                top: height * 0.015),
+                                            child: Stack(
+                                              children: [
+                                                Container(
+                                                  height: height * 0.13,
+                                                  width: width,
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.lightGreen,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            6),
+                                                  ),
+                                                  child: Align(
+                                                    alignment:
+                                                        Alignment.bottomCenter,
+                                                    child: Padding(
+                                                      padding: EdgeInsets.only(
+                                                          bottom:
+                                                              height * 0.005),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceAround,
+                                                        children: [
+                                                          Text(
+                                                            "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency} ",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontSize:
+                                                                    width *
+                                                                        0.025,
+                                                                color: white),
+                                                          ),
+                                                          Text(
+                                                            "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontSize:
+                                                                    width *
+                                                                        0.025,
+                                                                color: white),
+                                                          )
+                                                        ],
                                                       ),
                                                     ),
                                                   ),
-                                                  Container(
-                                                    height: height * 0.1,
-                                                    width: width,
-                                                    decoration: BoxDecoration(
-                                                      color: white,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              6),
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceAround,
-                                                      children: [
-                                                        CircleAvatar(
-                                                          backgroundColor:
-                                                              Colors.lightGreen,
-                                                          child: Image.asset(
-                                                            data.imageUrl!,
-                                                            color: white,
-                                                          ),
-                                                        ),
-                                                        Text(
-                                                          "${data.category}",
-                                                          style: TextStyle(
-                                                              fontSize:
-                                                                  width * 0.04,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              color: Colors
-                                                                  .lightGreen),
-                                                        ),
-                                                        SizedBox(
-                                                          height: height * 0.1,
-                                                          width: width * 0.3,
-                                                          child: Column(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              Container(
-                                                                height: height *
-                                                                    0.02,
-                                                                width:
-                                                                    width * 0.2,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: Colors
-                                                                      .lightGreen,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              2),
-                                                                ),
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    "${data.amount}",
-                                                                    style: TextStyle(
-                                                                        fontSize:
-                                                                            width *
-                                                                                0.02,
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .bold,
-                                                                        color:
-                                                                            white),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              SizedBox(
-                                                                height: height *
-                                                                    0.01,
-                                                              ),
-                                                              Text(
-                                                                data.dateTime
-                                                                    .toString()
-                                                                    .substring(
-                                                                        0, 10),
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        width *
-                                                                            0.02,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    color:
-                                                                        lightgray),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
+                                                ),
+                                                Container(
+                                                  height: height * 0.1,
+                                                  width: width,
+                                                  decoration: BoxDecoration(
+                                                    color: white,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            6),
                                                   ),
-                                                ],
-                                              ),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceAround,
+                                                    children: [
+                                                      CircleAvatar(
+                                                        backgroundColor:
+                                                            Colors.lightGreen,
+                                                        child: Image.asset(
+                                                          data.imageUrl!,
+                                                          color: white,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        "${data.category}",
+                                                        style: TextStyle(
+                                                            fontSize:
+                                                                width * 0.04,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color: Colors
+                                                                .lightGreen),
+                                                      ),
+                                                      SizedBox(
+                                                        height: height * 0.1,
+                                                        width: width * 0.3,
+                                                        child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Container(
+                                                              height:
+                                                                  height * 0.02,
+                                                              width:
+                                                                  width * 0.2,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Colors
+                                                                    .lightGreen,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            2),
+                                                              ),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "${data.amount}",
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          width *
+                                                                              0.02,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      color:
+                                                                          white),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                              height:
+                                                                  height * 0.01,
+                                                            ),
+                                                            Text(
+                                                              data.dateTime
+                                                                  .toString()
+                                                                  .substring(
+                                                                      0, 10),
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.02,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color:
+                                                                      lightgray),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                          );
-                                        },
-                                      ),
+                                          ),
+                                        );
+                                      },
                                     )),
                     )
                   ],

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/controller/schedule_controller.dart';
@@ -48,7 +46,7 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           content: SizedBox(
             height: MediaQuery.of(context).size.height * 0.7,
-            width: MediaQuery.of(context).size.width * 0.9,
+            width: MediaQuery.of(context).size.width,
             child: Stack(
               children: [
                 SizedBox(
@@ -64,7 +62,8 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                           AppLocalizations.of(context)!.transationdetails,
                           style: TextStyle(
                               color: darkblue,
-                              fontSize: 18,
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.035,
                               fontWeight: FontWeight.bold),
                         )),
                       ),
@@ -81,6 +80,9 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                                   "${AppLocalizations.of(context)!.walletname}: ",
                                   style: TextStyle(
                                       color: darkblue,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.035,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -89,7 +91,14 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                               child: SizedBox(
                                 height: MediaQuery.of(context).size.height,
                                 width: MediaQuery.of(context).size.width,
-                                child: Text(obj.name.toString()),
+                                child: Text(
+                                  obj.name.toString(),
+                                  style: TextStyle(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width *
+                                            0.03,
+                                  ),
+                                ),
                               ),
                             ),
                           ],
@@ -110,9 +119,20 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                                       "${AppLocalizations.of(context)!.repeat}: ",
                                       style: TextStyle(
                                           color: darkblue,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.035,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Text(obj.schedule!.repeats.toString()),
+                                    Text(
+                                      obj.schedule!.repeats.toString(),
+                                      style: TextStyle(
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.03),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -127,9 +147,20 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                                       "${AppLocalizations.of(context)!.amount}: ",
                                       style: TextStyle(
                                           color: darkblue,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.035,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Text(obj.amount.toString()),
+                                    Text(
+                                      obj.amount.toString(),
+                                      style: TextStyle(
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.03),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -152,9 +183,20 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                                       "${AppLocalizations.of(context)!.cname}: ",
                                       style: TextStyle(
                                           color: darkblue,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.035,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Text(obj.category!),
+                                    Text(
+                                      obj.category!,
+                                      style: TextStyle(
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.03),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -169,9 +211,20 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                                       "${AppLocalizations.of(context)!.date}: ",
                                       style: TextStyle(
                                           color: darkblue,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.035,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Text(obj.dateTime.toString()),
+                                    Text(
+                                      obj.dateTime.toString(),
+                                      style: TextStyle(
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.03),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -191,6 +244,9 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                                 "${AppLocalizations.of(context)!.notes}: ",
                                 style: TextStyle(
                                     color: darkblue,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width *
+                                            0.035,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -198,7 +254,13 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                               child: SizedBox(
                                 height: MediaQuery.of(context).size.height,
                                 width: MediaQuery.of(context).size.width,
-                                child: Text(obj.note!),
+                                child: Text(
+                                  obj.note!,
+                                  style: TextStyle(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.03),
+                                ),
                               ),
                             ),
                           ],

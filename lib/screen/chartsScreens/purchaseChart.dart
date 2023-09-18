@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
+import 'package:snabb_business/utils/pinch_zoom_image.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -210,16 +211,20 @@ class _PurchaseChartState extends State<PurchaseChart> {
                           width: MediaQuery.of(context).size.width,
                           child: Center(
                             child: data.files != null && data.files != ""
-                                ? FadeInImage.assetNetwork(
-                                    fit: BoxFit.cover,
-                                    placeholder: 'assets/images/bell.png',
+                                ? PinchZoomImage(
                                     image:
                                         '${StaticValues.imageUrl}${data.files!}',
-                                    placeholderErrorBuilder:
-                                        (context, error, stackTrace) {
-                                      return const CircularProgressIndicator();
-                                    },
                                   )
+                                // ? FadeInImage.assetNetwork(
+                                //     fit: BoxFit.cover,
+                                //     placeholder: 'assets/images/bell.png',
+                                //     image:
+                                //         '${StaticValues.imageUrl}${data.files!}',
+                                //     placeholderErrorBuilder:
+                                //         (context, error, stackTrace) {
+                                //       return const CircularProgressIndicator();
+                                //     },
+                                //   )
                                 : Text(AppLocalizations.of(context)!
                                     .nofileforthistransaction),
                           ),

@@ -75,7 +75,7 @@ class _PinchZoomImageState extends State<PinchZoomImage>
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.network(
-              "src",
+              "${widget.image}",
               fit: BoxFit.cover,
             ),
           ),

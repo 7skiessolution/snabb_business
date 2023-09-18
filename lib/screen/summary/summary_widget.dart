@@ -324,12 +324,14 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                   width: width,
                                                   alignment:
                                                       Alignment.centerLeft,
-                                                  child: Text(
-                                                    " ${HomeController.to.curency} ${snapshot.data!.data![index].transactions!.sale!}",
-                                                    style: const TextStyle(
-                                                        color: Colors.green,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                  child: FittedBox(
+                                                    child: Text(
+                                                      " ${HomeController.to.curency} ${snapshot.data!.data![index].transactions!.sale!}",
+                                                      style: const TextStyle(
+                                                          color: Colors.green,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
                                                   ),
                                                 ),
                                               )
@@ -362,12 +364,14 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                   width: width,
                                                   alignment:
                                                       Alignment.centerLeft,
-                                                  child: Text(
-                                                    "-${HomeController.to.curency} ${model!.data![index].transactions!.purchase!}",
-                                                    style: const TextStyle(
-                                                        color: Colors.red,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                  child: FittedBox(
+                                                    child: Text(
+                                                      "-${HomeController.to.curency} ${model!.data![index].transactions!.purchase!}",
+                                                      style: const TextStyle(
+                                                          color: Colors.red,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
                                                   ),
                                                 ),
                                               )
@@ -400,12 +404,14 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                   width: width,
                                                   alignment:
                                                       Alignment.centerLeft,
-                                                  child: Text(
-                                                    "-${HomeController.to.curency} ${model!.data![index].transactions!.expense!}",
-                                                    style: const TextStyle(
-                                                        color: Colors.blue,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                  child: FittedBox(
+                                                    child: Text(
+                                                      "-${HomeController.to.curency} ${model!.data![index].transactions!.expense!}",
+                                                      style: const TextStyle(
+                                                          color: Colors.blue,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
                                                   ),
                                                 ),
                                               )
@@ -438,13 +444,15 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                   width: width,
                                                   alignment:
                                                       Alignment.centerLeft,
-                                                  child: Text(
-                                                    balance > 0
-                                                        ? "${HomeController.to.curency} $balance"
-                                                        : "${HomeController.to.curency} $balance",
-                                                    style: const TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                  child: FittedBox(
+                                                    child: Text(
+                                                      balance > 0
+                                                          ? "${HomeController.to.curency} $balance"
+                                                          : "${HomeController.to.curency} $balance",
+                                                      style: const TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
                                                   ),
                                                 ),
                                               )

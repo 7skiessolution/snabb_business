@@ -21,7 +21,7 @@ class BudgetView extends StatefulWidget {
 
 class _BudgetViewState extends State<BudgetView> {
   int index = 0;
-  List<String> cat = ["One Month", "Three Month ", "Six Month", "Yealy"];
+  List<String> cat = ["One Month", "Three Month ", "Six Month", "Yearly"];
 
   var height, width;
   void showDeleteConfirmationDialog(BuildContext context, id) {

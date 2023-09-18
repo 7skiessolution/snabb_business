@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+
 import 'package:intl/intl.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/screen/chartsScreens/purchaseChart.dart';
 import 'package:snabb_business/screen/chartsScreens/salesChart.dart';
+import 'package:snabb_business/screen/schedule_transaction/add_Schedule_income.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/models/dataclassgraphModel.dart';
 import 'package:snabb_business/utils/colors.dart';
@@ -27,6 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+
+
+
     Get.put(HomeController());
     HomeController.to.saleListOFChart();
     HomeController.to.expenseList(0);

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
+import 'package:snabb_business/screen/bottomscreen/expense.dart';
+import 'package:snabb_business/screen/chartsScreens/expenseChart.dart';
 import 'package:snabb_business/screen/chartsScreens/purchaseChart.dart';
 import 'package:snabb_business/screen/chartsScreens/salesChart.dart';
 import 'package:snabb_business/screen/drawerscreen/userProfile.dart';
@@ -135,8 +137,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               width: width * 0.06,
               // scale: 1,
             ),
+            
             const Icon(
-              Icons.person_2_outlined,
+              Icons.wallet,
               size: 30,
               color: Colors.white,
             ),
@@ -170,7 +173,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         const BottomWallet(),
         PurchaseChart(home: true),
         SalesChart(home: true),
-        const UserProfile()
+        const ExpenseChart1()
       ],
     );
   }

@@ -297,12 +297,18 @@ class _WalletScreenState extends State<WalletScreen> {
                                                                 width * 0.03),
                                                       ),
                                                       Transform.scale(
-                                                          scale: 0.5,
+                                                          scale: 0.65,
                                                           child: Switch(
                                                             onChanged: (val) {
                                                               toggleSwitch(
                                                                   index);
-                                                              setState(() {});
+                                                              setState(() {
+
+                                                                switchValues.add(val);
+
+
+
+                                                              });
                                                             },
                                                             value: isTure,
                                                             activeColor:
@@ -332,20 +338,24 @@ class _WalletScreenState extends State<WalletScreen> {
                                                           MainAxisAlignment
                                                               .spaceAround,
                                                       children: [
-                                                        InkWell(
-                                                          onTap: () {},
-                                                          child: Container(
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.4),
-                                                            width: 18,
-                                                            height: 18,
-                                                            child: const Icon(
-                                                              Icons.transform,
-                                                              size: 15,
-                                                            ),
-                                                          ),
-                                                        ),
+                                                        // InkWell(
+                                                        //   onTap: () {},
+                                                        //   child: Container(
+                                                        //     color: Colors.grey
+                                                        //         .withOpacity(
+                                                        //             0.4),
+                                                        //     width: 18,
+                                                        //     height: 18,
+                                                        //     child: const Icon(
+                                                        //       Icons.transform,
+                                                        //       size: 15,
+                                                        //     ),
+                                                        //   ),
+                                                        // ),
+                  
+                  
+                  
+                  
                                                         SizedBox(
                                                           width: width * 0.02,
                                                         ),
@@ -491,7 +501,7 @@ class _WalletScreenState extends State<WalletScreen> {
                                                             child: const Icon(
                                                               Icons
                                                                   .remove_red_eye,
-                                                              size: 15,
+                                                              size: 20,
                                                             ),
                                                           ),
                                                         ),

@@ -451,7 +451,7 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
         }, builder: (obj) {
           return Column(
             children: [
-              AppBarWidgt(text: "Shadule Transaction"),
+              AppBarWidgt(text: "scheduled transaction"),
               Card(
                 elevation: 5,
                 shadowColor: AppColors.blue,

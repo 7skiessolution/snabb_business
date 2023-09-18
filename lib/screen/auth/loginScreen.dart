@@ -218,24 +218,24 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: height * 0.43,
-                  ),
-                  const Text("Or Sigup with"),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      SizedBox(
-                        height: height * 0.05,
-                        width: width * 0.8,
-                        child: const Image(
-                            image: AssetImage("images/Group 296.png")),
-                      )
-                    ],
-                  )
+                  // SizedBox(
+                  //   height: height * 0.43,
+                  // ),
+                  // const Text("Or Sigup with"),
+                  // SizedBox(
+                  //   height: height * 0.02,
+                  // ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //   children: [
+                  //     SizedBox(
+                  //       height: height * 0.05,
+                  //       width: width * 0.8,
+                  //       child: const Image(
+                  //           image: AssetImage("images/Group 296.png")),
+                  //     )
+                  //   ],
+                  // )
                 ]),
                 isExpended == false
                     ? Positioned(
@@ -373,7 +373,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               children: [
                                                 TextFileldLogin(
                                                   controller: mEmail,
-                                                  hint: "User Name / Email",
+                                                  hint: "Username / Email",
                                                   prefixIcon:
                                                       Icons.person_2_outlined,
                                                   validator: (val) {
@@ -454,7 +454,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               children: [
                                                 TextFileldLogin(
                                                   controller: mNamesignup,
-                                                  hint: "userName",
+                                                  hint: "Username",
                                                   prefixIcon:
                                                       Icons.person_2_outlined,
                                                   validator: (val) {
@@ -502,8 +502,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                                       addRadioButton(0, 'Male'),
                                                       addRadioButton(
                                                           1, 'Female'),
-                                                      addRadioButton(
-                                                          2, 'Others'),
+                                                      // addRadioButton(
+                                                      //     2, 'Others'),
                                                     ],
                                                   ),
                                                 )
@@ -563,7 +563,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                       TextFileldLogin(
                                                         controller: mEmail,
                                                         hint:
-                                                            "User Name / Email",
+                                                            "Username / Email",
                                                         prefixIcon: Icons
                                                             .person_2_outlined,
                                                         validator: (val) {

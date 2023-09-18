@@ -244,7 +244,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                                       },
                                                     ),
                                                   ),
-                                                  const Text("PKR")
+                                                  const Text("USD")
                                                 ],
                                               ),
                                             ),
@@ -290,7 +290,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                                 decoration:
                                                     const InputDecoration(
                                                         labelText: "Amount",
-                                                        suffix: Text("PKR")),
+                                                        suffix: Text("USD")),
                                                 validator: (value) {
                                                   if (value == null ||
                                                       value.isEmpty) {
@@ -348,7 +348,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    const Text("0.0PKR"),
+                                    const Text("0.0 USD"),
                                     SizedBox(
                                       width: width * 0.05,
                                     ),
@@ -1950,6 +1950,10 @@ class _SaleScreenState extends State<SaleScreen> {
                               ),
                             ),
                           ),
+       
+       
+       
+       
                         ],
                       ),
                     ),

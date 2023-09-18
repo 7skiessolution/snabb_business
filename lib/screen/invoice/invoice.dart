@@ -164,7 +164,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                     },
                                     child: ListTile(
                                         title: Text(
-                                          "Invoce Detail",
+                                          "Invice Detail",
                                           style: TextStyle(
                                               fontSize: width * 0.04,
                                               fontWeight: FontWeight.w500),
@@ -197,7 +197,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                     ),
                                     ListTile(
                                         title: Text(
-                                          "Invoce Date",
+                                          "Invice Date",
                                           style: TextStyle(
                                               fontSize: width * 0.035,
                                               fontWeight: FontWeight.w500),

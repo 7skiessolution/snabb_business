@@ -81,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen>
           scale: animation!,
           alignment: Alignment.center,
           child: Image.asset(
-            'images/logo.png',
+            'images/icon1.png',
             fit: BoxFit.contain,
             height: height * 0.6,
             width: width * 0.6,

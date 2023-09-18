@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:snabb_business/screen/budget/BudgetView.dart';
+import 'package:snabb_business/screen/drawerscreen/Calender.dart';
+import 'package:snabb_business/screen/homeScreen.dart';
+import 'package:snabb_business/screen/summary/summary_detail.dart';
+import 'package:snabb_business/screen/summary/summary_screen.dart';
+import 'package:snabb_business/screen/transactions/transactionScreen.dart';
 import 'package:snabb_business/utils/colors.dart';
 
 import '../../models/pagemodel.dart';
@@ -84,6 +90,19 @@ class _PreferencesState extends State<Preferences> {
                               setState(() {
                                 indexNumber = index;
                               });
+
+
+                              index ==4? Navigator.push(context, MaterialPageRoute(builder: (contex)=>CalenderScreen())):
+                              index ==3? Navigator.push(context, MaterialPageRoute(builder: (contex)=>BudgetView())):
+                              index ==2? Navigator.push(context, MaterialPageRoute(builder: (contex)=>TransactionScreen())):
+                              index ==1? Navigator.push(context, MaterialPageRoute(builder: (contex)=>SummeryScreen())):SizedBox();
+                              // index ==0? Navigator.push(context, MaterialPageRoute(builder: (contex)=>HomeScreen())):SizedBox();
+
+
+
+
+
+
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),

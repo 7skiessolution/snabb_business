@@ -30,7 +30,7 @@ List<Pages> list = [
   ),
   Pages(
     icon: Icons.calendar_month,
-    title: "Calendet",
+    title: "Calender",
     ontap: () {},
   ),
 ];

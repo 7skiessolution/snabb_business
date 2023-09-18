@@ -13,7 +13,7 @@ class AppBarWidgt extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: height * 0.09,
+      height: height * 0.10,
       // color: Colors.red,
       child: Column(
         children: [

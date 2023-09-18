@@ -299,12 +299,12 @@ class _IntroductionScreensPageState extends State<IntroductionScreensPage> {
                     text: AppLocalizations.of(context)!.theappthat,
                   ),
                   TextSpan(
-                    text: AppLocalizations.of(context)!.actually,
+                    text: " ${AppLocalizations.of(context)!.actually} ",
                     style: GoogleFonts.montserrat(
                         color: Color(0xFF112949), fontWeight: FontWeight.bold),
                   ),
                   TextSpan(
-                    text: AppLocalizations.of(context)!.helps,
+                    text: " ${AppLocalizations.of(context)!.helps} ",
                   ),
                   TextSpan(
                     text: AppLocalizations.of(context)!.youtosave,
@@ -371,10 +371,10 @@ class _IntroductionScreensPageState extends State<IntroductionScreensPage> {
                         color: Color(0xFF112949), fontWeight: FontWeight.bold),
                   ),
                   TextSpan(
-                    text: AppLocalizations.of(context)!.withsimple,
+                    text: "${AppLocalizations.of(context)!.withsimple}",
                   ),
                   TextSpan(
-                    text: AppLocalizations.of(context)!.andeverytounderstand,
+                    text: " ${AppLocalizations.of(context)!.andeverytounderstand}",
                   ),
                 ],
               ),

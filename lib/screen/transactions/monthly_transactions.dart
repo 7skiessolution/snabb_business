@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/colors.dart';
+import 'package:snabb_business/utils/pinch_zoom_image.dart';
 
 class MonthlyTransactions extends StatefulWidget {
   const MonthlyTransactions({Key? key}) : super(key: key);
@@ -217,23 +218,103 @@ class _MonthlyTransactionsState extends State<MonthlyTransactions> {
                             width: MediaQuery.of(context).size.width,
                             child: Center(
                               child: obj.file != null && obj.file != ""
-                                  ? FadeInImage.assetNetwork(
-                                      fit: BoxFit.cover,
-                                      placeholder: 'assets/images/bell.png',
-                                      image:
-                                          "${StaticValues.imageUrl}${obj.file!}",
-                                      placeholderErrorBuilder:
-                                          (context, error, stackTrace) {
-                                        return const CircularProgressIndicator();
+                                  ? InkWell(
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          barrierDismissible: false,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              elevation: 10,
+                                              shadowColor: Colors.blue[900],
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20)),
+                                              content: SizedBox(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.7,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.9,
+                                                child: Stack(
+                                                  children: [
+                                                    Container(
+                                                        height: height,
+                                                        width: width,
+                                                        child: PinchZoomImage(
+                                                          image:
+                                                              '${StaticValues.imageUrl}${obj.file!}',
+                                                        )
+                                                        // decoration: BoxDecoration(
+                                                        //     image: DecorationImage(
+                                                        //         image: NetworkImage(
+                                                        //             "${StaticValues.imageUrl}${data.file!}"))),
+                                                        ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 8.0,
+                                                              bottom: 8.0),
+                                                      child: Align(
+                                                        alignment:
+                                                            Alignment.topRight,
+                                                        child: InkWell(
+                                                          onTap: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          child: Container(
+                                                            height: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .height *
+                                                                0.04,
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width *
+                                                                0.08,
+                                                            decoration: BoxDecoration(
+                                                                color: Colors
+                                                                    .blue[900],
+                                                                shape: BoxShape
+                                                                    .circle),
+                                                            child: const Center(
+                                                              child: Icon(
+                                                                Icons.clear,
+                                                                size: 15,
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        );
                                       },
+                                      child: FadeInImage.assetNetwork(
+                                        fit: BoxFit.cover,
+                                        placeholder: 'assets/images/bell.png',
+                                        image:
+                                            '${StaticValues.imageUrl}${obj.file}',
+                                        placeholderErrorBuilder:
+                                            (context, error, stackTrace) {
+                                          return const CircularProgressIndicator();
+                                        },
+                                      ),
                                     )
-                                  : Text(
-                                      AppLocalizations.of(context)!
-                                          .notransactions,
-                                      style: TextStyle(
-                                          fontSize: width * 0.03,
-                                          fontWeight: FontWeight.bold),
-                                    ),
+                                  : Text(AppLocalizations.of(context)!
+                                      .nofileforthistransaction),
                             ),
                           ),
                         ),

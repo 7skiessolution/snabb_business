@@ -29,7 +29,7 @@ class _AddDebitState extends State<AddDebit> {
 
   updateamount() async {
     try {
-      double paidAmount = double.parse(widget.deta!.paidAmount.toString()) ??
+      double paidAmount = double.tryParse(widget.deta!.paidAmount.toString()) ??
           0.0; // Default to 0 if paidAmount is null
       double newValue = double.tryParse(valuecontrol.text) ??
           0.0; // Default to 0 if parsing fails
@@ -51,6 +51,7 @@ class _AddDebitState extends State<AddDebit> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
@@ -309,7 +310,7 @@ class _AddDebitState extends State<AddDebit> {
                   ),
                 ),
                 obj.isLoading == false
-                    ? SizedBox()
+                    ? const SizedBox()
                     : Center(
                         child: Container(
                           height: height,

@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/controller/budget/budget_controller.dart';
 import 'package:snabb_business/controller/budget/transaction_budget.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/models/budget_model.dart';
 import 'package:snabb_business/models/payment_type_model.dart';
-import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/spinkit.dart';
@@ -232,10 +228,6 @@ class _BugetTransactionState extends State<BugetTransaction> {
                                                                       itemBuilder:
                                                                           (context,
                                                                               index) {
-                                                                        bool
-                                                                            isactive =
-                                                                            HomeController.to.paymenttypeindex ==
-                                                                                index;
                                                                         return GestureDetector(
                                                                           onTap:
                                                                               () {

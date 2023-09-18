@@ -4,7 +4,6 @@ import 'package:snabb_business/utils/color.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../controller/homeController.dart';
-import '../../models/dataclassgraphModel.dart';
 
 class PurchaseScreen extends StatefulWidget {
   const PurchaseScreen({super.key});
@@ -20,7 +19,7 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
     var width = MediaQuery.of(context).size.width;
     return GetBuilder<HomeController>(builder: (obj) {
       return Scaffold(
-        body: Container(
+        body: SizedBox(
           height: height,
           width: width,
           child: Padding(
@@ -41,7 +40,7 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
                             fontWeight: FontWeight.w800,
                             color: darkblue),
                       ),
-                      Container(
+                      SizedBox(
                           height: height * 0.16,
                           width: width,
                           child: SfCartesianChart(
@@ -147,7 +146,7 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
                                         fontWeight: FontWeight.bold,
                                         color: darkblue),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     height: height * 0.1,
                                     width: width * 0.3,
                                     child: Column(

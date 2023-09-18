@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:snabb_business/utils/colors.dart';
 
 import '../../utils/appbarwidget.dart';
 import '../../utils/color.dart';
-import '../budget/BudgetAdd.dart';
 
 class Loan extends StatelessWidget {
   const Loan({super.key});

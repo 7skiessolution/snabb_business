@@ -493,7 +493,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                         TextButton(
                           child: Text(
                             AppLocalizations.of(context)!.cancel,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.w600, color: Colors.red),
                           ),
                           onPressed: () async {
@@ -895,7 +895,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                     leading: Container(
                                                                                       height: height * 0.05,
                                                                                       width: width * 0.1,
-                                                                                      decoration: BoxDecoration(
+                                                                                      decoration: const BoxDecoration(
                                                                                         shape: BoxShape.circle,
                                                                                       ),
                                                                                       child: Padding(
@@ -916,14 +916,14 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                       ? AppLocalizations.of(context)!.nosubcategory
                                                                                       : "${AppLocalizations.of(context)!.subcatagoriesof}"
                                                                                           "${obj.model!.data![index].name!}",
-                                                                                  style: TextStyle(
+                                                                                  style: const TextStyle(
                                                                                     fontSize: 10,
                                                                                   ),
                                                                                 ),
                                                                                 SizedBox(
                                                                                   height: height * 0.1 * obj.model!.data![index].child!.length,
                                                                                   child: ListView.builder(
-                                                                                    physics: NeverScrollableScrollPhysics(),
+                                                                                    physics: const NeverScrollableScrollPhysics(),
                                                                                     itemCount: obj.model!.data![index].child!.length,
                                                                                     itemBuilder: (BuildContext context, int i) {
                                                                                       return Padding(
@@ -939,7 +939,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                           leading: Container(
                                                                                             height: height * 0.05,
                                                                                             width: width * 0.1,
-                                                                                            decoration: BoxDecoration(
+                                                                                            decoration: const BoxDecoration(
                                                                                               shape: BoxShape.circle,
                                                                                             ),
                                                                                             child: Padding(
@@ -984,7 +984,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                 leading: Container(
                                                                                   height: height * 0.05,
                                                                                   width: width * 0.1,
-                                                                                  decoration: BoxDecoration(
+                                                                                  decoration: const BoxDecoration(
                                                                                     shape: BoxShape.circle,
                                                                                   ),
                                                                                   child: Padding(
@@ -1086,9 +1086,9 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                               width: width * 0.3,
                                                                                               child: TextFormField(
                                                                                                 controller: subcatagorycontroller,
-                                                                                                decoration: InputDecoration(
+                                                                                                decoration: const InputDecoration(
                                                                                                   hintText: "...",
-                                                                                                  hintStyle: const TextStyle(color: Colors.black),
+                                                                                                  hintStyle: TextStyle(color: Colors.black),
                                                                                                 ),
                                                                                               ),
                                                                                             ),
@@ -1168,7 +1168,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                                                             leading: Container(
                                                                                                                               height: height * 0.05,
                                                                                                                               width: width * 0.1,
-                                                                                                                              decoration: BoxDecoration(
+                                                                                                                              decoration: const BoxDecoration(
                                                                                                                                 shape: BoxShape.circle,
                                                                                                                               ),
                                                                                                                               child: Padding(
@@ -1222,14 +1222,14 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                               style: TextStyle(fontSize: width * 0.03, color: darkblue!, fontWeight: FontWeight.bold),
                                                                                             ),
                                                                                             getimage == null
-                                                                                                ? CircleAvatar(
+                                                                                                ? const CircleAvatar(
                                                                                                     radius: 20,
                                                                                                     backgroundColor: Colors.grey,
                                                                                                   )
                                                                                                 : Container(
                                                                                                     height: height * 0.05,
                                                                                                     width: width * 0.1,
-                                                                                                    decoration: BoxDecoration(
+                                                                                                    decoration: const BoxDecoration(
                                                                                                       shape: BoxShape.circle,
                                                                                                       color: Colors.grey,
                                                                                                     ),
@@ -1251,7 +1251,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                         width: width,
                                                                                         child: Center(
                                                                                           child: GridView.builder(
-                                                                                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                                                                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                                                                               crossAxisCount: 5,
                                                                                               mainAxisSpacing: 20.0,
                                                                                               crossAxisSpacing: 20.0,
@@ -1267,7 +1267,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                                 child: Container(
                                                                                                   height: height * 0.05,
                                                                                                   width: width * 0.1,
-                                                                                                  decoration: BoxDecoration(
+                                                                                                  decoration: const BoxDecoration(
                                                                                                     shape: BoxShape.circle,
                                                                                                   ),
                                                                                                   child: Padding(
@@ -1441,7 +1441,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                     leading: Container(
                                                                                       height: height * 0.05,
                                                                                       width: width * 0.1,
-                                                                                      decoration: BoxDecoration(
+                                                                                      decoration: const BoxDecoration(
                                                                                         shape: BoxShape.circle,
                                                                                       ),
                                                                                       child: Padding(
@@ -1461,7 +1461,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                         onTap: () {
                                                                                           TransactionController.to.deleteCatagoriesdata(obj.model!.data![index].categoryId!, widget.income ? "income" : "expense");
                                                                                         },
-                                                                                        child: Icon(Icons.delete)),
+                                                                                        child: const Icon(Icons.delete)),
                                                                                   ),
                                                                                 );
                                                                               }),
@@ -1534,9 +1534,9 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                                         width: width * 0.3,
                                                                                                         child: TextFormField(
                                                                                                           controller: controller,
-                                                                                                          decoration: InputDecoration(
+                                                                                                          decoration: const InputDecoration(
                                                                                                             hintText: "...",
-                                                                                                            hintStyle: const TextStyle(color: Colors.black),
+                                                                                                            hintStyle: TextStyle(color: Colors.black),
                                                                                                           ),
                                                                                                         ),
                                                                                                       ),
@@ -1555,14 +1555,14 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                                         style: TextStyle(fontSize: width * 0.03, color: darkblue!, fontWeight: FontWeight.bold),
                                                                                                       ),
                                                                                                       maingetimage == null
-                                                                                                          ? CircleAvatar(
+                                                                                                          ? const CircleAvatar(
                                                                                                               radius: 50,
                                                                                                               backgroundColor: Colors.grey,
                                                                                                             )
                                                                                                           : Container(
                                                                                                               height: height * 0.08,
                                                                                                               width: width * 0.16,
-                                                                                                              decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+                                                                                                              decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
                                                                                                               child: Padding(
                                                                                                                 padding: const EdgeInsets.all(8.0),
                                                                                                                 child: Image(
@@ -1581,7 +1581,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                                   width: width,
                                                                                                   child: Center(
                                                                                                     child: GridView.builder(
-                                                                                                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                                                                                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                                                                                         crossAxisCount: 5,
                                                                                                         mainAxisSpacing: 20.0,
                                                                                                         crossAxisSpacing: 20.0,
@@ -1597,7 +1597,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                                             child: Container(
                                                                                                               height: height * 0.05,
                                                                                                               width: width * 0.1,
-                                                                                                              decoration: BoxDecoration(
+                                                                                                              decoration: const BoxDecoration(
                                                                                                                 shape: BoxShape.circle,
                                                                                                               ),
                                                                                                               child: Padding(
@@ -1664,7 +1664,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                   });
                                                                             },
                                                                             child:
-                                                                                Text(
+                                                                                const Text(
                                                                               "+",
                                                                               style: TextStyle(fontSize: 40),
                                                                             ),
@@ -2992,7 +2992,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                           ? SizedBox(
                                               height: height * 0.3,
                                             )
-                                          : SizedBox()
+                                          : const SizedBox()
                                     ]),
                               ),
                             ]),

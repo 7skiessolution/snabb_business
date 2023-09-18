@@ -1920,7 +1920,7 @@ class _SaleScreenState extends State<SaleScreen> {
                           ),
                           InkWell(
                             onTap: () {
-                                 TransactionController.to.addTransaction(
+                              TransactionController.to.addTransaction(
                                   _person.text,
                                   _noteController.text,
                                   double.parse(balanceController.text),

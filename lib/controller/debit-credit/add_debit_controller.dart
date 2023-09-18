@@ -173,8 +173,8 @@ class AddDebitController extends GetxController {
               TextButton(
                 child: Text(
                   AppLocalizations.of(context)!.cancel,
-                  style:
-                      TextStyle(fontWeight: FontWeight.w600, color: Colors.red),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w600, color: Colors.red),
                 ),
                 onPressed: () async {
                   Navigator.of(context).pop();
@@ -223,7 +223,6 @@ class AddDebitController extends GetxController {
 
   Future addDebit(String person, String note, num amount, String datetime,
       String backdate, int type, bool iscash, String catId) async {
-    String result;
     isLoading = true;
     update();
 

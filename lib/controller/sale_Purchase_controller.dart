@@ -11,9 +11,7 @@ class SalePurchaseController extends GetxController {
   File? pickImage;
   Future addTransaction(String name, String note, double amount, double partial,
       String datetime, int type, bool iscash, String catId) async {
-    String result;
-
-    print("...............datetime............. = ${datetime}");
+    print("...............datetime............. = $datetime");
     try {
       deo.FormData data = deo.FormData.fromMap({
         "Name": name,

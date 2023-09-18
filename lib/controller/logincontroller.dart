@@ -144,10 +144,10 @@ class LoginController extends GetxController {
   }
 
   /// forget password
-  Future<void> resetPassword(context, _email) async {
+  Future<void> resetPassword(context, email) async {
     try {
       var result = await httpClient()
-          .post('${StaticValues.forgotpassword}${_email.text}');
+          .post('${StaticValues.forgotpassword}${email.text}');
 
       print("respomse ${result.statusCode}");
       showetoast("Password reset email sent successfully");

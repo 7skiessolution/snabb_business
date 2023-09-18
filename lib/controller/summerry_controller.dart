@@ -17,7 +17,7 @@ class SummeryController extends GetxController {
         totalbalance -= a[i].amount!;
       }
     }
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       update();
     });
   }

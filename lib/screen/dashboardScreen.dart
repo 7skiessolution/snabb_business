@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
-import 'package:snabb_business/screen/budget/BudgetView.dart';
 import 'package:snabb_business/screen/chartsScreens/purchaseChart.dart';
 import 'package:snabb_business/screen/chartsScreens/salesChart.dart';
 import 'package:snabb_business/screen/drawerscreen/userProfile.dart';
@@ -12,7 +11,6 @@ import 'package:snabb_business/utils/navigation/curvenavigationbar.dart';
 import '../utils/demonshape.dart';
 import '../utils/drawer.dart';
 import 'bottomscreen/bottomWalletScreen.dart';
-import 'budget/bottombadget.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
@@ -168,11 +166,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     return IndexedStack(
       index: _selectedTab,
       children: [
-        HomeScreen(),
-        BottomWallet(),
+        const HomeScreen(),
+        const BottomWallet(),
         PurchaseChart(home: true),
         SalesChart(home: true),
-        UserProfile()
+        const UserProfile()
       ],
     );
   }

@@ -73,7 +73,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
                       shadowColor: Colors.blue[900],
                       elevation: 10,
                       child: GetBuilder<TransactionController>(builder: (obj) {
-                        return Container(
+                        return SizedBox(
                           // color: Colors.amber,
                           height: height * 0.75,
                           width: width * 0.9,

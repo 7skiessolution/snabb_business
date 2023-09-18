@@ -25,7 +25,7 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
   DateTime _currentDate = DateTime.now();
   DateTime _dueDate = DateTime.now();
   TimeOfDay? _currentTime;
-  TextEditingController _currentTimeController = TextEditingController();
+  final TextEditingController _currentTimeController = TextEditingController();
 
   @override
   void dispose() {
@@ -158,10 +158,10 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                               keyboardType: TextInputType.text,
                                               decoration: InputDecoration(
                                                 fillColor: white,
-                                                errorStyle: TextStyle(
+                                                errorStyle: const TextStyle(
                                                     color: Colors.black),
                                                 contentPadding:
-                                                    EdgeInsets.symmetric(
+                                                    const EdgeInsets.symmetric(
                                                         vertical: 0,
                                                         horizontal: 20),
                                                 hintText: " value ",
@@ -200,10 +200,10 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                               controller: _valueController,
                                               keyboardType: TextInputType.text,
                                               decoration: InputDecoration(
-                                                errorStyle: TextStyle(
+                                                errorStyle: const TextStyle(
                                                     color: Colors.black),
                                                 contentPadding:
-                                                    EdgeInsets.symmetric(
+                                                    const EdgeInsets.symmetric(
                                                         vertical: 0,
                                                         horizontal: 20),
                                                 hintText: " Type ",
@@ -234,7 +234,7 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                           children: [
                                             IconButton(
                                                 onPressed: () {},
-                                                icon: Icon(Icons.wallet)),
+                                                icon: const Icon(Icons.wallet)),
                                             const Text(
                                               "Wallet:",
                                               style: TextStyle(fontSize: 20),
@@ -316,9 +316,9 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                                                 SizedBox(
                                                                                   width: width * 0.11,
                                                                                   height: height * 0.11,
-                                                                                  child: Image(image: AssetImage("images/bank.jpeg")),
+                                                                                  child: const Image(image: AssetImage("images/bank.jpeg")),
                                                                                 ),
-                                                                                Text(
+                                                                                const Text(
                                                                                   "BANK",
                                                                                   style: TextStyle(
                                                                                     fontWeight: FontWeight.bold,
@@ -335,9 +335,9 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                                                 SizedBox(
                                                                                   width: width * 0.11,
                                                                                   height: height * 0.11,
-                                                                                  child: Image(image: AssetImage("images/group1.jpg")),
+                                                                                  child: const Image(image: AssetImage("images/group1.jpg")),
                                                                                 ),
-                                                                                Text(
+                                                                                const Text(
                                                                                   "CASH",
                                                                                   style: TextStyle(
                                                                                     fontWeight: FontWeight.bold,
@@ -354,9 +354,9 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                                                 SizedBox(
                                                                                   width: width * 0.11,
                                                                                   height: height * 0.11,
-                                                                                  child: Image(image: AssetImage("images/group2.jpg")),
+                                                                                  child: const Image(image: AssetImage("images/group2.jpg")),
                                                                                 ),
-                                                                                Text(
+                                                                                const Text(
                                                                                   "OTHERS",
                                                                                   style: TextStyle(
                                                                                     fontWeight: FontWeight.bold,
@@ -379,7 +379,8 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                     },
                                                   );
                                                 },
-                                                child: Text("Select Wallet"))
+                                                child:
+                                                    const Text("Select Wallet"))
                                           ],
                                         )
                                       ],
@@ -424,10 +425,11 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                 keyboardType:
                                                     TextInputType.text,
                                                 decoration: InputDecoration(
-                                                  errorStyle: TextStyle(
+                                                  errorStyle: const TextStyle(
                                                       color: Colors.black),
                                                   contentPadding:
-                                                      EdgeInsets.symmetric(
+                                                      const EdgeInsets
+                                                              .symmetric(
                                                           vertical: 0,
                                                           horizontal: 20),
                                                   hintText: " Repeatees ",
@@ -474,7 +476,7 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                                             10),
                                                     border: Border.all(
                                                         color: darkblue!)),
-                                                child: Row(
+                                                child: const Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment
                                                           .spaceEvenly,
@@ -502,10 +504,10 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                               controller: _typeController,
                                               keyboardType: TextInputType.text,
                                               decoration: InputDecoration(
-                                                errorStyle: TextStyle(
+                                                errorStyle: const TextStyle(
                                                     color: Colors.black),
                                                 contentPadding:
-                                                    EdgeInsets.symmetric(
+                                                    const EdgeInsets.symmetric(
                                                         vertical: 0,
                                                         horizontal: 20),
                                                 hintText: " Number of ",
@@ -533,7 +535,8 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                         ),
                                         SizedBox(
                                             width: width * 0.4,
-                                            child: Text("Zero Time Means")),
+                                            child:
+                                                const Text("Zero Time Means")),
                                       ],
                                     ),
                                     SizedBox(
@@ -549,10 +552,10 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                           controller: _typeController,
                                           keyboardType: TextInputType.text,
                                           decoration: InputDecoration(
-                                            errorStyle:
-                                                TextStyle(color: Colors.black),
+                                            errorStyle: const TextStyle(
+                                                color: Colors.black),
                                             contentPadding:
-                                                EdgeInsets.symmetric(
+                                                const EdgeInsets.symmetric(
                                                     vertical: 0,
                                                     horizontal: 20),
                                             hintText: " From (Optional) ",
@@ -586,10 +589,10 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                           controller: _typeController,
                                           keyboardType: TextInputType.text,
                                           decoration: InputDecoration(
-                                            errorStyle:
-                                                TextStyle(color: Colors.black),
+                                            errorStyle: const TextStyle(
+                                                color: Colors.black),
                                             contentPadding:
-                                                EdgeInsets.symmetric(
+                                                const EdgeInsets.symmetric(
                                                     vertical: 0,
                                                     horizontal: 20),
                                             hintText: " Notes (Optional)  ",
@@ -693,15 +696,15 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                           child: Container(
                                             width: width * 0.25,
                                             height: height * 0.06,
+                                            decoration: BoxDecoration(
+                                                color: darkblue!,
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
                                             child: Center(
                                                 child: Text(
                                               "Add File",
                                               style: TextStyle(color: white),
                                             )),
-                                            decoration: BoxDecoration(
-                                                color: darkblue!,
-                                                borderRadius:
-                                                    BorderRadius.circular(10)),
                                           ),
                                         )
                                       ],
@@ -714,30 +717,30 @@ class _AddPurchaseTransactionState extends State<AddPurchaseTransaction> {
                                           child: Container(
                                             width: width * 0.4,
                                             height: height * 0.06,
+                                            decoration: BoxDecoration(
+                                                color: darkblue!,
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
                                             child: Center(
                                                 child: Text(
                                               "Add",
                                               style: TextStyle(color: white),
                                             )),
-                                            decoration: BoxDecoration(
-                                                color: darkblue!,
-                                                borderRadius:
-                                                    BorderRadius.circular(10)),
                                           ),
                                         ),
                                         Card(
                                           child: Container(
                                             width: width * 0.4,
                                             height: height * 0.06,
+                                            decoration: BoxDecoration(
+                                                color: darkblue!,
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
                                             child: Center(
                                                 child: Text(
                                               "Add",
                                               style: TextStyle(color: white),
                                             )),
-                                            decoration: BoxDecoration(
-                                                color: darkblue!,
-                                                borderRadius:
-                                                    BorderRadius.circular(10)),
                                           ),
                                         )
                                       ],

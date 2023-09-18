@@ -80,12 +80,10 @@ class ViewDesbitController extends GetxController {
     }
 
     int max = numbers[0];
-    int maxIndex = 0;
 
     for (int i = 1; i < numbers.length; i++) {
       if (numbers[i] > max) {
         max = numbers[i];
-        maxIndex = i;
       }
     }
     return max;

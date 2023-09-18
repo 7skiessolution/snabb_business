@@ -2,25 +2,21 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:provider/provider.dart';
 import 'package:snabb_business/controller/debit-credit/add_debit_controller.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/models/add_debit_model.dart';
 import 'package:snabb_business/screen/debit/addDebit.dart';
 import 'package:snabb_business/screen/debit/edit_debit_credit.dart';
 import 'package:snabb_business/screen/debit/view_debitcredit.dart';
-import 'package:snabb_business/screen/homeScreen.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/debitbutton.dart';
 import '../../utils/appbarwidget.dart';
-import '../../utils/spinkit.dart';
 
 class DebitScreen extends StatefulWidget {
-  DebitScreen({super.key});
+  const DebitScreen({super.key});
   @override
   State<DebitScreen> createState() => _DebitScreenState();
 }
@@ -51,7 +47,6 @@ class _DebitScreenState extends State<DebitScreen> {
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
-    Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         extendBody: true,

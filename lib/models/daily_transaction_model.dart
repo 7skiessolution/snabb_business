@@ -81,7 +81,7 @@ class Data {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'day': day,
-      'transactions': transactions!.map((x) => x?.toMap()).toList(),
+      'transactions': transactions!.map((x) => x.toMap()).toList(),
     };
   }
 

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:snabb_business/utils/TextfieldLogin.dart';
 import 'package:snabb_business/utils/colors.dart';
 
-import '../../models/pagemodel.dart';
-import '../../utils/appbarwidget.dart';
 import '../../utils/color.dart';
 
 class UserProfile extends StatefulWidget {
@@ -19,7 +16,7 @@ class _UserProfileState extends State<UserProfile> {
   TextEditingController mName = TextEditingController();
   TextEditingController mpassword = TextEditingController();
   TextEditingController mgender = TextEditingController();
-  var indexNumber = null;
+  var indexNumber;
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -84,7 +81,7 @@ class _UserProfileState extends State<UserProfile> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Align(
+                                  const Align(
                                     alignment: Alignment.center,
                                     child: CircleAvatar(
                                       radius: 35,
@@ -113,10 +110,11 @@ class _UserProfileState extends State<UserProfile> {
                                       controller: mName,
                                       keyboardType: TextInputType.text,
                                       decoration: InputDecoration(
-                                        errorStyle:
-                                            TextStyle(color: Colors.black),
-                                        contentPadding: EdgeInsets.symmetric(
-                                            vertical: 0, horizontal: 20),
+                                        errorStyle: const TextStyle(
+                                            color: Colors.black),
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                vertical: 0, horizontal: 20),
                                         fillColor: Colors.grey,
                                         hintText: "Name",
                                         labelText: "Name",
@@ -157,10 +155,11 @@ class _UserProfileState extends State<UserProfile> {
                                       controller: mEmail,
                                       keyboardType: TextInputType.text,
                                       decoration: InputDecoration(
-                                        errorStyle:
-                                            TextStyle(color: Colors.black),
-                                        contentPadding: EdgeInsets.symmetric(
-                                            vertical: 0, horizontal: 20),
+                                        errorStyle: const TextStyle(
+                                            color: Colors.black),
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                vertical: 0, horizontal: 20),
                                         fillColor: Colors.grey,
                                         hintText: "Email",
                                         labelText: "Email",
@@ -201,10 +200,11 @@ class _UserProfileState extends State<UserProfile> {
                                       controller: mgender,
                                       keyboardType: TextInputType.text,
                                       decoration: InputDecoration(
-                                        errorStyle:
-                                            TextStyle(color: Colors.black),
-                                        contentPadding: EdgeInsets.symmetric(
-                                            vertical: 0, horizontal: 20),
+                                        errorStyle: const TextStyle(
+                                            color: Colors.black),
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                vertical: 0, horizontal: 20),
                                         fillColor: Colors.grey,
                                         hintText: "Gender",
                                         labelText: "Gender",
@@ -245,10 +245,11 @@ class _UserProfileState extends State<UserProfile> {
                                       controller: mpassword,
                                       keyboardType: TextInputType.text,
                                       decoration: InputDecoration(
-                                        errorStyle:
-                                            TextStyle(color: Colors.black),
-                                        contentPadding: EdgeInsets.symmetric(
-                                            vertical: 0, horizontal: 20),
+                                        errorStyle: const TextStyle(
+                                            color: Colors.black),
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                vertical: 0, horizontal: 20),
                                         fillColor: Colors.grey,
                                         hintText: "Password",
                                         labelText: "Password",

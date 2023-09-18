@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:lottie/lottie.dart';
-import 'package:snabb_business/controller/balance_controller.dart';
-import 'package:snabb_business/models/balance_model.dart';
-import 'package:snabb_business/screen/debit/deptsscreen.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:vector_math/vector_math.dart' as math;
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class DeptScreenController extends GetxController {
   static DeptScreenController get to => Get.find();

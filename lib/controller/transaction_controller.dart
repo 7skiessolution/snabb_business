@@ -391,191 +391,191 @@ class TransactionController extends GetxController {
     }
   }
 
-  Future adddCatagoriesdata(UserCategoryModel model) async {
-    var res =
-        await httpClient().post(StaticValues.addCategory, data: model.toMap());
-    getCatagoriesdata(model.type!);
-  }
+  // Future adddCatagoriesdata(UserCategoryModel model) async {
+  //   var res =
+  //       await httpClient().post(StaticValues.addCategory, data: model.toMap());
+  //   getCatagoriesdata(model.type!);
+  // }
 
-  Future getCatagoriesdata(String type) async {
-    var res = await httpClient().get("${StaticValues.getCategories}$type");
-    model = GetCategoriesModel.fromJson(res.data);
-    update();
-  }
+  // Future getCatagoriesdata(String type) async {
+  //   var res = await httpClient().get("${StaticValues.getCategories}$type");
+  //   model = GetCategoriesModel.fromJson(res.data);
+  //   update();
+  // }
 
-  Future deleteCatagoriesdata(String id, String type) async {
-    var res = await httpClient().delete("${StaticValues.deleteCategories}$id");
-    getCatagoriesdata(type);
-    update();
-  }
+  // Future deleteCatagoriesdata(String id, String type) async {
+  //   var res = await httpClient().delete("${StaticValues.deleteCategories}$id");
+  //   getCatagoriesdata(type);
+  //   update();
+  // }
 
-  Future<bool> deleteDailyTransactiondata(
-      BuildContext context, String id) async {
-    bool confirmed = false;
-    bool confirmDelete = await showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            // AppLocalizations.of(context)!.confor,
-            AppLocalizations.of(context)!.confirmdeletion,
-            style: TextStyle(color: darkblue!, fontWeight: FontWeight.bold),
-          ),
-          elevation: 10,
-          shadowColor: darkblue!,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          content: Text(AppLocalizations.of(context)!.areyousuredeletedata),
-          actions: <Widget>[
-            TextButton(
-              child: Text(
-                AppLocalizations.of(context)!.cancel,
-                style: const TextStyle(color: Colors.red),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop(false);
-              },
-            ),
-            TextButton(
-              child: Text(
-                //     AppLocalizations.of(context)!.co,
-                AppLocalizations.of(context)!.confirm,
-                style: TextStyle(color: darkblue!),
-              ),
-              onPressed: () {
-                confirmed = true;
-                Navigator.of(context).pop(true);
-              },
-            ),
-          ],
-        );
-      },
-    );
-    if (confirmDelete) {
-      var res =
-          await httpClient().delete("${StaticValues.deleteTrasaction}$id");
-      // getUserDailyTransactiondata();
-    }
+  // Future<bool> deleteDailyTransactiondata(
+  //     BuildContext context, String id) async {
+  //   bool confirmed = false;
+  //   bool confirmDelete = await showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: Text(
+  //           // AppLocalizations.of(context)!.confor,
+  //           AppLocalizations.of(context)!.confirmdeletion,
+  //           style: TextStyle(color: darkblue!, fontWeight: FontWeight.bold),
+  //         ),
+  //         elevation: 10,
+  //         shadowColor: darkblue!,
+  //         shape:
+  //             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+  //         content: Text(AppLocalizations.of(context)!.areyousuredeletedata),
+  //         actions: <Widget>[
+  //           TextButton(
+  //             child: Text(
+  //               AppLocalizations.of(context)!.cancel,
+  //               style: const TextStyle(color: Colors.red),
+  //             ),
+  //             onPressed: () {
+  //               Navigator.of(context).pop(false);
+  //             },
+  //           ),
+  //           TextButton(
+  //             child: Text(
+  //               //     AppLocalizations.of(context)!.co,
+  //               AppLocalizations.of(context)!.confirm,
+  //               style: TextStyle(color: darkblue!),
+  //             ),
+  //             onPressed: () {
+  //               confirmed = true;
+  //               Navigator.of(context).pop(true);
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  //   if (confirmDelete) {
+  //     var res =
+  //         await httpClient().delete("${StaticValues.deleteTrasaction}$id");
+  //     // getUserDailyTransactiondata();
+  //   }
 
-    return confirmed;
-  }
+  //   return confirmed;
+  // }
 
-  Future<bool> recoverTransactiondata(BuildContext context, String id) async {
-    bool confirmed = false;
-    bool confirmDelete = await showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            // AppLocalizations.of(context)!.confor,
+  // Future<bool> recoverTransactiondata(BuildContext context, String id) async {
+  //   bool confirmed = false;
+  //   bool confirmDelete = await showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: Text(
+  //           // AppLocalizations.of(context)!.confor,
 
-            "Recover Transaction",
-            style: TextStyle(color: darkblue!, fontWeight: FontWeight.bold),
-          ),
-          elevation: 10,
-          shadowColor: darkblue!,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          content: const Text("Are You Sure You Want To Recover Transaction"),
-          actions: <Widget>[
-            TextButton(
-              child: Text(
-                AppLocalizations.of(context)!.cancel,
-                style: const TextStyle(color: Colors.red),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop(false);
-              },
-            ),
-            TextButton(
-              child: Text(
-                //     AppLocalizations.of(context)!.co,
-                AppLocalizations.of(context)!.confirm,
-                style: TextStyle(color: darkblue!),
-              ),
-              onPressed: () {
-                confirmed = true;
-                Navigator.of(context).pop(true);
-              },
-            ),
-          ],
-        );
-      },
-    );
-    if (confirmDelete) {
-      var res = await httpClient().post("${StaticValues.recoverTrasaction}$id");
-      //fetchRecycleTransaction();
-      // getUserDailyTransactiondata();
-    }
+  //           "Recover Transaction",
+  //           style: TextStyle(color: darkblue!, fontWeight: FontWeight.bold),
+  //         ),
+  //         elevation: 10,
+  //         shadowColor: darkblue!,
+  //         shape:
+  //             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+  //         content: const Text("Are You Sure You Want To Recover Transaction"),
+  //         actions: <Widget>[
+  //           TextButton(
+  //             child: Text(
+  //               AppLocalizations.of(context)!.cancel,
+  //               style: const TextStyle(color: Colors.red),
+  //             ),
+  //             onPressed: () {
+  //               Navigator.of(context).pop(false);
+  //             },
+  //           ),
+  //           TextButton(
+  //             child: Text(
+  //               //     AppLocalizations.of(context)!.co,
+  //               AppLocalizations.of(context)!.confirm,
+  //               style: TextStyle(color: darkblue!),
+  //             ),
+  //             onPressed: () {
+  //               confirmed = true;
+  //               Navigator.of(context).pop(true);
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  //   if (confirmDelete) {
+  //     var res = await httpClient().post("${StaticValues.recoverTrasaction}$id");
+  //     //fetchRecycleTransaction();
+  //     // getUserDailyTransactiondata();
+  //   }
 
-    return confirmed;
-  }
+  //   return confirmed;
+  // }
 
-  Future addTransaction(
-      String name,
-      String note,
-      num amount,
-      num partialamount,
-      String datetime,
-      int type,
-      int iscash,
-      String catId,
-      String currency,
-      String walletId) async {
-    String result;
+  // Future addTransaction(
+  //     String name,
+  //     String note,
+  //     num amount,
+  //     num partialamount,
+  //     String datetime,
+  //     int type,
+  //     int iscash,
+  //     String catId,
+  //     String currency,
+  //     String walletId) async {
+  //   String result;
 
-    print("...............url............. = ${StaticValues.addTransaction}");
-    try {
-      print("image file ${pickImage!.path}");
-      deo.FormData data = pathFile.isEmpty
-          ? deo.FormData.fromMap({
-              "Name": name,
-              "Amount": amount,
-              "PartialAmount": partialamount,
-              "Note": note,
-              "DateTime": datetime,
-              "Type": type,
-              "PaymentType": iscash,
-              "CategoryId": catId,
-              "Currency": currency,
-              "WalletId": walletId
-            })
-          : deo.FormData.fromMap({
-              "Name": name,
-              "Amount": amount,
-              "PartialAmount": partialamount,
-              "Note": note,
-              "DateTime": datetime,
-              "Type": type,
-              "PaymentType": iscash,
-              "File": await deo.MultipartFile.fromFile(
-                pickImage!.path,
-                filename: basename(pickImage!.path),
-              ),
-              "CategoryId": catId,
-              "Currency": currency,
-              "WalletId": walletId
-            });
+  //   print("...............url............. = ${StaticValues.addTransaction}");
+  //   try {
+  //     print("image file ${pickImage!.path}");
+  //     deo.FormData data = pathFile.isEmpty
+  //         ? deo.FormData.fromMap({
+  //             "Name": name,
+  //             "Amount": amount,
+  //             "PartialAmount": partialamount,
+  //             "Note": note,
+  //             "DateTime": datetime,
+  //             "Type": type,
+  //             "PaymentType": iscash,
+  //             "CategoryId": catId,
+  //             "Currency": currency,
+  //             "WalletId": walletId
+  //           })
+  //         : deo.FormData.fromMap({
+  //             "Name": name,
+  //             "Amount": amount,
+  //             "PartialAmount": partialamount,
+  //             "Note": note,
+  //             "DateTime": datetime,
+  //             "Type": type,
+  //             "PaymentType": iscash,
+  //             "File": await deo.MultipartFile.fromFile(
+  //               pickImage!.path,
+  //               filename: basename(pickImage!.path),
+  //             ),
+  //             "CategoryId": catId,
+  //             "Currency": currency,
+  //             "WalletId": walletId
+  //           });
 
-      print("...............url............. = ${StaticValues.addTransaction}");
-      var response = await httpFormDataClient()
-          .post(StaticValues.addTransaction, data: data);
+  //     print("...............url............. = ${StaticValues.addTransaction}");
+  //     var response = await httpFormDataClient()
+  //         .post(StaticValues.addTransaction, data: data);
 
-      print(response.statusCode);
-      print(response.data);
-      if (response.statusCode == 200) {
-        print("Response status Cose ${response.statusCode}");
-        if (response.data != null) {
-          print(".................${response.data}........");
-        }
-      }
-      return response.data;
-    } catch (e) {
-      print("Exception = $e");
-    }
-    pathFile = "";
-    update();
-  }
+  //     print(response.statusCode);
+  //     print(response.data);
+  //     if (response.statusCode == 200) {
+  //       print("Response status Cose ${response.statusCode}");
+  //       if (response.data != null) {
+  //         print(".................${response.data}........");
+  //       }
+  //     }
+  //     return response.data;
+  //   } catch (e) {
+  //     print("Exception = $e");
+  //   }
+  //   pathFile = "";
+  //   update();
+  // }
 
   void changeLocale(value, context, height, width) async {
     showGeneralDialog(
@@ -665,31 +665,31 @@ class TransactionController extends GetxController {
     return max;
   }
 
-  Future getUserCalanderTransactiondata() async {
-    calanderEventList.clear();
-    var res = await httpClient().get(StaticValues.getCalanderTransaction);
-    if (res.statusCode == 200) {
-      calanderTransaction = cTra.GetCalanderData.fromMap(res.data);
+  // Future getUserCalanderTransactiondata() async {
+  //   calanderEventList.clear();
+  //   var res = await httpClient().get(StaticValues.getCalanderTransaction);
+  //   if (res.statusCode == 200) {
+  //     calanderTransaction = cTra.GetCalanderData.fromMap(res.data);
 
-      try {
-        for (var data in calanderTransaction!.data!) {
-          DateTime date = DateFormat("dd-MM-yyyy").parse(data.dateTime!);
+  //     try {
+  //       for (var data in calanderTransaction!.data!) {
+  //         DateTime date = DateFormat("dd-MM-yyyy").parse(data.dateTime!);
 
-          CalendarEvent event = CalendarEvent(
-              eventName: data.totalIncome.toString(),
-              eventDate: date,
-              eventBackgroundColor: darkblue!,
-              eventTextStyle:
-                  const TextStyle(color: Colors.white, fontSize: 10));
-          calanderEventList.add(event);
-        }
-      } catch (e) {
-        print("no data");
-      }
-    }
+  //         CalendarEvent event = CalendarEvent(
+  //             eventName: data.totalIncome.toString(),
+  //             eventDate: date,
+  //             eventBackgroundColor: darkblue!,
+  //             eventTextStyle:
+  //                 const TextStyle(color: Colors.white, fontSize: 10));
+  //         calanderEventList.add(event);
+  //       }
+  //     } catch (e) {
+  //       print("no data");
+  //     }
+  //   }
 
-    update();
-  }
+  //   update();
+  // }
 
 ///////////\\]]]]]
   // checking(List<int> myList) {
@@ -806,57 +806,60 @@ class TransactionController extends GetxController {
     update();
   }
 
-  Future getUserMonthTransactiondata() async {
-    isdailyLoad = true;
-    monthTransactionList.clear();
-    var res = await httpClient().get(StaticValues.getMonthTrasaction);
-    if (res.statusCode == 200) {
-      isdailyLoad = false;
-      monthTransaction = mTra.UserMonthTransaction.fromMap(res.data);
-      print("-=-=-=-=-= ${monthTransaction!.data.toString()}");
-      for (var data in monthTransaction!.data!) {
-        monthTransactionList.add(data);
-      }
-    }
-    print(monthTransactionList.length);
+  // Future getUserMonthTransactiondata() async {
+  //   isdailyLoad = true;
+  //   monthTransactionList.clear();
+  //   var res = await httpClient().get(StaticValues.getMonthTrasaction);
+  //   if (res.statusCode == 200) {
+  //     isdailyLoad = false;
+  //     monthTransaction = mTra.UserMonthTransaction.fromMap(res.data);
+  //     print("-=-=-=-=-= ${monthTransaction!.data.toString()}");
+  //     for (var data in monthTransaction!.data!) {
+  //       monthTransactionList.add(data);
+  //     }
+  //   }
+  //   print(monthTransactionList.length);
 
-    update();
-  }
+  //   update();
+  // }
 
-  Future getUserYearTransactiondata() async {
-    isdailyLoad = true;
-    yearTransactionList.clear();
-    var res = await httpClient().get(StaticValues.getYearTrasaction);
-    if (res.statusCode == 200) {
-      isdailyLoad = false;
-      yearTransaction = yTra.UserYearTransaction.fromMap(res.data);
-      for (var data in yearTransaction!.data!) {
-        yearTransactionList.add(data);
-      }
-    }
-    print(yearTransactionList.length);
+  // Future getUserYearTransactiondata() async {
+  //   isdailyLoad = true;
+  //   yearTransactionList.clear();
+  //   var res = await httpClient().get(StaticValues.getYearTrasaction);
+  //   if (res.statusCode == 200) {
+  //     isdailyLoad = false;
+  //     yearTransaction = yTra.UserYearTransaction.fromMap(res.data);
+  //     for (var data in yearTransaction!.data!) {
+  //       yearTransactionList.add(data);
+  //     }
+  //   }
+  //   print(yearTransactionList.length);
 
-    update();
-  }
+  //   update();
+  // }
 
-  Future getUserDailyTransactiondata() async {
-    isdailyLoad = true;
-    dailyTransactionList.clear();
-    var res = await httpClient().get(StaticValues.getDailyTrasaction);
-    if (res.statusCode == 200) {
-      isdailyLoad = false;
-      dailyTransaction = dTra.UserDailyTransaction.fromMap(res.data);
-      print("dailty    $dailyTransaction");
-      try {
-        for (var data in dailyTransaction!.data!) {
-          dailyTransactionList.add(data);
-        }
-      } catch (e) {
-        print("no data");
-      }
-    }
-    print(dailyTransactionList.length);
+  // Future getUserDailyTransactiondata() async {
+  //   isdailyLoad = true;
+  //   dailyTransactionList.clear();
+  //   var res = await httpClient().get(StaticValues.getDailyTrasaction);
+  //   if (res.statusCode == 200) {
+  //     isdailyLoad = false;
+  //     dailyTransaction = dTra.UserDailyTransaction.fromMap(res.data);
+  //     print("dailty    $dailyTransaction");
+  //     try {
+  //       for (var data in dailyTransaction!.data!) {
+  //         dailyTransactionList.add(data);
+  //       }
+  //     } catch (e) {
+  //       print("no data");
+  //     }
+  //   }
+  //   print(dailyTransactionList.length);
 
-    update();
-  }
+  //   update();
+  // }
+
+
+
 }

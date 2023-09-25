@@ -1916,32 +1916,32 @@ class _SaleScreenState extends State<SaleScreen> {
                                   InkWell(
                                     onTap: () {
                                       if (_formKey.currentState!.validate()) {
-                                        TransactionController.to.addTransaction(
-                                            _person.text,
-                                            _noteController.text,
-                                            double.parse(
-                                                balanceController.text),
-                                            double.tryParse(
-                                                    partialAmountController
-                                                        .text) ??
-                                                0.0,
-                                            formatTime,
-                                            widget.type!,
-                                            paymentMethod!,
-                                            selectedcatId!,
-                                            HomeController.to.curency,
-                                            walletID!);
-                                        Fluttertoast.showToast(
-                                            msg:
-                                                "Transaction Add Successfully");
-                                        Navigator.pushAndRemoveUntil(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  DashBoardScreen(),
-                                            ),
-                                            (route) => false);
-                                      }
+                                      //   TransactionController.to.addTransaction(
+                                      //       _person.text,
+                                      //       _noteController.text,
+                                      //       double.parse(
+                                      //           balanceController.text),
+                                      //       double.tryParse(
+                                      //               partialAmountController
+                                      //                   .text) ??
+                                      //           0.0,
+                                      //       formatTime,
+                                      //       widget.type!,
+                                      //       paymentMethod!,
+                                      //       selectedcatId!,
+                                      //       HomeController.to.curency,
+                                      //       walletID!);
+                                      //   Fluttertoast.showToast(
+                                      //       msg:
+                                      //           "Transaction Add Successfully");
+                                      //   Navigator.pushAndRemoveUntil(
+                                      //       context,
+                                      //       MaterialPageRoute(
+                                      //         builder: (context) =>
+                                      //             DashBoardScreen(),
+                                      //       ),
+                                      //       (route) => false);
+                                       }
                                     },
                                     child: Card(
                                       child: Container(

@@ -4,14 +4,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/screen/auth/loginScreen.dart';
 import 'package:snabb_business/screen/budget/BudgetView.dart';
+import 'package:snabb_business/screen/company/company.dart';
 import 'package:snabb_business/screen/dashboardScreen.dart';
 import 'package:snabb_business/screen/debit/deptsscreen.dart';
 import 'package:snabb_business/screen/drawerscreen/Calender.dart';
 import 'package:snabb_business/screen/drawerscreen/userProfile.dart';
 import 'package:snabb_business/screen/schedule_transaction/schedule_transactions.dart';
 import 'package:snabb_business/screen/summary/summary_screen.dart';
+import 'package:snabb_business/screen/suppliers/suppliers.dart';
 import 'package:snabb_business/screen/transactions/transactionScreen.dart';
-import 'package:snabb_business/screen/drawerscreen/walletScreen.dart';
 import 'package:snabb_business/utils/color.dart';
 import '../screen/drawerscreen/Preferences.dart';
 import '../screen/drawerscreen/categories.dart';
@@ -92,6 +93,50 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "OverView",
+                    style: TextStyle(
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ),
+               InkWell(
+                onTap: () {
+                  obj.drawermenueclose();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const CompanyScreen()));
+                },
+                child: ListTile(
+                  leading: Icon(
+                    Icons.people_outline_sharp,
+                    color: white,
+                  ),
+                  title: Text(
+                    "Companies",
+                    style: TextStyle(
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ),
+               InkWell(
+                onTap: () {
+                  obj.drawermenueclose();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const SuppliersScreen()));
+                },
+                child: ListTile(
+                  leading: Icon(
+                    Icons.theater_comedy_sharp,
+                    color: white,
+                  ),
+                  title: Text(
+                    "Supplier",
                     style: TextStyle(
                         color: white,
                         fontSize: width * 0.03,

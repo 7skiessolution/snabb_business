@@ -21,13 +21,13 @@ class StaticValues {
   static const deleteWalletData = 'Wallet/Delete/';
   static const changeCurrency = 'Wallet/ChangeCurrency?Currency=';
   static const getIncomeGraph = 'Wallet/GetMonthWiseIncome/';
-  static const getIncomeExpenceGraph = 'Wallet/GetMonthWiseIncomeExpense/';
+ // static const getIncomeExpenceGraph = 'Wallet/GetMonthWiseIncomeExpense/';
   static const changePassword = 'UserApi/ChangeUserPassword';
-  static const getDailyTrasaction = 'Transaction/GetDayWiseTransactions';
-  static const getMonthTrasaction = 'Transaction/GetMonthWiseTransactions';
-  static const getYearTrasaction = 'Transaction/GetYearWiseTransactions';
+  // static const getDailyTrasaction = 'Transaction/GetDayWiseTransactions';
+  // static const getMonthTrasaction = 'Transaction/GetMonthWiseTransactions';
+  // static const getYearTrasaction = 'Transaction/GetYearWiseTransactions';
   static const deleteTrasaction = 'Transaction/Delete/';
-  static const getAllRecycleTrasaction = 'Transaction/GetDeletedTransactions';
+  //static const getAllRecycleTrasaction = 'Transaction/GetDeletedTransactions';
   static const getTransactionstype = "Transaction/GetTransactions";
   static const recoverTrasaction = 'Transaction/Recover/';
   static const getSummary = 'Wallet/GetSummary?Date=';
@@ -38,8 +38,8 @@ class StaticValues {
   static const updatedebitcredit = "DebitCredit/Update";
   static const deletedebitcredit = "DebitCredit/Delete";
   static const addcscheduleTransaction = "Transaction/AddSceduleTransaction";
-  static const getSalePurchaseType = "Wallet/GetMonthWiseSalePurchaseExpense/";
-  static const getSaledatatype = "Transaction/GetYearTransactions/";
+ // static const getSalePurchaseType = "Wallet/GetMonthWiseSalePurchaseExpense/";
+ // static const getSaledatatype = "Transaction/GetYearTransactions/";
   static const getscheduleTransaction =
       "Transaction/GetAllScheduleTransactions";
   static const getCalanderTransaction = "Transaction/GetCalenderTransactions";

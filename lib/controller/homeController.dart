@@ -79,7 +79,7 @@ class HomeController extends GetxController {
     var res = await httpClient().post(StaticValues.addWalletData, data: model);
     if (res.statusCode == 200) {
       changeStatus(false);
-      getWalletdata();
+     // getWalletdata();
     }
     Navigator.pop(c);
   }
@@ -87,7 +87,7 @@ class HomeController extends GetxController {
   Future deleteWalletdata(String id, BuildContext c) async {
     var res = await httpClient().delete("${StaticValues.deleteWalletData}$id");
     if (res.statusCode == 200) {
-      getWalletdata();
+     // getWalletdata();
       Fluttertoast.showToast(
           msg: res.data["status"],
           backgroundColor: Colors.red,
@@ -100,28 +100,28 @@ class HomeController extends GetxController {
     }
   }
 
-  Future getWalletdata() async {
-    walletList.clear();
-    totalbalance = 0;
-    isLoadData = true;
-    var res = await httpClient().get(StaticValues.getWalletList);
-    walletModel = wm.UserWalletModel.fromMap(res.data);
-    if (walletModel!.data != null) {
-      for (var wallet in walletModel!.data!) {
-        walletList.add(wallet);
-      }
-      for (var vlaue in walletList) {
-        totalbalance += vlaue.amount!;
-      }
+  // Future getWalletdata() async {
+  //   walletList.clear();
+  //   totalbalance = 0;
+  //   isLoadData = true;
+  //   var res = await httpClient().get(StaticValues.getWalletList);
+  //   walletModel = wm.UserWalletModel.fromMap(res.data);
+  //   if (walletModel!.data != null) {
+  //     for (var wallet in walletModel!.data!) {
+  //       walletList.add(wallet);
+  //     }
+  //     for (var vlaue in walletList) {
+  //       totalbalance += vlaue.amount!;
+  //     }
 
-      isLoadData = false;
-      curency = walletList[0].currency!;
-      update();
-      print("totalbalancexczvzx$totalbalance");
-    } else {
-      print("nodata ");
-    }
-  }
+  //     isLoadData = false;
+  //     curency = walletList[0].currency!;
+  //     update();
+  //     print("totalbalancexczvzx$totalbalance");
+  //   } else {
+  //     print("nodata ");
+  //   }
+  // }
 
   @override
   void onInit() {
@@ -199,112 +199,112 @@ class HomeController extends GetxController {
 
   double totalAmountType1 = 0.0;
   List<yTra.Transactions> salesTransaction = [];
-  saleListOFChart() async {
-    var res = await httpClient().get(StaticValues.getYearTrasaction);
-    if (res.statusCode == 200) {
-      chartData.clear();
-      yTra.UserYearTransaction yearTransaction =
-          yTra.UserYearTransaction.fromMap(res.data);
-      for (var element in yearTransaction.data!) {
-        List<yTra.Transactions> transactions = element.transactions ?? [];
-        print("bal match $transactions");
-        salesTransaction =
-            transactions.where((transaction) => transaction.type == 1).toList();
-        print("sale list $salesTransaction");
-        // Calculate total amounts for each type after subtracting partial amounts
-        totalAmountType1 = salesTransaction
-            .map((transaction) =>
-                transaction.amount! - (transaction.partialAmount ?? 0))
-            .fold(0, (prev, curr) => prev + curr);
+  // saleListOFChart() async {
+  //   var res = await httpClient().get(StaticValues.getYearTrasaction);
+  //   if (res.statusCode == 200) {
+  //     chartData.clear();
+  //     yTra.UserYearTransaction yearTransaction =
+  //         yTra.UserYearTransaction.fromMap(res.data);
+  //     for (var element in yearTransaction.data!) {
+  //       List<yTra.Transactions> transactions = element.transactions ?? [];
+  //       print("bal match $transactions");
+  //       salesTransaction =
+  //           transactions.where((transaction) => transaction.type == 1).toList();
+  //       print("sale list $salesTransaction");
+  //       // Calculate total amounts for each type after subtracting partial amounts
+  //       totalAmountType1 = salesTransaction
+  //           .map((transaction) =>
+  //               transaction.amount! - (transaction.partialAmount ?? 0))
+  //           .fold(0, (prev, curr) => prev + curr);
 
-        print("-0=-=-=-=-=- $totalAmountType1");
-        chartData.add(
-          SalesData(DateTime(element.year!), totalAmountType1),
-        );
-        update();
+  //       print("-0=-=-=-=-=- $totalAmountType1");
+  //       chartData.add(
+  //         SalesData(DateTime(element.year!), totalAmountType1),
+  //       );
+  //       update();
 
-        // chart = [
-        //   SalesData(DateTime(element.year!), totalAmountType1),
-        // ];
-      }
+  //       // chart = [
+  //       //   SalesData(DateTime(element.year!), totalAmountType1),
+  //       // ];
+  //     }
 
-      update();
-    }
-  }
+  //     update();
+  //   }
+  // }
 
-  expenseList(int type) async {
-    DateTime a = DateTime.now();
-    var res = await httpClient()
-        .get("${StaticValues.getSalePurchaseType}$type/${a.year}");
-    if (res.statusCode == 200) {
-      if (type == 2) {
-        expensedata.clear();
-      } else if (type == 0) {
-        purchasedata.clear();
-      } else if (type == 1) {
-        saledatalist.clear();
-      }
-      GetSalePurhase salepurchasemodel = GetSalePurhase.fromMap(res.data);
-      for (int i = 0; i < salepurchasemodel.data!.length; i++) {
-        var e = salepurchasemodel.data![i];
-        if (type == 2) {
-          expensedata.add(
-            Chartdata(convertToAbbreviatedMonth(i + 1), e),
-          );
-          update();
-        } else if (type == 0) {
-          purchasedata.add(
-            Chartdata(convertToAbbreviatedMonth(i + 1), e),
-          );
-          update();
-        } else if (type == 1) {
-          saledatalist.add(
-            Chartdata(convertToAbbreviatedMonth(i + 1), e),
-          );
-          update();
-        }
-        update();
-      }
-      print("purchase ${purchasedata.length}");
-      print("expense ${expensedata.length}");
-      print("sale ${saledatalist.length}");
-    }
-  }
+  // expenseList(int type) async {
+  //   DateTime a = DateTime.now();
+  //   var res = await httpClient()
+  //       .get("${StaticValues.getSalePurchaseType}$type/${a.year}");
+  //   if (res.statusCode == 200) {
+  //     if (type == 2) {
+  //       expensedata.clear();
+  //     } else if (type == 0) {
+  //       purchasedata.clear();
+  //     } else if (type == 1) {
+  //       saledatalist.clear();
+  //     }
+  //     GetSalePurhase salepurchasemodel = GetSalePurhase.fromMap(res.data);
+  //     for (int i = 0; i < salepurchasemodel.data!.length; i++) {
+  //       var e = salepurchasemodel.data![i];
+  //       if (type == 2) {
+  //         expensedata.add(
+  //           Chartdata(convertToAbbreviatedMonth(i + 1), e),
+  //         );
+  //         update();
+  //       } else if (type == 0) {
+  //         purchasedata.add(
+  //           Chartdata(convertToAbbreviatedMonth(i + 1), e),
+  //         );
+  //         update();
+  //       } else if (type == 1) {
+  //         saledatalist.add(
+  //           Chartdata(convertToAbbreviatedMonth(i + 1), e),
+  //         );
+  //         update();
+  //       }
+  //       update();
+  //     }
+  //     print("purchase ${purchasedata.length}");
+  //     print("expense ${expensedata.length}");
+  //     print("sale ${saledatalist.length}");
+  //   }
+  // }
 
   List<sp.Data> expenseData = [];
   List<sp.Data> purchaseData = [];
   List<sp.Data> salaDatalist = [];
 
-  getexpensePurchase(int type) async {
-    DateTime a = DateTime.now();
-    var res = await httpClient()
-        .get("${StaticValues.getSaledatatype}${a.year}/$type");
-    if (res.statusCode == 200) {
-      if (type == 2) {
-        expenseData.clear();
-      } else if (type == 0) {
-        purchaseData.clear();
-      } else if (type == 1) {
-        salaDatalist.clear();
-      }
-      sp.GetDataYearType expensepurchasemodel =
-          sp.GetDataYearType.fromMap(res.data);
-      for (int i = 0; i < expensepurchasemodel.data!.length; i++) {
-        var e = expensepurchasemodel.data![i];
-        if (type == 2) {
-          expenseData.add(e);
-        } else if (type == 0) {
-          purchaseData.add(e);
-        } else if (type == 1) {
-          salaDatalist.add(e);
-        }
-        update();
-      }
-      print("purchase list ${purchaseData.length}");
-      print("expense list ${expenseData.length}");
-      print("sale list ${salaDatalist.length}");
-    }
-  }
+  // getexpensePurchase(int type) async {
+  //   DateTime a = DateTime.now();
+  //   var res = await httpClient()
+  //       .get("${StaticValues.getSaledatatype}${a.year}/$type");
+  //   if (res.statusCode == 200) {
+  //     if (type == 2) {
+  //       expenseData.clear();
+  //     } else if (type == 0) {
+  //       purchaseData.clear();
+  //     } else if (type == 1) {
+  //       salaDatalist.clear();
+  //     }
+  //     sp.GetDataYearType expensepurchasemodel =
+  //         sp.GetDataYearType.fromMap(res.data);
+  //     for (int i = 0; i < expensepurchasemodel.data!.length; i++) {
+  //       var e = expensepurchasemodel.data![i];
+  //       if (type == 2) {
+  //         expenseData.add(e);
+  //       } else if (type == 0) {
+  //         purchaseData.add(e);
+  //       } else if (type == 1) {
+  //         salaDatalist.add(e);
+  //       }
+  //       update();
+  //     }
+  //     print("purchase list ${purchaseData.length}");
+  //     print("expense list ${expenseData.length}");
+  //     print("sale list ${salaDatalist.length}");
+  //   }
+  // }
 
   // Function to convert full month names to lowercase abbreviated month names
   String convertToAbbreviatedMonth(int fullMonthName) {

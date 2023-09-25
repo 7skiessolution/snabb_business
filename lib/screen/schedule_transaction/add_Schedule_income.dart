@@ -548,8 +548,8 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
   void initState() {
     Get.put(TransactionController());
     Get.put(HomeController());
-    TransactionController.to
-        .getCatagoriesdata(widget.income ? "income" : "expense");
+    // TransactionController.to
+    //     .getCatagoriesdata(widget.income ? "income" : "expense");
     TransactionController.to.fetchAccounts();
     id = const Uuid().v4();
 
@@ -1308,7 +1308,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                             onTap: () {
                                                                                               if (getimage != null && subcatagorycontroller.text.isNotEmpty) {
                                                                                                 selectedCatagorymodel = UserCategoryModel(parentId: selectedcatId, imageUrl: getimage, name: subcatagorycontroller.text, type: widget.income ? "income" : "expense");
-                                                                                                TransactionController.to.adddCatagoriesdata(selectedCatagorymodel!);
+                                                                                               // TransactionController.to.adddCatagoriesdata(selectedCatagorymodel!);
 
                                                                                                 Navigator.pop(context);
                                                                                               } else {
@@ -1459,7 +1459,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                     ),
                                                                                     trailing: InkWell(
                                                                                         onTap: () {
-                                                                                          TransactionController.to.deleteCatagoriesdata(obj.model!.data![index].categoryId!, widget.income ? "income" : "expense");
+                                                                                       //   TransactionController.to.deleteCatagoriesdata(obj.model!.data![index].categoryId!, widget.income ? "income" : "expense");
                                                                                         },
                                                                                         child: const Icon(Icons.delete)),
                                                                                   ),
@@ -1637,7 +1637,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                                                                                     InkWell(
                                                                                                       onTap: () {
                                                                                                         UserCategoryModel model = UserCategoryModel(parentId: null, imageUrl: maingetimage, name: controller.text, type: widget.income ? "income" : "expense");
-                                                                                                        TransactionController.to.adddCatagoriesdata(model);
+                                                                                                       // TransactionController.to.adddCatagoriesdata(model);
 
                                                                                                         Navigator.pop(context);
                                                                                                       },

@@ -373,7 +373,7 @@ class _MonthlyTransactionsState extends State<MonthlyTransactions> {
     }
 
     return GetBuilder<TransactionController>(initState: (state) {
-      TransactionController.to.getUserMonthTransactiondata();
+      //TransactionController.to.getUserMonthTransactiondata();
     }, builder: (obj) {
       return obj.monthTransactionList.isNotEmpty
           ? SizedBox(

@@ -31,17 +31,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     Get.put(HomeController());
-    HomeController.to.saleListOFChart();
-    HomeController.to.expenseList(0);
-    HomeController.to.expenseList(2);
-    HomeController.to.expenseList(1);
-    HomeController.to.getexpensePurchase(2);
-    HomeController.to.getexpensePurchase(0);
-    HomeController.to.getexpensePurchase(1);
-    TransactionController.to.getCatagoriesdata("income");
-    TransactionController.to.getUserCalanderTransactiondata();
-    HomeController.to.getUserProfile();
-    HomeController.to.getWalletdata();
+    // HomeController.to.saleListOFChart();
+    // HomeController.to.expenseList(0);
+    // HomeController.to.expenseList(2);
+    // HomeController.to.expenseList(1);
+    // HomeController.to.getexpensePurchase(2);
+    // HomeController.to.getexpensePurchase(0);
+    // HomeController.to.getexpensePurchase(1);
+   // TransactionController.to.getCatagoriesdata("income");
+    //TransactionController.to.getUserCalanderTransactiondata();
+    //HomeController.to.getUserProfile();
+   // HomeController.to.getWalletdata();
     super.initState();
   }
 

@@ -369,7 +369,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return GetBuilder<TransactionController>(initState: (state) {
-      TransactionController.to.getUserDailyTransactiondata();
+    //  TransactionController.to.getUserDailyTransactiondata();
     }, builder: (obj) {
       return obj.dailyTransactionList.isNotEmpty
           ? SizedBox(
@@ -422,14 +422,14 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                     child: Dismissible(
                                         // onDismissed: ,
                                         confirmDismiss: (direction) async {
-                                          bool delete =
-                                              await TransactionController.to
-                                                  .deleteDailyTransactiondata(
-                                                      context,
-                                                      transaction
-                                                          .transactionId!);
+                                          // bool delete =
+                                          //     await TransactionController.to
+                                          //         .deleteDailyTransactiondata(
+                                          //             context,
+                                          //             transaction
+                                          //                 .transactionId!);
 
-                                          return delete;
+                                         // return delete;
                                         },
                                         key: UniqueKey(),
                                         child: Container(

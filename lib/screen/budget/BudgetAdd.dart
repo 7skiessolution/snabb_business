@@ -600,7 +600,7 @@ class _AddBudgetState extends State<AddBudget> {
                                                                                   onTap: () {
                                                                                     if (obj1.getimage != null && obj1.subcatagorycontroller.text.isNotEmpty) {
                                                                                       obj1.selectedCatagorymodel = UserCategoryModel(parentId: obj1.selectedcatId, imageUrl: obj1.getimage, name: obj1.subcatagorycontroller.text, type: "income");
-                                                                                      TransactionController.to.adddCatagoriesdata(obj1.selectedCatagorymodel!);
+                                                                                    //  TransactionController.to.adddCatagoriesdata(obj1.selectedCatagorymodel!);
 
                                                                                       Navigator.pop(context);
                                                                                     } else {
@@ -762,7 +762,7 @@ class _AddBudgetState extends State<AddBudget> {
                                                                               ),
                                                                               trailing: InkWell(
                                                                                   onTap: () {
-                                                                                    TransactionController.to.deleteCatagoriesdata(obj.model!.data![index].categoryId!, "income");
+                                                                                  //  TransactionController.to.deleteCatagoriesdata(obj.model!.data![index].categoryId!, "income");
                                                                                   },
                                                                                   child: const Icon(Icons.delete)),
                                                                             ),
@@ -937,7 +937,7 @@ class _AddBudgetState extends State<AddBudget> {
                                                                                           InkWell(
                                                                                             onTap: () {
                                                                                               UserCategoryModel model = UserCategoryModel(parentId: null, imageUrl: obj1.maingetimage, name: obj1.controller.text, type: "income");
-                                                                                              TransactionController.to.adddCatagoriesdata(model);
+                                                                                              //TransactionController.to.adddCatagoriesdata(model);
 
                                                                                               Navigator.pop(context);
                                                                                             },

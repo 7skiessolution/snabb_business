@@ -360,7 +360,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
     }
 
     return GetBuilder<TransactionController>(initState: (state) {
-      TransactionController.to.getUserYearTransactiondata();
+    //  TransactionController.to.getUserYearTransactiondata();
     }, builder: (obj) {
       return obj.yearTransactionList.isNotEmpty
           ? SizedBox(

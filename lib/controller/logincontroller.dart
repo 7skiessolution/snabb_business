@@ -149,11 +149,7 @@ class LoginController extends GetxController {
       var result = await httpClient()
           .post('${StaticValues.forgotpassword}${email.text}');
 
-      print("respomse ${result.statusCode}");
-      showetoast("Password reset email sent successfully");
-      //  print("Password reset email sent successfully");
-      // showetoast("Password reset email sent successfully");
-      // Navigator.pop(context);
+      showetoast(result.data["status"]);
     } catch (e) {
       showetoast("Failed to send password reset email: $e");
       print("Failed to send password reset email: $e");

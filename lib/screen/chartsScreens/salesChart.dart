@@ -5,6 +5,7 @@ import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
+import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/pinch_zoom_image.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -35,7 +36,7 @@ class _SalesChartState extends State<SalesChart> {
         var width = MediaQuery.of(context).size.width;
         return AlertDialog(
           elevation: 10,
-          shadowColor: Colors.lightGreen,
+          shadowColor: AppColors.greencolor,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           content: SizedBox(
@@ -55,7 +56,7 @@ class _SalesChartState extends State<SalesChart> {
                             child: Text(
                           AppLocalizations.of(context)!.transationdetails,
                           style: TextStyle(
-                              color: Colors.lightGreen,
+                              color: AppColors.greencolor,
                               fontSize: width * 0.035,
                               fontWeight: FontWeight.bold),
                         )),
@@ -73,7 +74,7 @@ class _SalesChartState extends State<SalesChart> {
                                   "${AppLocalizations.of(context)!.walletname}: ",
                                   style: TextStyle(
                                       fontSize: width * 0.035,
-                                      color: Colors.lightGreen,
+                                      color: AppColors.greencolor,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -108,7 +109,7 @@ class _SalesChartState extends State<SalesChart> {
                                       "${AppLocalizations.of(context)!.amount}: ",
                                       style: TextStyle(
                                           fontSize: width * 0.035,
-                                          color: Colors.lightGreen,
+                                          color: AppColors.greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(data.amount.toString(),
@@ -136,7 +137,7 @@ class _SalesChartState extends State<SalesChart> {
                                     Text(
                                       "${AppLocalizations.of(context)!.cname}: ",
                                       style: TextStyle(
-                                          color: Colors.lightGreen,
+                                          color: AppColors.greencolor,
                                           fontSize: width * 0.035,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -159,7 +160,7 @@ class _SalesChartState extends State<SalesChart> {
                                     Text(
                                       "${AppLocalizations.of(context)!.date}: ",
                                       style: TextStyle(
-                                          color: Colors.lightGreen,
+                                          color: AppColors.greencolor,
                                           fontSize: width * 0.035,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -188,7 +189,7 @@ class _SalesChartState extends State<SalesChart> {
                                 "${AppLocalizations.of(context)!.notes}: ",
                                 style: TextStyle(
                                     fontSize: width * 0.035,
-                                    color: Colors.lightGreen,
+                                    color: AppColors.greencolor,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -332,7 +333,8 @@ class _SalesChartState extends State<SalesChart> {
                         height: MediaQuery.of(context).size.height * 0.04,
                         width: MediaQuery.of(context).size.width * 0.08,
                         decoration: const BoxDecoration(
-                            color: Colors.lightGreen, shape: BoxShape.circle),
+                            color: AppColors.greencolor,
+                            shape: BoxShape.circle),
                         child: const Center(
                           child: Icon(
                             Icons.clear,
@@ -443,13 +445,13 @@ class _SalesChartState extends State<SalesChart> {
                                     animationDuration: 5,
                                     animationDelay: 3,
                                     name: "Sale",
-                                    color: Colors.lightGreen,
+                                    color: AppColors.greencolor,
                                     markerSettings: const MarkerSettings(
                                       isVisible: true,
                                       width: 5,
                                       height: 5,
                                       borderWidth: 0.5,
-                                      color: Colors.lightGreen,
+                                      color: AppColors.greencolor,
                                     ),
                                     enableTooltip: true,
                                     isVisible: true,
@@ -463,13 +465,13 @@ class _SalesChartState extends State<SalesChart> {
                                     legendIconType: LegendIconType.rectangle,
                                     animationDuration: 5,
                                     animationDelay: 3,
-                                    color: Colors.lightGreen,
+                                    color: AppColors.greencolor,
                                     markerSettings: const MarkerSettings(
                                       isVisible: true,
                                       width: 5,
                                       height: 5,
                                       borderWidth: 0.5,
-                                      color: Colors.lightGreen,
+                                      color: AppColors.greencolor,
                                     ),
                                     enableTooltip: true,
                                     isVisible: true,
@@ -489,7 +491,7 @@ class _SalesChartState extends State<SalesChart> {
                     alignment: Alignment.center,
                     height: height * 0.05,
                     width: width * 0.6,
-                    color: Colors.lightGreen,
+                    color: AppColors.greencolor,
                     child: Center(
                       child: Text(
                         "Sales Transactions",
@@ -521,7 +523,7 @@ class _SalesChartState extends State<SalesChart> {
                                   height: height * 0.13,
                                   width: width,
                                   decoration: BoxDecoration(
-                                    color: Colors.lightGreen,
+                                    color: AppColors.greencolor,
                                     borderRadius: BorderRadius.circular(6),
                                   ),
                                   child: Align(
@@ -564,14 +566,14 @@ class _SalesChartState extends State<SalesChart> {
                                         MainAxisAlignment.spaceAround,
                                     children: [
                                       // CircleAvatar(
-                                      //     backgroundColor: colors.lightgreen,
+                                      //     backgroundColor: AppColors.greencolor,
                                       //     child: Image.asset(data.imageUrl!)),
                                       Text(
                                         "${data.category}",
                                         style: TextStyle(
                                             fontSize: width * 0.04,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.lightGreen),
+                                            color: AppColors.greencolor),
                                       ),
                                       SizedBox(
                                         height: height * 0.1,
@@ -584,7 +586,7 @@ class _SalesChartState extends State<SalesChart> {
                                               height: height * 0.02,
                                               width: width * 0.2,
                                               decoration: BoxDecoration(
-                                                color: Colors.lightGreen,
+                                                color: AppColors.greencolor,
                                                 borderRadius:
                                                     BorderRadius.circular(2),
                                               ),

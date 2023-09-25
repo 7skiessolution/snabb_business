@@ -83,8 +83,8 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                     alignment: Alignment.topCenter,
                     child: AppBarWidgt(
                       text: widget.balanceType == "Debit"
-                          ? AppLocalizations.of(context)!.newdeptor
-                          : AppLocalizations.of(context)!.newcreditor,
+                          ? AppLocalizations.of(context)!.debit
+                          : AppLocalizations.of(context)!.credit,
                     )),
                 Padding(
                   padding: EdgeInsets.only(top: height * 0.1),

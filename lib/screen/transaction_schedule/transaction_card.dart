@@ -387,7 +387,7 @@ class _TransactionCardState extends State<TransactionCard> {
             widget.transaction.name!,
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          subtitle: Text(widget.transaction.dateTime!.substring(0, 11)),
+          subtitle: Text(widget.transaction.dateTime!.substring(0, 10)),
           // .substring(0, 10)),
           trailing: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

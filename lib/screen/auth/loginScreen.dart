@@ -218,24 +218,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  // SizedBox(
-                  //   height: height * 0.43,
-                  // ),
-                  // const Text("Or Sigup with"),
-                  // SizedBox(
-                  //   height: height * 0.02,
-                  // ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //   children: [
-                  //     SizedBox(
-                  //       height: height * 0.05,
-                  //       width: width * 0.8,
-                  //       child: const Image(
-                  //           image: AssetImage("images/Group 296.png")),
-                  //     )
-                  //   ],
-                  // )
                 ]),
                 isExpended == false
                     ? Positioned(
@@ -373,7 +355,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               children: [
                                                 TextFileldLogin(
                                                   controller: mEmail,
-                                                  hint: "Username / Email",
+                                                  hint: "Email",
                                                   prefixIcon:
                                                       Icons.person_2_outlined,
                                                   validator: (val) {
@@ -518,7 +500,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ))
 
                     //// forget screen
-                    ///
+
                     : Positioned(
                         top: height * 0.32,
                         left: width * 0.012,
@@ -539,12 +521,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         children: [
+                                          SizedBox(
+                                            height: height * 0.04,
+                                          ),
                                           Text(
                                             'Forget Password',
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 // fontWeight: FontWeight.bold,
-                                                fontSize: width * 0.07),
+                                                fontSize: width * 0.04),
                                           ),
                                           Form(
                                               key: _formKeyforget,
@@ -562,8 +547,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     children: [
                                                       TextFileldLogin(
                                                         controller: mEmail,
-                                                        hint:
-                                                            "Username / Email",
+                                                        hint: "Email",
                                                         prefixIcon: Icons
                                                             .person_2_outlined,
                                                         validator: (val) {
@@ -575,64 +559,23 @@ class _LoginScreenState extends State<LoginScreen> {
                                                           }
                                                         },
                                                       ),
-                                                      // SizedBox(
-                                                      //   height: height * 0.02,
-                                                      // ),
-                                                      // TextFileldLogin(
-                                                      //   controller: mPassword,
-                                                      //   hint: "password",
-                                                      //   prefixIcon: Icons
-                                                      //       .lock_outline_rounded,
-                                                      //   validator: (val) {
-                                                      //     return _validatePassword(
-                                                      //         val!);
-                                                      //   },
-                                                      // ),
-                                                      Row(
-                                                        children: [
-                                                          Checkbox(
-                                                            value: obj.remember,
-                                                            focusColor:
-                                                                lightgray,
-                                                            hoverColor:
-                                                                lightgray,
-                                                            activeColor:
-                                                                darkblue,
-                                                            autofocus: false,
-                                                            onChanged: (value) {
-                                                              obj.remember =
-                                                                  !obj.remember;
-                                                              obj.update();
-                                                            },
-                                                          ),
-                                                          Text(
-                                                            "Remember me",
-                                                            style: TextStyle(
-                                                                color:
-                                                                    lightgray),
-                                                          ),
-                                                          SizedBox(
-                                                            width:
-                                                                width * 0.095,
-                                                          ),
-                                                          InkWell(
-                                                            onTap: () {
-                                                              setState(() {
-                                                                isExpended =
-                                                                    false;
-                                                              });
-                                                            },
-                                                            child: Text(
-                                                              "Go back Login ?",
-                                                              style: TextStyle(
-                                                                  color:
-                                                                      lightgray,
-                                                                  decoration:
-                                                                      TextDecoration
-                                                                          .underline),
-                                                            ),
-                                                          )
-                                                        ],
+                                                      SizedBox(
+                                                        height: height * 0.02,
+                                                      ),
+                                                      InkWell(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            isExpended = false;
+                                                          });
+                                                        },
+                                                        child: Text(
+                                                          "Go back Login ?",
+                                                          style: TextStyle(
+                                                              color: lightgray,
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .underline),
+                                                        ),
                                                       )
                                                     ],
                                                   ),

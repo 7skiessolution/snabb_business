@@ -65,7 +65,7 @@ class _DebitfloatingButtonState extends State<DebitfloatingButton>
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          const AddCreditDebitScreen(balanceType: "Debit"),
+                          const AddCreditDebitScreen(balanceType: "Credit"),
                     ));
               },
               backgroundColor: Colors.red,
@@ -81,7 +81,7 @@ class _DebitfloatingButtonState extends State<DebitfloatingButton>
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        const AddCreditDebitScreen(balanceType: "Credit"),
+                        const AddCreditDebitScreen(balanceType: "Debit"),
                   ));
             },
             backgroundColor: Colors.green,

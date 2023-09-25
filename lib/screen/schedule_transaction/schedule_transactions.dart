@@ -576,9 +576,9 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                       padding: const EdgeInsets.all(40.0),
                       child: Center(
                           child: Text(
-                        AppLocalizations.of(context)!.noschedualedtransaction,
+                        "Scheduled Transactions Empty",
                         style: TextStyle(
-                            fontSize: width * 0.04,
+                            fontSize: width * 0.03,
                             color: darkblue,
                             fontWeight: FontWeight.w500),
                       )),

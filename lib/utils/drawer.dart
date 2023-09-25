@@ -10,17 +10,12 @@ import 'package:snabb_business/screen/drawerscreen/Calender.dart';
 import 'package:snabb_business/screen/drawerscreen/userProfile.dart';
 import 'package:snabb_business/screen/schedule_transaction/schedule_transactions.dart';
 import 'package:snabb_business/screen/summary/summary_screen.dart';
-import 'package:snabb_business/screen/schedule_transaction/ShaduleTransactionScreen.dart';
-import 'package:snabb_business/screen/summary/summeryScreen.dart';
 import 'package:snabb_business/screen/transactions/transactionScreen.dart';
 import 'package:snabb_business/screen/drawerscreen/walletScreen.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
-import '../screen/ExpensePieChart.dart';
 import '../screen/drawerscreen/Preferences.dart';
 import '../screen/drawerscreen/categories.dart';
 import '../screen/invoice/invoice.dart';
-import '../screen/drawerscreen/time.dart';
 
 class DrawerScreen extends StatelessWidget {
   const DrawerScreen({super.key});
@@ -34,50 +29,61 @@ class DrawerScreen extends StatelessWidget {
       Get.put(HomeController());
     }, builder: (obj) {
       return Column(children: [
-        Container(
-          
-          height: height * 0.2,
+        SizedBox(
+          height: height * 0.1,
           width: width,
-          color: Colors.blue[900],
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Stack(
             children: [
               Container(
-                  width: 75,
-                  height: 75,
-                // height: height * 0.065,
-                // width: width * 1,
-
-
-
-
-
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    image: const DecorationImage(
-                        image: AssetImage(
-                            "images/images__1_-removebg-preview (1).png")
-                            )
-                            ),
+                height: height,
+                width: width,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage("images/dollar.jpg"))),
               ),
-              Text(
-                "Business Version",
-                style: TextStyle(color: white, fontWeight: FontWeight.bold),
-              )
+              Container(
+                color: Colors.blue[900]!.withOpacity(0.9),
+                height: height,
+                width: width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 50,
+                      height: 50,
+                      // height: height * 0.065,
+                      // width: width * 1,
+
+                      decoration: const BoxDecoration(
+                          shape: BoxShape.circle, color: Colors.green),
+                    ),
+                    SizedBox(
+                      width: width * 0.02,
+                    ),
+                    Text(
+                      "Business Version",
+                      style:
+                          TextStyle(color: white, fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
         Expanded(
             child: Container(
-              color: darkblue,
-              child: ListView(
-                
-                      children: [
+          color: darkblue,
+          child: ListView(
+            children: [
               InkWell(
                 onTap: () {
                   obj.drawermenueclose();
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => const DashBoardScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const DashBoardScreen()));
                 },
                 child: ListTile(
                   leading: Icon(
@@ -87,8 +93,9 @@ class DrawerScreen extends StatelessWidget {
                   title: Text(
                     "OverView",
                     style: TextStyle(
-                      color: white,
-                        fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
@@ -101,13 +108,14 @@ class DrawerScreen extends StatelessWidget {
                 child: ListTile(
                   leading: Icon(
                     Icons.summarize_sharp,
-color: white,                  ),
+                    color: white,
+                  ),
                   title: Text(
                     "Summary",
-                    
                     style: TextStyle(
-                      color: white,
-                        fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
@@ -122,16 +130,18 @@ color: white,                  ),
                 child: ListTile(
                   leading: Icon(
                     Icons.data_usage_rounded,
-color: white,                  ),
+                    color: white,
+                  ),
                   title: Text(
                     "Transaction",
                     style: TextStyle(
-                      color: white,
-                        fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
-            
+
               InkWell(
                 onTap: () {
                   obj.drawermenueclose();
@@ -143,36 +153,39 @@ color: white,                  ),
                 child: ListTile(
                   leading: Icon(
                     Icons.paid_outlined,
-                   color: white,
+                    color: white,
                   ),
                   title: Text(
                     "Scheduled transactions",
                     style: TextStyle(
-                      color: white,
-                        fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  obj.drawermenueclose();
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => const WalletScreen()));
-                },
-                child: ListTile(
-                  leading: Icon(
-                    Icons.account_balance_wallet_outlined,
-                   color: white,
-                  ),
-                  title: Text(
-                    "Wallet",
-                    
-                    style: TextStyle(
-                      color: white,
-                        fontSize: width * 0.03, fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ),
+              // InkWell(
+              //   onTap: () {
+              //     obj.drawermenueclose();
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (_) => WalletScreen(home: false)));
+              //   },
+              //   child: ListTile(
+              //     leading: Icon(
+              //       Icons.account_balance_wallet_outlined,
+              //       color: white,
+              //     ),
+              //     title: Text(
+              //       "Wallet",
+              //       style: TextStyle(
+              //           color: white,
+              //           fontSize: width * 0.03,
+              //           fontWeight: FontWeight.w500),
+              //     ),
+              //   ),
+              // ),
               InkWell(
                 onTap: () {
                   obj.drawermenueclose();
@@ -182,21 +195,22 @@ color: white,                  ),
                 child: ListTile(
                   leading: Icon(
                     Icons.add_home_work_sharp,
-                   color: white,
+                    color: white,
                   ),
                   title: Text(
                     "Budgets",
                     style: TextStyle(
-                      color: white,
-                        fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
               InkWell(
                 onTap: () {
                   obj.drawermenueclose();
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => DebitScreen()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const DebitScreen()));
                 },
                 child: ListTile(
                   leading: Icon(
@@ -206,8 +220,9 @@ color: white,                  ),
                   title: Text(
                     "Debts",
                     style: TextStyle(
-                      color: white,
-                        fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
@@ -225,8 +240,9 @@ color: white,                  ),
                   title: Text(
                     "Invoice",
                     style: TextStyle(
-                      color: white,
-                        fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
@@ -243,97 +259,100 @@ color: white,                  ),
                   title: Text(
                     "Charts",
                     style: TextStyle(
-                      color: white,
-                        fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
-              // obj.category == true
-              //     ? InkWell(
-              //         onTap: () {
-              //           Navigator.push(
-              //               context,
-              //               MaterialPageRoute(
-              //                   builder: (_) => const Categories()));
-              //         },
-              //         child: SizedBox(
-              //           height: height * 0.05,
-              //           width: width,
-              //           //  alignment: Alignment.center,
-              //           child: Padding(
-              //             padding: EdgeInsets.only(right: width * 0.1),
-              //             child: Row(
-              //                 crossAxisAlignment: CrossAxisAlignment.center,
-              //                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //                 children: [
-              //                   SizedBox(
-              //                       height: height * 0.1,
-              //                       width: width * 0.1,
-              //                       child: Image.asset(
-              //                         "images/Groupgraph.png",
-              //                         color: darkblue,
-              //                       )),
-              //                   const Text("Catagery"),
-              //                 ]),
-              //           ),
-            
-              //           //     const Icon(Icons.keyboard_arrow_down_outlined),
-              //         ),
-              //       )
-              //     : const SizedBox(),
-              // obj.expensecata == true
-              //     ? InkWell(
-              //         onTap: () {
-              //           Navigator.push(
-              //               context,
-              //               MaterialPageRoute(
-              //                   builder: (_) => const ExpencePieChart()));
-              //         },
-              //         child: SizedBox(
-              //           height: height * 0.05,
-              //           width: width,
-              //           child: Padding(
-              //             padding: EdgeInsets.only(right: width * 0.1),
-              //             child: Row(
-              //                 crossAxisAlignment: CrossAxisAlignment.center,
-              //                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //                 children: [
-              //                   SizedBox(
-              //                       height: height * 0.1,
-              //                       width: width * 0.1,
-              //                       child: Image.asset(
-              //                         "images/chartexpenseicon.png",
-              //                         color: darkblue,
-              //                       )),
-              //                   const Text("Expense"),
-              //                 ]),
-              //           ),
-            
-              //           //     const Icon(Icons.keyboard_arrow_down_outlined),
-              //         ))
-              //     : const SizedBox(),
-            
-              // InkWell(
-              //   onTap: () {
-              //     Navigator.push(context,
-              //         MaterialPageRoute(builder: (_) => Preferences()));
-              //   },
-              //   child: ListTile(
-              //     leading: SizedBox(
-              //         height: height * 0.1,
-              //         width: width * 0.1,
-              //         child: Image.asset(
-              //           "images/growth.png",
-              //           color: darkblue,
-              //         )),
-              //     title: const Text("Charts"),
-              //     trailing: const Icon(Icons.keyboard_arrow_down_outlined),
-              //   ),
-              // ),
+              obj.category == true
+                  ? InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const Categories()));
+                      },
+                      child: SizedBox(
+                        height: height * 0.05,
+                        width: width,
+                        //  alignment: Alignment.center,
+                        child: Padding(
+                          padding: EdgeInsets.only(right: width * 0.1),
+                          child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                SizedBox(
+                                    height: height * 0.1,
+                                    width: width * 0.1,
+                                    child: Image.asset(
+                                      "images/Groupgraph.png",
+                                      color: darkblue,
+                                    )),
+                                const Text("Catagery"),
+                              ]),
+                        ),
+
+                        //     const Icon(Icons.keyboard_arrow_down_outlined),
+                      ),
+                    )
+                  : const SizedBox(),
+              obj.expensecata == true
+                  ? InkWell(
+                      onTap: () {
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (_) => const ExpencePieChart()));
+                      },
+                      child: SizedBox(
+                        height: height * 0.05,
+                        width: width,
+                        child: Padding(
+                          padding: EdgeInsets.only(right: width * 0.1),
+                          child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                SizedBox(
+                                    height: height * 0.1,
+                                    width: width * 0.1,
+                                    child: Image.asset(
+                                      "images/chartexpenseicon.png",
+                                      color: darkblue,
+                                    )),
+                                const Text("Expense"),
+                              ]),
+                        ),
+
+                        //     const Icon(Icons.keyboard_arrow_down_outlined),
+                      ))
+                  : const SizedBox(),
+
               InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => const CalenderScreen()));
+                      MaterialPageRoute(builder: (_) => Preferences()));
+                },
+                child: ListTile(
+                  leading: SizedBox(
+                      height: height * 0.1,
+                      width: width * 0.1,
+                      child: Image.asset(
+                        "images/growth.png",
+                        color: darkblue,
+                      )),
+                  title: const Text("Charts"),
+                  trailing: const Icon(Icons.keyboard_arrow_down_outlined),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const CalenderScreen()));
                 },
                 child: ListTile(
                   leading: Icon(
@@ -343,13 +362,14 @@ color: white,                  ),
                   title: Text(
                     "Calendar",
                     style: TextStyle(
-                      color: white,
-                        fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
               // const Divider(),
-            
+
               // InkWell(
               //   onTap: () {
               //     obj.drawermenueclose();
@@ -368,7 +388,7 @@ color: white,                  ),
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (_) => const UserProfile()));
-            
+
                   obj.drawermenueclose();
                   // Navigator.push(context,
                   //     MaterialPageRoute(builder: (_) => const UserProfile()));
@@ -381,12 +401,13 @@ color: white,                  ),
                   title: Text(
                     "User",
                     style: TextStyle(
-                       color: white,
-                        fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
-            
+
               // InkWell(
               //   onTap: () {
               //     obj.drawermenueclose();
@@ -410,13 +431,14 @@ color: white,                  ),
                 child: ListTile(
                   leading: Icon(
                     Icons.settings,
-                     color: white,
+                    color: white,
                   ),
                   title: Text(
                     "Preferences",
                     style: TextStyle(
-                       color: white,
-                        fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
@@ -443,22 +465,24 @@ color: white,                  ),
                     title: Text(
                       "LogOut",
                       style: TextStyle(
-                         color: white,
-                          fontSize: width * 0.03, fontWeight: FontWeight.w500),
+                          color: white,
+                          fontSize: width * 0.03,
+                          fontWeight: FontWeight.w500),
                     )),
               ),
-                      ],
-                    ),
-            )),
-
-
+            ],
+          ),
+        )),
         Container(
-          alignment: Alignment.centerLeft,
-          width: width,
-          color: darkblue,
-          child:Image.asset("images/icon1.png",width: 50,height: 50,)
-       
-        ),
+            alignment: Alignment.center,
+            width: width,
+            color: darkblue,
+            child: Image.asset(
+              "images/icon1.png",
+              width: 50,
+              height: 50,
+              color: Colors.white,
+            )),
       ]);
     });
   }

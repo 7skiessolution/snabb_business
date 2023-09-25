@@ -30,9 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-
-
-
     Get.put(HomeController());
     HomeController.to.saleListOFChart();
     HomeController.to.expenseList(0);
@@ -151,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           "${obj.totalSale.toString()} ${obj.curency}",
                                           style: TextStyle(
                                               fontSize: width * 0.03,
-                                              color: Colors.lightGreen),
+                                              color: AppColors.greencolor),
                                         ),
                                       ),
                                     ),
@@ -266,7 +263,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: TextStyle(
                                 fontSize: width * 0.04,
                                 fontWeight: FontWeight.w800,
-                                color: Colors.lightGreen),
+                                color: AppColors.greencolor),
                           ),
                           SizedBox(
                               height: height * 0.16,
@@ -308,13 +305,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     animationDuration: 5,
                                     animationDelay: 3,
                                     name: "Sale",
-                                    color: Colors.lightGreen,
+                                    color: AppColors.greencolor,
                                     markerSettings: MarkerSettings(
                                       isVisible: true,
                                       width: 5,
                                       height: 5,
                                       borderWidth: 0.5,
-                                      color: lightgreen,
+                                      color: AppColors.greencolor,
                                     ),
                                     enableTooltip: true,
                                     isVisible: true,
@@ -464,9 +461,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       );
-      //         : const ExpenseChart()
-      //     : const PurchaseChart()
-      // : const SalesChart();
     });
   }
 }

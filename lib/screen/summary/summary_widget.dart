@@ -265,7 +265,8 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                         Text(
                                           model!.data![index].month.toString(),
                                           // "${widget.months[selectedMonth.month - 1]} ${selectedMonth.year}",
-                                          style: const TextStyle(
+                                          style: TextStyle(
+                                              fontSize: width * 0.03,
                                               fontWeight: FontWeight.bold),
                                         ),
                                         SizedBox(
@@ -307,9 +308,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                 height: height,
                                                 width: width * 0.2,
                                                 alignment: Alignment.centerLeft,
-                                                child: const Text(
+                                                child: Text(
                                                   "Sale",
                                                   style: TextStyle(
+                                                      fontSize: width * 0.03,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                   textAlign: TextAlign.left,
@@ -327,8 +329,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                   child: FittedBox(
                                                     child: Text(
                                                       " ${HomeController.to.curency} ${snapshot.data!.data![index].transactions!.sale!}",
-                                                      style: const TextStyle(
+                                                      style: TextStyle(
                                                           color: Colors.green,
+                                                          fontSize:
+                                                              width * 0.03,
                                                           fontWeight:
                                                               FontWeight.bold),
                                                     ),
@@ -347,9 +351,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                 height: height,
                                                 width: width * 0.2,
                                                 alignment: Alignment.centerLeft,
-                                                child: const Text(
+                                                child: Text(
                                                   "Purchase",
                                                   style: TextStyle(
+                                                      fontSize: width * 0.03,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                   textAlign: TextAlign.left,
@@ -367,8 +372,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                   child: FittedBox(
                                                     child: Text(
                                                       "-${HomeController.to.curency} ${model!.data![index].transactions!.purchase!}",
-                                                      style: const TextStyle(
+                                                      style: TextStyle(
                                                           color: Colors.red,
+                                                          fontSize:
+                                                              width * 0.03,
                                                           fontWeight:
                                                               FontWeight.bold),
                                                     ),
@@ -387,9 +394,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                 height: height,
                                                 width: width * 0.2,
                                                 alignment: Alignment.centerLeft,
-                                                child: const Text(
+                                                child: Text(
                                                   "Expense",
                                                   style: TextStyle(
+                                                      fontSize: width * 0.03,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                   textAlign: TextAlign.left,
@@ -407,7 +415,9 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                   child: FittedBox(
                                                     child: Text(
                                                       "-${HomeController.to.curency} ${model!.data![index].transactions!.expense!}",
-                                                      style: const TextStyle(
+                                                      style: TextStyle(
+                                                          fontSize:
+                                                              width * 0.03,
                                                           color: Colors.blue,
                                                           fontWeight:
                                                               FontWeight.bold),
@@ -427,9 +437,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                 height: height,
                                                 width: width * 0.2,
                                                 alignment: Alignment.centerLeft,
-                                                child: const Text(
+                                                child: Text(
                                                   "Total",
                                                   style: TextStyle(
+                                                      fontSize: width * 0.03,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                   textAlign: TextAlign.left,
@@ -449,7 +460,9 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                       balance > 0
                                                           ? "${HomeController.to.curency} $balance"
                                                           : "${HomeController.to.curency} $balance",
-                                                      style: const TextStyle(
+                                                      style: TextStyle(
+                                                          fontSize:
+                                                              width * 0.03,
                                                           fontWeight:
                                                               FontWeight.bold),
                                                     ),

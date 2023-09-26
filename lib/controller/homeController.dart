@@ -7,11 +7,11 @@ import 'package:snabb_business/models/get_data_year_type_model.dart' as sp;
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
 import 'package:snabb_business/screen/company/companyModel.dart' as cm;
+import 'package:snabb_business/screen/expense/expenseModel.dart' as ex;
 import 'package:snabb_business/screen/suppliers/supplierModel.dart' as sm;
 import 'package:snabb_business/static_data.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:snabb_business/models/yearly_transaction_model.dart' as yTra;
-
 import '../models/dataclassgraphModel.dart';
 
 class HomeController extends GetxController {
@@ -26,7 +26,7 @@ class HomeController extends GetxController {
   double totalExpanse = 0.0;
   double totalPurchase = 0.0;
   String curency = "EURO";
-
+  List<ex.Data> catagorylist = [];
   List<Chartdata> expensedata = [];
   List<Chartdata> purchasedata = [];
   List<Chartdata> saledatalist = [];
@@ -148,12 +148,35 @@ class HomeController extends GetxController {
 
   Future getSupplierdata() async {
     supplierList.clear();
+
     isLoadData = true;
     var res = await httpClient().get(StaticValues.getSupplierList);
     supplierModel = sm.SupplierModel.fromMap(res.data);
     if (supplierModel!.data != null) {
       for (var supplier in supplierModel!.data!) {
         supplierList.add(supplier);
+        print("supplierList ${supplierList.length}");
+      }
+      print("supplierList ${supplierList.length}");
+      isLoadData = false;
+      update();
+    } else {
+      print("nodata ");
+    }
+  }
+
+  Future getCatageries() async {
+    // walletList.clear();\
+    print("catagoryModel ");
+    ex.CatagoryModel? catagoryModel;
+    isLoadData = true;
+    var res = await httpClient().get(StaticValues.getCategories);
+    print("data----------- ${res.data}");
+    catagoryModel = ex.CatagoryModel.fromMap(res.data);
+    print("catagoryModel ${companyModel!.data}");
+    if (catagoryModel.data != null) {
+      for (var catagory in catagoryModel.data!) {
+        catagorylist.add(catagory);
       }
 
       isLoadData = false;
@@ -162,28 +185,6 @@ class HomeController extends GetxController {
       print("nodata ");
     }
   }
-  // Future getWalletdata() async {
-  //   walletList.clear();
-  //   totalbalance = 0;
-  //   isLoadData = true;
-  //   var res = await httpClient().get(StaticValues.getWalletList);
-  //   walletModel = wm.UserWalletModel.fromMap(res.data);
-  //   if (walletModel!.data != null) {
-  //     for (var wallet in walletModel!.data!) {
-  //       walletList.add(wallet);
-  //     }
-  //     for (var vlaue in walletList) {
-  //       totalbalance += vlaue.amount!;
-  //     }
-
-  //     isLoadData = false;
-  //     curency = walletList[0].currency!;
-  //     update();
-  //     print("totalbalancexczvzx$totalbalance");
-  //   } else {
-  //     print("nodata ");
-  //   }
-  // }
 
   @override
   void onInit() {

@@ -294,7 +294,7 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: width * 0.42,
+                                            width: width * 0.34,
                                           ),
                                           const Icon(
                                               Icons.arrow_drop_down_sharp)

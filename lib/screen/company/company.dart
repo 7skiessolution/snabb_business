@@ -366,8 +366,8 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                           Padding(
                                             padding: EdgeInsets.only(
                                                 left: width * 0.02),
-                                            child:
-                                                Icon(Icons.home_work_outlined),
+                                            child: const Icon(
+                                                Icons.home_work_outlined),
                                           ),
                                           SizedBox(
                                             width: width * 0.05,

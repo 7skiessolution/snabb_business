@@ -42,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
     //TransactionController.to.getUserCalanderTransactiondata();
     HomeController.to.getUserProfile();
     HomeController.to.getCompanydata();
+    HomeController.to.getSupplierdata();
     super.initState();
   }
 

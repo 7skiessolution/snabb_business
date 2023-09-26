@@ -38,10 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
     // HomeController.to.getexpensePurchase(2);
     // HomeController.to.getexpensePurchase(0);
     // HomeController.to.getexpensePurchase(1);
-   // TransactionController.to.getCatagoriesdata("income");
+    // TransactionController.to.getCatagoriesdata("income");
     //TransactionController.to.getUserCalanderTransactiondata();
-    //HomeController.to.getUserProfile();
-   // HomeController.to.getWalletdata();
+    HomeController.to.getUserProfile();
+    HomeController.to.getCompanydata();
     super.initState();
   }
 

@@ -51,8 +51,8 @@ class DrawerScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 50,
-                      height: 50,
+                      width: 35,
+                      height: 35,
                       // height: height * 0.065,
                       // width: width * 1,
 
@@ -63,7 +63,7 @@ class DrawerScreen extends StatelessWidget {
                       width: width * 0.02,
                     ),
                     Text(
-                      "Business Version",
+                      HomeController.to.profilemodel!.data!.name!.toUpperCase(),
                       style:
                           TextStyle(color: white, fontWeight: FontWeight.bold),
                     )
@@ -100,13 +100,11 @@ class DrawerScreen extends StatelessWidget {
                   ),
                 ),
               ),
-               InkWell(
+              InkWell(
                 onTap: () {
                   obj.drawermenueclose();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => const CompanyScreen()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const CompanyScreen()));
                 },
                 child: ListTile(
                   leading: Icon(
@@ -122,7 +120,7 @@ class DrawerScreen extends StatelessWidget {
                   ),
                 ),
               ),
-               InkWell(
+              InkWell(
                 onTap: () {
                   obj.drawermenueclose();
                   Navigator.push(

@@ -7,6 +7,7 @@ import 'package:snabb_business/models/get_data_year_type_model.dart' as sp;
 import 'package:snabb_business/models/get_sale_purchase.dart';
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
+import 'package:snabb_business/screen/company/companyModel.dart' as cm;
 import 'package:snabb_business/static_data.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:snabb_business/models/yearly_transaction_model.dart' as yTra;
@@ -56,8 +57,8 @@ class HomeController extends GetxController {
     // SalesData(DateTime(2020), 50),
   ];
 
-  wm.UserWalletModel? walletModel;
-
+  cm.CompanyModel? companyModel;
+  List<cm.Data> companyList = [];
   double totalbalance = 0;
   List<wm.Data> walletList = [];
 
@@ -74,12 +75,23 @@ class HomeController extends GetxController {
     update();
   }
 
-  Future adddWalletdata(Map<String, dynamic> model, BuildContext c) async {
+  // Future adddWalletdata(Map<String, dynamic> model, BuildContext c) async {
+  //   changeStatus(true);
+  //   var res = await httpClient().post(StaticValues.addWalletData, data: model);
+  //   if (res.statusCode == 200) {
+  //     changeStatus(false);
+  //     // getWalletdata();
+  //   }
+  //   Navigator.pop(c);
+  // }
+  Future addCompanyData(Map<String, dynamic> model, BuildContext c) async {
+    print(model);
     changeStatus(true);
-    var res = await httpClient().post(StaticValues.addWalletData, data: model);
+    var res = await httpClient().post(StaticValues.addCompany, data: model);
     if (res.statusCode == 200) {
+      print(res.data);
       changeStatus(false);
-     // getWalletdata();
+      getCompanydata();
     }
     Navigator.pop(c);
   }
@@ -87,7 +99,7 @@ class HomeController extends GetxController {
   Future deleteWalletdata(String id, BuildContext c) async {
     var res = await httpClient().delete("${StaticValues.deleteWalletData}$id");
     if (res.statusCode == 200) {
-     // getWalletdata();
+      // getWalletdata();
       Fluttertoast.showToast(
           msg: res.data["status"],
           backgroundColor: Colors.red,
@@ -100,6 +112,22 @@ class HomeController extends GetxController {
     }
   }
 
+  Future getCompanydata() async {
+    companyList.clear();
+    isLoadData = true;
+    var res = await httpClient().get(StaticValues.getCompanyList);
+    companyModel = cm.CompanyModel.fromMap(res.data);
+    if (companyModel!.data != null) {
+      for (var company in companyModel!.data!) {
+        companyList.add(company);
+      }
+
+      isLoadData = false;
+      update();
+    } else {
+      print("nodata ");
+    }
+  }
   // Future getWalletdata() async {
   //   walletList.clear();
   //   totalbalance = 0;
@@ -164,13 +192,11 @@ class HomeController extends GetxController {
     var res = await httpClient().get(StaticValues.getProfileDetails);
     if (res.statusCode == 200) {
       profilemodel = UserProfileModel.fromMap(res.data);
-
       totalExpanse = profilemodel!.data!.expense ?? 0.0;
       totalPurchase = profilemodel!.data!.purchase ?? 0.0;
-
       totalSale = profilemodel!.data!.sale ?? 0.0;
+      curency = profilemodel!.data!.currency!;
     }
-    print(profilemodel.toString());
     update();
   }
 

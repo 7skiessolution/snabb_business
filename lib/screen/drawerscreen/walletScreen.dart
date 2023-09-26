@@ -156,13 +156,13 @@ class _WalletScreenState extends State<WalletScreen> {
                                               "transferred": true
                                             };
 
-                                            HomeController.to
-                                                .adddWalletdata(map, context)
-                                                .then((value) {
-                                              mName.clear();
-                                              mNotes.clear();
-                                              mAmount.clear();
-                                            });
+                                            // HomeController.to
+                                            //     .adddWalletdata(map, context)
+                                            //     .then((value) {
+                                            //   mName.clear();
+                                            //   mNotes.clear();
+                                            //   mAmount.clear();
+                                            // });
                                           }
                                         },
                                         child: Container(

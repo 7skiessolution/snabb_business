@@ -59,6 +59,7 @@ class Data {
   String? name;
   String? email;
   String? gender;
+  String? currency;
   String? imageUrl;
   double? expense;
   double? sale;
@@ -68,6 +69,7 @@ class Data {
     this.name,
     this.email,
     this.gender,
+    this.currency,
     this.imageUrl,
     this.expense,
     this.sale,
@@ -79,6 +81,7 @@ class Data {
     String? name,
     String? email,
     String? gender,
+    String? currency,
     String? imageUrl,
     double? expense,
     double? sale,
@@ -89,6 +92,7 @@ class Data {
       name: name ?? this.name,
       email: email ?? this.email,
       gender: gender ?? this.gender,
+      currency: currency ?? this.currency,
       imageUrl: imageUrl ?? this.imageUrl,
       expense: expense ?? this.expense,
       sale: sale ?? this.sale,
@@ -102,6 +106,7 @@ class Data {
       'name': name,
       'email': email,
       'gender': gender,
+      'currency': currency,
       'imageUrl': imageUrl,
       'expense': expense,
       'sale': sale,
@@ -115,6 +120,7 @@ class Data {
       name: map['name'] != null ? map['name'] as String : null,
       email: map['email'] != null ? map['email'] as String : null,
       gender: map['gender'] != null ? map['gender'] as String : null,
+      currency: map['currency'] != null ? map['currency'] as String : null,
       imageUrl: map['imageUrl'] != null ? map['imageUrl'] as String : null,
       expense: map['expense'] != null ? map['expense'] as double : null,
       sale: map['sale'] != null ? map['sale'] as double : null,
@@ -129,7 +135,7 @@ class Data {
 
   @override
   String toString() {
-    return 'Data(userId: $userId, name: $name, email: $email, gender: $gender, imageUrl: $imageUrl, expense: $expense, sale: $sale, purchase: $purchase)';
+    return 'Data(userId: $userId, name: $name, email: $email, gender: $gender, currency:$currency, imageUrl: $imageUrl, expense: $expense, sale: $sale, purchase: $purchase)';
   }
 
   @override
@@ -140,6 +146,7 @@ class Data {
         other.name == name &&
         other.email == email &&
         other.gender == gender &&
+        other.currency == currency &&
         other.imageUrl == imageUrl &&
         other.expense == expense &&
         other.sale == sale &&
@@ -152,6 +159,7 @@ class Data {
         name.hashCode ^
         email.hashCode ^
         gender.hashCode ^
+        currency.hashCode ^
         imageUrl.hashCode ^
         expense.hashCode ^
         sale.hashCode ^

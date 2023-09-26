@@ -21,7 +21,7 @@ class StaticValues {
   static const deleteWalletData = 'Wallet/Delete/';
   static const changeCurrency = 'Wallet/ChangeCurrency?Currency=';
   static const getIncomeGraph = 'Wallet/GetMonthWiseIncome/';
- // static const getIncomeExpenceGraph = 'Wallet/GetMonthWiseIncomeExpense/';
+  // static const getIncomeExpenceGraph = 'Wallet/GetMonthWiseIncomeExpense/';
   static const changePassword = 'UserApi/ChangeUserPassword';
   // static const getDailyTrasaction = 'Transaction/GetDayWiseTransactions';
   // static const getMonthTrasaction = 'Transaction/GetMonthWiseTransactions';
@@ -38,12 +38,16 @@ class StaticValues {
   static const updatedebitcredit = "DebitCredit/Update";
   static const deletedebitcredit = "DebitCredit/Delete";
   static const addcscheduleTransaction = "Transaction/AddSceduleTransaction";
- // static const getSalePurchaseType = "Wallet/GetMonthWiseSalePurchaseExpense/";
- // static const getSaledatatype = "Transaction/GetYearTransactions/";
+  // static const getSalePurchaseType = "Wallet/GetMonthWiseSalePurchaseExpense/";
+  // static const getSaledatatype = "Transaction/GetYearTransactions/";
   static const getscheduleTransaction =
       "Transaction/GetAllScheduleTransactions";
   static const getCalanderTransaction = "Transaction/GetCalenderTransactions";
   static const gettransaction = "Transaction/GetTransactions/";
+  ///////////////////////////////Company//////////////////////////////////
+  static const addCompany = "Company/AddCompany";
+  static const getCompanyList = "Company/GetCompanies";
+
   static String apikey =
       "G8I8cS9Uyncyl0GIXHZfPIosrXnqyTwBZa4Z0utvWG5FrnTGdvxD482MFcDSJLjb8JAjZsqpt4SYyjj3VimcQXTKxcyXsQTjvTJVhRQ9rUDHVzIds2x88oLfFwDtpudS";
 }

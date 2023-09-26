@@ -83,6 +83,7 @@ class _PurchasescreenState extends State<Purchasescreen> {
                 height: height,
                 width: width,
                 child: SingleChildScrollView(
+                  primary: false,
                   child: Stack(children: [
                     Padding(
                       padding: EdgeInsets.only(top: height * 0.01),
@@ -156,351 +157,359 @@ class _PurchasescreenState extends State<Purchasescreen> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: height * 0.13),
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: Card(
-                          elevation: 10,
-                          shadowColor: Colors.blue[900],
-                          child: SizedBox(
-                            height: height * 0.81,
-                            width: width * 0.95,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: height * 0.01,
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                        height: height * 0.07,
-                                        width: width * 0.15,
-                                        child: const CircleAvatar(
-                                          child: CircleAvatar(
-                                            radius: 22,
-                                            backgroundImage: AssetImage(
-                                                // widget
-                                                //           .type ==
-                                                //       1
-                                                //   ?
-                                                "images/sale.png"
-                                                // : widget.type == 0
-                                                //     ? "images/sale.png"
-                                                //     : "images/expensive.png"
-                                                ),
-                                          ),
-                                        )),
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 8.0),
-                                      child: Text(
-                                        "Purchase",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                InkWell(
-                                  onTap: () => _selectDate(
-                                      context, _dueDateController, _dueDate),
-                                  child: SizedBox(
-                                    height: height * 0.06,
-                                    width: width * 0.9,
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Icon(
-                                            Icons.calendar_today,
-                                            color: Colors.grey.shade700,
-                                            size: 25,
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.05,
-                                          ),
-                                          Text(
-                                            formatTime,
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.55,
-                                          ),
-                                        ]),
+                    SingleChildScrollView(
+                      primary: false,
+                      child: Padding(
+                        padding: EdgeInsets.only(top: height * 0.13),
+                        child: Align(
+                          alignment: Alignment.topCenter,
+                          child: Card(
+                            elevation: 10,
+                            shadowColor: Colors.blue[900],
+                            child: SizedBox(
+                              height: height * 0.81,
+                              width: width * 0.95,
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: height * 0.01,
                                   ),
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    obj.showPaidDilogue(context, height, width);
-                                  },
-                                  child: Container(
-                                    height: height * 0.06,
-                                    width: width * 0.9,
-                                    color: const Color(0xfff3f2f2),
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Image.asset(
-                                            "images/paidas.png",
-                                            width: width * 0.07,
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.05,
-                                          ),
-                                          const Text(
-                                            'Paid As',
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.5,
-                                          ),
-                                          const Icon(
-                                              Icons.arrow_drop_down_sharp)
-                                        ]),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: height * 0.01,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    obj.showSaleMethodDilogue(
-                                        context, height, width);
-                                  },
-                                  child: Container(
-                                    height: height * 0.06,
-                                    width: width * 0.9,
-                                    color: const Color(0xfff3f2f2),
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Image.asset(
-                                            "images/paidas.png",
-                                            width: width * 0.07,
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.05,
-                                          ),
-                                          const Text(
-                                            'Purchase Method',
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.34,
-                                          ),
-                                          const Icon(
-                                              Icons.arrow_drop_down_sharp)
-                                        ]),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width * 0.025),
-                                  child: SizedBox(
-                                    height: height * 0.07,
-                                    width: width * 0.95,
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.attach_money_sharp,
-                                          color: Colors.grey.shade700,
-                                          size: 28,
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Expanded(
-                                          child: SizedBox(
-                                            width: width,
-                                            height: height,
-                                            child: TextFormField(
-                                              enabled: false,
-                                              controller: obj.balanceAmount,
-                                              decoration: InputDecoration(
-                                                labelText: 'Balance',
-                                                labelStyle: TextStyle(
-                                                    fontSize: 14,
-                                                    color: lightgray),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 20,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width * 0.025),
-                                  child: SizedBox(
-                                    height: height * 0.07,
-                                    width: width * 0.95,
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.attach_money_sharp,
-                                          color: Colors.grey.shade700,
-                                          size: 28,
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Expanded(
-                                          child: SizedBox(
-                                            width: width,
-                                            height: height,
-                                            child: TextFormField(
-                                              enabled: false,
-                                              controller: obj.invoiceAmount,
-                                              decoration: InputDecoration(
-                                                labelText: 'Value',
-                                                labelStyle: TextStyle(
-                                                    fontSize: 14,
-                                                    color: lightgray),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 20,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width * 0.025),
-                                  child: SizedBox(
-                                    height: height * 0.07,
-                                    width: width * 0.95,
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.edit,
-                                          color: Colors.grey.shade700,
-                                          size: 28,
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Expanded(
-                                          child: SizedBox(
-                                            width: width,
-                                            height: height,
-                                            child: TextFormField(
-                                              controller: obj.particular,
-                                              decoration: InputDecoration(
-                                                labelText: 'Particular',
-                                                labelStyle: TextStyle(
-                                                    fontSize: 14,
-                                                    color: lightgray),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 20,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: height * 0.015,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 9),
-                                  child: Row(
+                                  Row(
                                     children: [
-                                      Icon(
-                                        Icons.file_present_outlined,
-                                        color: darkblue,
-                                      ),
                                       SizedBox(
-                                        width: width * 0.05,
-                                      ),
-                                      InkWell(
-                                        onTap: () {
-                                          TransactionController.to.selectImages(
-                                              context, height, width);
-                                        },
-                                        child: Card(
-                                          child: Container(
-                                            width: width * 0.25,
-                                            height: height * 0.05,
-                                            decoration: BoxDecoration(
-                                                color: darkblue,
-                                                borderRadius:
-                                                    BorderRadius.circular(3)),
-                                            child: Center(
-                                                child: Text(
-                                              "Add File",
-                                              style: TextStyle(color: white),
-                                            )),
-                                          ),
+                                          height: height * 0.07,
+                                          width: width * 0.15,
+                                          child: const CircleAvatar(
+                                            child: CircleAvatar(
+                                              radius: 22,
+                                              backgroundImage: AssetImage(
+                                                  // widget
+                                                  //           .type ==
+                                                  //       1
+                                                  //   ?
+                                                  "images/sale.png"
+                                                  // : widget.type == 0
+                                                  //     ? "images/sale.png"
+                                                  //     : "images/expensive.png"
+                                                  ),
+                                            ),
+                                          )),
+                                      const Padding(
+                                        padding: EdgeInsets.only(left: 8.0),
+                                        child: Text(
+                                          "Purchase",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
-                                ),
-                                SizedBox(
-                                  height: height * 0.015,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Card(
-                                      child: Container(
-                                        width: width * 0.2,
-                                        height: height * 0.05,
-                                        decoration: BoxDecoration(
-                                            color: Colors.red,
-                                            borderRadius:
-                                                BorderRadius.circular(3)),
-                                        child: Center(
-                                            child: Text(
-                                          "Cancle",
-                                          style: TextStyle(color: white),
-                                        )),
+                                  InkWell(
+                                    onTap: () => _selectDate(
+                                        context, _dueDateController, _dueDate),
+                                    child: SizedBox(
+                                      height: height * 0.06,
+                                      width: width * 0.9,
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Icon(
+                                              Icons.calendar_today,
+                                              color: Colors.grey.shade700,
+                                              size: 25,
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.05,
+                                            ),
+                                            Text(
+                                              formatTime,
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.55,
+                                            ),
+                                          ]),
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      obj.showPaidDilogue(
+                                          context, height, width);
+                                    },
+                                    child: Container(
+                                      height: height * 0.06,
+                                      width: width * 0.9,
+                                      color: const Color(0xfff3f2f2),
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Image.asset(
+                                              "images/paidas.png",
+                                              width: width * 0.07,
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.05,
+                                            ),
+                                            const Text(
+                                              'Paid As',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.5,
+                                            ),
+                                            const Icon(
+                                                Icons.arrow_drop_down_sharp)
+                                          ]),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.01,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      obj.showSaleMethodDilogue(
+                                          context, height, width);
+                                    },
+                                    child: Container(
+                                      height: height * 0.06,
+                                      width: width * 0.9,
+                                      color: const Color(0xfff3f2f2),
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Image.asset(
+                                              "images/paidas.png",
+                                              width: width * 0.07,
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.05,
+                                            ),
+                                            const Text(
+                                              'Purchase Method',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.34,
+                                            ),
+                                            const Icon(
+                                                Icons.arrow_drop_down_sharp)
+                                          ]),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(left: width * 0.025),
+                                    child: SizedBox(
+                                      height: height * 0.07,
+                                      width: width * 0.95,
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.attach_money_sharp,
+                                            color: Colors.grey.shade700,
+                                            size: 28,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Expanded(
+                                            child: SizedBox(
+                                              width: width,
+                                              height: height,
+                                              child: TextFormField(
+                                                enabled: false,
+                                                controller: obj.balanceAmount,
+                                                decoration: InputDecoration(
+                                                  labelText: 'Balance',
+                                                  labelStyle: TextStyle(
+                                                      fontSize: 14,
+                                                      color: lightgray),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            width: 20,
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    InkWell(
-                                      onTap: () {
-                                        if (_formKey.currentState!
-                                            .validate()) {}
-                                      },
-                                      child: Card(
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(left: width * 0.025),
+                                    child: SizedBox(
+                                      height: height * 0.07,
+                                      width: width * 0.95,
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.attach_money_sharp,
+                                            color: Colors.grey.shade700,
+                                            size: 28,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Expanded(
+                                            child: SizedBox(
+                                              width: width,
+                                              height: height,
+                                              child: TextFormField(
+                                                enabled: false,
+                                                controller: obj.invoiceAmount,
+                                                decoration: InputDecoration(
+                                                  labelText: 'Value',
+                                                  labelStyle: TextStyle(
+                                                      fontSize: 14,
+                                                      color: lightgray),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            width: 20,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(left: width * 0.025),
+                                    child: SizedBox(
+                                      height: height * 0.07,
+                                      width: width * 0.95,
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.edit,
+                                            color: Colors.grey.shade700,
+                                            size: 28,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Expanded(
+                                            child: SizedBox(
+                                              width: width,
+                                              height: height,
+                                              child: TextFormField(
+                                                controller: obj.particular,
+                                                decoration: InputDecoration(
+                                                  labelText: 'Particular',
+                                                  labelStyle: TextStyle(
+                                                      fontSize: 14,
+                                                      color: lightgray),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            width: 20,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.015,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 9),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.file_present_outlined,
+                                          color: darkblue,
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.05,
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            TransactionController.to
+                                                .selectImages(
+                                                    context, height, width);
+                                          },
+                                          child: Card(
+                                            child: Container(
+                                              width: width * 0.25,
+                                              height: height * 0.05,
+                                              decoration: BoxDecoration(
+                                                  color: darkblue,
+                                                  borderRadius:
+                                                      BorderRadius.circular(3)),
+                                              child: Center(
+                                                  child: Text(
+                                                "Add File",
+                                                style: TextStyle(color: white),
+                                              )),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.015,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Card(
                                         child: Container(
                                           width: width * 0.2,
                                           height: height * 0.05,
                                           decoration: BoxDecoration(
-                                              color: AppColors.blue,
+                                              color: Colors.red,
                                               borderRadius:
                                                   BorderRadius.circular(3)),
                                           child: Center(
                                               child: Text(
-                                            "Save",
+                                            "Cancle",
                                             style: TextStyle(color: white),
                                           )),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                visible
-                                    ? SizedBox(height: height * 0.4)
-                                    : const SizedBox(),
-                              ],
+                                      InkWell(
+                                        onTap: () {
+                                          if (_formKey.currentState!
+                                              .validate()) {}
+                                        },
+                                        child: Card(
+                                          child: Container(
+                                            width: width * 0.2,
+                                            height: height * 0.05,
+                                            decoration: BoxDecoration(
+                                                color: AppColors.blue,
+                                                borderRadius:
+                                                    BorderRadius.circular(3)),
+                                            child: Center(
+                                                child: Text(
+                                              "Save",
+                                              style: TextStyle(color: white),
+                                            )),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  visible
+                                      ? SizedBox(height: height * 0.4)
+                                      : const SizedBox(),
+                                ],
+                              ),
                             ),
                           ),
                         ),

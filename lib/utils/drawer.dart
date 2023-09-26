@@ -62,7 +62,8 @@ class DrawerScreen extends StatelessWidget {
                       width: width * 0.02,
                     ),
                     Text(
-                      HomeController.to.profilemodel!.data!.name!.toUpperCase(),
+                      "Name",
+                      //  HomeController.to.profilemodel!.data!.name!.toUpperCase(),
                       style:
                           TextStyle(color: white, fontWeight: FontWeight.bold),
                     )
@@ -527,7 +528,7 @@ class DrawerScreen extends StatelessWidget {
                         ],
                       ),
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
               InkWell(
                 onTap: () {
                   Navigator.push(

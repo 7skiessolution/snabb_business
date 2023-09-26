@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 import 'package:intl/intl.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:snabb_business/controller/homeController.dart';
-import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/screen/chartsScreens/purchaseChart.dart';
 import 'package:snabb_business/screen/chartsScreens/salesChart.dart';
-import 'package:snabb_business/screen/schedule_transaction/add_Schedule_income.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/models/dataclassgraphModel.dart';
 import 'package:snabb_business/utils/colors.dart';
@@ -43,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeController.to.getUserProfile();
     HomeController.to.getCompanydata();
     HomeController.to.getSupplierdata();
+    HomeController.to.getCatageries();
     super.initState();
   }
 
@@ -307,7 +305,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     animationDelay: 3,
                                     name: "Sale",
                                     color: AppColors.greencolor,
-                                    markerSettings: MarkerSettings(
+                                    markerSettings: const MarkerSettings(
                                       isVisible: true,
                                       width: 5,
                                       height: 5,

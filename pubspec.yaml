@@ -113,6 +113,7 @@ flutter:
     - images/
     - assets/images/
     - assets/snabbicons/
+    - assets/businessicons/
     - assets/lottie_files/success.json
     - images/lottie_files/success.json
   #   - images/a_dot_ham.jpeg

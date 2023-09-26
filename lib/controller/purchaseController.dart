@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/utils/color.dart';
 
-class SaleController extends GetxController {
-  static SaleController get to => Get.find();
+class PurchaseController extends GetxController {
+  static PurchaseController get to => Get.find();
   TextEditingController bankamount = TextEditingController();
   TextEditingController cashamount = TextEditingController();
   TextEditingController otheramount = TextEditingController();
@@ -805,7 +805,7 @@ class SaleController extends GetxController {
                       padding: EdgeInsets.only(
                           top: height * 0.03, left: width * 0.02),
                       child: Text(
-                        "Sale Method",
+                        "Purchase Method",
                         style: TextStyle(
                             color: white,
                             fontSize: 15,
@@ -844,16 +844,16 @@ class SaleController extends GetxController {
                                                   "images/dailysale.png")),
                                         ),
                                         SizedBox(
-                                          width: width * 0.1,
+                                          width: width * 0.03,
                                         ),
                                         const Text(
-                                          "Daily Sales",
+                                          "Existing supplier",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                         SizedBox(
-                                          width: width * 0.25,
+                                          width: width * 0.22,
                                         ),
                                       ],
                                     ),
@@ -882,10 +882,10 @@ class SaleController extends GetxController {
                                                     "images/companylogo.png")),
                                           ),
                                           SizedBox(
-                                            width: width * 0.1,
+                                            width: width * 0.02,
                                           ),
                                           const Text(
-                                            "Company",
+                                            "New supplier",
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -902,7 +902,7 @@ class SaleController extends GetxController {
                                   ),
                                   !company
                                       ? const Text(
-                                          "Existing Company",
+                                          "Individual",
                                           style: TextStyle(color: Colors.grey),
                                         )
                                       : const SizedBox(),
@@ -911,7 +911,7 @@ class SaleController extends GetxController {
                                   ),
                                   !company
                                       ? const Text(
-                                          "New Company",
+                                          "Company",
                                           style: TextStyle(color: Colors.grey),
                                         )
                                       : const SizedBox(),

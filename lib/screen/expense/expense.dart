@@ -3,26 +3,26 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:snabb_business/controller/expense_controller.dart';
 import 'package:snabb_business/controller/homeController.dart';
-import 'package:snabb_business/controller/saleController.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/colors.dart';
 
-class SaleScreen extends StatefulWidget {
-  const SaleScreen({
+class ExpenseScreen extends StatefulWidget {
+  const ExpenseScreen({
     super.key,
   });
 
   @override
-  State<SaleScreen> createState() => _SaleScreenState();
+  State<ExpenseScreen> createState() => _ExpenseScreenState();
 }
 
-class _SaleScreenState extends State<SaleScreen> {
+class _ExpenseScreenState extends State<ExpenseScreen> {
   @override
   void initState() {
     Get.put(HomeController());
-    Get.put(SaleController());
+    Get.put(ExpenseController());
     super.initState();
   }
 
@@ -72,7 +72,7 @@ class _SaleScreenState extends State<SaleScreen> {
     var width = MediaQuery.of(context).size.width;
 
     return KeyboardVisibilityBuilder(builder: (context, visible) {
-      return GetBuilder<SaleController>(builder: (obj) {
+      return GetBuilder<ExpenseController>(builder: (obj) {
         return SafeArea(
           child: Form(
             key: _formKey,
@@ -109,7 +109,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                         width: width,
                                         alignment: Alignment.center,
                                         child: const Text(
-                                          "Sale",
+                                          "Expense",
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -184,7 +184,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                                 //           .type ==
                                                 //       1
                                                 //   ?
-                                                "images/sale.png"
+                                                "images/expensive.png"
                                                 // : widget.type == 0
                                                 //     ? "images/sale.png"
                                                 //     : "images/expensive.png"
@@ -194,7 +194,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                     const Padding(
                                       padding: EdgeInsets.only(left: 8.0),
                                       child: Text(
-                                        "Sale",
+                                        "Expense",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -233,6 +233,43 @@ class _SaleScreenState extends State<SaleScreen> {
                                 ),
                                 InkWell(
                                   onTap: () {
+                                    obj.showCategoryDilogue(
+                                        context, height, width);
+                                  },
+                                  child: Container(
+                                    height: height * 0.06,
+                                    width: width * 0.9,
+                                    color: const Color(0xfff3f2f2),
+                                    child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Image.asset(
+                                            "images/paidas.png",
+                                            width: width * 0.07,
+                                          ),
+                                          SizedBox(
+                                            width: width * 0.05,
+                                          ),
+                                          const Text(
+                                            'Category',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: width * 0.46,
+                                          ),
+                                          const Icon(
+                                              Icons.arrow_drop_down_sharp)
+                                        ]),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: height * 0.01,
+                                ),
+                                InkWell(
+                                  onTap: () {
                                     obj.showPaidDilogue(context, height, width);
                                   },
                                   child: Container(
@@ -264,43 +301,6 @@ class _SaleScreenState extends State<SaleScreen> {
                                         ]),
                                   ),
                                 ),
-                                SizedBox(
-                                  height: height * 0.01,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    obj.showSaleMethodDilogue(
-                                        context, height, width);
-                                  },
-                                  child: Container(
-                                    height: height * 0.06,
-                                    width: width * 0.9,
-                                    color: const Color(0xfff3f2f2),
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Image.asset(
-                                            "images/paidas.png",
-                                            width: width * 0.07,
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.05,
-                                          ),
-                                          const Text(
-                                            'Sale Method',
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.42,
-                                          ),
-                                          const Icon(
-                                              Icons.arrow_drop_down_sharp)
-                                        ]),
-                                  ),
-                                ),
                                 Padding(
                                   padding: EdgeInsets.only(left: width * 0.025),
                                   child: SizedBox(
@@ -322,47 +322,9 @@ class _SaleScreenState extends State<SaleScreen> {
                                             height: height,
                                             child: TextFormField(
                                               enabled: false,
-                                              controller: obj.balanceAmount,
+                                              controller: obj.expenseAmount,
                                               decoration: InputDecoration(
                                                 labelText: 'Balance',
-                                                labelStyle: TextStyle(
-                                                    fontSize: 14,
-                                                    color: lightgray),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 20,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width * 0.025),
-                                  child: SizedBox(
-                                    height: height * 0.07,
-                                    width: width * 0.95,
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.attach_money_sharp,
-                                          color: Colors.grey.shade700,
-                                          size: 28,
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Expanded(
-                                          child: SizedBox(
-                                            width: width,
-                                            height: height,
-                                            child: TextFormField(
-                                              enabled: false,
-                                              controller: obj.invoiceAmount,
-                                              decoration: InputDecoration(
-                                                labelText: 'Value',
                                                 labelStyle: TextStyle(
                                                     fontSize: 14,
                                                     color: lightgray),

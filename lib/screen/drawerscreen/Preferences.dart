@@ -20,7 +20,7 @@ class Preferences extends StatefulWidget {
 }
 
 class _PreferencesState extends State<Preferences> {
-  var indexNumber = null;
+  var indexNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class _PreferencesState extends State<Preferences> {
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
-                        Expanded(
+                        const Expanded(
                           child: SizedBox(),
                         ),
                       ],
@@ -97,35 +97,33 @@ class _PreferencesState extends State<Preferences> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (contex) =>
-                                              CalenderScreen()))
+                                              const CalenderScreen()))
                                   : index == 3
                                       ? Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (contex) =>
-                                                  BudgetView()))
+                                                  const BudgetView()))
                                       : index == 2
                                           ? Navigator.push(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (contex) =>
-                                                      TransactionScreen()))
+                                                      const TransactionScreen()))
                                           : index == 1
                                               ? Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (contex) =>
                                                           SummeryScreen()))
-                                              : SizedBox();
+                                              : const SizedBox();
                               index == 0
                                   ? Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (contex) => SaleScreen(
-                                          type: 1,
-                                        ),
+                                        builder: (contex) => const SaleScreen(),
                                       ))
-                                  : SizedBox();
+                                  : const SizedBox();
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),

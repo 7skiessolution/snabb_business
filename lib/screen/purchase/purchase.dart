@@ -4,25 +4,25 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/controller/homeController.dart';
-import 'package:snabb_business/controller/saleController.dart';
+import 'package:snabb_business/controller/purchaseController.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/colors.dart';
 
-class SaleScreen extends StatefulWidget {
-  const SaleScreen({
+class Purchasescreen extends StatefulWidget {
+  const Purchasescreen({
     super.key,
   });
 
   @override
-  State<SaleScreen> createState() => _SaleScreenState();
+  State<Purchasescreen> createState() => _PurchasescreenState();
 }
 
-class _SaleScreenState extends State<SaleScreen> {
+class _PurchasescreenState extends State<Purchasescreen> {
   @override
   void initState() {
     Get.put(HomeController());
-    Get.put(SaleController());
+    Get.put(PurchaseController());
     super.initState();
   }
 
@@ -72,7 +72,7 @@ class _SaleScreenState extends State<SaleScreen> {
     var width = MediaQuery.of(context).size.width;
 
     return KeyboardVisibilityBuilder(builder: (context, visible) {
-      return GetBuilder<SaleController>(builder: (obj) {
+      return GetBuilder<PurchaseController>(builder: (obj) {
         return SafeArea(
           child: Form(
             key: _formKey,
@@ -109,7 +109,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                         width: width,
                                         alignment: Alignment.center,
                                         child: const Text(
-                                          "Sale",
+                                          "Purchase",
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -194,7 +194,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                     const Padding(
                                       padding: EdgeInsets.only(left: 8.0),
                                       child: Text(
-                                        "Sale",
+                                        "Purchase",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -288,7 +288,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                             width: width * 0.05,
                                           ),
                                           const Text(
-                                            'Sale Method',
+                                            'Purchase Method',
                                             style: TextStyle(
                                               fontWeight: FontWeight.w700,
                                             ),

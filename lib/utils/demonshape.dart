@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:snabb_business/screen/expense/expense.dart';
+import 'package:snabb_business/screen/purchase/purchase.dart';
 import 'package:snabb_business/screen/sale/Sale.dart';
 import 'package:snabb_business/utils/color.dart';
 
@@ -115,9 +117,7 @@ class _ExpandableFloatingActionButtonState
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SaleScreen(
-                        type: 1,
-                      ),
+                      builder: (context) => const SaleScreen(),
                     ));
               },
               heroTag: "saleTag",
@@ -131,9 +131,7 @@ class _ExpandableFloatingActionButtonState
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SaleScreen(
-                      type: 2,
-                    ),
+                    builder: (context) => const ExpenseScreen(),
                   ));
             },
             heroTag: "expenseTag",
@@ -147,9 +145,7 @@ class _ExpandableFloatingActionButtonState
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SaleScreen(
-                      type: 0,
-                    ),
+                    builder: (context) => const Purchasescreen(),
                   ));
             },
             heroTag: "purchaseTag",

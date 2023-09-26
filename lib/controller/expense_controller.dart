@@ -2,19 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:snabb_business/utils/color.dart';
 
-class SaleController extends GetxController {
-  static SaleController get to => Get.find();
+class ExpenseController extends GetxController {
+  static ExpenseController get to => Get.find();
   TextEditingController bankamount = TextEditingController();
   TextEditingController cashamount = TextEditingController();
   TextEditingController otheramount = TextEditingController();
-  TextEditingController creditTransactionamount = TextEditingController();
-  TextEditingController creditReturnDate = TextEditingController();
-  TextEditingController balanceAmount = TextEditingController();
-  TextEditingController invoiceAmount = TextEditingController();
+  TextEditingController expenseAmount = TextEditingController();
   TextEditingController particular = TextEditingController();
+
   bool company = true;
   Future<void> showPaidDilogue(
       BuildContext context, double height, double width) {
@@ -24,7 +21,7 @@ class SaleController extends GetxController {
         return AlertDialog(
           content: Container(
             color: Colors.grey.shade300,
-            height: height * 0.65,
+            height: height * 0.4,
             width: width * 0.8,
             child: Stack(
               children: [
@@ -59,7 +56,7 @@ class SaleController extends GetxController {
                       elevation: 10,
                       shadowColor: Colors.blue[900],
                       child: Container(
-                        height: height * 0.6,
+                        height: height * 0.35,
                         width: width * 0.7,
                         color: white,
                         child: Center(
@@ -364,318 +361,6 @@ class SaleController extends GetxController {
                                           height: height * 0.11,
                                           child: const Image(
                                               image: AssetImage(
-                                                  "images/card.png")),
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const Text(
-                                              "Credit Transaction",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                                height: height * 0.055,
-                                                width: width * 0.5,
-                                                child: TextFormField(
-                                                  controller:
-                                                      creditTransactionamount,
-                                                  decoration: InputDecoration(
-                                                      border: InputBorder.none,
-                                                      hintText: "Amount",
-                                                      hintStyle: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                      disabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        borderSide: BorderSide(
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        borderSide: BorderSide(
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        borderSide: BorderSide(
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                      ),
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        borderSide: BorderSide(
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                      ),
-                                                      errorBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        borderSide: BorderSide(
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                      )),
-                                                  keyboardType:
-                                                      TextInputType.number,
-                                                )),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.08,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        SizedBox(
-                                          width: width * 0.11,
-                                          height: height * 0.11,
-                                          child: const Image(
-                                              image: AssetImage(
-                                                  "images/card2.png")),
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const Text(
-                                              "Credit Return Date",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            InkWell(
-                                              onTap: () async {
-                                                final DateTime? selectedDate =
-                                                    await showDatePicker(
-                                                  context: context,
-                                                  initialDate: DateTime.now(),
-                                                  firstDate: DateTime(2000),
-                                                  lastDate: DateTime(2100),
-                                                );
-
-                                                if (selectedDate != null) {
-                                                  creditReturnDate.text =
-                                                      DateFormat("dd-MM-yyyy")
-                                                          .format(selectedDate);
-
-                                                  update();
-                                                }
-                                              },
-                                              child: SizedBox(
-                                                  height: height * 0.055,
-                                                  width: width * 0.5,
-                                                  child: TextFormField(
-                                                    style: const TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: Colors.black),
-                                                    enabled: false,
-                                                    controller:
-                                                        creditReturnDate,
-                                                    decoration: InputDecoration(
-                                                        border:
-                                                            InputBorder.none,
-                                                        hintText: "Date",
-                                                        hintStyle: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                        disabledBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          borderSide: BorderSide(
-                                                              color: Colors.grey
-                                                                  .withOpacity(
-                                                                      0.5)),
-                                                        ),
-                                                        focusedBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          borderSide: BorderSide(
-                                                              color: Colors.grey
-                                                                  .withOpacity(
-                                                                      0.5)),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          borderSide: BorderSide(
-                                                              color: Colors.grey
-                                                                  .withOpacity(
-                                                                      0.5)),
-                                                        ),
-                                                        enabledBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          borderSide: BorderSide(
-                                                              color: Colors.grey
-                                                                  .withOpacity(
-                                                                      0.5)),
-                                                        ),
-                                                        errorBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          borderSide: BorderSide(
-                                                              color: Colors.grey
-                                                                  .withOpacity(
-                                                                      0.5)),
-                                                        )),
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                  )),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.08,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        SizedBox(
-                                          width: width * 0.11,
-                                          height: height * 0.11,
-                                          child: const Image(
-                                              image: AssetImage(
-                                                  "images/balance.png")),
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const Text(
-                                              "Balance Amount",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: height * 0.055,
-                                              width: width * 0.5,
-                                              child: TextFormField(
-                                                controller: balanceAmount,
-                                                decoration: InputDecoration(
-                                                    border: InputBorder.none,
-                                                    hintText: "Amount",
-                                                    hintStyle: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: Colors.grey
-                                                            .withOpacity(0.5)),
-                                                    disabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                    ),
-                                                    focusedBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                    ),
-                                                    focusedErrorBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                    ),
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                    ),
-                                                    errorBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                    )),
-                                                keyboardType:
-                                                    TextInputType.number,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.08,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        SizedBox(
-                                          width: width * 0.11,
-                                          height: height * 0.11,
-                                          child: const Image(
-                                              image: AssetImage(
                                                   "images/micon.png")),
                                         ),
                                         Column(
@@ -683,7 +368,7 @@ class SaleController extends GetxController {
                                               CrossAxisAlignment.start,
                                           children: [
                                             const Text(
-                                              "Total Invoice mount",
+                                              "Total Expense Amount",
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -692,7 +377,7 @@ class SaleController extends GetxController {
                                                 height: height * 0.055,
                                                 width: width * 0.5,
                                                 child: TextFormField(
-                                                  controller: invoiceAmount,
+                                                  controller: expenseAmount,
                                                   decoration: InputDecoration(
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
@@ -775,7 +460,7 @@ class SaleController extends GetxController {
     );
   }
 
-  Future<void> showSaleMethodDilogue(
+  Future<void> showCategoryDilogue(
       BuildContext context, double height, double width) {
     company = true;
     return showDialog(

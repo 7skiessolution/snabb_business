@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/models/currency_model.dart';
 import 'package:snabb_business/models/get_data_year_type_model.dart' as sp;
-import 'package:snabb_business/models/get_sale_purchase.dart';
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
 import 'package:snabb_business/screen/company/companyModel.dart' as cm;
+import 'package:snabb_business/screen/suppliers/supplierModel.dart' as sm;
 import 'package:snabb_business/static_data.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:snabb_business/models/yearly_transaction_model.dart' as yTra;
@@ -20,11 +20,12 @@ class HomeController extends GetxController {
   UserProfileModel? profilemodel;
   int? paymenttypeindex = -1;
   bool category = false;
+  bool reports = false;
   bool expensecata = false;
   double totalSale = 0.0;
   double totalExpanse = 0.0;
   double totalPurchase = 0.0;
-  String curency = "USD";
+  String curency = "EURO";
 
   List<Chartdata> expensedata = [];
   List<Chartdata> purchasedata = [];
@@ -59,6 +60,10 @@ class HomeController extends GetxController {
 
   cm.CompanyModel? companyModel;
   List<cm.Data> companyList = [];
+
+  sm.SupplierModel? supplierModel;
+  List<sm.Data> supplierList = [];
+
   double totalbalance = 0;
   List<wm.Data> walletList = [];
 
@@ -96,6 +101,18 @@ class HomeController extends GetxController {
     Navigator.pop(c);
   }
 
+  Future addSupplierData(Map<String, dynamic> model, BuildContext c) async {
+    print(model);
+    changeStatus(true);
+    var res = await httpClient().post(StaticValues.addSupplier, data: model);
+    if (res.statusCode == 200) {
+      print(res.data);
+      changeStatus(false);
+      getSupplierdata();
+    }
+    Navigator.pop(c);
+  }
+
   Future deleteWalletdata(String id, BuildContext c) async {
     var res = await httpClient().delete("${StaticValues.deleteWalletData}$id");
     if (res.statusCode == 200) {
@@ -120,6 +137,23 @@ class HomeController extends GetxController {
     if (companyModel!.data != null) {
       for (var company in companyModel!.data!) {
         companyList.add(company);
+      }
+
+      isLoadData = false;
+      update();
+    } else {
+      print("nodata ");
+    }
+  }
+
+  Future getSupplierdata() async {
+    supplierList.clear();
+    isLoadData = true;
+    var res = await httpClient().get(StaticValues.getSupplierList);
+    supplierModel = sm.SupplierModel.fromMap(res.data);
+    if (supplierModel!.data != null) {
+      for (var supplier in supplierModel!.data!) {
+        supplierList.add(supplier);
       }
 
       isLoadData = false;
@@ -178,6 +212,11 @@ class HomeController extends GetxController {
     update();
     expensecata = true;
     category = true;
+    update();
+  }
+
+  reportMenue() {
+    reports = !reports;
     update();
   }
 

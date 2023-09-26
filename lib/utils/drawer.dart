@@ -53,9 +53,6 @@ class DrawerScreen extends StatelessWidget {
                     Container(
                       width: 35,
                       height: 35,
-                      // height: height * 0.065,
-                      // width: width * 1,
-
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle, color: Colors.green),
                     ),
@@ -184,7 +181,6 @@ class DrawerScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
               InkWell(
                 onTap: () {
                   obj.drawermenueclose();
@@ -308,88 +304,226 @@ class DrawerScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              obj.category == true
-                  ? InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const Categories()));
-                      },
-                      child: SizedBox(
-                        height: height * 0.05,
-                        width: width,
-                        //  alignment: Alignment.center,
-                        child: Padding(
-                          padding: EdgeInsets.only(right: width * 0.1),
-                          child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                SizedBox(
-                                    height: height * 0.1,
-                                    width: width * 0.1,
-                                    child: Image.asset(
-                                      "images/Groupgraph.png",
-                                      color: darkblue,
-                                    )),
-                                const Text("Catagery"),
-                              ]),
-                        ),
+              // obj.category == true
+              //     ? InkWell(
+              //         onTap: () {
+              //           Navigator.push(
+              //               context,
+              //               MaterialPageRoute(
+              //                   builder: (_) => const Categories()));
+              //         },
+              //         child: SizedBox(
+              //           height: height * 0.05,
+              //           width: width,
+              //           //  alignment: Alignment.center,
+              //           child: Padding(
+              //             padding: EdgeInsets.only(right: width * 0.1),
+              //             child: Row(
+              //                 crossAxisAlignment: CrossAxisAlignment.center,
+              //                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //                 children: [
+              //                   SizedBox(
+              //                       height: height * 0.1,
+              //                       width: width * 0.1,
+              //                       child: Image.asset(
+              //                         "images/Groupgraph.png",
+              //                         color: Colors.white,
+              //                       )),
+              //                   const Text("Catagery"),
+              //                 ]),
+              //           ),
 
-                        //     const Icon(Icons.keyboard_arrow_down_outlined),
-                      ),
-                    )
-                  : const SizedBox(),
-              obj.expensecata == true
-                  ? InkWell(
-                      onTap: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (_) => const ExpencePieChart()));
-                      },
-                      child: SizedBox(
-                        height: height * 0.05,
-                        width: width,
-                        child: Padding(
-                          padding: EdgeInsets.only(right: width * 0.1),
-                          child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                SizedBox(
-                                    height: height * 0.1,
-                                    width: width * 0.1,
-                                    child: Image.asset(
-                                      "images/chartexpenseicon.png",
-                                      color: darkblue,
-                                    )),
-                                const Text("Expense"),
-                              ]),
-                        ),
+              //           //     const Icon(Icons.keyboard_arrow_down_outlined),
+              //         ),
+              //       )
+              //     : const SizedBox(),
+              // obj.expensecata == true
+              //     ? InkWell(
+              //         onTap: () {
+              //           // Navigator.push(
+              //           //     context,
+              //           //     MaterialPageRoute(
+              //           //         builder: (_) => const ExpencePieChart()));
+              //         },
+              //         child: SizedBox(
+              //           height: height * 0.05,
+              //           width: width,
+              //           child: Padding(
+              //             padding: EdgeInsets.only(right: width * 0.1),
+              //             child: Row(
+              //                 crossAxisAlignment: CrossAxisAlignment.center,
+              //                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //                 children: [
+              //                   SizedBox(
+              //                       height: height * 0.1,
+              //                       width: width * 0.1,
+              //                       child: Image.asset(
+              //                         "images/chartexpenseicon.png",
+              //                         color: darkblue,
+              //                       )),
+              //                   const Text("Expense"),
+              //                 ]),
+              //           ),
 
-                        //     const Icon(Icons.keyboard_arrow_down_outlined),
-                      ))
-                  : const SizedBox(),
+              //           //     const Icon(Icons.keyboard_arrow_down_outlined),
+              //         ))
+              //     : const SizedBox(),
 
               InkWell(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => Preferences()));
+                  obj.reportMenue();
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (_) => Preferences()));
                 },
                 child: ListTile(
-                  leading: SizedBox(
-                      height: height * 0.1,
-                      width: width * 0.1,
-                      child: Image.asset(
-                        "images/growth.png",
-                        color: darkblue,
-                      )),
-                  title: const Text("Charts"),
-                  trailing: const Icon(Icons.keyboard_arrow_down_outlined),
+                  leading: Icon(
+                    Icons.file_copy_outlined,
+                    color: white,
+                  ),
+                  title: Text(
+                    "Reprts",
+                    style: TextStyle(
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  trailing: Icon(
+                    obj.reports == true
+                        ? Icons.keyboard_arrow_down_outlined
+                        : Icons.keyboard_arrow_right,
+                    color: Colors.white,
+                  ),
                 ),
               ),
+              obj.reports == true
+                  ? SizedBox(
+                      height: height * 0.42,
+                      child: Column(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              // obj.drawermenueclose();
+                              // Navigator.push(context,
+                              //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
+                            },
+                            child: ListTile(
+                              leading: Icon(
+                                Icons.wysiwyg_outlined,
+                                color: white,
+                              ),
+                              title: Text(
+                                "Daily Sale Report",
+                                style: TextStyle(
+                                    color: white,
+                                    fontSize: width * 0.03,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              // obj.drawermenueclose();
+                              // Navigator.push(context,
+                              //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
+                            },
+                            child: ListTile(
+                              leading: Icon(
+                                Icons.wysiwyg_outlined,
+                                color: white,
+                              ),
+                              title: Text(
+                                "Company Sale Report",
+                                style: TextStyle(
+                                    color: white,
+                                    fontSize: width * 0.03,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              // obj.drawermenueclose();
+                              // Navigator.push(context,
+                              //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
+                            },
+                            child: ListTile(
+                              leading: Icon(
+                                Icons.wysiwyg_outlined,
+                                color: white,
+                              ),
+                              title: Text(
+                                "Purchase Report",
+                                style: TextStyle(
+                                    color: white,
+                                    fontSize: width * 0.03,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              // obj.drawermenueclose();
+                              // Navigator.push(context,
+                              //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
+                            },
+                            child: ListTile(
+                              leading: Icon(
+                                Icons.wysiwyg_outlined,
+                                color: white,
+                              ),
+                              title: Text(
+                                "Supplier Report",
+                                style: TextStyle(
+                                    color: white,
+                                    fontSize: width * 0.03,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              // obj.drawermenueclose();
+                              // Navigator.push(context,
+                              //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
+                            },
+                            child: ListTile(
+                              leading: Icon(
+                                Icons.wysiwyg_outlined,
+                                color: white,
+                              ),
+                              title: Text(
+                                "Expense Report",
+                                style: TextStyle(
+                                    color: white,
+                                    fontSize: width * 0.03,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              // obj.drawermenueclose();
+                              // Navigator.push(context,
+                              //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
+                            },
+                            child: ListTile(
+                              leading: Icon(
+                                Icons.wysiwyg_outlined,
+                                color: white,
+                              ),
+                              title: Text(
+                                "Cashflow Report",
+                                style: TextStyle(
+                                    color: white,
+                                    fontSize: width * 0.03,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : SizedBox(),
               InkWell(
                 onTap: () {
                   Navigator.push(

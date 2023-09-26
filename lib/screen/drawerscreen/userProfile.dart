@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:snabb_business/controller/homeController.dart';
+import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/colors.dart';
 
 import '../../utils/color.dart';
@@ -11,12 +13,37 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-  TextEditingController mEmail = TextEditingController();
-
   TextEditingController mName = TextEditingController();
-  TextEditingController mpassword = TextEditingController();
-  TextEditingController mgender = TextEditingController();
-  var indexNumber;
+
+  String? select;
+  List gender = ["Male", "Female", "Other"];
+  Row addRadioButton(int btnValue, String title) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Radio(
+          activeColor: Colors.blue[900],
+          value: gender[btnValue],
+          groupValue: select,
+          onChanged: (value) {
+            setState(() {
+              print(value);
+              select = value;
+            });
+          },
+        ),
+        Text(title)
+      ],
+    );
+  }
+
+  @override
+  void initState() {
+    mName.text = HomeController.to.profilemodel!.data!.name!;
+    select = HomeController.to.profilemodel!.data!.gender;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -29,20 +56,20 @@ class _UserProfileState extends State<UserProfile> {
         body: Column(
             // mainAxisAlignment: M,
             children: [
-              //AppBarWidgt(text: "no data"),
+              AppBarWidgt(text: "Profile"),
               Expanded(
                 child: Stack(
                   children: [
                     Container(
                       width: width,
-                      height: height * 0.15,
+                      height: height * 0.12,
                       decoration: const BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.cover,
                               image: AssetImage("images/dollar.jpg"))),
                     ),
                     Container(
-                      height: height * 0.16,
+                      height: height * 0.12,
                       color: AppColors.blue.withOpacity(0.9),
                       child: Padding(
                         padding: const EdgeInsets.only(top: 15.0, left: 20),
@@ -51,7 +78,8 @@ class _UserProfileState extends State<UserProfile> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(top: 12),
+                              padding:
+                                  EdgeInsets.only(top: 12, left: width * 0.05),
                               child: Text(
                                 "Profile",
                                 style: TextStyle(
@@ -65,7 +93,7 @@ class _UserProfileState extends State<UserProfile> {
                       ),
                     ),
                     Positioned(
-                      top: height * 0.1,
+                      top: height * 0.08,
                       left: width * 0.05,
                       //bottom: height * 0.02,
                       child: Card(
@@ -76,19 +104,25 @@ class _UserProfileState extends State<UserProfile> {
                             width: width * 0.9,
                             color: white,
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(16.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Align(
-                                    alignment: Alignment.center,
-                                    child: CircleAvatar(
-                                      radius: 35,
-                                      backgroundImage:
-                                          AssetImage("images/intro_two.png"),
-                                    ),
-                                  ),
+                                  Align(
+                                      alignment: Alignment.center,
+                                      child: Container(
+                                        height: height * 0.1,
+                                        width: width * 0.2,
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Colors.blue[900]),
+                                        child: Icon(
+                                          Icons.person,
+                                          color: Colors.white,
+                                          size: width * 0.07,
+                                        ),
+                                      )),
                                   SizedBox(
                                     height: height * 0.02,
                                   ),
@@ -101,6 +135,93 @@ class _UserProfileState extends State<UserProfile> {
                                   ),
                                   SizedBox(
                                     height: height * 0.01,
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.05,
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: SizedBox(
+                                              height: height,
+                                              width: width,
+                                              child: Row(
+                                                children: [
+                                                  Text(
+                                                    "Name : ",
+                                                    style: TextStyle(
+                                                        fontSize: width * 0.035,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color:
+                                                            Colors.blue[900]),
+                                                  ),
+                                                  Text(
+                                                    HomeController
+                                                        .to
+                                                        .profilemodel!
+                                                        .data!
+                                                        .name!,
+                                                    style: TextStyle(
+                                                        fontSize: width * 0.03),
+                                                  ),
+                                                ],
+                                              )),
+                                        ),
+                                        SizedBox(
+                                            height: height,
+                                            width: width * 0.35,
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  "Gender : ",
+                                                  style: TextStyle(
+                                                      fontSize: width * 0.035,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.blue[900]),
+                                                ),
+                                                Text(
+                                                  HomeController
+                                                      .to
+                                                      .profilemodel!
+                                                      .data!
+                                                      .gender!,
+                                                  style: TextStyle(
+                                                      fontSize: width * 0.03),
+                                                ),
+                                              ],
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.05,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "Email : ",
+                                          style: TextStyle(
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.blue[900]),
+                                        ),
+                                        Text(
+                                          HomeController
+                                              .to.profilemodel!.data!.email!,
+                                          style:
+                                              TextStyle(fontSize: width * 0.03),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.03,
+                                  ),
+                                  Divider(
+                                    color: Colors.blue[900],
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.03,
                                   ),
                                   SizedBox(
                                     width: width * 0.84,
@@ -148,139 +269,25 @@ class _UserProfileState extends State<UserProfile> {
                                     height: height * 0.01,
                                   ),
                                   SizedBox(
-                                    width: width * 0.84,
-                                    child: TextFormField(
-                                      autovalidateMode:
-                                          AutovalidateMode.onUserInteraction,
-                                      controller: mEmail,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                        errorStyle: const TextStyle(
-                                            color: Colors.black),
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 0, horizontal: 20),
-                                        fillColor: Colors.grey,
-                                        hintText: "Email",
-                                        labelText: "Email",
-                                        alignLabelWithHint: true,
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: BorderSide(
-                                              color: AppColors.blue
-                                              //  provider.brightness ==
-                                              //         AppBrightness.dark
-                                              //     ? AppTheme.colorWhite
-                                              //     : AppTheme.colorPrimary,
-                                              ),
+                                    height: height * 0.07,
+                                    width: width * 0.85,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "Select Gender",
+                                          style: TextStyle(
+                                              color: Colors.blue[900],
+                                              fontWeight: FontWeight.bold),
                                         ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide:
-                                              BorderSide(color: AppColors.blue
-                                                  // provider.brightness ==
-                                                  //         AppBrightness.dark
-                                                  //     ? AppTheme.colorWhite
-                                                  //   : AppTheme.colorPrimary,
-                                                  ),
-                                        ),
-                                      ),
+                                        addRadioButton(0, 'Male'),
+                                        addRadioButton(1, 'Female'),
+                                        // addRadioButton(
+                                        //     2, 'Others'),
+                                      ],
                                     ),
                                   ),
                                   SizedBox(
-                                    height: height * 0.01,
-                                  ),
-                                  SizedBox(
-                                    width: width * 0.84,
-                                    child: TextFormField(
-                                      autovalidateMode:
-                                          AutovalidateMode.onUserInteraction,
-                                      controller: mgender,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                        errorStyle: const TextStyle(
-                                            color: Colors.black),
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 0, horizontal: 20),
-                                        fillColor: Colors.grey,
-                                        hintText: "Gender",
-                                        labelText: "Gender",
-                                        alignLabelWithHint: true,
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: BorderSide(
-                                              color: AppColors.blue
-                                              //  provider.brightness ==
-                                              //         AppBrightness.dark
-                                              //     ? AppTheme.colorWhite
-                                              //     : AppTheme.colorPrimary,
-                                              ),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide:
-                                              BorderSide(color: AppColors.blue
-                                                  // provider.brightness ==
-                                                  //         AppBrightness.dark
-                                                  //     ? AppTheme.colorWhite
-                                                  //   : AppTheme.colorPrimary,
-                                                  ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.01,
-                                  ),
-                                  SizedBox(
-                                    width: width * 0.84,
-                                    child: TextFormField(
-                                      autovalidateMode:
-                                          AutovalidateMode.onUserInteraction,
-                                      controller: mpassword,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                        errorStyle: const TextStyle(
-                                            color: Colors.black),
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 0, horizontal: 20),
-                                        fillColor: Colors.grey,
-                                        hintText: "Password",
-                                        labelText: "Password",
-                                        alignLabelWithHint: true,
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: BorderSide(
-                                              color: AppColors.blue
-                                              //  provider.brightness ==
-                                              //         AppBrightness.dark
-                                              //     ? AppTheme.colorWhite
-                                              //     : AppTheme.colorPrimary,
-                                              ),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide:
-                                              BorderSide(color: AppColors.blue
-                                                  // provider.brightness ==
-                                                  //         AppBrightness.dark
-                                                  //     ? AppTheme.colorWhite
-                                                  //   : AppTheme.colorPrimary,
-                                                  ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.02,
+                                    height: height * 0.03,
                                   ),
                                   Center(
                                     child: SizedBox(

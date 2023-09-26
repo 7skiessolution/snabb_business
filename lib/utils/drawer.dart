@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:snabb_business/controller/homeController.dart';
+import 'package:snabb_business/pdf/daily_sale_report.dart';
 import 'package:snabb_business/screen/auth/loginScreen.dart';
 import 'package:snabb_business/screen/budget/BudgetView.dart';
 import 'package:snabb_business/screen/company/company.dart';
 import 'package:snabb_business/screen/dashboardScreen.dart';
 import 'package:snabb_business/screen/debit/deptsscreen.dart';
 import 'package:snabb_business/screen/drawerscreen/Calender.dart';
+import 'package:snabb_business/screen/drawerscreen/settings.dart';
 import 'package:snabb_business/screen/drawerscreen/userProfile.dart';
 import 'package:snabb_business/screen/schedule_transaction/schedule_transactions.dart';
 import 'package:snabb_business/screen/summary/summary_screen.dart';
@@ -225,26 +227,26 @@ class DrawerScreen extends StatelessWidget {
               //     ),
               //   ),
               // ),
-              InkWell(
-                onTap: () {
-                  obj.drawermenueclose();
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => const BudgetView()));
-                },
-                child: ListTile(
-                  leading: Icon(
-                    Icons.add_home_work_sharp,
-                    color: white,
-                  ),
-                  title: Text(
-                    "Budgets",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ),
+              // InkWell(
+              //   onTap: () {
+              //     obj.drawermenueclose();
+              //     Navigator.push(context,
+              //         MaterialPageRoute(builder: (_) => const BudgetView()));
+              //   },
+              //   child: ListTile(
+              //     leading: Icon(
+              //       Icons.add_home_work_sharp,
+              //       color: white,
+              //     ),
+              //     title: Text(
+              //       "Budgets",
+              //       style: TextStyle(
+              //           color: white,
+              //           fontSize: width * 0.03,
+              //           fontWeight: FontWeight.w500),
+              //     ),
+              //   ),
+              // ),
               InkWell(
                 onTap: () {
                   obj.drawermenueclose();
@@ -402,9 +404,11 @@ class DrawerScreen extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              // obj.drawermenueclose();
-                              // Navigator.push(context,
-                              //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
+                              obj.drawermenueclose();
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => DailySaleReport()));
                             },
                             child: ListTile(
                               leading: Icon(
@@ -607,11 +611,31 @@ class DrawerScreen extends StatelessWidget {
                 },
                 child: ListTile(
                   leading: Icon(
-                    Icons.settings,
+                    Icons.details,
                     color: white,
                   ),
                   title: Text(
                     "Preferences",
+                    style: TextStyle(
+                        color: white,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  obj.drawermenueclose();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const SettingsPage()));
+                },
+                child: ListTile(
+                  leading: Icon(
+                    Icons.settings,
+                    color: white,
+                  ),
+                  title: Text(
+                    "Settings",
                     style: TextStyle(
                         color: white,
                         fontSize: width * 0.03,

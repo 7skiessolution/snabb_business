@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:snabb_business/screen/invoice/invoice_controllers.dart';
 import 'package:snabb_business/screen/invoice/incoce_company_info.dart';
 import 'package:snabb_business/screen/invoice/invoice_model.dart';
+import 'package:snabb_business/screen/invoice/pdf/pdfpreview.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/screen/invoice/pdf/pdfpreview.dart';
 
 class InvoiceScreen extends StatefulWidget {
   const InvoiceScreen({super.key});
@@ -40,7 +40,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                 alignment: Alignment.topCenter,
                 child: AppBarWidgt(text: "Invoice")),
             Padding(
-              padding: EdgeInsets.only(top: height * 0.08),
+              padding: EdgeInsets.only(top: height * 0.1),
               child: SizedBox(
                 height: height * 0.12,
                 width: width,
@@ -59,8 +59,8 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                       width: width,
                       color: Colors.blue[900]!.withOpacity(0.9),
                       child: Padding(
-                        padding: const EdgeInsets.only(
-                            top: 15.0, left: 20, right: 20),
+                        padding: EdgeInsets.only(
+                            top: height * 0.03, left: width * 0.1, right: 20),
                         child: Text(
                           "Invoice",
                           style: TextStyle(

@@ -30,8 +30,7 @@ class StaticValues {
   //static const getAllRecycleTrasaction = 'Transaction/GetDeletedTransactions';
   static const getTransactionstype = "Transaction/GetTransactions";
   static const recoverTrasaction = 'Transaction/Recover/';
-  static const getSummary = 'Wallet/GetSummary?Date=';
-  static const searchSummary = 'Wallet/SearchSummary?Type=';
+
   static const adddebitcredit = 'DebitCredit/Add';
   static const getdebitcredit = "DebitCredit/GetDebitCredit";
   static const paydebitcredit = "DebitCredit/Pay";
@@ -60,6 +59,9 @@ class StaticValues {
   static const addExpence = "Transaction/AddExpense";
   ///////////////////////////////Purchase//////////////////////////////////////
   static const addPurchase = "Transaction/AddPurchase";
+  ////////////////////////////// summary///////////////////////////////////
+  static const getSummary = "Transaction/GetSummary?Date=";
+  static const searchSummary = 'Transaction/SearchSummary?Type=';
 
   static String apikey =
       "G8I8cS9Uyncyl0GIXHZfPIosrXnqyTwBZa4Z0utvWG5FrnTGdvxD482MFcDSJLjb8JAjZsqpt4SYyjj3VimcQXTKxcyXsQTjvTJVhRQ9rUDHVzIds2x88oLfFwDtpudS";

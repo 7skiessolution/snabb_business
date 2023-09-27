@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
 import 'package:snabb_business/models/get_all_user_transaction_model.dart' as T;
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/controller/homeController.dart';
-import 'package:snabb_business/controller/summerry_controller.dart';
 import 'package:snabb_business/models/search_summary.dart';
+import 'package:snabb_business/screen/summary/c/categoryController.dart';
 import 'package:snabb_business/screen/transaction_schedule/transaction_card.dart';
 import 'package:snabb_business/utils/color.dart';
 
@@ -19,81 +18,27 @@ class CategoryWidget extends StatefulWidget {
 }
 
 class _CategoryWidgetState extends State<CategoryWidget> {
-  String? startdate;
-  String enddate = "";
-  String date = "";
-  DateTime now = DateTime.now();
-  Future<void> _selectDate(BuildContext context, bool from) async {
-    final DateTime? picked = await showDatePicker(
-      builder: (context, child) {
-        return Theme(
-            data: ThemeData.light().copyWith(
-              primaryColor: darkblue!,
-              colorScheme: ColorScheme.light(primary: darkblue!),
-              buttonTheme:
-                  const ButtonThemeData(textTheme: ButtonTextTheme.primary),
-            ),
-            child: child!);
-      },
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2010),
-      lastDate: DateTime(2030),
-    );
-    if (from) {
-      if (picked != null && picked != selectedDateFrom) {
-        setState(() {
-          selectedDateFrom = picked;
-          dateFromPicked = true;
-          startdate = "${picked.day}-${picked.month}-${picked.year}";
-        });
-      }
-    } else {
-      if (picked != null && picked != selectedDateTo) {
-        setState(() {
-          selectedDateTo = picked;
-          dateToPicked = true;
-          enddate = "${picked.day}-${picked.month}-${picked.year}";
-        });
-      }
-    }
-    print("start  $startdate---------- end $enddate");
-  }
-
-  String selectedType = "All";
-  bool dateFromPicked = false;
-  bool dateToPicked = false;
-  DateTime selectedDateFrom = DateTime.now();
-  DateTime selectedDateTo = DateTime.now();
-
-  List<String> types = [
-    "All",
-    'Sale',
-    'Purchase',
-    'Expense',
-  ];
-  double totalAmount = 0.0;
-  // final String userId = FirebaseAuth.instance.currentUser!.uid;
-
   @override
   void initState() {
     Get.put(HomeController());
-    Get.put(SummeryController());
-    SummeryController.to.totalbalance = 0.0;
-    enddate = "${now.day}-${now.month}-${now.year}";
+    Get.put(CategoryController());
+    CategoryController.to.totalbalance = 0.0;
+    CategoryController.to.enddate =
+        "${CategoryController.to.now.day}-${CategoryController.to.now.month}-${CategoryController.to.now.year}";
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final selectedFormatfrom =
-        DateFormat('dd/MM/yyyy').format(selectedDateFrom);
-    final selectedFormetTo = DateFormat('dd/MM/yyyy').format(selectedDateTo);
+        DateFormat('dd/MM/yyyy').format(CategoryController.to.selectedDateFrom);
+    final selectedFormetTo =
+        DateFormat('dd/MM/yyyy').format(CategoryController.to.selectedDateTo);
     Size size = MediaQuery.of(context).size;
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
 
-    return GetBuilder<SummeryController>(builder: (obj) {
+    return GetBuilder<CategoryController>(builder: (obj) {
       return Column(
         children: [
           Padding(
@@ -136,17 +81,17 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                   child: DropdownButton<String>(
                                     dropdownColor: Colors.white,
                                     focusColor: Colors.black,
-                                    value: selectedType,
+                                    value: obj.selectedType,
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: size.width * 0.035),
                                     onChanged: (newValue) {
-                                      setState(() {
-                                        selectedType = newValue as String;
-                                      });
+                                      obj.selectedType = newValue as String;
+                                      obj.update();
                                     },
-                                    items: types.map<DropdownMenuItem<String>>(
-                                        (String value) {
+                                    items: obj.types
+                                        .map<DropdownMenuItem<String>>(
+                                            (String value) {
                                       return DropdownMenuItem<String>(
                                         value: value,
                                         child: Text(
@@ -169,7 +114,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                     isDense: true,
                                     selectedItemBuilder:
                                         (BuildContext context) {
-                                      return types.map<Widget>((String value) {
+                                      return obj.types
+                                          .map<Widget>((String value) {
                                         return Container(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
@@ -210,10 +156,10 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                     color: Colors.grey.withOpacity(0.5)),
                                 child: TextButton(
                                     onPressed: () {
-                                      _selectDate(context, true);
+                                      obj.selectDate(context, true);
                                     },
                                     child: Text(
-                                      !dateFromPicked
+                                      !obj.dateFromPicked
                                           ? AppLocalizations.of(context)!.select
                                           : selectedFormatfrom,
                                       style: TextStyle(
@@ -243,10 +189,10 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                     color: Colors.grey.withOpacity(0.5)),
                                 child: TextButton(
                                     onPressed: () {
-                                      _selectDate(context, false);
+                                      obj.selectDate(context, false);
                                     },
                                     child: Text(
-                                      !dateToPicked
+                                      !obj.dateToPicked
                                           ? AppLocalizations.of(context)!.select
                                           : selectedFormetTo,
                                       style: TextStyle(
@@ -299,18 +245,18 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                       SizedBox(
                         height: height * 0.02,
                       ),
-                      startdate != null
+                      obj.startdate != null
                           ? FutureBuilder(
                               future: obj.getcategory(
-                                  selectedType == "Sale"
+                                  obj.selectedType == "Sale"
                                       ? 0
-                                      : selectedType == "Expense"
+                                      : obj.selectedType == "Expense"
                                           ? 1
-                                          : selectedType == "purchase"
+                                          : obj.selectedType == "purchase"
                                               ? 2
                                               : 3,
-                                  startdate!,
-                                  enddate),
+                                  obj.startdate!,
+                                  obj.enddate),
                               builder: (context, snapshot) {
                                 return snapshot.hasData
                                     ? Expanded(

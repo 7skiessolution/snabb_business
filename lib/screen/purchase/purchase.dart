@@ -71,7 +71,7 @@ class _PurchasescreenState extends State<Purchasescreen> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
-    return KeyboardVisibilityBuilder(builder: (context, visible) {
+    return KeyboardVisibilityBuilder(builder: (c, visible) {
       return GetBuilder<PurchaseController>(builder: (obj) {
         return SafeArea(
           child: Form(

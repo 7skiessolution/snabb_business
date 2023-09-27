@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:snabb_business/pdf/pdfpreview.dart';
 import 'package:snabb_business/screen/invoice/invoice_controllers.dart';
 import 'package:snabb_business/screen/invoice/incoce_company_info.dart';
 import 'package:snabb_business/screen/invoice/invoice_model.dart';
-import 'package:snabb_business/screen/invoice/pdf/pdfpreview.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
 

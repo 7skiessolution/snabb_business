@@ -184,28 +184,28 @@ class DrawerScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  obj.drawermenueclose();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => const ShaduleTransactionScreen()));
-                },
-                child: ListTile(
-                  leading: Icon(
-                    Icons.paid_outlined,
-                    color: white,
-                  ),
-                  title: Text(
-                    "Scheduled transactions",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ),
+              // InkWell(
+              //   onTap: () {
+              //     obj.drawermenueclose();
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (_) => const ShaduleTransactionScreen()));
+              //   },
+              //   child: ListTile(
+              //     leading: Icon(
+              //       Icons.paid_outlined,
+              //       color: white,
+              //     ),
+              //     title: Text(
+              //       "Scheduled transactions",
+              //       style: TextStyle(
+              //           color: white,
+              //           fontSize: width * 0.03,
+              //           fontWeight: FontWeight.w500),
+              //     ),
+              //   ),
+              // ),
               // InkWell(
               //   onTap: () {
               //     obj.drawermenueclose();

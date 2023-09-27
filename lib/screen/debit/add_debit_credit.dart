@@ -734,7 +734,7 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                                 duedate,
                                                                 0,
                                                                 cashs,
-                                                                obj.catid!,
+                                                                "",
                                                               );
                                                               TransactionController
                                                                   .to
@@ -911,7 +911,7 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                               duedate,
                                                               1,
                                                               cashs,
-                                                              obj.catid!,
+                                                              "",
                                                             );
                                                             TransactionController
                                                                 .to

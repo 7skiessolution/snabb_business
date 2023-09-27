@@ -247,7 +247,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                 "email": mEmail.text,
                                                 "telePhone": nPhone.text,
                                               };
-
+                                              print(map);
                                               HomeController.to
                                                   .addCompanyData(map, dc)
                                                   .then((value) {
@@ -417,12 +417,107 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                           SizedBox(
                                             height: height,
                                             width: width * 0.1,
-                                            child: const Column(
+                                            child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.spaceEvenly,
                                               children: [
-                                                Icon(Icons.delete),
-                                                Icon(Icons.edit)
+                                                InkWell(
+                                                    onTap: () {
+                                                      showDialog(
+                                                        context: context,
+                                                        builder: (dc) {
+                                                          return AlertDialog(
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            30)),
+                                                            content: SizedBox(
+                                                              height:
+                                                                  height * 0.17,
+                                                              width:
+                                                                  width * 0.8,
+                                                              child: Column(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceEvenly,
+                                                                children: [
+                                                                  Icon(
+                                                                    Icons
+                                                                        .info_outline,
+                                                                    color: Colors
+                                                                        .red,
+                                                                    size: width *
+                                                                        0.09,
+                                                                  ),
+                                                                  Text(
+                                                                    "Are You Sure You Want To Delete Company",
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            width *
+                                                                                0.035),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height:
+                                                                        height *
+                                                                            0.05,
+                                                                    width:
+                                                                        width,
+                                                                    child: Row(
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .end,
+                                                                      children: [
+                                                                        InkWell(
+                                                                          onTap:
+                                                                              () {
+                                                                            obj.deleteCompanydata(obj.companyList[index].companyId!,
+                                                                                context);
+                                                                            Navigator.pop(context);
+                                                                          },
+                                                                          child:
+                                                                              Text(
+                                                                            "Yes",
+                                                                            style: TextStyle(
+                                                                                fontWeight: FontWeight.bold,
+                                                                                fontSize: width * 0.04,
+                                                                                color: Colors.blue[900]),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width:
+                                                                              width * 0.03,
+                                                                        ),
+                                                                        InkWell(
+                                                                          onTap:
+                                                                              () {
+                                                                            Navigator.pop(context);
+                                                                          },
+                                                                          child:
+                                                                              Text(
+                                                                            "No",
+                                                                            style: TextStyle(
+                                                                                fontWeight: FontWeight.bold,
+                                                                                fontSize: width * 0.04,
+                                                                                color: Colors.red),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+                                                    },
+                                                    child: const Icon(
+                                                        Icons.delete)),
+                                                const Icon(Icons.edit)
                                               ],
                                             ),
                                           ),

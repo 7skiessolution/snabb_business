@@ -517,11 +517,105 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                           SizedBox(
                                             height: height,
                                             width: width * 0.1,
-                                            child: const Column(
+                                            child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.spaceEvenly,
                                               children: [
-                                                Icon(Icons.delete),
+                                                InkWell(
+                                                    onTap: () {
+                                                      showDialog(
+                                                        context: context,
+                                                        builder: (dc) {
+                                                          return AlertDialog(
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            30)),
+                                                            content: SizedBox(
+                                                              height:
+                                                                  height * 0.17,
+                                                              width:
+                                                                  width * 0.8,
+                                                              child: Column(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceEvenly,
+                                                                children: [
+                                                                  Icon(
+                                                                    Icons
+                                                                        .info_outline,
+                                                                    color: Colors
+                                                                        .red,
+                                                                    size: width *
+                                                                        0.09,
+                                                                  ),
+                                                                  Text(
+                                                                    "Are You Sure You Want To Delete Supplier",
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            width *
+                                                                                0.035),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height:
+                                                                        height *
+                                                                            0.05,
+                                                                    width:
+                                                                        width,
+                                                                    child: Row(
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .end,
+                                                                      children: [
+                                                                        InkWell(
+                                                                          onTap:
+                                                                              () {
+                                                                            obj.deleteSupplierdata(obj.supplierList[index].supplierId!,
+                                                                                context);
+                                                                            Navigator.pop(context);
+                                                                          },
+                                                                          child:
+                                                                              Text(
+                                                                            "Yes",
+                                                                            style: TextStyle(
+                                                                                fontWeight: FontWeight.bold,
+                                                                                fontSize: width * 0.04,
+                                                                                color: Colors.blue[900]),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width:
+                                                                              width * 0.03,
+                                                                        ),
+                                                                        InkWell(
+                                                                          onTap:
+                                                                              () {
+                                                                            Navigator.pop(context);
+                                                                          },
+                                                                          child:
+                                                                              Text(
+                                                                            "No",
+                                                                            style: TextStyle(
+                                                                                fontWeight: FontWeight.bold,
+                                                                                fontSize: width * 0.04,
+                                                                                color: Colors.red),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+                                                    },
+                                                    child: Icon(Icons.delete)),
                                                 Icon(Icons.edit)
                                               ],
                                             ),

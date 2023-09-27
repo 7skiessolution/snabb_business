@@ -168,6 +168,7 @@ class HomeController extends GetxController {
   Future getCatageries() async {
     // walletList.clear();\
     print("catagoryModel ");
+    catagorylist.clear();
     ex.CatagoryModel? catagoryModel;
     isLoadData = true;
     var res = await httpClient().get(StaticValues.getCategories);

@@ -62,20 +62,22 @@ class CatagoryModel {
 
 class Data {
   String? name;
-
+  String? categoryId;
   String? imageUrl;
-
   Data({
     this.name,
+    this.categoryId,
     this.imageUrl,
   });
 
   Data copyWith({
     String? name,
+    String? categoryId,
     String? imageUrl,
   }) {
     return Data(
       name: name ?? this.name,
+      categoryId: categoryId ?? this.categoryId,
       imageUrl: imageUrl ?? this.imageUrl,
     );
   }
@@ -83,6 +85,7 @@ class Data {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
+      'categoryId': categoryId,
       'imageUrl': imageUrl,
     };
   }
@@ -90,6 +93,8 @@ class Data {
   factory Data.fromMap(Map<String, dynamic> map) {
     return Data(
       name: map['name'] != null ? map['name'] as String : null,
+      categoryId:
+          map['categoryId'] != null ? map['categoryId'] as String : null,
       imageUrl: map['imageUrl'] != null ? map['imageUrl'] as String : null,
     );
   }
@@ -100,19 +105,18 @@ class Data {
       Data.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() {
-    return 'Data(name: $name, imageUrl: $imageUrl,)';
-  }
+  String toString() =>
+      'Data(name: $name, categoryId: $categoryId, imageUrl: $imageUrl)';
 
   @override
   bool operator ==(covariant Data other) {
     if (identical(this, other)) return true;
 
-    return other.name == name && other.imageUrl == imageUrl;
+    return other.name == name &&
+        other.categoryId == categoryId &&
+        other.imageUrl == imageUrl;
   }
 
   @override
-  int get hashCode {
-    return name.hashCode ^ imageUrl.hashCode;
-  }
+  int get hashCode => name.hashCode ^ categoryId.hashCode ^ imageUrl.hashCode;
 }

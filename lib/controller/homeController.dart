@@ -190,6 +190,31 @@ class HomeController extends GetxController {
     } else {}
   }
 
+  Future updateSupplierdata(
+      Map<String, dynamic> model, String id, BuildContext c) async {
+    changeStatus(true);
+    var res = await httpClient()
+        .post("${StaticValues.updateSuplier}$id", data: model);
+    if (res.statusCode == 200) {
+      print(res.data);
+      changeStatus(false);
+      getSupplierdata();
+    }
+    Navigator.pop(c);
+  }
+
+  Future updateCompanydata(
+      Map<String, dynamic> model, String id, BuildContext c) async {
+    changeStatus(true);
+    var res = await httpClient()
+        .post('${StaticValues.updateCompany}$id', data: model);
+    if (res.statusCode == 200) {
+      changeStatus(false);
+      getCompanydata();
+    }
+    Navigator.pop(c);
+  }
+
   @override
   void onInit() {
     // data = [

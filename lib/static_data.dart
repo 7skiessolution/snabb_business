@@ -48,10 +48,12 @@ class StaticValues {
   static const addCompany = "Company/AddCompany";
   static const getCompanyList = "Company/GetCompanies";
   static const deleteCompany = "Company/DeleteCompany/";
+  static const updateCompany = "Company/UpdateCompany/";
   ///////////////////////////////Suppliers//////////////////////////////////
   static const addSupplier = "Supplier/AddSupplier";
   static const getSupplierList = "Supplier/GetCompanies";
   static const deleteSupplier = "Supplier/DeleteSupplier/";
+  static const updateSuplier = "Supplier/UpdateSupplier/";
   ///////////////////////////////sale//////////////////////////////////////
   static const addSale = "Transaction/AddSale";
   ///////////////////////////////Expense//////////////////////////////////////

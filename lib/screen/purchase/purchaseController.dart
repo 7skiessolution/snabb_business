@@ -1009,65 +1009,65 @@ class PurchaseController extends GetxController {
                                                                           height:
                                                                               height * 0.01,
                                                                         ),
-                                                                        Expanded(
-                                                                          child:
-                                                                              ListView.builder(
-                                                                            itemCount:
-                                                                                HomeController.to.supplierList.length,
-                                                                            itemBuilder:
-                                                                                (BuildContext context, int index) {
-                                                                              return Padding(
-                                                                                padding: const EdgeInsets.all(8.0),
-                                                                                child: InkWell(
-                                                                                  onTap: () {
-                                                                                    supplierName = HomeController.to.supplierList[index].name.toString();
-                                                                                    supplierid = HomeController.to.supplierList[index].supplierId.toString();
-                                                                                    print("name supplier ------$supplierName");
-                                                                                    st(
-                                                                                      () {},
-                                                                                    );
-                                                                                    Navigator.pop(context);
-                                                                                  },
-                                                                                  child: Card(
-                                                                                    elevation: 10,
-                                                                                    shadowColor: Colors.blue[900],
-                                                                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                                                                                    child: Container(
-                                                                                      height: height * 0.1,
-                                                                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                                                                                      child: Padding(
-                                                                                        padding: const EdgeInsets.all(8.0),
-                                                                                        child: Expanded(
-                                                                                          child: SizedBox(
-                                                                                            height: height,
-                                                                                            width: width,
-                                                                                            child: Column(
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                              children: [
-                                                                                                Text(
-                                                                                                  HomeController.to.supplierList[index].name!,
-                                                                                                  style: TextStyle(fontSize: width * 0.035, fontWeight: FontWeight.bold, color: Colors.blue[900]),
-                                                                                                ),
-                                                                                                Text(
-                                                                                                  HomeController.to.supplierList[index].email!,
-                                                                                                  style: TextStyle(fontSize: width * 0.03, color: Colors.black),
-                                                                                                ),
-                                                                                                Text(
-                                                                                                  HomeController.to.supplierList[index].telePhone!,
-                                                                                                  style: TextStyle(fontSize: width * 0.035, color: Colors.black),
-                                                                                                ),
-                                                                                              ],
+                                                                        ListView
+                                                                            .builder(
+                                                                          shrinkWrap:
+                                                                              true,
+                                                                          itemCount: HomeController
+                                                                              .to
+                                                                              .supplierList
+                                                                              .length,
+                                                                          itemBuilder:
+                                                                              (BuildContext context, int index) {
+                                                                            return Padding(
+                                                                              padding: const EdgeInsets.all(8.0),
+                                                                              child: InkWell(
+                                                                                onTap: () {
+                                                                                  supplierName = HomeController.to.supplierList[index].name.toString();
+                                                                                  supplierid = HomeController.to.supplierList[index].supplierId.toString();
+                                                                                  print("name supplier ------$supplierName");
+                                                                                  st(
+                                                                                    () {},
+                                                                                  );
+                                                                                  Navigator.pop(context);
+                                                                                },
+                                                                                child: Card(
+                                                                                  elevation: 10,
+                                                                                  shadowColor: Colors.blue[900],
+                                                                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                                                                  child: Container(
+                                                                                    height: height * 0.1,
+                                                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                                                                                    child: Padding(
+                                                                                      padding: const EdgeInsets.all(8.0),
+                                                                                      child: SizedBox(
+                                                                                        height: height,
+                                                                                        width: width,
+                                                                                        child: Column(
+                                                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                          children: [
+                                                                                            Text(
+                                                                                              HomeController.to.supplierList[index].name!,
+                                                                                              style: TextStyle(fontSize: width * 0.035, fontWeight: FontWeight.bold, color: Colors.blue[900]),
                                                                                             ),
-                                                                                          ),
+                                                                                            Text(
+                                                                                              HomeController.to.supplierList[index].email!,
+                                                                                              style: TextStyle(fontSize: width * 0.03, color: Colors.black),
+                                                                                            ),
+                                                                                            Text(
+                                                                                              HomeController.to.supplierList[index].telePhone!,
+                                                                                              style: TextStyle(fontSize: width * 0.035, color: Colors.black),
+                                                                                            ),
+                                                                                          ],
                                                                                         ),
                                                                                       ),
                                                                                     ),
                                                                                   ),
                                                                                 ),
-                                                                              );
-                                                                            },
-                                                                          ),
+                                                                              ),
+                                                                            );
+                                                                          },
                                                                         ),
                                                                       ],
                                                                     ),

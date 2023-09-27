@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -6,6 +8,7 @@ import 'package:snabb_business/models/currency_model.dart';
 import 'package:snabb_business/models/get_data_year_type_model.dart' as sp;
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
+import 'package:snabb_business/pdf/c/pdf_controller.dart';
 import 'package:snabb_business/screen/company/companyModel.dart' as cm;
 
 import 'package:snabb_business/screen/suppliers/supplierModel.dart' as sm;
@@ -184,6 +187,7 @@ class HomeController extends GetxController {
       for (var supplier in supplierModel!.data!) {
         supplierList.add(supplier);
       }
+      log("geting home screen supplierList  ${supplierList.length}");
 
       isLoadData = false;
       update();

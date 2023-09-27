@@ -7,7 +7,7 @@ import 'package:snabb_business/models/get_data_year_type_model.dart' as sp;
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
 import 'package:snabb_business/screen/company/companyModel.dart' as cm;
-import 'package:snabb_business/screen/expense/expenseModel.dart' as ex;
+
 import 'package:snabb_business/screen/suppliers/supplierModel.dart' as sm;
 import 'package:snabb_business/static_data.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -26,7 +26,7 @@ class HomeController extends GetxController {
   double totalExpanse = 0.0;
   double totalPurchase = 0.0;
   String curency = "EURO";
-  List<ex.Data> catagorylist = [];
+
   List<Chartdata> expensedata = [];
   List<Chartdata> purchasedata = [];
   List<Chartdata> saledatalist = [];
@@ -183,26 +183,6 @@ class HomeController extends GetxController {
     if (supplierModel!.data != null) {
       for (var supplier in supplierModel!.data!) {
         supplierList.add(supplier);
-      }
-
-      isLoadData = false;
-      update();
-    } else {}
-  }
-
-  Future getCatageries() async {
-    // walletList.clear();\
-    print("catagoryModel ");
-    catagorylist.clear();
-    ex.CatagoryModel? catagoryModel;
-    isLoadData = true;
-    var res = await httpClient().get(StaticValues.getCategories);
-
-    catagoryModel = ex.CatagoryModel.fromMap(res.data);
-
-    if (catagoryModel.data != null) {
-      for (var catagory in catagoryModel.data!) {
-        catagorylist.add(catagory);
       }
 
       isLoadData = false;

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:intl/intl.dart';
 import 'package:pie_chart/pie_chart.dart';
+import 'package:snabb_business/controller/expense_controller.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/screen/chartsScreens/purchaseChart.dart';
 import 'package:snabb_business/screen/chartsScreens/salesChart.dart';
@@ -28,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     Get.put(HomeController());
+    Get.put(ExpenseController());
     // HomeController.to.saleListOFChart();
     // HomeController.to.expenseList(0);
     // HomeController.to.expenseList(2);
@@ -40,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeController.to.getUserProfile();
     HomeController.to.getCompanydata();
     HomeController.to.getSupplierdata();
-    HomeController.to.getCatageries();
+    ExpenseController.to.getCatageries();
     super.initState();
   }
 

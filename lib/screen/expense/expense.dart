@@ -19,13 +19,6 @@ class ExpenseScreen extends StatefulWidget {
 }
 
 class _ExpenseScreenState extends State<ExpenseScreen> {
-  @override
-  void initState() {
-    Get.put(HomeController());
-    Get.put(ExpenseController());
-    super.initState();
-  }
-
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _dueDateController = TextEditingController();
   String? selectedimage;
@@ -64,6 +57,12 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
         }
       });
     }
+  }
+
+  @override
+  void initState() {
+    ExpenseController.to.clearData();
+    super.initState();
   }
 
   @override
@@ -180,15 +179,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                           child: CircleAvatar(
                                             radius: 22,
                                             backgroundImage: AssetImage(
-                                                // widget
-                                                //           .type ==
-                                                //       1
-                                                //   ?
-                                                "images/expensive.png"
-                                                // : widget.type == 0
-                                                //     ? "images/sale.png"
-                                                //     : "images/expensive.png"
-                                                ),
+                                                "images/expensive.png"),
                                           ),
                                         )),
                                     const Padding(
@@ -249,7 +240,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                             width: width * 0.07,
                                           ),
                                           SizedBox(
-                                            width: width * 0.05,
+                                            width: width * 0.01,
                                           ),
                                           const Text(
                                             'Category',
@@ -257,9 +248,21 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                               fontWeight: FontWeight.w700,
                                             ),
                                           ),
-                                          SizedBox(
-                                            width: width * 0.46,
-                                          ),
+                                          obj.selectedCateory == null
+                                              ? SizedBox(
+                                                  width: width * 0.46,
+                                                )
+                                              : Container(
+                                                  width: width * 0.46,
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    obj.selectedCateory!.name!,
+                                                    style: TextStyle(
+                                                        color: Colors.blue[900],
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
                                           const Icon(
                                               Icons.arrow_drop_down_sharp)
                                         ]),

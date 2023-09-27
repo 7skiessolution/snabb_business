@@ -4,8 +4,6 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
-import 'package:path/path.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart' hide Transaction;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -46,13 +44,11 @@ import 'package:snabb_business/models/user_wallet_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wal;
 import 'package:snabb_business/models/yearly_transaction_model.dart' as yTra;
 import 'package:snabb_business/screen/sale/get_categories_model.dart';
-import 'package:snabb_business/screen/sale/user_category_model.dart';
 import 'package:snabb_business/static_data.dart';
 
 import '../models/user_wallet_model.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:vector_math/vector_math.dart' as math;
-import 'package:dio/dio.dart' as deo;
 import 'package:cell_calendar/cell_calendar.dart';
 
 class TransactionController extends GetxController {
@@ -143,7 +139,7 @@ class TransactionController extends GetxController {
       // Compress the image to 75% quality
       List<int> compressedBytes = await FlutterImageCompress.compressWithList(
         uint8List,
-        quality: 25,
+        quality: 10,
       );
 
       // Convert the compressed bytes to a Uint8List
@@ -159,7 +155,7 @@ class TransactionController extends GetxController {
       // Compress the image to 75% quality
       List<int> compressedBytes = await FlutterImageCompress.compressWithList(
         uint8List,
-        quality: 10,
+        quality: 5,
       );
 
       // Convert the compressed bytes to a Uint8List
@@ -174,7 +170,7 @@ class TransactionController extends GetxController {
       // Compress the image to 75% quality
       List<int> compressedBytes = await FlutterImageCompress.compressWithList(
         uint8List,
-        quality: 5,
+        quality: 2,
       );
 
       // Convert the compressed bytes to a Uint8List
@@ -859,7 +855,4 @@ class TransactionController extends GetxController {
 
   //   update();
   // }
-
-
-
 }

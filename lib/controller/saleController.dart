@@ -1,12 +1,18 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/controller/homeController.dart';
+import 'package:snabb_business/controller/transaction_controller.dart';
+import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/colors.dart';
+import 'package:dio/dio.dart' as dio;
+import 'package:path/path.dart';
 
 class SaleController extends GetxController {
   static SaleController get to => Get.find();
@@ -23,7 +29,8 @@ class SaleController extends GetxController {
   TextEditingController nPhone = TextEditingController();
   bool company = true;
   String companyName = "";
-  String companyid = "";
+  String? companyid;
+  String formatTime = "Pick Date";
   Future<void> showPaidDilogue(
       BuildContext context, double height, double width) {
     return showDialog(
@@ -838,32 +845,39 @@ class SaleController extends GetxController {
                                   SizedBox(
                                     height: height * 0.01,
                                   ),
-                                  SizedBox(
-                                    height: height * 0.08,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        SizedBox(
-                                          width: width * 0.11,
-                                          height: height * 0.11,
-                                          child: const Image(
-                                              image: AssetImage(
-                                                  "images/dailysale.png")),
-                                        ),
-                                        SizedBox(
-                                          width: width * 0.1,
-                                        ),
-                                        const Text(
-                                          "Daily Sales",
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
+                                  InkWell(
+                                    onTap: () {
+                                      companyName = "Daily Sales";
+                                      companyid = null;
+                                      st(() {});
+                                    },
+                                    child: SizedBox(
+                                      height: height * 0.08,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          SizedBox(
+                                            width: width * 0.11,
+                                            height: height * 0.11,
+                                            child: const Image(
+                                                image: AssetImage(
+                                                    "images/dailysale.png")),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          width: width * 0.2,
-                                        ),
-                                      ],
+                                          SizedBox(
+                                            width: width * 0.1,
+                                          ),
+                                          const Text(
+                                            "Daily Sales",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: width * 0.2,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   SizedBox(
@@ -1004,6 +1018,11 @@ class SaleController extends GetxController {
                                                                                   onTap: () {
                                                                                     companyName = HomeController.to.companyList[index].name.toString();
                                                                                     companyid = HomeController.to.companyList[index].companyId.toString();
+
+                                                                                    Navigator.pop(context);
+                                                                                    st(
+                                                                                      () {},
+                                                                                    );
                                                                                   },
                                                                                   child: Card(
                                                                                     elevation: 10,
@@ -1014,29 +1033,23 @@ class SaleController extends GetxController {
                                                                                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
                                                                                       child: Padding(
                                                                                         padding: const EdgeInsets.all(8.0),
-                                                                                        child: Expanded(
-                                                                                          child: SizedBox(
-                                                                                            height: height,
-                                                                                            width: width,
-                                                                                            child: Column(
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                              children: [
-                                                                                                Text(
-                                                                                                  HomeController.to.companyList[index].name!,
-                                                                                                  style: TextStyle(fontSize: width * 0.035, fontWeight: FontWeight.bold, color: Colors.blue[900]),
-                                                                                                ),
-                                                                                                Text(
-                                                                                                  HomeController.to.companyList[index].email!,
-                                                                                                  style: TextStyle(fontSize: width * 0.03, color: Colors.black),
-                                                                                                ),
-                                                                                                Text(
-                                                                                                  HomeController.to.companyList[index].telePhone!,
-                                                                                                  style: TextStyle(fontSize: width * 0.035, color: Colors.black),
-                                                                                                ),
-                                                                                              ],
+                                                                                        child: Column(
+                                                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                          children: [
+                                                                                            Text(
+                                                                                              HomeController.to.companyList[index].name!,
+                                                                                              style: TextStyle(fontSize: width * 0.035, fontWeight: FontWeight.bold, color: Colors.blue[900]),
                                                                                             ),
-                                                                                          ),
+                                                                                            Text(
+                                                                                              HomeController.to.companyList[index].email!,
+                                                                                              style: TextStyle(fontSize: width * 0.03, color: Colors.black),
+                                                                                            ),
+                                                                                            Text(
+                                                                                              HomeController.to.companyList[index].telePhone!,
+                                                                                              style: TextStyle(fontSize: width * 0.035, color: Colors.black),
+                                                                                            ),
+                                                                                          ],
                                                                                         ),
                                                                                       ),
                                                                                     ),
@@ -1381,5 +1394,116 @@ class SaleController extends GetxController {
         });
       },
     );
+  }
+
+  Future<void> selectDate(BuildContext context) async {
+    final DateTime? selectedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    if (selectedDate != null) {
+      formatTime = DateFormat("dd-MM-yyyy").format(selectedDate);
+
+      update();
+    }
+  }
+
+  //// sale api
+
+  postsale() async {
+    try {
+      if (formatTime != "Pick Date") {
+        if (companyName.isNotEmpty) {
+          dio.FormData data = TransactionController.to.pathFile.isEmpty
+              ? dio.FormData.fromMap({
+                  "Name": "Sale",
+                  "CashAmount": double.tryParse(cashamount.text) ?? 0.0,
+                  "BankAmount": double.tryParse(bankamount.text) ?? 0.0,
+                  "OtherAmount": double.tryParse(otheramount.text) ?? 0.0,
+                  "PartialAmount": double.tryParse(balanceAmount.text) ?? 0.0,
+                  "TotalAmount": double.tryParse(invoiceAmount.text) ?? 0.0,
+                  "RemainingAmount":
+                      (double.tryParse(invoiceAmount.text) ?? 0.0) -
+                          (double.tryParse(balanceAmount.text) ?? 0.0),
+                  "Note": particular.text,
+                  "DateTime": formatTime,
+                  "PayBackDay": creditReturnDate.text,
+                  "Currency": HomeController.to.curency,
+                  "CompanyId": companyid,
+                  "SaleMethod": companyName == "Daily Sales" ? 0 : 1,
+                })
+              : dio.FormData.fromMap({
+                  "Name": "Sale",
+                  "CashAmount": double.tryParse(cashamount.text) ?? 0.0,
+                  "BankAmount": double.tryParse(bankamount.text) ?? 0.0,
+                  "OtherAmount": double.tryParse(otheramount.text) ?? 0.0,
+                  "PartialAmount": double.tryParse(balanceAmount.text) ?? 0.0,
+                  "TotalAmount": double.tryParse(invoiceAmount.text) ?? 0.0,
+                  "RemainingAmount":
+                      (double.tryParse(invoiceAmount.text) ?? 0.0) -
+                          (double.tryParse(balanceAmount.text) ?? 0.0),
+                  "Note": particular.text,
+                  "DateTime": formatTime,
+                  "PayBackDay": creditReturnDate.text,
+                  "Currency": HomeController.to.curency,
+                  "CompanyId": companyid,
+                  "SaleMethod": companyName == "Daily Sales" ? 0 : 1,
+                  "File": await dio.MultipartFile.fromFile(
+                    TransactionController.to.compressedFile!.path,
+                    filename:
+                        basename(TransactionController.to.compressedFile!.path),
+                  ),
+                });
+          print(data.fields.toString());
+          dio.Response res =
+              await httpFormDataClient().post(StaticValues.addSale, data: data);
+          if (res.statusCode == 200) {
+            showtoast(res.data["status"]);
+            TransactionController.to.pathFile = "";
+            clearAndInitializeControllers();
+          }
+        } else {
+          showtoast("Please Enter Sale Method !");
+        }
+      } else {
+        showtoast("Please Enter Date !");
+      }
+    } on Exception catch (e) {
+      print(e);
+      // TODO
+    }
+  }
+
+  void clearAndInitializeControllers() {
+    bankamount.clear();
+    cashamount.clear();
+    otheramount.clear();
+    creditTransactionamount.clear();
+    creditReturnDate.clear();
+    balanceAmount.clear();
+    invoiceAmount.clear();
+    particular.clear();
+    mEmail.clear();
+    mName.clear();
+    nPhone.clear();
+    company = true;
+    companyName = "";
+    companyid = null;
+    formatTime = "Pick Date";
+    update();
+  }
+
+  void showtoast(String msg) {
+    Fluttertoast.showToast(
+        msg: msg,
+        backgroundColor: Colors.blue[900],
+        textColor: Colors.white,
+        gravity: ToastGravity.BOTTOM,
+        fontSize: 17,
+        timeInSecForIosWeb: 1,
+        toastLength: Toast.LENGTH_LONG);
   }
 }

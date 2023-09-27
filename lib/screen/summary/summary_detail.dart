@@ -195,7 +195,7 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
                       color: darkblue, borderRadius: BorderRadius.circular(10)),
                   child: Row(
                     children: [
-                      widget.type == "expence"
+                      widget.type == "Expense"
                           ? Expanded(
                               child: SizedBox(
                                 height: height,
@@ -219,7 +219,7 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
                                     Text(
                                       AppLocalizations.of(context)!.expense,
                                       style: TextStyle(
-                                          fontSize: width * 0.04,
+                                          fontSize: width * 0.035,
                                           color: Colors.red,
                                           fontWeight: FontWeight.bold),
                                     )
@@ -227,37 +227,73 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
                                 ),
                               ),
                             )
-                          : Expanded(
-                              child: SizedBox(
-                                height: height,
-                                width: width,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width: width * 0.05,
+                          : widget.type == "Sale"
+                              ? Expanded(
+                                  child: SizedBox(
+                                    height: height,
+                                    width: width,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          width: width * 0.05,
+                                        ),
+                                        Container(
+                                          height: height * 0.04,
+                                          width: width * 0.06,
+                                          decoration: const BoxDecoration(
+                                              color: Colors.green,
+                                              shape: BoxShape.circle),
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.02,
+                                        ),
+                                        Text(
+                                          widget.type,
+                                          style: TextStyle(
+                                              fontSize: width * 0.035,
+                                              color: Colors.green,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
                                     ),
-                                    Container(
-                                      height: height * 0.04,
-                                      width: width * 0.06,
-                                      decoration: const BoxDecoration(
-                                          color: Colors.green,
-                                          shape: BoxShape.circle),
+                                  ),
+                                )
+                              : Expanded(
+                                  child: SizedBox(
+                                    height: height,
+                                    width: width,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          width: width * 0.05,
+                                        ),
+                                        Container(
+                                          height: height * 0.04,
+                                          width: width * 0.06,
+                                          decoration: const BoxDecoration(
+                                              color: Color.fromARGB(
+                                                  255, 61, 194, 235),
+                                              shape: BoxShape.circle),
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.03,
+                                        ),
+                                        Text(
+                                          AppLocalizations.of(context)!.expense,
+                                          style: TextStyle(
+                                              fontSize: width * 0.035,
+                                              color: Color.fromARGB(
+                                                  255, 61, 194, 235),
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
                                     ),
-                                    SizedBox(
-                                      width: width * 0.03,
-                                    ),
-                                    Text(
-                                      widget.type,
-                                      style: TextStyle(
-                                          fontSize: width * 0.04,
-                                          color: Colors.green,
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
+                                  ),
                                 ),
-                              ),
-                            ),
                       Expanded(
                         child: SizedBox(
                             height: height,
@@ -266,7 +302,7 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
                               child: Text(
                                 "100%",
                                 style: TextStyle(
-                                    fontSize: width * 0.04,
+                                    fontSize: width * 0.035,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -280,7 +316,7 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
                               child: Text(
                                 "${widget.curency} ${widget.ammount}",
                                 style: TextStyle(
-                                    fontSize: width * 0.04,
+                                    fontSize: width * 0.035,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
                               ),

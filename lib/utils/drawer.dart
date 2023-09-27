@@ -288,25 +288,25 @@ class DrawerScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => const Categories()));
-                },
-                child: ListTile(
-                  leading: Icon(
-                    Icons.donut_large,
-                    color: white,
-                  ),
-                  title: Text(
-                    "Charts",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ),
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.push(context,
+              //         MaterialPageRoute(builder: (_) => const Categories()));
+              //   },
+              //   child: ListTile(
+              //     leading: Icon(
+              //       Icons.donut_large,
+              //       color: white,
+              //     ),
+              //     title: Text(
+              //       "Charts",
+              //       style: TextStyle(
+              //           color: white,
+              //           fontSize: width * 0.03,
+              //           fontWeight: FontWeight.w500),
+              //     ),
+              //   ),
+              // ),
               // obj.category == true
               //     ? InkWell(
               //         onTap: () {

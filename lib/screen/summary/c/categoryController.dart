@@ -13,9 +13,9 @@ class CategoryController extends GetxController {
 
     for (int i = 0; i < a.length; i++) {
       if (a[i].type == 1) {
-        totalbalance += a[i].amount!;
+        totalbalance += a[i].totalAmount!;
       } else {
-        totalbalance -= a[i].amount!;
+        totalbalance -= a[i].totalAmount!;
       }
     }
     Future.delayed(const Duration(seconds: 2), () {
@@ -23,12 +23,17 @@ class CategoryController extends GetxController {
     });
   }
 
-  Future<summary.SearchSummary> getcategory(
-      int type, String start, String end) async {
+  List<summary.Data> list = [];
+  getcategory(int type, String start, String end) async {
+    list.clear();
     var res = await httpClient().get(
         "${StaticValues.searchSummary}$type&StartDate=$start&EndDate=$end");
     print("-------search ${res.data}");
-    return summary.SearchSummary.fromMap(res.data);
+    summary.SearchSummary model = summary.SearchSummary.fromMap(res.data);
+    model.data!.forEach((element) {
+      list.add(element);
+    });
+    update();
   }
 
   String? startdate;

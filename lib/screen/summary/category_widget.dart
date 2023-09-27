@@ -88,6 +88,19 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                     onChanged: (newValue) {
                                       obj.selectedType = newValue as String;
                                       obj.update();
+                                      obj.getcategory(
+                                          obj.selectedType == "Sale"
+                                              ? 1
+                                              : obj.selectedType == "Expense"
+                                                  ? 2
+                                                  : obj.selectedType ==
+                                                          "Purchase"
+                                                      ? 0
+                                                      : 3,
+                                          obj.startdate!,
+                                          obj.enddate);
+
+                                      print("=-=-==-=-=- ${obj.selectedType}");
                                     },
                                     items: obj.types
                                         .map<DropdownMenuItem<String>>(
@@ -105,7 +118,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                     hint: Text(AppLocalizations.of(context)!
                                         .selecttype
                                         .capitalize!),
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.arrow_drop_down,
                                       color: Colors.black,
                                     ),
@@ -124,7 +137,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                             child: Text(
                                               value,
                                               style: TextStyle(
-                                                fontSize: 14,
+                                                fontSize: width * 0.03,
                                                 color: Colors.black,
                                               ),
                                             ),
@@ -246,67 +259,27 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                         height: height * 0.02,
                       ),
                       obj.startdate != null
-                          ? FutureBuilder(
-                              future: obj.getcategory(
-                                  obj.selectedType == "Sale"
-                                      ? 0
-                                      : obj.selectedType == "Expense"
-                                          ? 1
-                                          : obj.selectedType == "purchase"
-                                              ? 2
-                                              : 3,
-                                  obj.startdate!,
-                                  obj.enddate),
-                              builder: (context, snapshot) {
-                                return snapshot.hasData
-                                    ? Expanded(
-                                        child: ListView.builder(
-                                          itemCount:
-                                              snapshot.data!.data!.length,
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
-                                            Data snapshotdata =
-                                                snapshot.data!.data![index];
-                                            obj.calculateTotalBalance(
-                                                snapshot.data!.data!);
+                          ? Expanded(
+                              child: ListView.builder(
+                                itemCount: obj.list.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  Data snapshotdata = obj.list[index];
+                                  obj.calculateTotalBalance(obj.list);
 
-                                            T.Data a = T.Data(
-                                                amount: snapshotdata.amount,
-                                                category:
-                                                    snapshotdata.categoryName,
-                                                dateTime: snapshotdata.dateTime,
-                                                file: snapshotdata.files,
-                                                name: snapshotdata.name,
-                                                note: snapshotdata.note,
-                                                currency: snapshotdata.currency,
-                                                imageUrl: snapshotdata
-                                                    .categoryImageUrl,
-                                                type: snapshotdata.type);
-                                            return TransactionCard(
-                                                transaction: a);
-                                          },
-                                        ),
-                                      )
-                                    : snapshot.connectionState ==
-                                            ConnectionState.waiting
-                                        ? const Center(
-                                            child: CircularProgressIndicator(),
-                                          )
-                                        : Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 100),
-                                            child: Center(
-                                                child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .notransaction,
-                                              style: TextStyle(
-                                                  color: darkblue!,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: size.width * 0.035),
-                                              textAlign: TextAlign.center,
-                                            )),
-                                          );
-                              },
+                                  T.Data a = T.Data(
+                                      amount: snapshotdata.totalAmount,
+                                      category: snapshotdata.details!.category,
+                                      dateTime: snapshotdata.dateTime,
+                                      file: snapshotdata.file,
+                                      name: snapshotdata.name,
+                                      note: snapshotdata.note,
+                                      currency: snapshotdata.currency,
+                                      imageUrl: snapshotdata.details!.imageUrl
+                                          .toString(),
+                                      type: snapshotdata.type);
+                                  return TransactionCard(transaction: a);
+                                },
+                              ),
                             )
                           : Padding(
                               padding:

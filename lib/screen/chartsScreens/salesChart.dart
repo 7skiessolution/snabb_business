@@ -536,14 +536,14 @@ class _SalesChartState extends State<SalesChart> {
                                             MainAxisAlignment.spaceAround,
                                         children: [
                                           Text(
-                                            "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency} ",
+                                            "Recieve Payment ${(data.totalAmount ?? 0.0)} ${obj.curency} ",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: width * 0.025,
                                                 color: white),
                                           ),
                                           Text(
-                                            "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
+                                            "Balance Amount ${(data.totalAmount ?? 0.0) - (data.details!.partialAmount! ?? 0.0)} ${obj.curency} ",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: width * 0.025,
@@ -569,7 +569,7 @@ class _SalesChartState extends State<SalesChart> {
                                       //     backgroundColor: AppColors.greencolor,
                                       //     child: Image.asset(data.imageUrl!)),
                                       Text(
-                                        "${data.category}",
+                                        data.details!.name ?? "",
                                         style: TextStyle(
                                             fontSize: width * 0.04,
                                             fontWeight: FontWeight.bold,
@@ -592,7 +592,7 @@ class _SalesChartState extends State<SalesChart> {
                                               ),
                                               child: Center(
                                                 child: Text(
-                                                  "${data.amount} ${obj.curency}",
+                                                  "${data.totalAmount} ${obj.curency}",
                                                   style: TextStyle(
                                                       fontSize: width * 0.02,
                                                       fontWeight:

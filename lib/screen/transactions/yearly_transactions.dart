@@ -98,7 +98,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        obj.amount.toString(),
+                                        obj.totalAmount.toString(),
                                         style: TextStyle(
                                           fontSize: width * 0.03,
                                         ),
@@ -129,7 +129,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        obj.category!,
+                                        obj.details!.name!,
                                         style: TextStyle(
                                           fontSize: width * 0.03,
                                         ),
@@ -345,7 +345,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                           width: MediaQuery.of(context).size.width * 0.08,
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage(obj.imageUrl!)),
+                                  image: AssetImage(obj.details!.imageUrl!)),
                               shape: BoxShape.circle),
                         ),
                       ),
@@ -360,7 +360,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
     }
 
     return GetBuilder<TransactionController>(initState: (state) {
-    //  TransactionController.to.getUserYearTransactiondata();
+      //  TransactionController.to.getUserYearTransactiondata();
     }, builder: (obj) {
       return obj.yearTransactionList.isNotEmpty
           ? SizedBox(
@@ -429,7 +429,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                               padding:
                                                   const EdgeInsets.all(8.0),
                                               child: Image.asset(
-                                                transaction.imageUrl!,
+                                                transaction.file!,
                                               ),
                                             )),
                                         title: Text(
@@ -448,8 +448,8 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                             Text(
                                                 // ignore: unrelated_type_equality_checks
                                                 transaction.type == 1
-                                                    ? "+ ${transaction.amount}"
-                                                    : "-${transaction.amount}",
+                                                    ? "+ ${transaction.totalAmount}"
+                                                    : "-${transaction.totalAmount}",
                                                 style: TextStyle(
                                                     // ignore: unrelated_type_equality_checks
                                                     color: transaction.type == 1

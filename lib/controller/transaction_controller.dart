@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart' hide Transaction;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -661,31 +662,37 @@ class TransactionController extends GetxController {
     return max;
   }
 
-  // Future getUserCalanderTransactiondata() async {
-  //   calanderEventList.clear();
-  //   var res = await httpClient().get(StaticValues.getCalanderTransaction);
-  //   if (res.statusCode == 200) {
-  //     calanderTransaction = cTra.GetCalanderData.fromMap(res.data);
+  Future getUserCalanderTransactiondata() async {
+    calanderEventList.clear();
+    var res = await httpClient().get(StaticValues.getCalanderTransaction);
+    if (res.statusCode == 200) {
+      print(res.data);
+      calanderTransaction = cTra.GetCalanderData.fromMap(res.data);
 
-  //     try {
-  //       for (var data in calanderTransaction!.data!) {
-  //         DateTime date = DateFormat("dd-MM-yyyy").parse(data.dateTime!);
+      try {
+        for (var data in calanderTransaction!.data!) {
+          DateTime date = DateFormat("dd-MM-yyyy").parse(data.dateTime!);
 
-  //         CalendarEvent event = CalendarEvent(
-  //             eventName: data.totalIncome.toString(),
-  //             eventDate: date,
-  //             eventBackgroundColor: darkblue!,
-  //             eventTextStyle:
-  //                 const TextStyle(color: Colors.white, fontSize: 10));
-  //         calanderEventList.add(event);
-  //       }
-  //     } catch (e) {
-  //       print("no data");
-  //     }
-  //   }
+          CalendarEvent event = CalendarEvent(
+              eventName: data.totalAmount.toString(),
+              eventDate: date,
+              eventBackgroundColor: data.type == 0
+                  ? Colors.cyan
+                  : data.type == 1
+                      ? Colors.red
+                      : darkblue!,
+              eventTextStyle:
+                  const TextStyle(color: Colors.white, fontSize: 10));
 
-  //   update();
-  // }
+          calanderEventList.add(event);
+        }
+      } catch (e) {
+        print("no data");
+      }
+    }
+
+    update();
+  }
 
 ///////////\\]]]]]
   // checking(List<int> myList) {

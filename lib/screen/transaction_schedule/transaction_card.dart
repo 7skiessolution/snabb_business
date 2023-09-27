@@ -376,12 +376,22 @@ class _TransactionCardState extends State<TransactionCard> {
                   BoxDecoration(color: darkblue, shape: BoxShape.circle),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  widget.transaction.imageUrl!,
-                  fit: BoxFit.cover,
-                  width: 30,
-                  height: 30,
-                ),
+                child: widget.transaction.imageUrl == null ||
+                        widget.transaction.imageUrl!.isEmpty ||
+                        widget.transaction.imageUrl == "null"
+                    ? Image.asset(
+                        "images/sale.png",
+                        fit: BoxFit.cover,
+                        width: 30,
+                        height: 30,
+                      )
+                    : Image.asset(
+                        widget.transaction.imageUrl.toString(),
+                        fit: BoxFit.cover,
+                        width: 30,
+                        height: 30,
+                        color: Colors.white,
+                      ),
               )),
           title: Text(
             widget.transaction.name!,

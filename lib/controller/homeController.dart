@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/models/currency_model.dart';
 import 'package:snabb_business/models/get_data_year_type_model.dart' as sp;
+import 'package:snabb_business/models/get_sale_purchase.dart';
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
 import 'package:snabb_business/screen/company/companyModel.dart' as cm;
@@ -294,6 +295,37 @@ class HomeController extends GetxController {
 
   double totalAmountType1 = 0.0;
   List<yTra.Transactions> salesTransaction = [];
+  saleListOFChart() async {
+    var res = await httpClient().get(StaticValues.getYearTrasaction);
+    if (res.statusCode == 200) {
+      chartData.clear();
+      yTra.UserYearTransaction yearTransaction =
+          yTra.UserYearTransaction.fromMap(res.data);
+      for (var element in yearTransaction.data!) {
+        List<yTra.Transactions> transactions = element.transactions ?? [];
+        print("bal match $transactions");
+        salesTransaction =
+            transactions.where((transaction) => transaction.type == 1).toList();
+        print("sale list $salesTransaction");
+        // Calculate total amounts for each type after subtracting partial amounts
+        totalAmountType1 = salesTransaction
+            .map((transaction) => transaction.totalAmount!)
+            .fold(0, (prev, curr) => prev + curr);
+
+        print("-0=-=-=-=-=- $totalAmountType1");
+        chartData.add(
+          SalesData(DateTime(element.year!), totalAmountType1),
+        );
+        update();
+
+        // chart = [
+        //   SalesData(DateTime(element.year!), totalAmountType1),
+        // ];
+      }
+
+      update();
+    }
+  }
   // saleListOFChart() async {
   //   var res = await httpClient().get(StaticValues.getYearTrasaction);
   //   if (res.statusCode == 200) {
@@ -327,44 +359,44 @@ class HomeController extends GetxController {
   //   }
   // }
 
-  // expenseList(int type) async {
-  //   DateTime a = DateTime.now();
-  //   var res = await httpClient()
-  //       .get("${StaticValues.getSalePurchaseType}$type/${a.year}");
-  //   if (res.statusCode == 200) {
-  //     if (type == 2) {
-  //       expensedata.clear();
-  //     } else if (type == 0) {
-  //       purchasedata.clear();
-  //     } else if (type == 1) {
-  //       saledatalist.clear();
-  //     }
-  //     GetSalePurhase salepurchasemodel = GetSalePurhase.fromMap(res.data);
-  //     for (int i = 0; i < salepurchasemodel.data!.length; i++) {
-  //       var e = salepurchasemodel.data![i];
-  //       if (type == 2) {
-  //         expensedata.add(
-  //           Chartdata(convertToAbbreviatedMonth(i + 1), e),
-  //         );
-  //         update();
-  //       } else if (type == 0) {
-  //         purchasedata.add(
-  //           Chartdata(convertToAbbreviatedMonth(i + 1), e),
-  //         );
-  //         update();
-  //       } else if (type == 1) {
-  //         saledatalist.add(
-  //           Chartdata(convertToAbbreviatedMonth(i + 1), e),
-  //         );
-  //         update();
-  //       }
-  //       update();
-  //     }
-  //     print("purchase ${purchasedata.length}");
-  //     print("expense ${expensedata.length}");
-  //     print("sale ${saledatalist.length}");
-  //   }
-  // }
+  expenseList(int type) async {
+    DateTime a = DateTime.now();
+    var res = await httpClient()
+        .get("${StaticValues.getSalePurchaseType}$type/${a.year}");
+    if (res.statusCode == 200) {
+      if (type == 2) {
+        expensedata.clear();
+      } else if (type == 0) {
+        purchasedata.clear();
+      } else if (type == 1) {
+        saledatalist.clear();
+      }
+      GetSalePurhase salepurchasemodel = GetSalePurhase.fromMap(res.data);
+      for (int i = 0; i < salepurchasemodel.data!.length; i++) {
+        var e = salepurchasemodel.data![i];
+        if (type == 2) {
+          expensedata.add(
+            Chartdata(convertToAbbreviatedMonth(i + 1), e),
+          );
+          update();
+        } else if (type == 0) {
+          purchasedata.add(
+            Chartdata(convertToAbbreviatedMonth(i + 1), e),
+          );
+          update();
+        } else if (type == 1) {
+          saledatalist.add(
+            Chartdata(convertToAbbreviatedMonth(i + 1), e),
+          );
+          update();
+        }
+        update();
+      }
+      print("purchase ${purchasedata.length}");
+      print("expense ${expensedata.length}");
+      print("sale ${saledatalist.length}");
+    }
+  }
 
   List<sp.Data> expenseData = [];
   List<sp.Data> purchaseData = [];

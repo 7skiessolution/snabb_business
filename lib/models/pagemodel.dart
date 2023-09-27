@@ -23,11 +23,11 @@ List<Pages> list = [
     title: "Trasactions",
     ontap: () {},
   ),
-  Pages(
-    icon: Icons.pie_chart_outline,
-    title: "Budget",
-    ontap: () {},
-  ),
+  // Pages(
+  //   icon: Icons.pie_chart_outline,
+  //   title: "Budget",
+  //   ontap: () {},
+  // ),
   Pages(
     icon: Icons.calendar_month,
     title: "Calender",

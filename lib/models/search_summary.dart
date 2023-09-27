@@ -61,86 +61,101 @@ class SearchSummary {
 }
 
 class Data {
-  String? name;
-  double? amount;
-  String? note;
-  String? dateTime;
-  String? files;
-  int? type;
-  String? currency;
   String? transactionId;
-  String? categoryImageUrl;
-  String? categoryName;
+  String? name;
+  double? cashAmount;
+  double? bankAmount;
+  double? otherAmount;
+  double? totalAmount;
+  String? note;
+  int? type;
+  String? dateTime;
+  Details? details;
+  String? currency;
+  String? file;
   Data({
-    this.name,
-    this.amount,
-    this.note,
-    this.dateTime,
-    this.files,
-    this.type,
-    this.currency,
     this.transactionId,
-    this.categoryImageUrl,
-    this.categoryName,
+    this.name,
+    this.cashAmount,
+    this.bankAmount,
+    this.otherAmount,
+    this.totalAmount,
+    this.note,
+    this.type,
+    this.dateTime,
+    this.details,
+    this.currency,
+    this.file,
   });
 
   Data copyWith({
-    String? name,
-    double? amount,
-    String? note,
-    String? dateTime,
-    String? files,
-    int? type,
-    String? currency,
     String? transactionId,
-    String? categoryImageUrl,
-    String? categoryName,
+    String? name,
+    double? cashAmount,
+    double? bankAmount,
+    double? otherAmount,
+    double? totalAmount,
+    String? note,
+    int? type,
+    String? dateTime,
+    Details? details,
+    String? currency,
+    String? file,
   }) {
     return Data(
-      name: name ?? this.name,
-      amount: amount ?? this.amount,
-      note: note ?? this.note,
-      dateTime: dateTime ?? this.dateTime,
-      files: files ?? this.files,
-      type: type ?? this.type,
-      currency: currency ?? this.currency,
       transactionId: transactionId ?? this.transactionId,
-      categoryImageUrl: categoryImageUrl ?? this.categoryImageUrl,
-      categoryName: categoryName ?? this.categoryName,
+      name: name ?? this.name,
+      cashAmount: cashAmount ?? this.cashAmount,
+      bankAmount: bankAmount ?? this.bankAmount,
+      otherAmount: otherAmount ?? this.otherAmount,
+      totalAmount: totalAmount ?? this.totalAmount,
+      note: note ?? this.note,
+      type: type ?? this.type,
+      dateTime: dateTime ?? this.dateTime,
+      details: details ?? this.details,
+      currency: currency ?? this.currency,
+      file: file ?? this.file,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'name': name,
-      'amount': amount,
-      'note': note,
-      'dateTime': dateTime,
-      'files': files,
-      'type': type,
-      'currency': currency,
       'transactionId': transactionId,
-      'categoryImageUrl': categoryImageUrl,
-      'categoryName': categoryName,
+      'name': name,
+      'cashAmount': cashAmount,
+      'bankAmount': bankAmount,
+      'otherAmount': otherAmount,
+      'totalAmount': totalAmount,
+      'note': note,
+      'type': type,
+      'dateTime': dateTime,
+      'details': details?.toMap(),
+      'currency': currency,
+      'file': file,
     };
   }
 
   factory Data.fromMap(Map<String, dynamic> map) {
     return Data(
-      name: map['name'] != null ? map['name'] as String : null,
-      amount: map['amount'] != null ? map['amount'] as double : null,
-      note: map['note'] != null ? map['note'] as String : null,
-      dateTime: map['dateTime'] != null ? map['dateTime'] as String : null,
-      files: map['files'] != null ? map['files'] as String : null,
-      type: map['type'] != null ? map['type'] as int : null,
-      currency: map['currency'] != null ? map['currency'] as String : null,
       transactionId:
           map['transactionId'] != null ? map['transactionId'] as String : null,
-      categoryImageUrl: map['categoryImageUrl'] != null
-          ? map['categoryImageUrl'] as String
+      name: map['name'] != null ? map['name'] as String : null,
+      cashAmount:
+          map['cashAmount'] != null ? map['cashAmount'] as double : null,
+      bankAmount:
+          map['bankAmount'] != null ? map['bankAmount'] as double : null,
+      otherAmount:
+          map['otherAmount'] != null ? map['otherAmount'] as double : null,
+      totalAmount:
+          map['totalAmount'] != null ? map['totalAmount'] as double : null,
+      note: map['note'] != null ? map['note'] as String : null,
+      type: map['type'] != null ? map['type'] as int : null,
+      dateTime: map['dateTime'] != null ? map['dateTime'] as String : null,
+      details: map['details'] != null
+          ? Details.fromMap(map['details'] as Map<String, dynamic>)
           : null,
-      categoryName:
-          map['categoryName'] != null ? map['categoryName'] as String : null,
+      currency: map['currency'] != null ? map['currency'] as String : null,
+      file: map['file'] != null ? map['file'] as String : null,
     );
   }
 
@@ -151,36 +166,91 @@ class Data {
 
   @override
   String toString() {
-    return 'Data(name: $name, amount: $amount, note: $note, dateTime: $dateTime, files: $files, type: $type, currency: $currency, transactionId: $transactionId, categoryImageUrl: $categoryImageUrl, categoryName: $categoryName)';
+    return 'Data(transactionId: $transactionId, name: $name, cashAmount: $cashAmount, bankAmount: $bankAmount, otherAmount: $otherAmount, totalAmount: $totalAmount, note: $note, type: $type, dateTime: $dateTime, details: $details, currency: $currency, file: $file)';
   }
 
   @override
   bool operator ==(covariant Data other) {
     if (identical(this, other)) return true;
 
-    return other.name == name &&
-        other.amount == amount &&
+    return other.transactionId == transactionId &&
+        other.name == name &&
+        other.cashAmount == cashAmount &&
+        other.bankAmount == bankAmount &&
+        other.otherAmount == otherAmount &&
+        other.totalAmount == totalAmount &&
         other.note == note &&
-        other.dateTime == dateTime &&
-        other.files == files &&
         other.type == type &&
+        other.dateTime == dateTime &&
+        other.details == details &&
         other.currency == currency &&
-        other.transactionId == transactionId &&
-        other.categoryImageUrl == categoryImageUrl &&
-        other.categoryName == categoryName;
+        other.file == file;
   }
 
   @override
   int get hashCode {
-    return name.hashCode ^
-        amount.hashCode ^
+    return transactionId.hashCode ^
+        name.hashCode ^
+        cashAmount.hashCode ^
+        bankAmount.hashCode ^
+        otherAmount.hashCode ^
+        totalAmount.hashCode ^
         note.hashCode ^
-        dateTime.hashCode ^
-        files.hashCode ^
         type.hashCode ^
+        dateTime.hashCode ^
+        details.hashCode ^
         currency.hashCode ^
-        transactionId.hashCode ^
-        categoryImageUrl.hashCode ^
-        categoryName.hashCode;
+        file.hashCode;
   }
+}
+
+class Details {
+  String? imageUrl;
+  String? category;
+  Details({
+    this.imageUrl,
+    this.category,
+  });
+
+  Details copyWith({
+    String? imageUrl,
+    String? category,
+  }) {
+    return Details(
+      imageUrl: imageUrl ?? this.imageUrl,
+      category: category ?? this.category,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'imageUrl': imageUrl,
+      'category': category,
+    };
+  }
+
+  factory Details.fromMap(Map<String, dynamic> map) {
+    return Details(
+      imageUrl: map['imageUrl'] != null ? map['imageUrl'] as String : null,
+      category: map['category'] != null ? map['category'] as String : null,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory Details.fromJson(String source) =>
+      Details.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() => 'Details(imageUrl: $imageUrl, category: $category)';
+
+  @override
+  bool operator ==(covariant Details other) {
+    if (identical(this, other)) return true;
+
+    return other.imageUrl == imageUrl && other.category == category;
+  }
+
+  @override
+  int get hashCode => imageUrl.hashCode ^ category.hashCode;
 }

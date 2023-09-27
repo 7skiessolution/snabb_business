@@ -80,7 +80,7 @@ class _PreferencesState extends State<Preferences> {
                     elevation: 10,
                     shadowColor: Colors.blue[900],
                     child: Container(
-                      height: height * 0.5,
+                      height: height * 0.4,
                       width: width * 0.9,
                       color: white,
                       child: ListView.builder(

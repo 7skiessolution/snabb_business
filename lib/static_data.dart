@@ -25,7 +25,7 @@ class StaticValues {
   static const changePassword = 'UserApi/ChangeUserPassword';
   // static const getDailyTrasaction = 'Transaction/GetDayWiseTransactions';
   // static const getMonthTrasaction = 'Transaction/GetMonthWiseTransactions';
-  // static const getYearTrasaction = 'Transaction/GetYearWiseTransactions';
+  static const getYearTrasaction = 'Transaction/GetYearWiseTransactions';
   static const deleteTrasaction = 'Transaction/Delete/';
   //static const getAllRecycleTrasaction = 'Transaction/GetDeletedTransactions';
   static const getTransactionstype = "Transaction/GetTransactions";
@@ -37,7 +37,8 @@ class StaticValues {
   static const updatedebitcredit = "DebitCredit/Update";
   static const deletedebitcredit = "DebitCredit/Delete";
   static const addcscheduleTransaction = "Transaction/AddSceduleTransaction";
-  // static const getSalePurchaseType = "Wallet/GetMonthWiseSalePurchaseExpense/";
+  static const getSalePurchaseType =
+      "Transaction/GetMonthWiseSalePurchaseExpense/";
   // static const getSaledatatype = "Transaction/GetYearTransactions/";
   static const getscheduleTransaction =
       "Transaction/GetAllScheduleTransactions";

@@ -86,7 +86,6 @@ class Data {
     this.file,
     this.category,
   });
- 
 
   Data copyWith({
     String? name,
@@ -139,9 +138,11 @@ class Data {
       note: map['note'] != null ? map['note'] as String : null,
       dateTime: map['dateTime'] != null ? map['dateTime'] as String : null,
       type: map['type'] != null ? map['type'] as int : null,
-      partialAmount: map['partialAmount'] != null ? map['partialAmount'] as double : null,
+      partialAmount:
+          map['partialAmount'] != null ? map['partialAmount'] as double : null,
       currency: map['currency'] != null ? map['currency'] as String : null,
-      paymentType: map['paymentType'] != null ? map['paymentType'] as int : null,
+      paymentType:
+          map['paymentType'] != null ? map['paymentType'] as int : null,
       imageUrl: map['imageUrl'] != null ? map['imageUrl'] as String : null,
       file: map['file'] != null ? map['file'] as String : null,
       category: map['category'] != null ? map['category'] as String : null,
@@ -150,7 +151,8 @@ class Data {
 
   String toJson() => json.encode(toMap());
 
-  factory Data.fromJson(String source) => Data.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Data.fromJson(String source) =>
+      Data.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -160,33 +162,32 @@ class Data {
   @override
   bool operator ==(covariant Data other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.name == name &&
-      other.amount == amount &&
-      other.note == note &&
-      other.dateTime == dateTime &&
-      other.type == type &&
-      other.partialAmount == partialAmount &&
-      other.currency == currency &&
-      other.paymentType == paymentType &&
-      other.imageUrl == imageUrl &&
-      other.file == file &&
-      other.category == category;
+
+    return other.name == name &&
+        other.amount == amount &&
+        other.note == note &&
+        other.dateTime == dateTime &&
+        other.type == type &&
+        other.partialAmount == partialAmount &&
+        other.currency == currency &&
+        other.paymentType == paymentType &&
+        other.imageUrl == imageUrl &&
+        other.file == file &&
+        other.category == category;
   }
 
   @override
   int get hashCode {
     return name.hashCode ^
-      amount.hashCode ^
-      note.hashCode ^
-      dateTime.hashCode ^
-      type.hashCode ^
-      partialAmount.hashCode ^
-      currency.hashCode ^
-      paymentType.hashCode ^
-      imageUrl.hashCode ^
-      file.hashCode ^
-      category.hashCode;
+        amount.hashCode ^
+        note.hashCode ^
+        dateTime.hashCode ^
+        type.hashCode ^
+        partialAmount.hashCode ^
+        currency.hashCode ^
+        paymentType.hashCode ^
+        imageUrl.hashCode ^
+        file.hashCode ^
+        category.hashCode;
   }
 }

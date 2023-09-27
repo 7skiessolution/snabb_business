@@ -3,10 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/controller/homeController.dart';
+import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/colors.dart';
+import 'package:dio/dio.dart' as deo;
+import 'package:path/path.dart';
 
 class PurchaseController extends GetxController {
   static PurchaseController get to => Get.find();
@@ -26,6 +31,8 @@ class PurchaseController extends GetxController {
   bool company = true;
   String supplierid = '';
   String supplierName = '';
+  XFile? pickImage;
+  String pathFile = "";
   Future<void> showPaidDilogue(
       BuildContext context, double height, double width) {
     return showDialog(
@@ -1459,5 +1466,69 @@ class PurchaseController extends GetxController {
         });
       },
     );
+  }
+
+  Future addPurchaseTransaction(
+      String name,
+      String note,
+      num amount,
+      num partialamount,
+      String datetime,
+      int type,
+      int iscash,
+      String catId,
+      String currency,
+      String walletId) async {
+    String result;
+
+    try {
+      print("image file ${pickImage!.path}");
+      deo.FormData data = pathFile.isEmpty
+          ? deo.FormData.fromMap({
+              "Name": name,
+              "Amount": amount,
+              "PartialAmount": partialamount,
+              "Note": note,
+              "DateTime": datetime,
+              "Type": type,
+              "PaymentType": iscash,
+              "CategoryId": catId,
+              "Currency": currency,
+              "WalletId": walletId
+            })
+          : deo.FormData.fromMap({
+              "Name": name,
+              "Amount": amount,
+              "PartialAmount": partialamount,
+              "Note": note,
+              "DateTime": datetime,
+              "Type": type,
+              "PaymentType": iscash,
+              "File": await deo.MultipartFile.fromFile(
+                pickImage!.path,
+                filename: basename(pickImage!.path),
+              ),
+              "CategoryId": catId,
+              "Currency": currency,
+              "WalletId": walletId
+            });
+
+      var response = await httpFormDataClient()
+          .post(StaticValues.addTransaction, data: data);
+
+      print(response.statusCode);
+      print(response.data);
+      if (response.statusCode == 200) {
+        print("Response status Cose ${response.statusCode}");
+        if (response.data != null) {
+          print(".................${response.data}........");
+        }
+      }
+      return response.data;
+    } catch (e) {
+      print("Exception = $e");
+    }
+    pathFile = "";
+    update();
   }
 }

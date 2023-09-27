@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/controller/homeController.dart';
-import 'package:snabb_business/controller/purchaseController.dart';
+import 'package:snabb_business/screen/purchase/purchaseController.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/colors.dart';

@@ -155,7 +155,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                   ],
                                 ),
                                 InkWell(
-                                  onTap: () => obj.addCatagory(context),
+                                  onTap: () => obj.selectDate(context),
                                   child: SizedBox(
                                     height: height * 0.06,
                                     width: width * 0.9,
@@ -412,8 +412,9 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        if (_formKey.currentState!
-                                            .validate()) {}
+                                        if (_formKey.currentState!.validate()) {
+                                          obj.postexpense();
+                                        }
                                       },
                                       child: Card(
                                         child: Container(

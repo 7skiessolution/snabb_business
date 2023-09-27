@@ -1082,7 +1082,7 @@ class ExpenseController extends GetxController {
     }
   }
 
-  postpurchase() async {
+  postexpense() async {
     try {
       if (formatTime != "Pick Date") {
         if (selectedCateory != null) {
@@ -1096,18 +1096,18 @@ class ExpenseController extends GetxController {
                   "Note": particular.text,
                   "DateTime": formatTime,
                   "Currency": HomeController.to.curency,
-                  // "CategoryId": selectedCateory.,
+                  "CategoryId": selectedCateory!.categoryId,
                 })
               : dio.FormData.fromMap({
                   "Name": "Purchase",
                   "CashAmount": double.tryParse(cashamount.text) ?? 0.0,
                   "BankAmount": double.tryParse(bankamount.text) ?? 0.0,
                   "OtherAmount": double.tryParse(otheramount.text) ?? 0.0,
+                  "TotalAmount": double.tryParse(expenseAmount.text) ?? 0.0,
                   "Note": particular.text,
                   "DateTime": formatTime,
                   "Currency": HomeController.to.curency,
-                  // "SupplierId": supplierid,
-                  // "SaleMethod": supplierName == "Individual" ? 0 : 1,
+                  "CategoryId": selectedCateory!.categoryId,
                   "File": await dio.MultipartFile.fromFile(
                     TransactionController.to.compressedFile!.path,
                     filename:
@@ -1141,6 +1141,7 @@ class ExpenseController extends GetxController {
     expenseAmount.clear();
     particular.clear();
     company = true;
+    selectedCateory = null;
     formatTime = "Pick Date";
     update();
   }

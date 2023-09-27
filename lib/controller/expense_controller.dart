@@ -1,18 +1,18 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'dart:developer';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
+import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/screen/expense/expenseModel.dart' as em;
 import 'package:path/path.dart';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/colors.dart';
-import 'package:dio/dio.dart' as deo;
+import 'package:dio/dio.dart' as dio;
 
 class ExpenseController extends GetxController {
   static ExpenseController get to => Get.find();
@@ -26,6 +26,7 @@ class ExpenseController extends GetxController {
   bool company = true;
   String selectedImagePath = "";
   em.Data? selectedCateory;
+  String formatTime = "Pick Date";
 
   List<String> categoriespath = [
     "assets/businessicons/entertainment.png",
@@ -879,7 +880,7 @@ class ExpenseController extends GetxController {
                                                                                 width * 0.1,
                                                                             decoration: selectedImagePath == ""
                                                                                 ? BoxDecoration(shape: BoxShape.circle, color: Colors.blue[900])
-                                                                                : BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: AssetImage(selectedImagePath!))),
+                                                                                : BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: AssetImage(selectedImagePath))),
                                                                           ),
                                                                           SizedBox(
                                                                             width:
@@ -1053,5 +1054,94 @@ class ExpenseController extends GetxController {
         });
       },
     );
+  }
+
+  void showtoast(String msg) {
+    Fluttertoast.showToast(
+        msg: msg,
+        backgroundColor: Colors.blue[900],
+        textColor: Colors.white,
+        gravity: ToastGravity.BOTTOM,
+        fontSize: 17,
+        timeInSecForIosWeb: 1,
+        toastLength: Toast.LENGTH_LONG);
+  }
+
+  Future<void> selectDate(
+    BuildContext context,
+  ) async {
+    final DateTime? selectedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    if (selectedDate != null) {
+      formatTime = DateFormat("dd-MM-yyyy").format(selectedDate);
+    }
+  }
+
+  postpurchase() async {
+    try {
+      if (formatTime != "Pick Date") {
+        if (selectedCateory != null) {
+          dio.FormData data = TransactionController.to.pathFile.isEmpty
+              ? dio.FormData.fromMap({
+                  "Name": "Purchase",
+                  "CashAmount": double.tryParse(cashamount.text) ?? 0.0,
+                  "BankAmount": double.tryParse(bankamount.text) ?? 0.0,
+                  "OtherAmount": double.tryParse(otheramount.text) ?? 0.0,
+                  "TotalAmount": double.tryParse(expenseAmount.text) ?? 0.0,
+                  "Note": particular.text,
+                  "DateTime": formatTime,
+                  "Currency": HomeController.to.curency,
+                  // "CategoryId": selectedCateory.,
+                })
+              : dio.FormData.fromMap({
+                  "Name": "Purchase",
+                  "CashAmount": double.tryParse(cashamount.text) ?? 0.0,
+                  "BankAmount": double.tryParse(bankamount.text) ?? 0.0,
+                  "OtherAmount": double.tryParse(otheramount.text) ?? 0.0,
+                  "Note": particular.text,
+                  "DateTime": formatTime,
+                  "Currency": HomeController.to.curency,
+                  // "SupplierId": supplierid,
+                  // "SaleMethod": supplierName == "Individual" ? 0 : 1,
+                  "File": await dio.MultipartFile.fromFile(
+                    TransactionController.to.compressedFile!.path,
+                    filename:
+                        basename(TransactionController.to.compressedFile!.path),
+                  ),
+                });
+          print(data.fields.toString());
+          dio.Response res = await httpFormDataClient()
+              .post(StaticValues.addExpence, data: data);
+          if (res.statusCode == 200) {
+            showtoast(res.data["status"]);
+            TransactionController.to.pathFile = "";
+            clearAndInitializeControllers();
+          }
+        } else {
+          showtoast("Please Select Category !");
+        }
+      } else {
+        showtoast("Please Enter Date !");
+      }
+    } on Exception catch (e) {
+      print(e);
+      // TODO
+    }
+  }
+
+  void clearAndInitializeControllers() {
+    bankamount.clear();
+    cashamount.clear();
+    otheramount.clear();
+    expenseAmount.clear();
+    particular.clear();
+    company = true;
+    formatTime = "Pick Date";
+    update();
   }
 }

@@ -50,7 +50,7 @@ class StaticValues {
   static const updateCompany = "Company/UpdateCompany/";
   ///////////////////////////////Suppliers//////////////////////////////////
   static const addSupplier = "Supplier/AddSupplier";
-  static const getSupplierList = "Supplier/GetCompanies";
+  static const getSupplierList = "Supplier/GetSuppliers";
   static const deleteSupplier = "Supplier/DeleteSupplier/";
   static const updateSuplier = "Supplier/UpdateSupplier/";
   ///////////////////////////////sale//////////////////////////////////////

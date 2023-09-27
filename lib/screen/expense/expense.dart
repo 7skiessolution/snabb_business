@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:snabb_business/controller/expense_controller.dart';
-import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/colors.dart';
@@ -20,47 +17,13 @@ class ExpenseScreen extends StatefulWidget {
 
 class _ExpenseScreenState extends State<ExpenseScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _dueDateController = TextEditingController();
-  String? selectedimage;
-  DateTime _dueDate = DateTime.now();
-  String formatTime = "Pick Date";
-  String? maingetimage;
   bool isLoading = false;
   var height, width;
 
-  void showtoast(String msg) {
-    Fluttertoast.showToast(
-        msg: msg,
-        backgroundColor: Colors.blue[900],
-        textColor: Colors.white,
-        gravity: ToastGravity.BOTTOM,
-        fontSize: 17,
-        timeInSecForIosWeb: 1,
-        toastLength: Toast.LENGTH_LONG);
-  }
-
-  Future<void> _selectDate(BuildContext context,
-      TextEditingController controller, DateTime initialDate) async {
-    final DateTime? selectedDate = await showDatePicker(
-      context: context,
-      initialDate: initialDate,
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
-    );
-
-    if (selectedDate != null) {
-      setState(() {
-        controller.text = DateFormat("dd-MM-yyyy").format(selectedDate);
-        formatTime = controller.text;
-        if (controller == _dueDateController) {
-          _dueDate = selectedDate;
-        }
-      });
-    }
-  }
-
   @override
   void initState() {
+    Get.put(ExpenseController());
+    Get.put(TransactionController());
     ExpenseController.to.clearData();
     super.initState();
   }
@@ -72,99 +35,98 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
 
     return KeyboardVisibilityBuilder(builder: (context, visible) {
       return GetBuilder<ExpenseController>(builder: (obj) {
-        return SafeArea(
-          child: Form(
-            key: _formKey,
-            child: Scaffold(
-              resizeToAvoidBottomInset: false,
-              backgroundColor: Colors.grey[100],
-              body: SizedBox(
+        return Form(
+          key: _formKey,
+          child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            backgroundColor: Colors.grey[100],
+            body: SafeArea(
+              child: SizedBox(
                 height: height,
                 width: width,
-                child: SingleChildScrollView(
-                  child: Stack(children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: height * 0.01),
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: Card(
-                          elevation: 10,
-                          child: SizedBox(
-                              height: height * 0.06,
-                              width: width * 0.8,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    InkWell(
-                                        onTap: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child:
-                                            const Icon(Icons.arrow_back_ios)),
-                                    Expanded(
-                                      child: Container(
-                                        height: height,
-                                        width: width,
-                                        alignment: Alignment.center,
-                                        child: const Text(
-                                          "Expense",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        ),
+                child: Stack(children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: height * 0.01),
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: Card(
+                        elevation: 10,
+                        child: SizedBox(
+                            height: height * 0.06,
+                            width: width * 0.8,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Icon(Icons.arrow_back_ios)),
+                                  Expanded(
+                                    child: Container(
+                                      height: height,
+                                      width: width,
+                                      alignment: Alignment.center,
+                                      child: const Text(
+                                        "Expense",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ),
-                                  ],
-                                ),
-                              )),
-                        ),
+                                  ),
+                                ],
+                              ),
+                            )),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: height * 0.08),
-                      child: SizedBox(
-                        height: height * 0.12,
-                        width: width,
-                        child: Stack(
-                          children: [
-                            Container(
-                              height: height * 0.12,
-                              width: width,
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage("images/dollar.jpg"))),
-                            ),
-                            Container(
-                              height: height * 0.12,
-                              width: width,
-                              color: Colors.blue[900]!.withOpacity(0.9),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 15.0, left: 20, right: 20),
-                                child: Text(
-                                  "New Entry",
-                                  style: TextStyle(
-                                      color: white,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: height * 0.08),
+                    child: SizedBox(
+                      height: height * 0.12,
+                      width: width,
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: height * 0.12,
+                            width: width,
+                            decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage("images/dollar.jpg"))),
+                          ),
+                          Container(
+                            height: height * 0.12,
+                            width: width,
+                            color: Colors.blue[900]!.withOpacity(0.9),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 15.0, left: 20, right: 20),
+                              child: Text(
+                                "New Entry",
+                                style: TextStyle(
+                                    color: white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: height * 0.13),
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: Card(
-                          elevation: 10,
-                          shadowColor: Colors.blue[900],
-                          child: SizedBox(
-                            height: height * 0.81,
-                            width: width * 0.95,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: height * 0.13),
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: Card(
+                        elevation: 10,
+                        shadowColor: Colors.blue[900],
+                        child: SizedBox(
+                          height: height * 0.81,
+                          width: width * 0.95,
+                          child: SingleChildScrollView(
                             child: Column(
                               children: [
                                 SizedBox(
@@ -193,8 +155,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                   ],
                                 ),
                                 InkWell(
-                                  onTap: () => _selectDate(
-                                      context, _dueDateController, _dueDate),
+                                  onTap: () => obj.selectDate(context),
                                   child: SizedBox(
                                     height: height * 0.06,
                                     width: width * 0.9,
@@ -211,7 +172,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                             width: width * 0.05,
                                           ),
                                           Text(
-                                            formatTime,
+                                            obj.formatTime,
                                             style: const TextStyle(
                                               fontWeight: FontWeight.w700,
                                             ),
@@ -323,15 +284,25 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                           child: SizedBox(
                                             width: width,
                                             height: height,
-                                            child: TextFormField(
-                                              enabled: false,
-                                              controller: obj.expenseAmount,
-                                              decoration: InputDecoration(
-                                                labelText: 'Balance',
-                                                labelStyle: TextStyle(
-                                                    fontSize: 14,
-                                                    color: lightgray),
-                                              ),
+                                            child: IgnorePointer(
+                                              child: TextFormField(
+                                                  controller: obj.expenseAmount,
+                                                  decoration: InputDecoration(
+                                                    labelText: 'Balance',
+                                                    labelStyle: TextStyle(
+                                                        fontSize: 14,
+                                                        color: lightgray),
+                                                  ),
+                                                  autovalidateMode:
+                                                      AutovalidateMode
+                                                          .onUserInteraction,
+                                                  validator: (value) {
+                                                    if (value!.isEmpty) {
+                                                      return "Please Enter Balance";
+                                                    } else {
+                                                      return null;
+                                                    }
+                                                  }),
                                             ),
                                           ),
                                         ),
@@ -441,8 +412,9 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        if (_formKey.currentState!
-                                            .validate()) {}
+                                        if (_formKey.currentState!.validate()) {
+                                          obj.postexpense();
+                                        }
                                       },
                                       child: Card(
                                         child: Container(
@@ -470,9 +442,9 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                           ),
                         ),
                       ),
-                    )
-                  ]),
-                ),
+                    ),
+                  )
+                ]),
               ),
             ),
           ),

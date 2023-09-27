@@ -138,8 +138,8 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                     left: width * 0.05, right: width * 0.05),
                                 child: GetBuilder<AddDebitController>(
                                     initState: (state) {
-                                  AddDebitController.to
-                                      .getCatagoriesdata("income");
+                                  // AddDebitController.to
+                                  //     .getCatagoriesdata("income");
                                 }, builder: (obj) {
                                   return SizedBox(
                                     child: SingleChildScrollView(

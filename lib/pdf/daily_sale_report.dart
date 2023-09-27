@@ -54,137 +54,143 @@ class _DailySaleReportState extends State<DailySaleReport> {
           ),
         ),
       ),
-      pw.Row(children: [
-        pw.Container(
-          height: 25,
-          width: 70,
-          color: p.PdfColors.green,
-          child: pw.Align(
-            alignment: pw.Alignment.center,
-            child: pw.Text(
-              'Date',
-              style: pw.TextStyle(
-                  fontSize: 9,
-                  fontWeight: pw.FontWeight.bold,
-                  color: p.PdfColors.white),
-            ),
-          ),
-        ),
-        pw.Container(
-          height: 25,
-          width: 50,
-          color: p.PdfColors.green,
-          child: pw.Center(
-            child: pw.Text(
-              'No #',
-              style: pw.TextStyle(
-                  fontSize: 9,
-                  fontWeight: pw.FontWeight.bold,
-                  color: p.PdfColors.white),
-            ),
-          ),
-        ),
-        pw.Container(
-          height: 25,
-          width: 50,
-          color: p.PdfColors.green,
-          child: pw.Center(
-            child: pw.Text(
-              'OnCash',
-              style: pw.TextStyle(
-                  fontSize: 9,
-                  fontWeight: pw.FontWeight.bold,
-                  color: p.PdfColors.white),
-            ),
-          ),
-        ),
-        pw.Container(
-          height: 25,
-          width: 50,
-          color: p.PdfColors.green,
-          child: pw.Center(
-            child: pw.Text(
-              'OnBank',
-              style: pw.TextStyle(
-                  fontSize: 9,
-                  fontWeight: pw.FontWeight.bold,
-                  color: p.PdfColors.white),
-            ),
-          ),
-        ),
-        pw.Container(
-          height: 25,
-          width: 50,
-          color: p.PdfColors.green,
-          child: pw.Center(
-            child: pw.Text(
-              'Other',
-              style: pw.TextStyle(
-                  fontSize: 9,
-                  fontWeight: pw.FontWeight.bold,
-                  color: p.PdfColors.white),
-            ),
-          ),
-        ),
-        pw.Container(
-          height: 25,
-          width: 50,
-          color: p.PdfColors.green,
-          child: pw.Center(
-            child: pw.Text(
-              'Credit Transaction',
-              textAlign: pw.TextAlign.center,
-              style: pw.TextStyle(
-                  fontSize: 9,
-                  fontWeight: pw.FontWeight.bold,
-                  color: p.PdfColors.white),
-            ),
-          ),
-        ),
-        pw.Container(
-          height: 25,
-          width: 50,
-          color: p.PdfColors.green,
-          child: pw.Center(
-            child: pw.Text(
-              'Total',
-              style: pw.TextStyle(
-                  fontSize: 9,
-                  fontWeight: pw.FontWeight.bold,
-                  color: p.PdfColors.white),
-            ),
-          ),
-        ),
-        pw.Container(
-          height: 25,
-          width: 50,
-          color: p.PdfColors.green,
-          child: pw.Center(
-            child: pw.Text(
-              'Balance',
-              style: pw.TextStyle(
-                  fontSize: 9,
-                  fontWeight: pw.FontWeight.bold,
-                  color: p.PdfColors.white),
-            ),
-          ),
-        ),
-        pw.Container(
-          height: 25,
-          width: 75,
-          color: p.PdfColors.green,
-          child: pw.Center(
-            child: pw.Text(
-              'Return Date',
-              textAlign: pw.TextAlign.center,
-              style: pw.TextStyle(
-                  fontSize: 9,
-                  fontWeight: pw.FontWeight.bold,
-                  color: p.PdfColors.white),
-            ),
-          ),
-        ),
-      ]),
+      pw.Table(
+          border: pw.TableBorder.all(color: p.PdfColors.grey, width: 1),
+          children: [
+            pw.TableRow(
+                verticalAlignment: pw.TableCellVerticalAlignment.middle,
+                children: [
+                  pw.Container(
+                    height: 25,
+                    width: 100,
+                    color: p.PdfColors.red,
+                    child: pw.Align(
+                      alignment: pw.Alignment.center,
+                      child: pw.Text(
+                        'Date',
+                        style: pw.TextStyle(
+                            fontSize: 9,
+                            fontWeight: pw.FontWeight.bold,
+                            color: p.PdfColors.white),
+                      ),
+                    ),
+                  ),
+                  pw.Container(
+                    height: 25,
+                    width: 80,
+                    color: p.PdfColors.green,
+                    child: pw.Center(
+                      child: pw.Text(
+                        'No #',
+                        style: pw.TextStyle(
+                            fontSize: 9,
+                            fontWeight: pw.FontWeight.bold,
+                            color: p.PdfColors.white),
+                      ),
+                    ),
+                  ),
+                  pw.Container(
+                    height: 25,
+                    width: 80,
+                    color: p.PdfColors.green,
+                    child: pw.Center(
+                      child: pw.Text(
+                        'OnCash',
+                        style: pw.TextStyle(
+                            fontSize: 9,
+                            fontWeight: pw.FontWeight.bold,
+                            color: p.PdfColors.white),
+                      ),
+                    ),
+                  ),
+                  pw.Container(
+                    height: 25,
+                    width: 80,
+                    color: p.PdfColors.green,
+                    child: pw.Center(
+                      child: pw.Text(
+                        'OnBank',
+                        style: pw.TextStyle(
+                            fontSize: 9,
+                            fontWeight: pw.FontWeight.bold,
+                            color: p.PdfColors.white),
+                      ),
+                    ),
+                  ),
+                  pw.Container(
+                    height: 25,
+                    width: 80,
+                    color: p.PdfColors.green,
+                    child: pw.Center(
+                      child: pw.Text(
+                        'Other',
+                        style: pw.TextStyle(
+                            fontSize: 9,
+                            fontWeight: pw.FontWeight.bold,
+                            color: p.PdfColors.white),
+                      ),
+                    ),
+                  ),
+                  pw.Container(
+                    height: 25,
+                    width: 80,
+                    color: p.PdfColors.green,
+                    child: pw.Center(
+                      child: pw.Text(
+                        'Credit Transaction',
+                        textAlign: pw.TextAlign.center,
+                        style: pw.TextStyle(
+                            fontSize: 9,
+                            fontWeight: pw.FontWeight.bold,
+                            color: p.PdfColors.white),
+                      ),
+                    ),
+                  ),
+                  pw.Container(
+                    height: 25,
+                    width: 80,
+                    color: p.PdfColors.green,
+                    child: pw.Center(
+                      child: pw.Text(
+                        'Total',
+                        style: pw.TextStyle(
+                            fontSize: 9,
+                            fontWeight: pw.FontWeight.bold,
+                            color: p.PdfColors.white),
+                      ),
+                    ),
+                  ),
+                  pw.Container(
+                    height: 25,
+                    width: 80,
+                    color: p.PdfColors.green,
+                    child: pw.Center(
+                      child: pw.Text(
+                        'Balance',
+                        style: pw.TextStyle(
+                            fontSize: 9,
+                            fontWeight: pw.FontWeight.bold,
+                            color: p.PdfColors.white),
+                      ),
+                    ),
+                  ),
+                  pw.Container(
+                    height: 25,
+                    width: 100,
+                    color: p.PdfColors.purple,
+                    child: pw.Center(
+                      child: pw.Text(
+                        'Return Date',
+                        textAlign: pw.TextAlign.center,
+                        style: pw.TextStyle(
+                            fontSize: 9,
+                            fontWeight: pw.FontWeight.bold,
+                            color: p.PdfColors.white),
+                      ),
+                    ),
+                  ),
+                ]),
+          ]),
       pw.SizedBox(height: 10),
     ]));
 
@@ -199,7 +205,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                 children: [
                   pw.Container(
                     height: 25,
-                    width: 75,
+                    width: 100,
                     child: pw.Align(
                       alignment: pw.Alignment.center,
                       child: pw.Text(
@@ -213,7 +219,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                   ),
                   pw.Container(
                     height: 25,
-                    width: 60,
+                    width: 80,
                     child: pw.Center(
                       child: pw.Text(
                         '11223',
@@ -226,7 +232,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                   ),
                   pw.Container(
                     height: 20,
-                    width: 60,
+                    width: 80,
                     child: pw.Center(
                       child: pw.Text(
                         '12000',
@@ -252,7 +258,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                     )),
                   ),
                   pw.Container(
-                    width: 60,
+                    width: 80,
                     child: pw.Center(
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
@@ -266,7 +272,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                     )),
                   ),
                   pw.Container(
-                    width: 60,
+                    width: 80,
                     child: pw.Center(
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
@@ -280,7 +286,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                     )),
                   ),
                   pw.Container(
-                    width: 60,
+                    width: 80,
                     child: pw.Center(
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
@@ -294,7 +300,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                     )),
                   ),
                   pw.Container(
-                    width: 60,
+                    width: 80,
                     child: pw.Center(
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
@@ -308,7 +314,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                     )),
                   ),
                   pw.Container(
-                    width: 75,
+                    width: 100,
                     child: pw.Center(
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),

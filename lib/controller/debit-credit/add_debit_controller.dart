@@ -209,17 +209,17 @@ class AddDebitController extends GetxController {
     }
   }
 
-  Future getCatagoriesdata(type) async {
-    var res = await httpClient().get("${StaticValues.getCategories}$type");
-    // final a = jsonDecode(res.data as Map<String, dynamic>);
-    // print("model = ${res.data}");
-    model = GetCategoriesModel.fromJson(res.data);
-    update();
-    //  print("tocken id ${StaticValues.token}");
-    print("model he meda = $model");
-    catid = model!.data![0].categoryId;
-    update();
-  }
+  // Future getCatagoriesdata(type) async {
+  //   var res = await httpClient().get("${StaticValues.getCategories}$type");
+  //   // final a = jsonDecode(res.data as Map<String, dynamic>);
+  //   // print("model = ${res.data}");
+  //   model = GetCategoriesModel.fromJson(res.data);
+  //   update();
+  //   //  print("tocken id ${StaticValues.token}");
+  //   print("model he meda = $model");
+  //   catid = model!.data![0].categoryId;
+  //   update();
+  // }
 
   Future addDebit(String person, String note, num amount, String datetime,
       String backdate, int type, bool iscash, String catId) async {

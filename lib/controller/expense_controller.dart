@@ -1088,7 +1088,7 @@ class ExpenseController extends GetxController {
         if (selectedCateory != null) {
           dio.FormData data = TransactionController.to.pathFile.isEmpty
               ? dio.FormData.fromMap({
-                  "Name": "Purchase",
+                  "Name": "Expense",
                   "CashAmount": double.tryParse(cashamount.text) ?? 0.0,
                   "BankAmount": double.tryParse(bankamount.text) ?? 0.0,
                   "OtherAmount": double.tryParse(otheramount.text) ?? 0.0,
@@ -1099,7 +1099,7 @@ class ExpenseController extends GetxController {
                   "CategoryId": selectedCateory!.categoryId,
                 })
               : dio.FormData.fromMap({
-                  "Name": "Purchase",
+                  "Name": "Expense",
                   "CashAmount": double.tryParse(cashamount.text) ?? 0.0,
                   "BankAmount": double.tryParse(bankamount.text) ?? 0.0,
                   "OtherAmount": double.tryParse(otheramount.text) ?? 0.0,

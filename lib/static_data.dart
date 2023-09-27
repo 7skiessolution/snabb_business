@@ -47,9 +47,11 @@ class StaticValues {
   ///////////////////////////////Company//////////////////////////////////
   static const addCompany = "Company/AddCompany";
   static const getCompanyList = "Company/GetCompanies";
-  ///////////////////////////////Company//////////////////////////////////
+  static const deleteCompany = "Company/DeleteCompany/";
+  ///////////////////////////////Suppliers//////////////////////////////////
   static const addSupplier = "Supplier/AddSupplier";
   static const getSupplierList = "Supplier/GetCompanies";
+  static const deleteSupplier = "Supplier/DeleteSupplier/";
 
   static String apikey =
       "G8I8cS9Uyncyl0GIXHZfPIosrXnqyTwBZa4Z0utvWG5FrnTGdvxD482MFcDSJLjb8JAjZsqpt4SYyjj3VimcQXTKxcyXsQTjvTJVhRQ9rUDHVzIds2x88oLfFwDtpudS";

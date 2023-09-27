@@ -90,11 +90,9 @@ class HomeController extends GetxController {
   //   Navigator.pop(c);
   // }
   Future addCompanyData(Map<String, dynamic> model, BuildContext c) async {
-    print(model);
     changeStatus(true);
     var res = await httpClient().post(StaticValues.addCompany, data: model);
     if (res.statusCode == 200) {
-      print(res.data);
       changeStatus(false);
       getCompanydata();
     }
@@ -102,11 +100,9 @@ class HomeController extends GetxController {
   }
 
   Future addSupplierData(Map<String, dynamic> model, BuildContext c) async {
-    print(model);
     changeStatus(true);
     var res = await httpClient().post(StaticValues.addSupplier, data: model);
     if (res.statusCode == 200) {
-      print(res.data);
       changeStatus(false);
       getSupplierdata();
     }
@@ -117,6 +113,38 @@ class HomeController extends GetxController {
     var res = await httpClient().delete("${StaticValues.deleteWalletData}$id");
     if (res.statusCode == 200) {
       // getWalletdata();
+      Fluttertoast.showToast(
+          msg: res.data["status"],
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          gravity: ToastGravity.BOTTOM,
+          fontSize: 17,
+          timeInSecForIosWeb: 1,
+          toastLength: Toast.LENGTH_LONG);
+      update();
+    }
+  }
+
+  Future deleteCompanydata(String id, BuildContext c) async {
+    var res = await httpClient().delete("${StaticValues.deleteCompany}$id");
+    if (res.statusCode == 200) {
+      getCompanydata();
+      Fluttertoast.showToast(
+          msg: res.data["status"],
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          gravity: ToastGravity.BOTTOM,
+          fontSize: 17,
+          timeInSecForIosWeb: 1,
+          toastLength: Toast.LENGTH_LONG);
+      update();
+    }
+  }
+
+  Future deleteSupplierdata(String id, BuildContext c) async {
+    var res = await httpClient().delete("${StaticValues.deleteSupplier}$id");
+    if (res.statusCode == 200) {
+      getSupplierdata();
       Fluttertoast.showToast(
           msg: res.data["status"],
           backgroundColor: Colors.red,
@@ -155,25 +183,22 @@ class HomeController extends GetxController {
     if (supplierModel!.data != null) {
       for (var supplier in supplierModel!.data!) {
         supplierList.add(supplier);
-        print("supplierList ${supplierList.length}");
       }
-      print("supplierList ${supplierList.length}");
+
       isLoadData = false;
       update();
-    } else {
-      print("nodata ");
-    }
+    } else {}
   }
 
   Future getCatageries() async {
     // walletList.clear();\
-    print("catagoryModel ");
+
     ex.CatagoryModel? catagoryModel;
     isLoadData = true;
     var res = await httpClient().get(StaticValues.getCategories);
-    print("data----------- ${res.data}");
+
     catagoryModel = ex.CatagoryModel.fromMap(res.data);
-    print("catagoryModel ${companyModel!.data}");
+
     if (catagoryModel.data != null) {
       for (var catagory in catagoryModel.data!) {
         catagorylist.add(catagory);
@@ -181,9 +206,7 @@ class HomeController extends GetxController {
 
       isLoadData = false;
       update();
-    } else {
-      print("nodata ");
-    }
+    } else {}
   }
 
   @override

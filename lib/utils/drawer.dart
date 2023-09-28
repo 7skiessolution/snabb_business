@@ -18,6 +18,7 @@ import 'package:snabb_business/screen/drawerscreen/userProfile.dart';
 import 'package:snabb_business/screen/summary/summary_screen.dart';
 import 'package:snabb_business/screen/suppliers/suppliers.dart';
 import 'package:snabb_business/screen/transactions/transactionScreen.dart';
+import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/color.dart';
 import '../screen/drawerscreen/Preferences.dart';
 import '../screen/invoice/invoice.dart';
@@ -58,15 +59,29 @@ class DrawerScreen extends StatelessWidget {
                     Container(
                       width: 35,
                       height: 35,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle, color: Colors.green),
+                      decoration: HomeController
+                                      .to.profilemodel!.data!.imageUrl ==
+                                  "null" ||
+                              HomeController
+                                  .to.profilemodel!.data!.imageUrl!.isEmpty ||
+                              HomeController.to.profilemodel!.data!.imageUrl ==
+                                  null
+                          ? const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.white)
+                          : BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(
+                                      "${StaticValues.imageUrl}${HomeController.to.profilemodel!.data!.imageUrl}")),
+                              shape: BoxShape.circle,
+                              color: Colors.white),
                     ),
                     SizedBox(
                       width: width * 0.02,
                     ),
                     Text(
-                      "Name",
-                      //  HomeController.to.profilemodel!.data!.name!.toUpperCase(),
+                      // "Name",
+                      HomeController.to.profilemodel!.data!.name!.toUpperCase(),
                       style:
                           TextStyle(color: white, fontWeight: FontWeight.bold),
                     )
@@ -403,7 +418,7 @@ class DrawerScreen extends StatelessWidget {
               ),
               obj.reports == true
                   ? SizedBox(
-                      height: height * 0.42,
+                      height: height * 0.35,
                       child: Column(
                         children: [
                           InkWell(

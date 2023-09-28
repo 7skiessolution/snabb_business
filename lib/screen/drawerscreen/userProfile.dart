@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:snabb_business/controller/homeController.dart';
+import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/colors.dart';
 
@@ -111,17 +112,38 @@ class _UserProfileState extends State<UserProfile> {
                                 children: [
                                   Align(
                                       alignment: Alignment.center,
-                                      child: Container(
-                                        height: height * 0.1,
-                                        width: width * 0.2,
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.blue[900]),
-                                        child: Icon(
-                                          Icons.person,
-                                          color: Colors.white,
-                                          size: width * 0.07,
-                                        ),
+                                      child: InkWell(
+                                        onTap: () {
+                                          HomeController.to.pickeProfileImage();
+                                        },
+                                        child: HomeController.to.profilemodel!
+                                                    .data!.imageUrl!.isEmpty ||
+                                                HomeController.to.profilemodel!
+                                                        .data!.imageUrl ==
+                                                    null
+                                            ? Container(
+                                                height: height * 0.1,
+                                                width: width * 0.2,
+                                                decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: Colors.blue[900]),
+                                                child: Icon(
+                                                  Icons.person,
+                                                  color: Colors.white,
+                                                  size: width * 0.07,
+                                                ),
+                                              )
+                                            : Container(
+                                                height: height * 0.1,
+                                                width: width * 0.2,
+                                                decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    image: DecorationImage(
+                                                        fit: BoxFit.cover,
+                                                        image: NetworkImage(
+                                                            "${StaticValues.imageUrl}${HomeController.to.profilemodel!.data!.imageUrl}")),
+                                                    color: Colors.blue[900]),
+                                              ),
                                       )),
                                   SizedBox(
                                     height: height * 0.02,
@@ -300,6 +322,11 @@ class _UserProfileState extends State<UserProfile> {
                                         child: InkWell(
                                           onTap: () {
                                             // _saveIncome();
+                                            HomeController.to.updateProfile(
+                                                HomeController.to.profilemodel!
+                                                    .data!.email!,
+                                                mName.text,
+                                                select!);
                                           },
                                           child: Container(
                                             height: height * 0.05,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/screen/drawerscreen/currency/currency_model_bootom_sheet.dart';
 import 'package:snabb_business/utils/colors.dart';
 
@@ -72,137 +74,139 @@ class _SettingsPageState extends State<SettingsPage> {
                   child: Card(
                     elevation: 10,
                     shadowColor: Colors.blue[900],
-                    child: Container(
-                      height: height * 0.75,
-                      width: width * 0.9,
-                      color: white,
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Basic Setting",
-                              style: TextStyle(
-                                  color: Colors.blue[900],
-                                  fontSize: width * 0.045,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: height * 0.02,
-                            ),
-                            Text(
-                              "Lanugauge",
-                              style: TextStyle(
-                                  fontSize: width * 0.035,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: height * 0.012,
-                            ),
-                            Text(
-                              "English",
-                              style: TextStyle(
-                                fontSize: width * 0.03,
+                    child: GetBuilder<HomeController>(builder: (obj) {
+                      return Container(
+                        height: height * 0.75,
+                        width: width * 0.9,
+                        color: white,
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Basic Setting",
+                                style: TextStyle(
+                                    color: Colors.blue[900],
+                                    fontSize: width * 0.045,
+                                    fontWeight: FontWeight.bold),
                               ),
-                            ),
-                            SizedBox(
-                              height: height * 0.02,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                CureencyBottomSheet.addCurrencyBottomSheet(
-                                    context: context,
-                                    height: height,
-                                    width: width);
-                              },
-                              child: Text(
-                                "Currency",
+                              SizedBox(
+                                height: height * 0.02,
+                              ),
+                              Text(
+                                "Lanugauge",
                                 style: TextStyle(
                                     fontSize: width * 0.035,
                                     fontWeight: FontWeight.bold),
                               ),
-                            ),
-                            SizedBox(
-                              height: height * 0.012,
-                            ),
-                            Text(
-                              "Dollar",
-                              style: TextStyle(
-                                fontSize: width * 0.03,
+                              SizedBox(
+                                height: height * 0.012,
                               ),
-                            ),
-                            SizedBox(
-                              height: height * 0.04,
-                            ),
-                            Text(
-                              "Other",
-                              style: TextStyle(
-                                  color: Colors.blue[900],
-                                  fontSize: width * 0.045,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: height * 0.02,
-                            ),
-                            Text(
-                              "Feedback & Supory",
-                              style: TextStyle(
-                                  fontSize: width * 0.035,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: height * 0.012,
-                            ),
-                            Text(
-                              "FAQ",
-                              style: TextStyle(
-                                  fontSize: width * 0.035,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: height * 0.012,
-                            ),
-                            Text(
-                              "Privacy",
-                              style: TextStyle(
-                                  fontSize: width * 0.035,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: height * 0.012,
-                            ),
-                            Text(
-                              "Terms of service",
-                              style: TextStyle(
-                                  fontSize: width * 0.035,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: height * 0.012,
-                            ),
-                            Text(
-                              "Quick start guide",
-                              style: TextStyle(
-                                  fontSize: width * 0.035,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: height * 0.012,
-                            ),
-                            Text(
-                              "Licenses",
-                              style: TextStyle(
-                                  fontSize: width * 0.035,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: height * 0.012,
-                            ),
-                          ],
+                              Text(
+                                "English",
+                                style: TextStyle(
+                                  fontSize: width * 0.03,
+                                ),
+                              ),
+                              SizedBox(
+                                height: height * 0.02,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  CureencyBottomSheet.addCurrencyBottomSheet(
+                                      context: context,
+                                      height: height,
+                                      width: width);
+                                },
+                                child: Text(
+                                  "Currency",
+                                  style: TextStyle(
+                                      fontSize: width * 0.035,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              SizedBox(
+                                height: height * 0.012,
+                              ),
+                              Text(
+                                obj.profilemodel!.data!.currency!,
+                                style: TextStyle(
+                                  fontSize: width * 0.03,
+                                ),
+                              ),
+                              SizedBox(
+                                height: height * 0.04,
+                              ),
+                              Text(
+                                "Other",
+                                style: TextStyle(
+                                    color: Colors.blue[900],
+                                    fontSize: width * 0.045,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: height * 0.02,
+                              ),
+                              Text(
+                                "Feedback & Supory",
+                                style: TextStyle(
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: height * 0.012,
+                              ),
+                              Text(
+                                "FAQ",
+                                style: TextStyle(
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: height * 0.012,
+                              ),
+                              Text(
+                                "Privacy",
+                                style: TextStyle(
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: height * 0.012,
+                              ),
+                              Text(
+                                "Terms of service",
+                                style: TextStyle(
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: height * 0.012,
+                              ),
+                              Text(
+                                "Quick start guide",
+                                style: TextStyle(
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: height * 0.012,
+                              ),
+                              Text(
+                                "Licenses",
+                                style: TextStyle(
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: height * 0.012,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    }),
                   ),
                 )
               ],

@@ -1,8 +1,12 @@
 import 'dart:developer';
-
+import 'dart:io';
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/models/currency_model.dart';
 import 'package:snabb_business/models/get_data_year_type_model.dart' as sp;
@@ -12,12 +16,14 @@ import 'package:snabb_business/models/get_year_type_purchase.dart' as plist;
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
 import 'package:snabb_business/screen/company/companyModel.dart' as cm;
-
+import 'package:snabb_business/screen/schedule_transaction/add_Schedule_income.dart';
+import 'package:dio/dio.dart' as dio;
 import 'package:snabb_business/screen/suppliers/supplierModel.dart' as sm;
 import 'package:snabb_business/static_data.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:snabb_business/models/yearly_transaction_model.dart' as yTra;
 import '../models/dataclassgraphModel.dart';
+import 'package:path/path.dart';
 
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
@@ -31,6 +37,11 @@ class HomeController extends GetxController {
   double totalExpanse = 0.0;
   double totalPurchase = 0.0;
   String curency = "EURO";
+
+  final picker = ImagePicker();
+  XFile? pickImage;
+  File? compressedFile;
+  String pathFile = "";
 
   List<Chartdata> expensedata = [];
   List<Chartdata> purchasedata = [];
@@ -265,6 +276,114 @@ class HomeController extends GetxController {
     tooltip = TooltipBehavior(enable: true);
     drawermenueclose();
     super.onInit();
+  }
+
+  Future<File> _createFile(Uint8List data) async {
+    Directory tempDir = await getTemporaryDirectory();
+
+    String tempPath =
+        '${tempDir.path}/${DateTime.now().millisecondsSinceEpoch}.jpg';
+
+    File file = File(tempPath);
+    await file.writeAsBytes(data);
+
+    return file;
+  }
+
+  Future<File?> compressImage(XFile img) async {
+    pathFile = img.path;
+    update();
+
+    final File imageFile = File(img.path);
+
+    List<int> imageBytes = await imageFile.readAsBytes();
+
+    if (imageBytes.length <= 300 * 1024) {
+      return imageFile;
+    } else if (imageBytes.length >= 300 * 1024 &&
+        imageBytes.length <= 600 * 1024) {
+      Uint8List uint8List = Uint8List.fromList(imageBytes);
+
+      List<int> compressedBytes = await FlutterImageCompress.compressWithList(
+        uint8List,
+        quality: 10,
+      );
+
+      Uint8List compressedData = Uint8List.fromList(compressedBytes);
+
+      compressedFile = await _createFile(compressedData);
+
+      return compressedFile;
+    } else if (imageBytes.length >= 600 * 1024 &&
+        imageBytes.length <= 999 * 1024) {
+      Uint8List uint8List = Uint8List.fromList(imageBytes);
+
+      List<int> compressedBytes = await FlutterImageCompress.compressWithList(
+        uint8List,
+        quality: 5,
+      );
+
+      Uint8List compressedData = Uint8List.fromList(compressedBytes);
+
+      File compressedFile = await _createFile(compressedData);
+
+      return compressedFile;
+    } else {
+      Uint8List uint8List = Uint8List.fromList(imageBytes);
+
+      List<int> compressedBytes = await FlutterImageCompress.compressWithList(
+        uint8List,
+        quality: 2,
+      );
+
+      Uint8List compressedData = Uint8List.fromList(compressedBytes);
+
+      File compressedFile = await _createFile(compressedData);
+
+      return compressedFile;
+    }
+  }
+
+  pickeProfileImage() async {
+    pickImage = await picker.pickImage(source: ImageSource.gallery);
+    if (pickImage != null) {
+      compressedFile = await compressImage(pickImage as XFile);
+    }
+  }
+
+  updateProfile(
+    String email,
+    String name,
+    String gender,
+  ) async {
+    try {
+      dio.FormData data = pathFile.isEmpty
+          ? dio.FormData.fromMap({
+              "Name": name,
+              "Email": email,
+              "Gender": gender,
+            })
+          : dio.FormData.fromMap({
+              "Name": name,
+              "Email": email,
+              "Gender": gender,
+              "Image": await dio.MultipartFile.fromFile(
+                compressedFile!.path,
+                filename: basename(compressedFile!.path),
+              ),
+            });
+      print(data.fields.toString());
+      dio.Response res = await httpFormDataClient()
+          .post(StaticValues.updateProfileDetails, data: data);
+      if (res.statusCode == 200) {
+        showtoast(res.data["status"]);
+        getUserProfile();
+        pathFile = "";
+      }
+    } on Exception catch (e) {
+      print(e);
+      // TODO
+    }
   }
 
   drawermenue() {

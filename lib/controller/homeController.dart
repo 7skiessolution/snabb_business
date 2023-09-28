@@ -9,7 +9,6 @@ import 'package:snabb_business/models/get_data_year_type_model.dart' as sp;
 import 'package:snabb_business/models/get_sale_purchase.dart';
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
-import 'package:snabb_business/pdf/c/pdf_controller.dart';
 import 'package:snabb_business/screen/company/companyModel.dart' as cm;
 
 import 'package:snabb_business/screen/suppliers/supplierModel.dart' as sm;
@@ -74,8 +73,23 @@ class HomeController extends GetxController {
   CurrencyModell? selectedcurrency;
   bool isLoadData = false;
 
-  changeCurrency(CurrencyModell model) {
-    selectedcurrency = model;
+  changeCurrency(String? mycurrency, context) async {
+    curency = mycurrency!;
+    update();
+    var res =
+        await httpClient().post("${StaticValues.changeCurrency}$mycurrency");
+    if (res.statusCode == 200) {
+      getUserProfile();
+      Fluttertoast.showToast(
+          msg: res.data["status"],
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          gravity: ToastGravity.BOTTOM,
+          fontSize: 17,
+          timeInSecForIosWeb: 1,
+          toastLength: Toast.LENGTH_LONG);
+    }
+    Navigator.pop(context);
     update();
   }
 

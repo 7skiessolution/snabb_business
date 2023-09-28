@@ -18,7 +18,7 @@ import 'chartsScreens/expenseChart.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-
+  static const route = "homeroute";
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }

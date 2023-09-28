@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
+import 'package:snabb_business/screen/dashboardScreen.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/colors.dart';
@@ -1480,7 +1481,7 @@ class PurchaseController extends GetxController {
     );
   }
 
-  postpurchase() async {
+  postpurchase(BuildContext context) async {
     try {
       if (formatTime != "Pick Date") {
         if (supplierName.isNotEmpty) {
@@ -1529,6 +1530,12 @@ class PurchaseController extends GetxController {
               .post(StaticValues.addPurchase, data: data);
           if (res.statusCode == 200) {
             showtoast(res.data["status"]);
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DashBoardScreen(),
+                ),
+                (route) => false);
             TransactionController.to.pathFile = "";
             clearAndInitializeControllers();
           }

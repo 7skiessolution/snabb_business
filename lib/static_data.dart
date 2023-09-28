@@ -19,7 +19,6 @@ class StaticValues {
   static const getWalletList = 'Wallet/Get';
   static const addWalletData = 'Wallet/Add';
   static const deleteWalletData = 'Wallet/Delete/';
-  static const changeCurrency = 'Wallet/ChangeCurrency?Currency=';
   static const getIncomeGraph = 'Wallet/GetMonthWiseIncome/';
   // static const getIncomeExpenceGraph = 'Wallet/GetMonthWiseIncomeExpense/';
   static const changePassword = 'UserApi/ChangeUserPassword';
@@ -63,6 +62,14 @@ class StaticValues {
   ////////////////////////////// summary///////////////////////////////////
   static const getSummary = "Transaction/GetSummary?Date=";
   static const searchSummary = 'Transaction/SearchSummary?Type=';
+  ///////////////////////////// currency //////////////////////
+  static const changeCurrency = 'UserApi/ChangeCurrency?Currency=';
+  ////////////////////////////// REPORTS ///////////////////////
+   static const getdailySaleReport = "Transaction/DailySaleReport";
+  static const getcompanySaleReport = "Transaction/CompanySaleReport";
+  static const getpurchaseReport = "Transaction/PurchaseReport";
+  static const getsuppliersReport = "Transaction/SupplierReport";
+  static const getexpenseReport = "Transaction/ExpenseReport";
   static String apikey =
       "G8I8cS9Uyncyl0GIXHZfPIosrXnqyTwBZa4Z0utvWG5FrnTGdvxD482MFcDSJLjb8JAjZsqpt4SYyjj3VimcQXTKxcyXsQTjvTJVhRQ9rUDHVzIds2x88oLfFwDtpudS";
 }

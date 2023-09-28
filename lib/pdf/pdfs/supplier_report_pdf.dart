@@ -65,7 +65,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                 children: [
                   pw.Container(
                     height: 25,
-                    width: 100,
+                    width: 95,
                     color: p.PdfColors.indigo,
                     child: pw.Align(
                       alignment: pw.Alignment.center,
@@ -98,7 +98,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                     color: p.PdfColors.indigo,
                     child: pw.Center(
                       child: pw.Text(
-                        'Supplier\'s Name',
+                        'Supplier\'s\n   Name',
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.bold,
@@ -150,7 +150,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                   ),
                   pw.Container(
                     height: 25,
-                    width: 80,
+                    width: 90,
                     color: p.PdfColors.indigo,
                     child: pw.Center(
                       child: pw.Text(
@@ -193,7 +193,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                   ),
                   pw.Container(
                     height: 25,
-                    width: 100,
+                    width: 95,
                     color: p.PdfColors.indigo,
                     child: pw.Center(
                       child: pw.Text(
@@ -224,7 +224,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                 children: [
                   pw.Container(
                     height: 25,
-                    width: 100,
+                    width: 95,
                     child: pw.Align(
                       alignment: pw.Alignment.center,
                       child: pw.Text(
@@ -276,7 +276,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                     ),
                   ),
                   pw.Container(
-                    width: 50,
+                    width: 80,
                     child: pw.Center(
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
@@ -304,7 +304,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                     )),
                   ),
                   pw.Container(
-                    width: 80,
+                    width: 85,
                     child: pw.Center(
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
@@ -350,7 +350,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                     )),
                   ),
                   pw.Container(
-                    width: 100,
+                    width: 95,
                     child: pw.Center(
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),

@@ -3,6 +3,7 @@
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
+import 'package:snabb_business/screen/dashboardScreen.dart';
 import 'package:snabb_business/screen/expense/expenseModel.dart' as em;
 import 'package:path/path.dart';
 import 'package:flutter/material.dart';
@@ -1082,7 +1083,7 @@ class ExpenseController extends GetxController {
     }
   }
 
-  postexpense() async {
+  postexpense(BuildContext context) async {
     try {
       if (formatTime != "Pick Date") {
         if (selectedCateory != null) {
@@ -1119,6 +1120,12 @@ class ExpenseController extends GetxController {
               .post(StaticValues.addExpence, data: data);
           if (res.statusCode == 200) {
             showtoast(res.data["status"]);
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DashBoardScreen(),
+                ),
+                (route) => false);
             TransactionController.to.pathFile = "";
             clearAndInitializeControllers();
           }

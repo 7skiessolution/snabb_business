@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:snabb_business/controller/britness_provider.dart';
 import 'package:snabb_business/l10n/l10n.dart';
+import 'package:snabb_business/screen/homeScreen.dart';
 import 'package:snabb_business/screen/splash_screen.dart';
 import 'package:location/location.dart' as loc;
 import 'package:geocoding/geocoding.dart' as p;
@@ -232,6 +233,9 @@ class _MyAppState extends State<MyApp> {
             home: const SplashScreen(),
             supportedLocales: L10n.all,
             locale: mainlocale,
+            routes: {
+              HomeScreen.route: (context) => const HomeScreen(),
+            },
             localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,

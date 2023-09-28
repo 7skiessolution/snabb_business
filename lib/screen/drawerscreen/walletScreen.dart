@@ -46,6 +46,7 @@ class _WalletScreenState extends State<WalletScreen> {
   // var waltototal = "70,000";
   var isTure = true;
 
+  @override
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
@@ -116,9 +117,9 @@ class _WalletScreenState extends State<WalletScreen> {
                                           );
                                         }).toList(),
                                         onChanged: (v) {
-                                          setState(() {
-                                            obj.changeCurrency(v!);
-                                          });
+                                          // setState(() {
+                                          //   obj.changeCurrency(v!);
+                                          // });
                                           print(
                                               "curency ${obj.selectedcurrency}");
                                         },
@@ -194,7 +195,7 @@ class _WalletScreenState extends State<WalletScreen> {
                             ),
                           );
                         }),
-                        actions: [],
+                        actions: const [],
                       );
                     },
                   );
@@ -204,7 +205,7 @@ class _WalletScreenState extends State<WalletScreen> {
                   color: white,
                 ),
               )
-            : SizedBox(),
+            : const SizedBox(),
         backgroundColor: backgroundColor,
         body: GetBuilder<HomeController>(builder: (obj) {
           return Scaffold(
@@ -214,7 +215,7 @@ class _WalletScreenState extends State<WalletScreen> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    !widget.home ? AppBarWidgt(text: "Wallet") : SizedBox(),
+                    !widget.home ? AppBarWidgt(text: "Wallet") : const SizedBox(),
                     SizedBox(
                         height: height * 0.85,
                         width: width,
@@ -325,7 +326,7 @@ class _WalletScreenState extends State<WalletScreen> {
                                                                   width * 0.03,
                                                             ),
                                                             Text(
-                                                              "${obj.walletList[index].amount.toString()}",
+                                                              obj.walletList[index].amount.toString(),
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .green,
@@ -383,7 +384,7 @@ class _WalletScreenState extends State<WalletScreen> {
                                                               width:
                                                                   width * 0.22,
                                                             ),
-                                                            Container(
+                                                            SizedBox(
                                                               height: 50,
                                                               width:
                                                                   width * 0.25,
@@ -424,7 +425,7 @@ class _WalletScreenState extends State<WalletScreen> {
                                                                                 //  brightness.brightness == AppBrightness.light
                                                                                 //     ? AppTheme.colorPrimary
                                                                                 //     :
-                                                                                Color(0xFF000000),
+                                                                                const Color(0xFF000000),
                                                                             shape:
                                                                                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                                                                             elevation:
@@ -527,7 +528,7 @@ class _WalletScreenState extends State<WalletScreen> {
                                                                       );
                                                                     },
                                                                     child:
-                                                                        Container(
+                                                                        SizedBox(
                                                                       // color: Colors.grey
                                                                       //     .withOpacity(
                                                                       //         0.4),

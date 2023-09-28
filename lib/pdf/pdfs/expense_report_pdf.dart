@@ -248,7 +248,7 @@ class _ExpenseReportPDFScreenState extends State<ExpenseReportPDFScreen> {
                     ),
                   ),
                   pw.Container(
-                    width: 50,
+                    width: 80,
                     child: pw.Center(
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),

@@ -136,7 +136,7 @@ class _PurchaseReportPDFScreenState extends State<PurchaseReportPDFScreen> {
                   ),
                   pw.Container(
                     height: 25,
-                    width: 80,
+                    width: 85,
                     color: p.PdfColors.indigo,
                     child: pw.Center(
                       child: pw.Text(
@@ -179,7 +179,7 @@ class _PurchaseReportPDFScreenState extends State<PurchaseReportPDFScreen> {
                   ),
                   pw.Container(
                     height: 25,
-                    width: 100,
+                    width: 95,
                     color: p.PdfColors.indigo,
                     child: pw.Center(
                       child: pw.Text(
@@ -249,7 +249,7 @@ class _PurchaseReportPDFScreenState extends State<PurchaseReportPDFScreen> {
                     ),
                   ),
                   pw.Container(
-                    width: 50,
+                    width: 80,
                     child: pw.Center(
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
@@ -277,7 +277,7 @@ class _PurchaseReportPDFScreenState extends State<PurchaseReportPDFScreen> {
                     )),
                   ),
                   pw.Container(
-                    width: 80,
+                    width: 85,
                     child: pw.Center(
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
@@ -323,7 +323,7 @@ class _PurchaseReportPDFScreenState extends State<PurchaseReportPDFScreen> {
                     )),
                   ),
                   pw.Container(
-                    width: 100,
+                    width: 95,
                     child: pw.Center(
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),

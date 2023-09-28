@@ -20,7 +20,6 @@ import 'package:snabb_business/screen/suppliers/suppliers.dart';
 import 'package:snabb_business/screen/transactions/transactionScreen.dart';
 import 'package:snabb_business/utils/color.dart';
 import '../screen/drawerscreen/Preferences.dart';
-import '../screen/drawerscreen/categories.dart';
 import '../screen/invoice/invoice.dart';
 
 class DrawerScreen extends StatelessWidget {
@@ -547,26 +546,26 @@ class DrawerScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          InkWell(
-                            onTap: () {
-                              // obj.drawermenueclose();
-                              // Navigator.push(context,
-                              //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
-                            },
-                            child: ListTile(
-                              leading: Icon(
-                                Icons.wysiwyg_outlined,
-                                color: white,
-                              ),
-                              title: Text(
-                                "Cashflow Report",
-                                style: TextStyle(
-                                    color: white,
-                                    fontSize: width * 0.03,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ),
+                          // InkWell(
+                          //   onTap: () {
+                          //     // obj.drawermenueclose();
+                          //     // Navigator.push(context,
+                          //     //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
+                          //   },
+                          //   child: ListTile(
+                          //     leading: Icon(
+                          //       Icons.wysiwyg_outlined,
+                          //       color: white,
+                          //     ),
+                          //     title: Text(
+                          //       "Cashflow Report",
+                          //       style: TextStyle(
+                          //           color: white,
+                          //           fontSize: width * 0.03,
+                          //           fontWeight: FontWeight.w500),
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
                     )

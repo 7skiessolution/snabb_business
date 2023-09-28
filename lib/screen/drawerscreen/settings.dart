@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:snabb_business/screen/budget/BudgetView.dart';
-import 'package:snabb_business/screen/drawerscreen/Calender.dart';
-import 'package:snabb_business/screen/homeScreen.dart';
-import 'package:snabb_business/screen/sale/Sale.dart';
-import 'package:snabb_business/screen/summary/summary_detail.dart';
-import 'package:snabb_business/screen/summary/summary_screen.dart';
-import 'package:snabb_business/screen/transactions/transactionScreen.dart';
+import 'package:snabb_business/screen/drawerscreen/currency/currency_model_bootom_sheet.dart';
 import 'package:snabb_business/utils/colors.dart';
 
-import '../../models/pagemodel.dart';
 import '../../utils/appbarwidget.dart';
 import '../../utils/color.dart';
 
@@ -116,11 +109,19 @@ class _SettingsPageState extends State<SettingsPage> {
                             SizedBox(
                               height: height * 0.02,
                             ),
-                            Text(
-                              "Currency",
-                              style: TextStyle(
-                                  fontSize: width * 0.035,
-                                  fontWeight: FontWeight.bold),
+                            InkWell(
+                              onTap: () {
+                                CureencyBottomSheet.addCurrencyBottomSheet(
+                                    context: context,
+                                    height: height,
+                                    width: width);
+                              },
+                              child: Text(
+                                "Currency",
+                                style: TextStyle(
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                             SizedBox(
                               height: height * 0.012,

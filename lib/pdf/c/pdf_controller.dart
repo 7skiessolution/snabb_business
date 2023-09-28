@@ -4,9 +4,9 @@ import 'package:snabb_business/pdf/m/daily_sales_report_model.dart';
 import 'package:snabb_business/pdf/m/expense_report_model.dart';
 import 'package:snabb_business/pdf/m/purchase_report_model.dart';
 import 'package:snabb_business/pdf/m/supliers_report_model.dart';
+import 'package:snabb_business/static_data.dart';
 
 import '../m/company_sales_report_model.dart';
-import '../s/static_data.dart';
 
 class PdfController extends GetxController {
   static PdfController get to => Get.find();
@@ -22,7 +22,7 @@ class PdfController extends GetxController {
     compenysaleslist.clear();
     CompanySaleReportModel? companySaleReportModel;
 
-    var res = await httpClient().get(WaleedPath.getcompanySaleReport);
+    var res = await httpClient().get(StaticValues.getcompanySaleReport);
     companySaleReportModel = CompanySaleReportModel.fromJson(res.data);
 
     if (companySaleReportModel.data != null) {
@@ -39,7 +39,7 @@ class PdfController extends GetxController {
     dailyslaesReportlist.clear();
     DailySaleReportModel? dailySaleReportModel;
 
-    var res = await httpClient().get(WaleedPath.getdailySaleReport);
+    var res = await httpClient().get(StaticValues.getdailySaleReport);
     dailySaleReportModel = DailySaleReportModel.fromJson(res.data);
 
     if (dailySaleReportModel.data != null) {
@@ -56,7 +56,7 @@ class PdfController extends GetxController {
     expenseReportList.clear();
     ExpenseReportModel? expenseReportModel;
 
-    var res = await httpClient().get(WaleedPath.getexpenseReport);
+    var res = await httpClient().get(StaticValues.getexpenseReport);
     expenseReportModel = ExpenseReportModel.fromJson(res.data);
 
     if (expenseReportModel.data != null) {
@@ -73,7 +73,7 @@ class PdfController extends GetxController {
     purchaseReportList.clear();
     PurchaseReportModel? purchaseReportModel;
 
-    var res = await httpClient().get(WaleedPath.getpurchaseReport);
+    var res = await httpClient().get(StaticValues.getpurchaseReport);
     purchaseReportModel = PurchaseReportModel.fromJson(res.data);
 
     if (purchaseReportModel.data != null) {
@@ -90,8 +90,8 @@ class PdfController extends GetxController {
     supplierReportList.clear();
     SupplierReportModel? supplierReportModel;
 
-    var res =
-        await httpClient().get('${WaleedPath.getsuppliersReport}/$supplierID');
+    var res = await httpClient()
+        .get('${StaticValues.getsuppliersReport}/$supplierID');
     supplierReportModel = SupplierReportModel.fromJson(res.data);
     if (supplierReportModel.data != null) {
       for (var c in supplierReportModel.data!) {

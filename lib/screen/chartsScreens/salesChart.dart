@@ -22,7 +22,6 @@ class SalesChart extends StatefulWidget {
 class _SalesChartState extends State<SalesChart> {
   @override
   void initState() {
-    Get.put(HomeController());
     // TODO: implement initState
     super.initState();
   }

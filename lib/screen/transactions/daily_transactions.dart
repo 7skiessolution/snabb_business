@@ -20,8 +20,435 @@ class _DailyTransactionsState extends State<DailyTransactions> {
   double? height, width;
   int check = 0;
   num balance = 0.0;
-  Future<void> showImageDialog(BuildContext context, dTra.Transactions obj,
-      var height, var width) async {
+  Future<void> showExpenseImageDialog(BuildContext context,
+      dTra.Transactions obj, var height, var width) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          elevation: 10,
+          shadowColor: darkblue,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          content: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.8,
+            width: MediaQuery.of(context).size.width * 0.9,
+            child: Stack(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.07,
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        child: Center(
+                            child: Text(
+                          AppLocalizations.of(context)!.transactiondetails,
+                          style: TextStyle(
+                              color: darkblue,
+                              fontSize: width * 0.03,
+                              fontWeight: FontWeight.bold),
+                        )),
+                      ),
+                      SizedBox(
+                        height: height * 0.05,
+                        width: width * 0.9,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: SizedBox(
+                                height: height,
+                                width: width,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      AppLocalizations.of(context)!
+                                          .name
+                                          .capitalize!,
+                                      style: TextStyle(
+                                          color: darkblue,
+                                          fontSize: width * 0.03,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      ": ${obj.name}",
+                                      style: TextStyle(
+                                        fontSize: width * 0.03,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width,
+                                child: Text(
+                                  obj.details!.category.toString(),
+                                  style: TextStyle(
+                                    color: Colors.blue[900],
+                                    fontSize: width * 0.03,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.06,
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      AppLocalizations.of(context)!
+                                          .amount
+                                          .capitalize!,
+                                      style: TextStyle(
+                                          color: darkblue,
+                                          fontSize: width * 0.03,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      ": ${obj.totalAmount.toString()}",
+                                      style: TextStyle(
+                                        fontSize: width * 0.03,
+                                      ),
+                                    ),
+                                    Text(
+                                      " ${obj.currency.toString()}",
+                                      style: TextStyle(
+                                        fontSize: width * 0.03,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      AppLocalizations.of(context)!
+                                          .date
+                                          .capitalize!,
+                                      style: TextStyle(
+                                          color: darkblue,
+                                          fontSize: width * 0.03,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      ": ${obj.dateTime.toString().substring(0, 10)}",
+                                      style: TextStyle(
+                                        fontSize: width * 0.03,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: height * 0.05,
+                        width: width * 0.9,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: SizedBox(
+                                height: height,
+                                width: width,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "Other",
+                                      style: TextStyle(
+                                          color: darkblue,
+                                          fontSize: width * 0.03,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      ": ${obj.otherAmount!.toString()}",
+                                      style: TextStyle(
+                                        fontSize: width * 0.03,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: SizedBox(
+                                height: height,
+                                width: width,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "Cash",
+                                      style: TextStyle(
+                                          color: darkblue,
+                                          fontSize: width * 0.03,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      ": ${obj.cashAmount!.toString()}",
+                                      style: TextStyle(
+                                        fontSize: width * 0.03,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "Bank",
+                                      // AppLocalizations.of(context)!
+                                      //     .amount
+                                      //     .capitalize!,
+                                      style: TextStyle(
+                                          color: darkblue,
+                                          fontSize: width * 0.03,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      ": ${obj.bankAmount.toString()}",
+                                      style: TextStyle(
+                                        fontSize: width * 0.03,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.12,
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.05,
+                              width: MediaQuery.of(context).size.width,
+                              child: Text(
+                                AppLocalizations.of(context)!.notes,
+                                style: TextStyle(
+                                    color: darkblue,
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Expanded(
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width,
+                                child: Text(
+                                  obj.note ?? "",
+                                  style: TextStyle(
+                                    fontSize: width * 0.03,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.grey[100]),
+                          height: MediaQuery.of(context).size.height * 0.5,
+                          width: MediaQuery.of(context).size.width,
+                          child: Center(
+                            child: obj.file != null && obj.file != ""
+                                ? InkWell(
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        barrierDismissible: false,
+                                        builder: (context) {
+                                          return AlertDialog(
+                                            elevation: 10,
+                                            shadowColor: Colors.blue[900],
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            content: SizedBox(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.7,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.9,
+                                              child: Stack(
+                                                children: [
+                                                  Container(
+                                                      height: height,
+                                                      width: width,
+                                                      child: PinchZoomImage(
+                                                        image:
+                                                            '${StaticValues.imageUrl}${obj.file!}',
+                                                      )
+                                                      // decoration: BoxDecoration(
+                                                      //     image: DecorationImage(
+                                                      //         image: NetworkImage(
+                                                      //             "${StaticValues.imageUrl}${data.file!}"))),
+                                                      ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 8.0,
+                                                            bottom: 8.0),
+                                                    child: Align(
+                                                      alignment:
+                                                          Alignment.topRight,
+                                                      child: InkWell(
+                                                        onTap: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: Container(
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              0.04,
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.08,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                                  color:
+                                                                      Colors.blue[
+                                                                          900],
+                                                                  shape: BoxShape
+                                                                      .circle),
+                                                          child: const Center(
+                                                            child: Icon(
+                                                              Icons.clear,
+                                                              size: 15,
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                    child: FadeInImage.assetNetwork(
+                                      fit: BoxFit.cover,
+                                      placeholder: 'assets/images/bell.png',
+                                      image:
+                                          '${StaticValues.imageUrl}${obj.file}',
+                                      placeholderErrorBuilder:
+                                          (context, error, stackTrace) {
+                                        return const CircularProgressIndicator();
+                                      },
+                                    ),
+                                  )
+                                : Text(AppLocalizations.of(context)!
+                                    .nofileforthistransaction),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.04,
+                        width: MediaQuery.of(context).size.width * 0.08,
+                        decoration: BoxDecoration(
+                            color: darkblue, shape: BoxShape.circle),
+                        child: const Center(
+                          child: Icon(
+                            Icons.clear,
+                            size: 15,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.04,
+                        width: MediaQuery.of(context).size.width * 0.08,
+                        decoration: obj.details!.imageUrl == "null" ||
+                                obj.details!.imageUrl == null ||
+                                obj.details!.imageUrl!.isEmpty
+                            ? const BoxDecoration(
+                                image: DecorationImage(
+                                    image:
+                                        AssetImage("assets/images/bell.png")),
+                                shape: BoxShape.circle)
+                            : BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(obj.details!.imageUrl!)),
+                                shape: BoxShape.circle),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> showPurchaseImageDialog(BuildContext context,
+      dTra.Transactions obj, var height, var width) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
@@ -99,7 +526,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      ": ${obj.amount.toString()}",
+                                      ": ${obj.totalAmount.toString()}",
                                       style: TextStyle(
                                         fontSize: width * 0.03,
                                       ),
@@ -132,7 +559,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      ": ${obj.category!}",
+                                      ": ${obj.name!}",
                                       style: TextStyle(
                                         fontSize: width * 0.03,
                                       ),
@@ -348,10 +775,18 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.04,
                         width: MediaQuery.of(context).size.width * 0.08,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(obj.imageUrl!)),
-                            shape: BoxShape.circle),
+                        decoration: obj.details!.imageUrl == "null" ||
+                                obj.details!.imageUrl == null ||
+                                obj.details!.imageUrl!.isEmpty
+                            ? const BoxDecoration(
+                                image: DecorationImage(
+                                    image:
+                                        AssetImage("assets/images/bell.png")),
+                                shape: BoxShape.circle)
+                            : BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(obj.details!.imageUrl!)),
+                                shape: BoxShape.circle),
                       ),
                     ),
                   ),
@@ -369,7 +804,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return GetBuilder<TransactionController>(initState: (state) {
-    //  TransactionController.to.getUserDailyTransactiondata();
+      TransactionController.to.getUserDailyTransactiondata();
     }, builder: (obj) {
       return obj.dailyTransactionList.isNotEmpty
           ? SizedBox(
@@ -385,7 +820,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: Container(
-                      padding: EdgeInsets.only(top: 8, bottom: 8),
+                      padding: const EdgeInsets.only(top: 8, bottom: 8),
                       color: white,
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -403,7 +838,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                     Text(obj.dailyTransactionList[index].day!),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             SizedBox(
@@ -429,33 +864,59 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                           //             transaction
                                           //                 .transactionId!);
 
-                                         // return delete;
+                                          // return delete;
                                         },
                                         key: UniqueKey(),
                                         child: Container(
                                           color: AppColors.backgroundColor,
                                           child: ListTile(
                                             onTap: () {
-                                              showImageDialog(
-                                                  context,
-                                                  transaction,
-                                                  MediaQuery.of(context)
-                                                      .size
-                                                      .height,
-                                                  MediaQuery.of(context)
-                                                      .size
-                                                      .width);
+                                              if (transaction.type == 2) {
+                                                showExpenseImageDialog(
+                                                    context,
+                                                    transaction,
+                                                    MediaQuery.of(context)
+                                                        .size
+                                                        .height,
+                                                    MediaQuery.of(context)
+                                                        .size
+                                                        .width);
+                                              } else {
+                                                showPurchaseImageDialog(
+                                                    context,
+                                                    transaction,
+                                                    MediaQuery.of(context)
+                                                        .size
+                                                        .height,
+                                                    MediaQuery.of(context)
+                                                        .size
+                                                        .width);
+                                              }
                                             },
                                             leading: Container(
                                                 decoration: BoxDecoration(
-                                                    color: Colors.grey,
+                                                    color: Colors.blue[900],
                                                     shape: BoxShape.circle),
                                                 child: Padding(
                                                   padding:
                                                       const EdgeInsets.all(8.0),
-                                                  child: Image.asset(
-                                                    transaction.imageUrl!,
-                                                  ),
+                                                  child: transaction.details!
+                                                                  .imageUrl ==
+                                                              "null" ||
+                                                          transaction.details!
+                                                                  .imageUrl ==
+                                                              null ||
+                                                          transaction.details!
+                                                              .imageUrl!.isEmpty
+                                                      ? Image.asset(
+                                                          "assets/images/bell.png",
+                                                          color: Colors.white,
+                                                        )
+                                                      : Image.asset(
+                                                          transaction.details!
+                                                              .imageUrl!,
+                                                          color: Colors.white,
+                                                        ),
                                                 )),
                                             title: Text(
                                               transaction.name!,
@@ -473,8 +934,8 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                                 Text(
                                                     // ignore: unrelated_type_equality_checks
                                                     transaction.type == 1
-                                                        ? "+ ${transaction.amount}"
-                                                        : "-${transaction.amount}",
+                                                        ? "+ ${transaction.totalAmount}"
+                                                        : "-${transaction.totalAmount}",
                                                     style: TextStyle(
                                                         // ignore: unrelated_type_equality_checks
                                                         color:

@@ -24,7 +24,7 @@ class GetDataYearType {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'status': status,
-      'data': data!.map((x) => x?.toMap()).toList(),
+      'data': data!.map((x) => x.toMap()).toList(),
     };
   }
 

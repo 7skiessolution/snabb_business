@@ -360,7 +360,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
     }
 
     return GetBuilder<TransactionController>(initState: (state) {
-      //  TransactionController.to.getUserYearTransactiondata();
+      TransactionController.to.getUserYearTransactiondata();
     }, builder: (obj) {
       return obj.yearTransactionList.isNotEmpty
           ? SizedBox(
@@ -422,15 +422,29 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                                   .width);
                                         },
                                         leading: Container(
-                                            decoration: const BoxDecoration(
-                                                color: Colors.grey,
+                                            decoration: BoxDecoration(
+                                                color: Colors.blue[900],
                                                 shape: BoxShape.circle),
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
-                                              child: Image.asset(
-                                                transaction.file!,
-                                              ),
+                                              child: transaction.details!
+                                                              .imageUrl ==
+                                                          "null" ||
+                                                      transaction.details!
+                                                              .imageUrl ==
+                                                          null ||
+                                                      transaction.details!
+                                                          .imageUrl!.isEmpty
+                                                  ? Image.asset(
+                                                      "assets/images/bell.png",
+                                                      color: Colors.white,
+                                                    )
+                                                  : Image.asset(
+                                                      transaction
+                                                          .details!.imageUrl!,
+                                                      color: Colors.white,
+                                                    ),
                                             )),
                                         title: Text(
                                           transaction.name!,

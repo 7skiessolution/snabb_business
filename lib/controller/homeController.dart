@@ -406,36 +406,36 @@ class HomeController extends GetxController {
   List<sp.Data> purchaseData = [];
   List<sp.Data> salaDatalist = [];
 
-  // getexpensePurchase(int type) async {
-  //   DateTime a = DateTime.now();
-  //   var res = await httpClient()
-  //       .get("${StaticValues.getSaledatatype}${a.year}/$type");
-  //   if (res.statusCode == 200) {
-  //     if (type == 2) {
-  //       expenseData.clear();
-  //     } else if (type == 0) {
-  //       purchaseData.clear();
-  //     } else if (type == 1) {
-  //       salaDatalist.clear();
-  //     }
-  //     sp.GetDataYearType expensepurchasemodel =
-  //         sp.GetDataYearType.fromMap(res.data);
-  //     for (int i = 0; i < expensepurchasemodel.data!.length; i++) {
-  //       var e = expensepurchasemodel.data![i];
-  //       if (type == 2) {
-  //         expenseData.add(e);
-  //       } else if (type == 0) {
-  //         purchaseData.add(e);
-  //       } else if (type == 1) {
-  //         salaDatalist.add(e);
-  //       }
-  //       update();
-  //     }
-  //     print("purchase list ${purchaseData.length}");
-  //     print("expense list ${expenseData.length}");
-  //     print("sale list ${salaDatalist.length}");
-  //   }
-  // }
+  getexpensePurchase(int type) async {
+    DateTime a = DateTime.now();
+    var res = await httpClient()
+        .get("${StaticValues.getSalePurchaseType}$type/${a.year}");
+    if (res.statusCode == 200) {
+      if (type == 2) {
+        expenseData.clear();
+      } else if (type == 0) {
+        purchaseData.clear();
+      } else if (type == 1) {
+        salaDatalist.clear();
+      }
+      sp.GetDataYearType expensepurchasemodel =
+          sp.GetDataYearType.fromMap(res.data);
+      for (int i = 0; i < expensepurchasemodel.data!.length; i++) {
+        var e = expensepurchasemodel.data![i];
+        if (type == 2) {
+          expenseData.add(e);
+        } else if (type == 0) {
+          purchaseData.add(e);
+        } else if (type == 1) {
+          salaDatalist.add(e);
+        }
+        update();
+      }
+      print("purchase list ${purchaseData.length}");
+      print("expense list ${expenseData.length}");
+      print("sale list ${salaDatalist.length}");
+    }
+  }
 
   // Function to convert full month names to lowercase abbreviated month names
   String convertToAbbreviatedMonth(int fullMonthName) {

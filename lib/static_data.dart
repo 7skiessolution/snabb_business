@@ -23,8 +23,8 @@ class StaticValues {
   static const getIncomeGraph = 'Wallet/GetMonthWiseIncome/';
   // static const getIncomeExpenceGraph = 'Wallet/GetMonthWiseIncomeExpense/';
   static const changePassword = 'UserApi/ChangeUserPassword';
-  // static const getDailyTrasaction = 'Transaction/GetDayWiseTransactions';
-  // static const getMonthTrasaction = 'Transaction/GetMonthWiseTransactions';
+  static const getDailyTrasaction = 'Transaction/GetDayWiseTransactions';
+  static const getMonthTrasaction = 'Transaction/GetMonthWiseTransactions';
   static const getYearTrasaction = 'Transaction/GetYearWiseTransactions';
   static const deleteTrasaction = 'Transaction/Delete/';
   //static const getAllRecycleTrasaction = 'Transaction/GetDeletedTransactions';
@@ -63,7 +63,6 @@ class StaticValues {
   ////////////////////////////// summary///////////////////////////////////
   static const getSummary = "Transaction/GetSummary?Date=";
   static const searchSummary = 'Transaction/SearchSummary?Type=';
-
   static String apikey =
       "G8I8cS9Uyncyl0GIXHZfPIosrXnqyTwBZa4Z0utvWG5FrnTGdvxD482MFcDSJLjb8JAjZsqpt4SYyjj3VimcQXTKxcyXsQTjvTJVhRQ9rUDHVzIds2x88oLfFwDtpudS";
 }

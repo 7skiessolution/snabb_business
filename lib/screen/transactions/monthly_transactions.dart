@@ -111,7 +111,7 @@ class _MonthlyTransactionsState extends State<MonthlyTransactions> {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        obj.amount.toString(),
+                                        obj.totalAmount.toString(),
                                         style: TextStyle(
                                           fontSize: width * 0.03,
                                         ),
@@ -142,7 +142,7 @@ class _MonthlyTransactionsState extends State<MonthlyTransactions> {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        obj.category!,
+                                        obj.name!,
                                         style: TextStyle(
                                           fontSize: width * 0.03,
                                         ),
@@ -358,7 +358,7 @@ class _MonthlyTransactionsState extends State<MonthlyTransactions> {
                           width: MediaQuery.of(context).size.width * 0.08,
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage(obj.imageUrl!)),
+                                  image: AssetImage(obj.details!.imageUrl!)),
                               shape: BoxShape.circle),
                         ),
                       ),
@@ -373,7 +373,7 @@ class _MonthlyTransactionsState extends State<MonthlyTransactions> {
     }
 
     return GetBuilder<TransactionController>(initState: (state) {
-      //TransactionController.to.getUserMonthTransactiondata();
+      TransactionController.to.getUserMonthTransactiondata();
     }, builder: (obj) {
       return obj.monthTransactionList.isNotEmpty
           ? SizedBox(
@@ -445,15 +445,29 @@ class _MonthlyTransactionsState extends State<MonthlyTransactions> {
                                                     .width);
                                           },
                                           leading: Container(
-                                              decoration: const BoxDecoration(
-                                                  color: Colors.grey,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.blue[900],
                                                   shape: BoxShape.circle),
                                               child: Padding(
                                                 padding:
                                                     const EdgeInsets.all(8.0),
-                                                child: Image.asset(
-                                                  transaction.imageUrl!,
-                                                ),
+                                                child: transaction.details!
+                                                                .imageUrl ==
+                                                            "null" ||
+                                                        transaction.details!
+                                                                .imageUrl ==
+                                                            null ||
+                                                        transaction.details!
+                                                            .imageUrl!.isEmpty
+                                                    ? Image.asset(
+                                                        "assets/images/bell.png",
+                                                        color: Colors.white,
+                                                      )
+                                                    : Image.asset(
+                                                        transaction
+                                                            .details!.imageUrl!,
+                                                        color: Colors.white,
+                                                      ),
                                               )),
                                           title: Text(
                                             transaction.name!,
@@ -471,8 +485,8 @@ class _MonthlyTransactionsState extends State<MonthlyTransactions> {
                                               Text(
                                                   // ignore: unrelated_type_equality_checks
                                                   transaction.type == 1
-                                                      ? "+ ${transaction.amount}"
-                                                      : "-${transaction.amount}",
+                                                      ? "+ ${transaction.totalAmount}"
+                                                      : "-${transaction.totalAmount}",
                                                   style: TextStyle(
                                                       // ignore: unrelated_type_equality_checks
                                                       color:

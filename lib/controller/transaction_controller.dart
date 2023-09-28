@@ -809,57 +809,58 @@ class TransactionController extends GetxController {
     update();
   }
 
-  // Future getUserMonthTransactiondata() async {
-  //   isdailyLoad = true;
-  //   monthTransactionList.clear();
-  //   var res = await httpClient().get(StaticValues.getMonthTrasaction);
-  //   if (res.statusCode == 200) {
-  //     isdailyLoad = false;
-  //     monthTransaction = mTra.UserMonthTransaction.fromMap(res.data);
-  //     print("-=-=-=-=-= ${monthTransaction!.data.toString()}");
-  //     for (var data in monthTransaction!.data!) {
-  //       monthTransactionList.add(data);
-  //     }
-  //   }
-  //   print(monthTransactionList.length);
+  Future getUserMonthTransactiondata() async {
+    isdailyLoad = true;
+    monthTransactionList.clear();
+    var res = await httpClient().get(StaticValues.getMonthTrasaction);
+    if (res.statusCode == 200) {
+      isdailyLoad = false;
+      monthTransaction = mTra.UserMonthTransaction.fromMap(res.data);
+      print("-=-=-=-=-= ${monthTransaction!.data.toString()}");
+      for (var data in monthTransaction!.data!) {
+        monthTransactionList.add(data);
+      }
+    }
+    print(monthTransactionList.length);
 
-  //   update();
-  // }
+    update();
+  }
 
-  // Future getUserYearTransactiondata() async {
-  //   isdailyLoad = true;
-  //   yearTransactionList.clear();
-  //   var res = await httpClient().get(StaticValues.getYearTrasaction);
-  //   if (res.statusCode == 200) {
-  //     isdailyLoad = false;
-  //     yearTransaction = yTra.UserYearTransaction.fromMap(res.data);
-  //     for (var data in yearTransaction!.data!) {
-  //       yearTransactionList.add(data);
-  //     }
-  //   }
-  //   print(yearTransactionList.length);
+  Future getUserYearTransactiondata() async {
+    isdailyLoad = true;
+    yearTransactionList.clear();
+    var res = await httpClient().get(StaticValues.getYearTrasaction);
+    if (res.statusCode == 200) {
+      isdailyLoad = false;
+      yearTransaction = yTra.UserYearTransaction.fromMap(res.data);
+      for (var data in yearTransaction!.data!) {
+        yearTransactionList.add(data);
+      }
+    }
+    print(yearTransactionList.length);
 
-  //   update();
-  // }
+    update();
+  }
 
-  // Future getUserDailyTransactiondata() async {
-  //   isdailyLoad = true;
-  //   dailyTransactionList.clear();
-  //   var res = await httpClient().get(StaticValues.getDailyTrasaction);
-  //   if (res.statusCode == 200) {
-  //     isdailyLoad = false;
-  //     dailyTransaction = dTra.UserDailyTransaction.fromMap(res.data);
-  //     print("dailty    $dailyTransaction");
-  //     try {
-  //       for (var data in dailyTransaction!.data!) {
-  //         dailyTransactionList.add(data);
-  //       }
-  //     } catch (e) {
-  //       print("no data");
-  //     }
-  //   }
-  //   print(dailyTransactionList.length);
+  Future getUserDailyTransactiondata() async {
+    isdailyLoad = true;
+    dailyTransactionList.clear();
+    var res = await httpClient().get(StaticValues.getDailyTrasaction);
+    if (res.statusCode == 200) {
+      isdailyLoad = false;
+      print(res.data);
+      dailyTransaction = dTra.UserDailyTransaction.fromMap(res.data);
+      print("dailty    $dailyTransaction");
+      try {
+        for (var data in dailyTransaction!.data!) {
+          dailyTransactionList.add(data);
+        }
+      } catch (e) {
+        print("no data");
+      }
+    }
+    print(dailyTransactionList.length);
 
-  //   update();
-  // }
+    update();
+  }
 }

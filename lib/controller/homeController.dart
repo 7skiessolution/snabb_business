@@ -126,14 +126,15 @@ class HomeController extends GetxController {
     Navigator.pop(c);
   }
 
-  Future addSupplierData(Map<String, dynamic> model, BuildContext c) async {
+  Future addSupplierData(
+    Map<String, dynamic> model,
+  ) async {
     changeStatus(true);
     var res = await httpClient().post(StaticValues.addSupplier, data: model);
     if (res.statusCode == 200) {
       changeStatus(false);
       getSupplierdata();
     }
-    Navigator.pop(c);
   }
 
   Future deleteWalletdata(String id, BuildContext c) async {

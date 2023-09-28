@@ -89,8 +89,9 @@ class _TransactionScreenState extends State<TransactionScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
-        body: SizedBox(
+        body: Container(
             width: width,
+            color: Colors.white,
             height: height,
             child: Column(children: [
               AppBarWidgt(text: "Transactions"),
@@ -154,9 +155,10 @@ class _TransactionScreenState extends State<TransactionScreen> {
                         top: height * 0.1,
                         right: width * 0.015,
                         left: width * 0.015,
-                        child: SizedBox(
+                        child: Container(
                           height: height * 0.7,
                           width: width,
+                          color: Colors.white,
                           child: pagechildren[index],
                         ))
                   ],

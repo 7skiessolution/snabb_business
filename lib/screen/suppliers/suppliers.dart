@@ -455,13 +455,14 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                 }
 
                                                 HomeController.to
-                                                    .addSupplierData(map, dc)
+                                                    .addSupplierData(map)
                                                     .then((value) {
                                                   name.clear();
                                                   regNo.clear();
                                                   email.clear();
                                                   number.clear();
                                                   address.clear();
+                                                  Navigator.pop(dc);
                                                 });
                                               },
                                               child: Container(

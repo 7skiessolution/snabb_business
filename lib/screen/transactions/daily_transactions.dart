@@ -459,12 +459,12 @@ class _DailyTransactionsState extends State<DailyTransactions> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           content: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.7,
+            height: MediaQuery.of(context).size.height * 0.8,
             width: MediaQuery.of(context).size.width * 0.9,
             child: Stack(
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.7,
+                  height: MediaQuery.of(context).size.height * 0.8,
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: Column(
                     children: [

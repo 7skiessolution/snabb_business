@@ -72,6 +72,15 @@ class HomeController extends GetxController {
 
   CurrencyModell? selectedcurrency;
   bool isLoadData = false;
+  List type = [
+    "Individual",
+    "Company",
+  ];
+  String select = "Company";
+  changeValue(String value) {
+    select = value;
+    update();
+  }
 
   changeCurrency(String? mycurrency, context) async {
     curency = mycurrency!;

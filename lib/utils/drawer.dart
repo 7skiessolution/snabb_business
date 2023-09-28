@@ -2,16 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:snabb_business/controller/homeController.dart';
-import 'package:snabb_business/pdf/daily_sale_report.dart';
+import 'package:snabb_business/pdf/c/pdf_controller.dart';
+import 'package:snabb_business/pdf/pdfs/company_sale_pdf.dart';
+import 'package:snabb_business/pdf/pdfs/daily_sale_report.dart';
+import 'package:snabb_business/pdf/pdfs/expense_report_pdf.dart';
+import 'package:snabb_business/pdf/pdfs/purchase_report_pdf.dart';
+import 'package:snabb_business/pdf/pdfs/supplier_report_pdf.dart';
 import 'package:snabb_business/screen/auth/loginScreen.dart';
-import 'package:snabb_business/screen/budget/BudgetView.dart';
 import 'package:snabb_business/screen/company/company.dart';
 import 'package:snabb_business/screen/dashboardScreen.dart';
 import 'package:snabb_business/screen/debit/deptsscreen.dart';
 import 'package:snabb_business/screen/drawerscreen/Calender.dart';
 import 'package:snabb_business/screen/drawerscreen/settings.dart';
 import 'package:snabb_business/screen/drawerscreen/userProfile.dart';
-import 'package:snabb_business/screen/schedule_transaction/schedule_transactions.dart';
 import 'package:snabb_business/screen/summary/summary_screen.dart';
 import 'package:snabb_business/screen/suppliers/suppliers.dart';
 import 'package:snabb_business/screen/transactions/transactionScreen.dart';
@@ -30,6 +33,7 @@ class DrawerScreen extends StatelessWidget {
 
     return GetBuilder<HomeController>(initState: (state) {
       Get.put(HomeController());
+      Get.put(PdfController());
     }, builder: (obj) {
       return Column(children: [
         SizedBox(
@@ -409,7 +413,16 @@ class DrawerScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) => DailySaleReport()));
+                                    builder: (context) =>
+                                        DailySaleReportPDFScreen(
+                                      dailysaleReportList:
+                                          PdfController.to.dailyslaesReportlist,
+                                    ),
+                                  ));
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (_) => DailySaleReport()));
                             },
                             child: ListTile(
                               leading: Icon(
@@ -427,6 +440,15 @@ class DrawerScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        CompanySaleReportPDFScreen(
+                                      companysaleReportList:
+                                          PdfController.to.compenysaleslist,
+                                    ),
+                                  ));
                               // obj.drawermenueclose();
                               // Navigator.push(context,
                               //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
@@ -447,6 +469,15 @@ class DrawerScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        PurchaseReportPDFScreen(
+                                      purchaseReportList:
+                                          PdfController.to.purchaseReportList,
+                                    ),
+                                  ));
                               // obj.drawermenueclose();
                               // Navigator.push(context,
                               //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
@@ -467,6 +498,8 @@ class DrawerScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
+                              showingSuplierdialogue(
+                                  context, height, width, white);
                               // obj.drawermenueclose();
                               // Navigator.push(context,
                               //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
@@ -487,6 +520,15 @@ class DrawerScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        ExpenseReportPDFScreen(
+                                      expenseReportList:
+                                          PdfController.to.expenseReportList,
+                                    ),
+                                  ));
                               // obj.drawermenueclose();
                               // Navigator.push(context,
                               //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
@@ -688,4 +730,163 @@ class DrawerScreen extends StatelessWidget {
       ]);
     });
   }
+}
+
+void showingSuplierdialogue(context, height, width, white) {
+  showDialog(
+    context: context,
+    builder: (dc) {
+      return AlertDialog(
+        content: Container(
+          color: Colors.grey.shade300,
+          height: height * 0.55,
+          width: width,
+          child: Stack(
+            children: [
+              Container(
+                height: height * 0.15,
+                width: width,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage("images/dollar.jpg"))),
+              ),
+              Container(
+                height: height * 0.15,
+                width: width,
+                color: Colors.blue[900]!.withOpacity(0.9),
+                child: Padding(
+                  padding:
+                      EdgeInsets.only(top: height * 0.03, left: width * 0.02),
+                  child: Text(
+                    "Select Supplier",
+                    style: TextStyle(
+                        color: white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: height * 0.07),
+                child: Center(
+                  child: Card(
+                    elevation: 10,
+                    shadowColor: Colors.blue[900],
+                    child: Container(
+                        height: height * 0.5,
+                        width: width,
+                        color: white,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: height * 0.01,
+                              ),
+                              ListView.builder(
+                                shrinkWrap: true,
+                                itemCount:
+                                    HomeController.to.supplierList.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: InkWell(
+                                      onTap: () {
+                                        PdfController.to
+                                            .fetchsupplierReport(HomeController
+                                                .to
+                                                .supplierList[index]
+                                                .supplierId!)
+                                            .then((value) {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SupplierReportPDFScreen(
+                                                        supplierReportList:
+                                                            value),
+                                              ));
+                                        });
+                                        // supplierName = HomeController.to.supplierList[index].name.toString();
+                                        // supplierid = HomeController.to.supplierList[index].supplierId.toString();
+                                        // print("name supplier ------$supplierName");
+                                      },
+                                      child: Card(
+                                        elevation: 10,
+                                        shadowColor: Colors.blue[900],
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Container(
+                                          height: height * 0.1,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: SizedBox(
+                                              height: height,
+                                              width: width,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    HomeController
+                                                        .to
+                                                        .supplierList[index]
+                                                        .name!,
+                                                    style: TextStyle(
+                                                        fontSize: width * 0.035,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color:
+                                                            Colors.blue[900]),
+                                                  ),
+                                                  Text(
+                                                    HomeController
+                                                        .to
+                                                        .supplierList[index]
+                                                        .email!,
+                                                    style: TextStyle(
+                                                        fontSize: width * 0.03,
+                                                        color: Colors.black),
+                                                  ),
+                                                  Text(
+                                                    HomeController
+                                                        .to
+                                                        .supplierList[index]
+                                                        .telePhone!,
+                                                    style: TextStyle(
+                                                        fontSize: width * 0.035,
+                                                        color: Colors.black),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                        )),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      );
+    },
+  );
 }

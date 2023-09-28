@@ -6,6 +6,7 @@ import 'package:pie_chart/pie_chart.dart';
 import 'package:snabb_business/controller/expense_controller.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
+import 'package:snabb_business/pdf/c/pdf_controller.dart';
 import 'package:snabb_business/screen/chartsScreens/purchaseChart.dart';
 import 'package:snabb_business/screen/chartsScreens/salesChart.dart';
 import 'package:snabb_business/utils/color.dart';
@@ -32,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Get.put(HomeController());
     Get.put(ExpenseController());
     Get.put(TransactionController());
+    Get.put(PdfController());
     HomeController.to.saleListOFChart();
     HomeController.to.expenseList(0);
     HomeController.to.expenseList(2);
@@ -45,6 +47,12 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeController.to.getCompanydata();
     HomeController.to.getSupplierdata();
     ExpenseController.to.getCatageries();
+    // pdf
+    PdfController.to.fetchcompenysales();
+    PdfController.to.fetchdailyslaesReport();
+    PdfController.to.fetchexpenseReport();
+    PdfController.to.fetchpurchaseReport();
+
     super.initState();
   }
 

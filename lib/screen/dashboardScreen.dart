@@ -5,7 +5,6 @@ import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/screen/bottomscreen/expense.dart';
 import 'package:snabb_business/screen/chartsScreens/purchaseChart.dart';
 import 'package:snabb_business/screen/chartsScreens/salesChart.dart';
-import 'package:snabb_business/screen/drawerscreen/walletScreen.dart';
 import 'package:snabb_business/screen/homeScreen.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/colors.dart';

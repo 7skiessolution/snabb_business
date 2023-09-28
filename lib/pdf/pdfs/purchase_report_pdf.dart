@@ -3,19 +3,22 @@ import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart' as p;
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
-import 'package:snabb_business/screen/invoice/invoice_model.dart';
+import 'package:snabb_business/pdf/m/purchase_report_model.dart';
 
-class DailySaleReport extends StatefulWidget {
+class PurchaseReportPDFScreen extends StatefulWidget {
+  List<PurchaseReportData>? purchaseReportList;
   @override
-  DailySaleReport({
+  PurchaseReportPDFScreen({
+    required this.purchaseReportList,
     super.key,
   });
 
   @override
-  State<DailySaleReport> createState() => _DailySaleReportState();
+  State<PurchaseReportPDFScreen> createState() =>
+      _PurchaseReportPDFScreenState();
 }
 
-class _DailySaleReportState extends State<DailySaleReport> {
+class _PurchaseReportPDFScreenState extends State<PurchaseReportPDFScreen> {
   List<pw.Widget> listofPDF = [];
   double total = 0.0;
 
@@ -32,7 +35,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
           style: pw.TextStyle(
               fontSize: 24,
               fontWeight: pw.FontWeight.bold,
-              color: p.PdfColors.green),
+              color: p.PdfColors.indigo),
         ),
       ),
     );
@@ -42,7 +45,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
       pw.Container(
         height: 25,
         width: 250,
-        color: p.PdfColors.green,
+        color: p.PdfColors.indigo,
         child: pw.Align(
           alignment: pw.Alignment.center,
           child: pw.Text(
@@ -63,7 +66,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                   pw.Container(
                     height: 25,
                     width: 100,
-                    color: p.PdfColors.red,
+                    color: p.PdfColors.indigo,
                     child: pw.Align(
                       alignment: pw.Alignment.center,
                       child: pw.Text(
@@ -78,7 +81,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColors.indigo,
                     child: pw.Center(
                       child: pw.Text(
                         'No #',
@@ -92,7 +95,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColors.indigo,
                     child: pw.Center(
                       child: pw.Text(
                         'OnCash',
@@ -106,7 +109,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColors.indigo,
                     child: pw.Center(
                       child: pw.Text(
                         'OnBank',
@@ -120,7 +123,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColors.indigo,
                     child: pw.Center(
                       child: pw.Text(
                         'Other',
@@ -134,7 +137,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColors.indigo,
                     child: pw.Center(
                       child: pw.Text(
                         'Credit Transaction',
@@ -149,7 +152,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColors.indigo,
                     child: pw.Center(
                       child: pw.Text(
                         'Total',
@@ -163,7 +166,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColors.indigo,
                     child: pw.Center(
                       child: pw.Text(
                         'Balance',
@@ -177,7 +180,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                   pw.Container(
                     height: 25,
                     width: 100,
-                    color: p.PdfColors.purple,
+                    color: p.PdfColors.indigo,
                     child: pw.Center(
                       child: pw.Text(
                         'Return Date',
@@ -195,8 +198,10 @@ class _DailySaleReportState extends State<DailySaleReport> {
     ]));
 
     /// for loop lagna ha idhr or ya list us k andr
+    int i = 1;
+
     ///
-    for (int i = 0; i < 5; i++) {
+    for (var u in widget.purchaseReportList!) {
       listofPDF.add(pw.Table(
           border: pw.TableBorder.all(color: p.PdfColors.grey, width: 2),
           children: [
@@ -209,7 +214,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                     child: pw.Align(
                       alignment: pw.Alignment.center,
                       child: pw.Text(
-                        '1-july-2023',
+                        u.date == null ? '-' : u.date!.substring(0, 10),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -222,7 +227,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                     width: 80,
                     child: pw.Center(
                       child: pw.Text(
-                        '11223',
+                        i.toString(),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -235,7 +240,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                     width: 80,
                     child: pw.Center(
                       child: pw.Text(
-                        '12000',
+                        u.cashAmount == null ? '-' : u.cashAmount!.toString(),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -249,7 +254,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
                       child: pw.Text(
-                        '15000',
+                        u.bankAmount == null ? '-' : u.bankAmount!.toString(),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -263,7 +268,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
                       child: pw.Text(
-                        '150',
+                        u.otherAmount == null ? '-' : u.otherAmount!.toString(),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -277,7 +282,9 @@ class _DailySaleReportState extends State<DailySaleReport> {
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
                       child: pw.Text(
-                        '150',
+                        u.partialAmount == null
+                            ? '-'
+                            : u.partialAmount!.toString(),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -291,7 +298,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
                       child: pw.Text(
-                        '150',
+                        u.totalAmount == null ? '-' : u.totalAmount!.toString(),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -305,7 +312,9 @@ class _DailySaleReportState extends State<DailySaleReport> {
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
                       child: pw.Text(
-                        '150',
+                        u.remainingAmount == null
+                            ? '-'
+                            : u.remainingAmount!.toString(),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -319,7 +328,9 @@ class _DailySaleReportState extends State<DailySaleReport> {
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
                       child: pw.Text(
-                        '18-12-2023',
+                        u.payBackDay == null
+                            ? '-'
+                            : u.payBackDay!.substring(0, 10),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -329,6 +340,7 @@ class _DailySaleReportState extends State<DailySaleReport> {
                   ),
                 ])
           ]));
+      i++;
     }
 
     listofPDF.add(pw.Column(children: [

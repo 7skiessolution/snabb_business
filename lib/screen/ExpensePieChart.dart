@@ -326,7 +326,7 @@ class _ExpencePieChartState extends State<ExpencePieChart> {
                                                             .spaceAround,
                                                     children: [
                                                       Text(
-                                                        "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency}",
+                                                        "Recieve Payment ${(data.details!.partialAmount ?? 0.0)} ${obj.curency}",
                                                         style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight.w500,
@@ -335,7 +335,7 @@ class _ExpencePieChartState extends State<ExpencePieChart> {
                                                             color: white),
                                                       ),
                                                       Text(
-                                                        "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
+                                                        "Balamce Amount ${(data.totalAmount ?? 0.0) - (data.details!.partialAmount ?? 0.0)} ${obj.curency} ",
                                                         style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight.w500,
@@ -364,12 +364,12 @@ class _ExpencePieChartState extends State<ExpencePieChart> {
                                                   CircleAvatar(
                                                     backgroundColor: darkblue,
                                                     child: Image.asset(
-                                                      data.imageUrl!,
+                                                      "images/sale.png",
                                                       color: white,
                                                     ),
                                                   ),
                                                   Text(
-                                                    "${data.category}",
+                                                    "${data.details!.name}",
                                                     style: TextStyle(
                                                         fontSize: width * 0.04,
                                                         fontWeight:
@@ -397,7 +397,7 @@ class _ExpencePieChartState extends State<ExpencePieChart> {
                                                           ),
                                                           child: Center(
                                                             child: Text(
-                                                              "${data.amount} ${obj.curency}",
+                                                              "${data.totalAmount} ${obj.curency}",
                                                               style: TextStyle(
                                                                   fontSize:
                                                                       width *

@@ -7,6 +7,7 @@ import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/models/currency_model.dart';
 import 'package:snabb_business/models/get_data_year_type_model.dart' as sp;
 import 'package:snabb_business/models/get_sale_purchase.dart';
+import 'package:snabb_business/models/get_year_type_purchase.dart' as plist;
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
 import 'package:snabb_business/screen/company/companyModel.dart' as cm;
@@ -426,8 +427,30 @@ class HomeController extends GetxController {
   }
 
   List<sp.Data> expenseData = [];
-  List<sp.Data> purchaseData = [];
+  List<plist.Data> purchaseData = [];
   List<sp.Data> salaDatalist = [];
+  DateTime now = DateTime.now();
+  getlistPurchase(int type) async {
+    print("hi");
+    try {
+      var res = await httpClient()
+          .get("${StaticValues.getexpensePurchaseyearType}${now.year}/$type");
+      if (res.statusCode == 200) {
+        purchaseData.clear();
+        plist.GetYearTypePurchase purchasemodel =
+            plist.GetYearTypePurchase.fromMap(res.data);
+        for (int i = 0; i < purchasemodel.data!.length; i++) {
+          var e = purchasemodel.data![i];
+          purchaseData.add(e);
+          update();
+        }
+      }
+      print("length of purchase data ${purchaseData.length}");
+    } on Exception catch (e) {
+      print("purchase error $e");
+      // TODO
+    }
+  }
 
   getexpensePurchase(int type) async {
     DateTime a = DateTime.now();
@@ -448,7 +471,6 @@ class HomeController extends GetxController {
         if (type == 2) {
           expenseData.add(e);
         } else if (type == 0) {
-          purchaseData.add(e);
         } else if (type == 1) {
           salaDatalist.add(e);
         }

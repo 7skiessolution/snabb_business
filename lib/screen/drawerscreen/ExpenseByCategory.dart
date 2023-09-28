@@ -380,7 +380,7 @@ class _ExpenceByCategoryState extends State<ExpenceByCategory> {
                                                                 .spaceAround,
                                                         children: [
                                                           Text(
-                                                            "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency}",
+                                                            "Recieve Payment ${(data.details!.partialAmount ?? 0.0)} ${obj.curency}",
                                                             style: TextStyle(
                                                                 fontWeight:
                                                                     FontWeight
@@ -391,7 +391,7 @@ class _ExpenceByCategoryState extends State<ExpenceByCategory> {
                                                                 color: white),
                                                           ),
                                                           Text(
-                                                            "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
+                                                            "Balamce Amount ${(data.totalAmount ?? 0.0) - (data.details!.partialAmount ?? 0.0)} ${obj.curency} ",
                                                             style: TextStyle(
                                                                 fontWeight:
                                                                     FontWeight
@@ -424,12 +424,12 @@ class _ExpenceByCategoryState extends State<ExpenceByCategory> {
                                                         backgroundColor:
                                                             darkblue,
                                                         child: Image.asset(
-                                                          data.imageUrl!,
+                                                          "images/sale.png",
                                                           color: white,
                                                         ),
                                                       ),
                                                       Text(
-                                                        "${data.category}",
+                                                        "${data.details!.name}",
                                                         style: TextStyle(
                                                             fontSize:
                                                                 width * 0.04,
@@ -460,7 +460,7 @@ class _ExpenceByCategoryState extends State<ExpenceByCategory> {
                                                               ),
                                                               child: Center(
                                                                 child: Text(
-                                                                  "${data.amount} ${obj.curency}",
+                                                                  "${data.totalAmount} ${obj.curency}",
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           width *

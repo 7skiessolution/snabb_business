@@ -226,30 +226,13 @@ class _ExpenceByCategoryState extends State<ExpenceByCategory> {
                                                 child: Padding(
                                                   padding: EdgeInsets.only(
                                                       bottom: height * 0.005),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceAround,
-                                                    children: [
-                                                      Text(
-                                                        "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency} ",
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontSize:
-                                                                width * 0.025,
-                                                            color: white),
-                                                      ),
-                                                      Text(
-                                                        "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontSize:
-                                                                width * 0.025,
-                                                            color: white),
-                                                      )
-                                                    ],
+                                                  child: Text(
+                                                    "Total Expense ${(data.totalAmount ?? 0.0)} ${obj.curency} ",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: width * 0.025,
+                                                        color: white),
                                                   ),
                                                 ),
                                               ),
@@ -271,12 +254,12 @@ class _ExpenceByCategoryState extends State<ExpenceByCategory> {
                                                     backgroundColor:
                                                         expensecolor,
                                                     child: Image.asset(
-                                                      data.imageUrl!,
+                                                      data.details!.imageUrl!,
                                                       color: white,
                                                     ),
                                                   ),
                                                   Text(
-                                                    "${data.category}",
+                                                    "${data.details!.category}",
                                                     style: TextStyle(
                                                         fontSize: width * 0.04,
                                                         fontWeight:
@@ -304,7 +287,7 @@ class _ExpenceByCategoryState extends State<ExpenceByCategory> {
                                                           ),
                                                           child: Center(
                                                             child: Text(
-                                                              "${data.amount}",
+                                                              "${data.totalAmount}",
                                                               style: TextStyle(
                                                                   fontSize:
                                                                       width *

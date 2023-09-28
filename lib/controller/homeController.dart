@@ -7,6 +7,7 @@ import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/models/currency_model.dart';
 import 'package:snabb_business/models/get_data_year_type_model.dart' as sp;
 import 'package:snabb_business/models/get_sale_purchase.dart';
+import 'package:snabb_business/models/get_type_year_expense.dart' as elist;
 import 'package:snabb_business/models/get_year_type_purchase.dart' as plist;
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
@@ -427,7 +428,7 @@ class HomeController extends GetxController {
     }
   }
 
-  List<sp.Data> expenseData = [];
+  List<elist.Data> expenseData = [];
   List<plist.Data> purchaseData = [];
   List<sp.Data> salaDatalist = [];
   DateTime now = DateTime.now();
@@ -453,26 +454,43 @@ class HomeController extends GetxController {
     }
   }
 
+  getlistExpense(int type) async {
+    print("hi");
+    try {
+      var res = await httpClient()
+          .get("${StaticValues.getexpensePurchaseyearType}${now.year}/$type");
+      if (res.statusCode == 200) {
+        print("Expence data ${res.data}");
+        expenseData.clear();
+        elist.GetYearTypeExpense expenseemodel =
+            elist.GetYearTypeExpense.fromMap(res.data);
+        for (int i = 0; i < expenseemodel.data!.length; i++) {
+          var e = expenseemodel.data![i];
+          expenseData.add(e);
+          update();
+        }
+      }
+      print("length of purchase data ${expenseData.length}");
+      //print("Expence data $expenseData");
+    } on Exception catch (e) {
+      print("purchase error $e");
+      // TODO
+    }
+  }
+
   getexpensePurchase(int type) async {
     DateTime a = DateTime.now();
     var res = await httpClient()
         .get("${StaticValues.getSalePurchaseType}$type/${a.year}");
     if (res.statusCode == 200) {
-      if (type == 2) {
-        expenseData.clear();
-      } else if (type == 0) {
-        purchaseData.clear();
-      } else if (type == 1) {
+      if (type == 1) {
         salaDatalist.clear();
       }
       sp.GetDataYearType expensepurchasemodel =
           sp.GetDataYearType.fromMap(res.data);
       for (int i = 0; i < expensepurchasemodel.data!.length; i++) {
         var e = expensepurchasemodel.data![i];
-        if (type == 2) {
-          expenseData.add(e);
-        } else if (type == 0) {
-        } else if (type == 1) {
+        if (type == 1) {
           salaDatalist.add(e);
         }
         update();

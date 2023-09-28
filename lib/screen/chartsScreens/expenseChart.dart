@@ -228,7 +228,7 @@ class _ExpenseChartState extends State<ExpenseChart> {
                                                   0.9,
                                               child: Stack(
                                                 children: [
-                                                  Container(
+                                                  SizedBox(
                                                       height: height,
                                                       width: width,
                                                       child: PinchZoomImage(
@@ -440,8 +440,8 @@ class _ExpenseChartState extends State<ExpenseChart> {
                         var data = obj.expenseData[index];
                         return InkWell(
                           onTap: () {
-                            print(
-                                "image path ${StaticValues.imageUrl}${data.files}");
+                            // print(
+                            //     "image path ${StaticValues.imageUrl}${data.files}");
                             showImageDialog(context, obj.expenseData[index]);
                           },
                           child: Padding(
@@ -460,25 +460,12 @@ class _ExpenseChartState extends State<ExpenseChart> {
                                     child: Padding(
                                       padding: EdgeInsets.only(
                                           bottom: height * 0.005),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Text(
-                                            "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency} ",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: width * 0.025,
-                                                color: white),
-                                          ),
-                                          Text(
-                                            "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: width * 0.025,
-                                                color: white),
-                                          )
-                                        ],
+                                      child: Text(
+                                        "Total Expense ${(data.totalAmount ?? 0.0)} ${obj.curency} ",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: width * 0.025,
+                                            color: white),
                                       ),
                                     ),
                                   ),
@@ -497,12 +484,12 @@ class _ExpenseChartState extends State<ExpenseChart> {
                                       CircleAvatar(
                                         backgroundColor: expensecolor,
                                         child: Image.asset(
-                                          data.imageUrl!,
+                                          data.details!.imageUrl!,
                                           color: white,
                                         ),
                                       ),
                                       Text(
-                                        "${data.category}",
+                                        "${data.details!.category}",
                                         style: TextStyle(
                                             fontSize: width * 0.04,
                                             fontWeight: FontWeight.bold,
@@ -525,7 +512,7 @@ class _ExpenseChartState extends State<ExpenseChart> {
                                               ),
                                               child: Center(
                                                 child: Text(
-                                                  "${data.amount}",
+                                                  "${data.totalAmount}",
                                                   style: TextStyle(
                                                       fontSize: width * 0.02,
                                                       fontWeight:

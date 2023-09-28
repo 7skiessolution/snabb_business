@@ -180,35 +180,21 @@ class _ExpencePieChartState extends State<ExpencePieChart> {
                                                 BorderRadius.circular(6),
                                           ),
                                           child: Align(
-                                            alignment: Alignment.bottomCenter,
-                                            child: Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: height * 0.005),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceAround,
-                                                children: [
-                                                  Text(
-                                                    "Recieve Payment ${(data.partialAmount ?? 0.0)} ${obj.curency} ",
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                                child: Padding(
+                                                  padding: EdgeInsets.only(
+                                                      bottom: height * 0.005),
+                                                  child: Text(
+                                                    "Total Expense ${(data.totalAmount ?? 0.0)} ${obj.curency} ",
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w500,
                                                         fontSize: width * 0.025,
                                                         color: white),
                                                   ),
-                                                  Text(
-                                                    "Balamce Amount ${(data.amount ?? 0.0) - (data.partialAmount ?? 0.0)} ${obj.curency} ",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize: width * 0.025,
-                                                        color: white),
-                                                  )
-                                                ],
+                                                ),
                                               ),
-                                            ),
-                                          ),
                                         ),
                                         Container(
                                           height: height * 0.1,
@@ -225,12 +211,12 @@ class _ExpencePieChartState extends State<ExpencePieChart> {
                                               CircleAvatar(
                                                 backgroundColor: expensecolor,
                                                 child: Image.asset(
-                                                  data.imageUrl!,
-                                                  color: white,
-                                                ),
+                                          data.details!.imageUrl!,
+                                          color: white,
+                                        ),
                                               ),
                                               Text(
-                                                "${data.category}",
+                                                "${data.details!.category}",
                                                 style: TextStyle(
                                                     fontSize: width * 0.04,
                                                     fontWeight: FontWeight.bold,
@@ -254,7 +240,7 @@ class _ExpencePieChartState extends State<ExpencePieChart> {
                                                       ),
                                                       child: Center(
                                                         child: Text(
-                                                          "${data.amount}",
+                                                          "${data.totalAmount}",
                                                           style: TextStyle(
                                                               fontSize:
                                                                   width * 0.02,

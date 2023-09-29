@@ -823,7 +823,7 @@ class ExpenseController extends GetxController {
                                                                 left: width *
                                                                     0.02),
                                                         child: Text(
-                                                          "Add Catagory",
+                                                          "Add Category",
                                                           style: TextStyle(
                                                               color: white,
                                                               fontSize: 15,
@@ -899,8 +899,8 @@ class ExpenseController extends GetxController {
                                                                                   errorStyle: const TextStyle(color: Colors.black),
                                                                                   contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                                                                                   fillColor: Colors.grey,
-                                                                                  hintText: "Catagory Name",
-                                                                                  labelText: "Catagory Name",
+                                                                                  hintText: "Category Name",
+                                                                                  labelText: "Category Name",
                                                                                   alignLabelWithHint: true,
                                                                                   enabledBorder: OutlineInputBorder(
                                                                                     borderRadius: BorderRadius.circular(10),
@@ -998,7 +998,7 @@ class ExpenseController extends GetxController {
                                                                               Center(
                                                                             child:
                                                                                 Text(
-                                                                              "Add Catagory",
+                                                                              "Add Category",
                                                                               style: TextStyle(fontSize: width * 0.03, color: Colors.white, fontWeight: FontWeight.bold),
                                                                             ),
                                                                           ),

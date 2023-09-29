@@ -29,7 +29,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
         children: [
           Align(
               alignment: Alignment.topCenter,
-              child: AppBarWidgt(text: "Calender")),
+              child: AppBarWidgt(text: "Calendar")),
           Padding(
             padding: EdgeInsets.only(top: height * 0.1),
             child: SizedBox(
@@ -53,7 +53,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
                       padding:
                           const EdgeInsets.only(top: 15.0, left: 20, right: 20),
                       child: Text(
-                        "Calander",
+                        "Calendar",
                         style: TextStyle(
                             color: white,
                             fontSize: 15,

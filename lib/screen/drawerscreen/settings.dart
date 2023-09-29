@@ -95,7 +95,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                 height: height * 0.02,
                               ),
                               Text(
-                                "Lanugauge",
+                                "Language",
                                 style: TextStyle(
                                     fontSize: width * 0.035,
                                     fontWeight: FontWeight.bold),
@@ -149,7 +149,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                 height: height * 0.02,
                               ),
                               Text(
-                                "Feedback & Supory",
+                                "Feedback & Support",
                                 style: TextStyle(
                                     fontSize: width * 0.035,
                                     fontWeight: FontWeight.bold),

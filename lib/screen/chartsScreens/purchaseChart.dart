@@ -46,7 +46,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                         width: MediaQuery.of(context).size.width * 0.9,
                         child: Center(
                             child: Text(
-                          AppLocalizations.of(context)!.transactiondetails,
+                          "Purchase Transaction Details",
                           style: TextStyle(
                               color: darkblue,
                               fontSize: width * 0.03,
@@ -54,7 +54,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                         )),
                       ),
                       SizedBox(
-                        height: height * 0.06,
+                        height: height * 0.05,
                         width: width * 0.9,
                         child: Row(
                           children: [
@@ -65,24 +65,138 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                 child: Row(
                                   children: [
                                     Text(
-                                      AppLocalizations.of(context)!
-                                          .name
-                                          .capitalize!,
+                                      "Name: ",
                                       style: TextStyle(
                                           color: darkblue,
-                                          fontSize: width * 0.03,
+                                          fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      ": ${obj.name}",
+                                      ": ${obj.details!.name!}",
                                       style: TextStyle(
-                                        fontSize: width * 0.03,
+                                        fontSize: width * 0.025,
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
                             ),
+                            Expanded(
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "Number: ",
+                                      style: TextStyle(
+                                          color: darkblue,
+                                          fontSize: width * 0.025,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      obj.details!.telePhone!.toString(),
+                                      style: TextStyle(
+                                        fontSize: width * 0.025,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: height * 0.05,
+                        width: width * 0.9,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "Email: ",
+                                      style: TextStyle(
+                                          fontSize: width * 0.025,
+                                          color: darkblue,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(obj.details!.email!,
+                                        style: TextStyle(
+                                          fontSize: width * 0.025,
+                                        )),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: height * 0.05,
+                        width: width * 0.9,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'payBackDate:'.capitalize!,
+                                      style: TextStyle(
+                                          color: darkblue,
+                                          fontSize: width * 0.025,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      " ${obj.details!.payBackDay == null ? "------" : obj.details!.payBackDay.toString().substring(0, 10)}",
+                                      style: TextStyle(
+                                        fontSize: width * 0.025,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: SizedBox(
+                                height: height,
+                                width: width,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      AppLocalizations.of(context)!
+                                          .date
+                                          .capitalize!,
+                                      style: TextStyle(
+                                          color: darkblue,
+                                          fontSize: width * 0.025,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      ": ${obj.dateTime.toString().substring(0, 10)}",
+                                      style: TextStyle(
+                                        fontSize: width * 0.025,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.06,
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        child: Row(
+                          children: [
                             Expanded(
                               child: SizedBox(
                                 height: MediaQuery.of(context).size.height,
@@ -108,12 +222,35 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                 ),
                               ),
                             ),
+                            Expanded(
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'Reg#:'.capitalize!,
+                                      style: TextStyle(
+                                          color: darkblue,
+                                          fontSize: width * 0.03,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      ": ${obj.details!.companyReg!}",
+                                      style: TextStyle(
+                                        fontSize: width * 0.03,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.06,
-                        width: MediaQuery.of(context).size.width * 0.9,
+                        height: height * 0.05,
+                        width: width * 0.9,
                         child: Row(
                           children: [
                             Expanded(
@@ -123,18 +260,16 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                 child: Row(
                                   children: [
                                     Text(
-                                      'Suplier:'.capitalize!,
+                                      "Bank: ",
                                       style: TextStyle(
+                                          fontSize: width * 0.025,
                                           color: darkblue,
-                                          fontSize: width * 0.03,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Text(
-                                      ": ${obj.name!}",
-                                      style: TextStyle(
-                                        fontSize: width * 0.03,
-                                      ),
-                                    ),
+                                    Text(obj.bankAmount.toString(),
+                                        style: TextStyle(
+                                          fontSize: width * 0.025,
+                                        )),
                                   ],
                                 ),
                               ),
@@ -146,18 +281,37 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                 child: Row(
                                   children: [
                                     Text(
-                                      AppLocalizations.of(context)!
-                                          .date
-                                          .capitalize!,
+                                      "Cash: ",
+                                      style: TextStyle(
+                                          fontSize: width * 0.025,
+                                          color: darkblue,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(obj.cashAmount.toString(),
+                                        style: TextStyle(
+                                          fontSize: width * 0.025,
+                                        )),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "Other: ",
                                       style: TextStyle(
                                           color: darkblue,
-                                          fontSize: width * 0.03,
+                                          fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      ": ${obj.dateTime.toString().substring(0, 10)}",
+                                      obj.otherAmount.toString(),
                                       style: TextStyle(
-                                        fontSize: width * 0.03,
+                                        fontSize: width * 0.025,
                                       ),
                                     ),
                                   ],
@@ -176,10 +330,10 @@ class _PurchaseChartState extends State<PurchaseChart> {
                               height: MediaQuery.of(context).size.height * 0.05,
                               width: MediaQuery.of(context).size.width,
                               child: Text(
-                                AppLocalizations.of(context)!.notes,
+                                "Note: ",
                                 style: TextStyle(
                                     color: darkblue,
-                                    fontSize: width * 0.035,
+                                    fontSize: width * 0.025,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -303,8 +457,12 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                       },
                                     ),
                                   )
-                                : Text(AppLocalizations.of(context)!
-                                    .nofileforthistransaction),
+                                : Text(
+                                    "No File Available",
+                                    style: TextStyle(
+                                      fontSize: width * 0.025,
+                                    ),
+                                  ),
                           ),
                         ),
                       ),
@@ -344,22 +502,12 @@ class _PurchaseChartState extends State<PurchaseChart> {
                         Navigator.pop(context);
                       },
                       child: Container(
-                        height: MediaQuery.of(context).size.height * 0.04,
-                        width: MediaQuery.of(context).size.width * 0.08,
-                        decoration: obj.file == "null" ||
-                                obj.file == null ||
-                                obj.file!.isEmpty
-                            ? const BoxDecoration(
-                                image: DecorationImage(
-                                    image:
-                                        AssetImage("assets/images/bell.png")),
-                                shape: BoxShape.circle)
-                            : BoxDecoration(
-                                image: DecorationImage(
-                                    image: NetworkImage(
-                                        StaticValues.imageUrl + obj.file!)),
-                                shape: BoxShape.circle),
-                      ),
+                          height: MediaQuery.of(context).size.height * 0.04,
+                          width: MediaQuery.of(context).size.width * 0.08,
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage("images/sale.png")),
+                              shape: BoxShape.circle)),
                     ),
                   ),
                 )
@@ -404,13 +552,6 @@ class _PurchaseChartState extends State<PurchaseChart> {
                         color: white, borderRadius: BorderRadius.circular(8)),
                     child: Column(
                       children: [
-                        // Text(
-                        //   "Purchase",
-                        //   style: TextStyle(
-                        //       fontSize: width * 0.04,
-                        //       fontWeight: FontWeight.w800,
-                        //       color: darkblue),
-                        // ),
                         SizedBox(
                             height: height * 0.20,
                             width: width,
@@ -448,10 +589,10 @@ class _PurchaseChartState extends State<PurchaseChart> {
                     color: darkblue,
                     child: Center(
                       child: Text(
-                        "Purchase Transactions",
+                        "Purchase Transactions".toUpperCase(),
                         style: TextStyle(
-                            fontSize: width * 0.04,
-                            fontWeight: FontWeight.bold,
+                            fontSize: width * 0.035,
+                            fontWeight: FontWeight.w500,
                             color: white),
                       ),
                     ),
@@ -492,7 +633,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                                   MainAxisAlignment.spaceAround,
                                               children: [
                                                 Text(
-                                                  "Recieve Payment ${(data.details!.partialAmount ?? 0.0)} ${obj.curency}",
+                                                  "Recieve Payment: ${(data.details!.partialAmount ?? 0.0)} ${obj.curency}",
                                                   style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -500,7 +641,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                                       color: white),
                                                 ),
                                                 Text(
-                                                  "Balamce Amount ${(data.totalAmount ?? 0.0) - (data.details!.partialAmount ?? 0.0)} ${obj.curency} ",
+                                                  "Balamce Amount: ${(data.totalAmount ?? 0.0) - (data.details!.partialAmount ?? 0.0)} ${obj.curency} ",
                                                   style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -524,18 +665,35 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceAround,
                                           children: [
+                                            SizedBox(
+                                              width: width * 0.05,
+                                            ),
                                             CircleAvatar(
                                               backgroundColor: darkblue,
                                               child: Image.asset(
                                                 "images/sale.png",
                                               ),
                                             ),
-                                            Text(
-                                              "${data.details!.name}",
-                                              style: TextStyle(
-                                                  fontSize: width * 0.04,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: darkblue),
+                                            SizedBox(
+                                              width: width * 0.05,
+                                            ),
+                                            Expanded(
+                                              child: Container(
+                                                alignment: Alignment.centerLeft,
+                                                height: height,
+                                                width: width,
+                                                child: Text(
+                                                  data.details!.name ?? "Name",
+                                                  style: TextStyle(
+                                                      fontSize: width * 0.035,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: darkblue),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.05,
                                             ),
                                             SizedBox(
                                               height: height * 0.1,

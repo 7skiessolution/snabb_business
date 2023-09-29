@@ -92,7 +92,7 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
                             chartType: pie.ChartType.ring,
                             baseChartColor: Colors.grey[300]!,
                             colorList: const [
-                              Color.fromRGBO(255, 59, 59, 1),
+                              Color.fromARGB(255, 61, 194, 235)
                             ],
                           ),
                         ),
@@ -176,9 +176,7 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
                                 },
                                 chartType: pie.ChartType.ring,
                                 baseChartColor: Colors.grey[300]!,
-                                colorList: const [
-                                  Color.fromARGB(255, 61, 194, 235)
-                                ],
+                                colorList: const [Colors.red],
                               ),
                             ),
                           ),
@@ -210,7 +208,8 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
                                       height: height * 0.04,
                                       width: width * 0.06,
                                       decoration: const BoxDecoration(
-                                          color: Colors.red,
+                                          color:
+                                              Color.fromARGB(255, 61, 194, 235),
                                           shape: BoxShape.circle),
                                     ),
                                     SizedBox(
@@ -220,7 +219,8 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
                                       AppLocalizations.of(context)!.expense,
                                       style: TextStyle(
                                           fontSize: width * 0.035,
-                                          color: Colors.red,
+                                          color:
+                                              Color.fromARGB(255, 61, 194, 235),
                                           fontWeight: FontWeight.bold),
                                     )
                                   ],
@@ -275,19 +275,17 @@ class _SummaryDetailsPageState extends State<SummaryDetailsPage> {
                                           height: height * 0.04,
                                           width: width * 0.06,
                                           decoration: const BoxDecoration(
-                                              color: Color.fromARGB(
-                                                  255, 61, 194, 235),
+                                              color: Colors.red,
                                               shape: BoxShape.circle),
                                         ),
                                         SizedBox(
                                           width: width * 0.03,
                                         ),
                                         Text(
-                                          AppLocalizations.of(context)!.expense,
+                                          "Purchase",
                                           style: TextStyle(
-                                              fontSize: width * 0.035,
-                                              color: Color.fromARGB(
-                                                  255, 61, 194, 235),
+                                              fontSize: width * 0.03,
+                                              color: Colors.red,
                                               fontWeight: FontWeight.bold),
                                         )
                                       ],

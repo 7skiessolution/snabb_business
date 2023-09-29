@@ -62,6 +62,16 @@ class CategoryController extends GetxController {
         selectedDateFrom = picked;
         dateFromPicked = true;
         startdate = "${picked.day}-${picked.month}-${picked.year}";
+        getcategory(
+            selectedType == "Sale"
+                ? 1
+                : selectedType == "Expense"
+                    ? 2
+                    : selectedType == "Purchase"
+                        ? 0
+                        : 3,
+            startdate!,
+            enddate);
         update();
       }
     } else {
@@ -69,6 +79,16 @@ class CategoryController extends GetxController {
         selectedDateTo = picked;
         dateToPicked = true;
         enddate = "${picked.day}-${picked.month}-${picked.year}";
+        getcategory(
+            selectedType == "Sale"
+                ? 1
+                : selectedType == "Expense"
+                    ? 2
+                    : selectedType == "Purchase"
+                        ? 0
+                        : 3,
+            startdate!,
+            enddate);
         update();
       }
     }

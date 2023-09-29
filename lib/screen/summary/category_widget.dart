@@ -88,17 +88,20 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                     onChanged: (newValue) {
                                       obj.selectedType = newValue as String;
                                       obj.update();
-                                      obj.getcategory(
-                                          obj.selectedType == "Sale"
-                                              ? 1
-                                              : obj.selectedType == "Expense"
-                                                  ? 2
-                                                  : obj.selectedType ==
-                                                          "Purchase"
-                                                      ? 0
-                                                      : 3,
-                                          obj.startdate!,
-                                          obj.enddate);
+
+                                      if (obj.startdate != null) {
+                                        obj.getcategory(
+                                            obj.selectedType == "Sale"
+                                                ? 1
+                                                : obj.selectedType == "Expense"
+                                                    ? 2
+                                                    : obj.selectedType ==
+                                                            "Purchase"
+                                                        ? 0
+                                                        : 3,
+                                            obj.startdate!,
+                                            obj.enddate);
+                                      }
 
                                       print("=-=-==-=-=- ${obj.selectedType}");
                                     },
@@ -174,7 +177,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                     child: Text(
                                       !obj.dateFromPicked
                                           ? AppLocalizations.of(context)!.select
-                                          : selectedFormatfrom,
+                                          : obj.startdate.toString(),
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.w500,
@@ -207,7 +210,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                     child: Text(
                                       !obj.dateToPicked
                                           ? AppLocalizations.of(context)!.select
-                                          : selectedFormetTo,
+                                          : obj.enddate.toString(),
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: width * 0.03,

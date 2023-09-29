@@ -197,11 +197,22 @@ class _DebitScreenState extends State<DebitScreen> {
                                     const EdgeInsets.symmetric(vertical: 10),
                                 child: Row(
                                   children: [
-                                    Image.asset("assets/images/paid.png"),
+                                    CircleAvatar(
+                                      radius: 22,
+                                      backgroundImage:
+                                          AssetImage("assets/images/paid.png"),
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.05,
+                                    ),
+                                    //Image.asset("assets/images/paid.png"),
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
+                                        // SizedBox(
+                                        //   width: width * 0.054,
+                                        // ),
                                         Text(
                                           data.type == 1
                                               ? AppLocalizations.of(context)!
@@ -215,7 +226,7 @@ class _DebitScreenState extends State<DebitScreen> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsets.only(left: 20),
+                                              const EdgeInsets.only(left: 0),
                                           child: Row(
                                             children: [
                                               Text(
@@ -264,7 +275,7 @@ class _DebitScreenState extends State<DebitScreen> {
                                   Text(
                                     "${percentage.toStringAsFixed(1)} %",
                                     style: TextStyle(
-                                        fontSize: width * 0.035,
+                                        fontSize: width * 0.03,
                                         color: darkblue,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -298,7 +309,7 @@ class _DebitScreenState extends State<DebitScreen> {
                                   Text(
                                     '${data.paidAmount} ${HomeController.to.curency}',
                                     style: TextStyle(
-                                        fontSize: width * 0.035,
+                                        fontSize: width * 0.03,
                                         color: darkblue,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -314,7 +325,11 @@ class _DebitScreenState extends State<DebitScreen> {
                               if (data.type == 1)
                                 Row(
                                   children: [
-                                    Image.asset("assets/images/notpaid.png"),
+                                    CircleAvatar(
+                                      radius: 22,
+                                      backgroundImage: AssetImage(
+                                          "assets/images/notpaid.png"),
+                                    ),
                                     Column(
                                       children: [
                                         Text(
@@ -324,7 +339,7 @@ class _DebitScreenState extends State<DebitScreen> {
                                               : AppLocalizations.of(context)!
                                                   .creationdate,
                                           style: TextStyle(
-                                              fontSize: width * 0.035,
+                                              fontSize: width * 0.03,
                                               color: darkblue,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -343,7 +358,7 @@ class _DebitScreenState extends State<DebitScreen> {
                                     AppLocalizations.of(context)!
                                         .residualamount,
                                     style: TextStyle(
-                                        fontSize: width * 0.035,
+                                        fontSize: width * 0.03,
                                         color: darkblue,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -424,7 +439,12 @@ class _DebitScreenState extends State<DebitScreen> {
                                     const EdgeInsets.symmetric(vertical: 10),
                                 child: Row(
                                   children: [
-                                    Image.asset("assets/images/notpaid.png"),
+                                    CircleAvatar(
+                                      radius: 22,
+                                      backgroundImage: AssetImage(
+                                          "assets/images/notpaid.png"),
+                                    ),
+                                    // Image.asset("assets/images/notpaid.png"),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 20),
                                       child: Column(
@@ -491,7 +511,7 @@ class _DebitScreenState extends State<DebitScreen> {
                                     //"${percentage} %",
                                     "${percentage.toStringAsFixed(1)} %",
                                     style: TextStyle(
-                                        fontSize: width * 0.035,
+                                        fontSize: width * 0.03,
                                         color: darkblue,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -525,7 +545,7 @@ class _DebitScreenState extends State<DebitScreen> {
                                   Text(
                                     '${data.paidAmount} ${HomeController.to.curency}',
                                     style: TextStyle(
-                                        fontSize: width * 0.035,
+                                        fontSize: width * 0.03,
                                         color: darkblue,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -549,7 +569,7 @@ class _DebitScreenState extends State<DebitScreen> {
                                     AppLocalizations.of(context)!
                                         .residualamount,
                                     style: TextStyle(
-                                        fontSize: width * 0.035,
+                                        fontSize: width * 0.03,
                                         color: darkblue,
                                         fontWeight: FontWeight.bold),
                                   ),

@@ -102,7 +102,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                             height: height * 0.02,
                                           ),
                                           Text(
-                                            "Inofrmation",
+                                            "Information",
                                             style: GoogleFonts.lexend(
                                                 color: Colors.black,
                                                 fontSize: width * 0.04,
@@ -852,7 +852,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                                                     height: height * 0.02,
                                                                                   ),
                                                                                   Text(
-                                                                                    "Update Inofrmation",
+                                                                                    "Update Information",
                                                                                     style: GoogleFonts.lexend(color: Colors.black, fontSize: width * 0.04, fontWeight: FontWeight.bold),
                                                                                   ),
                                                                                   SizedBox(

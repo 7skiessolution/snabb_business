@@ -278,7 +278,7 @@ class DrawerScreen extends StatelessWidget {
                     color: white,
                   ),
                   title: Text(
-                    "Debts",
+                    "Db/Cr",
                     style: TextStyle(
                         color: white,
                         fontSize: width * 0.03,
@@ -402,7 +402,7 @@ class DrawerScreen extends StatelessWidget {
                     color: white,
                   ),
                   title: Text(
-                    "Reprts",
+                    "Reports",
                     style: TextStyle(
                         color: white,
                         fontSize: width * 0.03,

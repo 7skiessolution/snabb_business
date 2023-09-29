@@ -1168,7 +1168,7 @@ class SaleController extends GetxController {
                                                                               height * 0.02,
                                                                         ),
                                                                         Text(
-                                                                          "Inofrmation",
+                                                                          "Information",
                                                                           style: GoogleFonts.lexend(
                                                                               color: Colors.black,
                                                                               fontSize: width * 0.04,

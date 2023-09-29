@@ -151,7 +151,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
               Text(
                 "${AppLocalizations.of(context)!.credit}: YOU -> to",
                 style: TextStyle(
-                    fontSize: width * 0.035,
+                    fontSize: width * 0.025,
                     color: darkblue,
                     fontWeight: FontWeight.bold),
               ),
@@ -177,7 +177,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                         Text(
                           widget.data!.person!.toUpperCase(),
                           style: TextStyle(
-                              fontSize: width * 0.035,
+                              fontSize: width * 0.025,
                               color: darkblue,
                               fontWeight: FontWeight.bold),
                         ),
@@ -193,7 +193,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                                 child: Text(
                                   "${AppLocalizations.of(context)!.value}: ",
                                   style: TextStyle(
-                                      fontSize: width * 0.03,
+                                      fontSize: width * 0.025,
                                       color: darkblue,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -205,7 +205,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                                 child: Text(
                                   "${widget.data!.amount}",
                                   style: TextStyle(
-                                      fontSize: width * 0.03,
+                                      fontSize: width * 0.025,
                                       color: darkblue,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -225,7 +225,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                                 child: Text(
                                   "${AppLocalizations.of(context)!.paid}: ",
                                   style: TextStyle(
-                                      fontSize: width * 0.03,
+                                      fontSize: width * 0.025,
                                       color: darkblue,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -237,7 +237,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                                 child: Text(
                                   "${widget.data!.paidAmount}",
                                   style: TextStyle(
-                                      fontSize: width * 0.03,
+                                      fontSize: width * 0.025,
                                       color: darkblue,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -257,7 +257,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                                 child: Text(
                                   "${AppLocalizations.of(context)!.residualamount}: ",
                                   style: TextStyle(
-                                      fontSize: width * 0.03,
+                                      fontSize: width * 0.025,
                                       color: darkblue,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -269,7 +269,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                                 child: Text(
                                   "${widget.remaing}",
                                   style: TextStyle(
-                                      fontSize: width * 0.03,
+                                      fontSize: width * 0.025,
                                       color: darkblue,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -280,7 +280,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                         Text(
                           "${widget.percentage.toStringAsFixed(1)}%",
                           style: TextStyle(
-                              fontSize: width * 0.03,
+                              fontSize: width * 0.025,
                               color: darkblue,
                               fontWeight: FontWeight.bold),
                         ),
@@ -298,14 +298,14 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                             Text(
                               "${AppLocalizations.of(context)!.accounts}: ",
                               style: TextStyle(
-                                  fontSize: width * 0.03,
+                                  fontSize: width * 0.025,
                                   color: darkblue,
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
                               AppLocalizations.of(context)!.wallet,
                               style: TextStyle(
-                                  fontSize: width * 0.03,
+                                  fontSize: width * 0.025,
                                   color: darkblue,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -317,7 +317,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                             Text(
                               AppLocalizations.of(context)!.wallet,
                               style: TextStyle(
-                                  fontSize: width * 0.035,
+                                  fontSize: width * 0.025,
                                   color: darkblue,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -335,7 +335,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                                 child: Text(
                                   "${AppLocalizations.of(context)!.creationdate}: ",
                                   style: TextStyle(
-                                      fontSize: width * 0.03,
+                                      fontSize: width * 0.025,
                                       color: darkblue,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -350,7 +350,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                                 child: Text(
                                   "${widget.data!.date}",
                                   style: TextStyle(
-                                      fontSize: width * 0.03,
+                                      fontSize: width * 0.025,
                                       color: darkblue,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -370,7 +370,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                                 child: Text(
                                   "${AppLocalizations.of(context)!.paybackdate}: ",
                                   style: TextStyle(
-                                      fontSize: width * 0.03,
+                                      fontSize: width * 0.025,
                                       color: darkblue,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -385,7 +385,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                                 child: Text(
                                   "${widget.data!.payBackDate}",
                                   style: TextStyle(
-                                      fontSize: width * 0.03,
+                                      fontSize: width * 0.025,
                                       color: darkblue,
                                       fontWeight: FontWeight.bold),
                                 ),

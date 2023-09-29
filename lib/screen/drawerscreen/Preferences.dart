@@ -62,7 +62,7 @@ class _PreferencesState extends State<Preferences> {
                             "Pages",
                             style: TextStyle(
                                 color: white,
-                                fontSize: 17,
+                                fontSize: width * 0.035,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -154,7 +154,7 @@ class _PreferencesState extends State<Preferences> {
                                       Text(
                                         "${list[index].title}",
                                         style: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: width * 0.035,
                                             color: indexNumber == index
                                                 ? white
                                                 : Colors.black),

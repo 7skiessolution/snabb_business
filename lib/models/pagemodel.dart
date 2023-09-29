@@ -10,7 +10,7 @@ class Pages {
 List<Pages> list = [
   Pages(
     icon: Icons.bar_chart_sharp,
-    title: "New transactions",
+    title: "New Transactions",
     ontap: () {},
   ),
   Pages(
@@ -20,7 +20,7 @@ List<Pages> list = [
   ),
   Pages(
     icon: Icons.attach_money,
-    title: "Trasactions",
+    title: "Transactions",
     ontap: () {},
   ),
   // Pages(

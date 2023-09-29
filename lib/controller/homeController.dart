@@ -451,17 +451,19 @@ class HomeController extends GetxController {
       yTra.UserYearTransaction yearTransaction =
           yTra.UserYearTransaction.fromMap(res.data);
       for (var element in yearTransaction.data!) {
-        List<yTra.Transactions> transactions = element.transactions ?? [];
-        print("bal match $transactions");
-        salesTransaction =
-            transactions.where((transaction) => transaction.type == 1).toList();
-        print("sale list $salesTransaction");
+        // List<yTra.Transactions> transactions = element.transactions ?? [];
+        print("bal match ${element.transactions}");
+        salesTransaction = element.transactions!
+            .where((transaction) => transaction.type == 1)
+            .toList();
+        print("sale list ${salesTransaction.length}");
         // Calculate total amounts for each type after subtracting partial amounts
         totalAmountType1 = salesTransaction
             .map((transaction) => transaction.totalAmount!)
             .fold(0, (prev, curr) => prev + curr);
 
         print("-0=-=-=-=-=- $totalAmountType1");
+
         chartData.add(
           SalesData(DateTime(element.year!), totalAmountType1),
         );
@@ -474,6 +476,7 @@ class HomeController extends GetxController {
 
       update();
     }
+    getlistofSale();
   }
   // saleListOFChart() async {
   //   var res = await httpClient().get(StaticValues.getYearTrasaction);
@@ -550,6 +553,7 @@ class HomeController extends GetxController {
   List<elist.Data> expenseData = [];
   List<plist.Data> purchaseData = [];
   List<sp.Data> salaDatalist = [];
+  List<yTra.Transactions> salaData = [];
   DateTime now = DateTime.now();
   getlistPurchase(int type) async {
     print("hi");
@@ -594,6 +598,23 @@ class HomeController extends GetxController {
     } on Exception catch (e) {
       print("purchase error $e");
       // TODO
+    }
+  }
+
+  getlistofSale() async {
+    salaData.clear();
+    var res = await httpClient().get(StaticValues.getYearTrasaction);
+    if (res.statusCode == 200) {
+      chartData.clear();
+      yTra.UserYearTransaction yearTransaction =
+          yTra.UserYearTransaction.fromMap(res.data);
+      for (var element in yearTransaction.data!) {
+        for (var e in element.transactions!) {
+          if (e.type == 1) {
+            salaData.add(e);
+          }
+        }
+      }
     }
   }
 

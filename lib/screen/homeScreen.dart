@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:intl/intl.dart';
 import 'package:pie_chart/pie_chart.dart';
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool expense = false;
   bool sale = false;
   bool purchase = false;
-
+  var newdate = DateFormat.yMMMMd().format(DateTime.now());
   @override
   void initState() {
     Get.put(HomeController());
@@ -110,9 +111,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                             Text(
-                              "July 2023",
-                              style: TextStyle(
-                                  fontSize: width * 0.02, color: lightgray),
+                              newdate,
+                              style: GoogleFonts.aBeeZee(
+                                  fontSize: width * 0.02,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black54),
                             )
                           ],
                         ),
@@ -240,7 +243,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           "${obj.totalExpanse.toString()} ${obj.curency}",
                                           style: TextStyle(
                                               fontSize: width * 0.03,
-                                              color: darkblue),
+                                              color: expensecolor),
                                         ),
                                       ),
                                     ),
@@ -335,26 +338,26 @@ class _HomeScreenState extends State<HomeScreen> {
                                     yValueMapper: (SalesData sales, _) =>
                                         sales.sales,
                                   ),
-                                  LineSeries<SalesData, DateTime>(
-                                    legendIconType: LegendIconType.rectangle,
-                                    animationDuration: 5,
-                                    animationDelay: 3,
-                                    color: lightgreen,
-                                    markerSettings: MarkerSettings(
-                                      isVisible: true,
-                                      width: 5,
-                                      height: 5,
-                                      borderWidth: 0.5,
-                                      color: lightgreen,
-                                    ),
-                                    enableTooltip: true,
-                                    isVisible: true,
-                                    dataSource: obj.chart,
-                                    xValueMapper: (SalesData sales, _) =>
-                                        sales.year,
-                                    yValueMapper: (SalesData sales, _) =>
-                                        sales.sales,
-                                  )
+                                  // LineSeries<SalesData, DateTime>(
+                                  //   legendIconType: LegendIconType.rectangle,
+                                  //   animationDuration: 5,
+                                  //   animationDelay: 3,
+                                  //   color: lightgreen,
+                                  //   markerSettings: MarkerSettings(
+                                  //     isVisible: true,
+                                  //     width: 5,
+                                  //     height: 5,
+                                  //     borderWidth: 0.5,
+                                  //     color: lightgreen,
+                                  //   ),
+                                  //   enableTooltip: true,
+                                  //   isVisible: true,
+                                  //   dataSource: obj.chart,
+                                  //   xValueMapper: (SalesData sales, _) =>
+                                  //       sales.year,
+                                  //   yValueMapper: (SalesData sales, _) =>
+                                  //       sales.sales,
+                                  // )
                                 ],
                               ))
                         ],

@@ -37,6 +37,8 @@ class HomeController extends GetxController {
   double totalExpanse = 0.0;
   double totalPurchase = 0.0;
   String curency = "EURO";
+  String userName = "Name";
+  String userImage = "";
 
   final picker = ImagePicker();
   XFile? pickImage;
@@ -415,6 +417,8 @@ class HomeController extends GetxController {
       totalPurchase = profilemodel!.data!.purchase ?? 0.0;
       totalSale = profilemodel!.data!.sale ?? 0.0;
       curency = profilemodel!.data!.currency!;
+      userName = profilemodel!.data!.name!;
+      userImage = profilemodel!.data!.imageUrl!;
     }
     update();
   }

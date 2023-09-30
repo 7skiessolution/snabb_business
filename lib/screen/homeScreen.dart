@@ -120,30 +120,30 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: height * 0.15,
-                        width: width * 0.5,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Summary",
-                              style: TextStyle(
-                                  fontSize: width * 0.04,
-                                  color: darkblue,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Expanded(
-                              child: SizedBox(
-                                height: height,
-                                width: width,
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Container(
+                      Expanded(
+                        child: SizedBox(
+                          height: height * 0.15,
+                          width: width,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Summary",
+                                style: TextStyle(
+                                    fontSize: width * 0.035,
+                                    color: darkblue,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Expanded(
+                                child: SizedBox(
+                                  height: height,
+                                  width: width,
+                                  child: Row(
+                                    children: [
+                                      Container(
                                         height: height,
-                                        width: width,
+                                        width: width * 0.2,
                                         alignment: Alignment.centerLeft,
                                         child: Text(
                                           "Sale",
@@ -152,37 +152,47 @@ class _HomeScreenState extends State<HomeScreen> {
                                               color: darkblue),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.02,
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        height: height,
-                                        width: width,
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          "${obj.totalSale.toString()} ${obj.curency}",
-                                          style: TextStyle(
-                                              fontSize: width * 0.03,
-                                              color: AppColors.greencolor),
+                                      SizedBox(
+                                        width: width * 0.02,
+                                      ),
+                                      Expanded(
+                                        child: Container(
+                                          height: height,
+                                          width: width,
+                                          alignment: Alignment.centerLeft,
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "${obj.totalSale.toString()} ",
+                                                style: TextStyle(
+                                                    fontSize: width * 0.03,
+                                                    color:
+                                                        AppColors.greencolor),
+                                              ),
+                                              Text(
+                                                obj.curency,
+                                                style: TextStyle(
+                                                    fontSize: width * 0.025,
+                                                    color:
+                                                        AppColors.greencolor),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              child: SizedBox(
-                                height: height,
-                                width: width,
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Container(
+                              Expanded(
+                                child: SizedBox(
+                                  height: height,
+                                  width: width,
+                                  child: Row(
+                                    children: [
+                                      Container(
                                         height: height,
-                                        width: width,
+                                        width: width * 0.2,
                                         alignment: Alignment.centerLeft,
                                         child: Text(
                                           "Purchase",
@@ -191,37 +201,45 @@ class _HomeScreenState extends State<HomeScreen> {
                                               color: darkblue),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.02,
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        height: height,
-                                        width: width,
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          "${obj.totalPurchase.toString()} ${obj.curency}",
-                                          style: TextStyle(
-                                              fontSize: width * 0.03,
-                                              color: darkblue),
+                                      SizedBox(
+                                        width: width * 0.02,
+                                      ),
+                                      Expanded(
+                                        child: Container(
+                                          height: height,
+                                          width: width,
+                                          alignment: Alignment.centerLeft,
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "${obj.totalPurchase.toString()} ",
+                                                style: TextStyle(
+                                                    fontSize: width * 0.03,
+                                                    color: darkblue),
+                                              ),
+                                              Text(
+                                                obj.curency,
+                                                style: TextStyle(
+                                                    fontSize: width * 0.025,
+                                                    color: darkblue),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              child: SizedBox(
-                                height: height,
-                                width: width,
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Container(
+                              Expanded(
+                                child: SizedBox(
+                                  height: height,
+                                  width: width,
+                                  child: Row(
+                                    children: [
+                                      Container(
                                         height: height,
-                                        width: width,
+                                        width: width * 0.2,
                                         alignment: Alignment.centerLeft,
                                         child: Text(
                                           "Expenses",
@@ -230,28 +248,38 @@ class _HomeScreenState extends State<HomeScreen> {
                                               color: darkblue),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.02,
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        height: height,
-                                        width: width,
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          "${obj.totalExpanse.toString()} ${obj.curency}",
-                                          style: TextStyle(
-                                              fontSize: width * 0.03,
-                                              color: expensecolor),
+                                      SizedBox(
+                                        width: width * 0.02,
+                                      ),
+                                      Expanded(
+                                        child: Container(
+                                          height: height,
+                                          width: width,
+                                          alignment: Alignment.centerLeft,
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "${obj.totalExpanse.toString()} ",
+                                                style: TextStyle(
+                                                    fontSize: width * 0.03,
+                                                    color: expensecolor),
+                                              ),
+                                              Text(
+                                                obj.curency,
+                                                style: TextStyle(
+                                                    fontSize: width * 0.025,
+                                                    color: expensecolor),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       )
                     ],
@@ -276,9 +304,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
-                            "Sale",
+                            "Sale".toUpperCase(),
                             style: TextStyle(
-                                fontSize: width * 0.04,
+                                fontSize: width * 0.035,
                                 fontWeight: FontWeight.w800,
                                 color: AppColors.greencolor),
                           ),
@@ -389,9 +417,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       children: [
                         Text(
-                          "Purchase",
+                          "Purchase".toUpperCase(),
                           style: TextStyle(
-                              fontSize: width * 0.04,
+                              fontSize: width * 0.035,
                               fontWeight: FontWeight.w800,
                               color: darkblue),
                         ),
@@ -439,9 +467,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         children: [
                           Text(
-                            "Expenses",
+                            "Expenses".toUpperCase(),
                             style: TextStyle(
-                                fontSize: width * 0.04,
+                                fontSize: width * 0.035,
                                 fontWeight: FontWeight.w800,
                                 color: expensecolor),
                           ),

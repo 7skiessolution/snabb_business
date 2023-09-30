@@ -149,8 +149,8 @@ class _ExpandableFloatingActionButtonState
                   ));
             },
             heroTag: "purchaseTag",
-            backgroundColor: Colors.purple,
-            child: const Icon(Icons.add),
+            backgroundColor: Colors.blue[900],
+            child: const ImageIcon(AssetImage("images/minus.png")),
           ),
         const SizedBox(height: 10),
         Padding(

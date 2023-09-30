@@ -59,20 +59,14 @@ class DrawerScreen extends StatelessWidget {
                     Container(
                       width: 35,
                       height: 35,
-                      decoration: HomeController
-                                      .to.profilemodel!.data!.imageUrl ==
-                                  "null" ||
-                              HomeController
-                                  .to.profilemodel!.data!.imageUrl!.isEmpty ||
-                              HomeController.to.profilemodel!.data!.imageUrl ==
-                                  null
+                      decoration: obj.userImage == ""
                           ? const BoxDecoration(
                               shape: BoxShape.circle, color: Colors.white)
                           : BoxDecoration(
                               image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: NetworkImage(
-                                      "${StaticValues.imageUrl}${HomeController.to.profilemodel!.data!.imageUrl}")),
+                                      "${StaticValues.imageUrl}${obj.userImage}")),
                               shape: BoxShape.circle,
                               color: Colors.white),
                     ),
@@ -81,7 +75,7 @@ class DrawerScreen extends StatelessWidget {
                     ),
                     Text(
                       // "Name",
-                      HomeController.to.profilemodel!.data!.name!.toUpperCase(),
+                      obj.userName.toUpperCase(),
                       style:
                           TextStyle(color: white, fontWeight: FontWeight.bold),
                     )

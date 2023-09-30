@@ -34,6 +34,9 @@ class PurchaseController extends GetxController {
   String? supplierid;
   String supplierName = '';
   String formatTime = "Pick Date";
+  double totalBalance = 0.0;
+
+  getBalance() {}
   Future<void> showPaidDilogue(
       BuildContext context, double height, double width) {
     return showDialog(

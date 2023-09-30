@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:snabb_business/screen/dashboardScreen.dart';
 import 'package:snabb_business/screen/introduction.dart';
 import 'package:snabb_business/static_data.dart';
-import 'package:snabb_business/utils/colors.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -76,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen>
       body: Container(
         height: height,
         width: width,
-        color: AppColors.blue,
+        color: Colors.white,
         child: ScaleTransition(
           scale: animation!,
           alignment: Alignment.center,
@@ -85,7 +83,6 @@ class _SplashScreenState extends State<SplashScreen>
             fit: BoxFit.contain,
             height: height * 0.6,
             width: width * 0.6,
-            color: Colors.white,
           ),
         ),
       ),

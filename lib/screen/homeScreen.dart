@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -66,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
     var width = MediaQuery.of(context).size.width;
     return GetBuilder<HomeController>(builder: (obj) {
       return Scaffold(
+        backgroundColor: Colors.green,
         body: SizedBox(
           height: height,
           width: width,
@@ -130,10 +133,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Text(
                                 "Summary",
-                                style: TextStyle(
-                                    fontSize: width * 0.035,
+                                style: GoogleFonts.poppins(
                                     color: darkblue,
-                                    fontWeight: FontWeight.bold),
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.w600),
+                                // style: TextStyle(
+                                //     fontSize: width * 0.035,
+                                //     color: darkblue,
+                                //     fontWeight: FontWeight.bold),
                               ),
                               Expanded(
                                 child: SizedBox(
@@ -147,9 +154,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                         alignment: Alignment.centerLeft,
                                         child: Text(
                                           "Sale",
-                                          style: TextStyle(
+                                          style: GoogleFonts.poppins(
+                                              color: darkblue,
                                               fontSize: width * 0.03,
-                                              color: darkblue),
+                                              fontWeight: FontWeight.w400),
+                                          // style: TextStyle(
+                                          //     fontSize: width * 0.03,
+                                          //     color: darkblue),
                                         ),
                                       ),
                                       SizedBox(
@@ -196,9 +207,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                         alignment: Alignment.centerLeft,
                                         child: Text(
                                           "Purchase",
-                                          style: TextStyle(
+                                          style: GoogleFonts.poppins(
+                                              color: darkblue,
                                               fontSize: width * 0.03,
-                                              color: darkblue),
+                                              fontWeight: FontWeight.w400),
+                                          // style: TextStyle(
+                                          //     fontSize: width * 0.03,
+                                          //     color: darkblue),
                                         ),
                                       ),
                                       SizedBox(
@@ -243,9 +258,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                         alignment: Alignment.centerLeft,
                                         child: Text(
                                           "Expenses",
-                                          style: TextStyle(
+                                          style: GoogleFonts.poppins(
+                                              color: darkblue,
                                               fontSize: width * 0.03,
-                                              color: darkblue),
+                                              fontWeight: FontWeight.w400),
+                                          // style: TextStyle(
+                                          //     fontSize: width * 0.03,
+                                          //     color: darkblue),
                                         ),
                                       ),
                                       SizedBox(
@@ -260,9 +279,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                             children: [
                                               Text(
                                                 "${obj.totalExpanse.toString()} ",
-                                                style: TextStyle(
-                                                    fontSize: width * 0.03,
-                                                    color: expensecolor),
+                                                style: GoogleFonts.poppins(
+                                                    color: darkblue,
+                                                    fontSize: 10,
+                                                    fontWeight:
+                                                        FontWeight.w500),
                                               ),
                                               Text(
                                                 obj.curency,

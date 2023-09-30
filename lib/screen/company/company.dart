@@ -184,7 +184,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                     BorderRadius.circular(10),
                                                 borderSide: BorderSide(
                                                     color: AppColors.blue
-                                                    // provider.brightness ==
+                                                    // provider.brightness ==5
                                                     //         AppBrightness.dark
                                                     //     ? AppTheme.colorWhite
                                                     //   : AppTheme.colorPrimary,

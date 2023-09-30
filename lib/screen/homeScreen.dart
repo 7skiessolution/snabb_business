@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool expense = false;
   bool sale = false;
   bool purchase = false;
+  
   var newdate = DateFormat.yMMMMd().format(DateTime.now());
   @override
   void initState() {
@@ -66,6 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+    double fontSizeInPixels = 10.0;
+double fontSizeInDP = fontSizeInPixels / MediaQuery.of(context).devicePixelRatio;
     return GetBuilder<HomeController>(builder: (obj) {
       return Scaffold(
         backgroundColor: Colors.green,
@@ -175,10 +178,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             children: [
                                               Text(
                                                 "${obj.totalSale.toString()} ",
-                                                style: TextStyle(
-                                                    fontSize: width * 0.03,
-                                                    color:
-                                                        AppColors.greencolor),
+                                                style: GoogleFonts.poppins(
+                                              color: AppColors.greencolor,
+                                              fontSize: width * 0.03,
+                                              fontWeight: FontWeight.w500),
                                               ),
                                               Text(
                                                 obj.curency,
@@ -228,15 +231,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                             children: [
                                               Text(
                                                 "${obj.totalPurchase.toString()} ",
-                                                style: TextStyle(
-                                                    fontSize: width * 0.03,
-                                                    color: darkblue),
+                                                style: GoogleFonts.poppins(
+                                              color: expensecolor,
+                                              fontSize: width * 0.03,
+                                              fontWeight: FontWeight.w400),
                                               ),
                                               Text(
                                                 obj.curency,
-                                                style: TextStyle(
+                                               style: TextStyle(
                                                     fontSize: width * 0.025,
-                                                    color: darkblue),
+                                              color: expensecolor,
+                                              fontWeight: FontWeight.w400),
                                               ),
                                             ],
                                           ),
@@ -281,7 +286,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 "${obj.totalExpanse.toString()} ",
                                                 style: GoogleFonts.poppins(
                                                     color: darkblue,
-                                                    fontSize: 10,
+                                                    fontSize: width*0.03,
                                                     fontWeight:
                                                         FontWeight.w500),
                                               ),
@@ -326,10 +331,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(
                             "Sale".toUpperCase(),
-                            style: TextStyle(
-                                fontSize: width * 0.035,
-                                fontWeight: FontWeight.w800,
-                                color: AppColors.greencolor),
+                             style: GoogleFonts.poppins(
+                                              color: AppColors.greencolor,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                           ),
                           SizedBox(
                               height: height * 0.16,
@@ -439,10 +444,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         Text(
                           "Purchase".toUpperCase(),
-                          style: TextStyle(
-                              fontSize: width * 0.035,
-                              fontWeight: FontWeight.w800,
-                              color: darkblue),
+                          style: GoogleFonts.poppins(
+                                              color: darkblue,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                         ),
                         SizedBox(
                             height: height * 0.16,
@@ -489,10 +494,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(
                             "Expenses".toUpperCase(),
-                            style: TextStyle(
-                                fontSize: width * 0.035,
-                                fontWeight: FontWeight.w800,
-                                color: expensecolor),
+                            style: GoogleFonts.poppins(
+                                              color: expensecolor,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                           ),
                           SizedBox(
                               height: height * 0.2,

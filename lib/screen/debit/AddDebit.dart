@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:snabb_business/controller/debit-credit/add_debit_controller.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/models/add_debit_model.dart';
@@ -86,6 +87,11 @@ class _AddDebitState extends State<AddDebit> {
                             SizedBox(
                                 width: width * 0.3,
                                 child: TextFormField(
+                                  style:    GoogleFonts.poppins(
+                                              color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),  
+                                                    
                                   keyboardType: TextInputType.number,
                                   validator: (value) {
                                     if (value == null) {
@@ -95,8 +101,14 @@ class _AddDebitState extends State<AddDebit> {
                                       return null;
                                     }
                                   },
+                                  
                                   controller: valuecontrol,
                                   decoration: InputDecoration(
+                                      labelStyle: GoogleFonts.poppins(
+                                              color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),  
+                                                    
                                     hintText: "${widget.remaing}",
                                   ),
                                 )),
@@ -106,15 +118,19 @@ class _AddDebitState extends State<AddDebit> {
                               children: [
                                 Text(
                                   AppLocalizations.of(context)!.residualamount,
-                                  style: TextStyle(
-                                    fontSize: width * 0.03,
-                                  ),
+                                  style:    GoogleFonts.poppins(
+                                              color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),  
+                                                    
                                 ),
                                 Text(
                                   "${widget.remaing}",
-                                  style: TextStyle(
-                                    fontSize: width * 0.03,
-                                  ),
+                                  style: GoogleFonts.poppins(
+                                              color:Colors.black,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),  
+                                                    
                                 ),
                               ],
                             ),
@@ -132,26 +148,29 @@ class _AddDebitState extends State<AddDebit> {
                                 AppLocalizations.of(context)!
                                     .credit
                                     .toUpperCase(),
-                                style: TextStyle(
-                                    fontSize: width * 0.035,
-                                    fontWeight: FontWeight.bold),
+                                style: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600), 
                               )
                             : Text(
                                 AppLocalizations.of(context)!
                                     .debit
                                     .toUpperCase(),
-                                style: TextStyle(
-                                    fontSize: width * 0.035,
-                                    fontWeight: FontWeight.bold),
+                                style: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),  
+                                                    
                               ),
                       ),
                       Text(
                         "${AppLocalizations.of(context)!.total}"
                         " ${valuecontrol.text}  ${HomeController.to.curency}",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: width * 0.03,
-                        ),
+                        style: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                       ),
                       ListTile(
                         leading: const Icon(
@@ -160,9 +179,10 @@ class _AddDebitState extends State<AddDebit> {
                         ),
                         title: Text(
                           AppLocalizations.of(context)!.wallet,
-                          style: TextStyle(
-                              fontSize: width * 0.03,
-                              fontWeight: FontWeight.bold),
+                          style: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                         ),
                       ),
                       ListTile(
@@ -177,9 +197,10 @@ class _AddDebitState extends State<AddDebit> {
                           child: Text(
                             //   widget.debt!.backDate!.substring(0, 10),
                             widget.deta!.payBackDate!,
-                            style: TextStyle(
-                                fontSize: width * 0.03,
-                                fontWeight: FontWeight.bold),
+                            style: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                           ),
                         ),
                       ),
@@ -190,9 +211,10 @@ class _AddDebitState extends State<AddDebit> {
                         ),
                         title: Text(
                           widget.deta!.person.toString(),
-                          style: TextStyle(
-                              fontSize: width * 0.03,
-                              fontWeight: FontWeight.bold),
+                           style: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                         ),
                       ),
                       ListTile(
@@ -213,22 +235,29 @@ class _AddDebitState extends State<AddDebit> {
                           decoration: InputDecoration(
                               hintText:
                                   AppLocalizations.of(context)!.noteoptional,
-                              hintStyle: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: width * 0.03,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                      ),
+                               hintStyle: GoogleFonts.poppins(
+                                              color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
+                          )
+                      )),
                       ListTile(
-                        title: Text(AppLocalizations.of(context)!.checked),
-                        trailing: Switch(
-                          value: switchvalue,
-                          onChanged: (value) {
-                            setState(() {
-                              switchvalue = value;
-                            });
-                            print("value $switchvalue");
-                          },
+                        title: Text(AppLocalizations.of(context)!.checked, style: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w500), ),
+                        trailing: Transform.scale(
+                          scale: 0.85,
+                          child: Switch(
+                            activeColor: darkblue,
+                            value: switchvalue,
+                            onChanged: (value) {
+                              setState(() {
+                                switchvalue = value;
+                              });
+                              print("value $switchvalue");
+                            },
+                          ),
                         ),
                       ),
                       const Divider(),
@@ -262,10 +291,10 @@ class _AddDebitState extends State<AddDebit> {
                             child: Center(
                               child: Text(
                                 AppLocalizations.of(context)!.cancel,
-                                style: TextStyle(
-                                  fontSize: width * 0.03,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: GoogleFonts.poppins(
+                                              color:Colors.white,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                               ),
                             ),
                           ),
@@ -297,10 +326,10 @@ class _AddDebitState extends State<AddDebit> {
                             child: Center(
                               child: Text(
                                 AppLocalizations.of(context)!.save,
-                                style: TextStyle(
-                                  fontSize: width * 0.03,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                 style: GoogleFonts.poppins(
+                                              color:Colors.white,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                               ),
                             ),
                           ),

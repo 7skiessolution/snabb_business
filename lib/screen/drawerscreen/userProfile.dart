@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
@@ -23,6 +24,7 @@ class _UserProfileState extends State<UserProfile> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Radio(
+        
           activeColor: Colors.blue[900],
           value: gender[btnValue],
           groupValue: select,
@@ -33,7 +35,10 @@ class _UserProfileState extends State<UserProfile> {
             });
           },
         ),
-        Text(title)
+        Text(title,style: GoogleFonts.poppins(
+                                              color:Colors.blue[900],
+                                              fontSize: 11,
+                                              fontWeight: FontWeight.w600),)
       ],
     );
   }
@@ -83,10 +88,10 @@ class _UserProfileState extends State<UserProfile> {
                                   EdgeInsets.only(top: 12, left: width * 0.05),
                               child: Text(
                                 "Profile",
-                                style: TextStyle(
-                                    color: white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold),
+                                 style: GoogleFonts.poppins(
+                                              color:white,
+                                              fontSize: width * 0.04,
+                                              fontWeight: FontWeight.w600),
                               ),
                             ),
                           ],
@@ -150,10 +155,10 @@ class _UserProfileState extends State<UserProfile> {
                                   ),
                                   Text(
                                     "User Information",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: width * 0.04,
-                                        fontWeight: FontWeight.bold),
+                                   style: GoogleFonts.poppins(
+                                              color:Colors.black,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w500),
                                   ),
                                   SizedBox(
                                     height: height * 0.01,
@@ -170,12 +175,10 @@ class _UserProfileState extends State<UserProfile> {
                                                 children: [
                                                   Text(
                                                     "Name : ",
-                                                    style: TextStyle(
-                                                        fontSize: width * 0.035,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color:
-                                                            Colors.blue[900]),
+                                                    style: GoogleFonts.poppins(
+                                              color:Colors.blue[900],
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w600),
                                                   ),
                                                   Text(
                                                     HomeController
@@ -183,8 +186,10 @@ class _UserProfileState extends State<UserProfile> {
                                                         .profilemodel!
                                                         .data!
                                                         .name!,
-                                                    style: TextStyle(
-                                                        fontSize: width * 0.03),
+                                                   style: GoogleFonts.poppins(
+                                            //  color:Colors.blue[900],
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),
                                                   ),
                                                 ],
                                               )),
@@ -196,11 +201,10 @@ class _UserProfileState extends State<UserProfile> {
                                               children: [
                                                 Text(
                                                   "Gender : ",
-                                                  style: TextStyle(
-                                                      fontSize: width * 0.035,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: Colors.blue[900]),
+style: GoogleFonts.poppins(
+                                              color:Colors.blue[900],
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w600),
                                                 ),
                                                 Text(
                                                   HomeController
@@ -208,8 +212,10 @@ class _UserProfileState extends State<UserProfile> {
                                                       .profilemodel!
                                                       .data!
                                                       .gender!,
-                                                  style: TextStyle(
-                                                      fontSize: width * 0.03),
+                                                style: GoogleFonts.poppins(
+                                            //  color:Colors.blue[900],
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),
                                                 ),
                                               ],
                                             )),
@@ -222,16 +228,18 @@ class _UserProfileState extends State<UserProfile> {
                                       children: [
                                         Text(
                                           "Email : ",
-                                          style: TextStyle(
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.blue[900]),
+                                         style: GoogleFonts.poppins(
+                                              color:Colors.blue[900],
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w600),
                                         ),
                                         Text(
                                           HomeController
                                               .to.profilemodel!.data!.email!,
-                                          style:
-                                              TextStyle(fontSize: width * 0.03),
+                                         style: GoogleFonts.poppins(
+                                            
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),
                                         ),
                                       ],
                                     ),
@@ -261,6 +269,14 @@ class _UserProfileState extends State<UserProfile> {
                                         fillColor: Colors.grey,
                                         hintText: "Name",
                                         labelText: "Name",
+                                        hintStyle: GoogleFonts.poppins(
+                                              color:Colors.blue[900],
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),
+                                        labelStyle:  GoogleFonts.poppins(
+                                              color:Colors.blue[900],
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),
                                         alignLabelWithHint: true,
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius:
@@ -297,9 +313,10 @@ class _UserProfileState extends State<UserProfile> {
                                       children: [
                                         Text(
                                           "Select Gender",
-                                          style: TextStyle(
-                                              color: Colors.blue[900],
-                                              fontWeight: FontWeight.bold),
+                                          style: GoogleFonts.poppins(
+                                              color:Colors.blue[900],
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w600),
                                         ),
                                         addRadioButton(0, 'Male'),
                                         addRadioButton(1, 'Female'),
@@ -338,11 +355,10 @@ class _UserProfileState extends State<UserProfile> {
                                             child: Center(
                                               child: Text(
                                                 "Update",
-                                                style: TextStyle(
-                                                    fontSize: width * 0.03,
-                                                    color: Colors.white,
-                                                    fontWeight:
-                                                        FontWeight.bold),
+                                               style: GoogleFonts.poppins(
+                                              color:Colors.white,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w600),
                                               ),
                                             ),
                                           ),

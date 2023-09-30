@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/pdf/c/pdf_controller.dart';
@@ -76,8 +77,10 @@ class DrawerScreen extends StatelessWidget {
                     Text(
                       // "Name",
                       obj.userName.toUpperCase(),
-                      style:
-                          TextStyle(color: white, fontWeight: FontWeight.bold),
+                       style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                     )
                   ],
                 ),
@@ -105,10 +108,10 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "OverView",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
+                     style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -125,10 +128,10 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "Companies",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
+                   style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -147,10 +150,10 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "Supplier",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
+                    style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -167,10 +170,10 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "Summary",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
+                   style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -189,77 +192,14 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "Transaction",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
+style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
-              // InkWell(
-              //   onTap: () {
-              //     obj.drawermenueclose();
-              //     Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //             builder: (_) => const ShaduleTransactionScreen()));
-              //   },
-              //   child: ListTile(
-              //     leading: Icon(
-              //       Icons.paid_outlined,
-              //       color: white,
-              //     ),
-              //     title: Text(
-              //       "Scheduled transactions",
-              //       style: TextStyle(
-              //           color: white,
-              //           fontSize: width * 0.03,
-              //           fontWeight: FontWeight.w500),
-              //     ),
-              //   ),
-              // ),
-              // InkWell(
-              //   onTap: () {
-              //     obj.drawermenueclose();
-              //     Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //             builder: (_) => WalletScreen(home: false)));
-              //   },
-              //   child: ListTile(
-              //     leading: Icon(
-              //       Icons.account_balance_wallet_outlined,
-              //       color: white,
-              //     ),
-              //     title: Text(
-              //       "Wallet",
-              //       style: TextStyle(
-              //           color: white,
-              //           fontSize: width * 0.03,
-              //           fontWeight: FontWeight.w500),
-              //     ),
-              //   ),
-              // ),
-              // InkWell(
-              //   onTap: () {
-              //     obj.drawermenueclose();
-              //     Navigator.push(context,
-              //         MaterialPageRoute(builder: (_) => const BudgetView()));
-              //   },
-              //   child: ListTile(
-              //     leading: Icon(
-              //       Icons.add_home_work_sharp,
-              //       color: white,
-              //     ),
-              //     title: Text(
-              //       "Budgets",
-              //       style: TextStyle(
-              //           color: white,
-              //           fontSize: width * 0.03,
-              //           fontWeight: FontWeight.w500),
-              //     ),
-              //   ),
-              // ),
+            
               InkWell(
                 onTap: () {
                   obj.drawermenueclose();
@@ -273,10 +213,10 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "Db/Cr",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
+                   style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -293,10 +233,10 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "Invoice",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
+                   style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -397,10 +337,10 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "Reports",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
+                   style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                   ),
                   trailing: Icon(
                     obj.reports == true
@@ -439,10 +379,10 @@ class DrawerScreen extends StatelessWidget {
                               ),
                               title: Text(
                                 "Daily Sale Report",
-                                style: TextStyle(
-                                    color: white,
-                                    fontSize: width * 0.03,
-                                    fontWeight: FontWeight.w500),
+                               style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                               ),
                             ),
                           ),
@@ -468,10 +408,10 @@ class DrawerScreen extends StatelessWidget {
                               ),
                               title: Text(
                                 "Company Sale Report",
-                                style: TextStyle(
-                                    color: white,
-                                    fontSize: width * 0.03,
-                                    fontWeight: FontWeight.w500),
+                               style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                               ),
                             ),
                           ),
@@ -497,10 +437,10 @@ class DrawerScreen extends StatelessWidget {
                               ),
                               title: Text(
                                 "Purchase Report",
-                                style: TextStyle(
-                                    color: white,
-                                    fontSize: width * 0.03,
-                                    fontWeight: FontWeight.w500),
+                               style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                               ),
                             ),
                           ),
@@ -519,10 +459,10 @@ class DrawerScreen extends StatelessWidget {
                               ),
                               title: Text(
                                 "Supplier Report",
-                                style: TextStyle(
-                                    color: white,
-                                    fontSize: width * 0.03,
-                                    fontWeight: FontWeight.w500),
+                              style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                               ),
                             ),
                           ),
@@ -548,10 +488,10 @@ class DrawerScreen extends StatelessWidget {
                               ),
                               title: Text(
                                 "Expense Report",
-                                style: TextStyle(
-                                    color: white,
-                                    fontSize: width * 0.03,
-                                    fontWeight: FontWeight.w500),
+                               style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                               ),
                             ),
                           ),
@@ -593,10 +533,10 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "Calendar",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
+                    style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -632,10 +572,10 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "User",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
+                    style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -667,10 +607,10 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "Preferences",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
+                   style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -687,10 +627,10 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "Settings",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w500),
+                   style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -716,10 +656,10 @@ class DrawerScreen extends StatelessWidget {
                     ),
                     title: Text(
                       "LogOut",
-                      style: TextStyle(
-                          color: white,
-                          fontSize: width * 0.03,
-                          fontWeight: FontWeight.w500),
+                     style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                     )),
               ),
             ],
@@ -768,10 +708,10 @@ void showingSuplierdialogue(context, height, width, white) {
                       EdgeInsets.only(top: height * 0.03, left: width * 0.02),
                   child: Text(
                     "Select Supplier",
-                    style: TextStyle(
-                        color: white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.031,
+                                              fontWeight: FontWeight.w400),
                   ),
                 ),
               ),

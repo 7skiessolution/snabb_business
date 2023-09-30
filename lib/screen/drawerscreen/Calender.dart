@@ -2,6 +2,7 @@ import 'package:cell_calendar/cell_calendar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/utils/color.dart';
 
@@ -54,10 +55,10 @@ class _CalenderScreenState extends State<CalenderScreen> {
                           const EdgeInsets.only(top: 15.0, left: 20, right: 20),
                       child: Text(
                         "Calendar",
-                        style: TextStyle(
-                            color: white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold),
+                        style: GoogleFonts.poppins(
+                                              color:white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                       ),
                     ),
                   ),

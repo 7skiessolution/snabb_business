@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:snabb_business/pdf/pdfs/pdfpreview.dart';
 import 'package:snabb_business/screen/invoice/invoice_controllers.dart';
 import 'package:snabb_business/screen/invoice/incoce_company_info.dart';
@@ -63,10 +64,10 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                             top: height * 0.03, left: width * 0.1, right: 20),
                         child: Text(
                           "Invoice",
-                          style: TextStyle(
-                              color: white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
+                          style: GoogleFonts.poppins(
+                                              color:white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600), 
                         ),
                       ),
                     ),
@@ -103,9 +104,10 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                     child: Text(
                                       "Invoice Number",
                                       textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                          fontSize: width * 0.03,
-                                          fontWeight: FontWeight.w500),
+                                        style: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                                     ),
                                   ),
                                 ),
@@ -130,6 +132,10 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                         fillColor:
                                             Colors.black.withOpacity(0.2),
                                         hintText: "invoice number",
+                                        hintStyle:    GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                                         alignLabelWithHint: true,
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius:
@@ -150,7 +156,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                               ),
                               Container(
                                 color: Colors.white,
-                                height: height * 0.08,
+                                height: height * 0.095,
                                 child: InkWell(
                                   onTap: () {},
                                   child: InkWell(
@@ -165,15 +171,17 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                     child: ListTile(
                                         title: Text(
                                           "Company Detail",
-                                          style: TextStyle(
-                                              fontSize: width * 0.04,
-                                              fontWeight: FontWeight.w500),
+                                            style: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600), 
                                         ),
                                         subtitle: Text(
                                           "Number, Discount, Tax, Tax Rate, ....",
-                                          style: TextStyle(
+                                            style: GoogleFonts.poppins(
+                                              //color:lightgray,
                                               fontSize: width * 0.03,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w400), 
                                         ),
                                         trailing: Icon(
                                           Icons.arrow_forward_ios_rounded,
@@ -198,9 +206,10 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                     ListTile(
                                         title: Text(
                                           "Invoice Date",
-                                          style: TextStyle(
+                                           style: GoogleFonts.poppins(
+                                              //color:lightgray,
                                               fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w600), 
                                         ),
                                         trailing: InkWell(
                                           splashColor: darkblue!,
@@ -209,10 +218,10 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                           },
                                           child: Text(
                                             obj.startdate,
-                                            style: TextStyle(
-                                                fontSize: width * 0.035,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.grey),
+                                              style: GoogleFonts.poppins(
+                                              color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                                           ),
                                         )),
                                     Center(
@@ -226,9 +235,10 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                     ListTile(
                                         title: Text(
                                           "Due Date",
-                                          style: TextStyle(
+                                           style: GoogleFonts.poppins(
+                                              //color:lightgray,
                                               fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w600), 
                                         ),
                                         trailing: InkWell(
                                           splashColor: darkblue!,
@@ -237,10 +247,10 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                           },
                                           child: Text(
                                             obj.enddate,
-                                            style: TextStyle(
-                                                fontSize: width * 0.035,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.grey),
+                                              style: GoogleFonts.poppins(
+                                              color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                                           ),
                                         )),
                                   ],
@@ -255,25 +265,26 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                     child: Text(
                                       "Products",
                                       textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                          fontSize: width * 0.03,
-                                          fontWeight: FontWeight.w500),
+                                       style: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.03,
+                                              fontWeight: FontWeight.w500), 
                                     ),
                                   ),
                                 ),
                               ),
                               Container(
                                 color: Colors.white,
-                                height: height * 0.18,
+                                height: height * 0.2,
                                 child: Column(
                                   children: [
                                     ListTile(
                                         title: Text(
                                           "Add Items",
-                                          style: TextStyle(
-                                              fontSize: width * 0.04,
-                                              color: darkblue!,
-                                              fontWeight: FontWeight.w600),
+                                            style: GoogleFonts.poppins(
+                                              color:darkblue,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600), 
                                         ),
                                         leading: InkWell(
                                           onTap: () {
@@ -329,16 +340,17 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                     ListTile(
                                       title: Text(
                                         "Total Amount",
-                                        style: TextStyle(
-                                            fontSize: width * 0.035,
-                                            fontWeight: FontWeight.w500),
+                                         style: GoogleFonts.poppins(
+                                           //   co//lor:lightgray,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600), 
                                       ),
                                       trailing: Text(
                                         obj.totalInvoceAmount,
-                                        style: TextStyle(
-                                            fontSize: width * 0.035,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.grey),
+                                         style: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                                       ),
                                     ),
                                   ],
@@ -367,6 +379,10 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                         fillColor:
                                             Colors.black.withOpacity(0.2),
                                         hintText: "Note",
+                                        hintStyle:    GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.04,
+                                              fontWeight: FontWeight.w600), 
                                         alignLabelWithHint: true,
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius:
@@ -408,6 +424,10 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                         fillColor:
                                             Colors.black.withOpacity(0.2),
                                         hintText: "Message",
+                                        hintStyle:  GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.04,
+                                              fontWeight: FontWeight.w600), 
                                         alignLabelWithHint: true,
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius:
@@ -459,9 +479,10 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                       borderRadius: BorderRadius.circular(10)),
                                   child: Text(
                                     "Print",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: width * 0.04),
+                                     style: GoogleFonts.poppins(
+                                              color:white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600), 
                                   ),
                                 ),
                               ),

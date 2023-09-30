@@ -72,10 +72,10 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                   top: height * 0.03, left: width * 0.02),
                               child: Text(
                                 "Add Supplier",
-                                style: TextStyle(
-                                    color: white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
+                                style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                               ),
                             ),
                           ),
@@ -105,10 +105,10 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                             ),
                                             Text(
                                               "Information",
-                                              style: GoogleFonts.lexend(
-                                                  color: Colors.black,
-                                                  fontSize: width * 0.04,
-                                                  fontWeight: FontWeight.bold),
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: width * 0.04,
+                                              fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
                                               height: height * 0.04,
@@ -507,12 +507,10 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                   child: Center(
                                                     child: Text(
                                                       "Add Supplier",
-                                                      style: TextStyle(
-                                                          fontSize:
-                                                              width * 0.03,
-                                                          color: Colors.white,
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                                      style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                                                     ),
                                                   ),
                                                 ),
@@ -560,10 +558,10 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                           padding: const EdgeInsets.only(top: 12),
                           child: Text(
                             "All Suppliers Information",
-                            style: GoogleFonts.adamina(
-                                color: white,
-                                fontSize: width * 0.04,
-                                fontWeight: FontWeight.bold),
+                             style: GoogleFonts.poppins(
+                                              color:white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                           ),
                         ),
                       ],

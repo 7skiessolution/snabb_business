@@ -104,18 +104,18 @@ class _SummeryScreenState extends State<SummeryScreen> {
                                                 children: [
                                                   Text(
                                                     'Summary',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        // fontWeight: FontWeight.bold,
-                                                        fontSize: width * 0.04),
+                                                    style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                                                   ),
                                                   Padding(
                                                     padding: EdgeInsets.only(
-                                                        left: width * 0.12,
-                                                        right: width * 0.12),
+                                                        left: width * 0.15,
+                                                        right: width * 0.15),
                                                     child: Divider(
                                                       color: white,
-                                                      thickness: 3,
+                                                      thickness: 2,
                                                     ),
                                                   )
                                                 ],
@@ -131,10 +131,10 @@ class _SummeryScreenState extends State<SummeryScreen> {
                                                     },
                                                     child: Text(
                                                       'Summary',
-                                                      style: TextStyle(
-                                                          color: white,
-                                                          fontSize:
-                                                              width * 0.04),
+                                                       style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                                                     ),
                                                   ),
                                                 ),
@@ -152,17 +152,18 @@ class _SummeryScreenState extends State<SummeryScreen> {
                                                 children: [
                                                   Text(
                                                     'Category',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: width * 0.04),
+                                                    style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                                                   ),
                                                   Padding(
                                                     padding: EdgeInsets.only(
-                                                        left: width * 0.1,
-                                                        right: width * 0.1),
+                                                        left: width * 0.15,
+                                                        right: width * 0.15),
                                                     child: Divider(
                                                       color: white,
-                                                      thickness: 3,
+                                                      thickness: 2,
                                                     ),
                                                   )
                                                 ],
@@ -178,10 +179,10 @@ class _SummeryScreenState extends State<SummeryScreen> {
                                                     },
                                                     child: Text(
                                                       'Category',
-                                                      style: TextStyle(
-                                                          color: white,
-                                                          fontSize:
-                                                              width * 0.04),
+                                                      style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                                                     ),
                                                   ),
                                                 ),

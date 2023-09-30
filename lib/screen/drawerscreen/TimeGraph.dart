@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:snabb_business/utils/color.dart';
 
 import '../../utils/appbarwidget.dart';
@@ -43,10 +44,10 @@ class _TimeGraphState extends State<TimeGraph> {
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
                           child: Text(
                             "Time",
-                            style: TextStyle(
-                                color: white,
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold),
+                            style: GoogleFonts.poppins(
+                                              color:Colors.white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                           ),
                         ),
                         SizedBox(

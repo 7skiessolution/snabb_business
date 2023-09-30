@@ -4,6 +4,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:snabb_business/controller/debit-credit/add_debit_controller.dart';
@@ -110,10 +111,10 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                 left: width * 0.1, top: height * 0.03),
                             child: Text(
                               "New Entry",
-                              style: TextStyle(
-                                  color: white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold),
+                               style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w500),
                             ),
                           ),
                         ),
@@ -151,6 +152,10 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                     .numberWithOptions(
                                                 decimal: true),
                                             decoration: InputDecoration(
+                                              labelStyle:   GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w400),
                                                 labelText:
                                                     "${AppLocalizations.of(context)!.balance} ${AppLocalizations.of(context)!.amount}"),
                                             validator: (value) {
@@ -169,8 +174,10 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                             child: Text(
                                               AppLocalizations.of(context)!
                                                   .createtheassociatedntransaction,
-                                              style: TextStyle(
-                                                  fontSize: width * 0.03),
+                                              style:  GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w400),
                                             ),
                                           ),
                                           SizedBox(
@@ -219,7 +226,7 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                                       left: width *
                                                                           0.02),
                                                                   child: Text(
-                                                                    "Select Payment ",
+                                                                  selectedname==null?  "Select Payment ":selectedname!,
                                                                     style: TextStyle(
                                                                         color:
                                                                             white,
@@ -316,7 +323,7 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                       enabledBorder:
                                                           InputBorder.none,
                                                       labelText:
-                                                          'Select Payment',
+                                                         selectedname==null ?'Select Payment':"",
                                                       labelStyle:
                                                           const TextStyle(
                                                               fontWeight:
@@ -339,92 +346,7 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                     },
                                                   ),
                                                 ),
-                                                // child: selectedimage == null
-                                                //     ? const Row(
-                                                //         crossAxisAlignment:
-                                                //             CrossAxisAlignment.start,
-                                                //         children: [
-                                                //           Icon(Icons.attach_money_outlined),
-                                                //           SizedBox(
-                                                //             width: 10,
-                                                //           ),
-                                                //           Text(
-                                                //             "Select Payment ",
-                                                //             style: TextStyle(
-                                                //                 color: Colors.black,
-                                                //                 fontSize: 16),
-                                                //           ),
-                                                //         ],
-                                                //       )
-                                                //     : Row(
-                                                //         mainAxisAlignment:
-                                                //             MainAxisAlignment.start,
-                                                //         crossAxisAlignment:
-                                                //             CrossAxisAlignment.center,
-                                                //         children: [
-                                                //           Container(
-                                                //             height: height * 0.05,
-                                                //             width: width * 0.08,
-                                                //             decoration: BoxDecoration(
-                                                //                 image: DecorationImage(
-                                                //                     image: AssetImage(
-                                                //               "$selectedimage",
-                                                //             ))),
-                                                //           ),
-                                                //           SizedBox(
-                                                //             width: width * 0.01,
-                                                //           ),
-                                                //           Text(
-                                                //             "$selectedname",
-                                                //             style: const TextStyle(
-                                                //                 color: Colors.black,
-                                                //                 fontSize: 16),
-                                                //           ),
-                                                //         ],
-                                                //       ),
                                               )),
-                                          // Column(children: [
-                                          //   Row(
-                                          //     children: [
-                                          //       Radio(
-                                          //         activeColor: darkblue!,
-                                          //         value: "Cash",
-                                          //         groupValue: paymentMethod,
-                                          //         onChanged: (value) {
-                                          //           setState(() {
-                                          //             print(value);
-                                          //             paymentMethod = value!;
-                                          //           });
-                                          //         },
-                                          //       ),
-                                          //       Text(
-                                          //         AppLocalizations.of(context)!
-                                          //             .bycash,
-                                          //         style: TextStyle(
-                                          //             fontSize: width * 0.03),
-                                          //       ),
-                                          //       Radio(
-                                          //         activeColor: darkblue!,
-                                          //         value: AppLocalizations.of(
-                                          //                 context)!
-                                          //             .bank,
-                                          //         groupValue: paymentMethod,
-                                          //         onChanged: (value) {
-                                          //           setState(() {
-                                          //             print(value);
-                                          //             paymentMethod = value!;
-                                          //           });
-                                          //         },
-                                          //       ),
-                                          //       Text(
-                                          //         AppLocalizations.of(context)!
-                                          //             .bybank,
-                                          //         style: TextStyle(
-                                          //             fontSize: width * 0.03),
-                                          //       )
-                                          //     ],
-                                          //   ),
-                                          // ]),
                                           InkWell(
                                             onTap: () {
                                               obj.selectDate(
@@ -442,8 +364,11 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                       AppLocalizations.of(
                                                               context)!
                                                           .date,
-                                                  labelStyle: TextStyle(
-                                                      fontSize: width * 0.03),
+                                                    labelStyle: GoogleFonts.poppins(
+                                              color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),  
+                                                    
                                                   prefixIcon: Icon(
                                                     Icons.calendar_today,
                                                     color: Colors.grey.shade700,
@@ -482,9 +407,11 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                             AppLocalizations.of(
                                                                     context)!
                                                                 .paybackdate,
-                                                        labelStyle: TextStyle(
-                                                            fontSize:
-                                                                width * 0.03),
+                                                          labelStyle: GoogleFonts.poppins(
+                                              color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),  
+                                                    
                                                         prefixIcon: Icon(
                                                           Icons.calendar_today,
                                                           color: Colors
@@ -517,8 +444,11 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                       : AppLocalizations.of(
                                                               context)!
                                                           .to,
-                                              labelStyle: TextStyle(
-                                                  fontSize: width * 0.03),
+   labelStyle: GoogleFonts.poppins(
+                                              color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),  
+                                                    
                                               prefixIcon: Icon(
                                                 Icons.person,
                                                 color: Colors.grey.shade700,
@@ -534,17 +464,20 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                               return null;
                                             },
                                           ),
-                                          SizedBox(
-                                            height: height / 30,
-                                          ),
+                                          // SizedBox(
+                                          //   height: height / 85,
+                                          // ),
                                           TextFormField(
                                             controller: obj.noteController,
                                             decoration: InputDecoration(
                                               labelText:
                                                   AppLocalizations.of(context)!
                                                       .notes,
-                                              labelStyle: TextStyle(
-                                                  fontSize: width * 0.03),
+                                                labelStyle: GoogleFonts.poppins(
+                                              color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),  
+                                                    
                                               prefixIcon: Icon(
                                                 Icons.edit,
                                                 color: Colors.grey.shade700,
@@ -597,13 +530,10 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                                 context)!
                                                             .addfile,
                                                         // AppLocalizations.of(context)!.addFile,
-                                                        style: TextStyle(
-                                                            fontSize:
-                                                                width * 0.03,
-                                                            color: Colors.white,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
+                                                         style: GoogleFonts.poppins(
+                                              color:Colors.white,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                                                       ),
                                                     ),
                                                   ),
@@ -646,15 +576,10 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                                 AppLocalizations.of(
                                                                         context)!
                                                                     .cancel,
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        width *
-                                                                            0.03,
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold),
+                                                                 style: GoogleFonts.poppins(
+                                              color:Colors.white,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                                                               ),
                                                             ),
                                                           ),
@@ -776,15 +701,10 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                                 AppLocalizations.of(
                                                                         context)!
                                                                     .add,
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        width *
-                                                                            0.03,
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold),
+                                                                style: GoogleFonts.poppins(
+                                              color:Colors.white,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                                                               ),
                                                             ),
                                                           ),
@@ -817,15 +737,10 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                               AppLocalizations.of(
                                                                       context)!
                                                                   .cancel,
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      width *
-                                                                          0.03,
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold),
+                                                              style: GoogleFonts.poppins(
+                                              color:Colors.white,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                                                             ),
                                                           ),
                                                         ),
@@ -953,15 +868,10 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                               AppLocalizations.of(
                                                                       context)!
                                                                   .add,
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      width *
-                                                                          0.03,
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold),
+                                                              style: GoogleFonts.poppins(
+                                              color:Colors.white,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                                                             ),
                                                           ),
                                                         ),

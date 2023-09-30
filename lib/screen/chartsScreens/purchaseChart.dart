@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
@@ -47,10 +48,10 @@ class _PurchaseChartState extends State<PurchaseChart> {
                         child: Center(
                             child: Text(
                           "Purchase Transaction Details",
-                          style: TextStyle(
-                              color: darkblue,
-                              fontSize: width * 0.03,
-                              fontWeight: FontWeight.bold),
+                          style:   GoogleFonts.poppins(
+                                            color:darkblue,
+                                              fontSize: width * 0.03,
+                                              fontWeight: FontWeight.w500),
                         )),
                       ),
                       SizedBox(

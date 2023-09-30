@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:snabb_business/utils/color.dart';
 
 class AppBarWidgt extends StatelessWidget {
@@ -21,31 +22,7 @@ class AppBarWidgt extends StatelessWidget {
             width: width * 0.7,
             height: height * 0.02,
           ),
-          // Container(
-          //     width: width * 0.7,
-          //     height: height * 0.06,
-          //     color: white,
-          //     child: Row(
-          //       children: [
-          //         Padding(
-          //           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          //           child: InkWell(
-          //             onTap: () {
-          //               Navigator.pop(context);
-          //             },
-          //             child: Icon(
-          //               Icons.arrow_back_ios,
-          //               color: darkblue,
-          //               size: 25,
-          //             ),
-          //           ),
-          //         ),
-          //         Text(
-          //           text,
-          //           style: TextStyle(color: darkblue),
-          //         )
-          //       ],
-          //     )),
+       
           Card(
             elevation: 10,
             child: SizedBox(
@@ -67,7 +44,10 @@ class AppBarWidgt extends StatelessWidget {
                             alignment: Alignment.center,
                             child: Text(
                               text,
-                              style: TextStyle(color: darkblue),
+                               style: GoogleFonts.poppins(
+                                              color: darkblue,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w600),
                             )),
                       ),
                     ],

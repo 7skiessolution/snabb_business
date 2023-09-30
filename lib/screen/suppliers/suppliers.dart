@@ -26,7 +26,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
   TextEditingController updateregNo = TextEditingController();
   TextEditingController updatenumber = TextEditingController();
   TextEditingController updateaddress = TextEditingController();
-
+  bool loading = true;
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -42,6 +42,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
           backgroundColor: Colors.blue[900],
           child: const Icon(Icons.add),
           onPressed: () {
+            loading = true;
             showDialog(
               context: context,
               builder: (dc) {
@@ -92,401 +93,433 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                     color: white,
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          SizedBox(
-                                            height: height * 0.02,
-                                          ),
-                                          Text(
-                                            "Information",
-                                            style: GoogleFonts.lexend(
-                                                color: Colors.black,
-                                                fontSize: width * 0.04,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          SizedBox(
-                                            height: height * 0.04,
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.84,
-                                            child: TextFormField(
-                                              autovalidateMode: AutovalidateMode
-                                                  .onUserInteraction,
-                                              controller: name,
-                                              keyboardType: TextInputType.text,
-                                              decoration: InputDecoration(
-                                                errorStyle: const TextStyle(
-                                                    color: Colors.black),
-                                                contentPadding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 0,
-                                                        horizontal: 20),
-                                                fillColor: Colors.grey,
-                                                hintText: "Supplier Name",
-                                                labelText: "Enter Name",
-                                                alignLabelWithHint: true,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: AppColors.blue
-                                                      //  provider.brightness ==
-                                                      //         AppBrightness.dark
-                                                      //     ? AppTheme.colorWhite
-                                                      //     : AppTheme.colorPrimary,
-                                                      ),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: AppColors.blue
-                                                      // provider.brightness ==
-                                                      //         AppBrightness.dark
-                                                      //     ? AppTheme.colorWhite
-                                                      //   : AppTheme.colorPrimary,
-                                                      ),
-                                                ),
-                                              ),
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              height: height * 0.02,
                                             ),
-                                          ),
-                                          SizedBox(
-                                            height: height * 0.015,
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.84,
-                                            child: TextFormField(
-                                              autovalidateMode: AutovalidateMode
-                                                  .onUserInteraction,
-                                              controller: email,
-                                              keyboardType: TextInputType.text,
-                                              decoration: InputDecoration(
-                                                errorStyle: const TextStyle(
-                                                    color: Colors.black),
-                                                contentPadding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 0,
-                                                        horizontal: 20),
-                                                fillColor: Colors.grey,
-                                                hintText: "Supplier Email",
-                                                labelText: "Enter Email",
-                                                alignLabelWithHint: true,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: AppColors.blue
-                                                      //  provider.brightness ==
-                                                      //         AppBrightness.dark
-                                                      //     ? AppTheme.colorWhite
-                                                      //     : AppTheme.colorPrimary,
-                                                      ),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: AppColors.blue
-                                                      // provider.brightness ==
-                                                      //         AppBrightness.dark
-                                                      //     ? AppTheme.colorWhite
-                                                      //   : AppTheme.colorPrimary,
-                                                      ),
-                                                ),
-                                              ),
+                                            Text(
+                                              "Information",
+                                              style: GoogleFonts.lexend(
+                                                  color: Colors.black,
+                                                  fontSize: width * 0.04,
+                                                  fontWeight: FontWeight.bold),
                                             ),
-                                          ),
-                                          SizedBox(
-                                            height: height * 0.015,
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.84,
-                                            child: TextFormField(
-                                              autovalidateMode: AutovalidateMode
-                                                  .onUserInteraction,
-                                              controller: number,
-                                              keyboardType: TextInputType.text,
-                                              decoration: InputDecoration(
-                                                errorStyle: const TextStyle(
-                                                    color: Colors.black),
-                                                contentPadding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 0,
-                                                        horizontal: 20),
-                                                fillColor: Colors.grey,
-                                                hintText: "Number",
-                                                labelText: "Number",
-                                                alignLabelWithHint: true,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: AppColors.blue
-                                                      //  provider.brightness ==
-                                                      //         AppBrightness.dark
-                                                      //     ? AppTheme.colorWhite
-                                                      //     : AppTheme.colorPrimary,
-                                                      ),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: AppColors.blue
-                                                      // provider.brightness ==
-                                                      //         AppBrightness.dark
-                                                      //     ? AppTheme.colorWhite
-                                                      //   : AppTheme.colorPrimary,
-                                                      ),
-                                                ),
-                                              ),
+                                            SizedBox(
+                                              height: height * 0.04,
                                             ),
-                                          ),
-                                          SizedBox(
-                                            height: height * 0.015,
-                                          ),
-                                          SizedBox(
-                                            height: height * 0.07,
-                                            child: Row(
-                                              children: [
-                                                Text(
-                                                  "Type",
-                                                  style: TextStyle(
-                                                      color: Colors.blue[900],
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: <Widget>[
-                                                    Radio(
-                                                      activeColor:
-                                                          Colors.blue[900],
-                                                      value: obj.type[0],
-                                                      groupValue: obj.select,
-                                                      onChanged: (value) {
-                                                        obj.changeValue(value);
-                                                      },
-                                                    ),
-                                                    const Text("Individual")
-                                                  ],
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: <Widget>[
-                                                    Radio(
-                                                      activeColor:
-                                                          Colors.blue[900],
-                                                      value: obj.type[1],
-                                                      groupValue: obj.select,
-                                                      onChanged: (value) {
-                                                        obj.changeValue(value);
-                                                      },
-                                                    ),
-                                                    Text("Company")
-                                                  ],
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: height * 0.015,
-                                          ),
-                                          obj.select == "Company"
-                                              ? SizedBox(
-                                                  width: width * 0.84,
-                                                  child: TextFormField(
-                                                    autovalidateMode:
-                                                        AutovalidateMode
-                                                            .onUserInteraction,
-                                                    controller: regNo,
-                                                    keyboardType:
-                                                        TextInputType.text,
-                                                    decoration: InputDecoration(
-                                                      errorStyle:
-                                                          const TextStyle(
-                                                              color:
-                                                                  Colors.black),
-                                                      contentPadding:
-                                                          const EdgeInsets
-                                                                  .symmetric(
-                                                              vertical: 0,
-                                                              horizontal: 20),
-                                                      fillColor: Colors.grey,
-                                                      hintText: "Company Reg",
-                                                      labelText: "Reg",
-                                                      alignLabelWithHint: true,
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        borderSide: BorderSide(
-                                                            color:
-                                                                AppColors.blue
-                                                            //  provider.brightness ==
-                                                            //         AppBrightness.dark
-                                                            //     ? AppTheme.colorWhite
-                                                            //     : AppTheme.colorPrimary,
-                                                            ),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        borderSide: BorderSide(
-                                                            color:
-                                                                AppColors.blue
-                                                            // provider.brightness ==
-                                                            //         AppBrightness.dark
-                                                            //     ? AppTheme.colorWhite
-                                                            //   : AppTheme.colorPrimary,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                )
-                                              : SizedBox(),
-                                          obj.select == "Company"
-                                              ? SizedBox(
-                                                  height: height * 0.015,
-                                                )
-                                              : SizedBox(),
-                                          obj.select == "Company"
-                                              ? SizedBox(
-                                                  width: width * 0.84,
-                                                  child: TextFormField(
-                                                    autovalidateMode:
-                                                        AutovalidateMode
-                                                            .onUserInteraction,
-                                                    controller: address,
-                                                    keyboardType:
-                                                        TextInputType.text,
-                                                    decoration: InputDecoration(
-                                                      errorStyle:
-                                                          const TextStyle(
-                                                              color:
-                                                                  Colors.black),
-                                                      contentPadding:
-                                                          const EdgeInsets
-                                                                  .symmetric(
-                                                              vertical: 0,
-                                                              horizontal: 20),
-                                                      fillColor: Colors.grey,
-                                                      hintText: "Address",
-                                                      labelText: "Address",
-                                                      alignLabelWithHint: true,
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        borderSide: BorderSide(
-                                                            color:
-                                                                AppColors.blue
-                                                            //  provider.brightness ==
-                                                            //         AppBrightness.dark
-                                                            //     ? AppTheme.colorWhite
-                                                            //     : AppTheme.colorPrimary,
-                                                            ),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        borderSide: BorderSide(
-                                                            color:
-                                                                AppColors.blue
-                                                            // provider.brightness ==
-                                                            //         AppBrightness.dark
-                                                            //     ? AppTheme.colorWhite
-                                                            //   : AppTheme.colorPrimary,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                )
-                                              : SizedBox(),
-                                          obj.select == "Company"
-                                              ? SizedBox(
-                                                  height: height * 0.04,
-                                                )
-                                              : SizedBox(),
-                                          Card(
-                                            elevation: 5,
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(7)),
-                                            child: InkWell(
-                                              onTap: () {
-                                                Map<String, dynamic> map;
-                                                if (obj.select == "Company") {
-                                                  map = {
-                                                    "name": name.text,
-                                                    "email": email.text,
-                                                    "telePhone": number.text,
-                                                    "address": address.text,
-                                                    "companyReg": regNo.text,
-                                                    "isCompany": true,
-                                                  };
-                                                } else {
-                                                  map = {
-                                                    "name": name.text,
-                                                    "email": email.text,
-                                                    "telePhone": number.text,
-                                                    "address": "",
-                                                    "companyReg": "",
-                                                    "isCompany": false,
-                                                  };
-                                                }
-
-                                                HomeController.to
-                                                    .addSupplierData(map)
-                                                    .then((value) {
-                                                  name.clear();
-                                                  regNo.clear();
-                                                  email.clear();
-                                                  number.clear();
-                                                  address.clear();
-                                                  Navigator.pop(dc);
-                                                });
-                                              },
-                                              child: Container(
-                                                height: height * 0.06,
-                                                width: width * 0.45,
-                                                decoration: BoxDecoration(
-                                                    color: AppColors.blue,
+                                            SizedBox(
+                                              width: width * 0.84,
+                                              child: TextFormField(
+                                                autovalidateMode:
+                                                    AutovalidateMode
+                                                        .onUserInteraction,
+                                                controller: name,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                decoration: InputDecoration(
+                                                  errorStyle: const TextStyle(
+                                                      color: Colors.black),
+                                                  contentPadding:
+                                                      const EdgeInsets
+                                                              .symmetric(
+                                                          vertical: 0,
+                                                          horizontal: 20),
+                                                  fillColor: Colors.grey,
+                                                  hintText: "Supplier Name",
+                                                  labelText: "Enter Name",
+                                                  alignLabelWithHint: true,
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            7)),
-                                                child: Center(
-                                                  child: Text(
-                                                    "Add Supplier",
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: AppColors.blue
+                                                        //  provider.brightness ==
+                                                        //         AppBrightness.dark
+                                                        //     ? AppTheme.colorWhite
+                                                        //     : AppTheme.colorPrimary,
+                                                        ),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: AppColors.blue
+                                                        // provider.brightness ==
+                                                        //         AppBrightness.dark
+                                                        //     ? AppTheme.colorWhite
+                                                        //   : AppTheme.colorPrimary,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: height * 0.015,
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.84,
+                                              child: TextFormField(
+                                                autovalidateMode:
+                                                    AutovalidateMode
+                                                        .onUserInteraction,
+                                                controller: email,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                decoration: InputDecoration(
+                                                  errorStyle: const TextStyle(
+                                                      color: Colors.black),
+                                                  contentPadding:
+                                                      const EdgeInsets
+                                                              .symmetric(
+                                                          vertical: 0,
+                                                          horizontal: 20),
+                                                  fillColor: Colors.grey,
+                                                  hintText: "Supplier Email",
+                                                  labelText: "Enter Email",
+                                                  alignLabelWithHint: true,
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: AppColors.blue
+                                                        //  provider.brightness ==
+                                                        //         AppBrightness.dark
+                                                        //     ? AppTheme.colorWhite
+                                                        //     : AppTheme.colorPrimary,
+                                                        ),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: AppColors.blue
+                                                        // provider.brightness ==
+                                                        //         AppBrightness.dark
+                                                        //     ? AppTheme.colorWhite
+                                                        //   : AppTheme.colorPrimary,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: height * 0.015,
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.84,
+                                              child: TextFormField(
+                                                autovalidateMode:
+                                                    AutovalidateMode
+                                                        .onUserInteraction,
+                                                controller: number,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                decoration: InputDecoration(
+                                                  errorStyle: const TextStyle(
+                                                      color: Colors.black),
+                                                  contentPadding:
+                                                      const EdgeInsets
+                                                              .symmetric(
+                                                          vertical: 0,
+                                                          horizontal: 20),
+                                                  fillColor: Colors.grey,
+                                                  hintText: "Number",
+                                                  labelText: "Number",
+                                                  alignLabelWithHint: true,
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: AppColors.blue
+                                                        //  provider.brightness ==
+                                                        //         AppBrightness.dark
+                                                        //     ? AppTheme.colorWhite
+                                                        //     : AppTheme.colorPrimary,
+                                                        ),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: AppColors.blue
+                                                        // provider.brightness ==
+                                                        //         AppBrightness.dark
+                                                        //     ? AppTheme.colorWhite
+                                                        //   : AppTheme.colorPrimary,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: height * 0.015,
+                                            ),
+                                            SizedBox(
+                                              height: height * 0.07,
+                                              child: Row(
+                                                children: [
+                                                  Text(
+                                                    "Type",
                                                     style: TextStyle(
-                                                        fontSize: width * 0.03,
-                                                        color: Colors.white,
+                                                        color: Colors.blue[900],
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: <Widget>[
+                                                      Radio(
+                                                        activeColor:
+                                                            Colors.blue[900],
+                                                        value: obj.type[0],
+                                                        groupValue: obj.select,
+                                                        onChanged: (value) {
+                                                          obj.changeValue(
+                                                              value);
+                                                        },
+                                                      ),
+                                                      const Text("Individual")
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: <Widget>[
+                                                      Radio(
+                                                        activeColor:
+                                                            Colors.blue[900],
+                                                        value: obj.type[1],
+                                                        groupValue: obj.select,
+                                                        onChanged: (value) {
+                                                          obj.changeValue(
+                                                              value);
+                                                        },
+                                                      ),
+                                                      const Text("Company")
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: height * 0.015,
+                                            ),
+                                            obj.select == "Company"
+                                                ? SizedBox(
+                                                    width: width * 0.84,
+                                                    child: TextFormField(
+                                                      autovalidateMode:
+                                                          AutovalidateMode
+                                                              .onUserInteraction,
+                                                      controller: regNo,
+                                                      keyboardType:
+                                                          TextInputType.text,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        errorStyle:
+                                                            const TextStyle(
+                                                                color: Colors
+                                                                    .black),
+                                                        contentPadding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
+                                                                vertical: 0,
+                                                                horizontal: 20),
+                                                        fillColor: Colors.grey,
+                                                        hintText: "Company Reg",
+                                                        labelText: "Reg",
+                                                        alignLabelWithHint:
+                                                            true,
+                                                        enabledBorder:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          borderSide: BorderSide(
+                                                              color:
+                                                                  AppColors.blue
+                                                              //  provider.brightness ==
+                                                              //         AppBrightness.dark
+                                                              //     ? AppTheme.colorWhite
+                                                              //     : AppTheme.colorPrimary,
+                                                              ),
+                                                        ),
+                                                        focusedBorder:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          borderSide: BorderSide(
+                                                              color:
+                                                                  AppColors.blue
+                                                              // provider.brightness ==
+                                                              //         AppBrightness.dark
+                                                              //     ? AppTheme.colorWhite
+                                                              //   : AppTheme.colorPrimary,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  )
+                                                : const SizedBox(),
+                                            obj.select == "Company"
+                                                ? SizedBox(
+                                                    height: height * 0.015,
+                                                  )
+                                                : const SizedBox(),
+                                            obj.select == "Company"
+                                                ? SizedBox(
+                                                    width: width * 0.84,
+                                                    child: TextFormField(
+                                                      autovalidateMode:
+                                                          AutovalidateMode
+                                                              .onUserInteraction,
+                                                      controller: address,
+                                                      keyboardType:
+                                                          TextInputType.text,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        errorStyle:
+                                                            const TextStyle(
+                                                                color: Colors
+                                                                    .black),
+                                                        contentPadding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
+                                                                vertical: 0,
+                                                                horizontal: 20),
+                                                        fillColor: Colors.grey,
+                                                        hintText: "Address",
+                                                        labelText: "Address",
+                                                        alignLabelWithHint:
+                                                            true,
+                                                        enabledBorder:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          borderSide: BorderSide(
+                                                              color:
+                                                                  AppColors.blue
+                                                              //  provider.brightness ==
+                                                              //         AppBrightness.dark
+                                                              //     ? AppTheme.colorWhite
+                                                              //     : AppTheme.colorPrimary,
+                                                              ),
+                                                        ),
+                                                        focusedBorder:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          borderSide: BorderSide(
+                                                              color:
+                                                                  AppColors.blue
+                                                              // provider.brightness ==
+                                                              //         AppBrightness.dark
+                                                              //     ? AppTheme.colorWhite
+                                                              //   : AppTheme.colorPrimary,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  )
+                                                : const SizedBox(),
+                                            obj.select == "Company"
+                                                ? SizedBox(
+                                                    height: height * 0.04,
+                                                  )
+                                                : const SizedBox(),
+                                            Card(
+                                              elevation: 5,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(7)),
+                                              child: InkWell(
+                                                onTap: () {
+                                                  if (loading) {
+                                                    Map<String, dynamic> map;
+                                                    if (obj.select ==
+                                                        "Company") {
+                                                      map = {
+                                                        "name": name.text,
+                                                        "email": email.text,
+                                                        "telePhone":
+                                                            number.text,
+                                                        "address": address.text,
+                                                        "companyReg":
+                                                            regNo.text,
+                                                        "isCompany": true,
+                                                      };
+                                                    } else {
+                                                      map = {
+                                                        "name": name.text,
+                                                        "email": email.text,
+                                                        "telePhone":
+                                                            number.text,
+                                                        "address": "",
+                                                        "companyReg": "",
+                                                        "isCompany": false,
+                                                      };
+                                                    }
+
+                                                    HomeController.to
+                                                        .addSupplierData(map)
+                                                        .then((value) {
+                                                      name.clear();
+                                                      regNo.clear();
+                                                      email.clear();
+                                                      number.clear();
+                                                      address.clear();
+                                                      Navigator.pop(dc);
+                                                    });
+                                                  }
+                                                  loading = false;
+                                                  setState(() {});
+                                                },
+                                                child: Container(
+                                                  height: height * 0.06,
+                                                  width: width * 0.45,
+                                                  decoration: BoxDecoration(
+                                                      color: AppColors.blue,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              7)),
+                                                  child: Center(
+                                                    child: Text(
+                                                      "Add Supplier",
+                                                      style: TextStyle(
+                                                          fontSize:
+                                                              width * 0.03,
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     )),
                               ),
@@ -751,7 +784,8 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                         },
                                                       );
                                                     },
-                                                    child: Icon(Icons.delete)),
+                                                    child: const Icon(
+                                                        Icons.delete)),
                                                 InkWell(
                                                     onTap: () {
                                                       updateaddress.text = obj
@@ -1091,7 +1125,8 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                         },
                                                       );
                                                     },
-                                                    child: Icon(Icons.edit))
+                                                    child:
+                                                        const Icon(Icons.edit))
                                               ],
                                             ),
                                           ),

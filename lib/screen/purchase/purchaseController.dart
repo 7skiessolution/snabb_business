@@ -1382,7 +1382,8 @@ class PurchaseController extends GetxController {
                                                                     value);
                                                               },
                                                             ),
-                                                            Text("Company")
+                                                            const Text(
+                                                                "Company")
                                                           ],
                                                         )
                                                       ],
@@ -1457,12 +1458,12 @@ class PurchaseController extends GetxController {
                                                             ),
                                                           ),
                                                         )
-                                                      : SizedBox(),
+                                                      : const SizedBox(),
                                                   obj.select == "Company"
                                                       ? SizedBox(
                                                           height: height * 0.01,
                                                         )
-                                                      : SizedBox(),
+                                                      : const SizedBox(),
                                                   obj.select == "Company"
                                                       ? SizedBox(
                                                           width: width * 0.84,
@@ -1530,12 +1531,12 @@ class PurchaseController extends GetxController {
                                                             ),
                                                           ),
                                                         )
-                                                      : SizedBox(),
+                                                      : const SizedBox(),
                                                   obj.select == "Company"
                                                       ? SizedBox(
                                                           height: height * 0.01,
                                                         )
-                                                      : SizedBox(),
+                                                      : const SizedBox(),
                                                   Card(
                                                     elevation: 5,
                                                     shape:
@@ -1624,7 +1625,7 @@ class PurchaseController extends GetxController {
                                             ),
                                           );
                                         })
-                                      : SizedBox(),
+                                      : const SizedBox(),
                                   SizedBox(
                                     height: height * 0.01,
                                   )

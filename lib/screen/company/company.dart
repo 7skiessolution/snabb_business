@@ -37,6 +37,8 @@ class _CompanyScreenState extends State<CompanyScreen> {
           backgroundColor: Colors.blue[900],
           child: const Icon(Icons.add),
           onPressed: () {
+            loading = true;
+
             showDialog(
               context: context,
               builder: (dc) {
@@ -247,20 +249,23 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                   BorderRadius.circular(7)),
                                           child: InkWell(
                                             onTap: () {
+                                              if (loading) {
+                                                Map<String, dynamic> map = {
+                                                  "name": mName.text,
+                                                  "email": mEmail.text,
+                                                  "telePhone": nPhone.text,
+                                                };
+                                                print(map);
+                                                HomeController.to
+                                                    .addCompanyData(map, dc)
+                                                    .then((value) {
+                                                  mName.clear();
+                                                  mEmail.clear();
+                                                  nPhone.clear();
+                                                });
+                                              }
                                               loading = false;
-                                              Map<String, dynamic> map = {
-                                                "name": mName.text,
-                                                "email": mEmail.text,
-                                                "telePhone": nPhone.text,
-                                              };
-                                              print(map);
-                                              HomeController.to
-                                                  .addCompanyData(map, dc)
-                                                  .then((value) {
-                                                mName.clear();
-                                                mEmail.clear();
-                                                nPhone.clear();
-                                              });
+                                              setState(() {});
                                             },
                                             child: Container(
                                               height: height * 0.06,

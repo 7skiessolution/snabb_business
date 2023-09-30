@@ -23,6 +23,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
   TextEditingController updateName = TextEditingController();
   TextEditingController updatePhone = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  bool loading = true;
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -246,6 +247,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                   BorderRadius.circular(7)),
                                           child: InkWell(
                                             onTap: () {
+                                              loading = false;
                                               Map<String, dynamic> map = {
                                                 "name": mName.text,
                                                 "email": mEmail.text,

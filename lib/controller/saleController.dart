@@ -32,6 +32,20 @@ class SaleController extends GetxController {
   String companyName = "";
   String? companyid;
   String formatTime = "Pick Date";
+  double totalBalance = 0.0;
+  getBalance() {
+    totalBalance = 0.0;
+    totalBalance = totalBalance + (double.tryParse(bankamount.text) ?? 0.0);
+    totalBalance = totalBalance + (double.tryParse(cashamount.text) ?? 0.0);
+    totalBalance = totalBalance + (double.tryParse(otheramount.text) ?? 0.0);
+    totalBalance =
+        totalBalance + (double.tryParse(creditTransactionamount.text) ?? 0.0);
+    balanceAmount.text =
+        ((double.tryParse(invoiceAmount.text) ?? 0.0) - totalBalance)
+            .toString();
+    update();
+  }
+
   Future<void> showPaidDilogue(
       BuildContext context, double height, double width) {
     return showDialog(
@@ -40,12 +54,12 @@ class SaleController extends GetxController {
         return AlertDialog(
           content: Container(
             color: Colors.grey.shade300,
-            height: height * 0.65,
+            height: height * 0.7,
             width: width * 0.8,
             child: Stack(
               children: [
                 Container(
-                  height: height * 0.15,
+                  height: height * 0.1,
                   width: width,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
@@ -53,7 +67,7 @@ class SaleController extends GetxController {
                           image: AssetImage("images/dollar.jpg"))),
                 ),
                 Container(
-                  height: height * 0.15,
+                  height: height * 0.1,
                   width: width,
                   color: Colors.blue[900]!.withOpacity(0.9),
                   child: Padding(
@@ -75,7 +89,7 @@ class SaleController extends GetxController {
                       elevation: 10,
                       shadowColor: Colors.blue[900],
                       child: Container(
-                        height: height * 0.6,
+                        height: height * 0.65,
                         width: width * 0.7,
                         color: white,
                         child: Center(
@@ -95,15 +109,114 @@ class SaleController extends GetxController {
                                           height: height * 0.11,
                                           child: const Image(
                                               image: AssetImage(
+                                                  "images/micon.png")),
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Total Invoice Amount",
+                                              style: TextStyle(
+                                                fontSize: width * 0.025,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                                height: height * 0.055,
+                                                width: width * 0.5,
+                                                child: TextFormField(
+                                                  controller: invoiceAmount,
+                                                  decoration: InputDecoration(
+                                                      border: InputBorder.none,
+                                                      hintText: "Amount",
+                                                      hintStyle: TextStyle(
+                                                          fontSize:
+                                                              width * 0.025,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: Colors.grey
+                                                              .withOpacity(
+                                                                  0.5)),
+                                                      disabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      ),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      ),
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      ),
+                                                      errorBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      )),
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                )),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.08,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        SizedBox(
+                                          width: width * 0.11,
+                                          height: height * 0.11,
+                                          child: const Image(
+                                              image: AssetImage(
                                                   "images/bank.jpeg")),
                                         ),
                                         Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            const Text(
+                                            Text(
                                               "Bank",
                                               style: TextStyle(
+                                                fontSize: width * 0.025,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -112,10 +225,15 @@ class SaleController extends GetxController {
                                                 width: width * 0.5,
                                                 child: TextFormField(
                                                   controller: bankamount,
+                                                  onChanged: (value) {
+                                                    getBalance();
+                                                  },
                                                   decoration: InputDecoration(
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
                                                       hintStyle: TextStyle(
+                                                          fontSize:
+                                                              width * 0.025,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                           color: Colors.grey
@@ -196,9 +314,10 @@ class SaleController extends GetxController {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            const Text(
+                                            Text(
                                               "Cash",
                                               style: TextStyle(
+                                                fontSize: width * 0.025,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -207,10 +326,15 @@ class SaleController extends GetxController {
                                                 width: width * 0.5,
                                                 child: TextFormField(
                                                   controller: cashamount,
+                                                  onChanged: (value) {
+                                                    getBalance();
+                                                  },
                                                   decoration: InputDecoration(
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
                                                       hintStyle: TextStyle(
+                                                          fontSize:
+                                                              width * 0.025,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                           color: Colors.grey
@@ -291,9 +415,10 @@ class SaleController extends GetxController {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            const Text(
+                                            Text(
                                               "Other",
                                               style: TextStyle(
+                                                fontSize: width * 0.025,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -302,10 +427,15 @@ class SaleController extends GetxController {
                                                 width: width * 0.5,
                                                 child: TextFormField(
                                                   controller: otheramount,
+                                                  onChanged: (value) {
+                                                    getBalance();
+                                                  },
                                                   decoration: InputDecoration(
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
                                                       hintStyle: TextStyle(
+                                                          fontSize:
+                                                              width * 0.025,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                           color: Colors.grey
@@ -386,9 +516,10 @@ class SaleController extends GetxController {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            const Text(
+                                            Text(
                                               "Credit Transaction",
                                               style: TextStyle(
+                                                fontSize: width * 0.025,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -398,10 +529,15 @@ class SaleController extends GetxController {
                                                 child: TextFormField(
                                                   controller:
                                                       creditTransactionamount,
+                                                  onChanged: (value) {
+                                                    getBalance();
+                                                  },
                                                   decoration: InputDecoration(
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
                                                       hintStyle: TextStyle(
+                                                          fontSize:
+                                                              width * 0.025,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                           color: Colors.grey
@@ -482,9 +618,10 @@ class SaleController extends GetxController {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            const Text(
-                                              "Credit Return Date",
+                                            Text(
+                                              "Return Date",
                                               style: TextStyle(
+                                                fontSize: width * 0.025,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -522,6 +659,8 @@ class SaleController extends GetxController {
                                                             InputBorder.none,
                                                         hintText: "Date",
                                                         hintStyle: TextStyle(
+                                                            fontSize:
+                                                                width * 0.025,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                             color: Colors.grey
@@ -603,116 +742,25 @@ class SaleController extends GetxController {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            const Text(
+                                            Text(
                                               "Balance Amount",
                                               style: TextStyle(
+                                                fontSize: width * 0.025,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
                                             SizedBox(
                                               height: height * 0.055,
                                               width: width * 0.5,
-                                              child: TextFormField(
-                                                controller: balanceAmount,
-                                                decoration: InputDecoration(
-                                                    border: InputBorder.none,
-                                                    hintText: "Amount",
-                                                    hintStyle: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: Colors.grey
-                                                            .withOpacity(0.5)),
-                                                    disabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                    ),
-                                                    focusedBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                    ),
-                                                    focusedErrorBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                    ),
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                    ),
-                                                    errorBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                    )),
-                                                keyboardType:
-                                                    TextInputType.number,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.08,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        SizedBox(
-                                          width: width * 0.11,
-                                          height: height * 0.11,
-                                          child: const Image(
-                                              image: AssetImage(
-                                                  "images/micon.png")),
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const Text(
-                                              "Total Invoice mount",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                                height: height * 0.055,
-                                                width: width * 0.5,
+                                              child: IgnorePointer(
                                                 child: TextFormField(
-                                                  controller: invoiceAmount,
+                                                  controller: balanceAmount,
                                                   decoration: InputDecoration(
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
                                                       hintStyle: TextStyle(
+                                                          fontSize:
+                                                              width * 0.025,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                           color: Colors.grey
@@ -770,7 +818,9 @@ class SaleController extends GetxController {
                                                       )),
                                                   keyboardType:
                                                       TextInputType.number,
-                                                )),
+                                                ),
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ],

@@ -36,7 +36,19 @@ class PurchaseController extends GetxController {
   String formatTime = "Pick Date";
   double totalBalance = 0.0;
 
-  getBalance() {}
+  getBalance() {
+    totalBalance = 0.0;
+    totalBalance = totalBalance + (double.tryParse(bankamount.text) ?? 0.0);
+    totalBalance = totalBalance + (double.tryParse(cashamount.text) ?? 0.0);
+    totalBalance = totalBalance + (double.tryParse(otheramount.text) ?? 0.0);
+    totalBalance =
+        totalBalance + (double.tryParse(creditTransactionamount.text) ?? 0.0);
+    balanceAmount.text =
+        ((double.tryParse(invoiceAmount.text) ?? 0.0) - totalBalance)
+            .toString();
+    update();
+  }
+
   Future<void> showPaidDilogue(
       BuildContext context, double height, double width) {
     return showDialog(
@@ -216,6 +228,9 @@ class PurchaseController extends GetxController {
                                                 width: width * 0.5,
                                                 child: TextFormField(
                                                   controller: bankamount,
+                                                  onChanged: (value) {
+                                                    getBalance();
+                                                  },
                                                   decoration: InputDecoration(
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
@@ -314,6 +329,9 @@ class PurchaseController extends GetxController {
                                                 width: width * 0.5,
                                                 child: TextFormField(
                                                   controller: cashamount,
+                                                  onChanged: (value) {
+                                                    getBalance();
+                                                  },
                                                   decoration: InputDecoration(
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
@@ -412,6 +430,9 @@ class PurchaseController extends GetxController {
                                                 width: width * 0.5,
                                                 child: TextFormField(
                                                   controller: otheramount,
+                                                  onChanged: (value) {
+                                                    getBalance();
+                                                  },
                                                   decoration: InputDecoration(
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
@@ -511,6 +532,9 @@ class PurchaseController extends GetxController {
                                                 child: TextFormField(
                                                   controller:
                                                       creditTransactionamount,
+                                                  onChanged: (value) {
+                                                    getBalance();
+                                                  },
                                                   decoration: InputDecoration(
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
@@ -731,69 +755,73 @@ class PurchaseController extends GetxController {
                                             SizedBox(
                                               height: height * 0.055,
                                               width: width * 0.5,
-                                              child: TextFormField(
-                                                controller: balanceAmount,
-                                                decoration: InputDecoration(
-                                                    border: InputBorder.none,
-                                                    hintText: "Amount",
-                                                    hintStyle: TextStyle(
-                                                        fontSize: width * 0.025,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: Colors.grey
-                                                            .withOpacity(0.5)),
-                                                    disabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
+                                              child: IgnorePointer(
+                                                child: TextFormField(
+                                                  controller: balanceAmount,
+                                                  decoration: InputDecoration(
+                                                      border: InputBorder.none,
+                                                      hintText: "Amount",
+                                                      hintStyle: TextStyle(
+                                                          fontSize:
+                                                              width * 0.025,
+                                                          fontWeight:
+                                                              FontWeight.w500,
                                                           color: Colors.grey
                                                               .withOpacity(
                                                                   0.5)),
-                                                    ),
-                                                    focusedBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                    ),
-                                                    focusedErrorBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                    ),
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                    ),
-                                                    errorBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      borderSide: BorderSide(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                    )),
-                                                keyboardType:
-                                                    TextInputType.number,
+                                                      disabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      ),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      ),
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      ),
+                                                      errorBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      )),
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                ),
                                               ),
                                             ),
                                           ],

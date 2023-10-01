@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/controller/homeController.dart';
@@ -11,7 +10,6 @@ import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/screen/dashboardScreen.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:path/path.dart';
 
@@ -1179,8 +1177,7 @@ class PurchaseController extends GetxController {
                                                               BorderRadius
                                                                   .circular(10),
                                                           borderSide: BorderSide(
-                                                              color:
-                                                                  AppColors.blue
+                                                              color: blue
                                                               //  provider.brightness ==
                                                               //         AppBrightness.dark
                                                               //     ? AppTheme.colorWhite
@@ -1193,8 +1190,7 @@ class PurchaseController extends GetxController {
                                                               BorderRadius
                                                                   .circular(10),
                                                           borderSide: BorderSide(
-                                                              color:
-                                                                  AppColors.blue
+                                                              color: blue
                                                               // provider.brightness ==
                                                               //         AppBrightness.dark
                                                               //     ? AppTheme.colorWhite
@@ -1240,8 +1236,7 @@ class PurchaseController extends GetxController {
                                                               BorderRadius
                                                                   .circular(10),
                                                           borderSide: BorderSide(
-                                                              color:
-                                                                  AppColors.blue
+                                                              color: blue
                                                               //  provider.brightness ==
                                                               //         AppBrightness.dark
                                                               //     ? AppTheme.colorWhite
@@ -1254,8 +1249,7 @@ class PurchaseController extends GetxController {
                                                               BorderRadius
                                                                   .circular(10),
                                                           borderSide: BorderSide(
-                                                              color:
-                                                                  AppColors.blue
+                                                              color: blue
                                                               // provider.brightness ==
                                                               //         AppBrightness.dark
                                                               //     ? AppTheme.colorWhite
@@ -1299,8 +1293,7 @@ class PurchaseController extends GetxController {
                                                               BorderRadius
                                                                   .circular(10),
                                                           borderSide: BorderSide(
-                                                              color:
-                                                                  AppColors.blue
+                                                              color: blue
                                                               //  provider.brightness ==
                                                               //         AppBrightness.dark
                                                               //     ? AppTheme.colorWhite
@@ -1313,8 +1306,7 @@ class PurchaseController extends GetxController {
                                                               BorderRadius
                                                                   .circular(10),
                                                           borderSide: BorderSide(
-                                                              color:
-                                                                  AppColors.blue
+                                                              color: blue
                                                               // provider.brightness ==
                                                               //         AppBrightness.dark
                                                               //     ? AppTheme.colorWhite
@@ -1430,9 +1422,7 @@ class PurchaseController extends GetxController {
                                                                         .circular(
                                                                             10),
                                                                 borderSide: BorderSide(
-                                                                    color:
-                                                                        AppColors
-                                                                            .blue
+                                                                    color: blue
                                                                     //  provider.brightness ==
                                                                     //         AppBrightness.dark
                                                                     //     ? AppTheme.colorWhite
@@ -1446,9 +1436,7 @@ class PurchaseController extends GetxController {
                                                                         .circular(
                                                                             10),
                                                                 borderSide: BorderSide(
-                                                                    color:
-                                                                        AppColors
-                                                                            .blue
+                                                                    color: blue
                                                                     // provider.brightness ==
                                                                     //         AppBrightness.dark
                                                                     //     ? AppTheme.colorWhite
@@ -1503,9 +1491,7 @@ class PurchaseController extends GetxController {
                                                                         .circular(
                                                                             10),
                                                                 borderSide: BorderSide(
-                                                                    color:
-                                                                        AppColors
-                                                                            .blue
+                                                                    color: blue
                                                                     //  provider.brightness ==
                                                                     //         AppBrightness.dark
                                                                     //     ? AppTheme.colorWhite
@@ -1519,9 +1505,7 @@ class PurchaseController extends GetxController {
                                                                         .circular(
                                                                             10),
                                                                 borderSide: BorderSide(
-                                                                    color:
-                                                                        AppColors
-                                                                            .blue
+                                                                    color: blue
                                                                     // provider.brightness ==
                                                                     //         AppBrightness.dark
                                                                     //     ? AppTheme.colorWhite
@@ -1597,8 +1581,7 @@ class PurchaseController extends GetxController {
                                                         height: height * 0.06,
                                                         width: width * 0.45,
                                                         decoration: BoxDecoration(
-                                                            color:
-                                                                AppColors.blue,
+                                                            color: blue,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(

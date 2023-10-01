@@ -9,7 +9,6 @@ import 'package:snabb_business/screen/budget/budget_transaction.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/spinkit.dart';
 
 class BudgetView extends StatefulWidget {
@@ -160,7 +159,7 @@ class _BudgetViewState extends State<BudgetView> {
                           Container(
                             width: width,
                             height: height * 0.15,
-                            color: AppColors.topcard.withOpacity(0.9),
+                            color: topcard.withOpacity(0.9),
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20.0),
@@ -329,7 +328,7 @@ class _BudgetViewState extends State<BudgetView> {
                                                               );
                                                             },
                                                           )
-                                                        : SizedBox(),
+                                                        : const SizedBox(),
                                                     obj.displaySixMonthtatusItems
                                                                 .isNotEmpty &&
                                                             index == 2
@@ -381,7 +380,7 @@ class _BudgetViewState extends State<BudgetView> {
                                                               );
                                                             },
                                                           )
-                                                        : SizedBox(),
+                                                        : const SizedBox(),
                                                     obj.displayyearlytatusItems
                                                                 .isNotEmpty &&
                                                             index == 3
@@ -433,7 +432,7 @@ class _BudgetViewState extends State<BudgetView> {
                                                               );
                                                             },
                                                           )
-                                                        : SizedBox(),
+                                                        : const SizedBox(),
                                                   ],
                                                 ),
                                               ),
@@ -517,11 +516,11 @@ class _BudgetViewState extends State<BudgetView> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 height: height * 0.16,
                 width: width,
                 decoration: BoxDecoration(
-                  color: AppColors.backgroundColor,
+                  color: backgroundColor,
                   // borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
@@ -559,7 +558,7 @@ class _BudgetViewState extends State<BudgetView> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Text(dateString(),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.grey,
                                         fontSize: 12,
                                       )),
@@ -568,7 +567,7 @@ class _BudgetViewState extends State<BudgetView> {
                                           fontSize: 12,
                                           fontWeight: FontWeight.w700)),
                                   Text(date,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.grey,
                                         fontSize: 12,
                                       )),
@@ -599,18 +598,18 @@ class _BudgetViewState extends State<BudgetView> {
                                     MainAxisAlignment.spaceBetween,
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Text('0',
+                                  const Text('0',
                                       style: TextStyle(
                                         color: Colors.grey,
                                         fontSize: 12,
                                       )),
                                   Text(payable.toString(),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.red,
                                         fontSize: 12,
                                       )),
                                   Text(amount.toString(),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.grey,
                                         fontSize: 12,
                                       )),
@@ -626,7 +625,7 @@ class _BudgetViewState extends State<BudgetView> {
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                         '${AppLocalizations.of(context)!.residualamount.capitalize!}: $residual',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 12,
                                         )),

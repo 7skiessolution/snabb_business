@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/models/currency_model.dart';
-import 'package:snabb_business/utils/colors.dart';
+import 'package:snabb_business/utils/color.dart';
 
 class CurrencyScreen extends StatefulWidget {
   const CurrencyScreen({super.key});
@@ -37,7 +37,7 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
                 },
                 child: Icon(
                   Icons.clear,
-                  color: AppColors.blue,
+                  color: blue,
                   size: size.width * 0.07,
                 ),
               ),
@@ -48,7 +48,7 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
                 style: TextStyle(
                     fontSize: size.width * 0.035,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.blue),
+                    color: blue),
               ),
             ),
             const SizedBox(
@@ -68,7 +68,7 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
                             style: TextStyle(fontSize: size.width * 0.03)),
                         Radio(
                           value: CurrencyModell.currencyList[index].value!,
-                          activeColor: AppColors.blue,
+                          activeColor: blue,
                           groupValue: obj.curency,
                           onChanged: (value) {
                             obj.changeCurrency(value.toString(), context);

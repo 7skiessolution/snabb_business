@@ -7,7 +7,6 @@ import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/screen/sale/user_category_model.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/daimond_shape.dart';
 
 class AddBudget extends StatefulWidget {
@@ -34,7 +33,7 @@ class _AddBudgetState extends State<AddBudget> {
     return SafeArea(
       child: GetBuilder<AddBudgetController>(builder: (obj1) {
         return Scaffold(
-          backgroundColor: AppColors.backgroundColor,
+          backgroundColor: backgroundColor,
           body: Center(
               child: SizedBox(
             height: height,
@@ -600,7 +599,7 @@ class _AddBudgetState extends State<AddBudget> {
                                                                                   onTap: () {
                                                                                     if (obj1.getimage != null && obj1.subcatagorycontroller.text.isNotEmpty) {
                                                                                       obj1.selectedCatagorymodel = UserCategoryModel(parentId: obj1.selectedcatId, imageUrl: obj1.getimage, name: obj1.subcatagorycontroller.text, type: "income");
-                                                                                    //  TransactionController.to.adddCatagoriesdata(obj1.selectedCatagorymodel!);
+                                                                                      //  TransactionController.to.adddCatagoriesdata(obj1.selectedCatagorymodel!);
 
                                                                                       Navigator.pop(context);
                                                                                     } else {
@@ -762,7 +761,7 @@ class _AddBudgetState extends State<AddBudget> {
                                                                               ),
                                                                               trailing: InkWell(
                                                                                   onTap: () {
-                                                                                  //  TransactionController.to.deleteCatagoriesdata(obj.model!.data![index].categoryId!, "income");
+                                                                                    //  TransactionController.to.deleteCatagoriesdata(obj.model!.data![index].categoryId!, "income");
                                                                                   },
                                                                                   child: const Icon(Icons.delete)),
                                                                             ),

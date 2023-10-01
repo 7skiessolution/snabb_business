@@ -8,7 +8,6 @@ import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/pinch_zoom_image.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:snabb_business/models/get_type_year_expense.dart' as elist;
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import '../../controller/homeController.dart';
 
 class ExpenseChart extends StatefulWidget {
@@ -424,200 +423,228 @@ class _ExpenseChartState extends State<ExpenseChart> {
           body: SizedBox(
             height: height,
             width: width,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Column(
-                children: [
-                  AppBarWidgt(text: "Expense"),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 6),
-                    child: Container(
-                      height: height * 0.26,
-                      width: width,
-                      decoration: BoxDecoration(
-                          color: white, borderRadius: BorderRadius.circular(8)),
-                      child: Column(
-                        children: [
-                          Text(
-                            "Expenses",
-                            style: TextStyle(
-                                fontSize: width * 0.04,
-                                fontWeight: FontWeight.w800,
-                                color: expensecolor),
-                          ),
-                          SizedBox(
-                              height: height * 0.2,
-                              width: width,
-                              child: SfCartesianChart(
-                                  primaryXAxis: CategoryAxis(),
-                                  primaryYAxis: NumericAxis(
-                                    minimum: 0,
-                                    numberFormat: NumberFormat.compact(),
-                                  ),
-                                  tooltipBehavior: obj.tooltip,
-                                  series: <ChartSeries<Chartdata, String>>[
-                                    BarSeries<Chartdata, String>(
-                                        dataSource: obj.expensedata,
-                                        xValueMapper: (Chartdata data, _) =>
-                                            data.x,
-                                        yValueMapper: (Chartdata data, _) =>
-                                            data.y,
-                                        name: 'Expesense',
-                                        color: expensecolor)
-                                  ]))
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: height * 0.05,
-                    width: width * 0.6,
-                    color: expensecolor,
-                    child: Center(
-                      child: Text(
-                        "Expenses Transactions".toUpperCase(),
-                        style: TextStyle(
-                            fontSize: width * 0.035,
-                            fontWeight: FontWeight.w500,
-                            color: white),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: obj.expenseData.length,
-                      itemBuilder: (context, index) {
-                        var data = obj.expenseData[index];
-                        return InkWell(
-                          onTap: () {
-                            // print(
-                            //     "image path ${StaticValues.imageUrl}${data.files}");
-                            showImageDialog(context, data);
-                          },
-                          child: Padding(
-                            padding: EdgeInsets.only(top: height * 0.015),
-                            child: Stack(
+            child: Stack(
+              children: [
+                Container(
+                  height: height,
+                  width: width,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("images/backImage.jpg"))),
+                ),
+                Container(
+                  height: height,
+                  width: width,
+                  color: Colors.white.withOpacity(0.9),
+                ),
+                SizedBox(
+                  height: height,
+                  width: width,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Column(
+                      children: [
+                        AppBarWidgt(text: "Expense"),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 6),
+                          child: Container(
+                            height: height * 0.26,
+                            width: width,
+                            decoration: BoxDecoration(
+                                color: white,
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Column(
                               children: [
-                                Container(
-                                  height: height * 0.13,
-                                  width: width,
-                                  decoration: BoxDecoration(
-                                    color: expensecolor,
-                                    borderRadius: BorderRadius.circular(6),
-                                  ),
-                                  child: Align(
-                                    alignment: Alignment.bottomCenter,
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                          bottom: height * 0.005),
-                                      child: Text(
-                                        "Total Expense ${(data.totalAmount ?? 0.0)} ${obj.curency} ",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: width * 0.025,
-                                            color: white),
-                                      ),
-                                    ),
-                                  ),
+                                Text(
+                                  "Expenses",
+                                  style: TextStyle(
+                                      fontSize: width * 0.04,
+                                      fontWeight: FontWeight.w800,
+                                      color: expensecolor),
                                 ),
-                                Container(
-                                  height: height * 0.1,
-                                  width: width,
-                                  decoration: BoxDecoration(
-                                    color: white,
-                                    borderRadius: BorderRadius.circular(6),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      SizedBox(
-                                        width: width * 0.05,
-                                      ),
-                                      CircleAvatar(
-                                        backgroundColor: expensecolor,
-                                        child: Image.asset(
-                                          data.details!.imageUrl!,
-                                          color: white,
+                                SizedBox(
+                                    height: height * 0.2,
+                                    width: width,
+                                    child: SfCartesianChart(
+                                        primaryXAxis: CategoryAxis(),
+                                        primaryYAxis: NumericAxis(
+                                          minimum: 0,
+                                          numberFormat: NumberFormat.compact(),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: width * 0.05,
-                                      ),
-                                      Expanded(
-                                        child: Container(
-                                          height: height,
-                                          width: width,
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            "${data.details!.category}",
-                                            style: TextStyle(
-                                                fontSize: width * 0.04,
-                                                fontWeight: FontWeight.bold,
-                                                color: expensecolor),
+                                        tooltipBehavior: obj.tooltip,
+                                        series: <ChartSeries<Chartdata,
+                                            String>>[
+                                          BarSeries<Chartdata, String>(
+                                              dataSource: obj.expensedata,
+                                              xValueMapper:
+                                                  (Chartdata data, _) => data.x,
+                                              yValueMapper:
+                                                  (Chartdata data, _) => data.y,
+                                              name: 'Expesense',
+                                              color: expensecolor)
+                                        ]))
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: height * 0.02,
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          height: height * 0.05,
+                          width: width * 0.6,
+                          color: expensecolor,
+                          child: Center(
+                            child: Text(
+                              "Expenses Transactions".toUpperCase(),
+                              style: TextStyle(
+                                  fontSize: width * 0.035,
+                                  fontWeight: FontWeight.w500,
+                                  color: white),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: obj.expenseData.length,
+                            itemBuilder: (context, index) {
+                              var data = obj.expenseData[index];
+                              return InkWell(
+                                onTap: () {
+                                  // print(
+                                  //     "image path ${StaticValues.imageUrl}${data.files}");
+                                  showImageDialog(context, data);
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: height * 0.015),
+                                  child: Stack(
+                                    children: [
+                                      Container(
+                                        height: height * 0.13,
+                                        width: width,
+                                        decoration: BoxDecoration(
+                                          color: expensecolor,
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                        ),
+                                        child: Align(
+                                          alignment: Alignment.bottomCenter,
+                                          child: Padding(
+                                            padding: EdgeInsets.only(
+                                                bottom: height * 0.005),
+                                            child: Text(
+                                              "Total Expense ${(data.totalAmount ?? 0.0)} ${obj.curency} ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: width * 0.025,
+                                                  color: white),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: width * 0.05,
-                                      ),
-                                      SizedBox(
+                                      Container(
                                         height: height * 0.1,
-                                        width: width * 0.3,
-                                        child: Column(
+                                        width: width,
+                                        decoration: BoxDecoration(
+                                          color: white,
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                        ),
+                                        child: Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                              MainAxisAlignment.spaceAround,
                                           children: [
-                                            Container(
-                                              height: height * 0.02,
-                                              width: width * 0.2,
-                                              decoration: BoxDecoration(
-                                                color: expensecolor,
-                                                borderRadius:
-                                                    BorderRadius.circular(2),
+                                            SizedBox(
+                                              width: width * 0.05,
+                                            ),
+                                            CircleAvatar(
+                                              backgroundColor: expensecolor,
+                                              child: Image.asset(
+                                                data.details!.imageUrl!,
+                                                color: white,
                                               ),
-                                              child: Center(
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.05,
+                                            ),
+                                            Expanded(
+                                              child: Container(
+                                                height: height,
+                                                width: width,
+                                                alignment: Alignment.centerLeft,
                                                 child: Text(
-                                                  "${data.totalAmount}",
+                                                  "${data.details!.category}",
                                                   style: TextStyle(
-                                                      fontSize: width * 0.02,
+                                                      fontSize: width * 0.04,
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      color: white),
+                                                      color: expensecolor),
                                                 ),
                                               ),
                                             ),
                                             SizedBox(
-                                              height: height * 0.01,
+                                              width: width * 0.05,
                                             ),
-                                            Text(
-                                              data.dateTime
-                                                  .toString()
-                                                  .substring(0, 10),
-                                              style: TextStyle(
-                                                  fontSize: width * 0.02,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: lightgray),
+                                            SizedBox(
+                                              height: height * 0.1,
+                                              width: width * 0.3,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    height: height * 0.02,
+                                                    width: width * 0.2,
+                                                    decoration: BoxDecoration(
+                                                      color: expensecolor,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              2),
+                                                    ),
+                                                    child: Center(
+                                                      child: Text(
+                                                        "${data.totalAmount}",
+                                                        style: TextStyle(
+                                                            fontSize:
+                                                                width * 0.02,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color: white),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: height * 0.01,
+                                                  ),
+                                                  Text(
+                                                    data.dateTime
+                                                        .toString()
+                                                        .substring(0, 10),
+                                                    style: TextStyle(
+                                                        fontSize: width * 0.02,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: lightgray),
+                                                  )
+                                                ],
+                                              ),
                                             )
                                           ],
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ),
-                              ],
-                            ),
+                              );
+                            },
                           ),
-                        );
-                      },
+                        )
+                      ],
                     ),
-                  )
-                ],
-              ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

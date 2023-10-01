@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:snabb_business/utils/colors.dart';
 
 import '../../utils/appbarwidget.dart';
 import '../../utils/color.dart';
@@ -13,7 +12,7 @@ class Loan extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: backgroundColor,
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -29,12 +28,12 @@ class Loan extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 width: width,
-                color: AppColors.whitecolor,
+                color: whitecolor,
                 child: Column(
                   children: [
                     Container(
                       margin: const EdgeInsets.symmetric(vertical: 5),
-                      color: AppColors.tilebackground,
+                      color: tilebackground,
                       child: ListTile(
                         leading: const CircleAvatar(
                           radius: 30,
@@ -68,10 +67,10 @@ class Loan extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const LinearProgressIndicator(
+                    LinearProgressIndicator(
                       value: 0.3,
                       minHeight: 7,
-                      color: AppColors.redcolor,
+                      color: redcolor,
                     ),
                     SizedBox(
                       height: height * 0.009,
@@ -87,8 +86,7 @@ class Loan extends StatelessWidget {
                         Text(
                           "9,000 PKR",
                           style: TextStyle(
-                              fontSize: width * 0.03,
-                              color: AppColors.redcolor),
+                              fontSize: width * 0.03, color: redcolor),
                         ),
                         Text(
                           "20,000 PKR",
@@ -106,14 +104,12 @@ class Loan extends StatelessWidget {
                         Text(
                           "Residual amount: ",
                           style: TextStyle(
-                              fontSize: width * 0.04,
-                              color: AppColors.blackcolor),
+                              fontSize: width * 0.04, color: blackcolor),
                         ),
                         Text(
                           " 11,000 PKR",
                           style: TextStyle(
-                              fontSize: width * 0.04,
-                              color: AppColors.redcolor),
+                              fontSize: width * 0.04, color: redcolor),
                         ),
                       ],
                     ),

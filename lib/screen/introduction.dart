@@ -7,7 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/main.dart';
 import 'package:snabb_business/models/currency_model.dart';
 import 'package:snabb_business/screen/auth/loginScreen.dart';
-import 'package:snabb_business/utils/colors.dart';
+import 'package:snabb_business/utils/color.dart';
 import 'package:vector_math/vector_math.dart' as math;
 
 class IntroductionScreensPage extends StatefulWidget {
@@ -54,7 +54,7 @@ class _IntroductionScreensPageState extends State<IntroductionScreensPage> {
           angle: math.radians(a1.value * 360),
           child: AlertDialog(
             elevation: 10,
-            shadowColor: AppColors.blue,
+            shadowColor: blue,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             content: SizedBox(
@@ -67,14 +67,14 @@ class _IntroductionScreensPageState extends State<IntroductionScreensPage> {
                     AppLocalizations.of(context)!.changelanguage,
                     style: TextStyle(
                         fontSize: width * 0.04,
-                        color: AppColors.blue,
+                        color: blue,
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
                     AppLocalizations.of(context)!.changelanguage,
                     style: TextStyle(
                         fontSize: width * 0.03,
-                        color: AppColors.blue,
+                        color: blue,
                         fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -98,7 +98,7 @@ class _IntroductionScreensPageState extends State<IntroductionScreensPage> {
               TextButton(
                 child: Text(
                   AppLocalizations.of(context)!.confirm,
-                  style: TextStyle(color: AppColors.blue),
+                  style: TextStyle(color: blue),
                 ),
                 onPressed: () {
                   MyApp.setLocale(context, Locale(value));
@@ -144,13 +144,12 @@ class _IntroductionScreensPageState extends State<IntroductionScreensPage> {
       builder: (BuildContext context) {
         return AlertDialog(
           elevation: 10,
-          shadowColor: AppColors.blue,
+          shadowColor: blue,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           title: Text(
             AppLocalizations.of(context)!.language,
-            style:
-                TextStyle(fontWeight: FontWeight.bold, color: AppColors.blue),
+            style: TextStyle(fontWeight: FontWeight.bold, color: blue),
           ),
           content: Text(
               "${AppLocalizations.of(context)!.yourselectedlanis} : ${AppLocalizations.of(context)!.languagename}"),
@@ -183,7 +182,7 @@ class _IntroductionScreensPageState extends State<IntroductionScreensPage> {
                               },
                               child: Icon(
                                 Icons.clear,
-                                color: AppColors.blue,
+                                color: blue,
                                 size: 30,
                               ),
                             ),
@@ -219,7 +218,7 @@ class _IntroductionScreensPageState extends State<IntroductionScreensPage> {
                                       return Radio(
                                         value: CountryModell
                                             .currencyList[index].value!,
-                                        activeColor: AppColors.blue,
+                                        activeColor: blue,
                                         groupValue: lang,
                                         onChanged: (value) {
                                           state(() {
@@ -252,7 +251,7 @@ class _IntroductionScreensPageState extends State<IntroductionScreensPage> {
             TextButton(
               child: Text(
                 AppLocalizations.of(context)!.confirm,
-                style: TextStyle(color: AppColors.blue),
+                style: TextStyle(color: blue),
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -292,8 +291,7 @@ class _IntroductionScreensPageState extends State<IntroductionScreensPage> {
             child: RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
-                style: GoogleFonts.montserrat(
-                    fontSize: 17, color: AppColors.blackcolor),
+                style: GoogleFonts.montserrat(fontSize: 17, color: blackcolor),
                 children: [
                   TextSpan(
                     text: AppLocalizations.of(context)!.theappthat,
@@ -323,8 +321,7 @@ class _IntroductionScreensPageState extends State<IntroductionScreensPage> {
             child: RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
-                style: GoogleFonts.montserrat(
-                    fontSize: 17, color: AppColors.blackcolor),
+                style: GoogleFonts.montserrat(fontSize: 17, color: blackcolor),
                 children: [
                   TextSpan(
                     text: AppLocalizations.of(context)!.viewallyour,
@@ -359,8 +356,7 @@ class _IntroductionScreensPageState extends State<IntroductionScreensPage> {
             child: RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
-                style: GoogleFonts.montserrat(
-                    fontSize: 17, color: AppColors.blackcolor),
+                style: GoogleFonts.montserrat(fontSize: 17, color: blackcolor),
                 children: [
                   TextSpan(
                     text: "${AppLocalizations.of(context)!.analyzeyour} ",
@@ -374,7 +370,8 @@ class _IntroductionScreensPageState extends State<IntroductionScreensPage> {
                     text: "${AppLocalizations.of(context)!.withsimple}",
                   ),
                   TextSpan(
-                    text: " ${AppLocalizations.of(context)!.andeverytounderstand}",
+                    text:
+                        " ${AppLocalizations.of(context)!.andeverytounderstand}",
                   ),
                 ],
               ),
@@ -392,11 +389,11 @@ class _IntroductionScreensPageState extends State<IntroductionScreensPage> {
       nextFlex: 0,
       skip: Text(
         AppLocalizations.of(context)!.skip,
-        style: GoogleFonts.montserrat(color: AppColors.blue),
+        style: GoogleFonts.montserrat(color: blue),
       ),
-      next: Icon(Icons.arrow_forward, color: AppColors.blue),
+      next: Icon(Icons.arrow_forward, color: blue),
       done: Text(AppLocalizations.of(context)!.done,
-          style: TextStyle(fontWeight: FontWeight.w600, color: AppColors.blue)),
+          style: TextStyle(fontWeight: FontWeight.w600, color: blue)),
       dotsDecorator: const DotsDecorator(
         size: Size(10.0, 10.0),
         color: Color(0xFFBDBDBD),

@@ -7,7 +7,6 @@ import 'package:snabb_business/models/yearly_transaction_model.dart' as yTra;
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/pinch_zoom_image.dart';
 
 class YearlyTransactions extends StatefulWidget {
@@ -33,7 +32,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
         var width = MediaQuery.of(context).size.width;
         return AlertDialog(
           elevation: 10,
-          shadowColor: AppColors.greencolor,
+          shadowColor: greencolor,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           content: SizedBox(
@@ -53,7 +52,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                             child: Text(
                           "Sale Transaction Details",
                           style: TextStyle(
-                              color: AppColors.greencolor,
+                              color: greencolor,
                               fontSize: width * 0.025,
                               fontWeight: FontWeight.bold),
                         )),
@@ -78,7 +77,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                             "Name: ",
                                             style: TextStyle(
                                                 fontSize: width * 0.025,
-                                                color: AppColors.greencolor,
+                                                color: greencolor,
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           Text(obj.details!.name!,
@@ -99,7 +98,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                           Text(
                                             "Number: ",
                                             style: TextStyle(
-                                                color: AppColors.greencolor,
+                                                color: greencolor,
                                                 fontSize: width * 0.025,
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -136,7 +135,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                             "Email: ",
                                             style: TextStyle(
                                                 fontSize: width * 0.025,
-                                                color: AppColors.greencolor,
+                                                color: greencolor,
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           Text(obj.details!.email!,
@@ -168,7 +167,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                           Text(
                                             "PayBack: ",
                                             style: TextStyle(
-                                                color: AppColors.greencolor,
+                                                color: greencolor,
                                                 fontSize: width * 0.025,
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -202,7 +201,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                       "Amount: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.totalAmount.toString(),
@@ -222,7 +221,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                     Text(
                                       "Date: ",
                                       style: TextStyle(
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -254,7 +253,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                       "Partial: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.details!.partialAmount!.toString(),
@@ -275,7 +274,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                       "Balance: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
@@ -306,7 +305,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                       "Bank: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.bankAmount.toString(),
@@ -327,7 +326,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                       "Cash: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.cashAmount.toString(),
@@ -347,7 +346,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                     Text(
                                       "Other: ",
                                       style: TextStyle(
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -376,7 +375,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                 "Note: ",
                                 style: TextStyle(
                                     fontSize: width * 0.025,
-                                    color: AppColors.greencolor,
+                                    color: greencolor,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -523,9 +522,8 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.04,
                         width: MediaQuery.of(context).size.width * 0.08,
-                        decoration: const BoxDecoration(
-                            color: AppColors.greencolor,
-                            shape: BoxShape.circle),
+                        decoration: BoxDecoration(
+                            color: greencolor, shape: BoxShape.circle),
                         child: const Center(
                           child: Icon(
                             Icons.clear,
@@ -1513,7 +1511,7 @@ class _YearlyTransactionsState extends State<YearlyTransactions> {
                                   return Padding(
                                     padding: const EdgeInsets.only(bottom: 8),
                                     child: Container(
-                                      color: AppColors.backgroundColor,
+                                      color: backgroundColor,
                                       child: ListTile(
                                         onTap: () {
                                           transaction.name == "Purchase"

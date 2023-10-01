@@ -9,7 +9,6 @@ import 'package:snabb_business/screen/budget/budget_transaction.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/spinkit.dart';
 
 class BudgetView1 extends StatefulWidget {
@@ -148,7 +147,7 @@ class _BudgetView1State extends State<BudgetView1> {
                           Container(
                             width: width,
                             height: height * 0.15,
-                            color: AppColors.topcard.withOpacity(0.9),
+                            color: topcard.withOpacity(0.9),
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20.0),
@@ -509,7 +508,7 @@ class _BudgetView1State extends State<BudgetView1> {
                 height: height * 0.16,
                 width: width,
                 decoration: BoxDecoration(
-                  color: AppColors.backgroundColor,
+                  color: backgroundColor,
                   // borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(

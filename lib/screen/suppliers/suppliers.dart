@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
-import 'package:snabb_business/utils/colors.dart';
 
 import '../../utils/color.dart';
 
@@ -140,7 +139,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                         BorderRadius.circular(
                                                             10),
                                                     borderSide: BorderSide(
-                                                        color: AppColors.blue
+                                                        color: blue
                                                         //  provider.brightness ==
                                                         //         AppBrightness.dark
                                                         //     ? AppTheme.colorWhite
@@ -153,7 +152,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                         BorderRadius.circular(
                                                             10),
                                                     borderSide: BorderSide(
-                                                        color: AppColors.blue
+                                                        color: blue
                                                         // provider.brightness ==
                                                         //         AppBrightness.dark
                                                         //     ? AppTheme.colorWhite
@@ -193,7 +192,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                         BorderRadius.circular(
                                                             10),
                                                     borderSide: BorderSide(
-                                                        color: AppColors.blue
+                                                        color: blue
                                                         //  provider.brightness ==
                                                         //         AppBrightness.dark
                                                         //     ? AppTheme.colorWhite
@@ -206,7 +205,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                         BorderRadius.circular(
                                                             10),
                                                     borderSide: BorderSide(
-                                                        color: AppColors.blue
+                                                        color: blue
                                                         // provider.brightness ==
                                                         //         AppBrightness.dark
                                                         //     ? AppTheme.colorWhite
@@ -246,7 +245,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                         BorderRadius.circular(
                                                             10),
                                                     borderSide: BorderSide(
-                                                        color: AppColors.blue
+                                                        color: blue
                                                         //  provider.brightness ==
                                                         //         AppBrightness.dark
                                                         //     ? AppTheme.colorWhite
@@ -259,7 +258,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                         BorderRadius.circular(
                                                             10),
                                                     borderSide: BorderSide(
-                                                        color: AppColors.blue
+                                                        color: blue
                                                         // provider.brightness ==
                                                         //         AppBrightness.dark
                                                         //     ? AppTheme.colorWhite
@@ -355,8 +354,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                               BorderRadius
                                                                   .circular(10),
                                                           borderSide: BorderSide(
-                                                              color:
-                                                                  AppColors.blue
+                                                              color: blue
                                                               //  provider.brightness ==
                                                               //         AppBrightness.dark
                                                               //     ? AppTheme.colorWhite
@@ -369,8 +367,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                               BorderRadius
                                                                   .circular(10),
                                                           borderSide: BorderSide(
-                                                              color:
-                                                                  AppColors.blue
+                                                              color: blue
                                                               // provider.brightness ==
                                                               //         AppBrightness.dark
                                                               //     ? AppTheme.colorWhite
@@ -418,8 +415,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                               BorderRadius
                                                                   .circular(10),
                                                           borderSide: BorderSide(
-                                                              color:
-                                                                  AppColors.blue
+                                                              color: blue
                                                               //  provider.brightness ==
                                                               //         AppBrightness.dark
                                                               //     ? AppTheme.colorWhite
@@ -432,8 +428,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                               BorderRadius
                                                                   .circular(10),
                                                           borderSide: BorderSide(
-                                                              color:
-                                                                  AppColors.blue
+                                                              color: blue
                                                               // provider.brightness ==
                                                               //         AppBrightness.dark
                                                               //     ? AppTheme.colorWhite
@@ -500,7 +495,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                   height: height * 0.06,
                                                   width: width * 0.45,
                                                   decoration: BoxDecoration(
-                                                      color: AppColors.blue,
+                                                      color: blue,
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               7)),
@@ -547,7 +542,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                 ),
                 Container(
                   height: height * 0.12,
-                  color: AppColors.blue.withOpacity(0.9),
+                  color: blue.withOpacity(0.9),
                   child: Padding(
                     padding: EdgeInsets.only(top: 8.0, left: width * 0.1),
                     child: Row(
@@ -905,7 +900,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                                                         alignLabelWithHint: true,
                                                                                         enabledBorder: OutlineInputBorder(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          borderSide: BorderSide(color: AppColors.blue
+                                                                                          borderSide: BorderSide(color: blue
                                                                                               //  provider.brightness ==
                                                                                               //         AppBrightness.dark
                                                                                               //     ? AppTheme.colorWhite
@@ -914,7 +909,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                                                         ),
                                                                                         focusedBorder: OutlineInputBorder(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          borderSide: BorderSide(color: AppColors.blue
+                                                                                          borderSide: BorderSide(color: blue
                                                                                               // provider.brightness ==
                                                                                               //         AppBrightness.dark
                                                                                               //     ? AppTheme.colorWhite
@@ -942,7 +937,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                                                         alignLabelWithHint: true,
                                                                                         enabledBorder: OutlineInputBorder(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          borderSide: BorderSide(color: AppColors.blue
+                                                                                          borderSide: BorderSide(color: blue
                                                                                               //  provider.brightness ==
                                                                                               //         AppBrightness.dark
                                                                                               //     ? AppTheme.colorWhite
@@ -951,7 +946,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                                                         ),
                                                                                         focusedBorder: OutlineInputBorder(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          borderSide: BorderSide(color: AppColors.blue
+                                                                                          borderSide: BorderSide(color: blue
                                                                                               // provider.brightness ==
                                                                                               //         AppBrightness.dark
                                                                                               //     ? AppTheme.colorWhite
@@ -979,7 +974,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                                                         alignLabelWithHint: true,
                                                                                         enabledBorder: OutlineInputBorder(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          borderSide: BorderSide(color: AppColors.blue
+                                                                                          borderSide: BorderSide(color: blue
                                                                                               //  provider.brightness ==
                                                                                               //         AppBrightness.dark
                                                                                               //     ? AppTheme.colorWhite
@@ -988,7 +983,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                                                         ),
                                                                                         focusedBorder: OutlineInputBorder(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          borderSide: BorderSide(color: AppColors.blue
+                                                                                          borderSide: BorderSide(color: blue
                                                                                               // provider.brightness ==
                                                                                               //         AppBrightness.dark
                                                                                               //     ? AppTheme.colorWhite
@@ -1016,7 +1011,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                                                         alignLabelWithHint: true,
                                                                                         enabledBorder: OutlineInputBorder(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          borderSide: BorderSide(color: AppColors.blue
+                                                                                          borderSide: BorderSide(color: blue
                                                                                               //  provider.brightness ==
                                                                                               //         AppBrightness.dark
                                                                                               //     ? AppTheme.colorWhite
@@ -1025,7 +1020,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                                                         ),
                                                                                         focusedBorder: OutlineInputBorder(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          borderSide: BorderSide(color: AppColors.blue
+                                                                                          borderSide: BorderSide(color: blue
                                                                                               // provider.brightness ==
                                                                                               //         AppBrightness.dark
                                                                                               //     ? AppTheme.colorWhite
@@ -1053,7 +1048,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                                                         alignLabelWithHint: true,
                                                                                         enabledBorder: OutlineInputBorder(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          borderSide: BorderSide(color: AppColors.blue
+                                                                                          borderSide: BorderSide(color: blue
                                                                                               //  provider.brightness ==
                                                                                               //         AppBrightness.dark
                                                                                               //     ? AppTheme.colorWhite
@@ -1062,7 +1057,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                                                         ),
                                                                                         focusedBorder: OutlineInputBorder(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          borderSide: BorderSide(color: AppColors.blue
+                                                                                          borderSide: BorderSide(color: blue
                                                                                               // provider.brightness ==
                                                                                               //         AppBrightness.dark
                                                                                               //     ? AppTheme.colorWhite
@@ -1100,7 +1095,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                                                       child: Container(
                                                                                         height: height * 0.06,
                                                                                         width: width * 0.45,
-                                                                                        decoration: BoxDecoration(color: AppColors.blue, borderRadius: BorderRadius.circular(7)),
+                                                                                        decoration: BoxDecoration(color: blue, borderRadius: BorderRadius.circular(7)),
                                                                                         child: Center(
                                                                                           child: Text(
                                                                                             "Update Supplier",

@@ -6,7 +6,6 @@ import 'package:snabb_business/models/daily_transaction_model.dart' as dTra;
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/pinch_zoom_image.dart';
 
 class DailyTransactions extends StatefulWidget {
@@ -32,7 +31,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
         var width = MediaQuery.of(context).size.width;
         return AlertDialog(
           elevation: 10,
-          shadowColor: AppColors.greencolor,
+          shadowColor: greencolor,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           content: SizedBox(
@@ -52,7 +51,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                             child: Text(
                           "Sale Transaction Details",
                           style: TextStyle(
-                              color: AppColors.greencolor,
+                              color: greencolor,
                               fontSize: width * 0.025,
                               fontWeight: FontWeight.bold),
                         )),
@@ -77,7 +76,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                             "Name: ",
                                             style: TextStyle(
                                                 fontSize: width * 0.025,
-                                                color: AppColors.greencolor,
+                                                color: greencolor,
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           Text(obj.details!.name!,
@@ -98,7 +97,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                           Text(
                                             "Number: ",
                                             style: TextStyle(
-                                                color: AppColors.greencolor,
+                                                color: greencolor,
                                                 fontSize: width * 0.025,
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -135,7 +134,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                             "Email: ",
                                             style: TextStyle(
                                                 fontSize: width * 0.025,
-                                                color: AppColors.greencolor,
+                                                color: greencolor,
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           Text(obj.details!.email!,
@@ -167,7 +166,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                           Text(
                                             "PayBack: ",
                                             style: TextStyle(
-                                                color: AppColors.greencolor,
+                                                color: greencolor,
                                                 fontSize: width * 0.025,
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -201,7 +200,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                       "Amount: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.totalAmount.toString(),
@@ -221,7 +220,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                     Text(
                                       "Date: ",
                                       style: TextStyle(
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -253,7 +252,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                       "Partial: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.details!.partialAmount!.toString(),
@@ -274,7 +273,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                       "Balance: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
@@ -305,7 +304,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                       "Bank: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.bankAmount.toString(),
@@ -326,7 +325,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                       "Cash: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.cashAmount.toString(),
@@ -346,7 +345,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                     Text(
                                       "Other: ",
                                       style: TextStyle(
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -375,7 +374,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                 "Note: ",
                                 style: TextStyle(
                                     fontSize: width * 0.025,
-                                    color: AppColors.greencolor,
+                                    color: greencolor,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -522,9 +521,8 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.04,
                         width: MediaQuery.of(context).size.width * 0.08,
-                        decoration: const BoxDecoration(
-                            color: AppColors.greencolor,
-                            shape: BoxShape.circle),
+                        decoration: BoxDecoration(
+                            color: greencolor, shape: BoxShape.circle),
                         child: const Center(
                           child: Icon(
                             Icons.clear,
@@ -1528,7 +1526,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                         },
                                         key: UniqueKey(),
                                         child: Container(
-                                          color: AppColors.backgroundColor,
+                                          color: backgroundColor,
                                           child: ListTile(
                                             onTap: () {
                                               transaction.name == "Purchase"

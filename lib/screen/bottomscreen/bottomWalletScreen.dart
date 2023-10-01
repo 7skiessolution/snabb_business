@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 
 class BottomWallet extends StatefulWidget {
   const BottomWallet({super.key});
@@ -31,7 +30,7 @@ class _BottomWalletState extends State<BottomWallet> {
             Container(
               width: width,
               height: height * 0.15,
-              color: AppColors.topcard,
+              color: topcard,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
@@ -103,7 +102,7 @@ class _BottomWalletState extends State<BottomWallet> {
                           SizedBox(
                             width: width * 0.22,
                           ),
-                          Container(
+                          SizedBox(
                             height: 50,
                             width: width * 0.25,
                             child: Row(

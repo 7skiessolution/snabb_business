@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/models/search_summary.dart' as summary;
 import 'package:snabb_business/static_data.dart';
-import 'package:snabb_business/utils/colors.dart';
+import 'package:snabb_business/utils/color.dart';
 
 class CategoryController extends GetxController {
   static CategoryController get to => Get.find();
@@ -45,8 +45,8 @@ class CategoryController extends GetxController {
       builder: (context, child) {
         return Theme(
             data: ThemeData.light().copyWith(
-              primaryColor: AppColors.blue,
-              colorScheme: ColorScheme.light(primary: AppColors.blue),
+              primaryColor: blue,
+              colorScheme: ColorScheme.light(primary: blue),
               buttonTheme:
                   const ButtonThemeData(textTheme: ButtonTextTheme.primary),
             ),

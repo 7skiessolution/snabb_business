@@ -77,10 +77,10 @@ class DrawerScreen extends StatelessWidget {
                     Text(
                       // "Name",
                       obj.userName.toUpperCase(),
-                       style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
+                      style: GoogleFonts.poppins(
+                          color: white,
+                          fontSize: width * 0.035,
+                          fontWeight: FontWeight.w600),
                     )
                   ],
                 ),
@@ -108,10 +108,10 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "OverView",
-                     style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                    style: GoogleFonts.poppins(
+                        color: white,
+                        fontSize: width * 0.031,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -128,10 +128,10 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "Companies",
-                   style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                    style: GoogleFonts.poppins(
+                        color: white,
+                        fontSize: width * 0.031,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -151,9 +151,9 @@ class DrawerScreen extends StatelessWidget {
                   title: Text(
                     "Supplier",
                     style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                        color: white,
+                        fontSize: width * 0.031,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -170,10 +170,10 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "Summary",
-                   style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                    style: GoogleFonts.poppins(
+                        color: white,
+                        fontSize: width * 0.031,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -192,14 +192,14 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   title: Text(
                     "Transaction",
-style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                    style: GoogleFonts.poppins(
+                        color: white,
+                        fontSize: width * 0.031,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
-            
+
               InkWell(
                 onTap: () {
                   obj.drawermenueclose();
@@ -213,10 +213,10 @@ style: GoogleFonts.poppins(
                   ),
                   title: Text(
                     "Db/Cr",
-                   style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                    style: GoogleFonts.poppins(
+                        color: white,
+                        fontSize: width * 0.031,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -233,10 +233,10 @@ style: GoogleFonts.poppins(
                   ),
                   title: Text(
                     "Invoice",
-                   style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                    style: GoogleFonts.poppins(
+                        color: white,
+                        fontSize: width * 0.031,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -337,10 +337,10 @@ style: GoogleFonts.poppins(
                   ),
                   title: Text(
                     "Reports",
-                   style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                    style: GoogleFonts.poppins(
+                        color: white,
+                        fontSize: width * 0.031,
+                        fontWeight: FontWeight.w400),
                   ),
                   trailing: Icon(
                     obj.reports == true
@@ -379,10 +379,10 @@ style: GoogleFonts.poppins(
                               ),
                               title: Text(
                                 "Daily Sale Report",
-                               style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                                style: GoogleFonts.poppins(
+                                    color: white,
+                                    fontSize: width * 0.031,
+                                    fontWeight: FontWeight.w400),
                               ),
                             ),
                           ),
@@ -408,10 +408,10 @@ style: GoogleFonts.poppins(
                               ),
                               title: Text(
                                 "Company Sale Report",
-                               style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                                style: GoogleFonts.poppins(
+                                    color: white,
+                                    fontSize: width * 0.031,
+                                    fontWeight: FontWeight.w400),
                               ),
                             ),
                           ),
@@ -437,10 +437,10 @@ style: GoogleFonts.poppins(
                               ),
                               title: Text(
                                 "Purchase Report",
-                               style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                                style: GoogleFonts.poppins(
+                                    color: white,
+                                    fontSize: width * 0.031,
+                                    fontWeight: FontWeight.w400),
                               ),
                             ),
                           ),
@@ -459,10 +459,10 @@ style: GoogleFonts.poppins(
                               ),
                               title: Text(
                                 "Supplier Report",
-                              style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                                style: GoogleFonts.poppins(
+                                    color: white,
+                                    fontSize: width * 0.031,
+                                    fontWeight: FontWeight.w400),
                               ),
                             ),
                           ),
@@ -488,10 +488,10 @@ style: GoogleFonts.poppins(
                               ),
                               title: Text(
                                 "Expense Report",
-                               style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                                style: GoogleFonts.poppins(
+                                    color: white,
+                                    fontSize: width * 0.031,
+                                    fontWeight: FontWeight.w400),
                               ),
                             ),
                           ),
@@ -534,9 +534,9 @@ style: GoogleFonts.poppins(
                   title: Text(
                     "Calendar",
                     style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                        color: white,
+                        fontSize: width * 0.031,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -573,9 +573,9 @@ style: GoogleFonts.poppins(
                   title: Text(
                     "User",
                     style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                        color: white,
+                        fontSize: width * 0.031,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -607,10 +607,10 @@ style: GoogleFonts.poppins(
                   ),
                   title: Text(
                     "Preferences",
-                   style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                    style: GoogleFonts.poppins(
+                        color: white,
+                        fontSize: width * 0.031,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -627,10 +627,10 @@ style: GoogleFonts.poppins(
                   ),
                   title: Text(
                     "Settings",
-                   style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                    style: GoogleFonts.poppins(
+                        color: white,
+                        fontSize: width * 0.031,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -656,10 +656,10 @@ style: GoogleFonts.poppins(
                     ),
                     title: Text(
                       "LogOut",
-                     style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                      style: GoogleFonts.poppins(
+                          color: white,
+                          fontSize: width * 0.031,
+                          fontWeight: FontWeight.w400),
                     )),
               ),
             ],
@@ -709,9 +709,9 @@ void showingSuplierdialogue(context, height, width, white) {
                   child: Text(
                     "Select Supplier",
                     style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.031,
-                                              fontWeight: FontWeight.w400),
+                        color: white,
+                        fontSize: width * 0.031,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),

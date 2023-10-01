@@ -68,7 +68,7 @@ class _SaleScreenState extends State<SaleScreen> {
                           elevation: 10,
                           child: SizedBox(
                               height: height * 0.06,
-                              width: width * 0.8,
+                              width: width * 0.9,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
@@ -85,15 +85,18 @@ class _SaleScreenState extends State<SaleScreen> {
                                         },
                                         child:
                                             const Icon(Icons.arrow_back_ios)),
+                                    SizedBox(
+                                      width: width * 0.05,
+                                    ),
                                     Expanded(
                                       child: Container(
                                         height: height,
                                         width: width,
-                                        alignment: Alignment.center,
-                                        child:  Text(
-                                          "Sale",
-                                           style: GoogleFonts.poppins(
-                                              color:Colors.blue[900],
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "New Sale",
+                                          style: GoogleFonts.poppins(
+                                              color: Colors.blue[900],
                                               fontSize: width * 0.035,
                                               fontWeight: FontWeight.w600),
                                         ),
@@ -130,9 +133,9 @@ class _SaleScreenState extends State<SaleScreen> {
                                 child: Text(
                                   "New Entry",
                                   style: GoogleFonts.poppins(
-                                              color:Colors.white,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
+                                      color: Colors.white,
+                                      fontSize: width * 0.035,
+                                      fontWeight: FontWeight.w600),
                                 ),
                               ),
                             ),
@@ -154,39 +157,41 @@ class _SaleScreenState extends State<SaleScreen> {
                               child: Column(
                                 children: [
                                   SizedBox(
-                                    height: height * 0.01,
+                                    height: height * 0.02,
                                   ),
                                   Row(
                                     children: [
                                       SizedBox(
-                                          height: height * 0.07,
-                                          width: width * 0.15,
-                                          child: const CircleAvatar(
-                                            child: CircleAvatar(
-                                              radius: 21,
-                                              backgroundImage: AssetImage(
-                                                  // widget
-                                                  //           .type ==
-                                                  //       1
-                                                  //   ?
-                                                  "images/sale.png"
-                                                  // : widget.type == 0
-                                                  //     ? "images/sale.png"
-                                                  //     : "images/expensive.png"
-                                                  ),
+                                        width: width * 0.03,
+                                      ),
+                                      const CircleAvatar(
+                                        radius: 20,
+                                        backgroundImage: AssetImage(
+                                            // widget
+                                            //           .type ==
+                                            //       1
+                                            //   ?
+                                            "images/sale.png"
+                                            // : widget.type == 0
+                                            //     ? "images/sale.png"
+                                            //     : "images/expensive.png"
                                             ),
-                                          )),
-                                       Padding(
-                                        padding: EdgeInsets.only(left: 8.0),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 8.0),
                                         child: Text(
                                           "Sale",
                                           style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
+                                              // color:Colors.blue[900],
                                               fontSize: width * 0.035,
                                               fontWeight: FontWeight.w700),
                                         ),
                                       ),
                                     ],
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.02,
                                   ),
                                   InkWell(
                                     onTap: () => obj.selectDate(context),
@@ -207,10 +212,10 @@ class _SaleScreenState extends State<SaleScreen> {
                                             ),
                                             Text(
                                               obj.formatTime,
-                                               style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.w500),
                                             ),
                                             SizedBox(
                                               width: width * 0.55,
@@ -238,12 +243,12 @@ class _SaleScreenState extends State<SaleScreen> {
                                             SizedBox(
                                               width: width * 0.05,
                                             ),
-                                             Text(
+                                            Text(
                                               'Paid As',
- style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
                                               width: width * 0.5,
@@ -276,12 +281,12 @@ class _SaleScreenState extends State<SaleScreen> {
                                             SizedBox(
                                               width: width * 0.05,
                                             ),
-                                             Text(
+                                            Text(
                                               'Sale Method',
-                                               style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
                                               width: width * 0.42,
@@ -319,10 +324,14 @@ class _SaleScreenState extends State<SaleScreen> {
                                                   controller: obj.balanceAmount,
                                                   decoration: InputDecoration(
                                                     labelText: 'Balance',
-                                                    labelStyle: GoogleFonts.poppins(
-                                              color:lightgray,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),  
+                                                    labelStyle:
+                                                        GoogleFonts.poppins(
+                                                            color: lightgray,
+                                                            fontSize:
+                                                                width * 0.032,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
                                                   ),
                                                   validator: (value) {
                                                     if (value!.isEmpty) {
@@ -370,10 +379,14 @@ class _SaleScreenState extends State<SaleScreen> {
                                                   controller: obj.invoiceAmount,
                                                   decoration: InputDecoration(
                                                     labelText: 'Value',
-                                                    labelStyle: GoogleFonts.poppins(
-                                              color:lightgray,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),  
+                                                    labelStyle:
+                                                        GoogleFonts.poppins(
+                                                            color: lightgray,
+                                                            fontSize:
+                                                                width * 0.032,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
                                                   ),
                                                   validator: (value) {
                                                     if (value!.isEmpty) {
@@ -417,10 +430,13 @@ class _SaleScreenState extends State<SaleScreen> {
                                                 controller: obj.particular,
                                                 decoration: InputDecoration(
                                                   labelText: 'Particular',
-                                                   labelStyle: GoogleFonts.poppins(
-                                              color:lightgray,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),  
+                                                  labelStyle:
+                                                      GoogleFonts.poppins(
+                                                          color: lightgray,
+                                                          fontSize:
+                                                              width * 0.032,
+                                                          fontWeight:
+                                                              FontWeight.w500),
                                                 ),
                                               ),
                                             ),
@@ -463,10 +479,11 @@ class _SaleScreenState extends State<SaleScreen> {
                                               child: Center(
                                                   child: Text(
                                                 "Add File",
-                                                 style: GoogleFonts.poppins(
-                                              color:Colors.white,
-                                              fontSize: width * 0.033,
-                                              fontWeight: FontWeight.w600),  
+                                                style: GoogleFonts.poppins(
+                                                    color: Colors.white,
+                                                    fontSize: width * 0.033,
+                                                    fontWeight:
+                                                        FontWeight.w600),
                                               )),
                                             ),
                                           ),
@@ -493,9 +510,9 @@ class _SaleScreenState extends State<SaleScreen> {
                                               child: Text(
                                             "Cancle",
                                             style: GoogleFonts.poppins(
-                                              color:Colors.white,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w600), 
+                                                color: Colors.white,
+                                                fontSize: width * 0.032,
+                                                fontWeight: FontWeight.w600),
                                           )),
                                         ),
                                       ),
@@ -518,9 +535,9 @@ class _SaleScreenState extends State<SaleScreen> {
                                                 child: Text(
                                               "Save",
                                               style: GoogleFonts.poppins(
-                                              color:Colors.white,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500), 
+                                                  color: Colors.white,
+                                                  fontSize: width * 0.032,
+                                                  fontWeight: FontWeight.w500),
                                             )),
                                           ),
                                         ),

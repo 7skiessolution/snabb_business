@@ -389,88 +389,90 @@ class _HomeScreenState extends State<HomeScreen> {
                                         fontWeight: FontWeight.w800,
                                         color: greencolor),
                                   ),
-                                  SizedBox(
-                                      height: height * 0.16,
-                                      width: width,
-                                      // child: SfCartesianChart(
-                                      //   primaryXAxis: DateTimeAxis(
-                                      //     title: AxisTitle(text: 'Year'),
-                                      //   ),
-                                      //   primaryYAxis: NumericAxis(
-                                      //     title: AxisTitle(text: 'Total Sales'),
-                                      //   ),
-                                      //   series: <ChartSeries<SalesData, DateTime>>[
-                                      //     LineSeries<SalesData, DateTime>(
-                                      //       dataSource: obj.chartData,
-                                      //       xValueMapper: (SalesData sales, _) =>
-                                      //           sales.year,
-                                      //       yValueMapper: (SalesData sales, _) =>
-                                      //           sales.sales,
-                                      //       name: 'Total Sales',
-                                      //     ),
-                                      //   ],
-                                      // ),
-                                      child: SfCartesianChart(
-                                        primaryYAxis: NumericAxis(
-                                          minimum: 0,
-                                          numberFormat: NumberFormat.compact(),
-                                          // interval: 100,
-                                          // desiredIntervals:
-                                          //     100,
-                                        ),
-                                        backgroundColor: Colors.white,
-                                        selectionGesture:
-                                            ActivationMode.doubleTap,
-                                        enableMultiSelection: true,
-                                        enableAxisAnimation: true,
-                                        primaryXAxis: DateTimeAxis(),
-                                        series: <ChartSeries>[
-                                          LineSeries<SalesData, DateTime>(
-                                            legendIconType:
-                                                LegendIconType.rectangle,
-                                            animationDuration: 5,
-                                            animationDelay: 3,
-                                            name: "Sale",
-                                            color: greencolor,
-                                            markerSettings: MarkerSettings(
-                                              isVisible: true,
-                                              width: 5,
-                                              height: 5,
-                                              borderWidth: 0.5,
-                                              color: greencolor,
-                                            ),
-                                            enableTooltip: true,
-                                            isVisible: true,
-                                            dataSource: obj.chartData,
-                                            xValueMapper:
-                                                (SalesData sales, _) =>
-                                                    sales.year,
-                                            yValueMapper:
-                                                (SalesData sales, _) =>
-                                                    sales.sales,
+                                  Expanded(
+                                    child: SizedBox(
+                                        width: width,
+                                        // child: SfCartesianChart(
+                                        //   primaryXAxis: DateTimeAxis(
+                                        //     title: AxisTitle(text: 'Year'),
+                                        //   ),
+                                        //   primaryYAxis: NumericAxis(
+                                        //     title: AxisTitle(text: 'Total Sales'),
+                                        //   ),
+                                        //   series: <ChartSeries<SalesData, DateTime>>[
+                                        //     LineSeries<SalesData, DateTime>(
+                                        //       dataSource: obj.chartData,
+                                        //       xValueMapper: (SalesData sales, _) =>
+                                        //           sales.year,
+                                        //       yValueMapper: (SalesData sales, _) =>
+                                        //           sales.sales,
+                                        //       name: 'Total Sales',
+                                        //     ),
+                                        //   ],
+                                        // ),
+                                        child: SfCartesianChart(
+                                          primaryYAxis: NumericAxis(
+                                            minimum: 0,
+                                            numberFormat:
+                                                NumberFormat.compact(),
+                                            // interval: 100,
+                                            // desiredIntervals:
+                                            //     100,
                                           ),
-                                          // LineSeries<SalesData, DateTime>(
-                                          //   legendIconType: LegendIconType.rectangle,
-                                          //   animationDuration: 5,
-                                          //   animationDelay: 3,
-                                          //   color: lightgreen,
-                                          //   markerSettings: MarkerSettings(
-                                          //     isVisible: true,
-                                          //     width: 5,
-                                          //     height: 5,
-                                          //     borderWidth: 0.5,
-                                          //     color: lightgreen,
-                                          //   ),
-                                          //   enableTooltip: true,
-                                          //   isVisible: true,
-                                          //   dataSource: obj.chart,
-                                          //   xValueMapper: (SalesData sales, _) =>
-                                          //       sales.year,
-                                          //   yValueMapper: (SalesData sales, _) =>
-                                          //       sales.sales,
-                                          // )
-                                        ],
-                                      ))
+                                          backgroundColor: Colors.white,
+                                          selectionGesture:
+                                              ActivationMode.doubleTap,
+                                          enableMultiSelection: true,
+                                          enableAxisAnimation: true,
+                                          primaryXAxis: DateTimeAxis(),
+                                          series: <ChartSeries>[
+                                            LineSeries<SalesData, DateTime>(
+                                              legendIconType:
+                                                  LegendIconType.rectangle,
+                                              animationDuration: 5,
+                                              animationDelay: 3,
+                                              name: "Sale",
+                                              color: greencolor,
+                                              markerSettings: MarkerSettings(
+                                                isVisible: true,
+                                                width: 5,
+                                                height: 5,
+                                                borderWidth: 0.5,
+                                                color: greencolor,
+                                              ),
+                                              enableTooltip: true,
+                                              isVisible: true,
+                                              dataSource: obj.chartData,
+                                              xValueMapper:
+                                                  (SalesData sales, _) =>
+                                                      sales.year,
+                                              yValueMapper:
+                                                  (SalesData sales, _) =>
+                                                      sales.sales,
+                                            ),
+                                            // LineSeries<SalesData, DateTime>(
+                                            //   legendIconType: LegendIconType.rectangle,
+                                            //   animationDuration: 5,
+                                            //   animationDelay: 3,
+                                            //   color: lightgreen,
+                                            //   markerSettings: MarkerSettings(
+                                            //     isVisible: true,
+                                            //     width: 5,
+                                            //     height: 5,
+                                            //     borderWidth: 0.5,
+                                            //     color: lightgreen,
+                                            //   ),
+                                            //   enableTooltip: true,
+                                            //   isVisible: true,
+                                            //   dataSource: obj.chart,
+                                            //   xValueMapper: (SalesData sales, _) =>
+                                            //       sales.year,
+                                            //   yValueMapper: (SalesData sales, _) =>
+                                            //       sales.sales,
+                                            // )
+                                          ],
+                                        )),
+                                  )
                                 ],
                               ),
                             ),
@@ -507,33 +509,36 @@ class _HomeScreenState extends State<HomeScreen> {
                                         fontWeight: FontWeight.w800,
                                         color: darkblue),
                                   ),
-                                  SizedBox(
-                                      height: height * 0.16,
-                                      width: width,
-                                      child: SfCartesianChart(
-                                          primaryXAxis: CategoryAxis(),
-                                          primaryYAxis: NumericAxis(
-                                            minimum: 0,
-                                            numberFormat:
-                                                NumberFormat.compact(),
-                                            // interval: 1000,
-                                            // desiredIntervals:
-                                            //     7, // Set this to the number of desired ticks (7 in this case)
-                                          ),
-                                          tooltipBehavior: obj.tooltip,
-                                          series: <ChartSeries<Chartdata,
-                                              String>>[
-                                            ColumnSeries<Chartdata, String>(
-                                              dataSource: obj.purchasedata,
-                                              xValueMapper:
-                                                  (Chartdata data, _) => data.x,
-                                              yValueMapper:
-                                                  (Chartdata data, _) => data.y,
-                                              name: 'Purchase',
-                                              color: const Color.fromRGBO(
-                                                  8, 142, 255, 1),
+                                  Expanded(
+                                    child: SizedBox(
+                                        width: width,
+                                        child: SfCartesianChart(
+                                            primaryXAxis: CategoryAxis(),
+                                            primaryYAxis: NumericAxis(
+                                              minimum: 0,
+                                              numberFormat:
+                                                  NumberFormat.compact(),
+                                              // interval: 1000,
+                                              // desiredIntervals:
+                                              //     7, // Set this to the number of desired ticks (7 in this case)
                                             ),
-                                          ])),
+                                            tooltipBehavior: obj.tooltip,
+                                            series: <ChartSeries<Chartdata,
+                                                String>>[
+                                              ColumnSeries<Chartdata, String>(
+                                                dataSource: obj.purchasedata,
+                                                xValueMapper:
+                                                    (Chartdata data, _) =>
+                                                        data.x,
+                                                yValueMapper:
+                                                    (Chartdata data, _) =>
+                                                        data.y,
+                                                name: 'Purchase',
+                                                color: const Color.fromRGBO(
+                                                    8, 142, 255, 1),
+                                              ),
+                                            ])),
+                                  ),
                                 ],
                               ),
                             ),
@@ -569,33 +574,37 @@ class _HomeScreenState extends State<HomeScreen> {
                                         fontWeight: FontWeight.w800,
                                         color: expensecolor),
                                   ),
+                                  Expanded(
+                                    child: SizedBox(
+                                        width: width,
+                                        child: SfCartesianChart(
+                                            primaryXAxis: CategoryAxis(),
+                                            primaryYAxis: NumericAxis(
+                                              minimum: 0,
+                                              numberFormat:
+                                                  NumberFormat.compact(),
+                                              // interval: 1000,
+                                              // desiredIntervals:
+                                              //     7, // Set this to the number of desired ticks (7 in this case)
+                                            ),
+                                            tooltipBehavior: obj.tooltip,
+                                            series: <ChartSeries<Chartdata,
+                                                String>>[
+                                              BarSeries<Chartdata, String>(
+                                                  dataSource: obj.expensedata,
+                                                  xValueMapper:
+                                                      (Chartdata data, _) =>
+                                                          data.x,
+                                                  yValueMapper:
+                                                      (Chartdata data, _) =>
+                                                          data.y,
+                                                  name: 'Expesense',
+                                                  color: expensecolor)
+                                            ])),
+                                  ),
                                   SizedBox(
-                                      height: height * 0.2,
-                                      width: width,
-                                      child: SfCartesianChart(
-                                          primaryXAxis: CategoryAxis(),
-                                          primaryYAxis: NumericAxis(
-                                            minimum: 0,
-                                            numberFormat:
-                                                NumberFormat.compact(),
-                                            // interval: 1000,
-                                            // desiredIntervals:
-                                            //     7, // Set this to the number of desired ticks (7 in this case)
-                                          ),
-                                          tooltipBehavior: obj.tooltip,
-                                          series: <ChartSeries<Chartdata,
-                                              String>>[
-                                            BarSeries<Chartdata, String>(
-                                                dataSource: obj.expensedata,
-                                                xValueMapper:
-                                                    (Chartdata data, _) =>
-                                                        data.x,
-                                                yValueMapper:
-                                                    (Chartdata data, _) =>
-                                                        data.y,
-                                                name: 'Expesense',
-                                                color: expensecolor)
-                                          ]))
+                                    height: height * 0.01,
+                                  )
                                 ],
                               ),
                             ),

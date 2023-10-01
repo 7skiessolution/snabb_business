@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/static_data.dart';
@@ -613,69 +614,82 @@ class _SalesChartState extends State<SalesChart> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                SizedBox(
-                                    height: height * 0.19,
-                                    width: width,
-                                    child: SfCartesianChart(
-                                      primaryYAxis: NumericAxis(
-                                        minimum: 0,
-                                        numberFormat: NumberFormat.compact(),
-                                        // interval: 100,
-                                        // desiredIntervals:
-                                        //     100,
-                                      ),
-                                      backgroundColor: Colors.white,
-                                      selectionGesture:
-                                          ActivationMode.doubleTap,
-                                      enableMultiSelection: true,
-                                      enableAxisAnimation: true,
-                                      primaryXAxis: DateTimeAxis(),
-                                      series: <ChartSeries>[
-                                        LineSeries<SalesData, DateTime>(
-                                          legendIconType:
-                                              LegendIconType.rectangle,
-                                          animationDuration: 5,
-                                          animationDelay: 3,
-                                          name: "Sale",
-                                          color: greencolor,
-                                          markerSettings: MarkerSettings(
-                                            isVisible: true,
-                                            width: 5,
-                                            height: 5,
-                                            borderWidth: 0.5,
-                                            color: greencolor,
+                                Card(
+                                  elevation: 2,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: SizedBox(
+                                      height: height * 0.19,
+                                      width: width,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: SfCartesianChart(
+                                          primaryYAxis: NumericAxis(
+                                            minimum: 0,
+                                            numberFormat:
+                                                NumberFormat.compact(),
+                                            // interval: 100,
+                                            // desiredIntervals:
+                                            //     100,
                                           ),
-                                          enableTooltip: true,
-                                          isVisible: true,
-                                          dataSource: obj.chartData,
-                                          xValueMapper: (SalesData sales, _) =>
-                                              sales.year,
-                                          yValueMapper: (SalesData sales, _) =>
-                                              sales.sales,
+                                          backgroundColor: Colors.white,
+                                          selectionGesture:
+                                              ActivationMode.doubleTap,
+                                          enableMultiSelection: true,
+                                          enableAxisAnimation: true,
+                                          primaryXAxis: DateTimeAxis(),
+                                          series: <ChartSeries>[
+                                            LineSeries<SalesData, DateTime>(
+                                              legendIconType:
+                                                  LegendIconType.rectangle,
+                                              animationDuration: 5,
+                                              animationDelay: 3,
+                                              name: "Sale",
+                                              color: greencolor,
+                                              markerSettings: MarkerSettings(
+                                                isVisible: true,
+                                                width: 5,
+                                                height: 5,
+                                                borderWidth: 0.5,
+                                                color: greencolor,
+                                              ),
+                                              enableTooltip: true,
+                                              isVisible: true,
+                                              dataSource: obj.chartData,
+                                              xValueMapper:
+                                                  (SalesData sales, _) =>
+                                                      sales.year,
+                                              yValueMapper:
+                                                  (SalesData sales, _) =>
+                                                      sales.sales,
+                                            ),
+                                            LineSeries<SalesData, DateTime>(
+                                              legendIconType:
+                                                  LegendIconType.rectangle,
+                                              animationDuration: 5,
+                                              animationDelay: 3,
+                                              color: greencolor,
+                                              markerSettings: MarkerSettings(
+                                                isVisible: true,
+                                                width: 5,
+                                                height: 5,
+                                                borderWidth: 0.5,
+                                                color: greencolor,
+                                              ),
+                                              enableTooltip: true,
+                                              isVisible: true,
+                                              dataSource: obj.chart,
+                                              xValueMapper:
+                                                  (SalesData sales, _) =>
+                                                      sales.year,
+                                              yValueMapper:
+                                                  (SalesData sales, _) =>
+                                                      sales.sales,
+                                            )
+                                          ],
                                         ),
-                                        LineSeries<SalesData, DateTime>(
-                                          legendIconType:
-                                              LegendIconType.rectangle,
-                                          animationDuration: 5,
-                                          animationDelay: 3,
-                                          color: greencolor,
-                                          markerSettings: MarkerSettings(
-                                            isVisible: true,
-                                            width: 5,
-                                            height: 5,
-                                            borderWidth: 0.5,
-                                            color: greencolor,
-                                          ),
-                                          enableTooltip: true,
-                                          isVisible: true,
-                                          dataSource: obj.chart,
-                                          xValueMapper: (SalesData sales, _) =>
-                                              sales.year,
-                                          yValueMapper: (SalesData sales, _) =>
-                                              sales.sales,
-                                        )
-                                      ],
-                                    ))
+                                      )),
+                                )
                               ],
                             ),
                           ),
@@ -688,10 +702,10 @@ class _SalesChartState extends State<SalesChart> {
                           child: Center(
                             child: Text(
                               "Sales Transactions".toUpperCase(),
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
+                                  color: whitecolor,
                                   fontSize: width * 0.035,
-                                  fontWeight: FontWeight.w500,
-                                  color: white),
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),
@@ -709,134 +723,150 @@ class _SalesChartState extends State<SalesChart> {
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.only(top: height * 0.015),
-                                  child: Stack(
-                                    children: [
-                                      Container(
-                                        height: height * 0.13,
-                                        width: width,
-                                        decoration: BoxDecoration(
-                                          color: greencolor,
-                                          borderRadius:
-                                              BorderRadius.circular(6),
-                                        ),
-                                        child: Align(
-                                          alignment: Alignment.bottomCenter,
-                                          child: Padding(
-                                            padding: EdgeInsets.only(
-                                                bottom: height * 0.005),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
-                                              children: [
-                                                Text(
-                                                  "Recieve Payment: ${(data.totalAmount ?? 0.0)} ${obj.curency} ",
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontSize: width * 0.025,
-                                                      color: white),
-                                                ),
-                                                Text(
-                                                  "Balance Amount: ${(data.totalAmount ?? 0.0) - (data.details!.partialAmount! ?? 0.0)} ${obj.curency} ",
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontSize: width * 0.025,
-                                                      color: white),
-                                                )
-                                              ],
-                                            ),
+                                  child: Card(
+                                    elevation: 2,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Stack(
+                                      children: [
+                                        Container(
+                                          height: height * 0.13,
+                                          width: width,
+                                          decoration: BoxDecoration(
+                                            color: greencolor,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
                                           ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: height * 0.1,
-                                        width: width,
-                                        decoration: BoxDecoration(
-                                          color: white,
-                                          borderRadius:
-                                              BorderRadius.circular(6),
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            SizedBox(
-                                              width: width * 0.05,
-                                            ),
-                                            CircleAvatar(
-                                                backgroundColor: greencolor,
-                                                child: Image.asset(
-                                                    "images/sale.png")),
-                                            SizedBox(
-                                              width: width * 0.05,
-                                            ),
-                                            Expanded(
-                                              child: Container(
-                                                alignment: Alignment.centerLeft,
-                                                height: height,
-                                                width: width,
-                                                child: Text(
-                                                  data.details!.name ?? "Name",
-                                                  style: TextStyle(
-                                                      fontSize: width * 0.035,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: greencolor),
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: width * 0.05,
-                                            ),
-                                            SizedBox(
-                                              height: height * 0.1,
-                                              width: width * 0.3,
-                                              child: Column(
+                                          child: Align(
+                                            alignment: Alignment.bottomCenter,
+                                            child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  bottom: height * 0.005),
+                                              child: Row(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                    MainAxisAlignment
+                                                        .spaceAround,
                                                 children: [
-                                                  Container(
-                                                    height: height * 0.02,
-                                                    width: width * 0.2,
-                                                    decoration: BoxDecoration(
-                                                      color: greencolor,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              2),
-                                                    ),
-                                                    child: Center(
-                                                      child: Text(
-                                                        "${data.totalAmount} ${obj.curency}",
-                                                        style: TextStyle(
-                                                            fontSize:
-                                                                width * 0.02,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color: white),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: height * 0.01,
+                                                  Text(
+                                                    "Recieve: ${(data.totalAmount ?? 0.0)} ${obj.curency} ",
+                                                    style: GoogleFonts.poppins(
+                                                        color: whitecolor,
+                                                        fontSize: width * 0.025,
+                                                        fontWeight:
+                                                            FontWeight.w500),
                                                   ),
                                                   Text(
-                                                    data.dateTime
-                                                        .toString()
-                                                        .substring(0, 10),
-                                                    style: TextStyle(
-                                                        fontSize: width * 0.02,
+                                                    "Balance: ${(data.totalAmount ?? 0.0) - (data.details!.partialAmount! ?? 0.0)} ${obj.curency} ",
+                                                    style: GoogleFonts.poppins(
+                                                        color: whitecolor,
+                                                        fontSize: width * 0.025,
                                                         fontWeight:
-                                                            FontWeight.bold,
-                                                        color: lightgray),
+                                                            FontWeight.w500),
                                                   )
                                                 ],
                                               ),
-                                            )
-                                          ],
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                        Container(
+                                          height: height * 0.1,
+                                          width: width,
+                                          decoration: BoxDecoration(
+                                            color: white,
+                                            borderRadius:
+                                                BorderRadius.circular(6),
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              SizedBox(
+                                                width: width * 0.05,
+                                              ),
+                                              CircleAvatar(
+                                                  backgroundColor: greencolor,
+                                                  child: Image.asset(
+                                                      "images/sale.png")),
+                                              SizedBox(
+                                                width: width * 0.05,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  height: height,
+                                                  width: width,
+                                                  child: Text(
+                                                    data.details!.name ??
+                                                        "Name",
+                                                    style: GoogleFonts.poppins(
+                                                        color: greencolor,
+                                                        fontSize: width * 0.035,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.05,
+                                              ),
+                                              SizedBox(
+                                                height: height * 0.1,
+                                                width: width * 0.3,
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      height: height * 0.02,
+                                                      width: width * 0.2,
+                                                      decoration: BoxDecoration(
+                                                        color: greencolor,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(2),
+                                                      ),
+                                                      child: Center(
+                                                        child: Text(
+                                                          "${data.totalAmount} ${obj.curency}",
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color:
+                                                                      whitecolor,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.02,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: height * 0.01,
+                                                    ),
+                                                    Text(
+                                                      data.dateTime
+                                                          .toString()
+                                                          .substring(0, 10),
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              color: lightgray,
+                                                              fontSize:
+                                                                  width * 0.02,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );

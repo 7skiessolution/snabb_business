@@ -639,155 +639,177 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                             MediaQuery.of(context).size.width);
                                       },
                                       child: Padding(
-                                        padding: EdgeInsets.only(
-                                            top: height * 0.015),
-                                        child: Stack(
-                                          children: [
-                                            Container(
-                                              height: height * 0.13,
-                                              width: width,
-                                              decoration: BoxDecoration(
-                                                color: blue,
-                                                borderRadius:
-                                                    BorderRadius.circular(6),
-                                              ),
-                                              child: Align(
-                                                alignment:
-                                                    Alignment.bottomCenter,
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 8, bottom: 8),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceAround,
-                                                    children: [
-                                                      Text(
-                                                        "Recieve Payment: ${(data.details!.partialAmount ?? 0.0)} ${obj.curency}",
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontSize:
-                                                                width * 0.025,
-                                                            color: whitecolor),
-                                                      ),
-                                                      Text(
-                                                        "Balamce Amount: ${(data.totalAmount ?? 0.0) - (data.details!.partialAmount ?? 0.0)} ${obj.curency} ",
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontSize:
-                                                                width * 0.025,
-                                                            color: whitecolor),
-                                                      )
-                                                    ],
-                                                  ),
+                                        padding:
+                                            EdgeInsets.only(top: height * 0.01),
+                                        child: Card(
+                                          elevation: 2,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: Stack(
+                                            children: [
+                                              Container(
+                                                height: height * 0.13,
+                                                width: width,
+                                                decoration: BoxDecoration(
+                                                  color: blue,
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
                                                 ),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: height * 0.1,
-                                              width: width,
-                                              decoration: BoxDecoration(
-                                                color: whitecolor,
-                                                borderRadius:
-                                                    BorderRadius.circular(6),
-                                              ),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceAround,
-                                                children: [
-                                                  SizedBox(
-                                                    width: width * 0.05,
-                                                  ),
-                                                  CircleAvatar(
-                                                    backgroundColor: blue,
-                                                    child: Image.asset(
-                                                      "images/sale.png",
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: width * 0.05,
-                                                  ),
-                                                  Expanded(
-                                                    child: Container(
-                                                      alignment:
-                                                          Alignment.centerLeft,
-                                                      height: height,
-                                                      width: width,
-                                                      child: Text(
-                                                        data.details!.name ??
-                                                            "Name",
-                                                        style: TextStyle(
-                                                            fontSize:
-                                                                width * 0.035,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color: blue),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: width * 0.05,
-                                                  ),
-                                                  SizedBox(
-                                                    height: height * 0.1,
-                                                    width: width * 0.3,
-                                                    child: Column(
+                                                child: Align(
+                                                  alignment:
+                                                      Alignment.bottomCenter,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 8, bottom: 8),
+                                                    child: Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
-                                                              .center,
+                                                              .spaceAround,
                                                       children: [
-                                                        Container(
-                                                          height: height * 0.02,
-                                                          width: width * 0.2,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: blue,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        2),
-                                                          ),
-                                                          child: Center(
-                                                            child: Text(
-                                                              "${data.totalAmount} ${obj.curency}",
-                                                              style: TextStyle(
+                                                        Text(
+                                                          "Recieve: ${(data.details!.partialAmount ?? 0.0)} ${obj.curency}",
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color:
+                                                                      whitecolor,
                                                                   fontSize:
                                                                       width *
-                                                                          0.02,
+                                                                          0.025,
                                                                   fontWeight:
                                                                       FontWeight
-                                                                          .bold,
-                                                                  color:
-                                                                      whitecolor),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          height: height * 0.01,
+                                                                          .w500),
                                                         ),
                                                         Text(
-                                                          data.dateTime
-                                                              .toString()
-                                                              .substring(0, 10),
-                                                          style: TextStyle(
-                                                              fontSize:
-                                                                  width * 0.02,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              color: lightgray),
+                                                          "Balance: ${(data.totalAmount ?? 0.0) - (data.details!.partialAmount ?? 0.0)} ${obj.curency} ",
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color:
+                                                                      whitecolor,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.025,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
                                                         )
                                                       ],
                                                     ),
-                                                  )
-                                                ],
+                                                  ),
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                              Container(
+                                                height: height * 0.1,
+                                                width: width,
+                                                decoration: BoxDecoration(
+                                                  color: whitecolor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
+                                                  children: [
+                                                    SizedBox(
+                                                      width: width * 0.05,
+                                                    ),
+                                                    CircleAvatar(
+                                                      backgroundColor: blue,
+                                                      child: Image.asset(
+                                                        "images/sale.png",
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: width * 0.05,
+                                                    ),
+                                                    Expanded(
+                                                      child: Container(
+                                                        alignment: Alignment
+                                                            .centerLeft,
+                                                        height: height,
+                                                        width: width,
+                                                        child: Text(
+                                                          data.details!.name ??
+                                                              "Name",
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color: blue,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.035,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: width * 0.05,
+                                                    ),
+                                                    SizedBox(
+                                                      height: height * 0.1,
+                                                      width: width * 0.3,
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Container(
+                                                            height:
+                                                                height * 0.02,
+                                                            width: width * 0.2,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: blue,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          2),
+                                                            ),
+                                                            child: Center(
+                                                              child: Text(
+                                                                "${data.totalAmount} ${obj.curency}",
+                                                                style: GoogleFonts.poppins(
+                                                                    color:
+                                                                        whitecolor,
+                                                                    fontSize:
+                                                                        width *
+                                                                            0.02,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height:
+                                                                height * 0.01,
+                                                          ),
+                                                          Text(
+                                                            data.dateTime
+                                                                .toString()
+                                                                .substring(
+                                                                    0, 10),
+                                                            style: GoogleFonts.poppins(
+                                                                color:
+                                                                    lightgray,
+                                                                fontSize:
+                                                                    width *
+                                                                        0.02,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     );

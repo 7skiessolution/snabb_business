@@ -384,10 +384,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   Text(
                                     "Sale".toUpperCase(),
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
+                                        color: greencolor,
                                         fontSize: width * 0.035,
-                                        fontWeight: FontWeight.w800,
-                                        color: greencolor),
+                                        fontWeight: FontWeight.w600),
                                   ),
                                   Expanded(
                                     child: SizedBox(
@@ -504,10 +504,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   Text(
                                     "Purchase".toUpperCase(),
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
+                                        color: darkblue,
                                         fontSize: width * 0.035,
-                                        fontWeight: FontWeight.w800,
-                                        color: darkblue),
+                                        fontWeight: FontWeight.w600),
                                   ),
                                   Expanded(
                                     child: SizedBox(
@@ -569,10 +569,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   Text(
                                     "Expenses".toUpperCase(),
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
+                                        color: expensecolor,
                                         fontSize: width * 0.035,
-                                        fontWeight: FontWeight.w800,
-                                        color: expensecolor),
+                                        fontWeight: FontWeight.w600),
                                   ),
                                   Expanded(
                                     child: SizedBox(

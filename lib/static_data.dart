@@ -73,7 +73,12 @@ class StaticValues {
   ////////////// expense and purchase
 
   static const getexpensePurchaseyearType = "Transaction/GetYearTransactions/";
+//////////////// delete transaction /////////////////////
 
+  static const deletepurchase = "Transaction/DeletePurchase/";
+  static const deleteSale = "Transaction/DeleteSale/";
+  static const deleteExpense = "Transaction/DeleteExpense/";
+  static const getDeleted = "Transaction/GetDeletedTransactions";
   static String apikey =
       "G8I8cS9Uyncyl0GIXHZfPIosrXnqyTwBZa4Z0utvWG5FrnTGdvxD482MFcDSJLjb8JAjZsqpt4SYyjj3VimcQXTKxcyXsQTjvTJVhRQ9rUDHVzIds2x88oLfFwDtpudS";
 }

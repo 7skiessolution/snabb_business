@@ -19,6 +19,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
   var height, width;
   int check = 0;
   num balance = 0.0;
+
   Future<void> showSaleImageDialog(
     BuildContext context,
     dTra.Transactions obj,
@@ -1513,16 +1514,17 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                   return Padding(
                                     padding: const EdgeInsets.only(bottom: 8),
                                     child: Dismissible(
-                                        // onDismissed: ,
                                         confirmDismiss: (direction) async {
-                                          // bool delete =
-                                          //     await TransactionController.to
-                                          //         .deleteDailyTransactiondata(
-                                          //             context,
-                                          //             transaction
-                                          //                 .transactionId!);
+                                          bool delete =
+                                              await TransactionController.to
+                                                  .deleteTransactiondata(
+                                                      context,
+                                                      transaction.transactionId
+                                                          .toString(),
+                                                      transaction.type!.toInt(),
+                                                      "daily");
 
-                                          // return delete;
+                                          return delete;
                                         },
                                         key: UniqueKey(),
                                         child: Container(

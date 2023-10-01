@@ -1,37 +1,16 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:io';
+import 'package:dio/dio.dart' as dio;
 import 'package:flutter/services.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_picker/image_picker.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart' hide Transaction;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-// import 'package:snab_budget/apis/model/get_user_all_transaction.dart' as tran;
-// // import 'package:snab_budget/apis/model/user_LineGraph_model.dart' as lineGraph;
-// import 'package:snab_budget/apis/model/user_category_model.dart';
-// import 'package:snab_budget/apis/model/user_daily_transaction_model.dart'
-// //     as dTra;
-// import 'package:snab_budget/apis/model/user_income_expense_Graph_model.dart'
-//     as inexGrap;
-// import 'package:snab_budget/apis/model/user_month_Transcation_model.dart'
-//     as mTra;
-// import 'package:snab_budget/apis/model/user_recycle_transaction_model.dart'
-//     as rTra;
-// import 'package:snab_budget/apis/model/user_wallet_model.dart';
-// import 'package:snab_budget/apis/model/user_year_transaction_model.dart'
-//     as yTra;
-// import 'package:snab_budget/main.dart';
-// import 'package:snab_budget/models/currency_controller.dart';
-// import 'package:snab_budget/models/get_transaction_type_model.dart';
-// import 'package:snab_budget/models/transaction.dart' as tr;
-// import 'package:snab_budget/models/transaction.dart';
-// import 'package:snab_budget/static_data.dart';
-// import 'package:snab_budget/utils/apptheme.dart';
+
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/main.dart';
@@ -40,6 +19,7 @@ import 'package:snabb_business/models/calnder_model.dart' as cTra;
 import 'package:snabb_business/models/daily_transaction_model.dart' as dTra;
 import 'package:snabb_business/models/get_all_user_transaction_model.dart'
     as tran;
+import 'package:snabb_business/models/get_deleted_teansaction.dart' as delTra;
 import 'package:snabb_business/models/monthly_transaction_model.dart' as mTra;
 import 'package:snabb_business/models/user_wallet_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wal;
@@ -63,7 +43,7 @@ class TransactionController extends GetxController {
   List<yTra.Data> yearTransactionList = [];
   GetCategoriesModel? model;
   List<CalendarEvent> calanderEventList = [];
-
+  List<delTra.Data> deleteTransaction = [];
   List<int> mounthamount = [];
   List<int> mounthamountmap = [];
   List<int> mounthamountexpence = [];
@@ -82,7 +62,7 @@ class TransactionController extends GetxController {
   int cash = 0;
   int bankTransfer = 0;
   int creditCard = 0;
-  // String currency = "";
+
   String? lang;
   bool isdailyLoad = false;
   var colorList;
@@ -109,14 +89,11 @@ class TransactionController extends GetxController {
 
   final picker = ImagePicker();
   Future<File> _createFile(Uint8List data) async {
-    // Create a temporary directory
     Directory tempDir = await getTemporaryDirectory();
 
-    // Generate a unique file name
     String tempPath =
         '${tempDir.path}/${DateTime.now().millisecondsSinceEpoch}.jpg';
 
-    // Write the data to a file
     File file = File(tempPath);
     await file.writeAsBytes(data);
 
@@ -128,56 +105,49 @@ class TransactionController extends GetxController {
     update();
 
     final File imageFile = File(img.path);
-    // Get the original image bytes
+
     List<int> imageBytes = await imageFile.readAsBytes();
 
-    // Check if the image is already smaller than 300KB
     if (imageBytes.length <= 300 * 1024) {
       return imageFile;
     } else if (imageBytes.length >= 300 * 1024 &&
         imageBytes.length <= 600 * 1024) {
       Uint8List uint8List = Uint8List.fromList(imageBytes);
-      // Compress the image to 75% quality
+
       List<int> compressedBytes = await FlutterImageCompress.compressWithList(
         uint8List,
         quality: 10,
       );
 
-      // Convert the compressed bytes to a Uint8List
       Uint8List compressedData = Uint8List.fromList(compressedBytes);
 
-      // Create a file from the compressed data
       compressedFile = await _createFile(compressedData);
 
       return compressedFile;
     } else if (imageBytes.length >= 600 * 1024 &&
         imageBytes.length <= 999 * 1024) {
       Uint8List uint8List = Uint8List.fromList(imageBytes);
-      // Compress the image to 75% quality
+
       List<int> compressedBytes = await FlutterImageCompress.compressWithList(
         uint8List,
         quality: 5,
       );
 
-      // Convert the compressed bytes to a Uint8List
       Uint8List compressedData = Uint8List.fromList(compressedBytes);
 
-      // Create a file from the compressed data
       File compressedFile = await _createFile(compressedData);
 
       return compressedFile;
     } else {
       Uint8List uint8List = Uint8List.fromList(imageBytes);
-      // Compress the image to 75% quality
+
       List<int> compressedBytes = await FlutterImageCompress.compressWithList(
         uint8List,
         quality: 2,
       );
 
-      // Convert the compressed bytes to a Uint8List
       Uint8List compressedData = Uint8List.fromList(compressedBytes);
 
-      // Create a file from the compressed data
       File compressedFile = await _createFile(compressedData);
 
       return compressedFile;
@@ -234,18 +204,12 @@ class TransactionController extends GetxController {
                                   fontWeight: FontWeight.w600,
                                   color: darkblue!)),
                           onPressed: () async {
-                            //Navigator.of(context).pop();
-                            //getImage(ImgSource.Gallery);
                             pickImage = await picker.pickImage(
                                 source: ImageSource.gallery);
 
-                            // Handle the picked image
                             if (pickImage != null) {
                               compressedFile =
                                   await compressImage(pickImage as XFile);
-
-                              // Do something with the picked image
-                              // For example, you can display it in an Image widget
                             }
                             Navigator.of(context).pop();
                           },
@@ -260,14 +224,11 @@ class TransactionController extends GetxController {
                             pickImage = await picker.pickImage(
                                 source: ImageSource.camera);
                             print("my imge ${pickImage.toString()}");
-                            // Handle the picked image
+
                             if (pickImage != null) {
                               pathFile = pickImage!.path;
                               update();
                               compressedFile = File(pickImage!.path);
-
-                              // Do something with the picked image
-                              // For example, you can display it in an Image widget
                             }
                           },
                         ),
@@ -290,77 +251,7 @@ class TransactionController extends GetxController {
           );
         },
       );
-      // showDialog(
-      //   context: context,
-      //   builder: (BuildContext context) {
-      //     return AlertDialog(
-      //       title: Text('Select Image'),
-      //       content: Text(
-      //           'Do you want to select an image from the gallery or take a picture?'),
-      //       actions: <Widget>[
-      //         TextButton(
-      //           child: Text('Gallery',
-      //               style: TextStyle(
-      //                   fontWeight: FontWeight.w600,
-      //                   color: darkblue!)),
-      //           onPressed: () async {
-      //             //Navigator.of(context).pop();
-      //             //getImage(ImgSource.Gallery);
-      //             pickImage =
-      //                 await picker.pickImage(source: ImageSource.gallery);
-
-      //             // Handle the picked image
-      //             if (pickImage != null) {
-      //               File compressedFile =
-      //                   await compressImage(pickImage as XFile);
-      //               _uploadPicture(compressedFile);
-      //               // Do something with the picked image
-      //               // For example, you can display it in an Image widget
-      //             }
-      //             Navigator.of(context).pop();
-      //           },
-      //         ),
-      //         TextButton(
-      //           child: Text('Camera',
-      //               style: TextStyle(
-      //                   fontWeight: FontWeight.w600,
-      //                   color: darkblue!)),
-      //           onPressed: () async {
-      //             Navigator.of(context).pop();
-      //             pickImage =
-      //                 await picker.pickImage(source: ImageSource.camera);
-      //             // Handle the picked image
-      //             if (pickImage != null) {
-      //               pathPickImage = pickImage!.path;
-
-      //               setState(() {
-      //                 pathFile = pickImage!.path;
-      //               });
-
-      //               final File imageFile = File(pickImage!.path);
-
-      //               _uploadPicture(imageFile);
-      //               // Do something with the picked image
-      //               // For example, you can display it in an Image widget
-      //             }
-      //           },
-      //         ),
-      //         TextButton(
-      //           child: Text(
-      //             'Cancel',
-      //             style:
-      //                 TextStyle(fontWeight: FontWeight.w600, color: Colors.red),
-      //           ),
-      //           onPressed: () async {
-      //             Navigator.of(context).pop();
-      //           },
-      //         ),
-      //       ],
-      //     );
-      //   },
-      // );
     } else {
-      // Handle the case where the user denied permission
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -387,192 +278,6 @@ class TransactionController extends GetxController {
       );
     }
   }
-
-  // Future adddCatagoriesdata(UserCategoryModel model) async {
-  //   var res =
-  //       await httpClient().post(StaticValues.addCategory, data: model.toMap());
-  //   getCatagoriesdata(model.type!);
-  // }
-
-  // Future getCatagoriesdata(String type) async {
-  //   var res = await httpClient().get("${StaticValues.getCategories}$type");
-  //   model = GetCategoriesModel.fromJson(res.data);
-  //   update();
-  // }
-
-  // Future deleteCatagoriesdata(String id, String type) async {
-  //   var res = await httpClient().delete("${StaticValues.deleteCategories}$id");
-  //   getCatagoriesdata(type);
-  //   update();
-  // }
-
-  // Future<bool> deleteDailyTransactiondata(
-  //     BuildContext context, String id) async {
-  //   bool confirmed = false;
-  //   bool confirmDelete = await showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         title: Text(
-  //           // AppLocalizations.of(context)!.confor,
-  //           AppLocalizations.of(context)!.confirmdeletion,
-  //           style: TextStyle(color: darkblue!, fontWeight: FontWeight.bold),
-  //         ),
-  //         elevation: 10,
-  //         shadowColor: darkblue!,
-  //         shape:
-  //             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-  //         content: Text(AppLocalizations.of(context)!.areyousuredeletedata),
-  //         actions: <Widget>[
-  //           TextButton(
-  //             child: Text(
-  //               AppLocalizations.of(context)!.cancel,
-  //               style: const TextStyle(color: Colors.red),
-  //             ),
-  //             onPressed: () {
-  //               Navigator.of(context).pop(false);
-  //             },
-  //           ),
-  //           TextButton(
-  //             child: Text(
-  //               //     AppLocalizations.of(context)!.co,
-  //               AppLocalizations.of(context)!.confirm,
-  //               style: TextStyle(color: darkblue!),
-  //             ),
-  //             onPressed: () {
-  //               confirmed = true;
-  //               Navigator.of(context).pop(true);
-  //             },
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  //   if (confirmDelete) {
-  //     var res =
-  //         await httpClient().delete("${StaticValues.deleteTrasaction}$id");
-  //     // getUserDailyTransactiondata();
-  //   }
-
-  //   return confirmed;
-  // }
-
-  // Future<bool> recoverTransactiondata(BuildContext context, String id) async {
-  //   bool confirmed = false;
-  //   bool confirmDelete = await showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         title: Text(
-  //           // AppLocalizations.of(context)!.confor,
-
-  //           "Recover Transaction",
-  //           style: TextStyle(color: darkblue!, fontWeight: FontWeight.bold),
-  //         ),
-  //         elevation: 10,
-  //         shadowColor: darkblue!,
-  //         shape:
-  //             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-  //         content: const Text("Are You Sure You Want To Recover Transaction"),
-  //         actions: <Widget>[
-  //           TextButton(
-  //             child: Text(
-  //               AppLocalizations.of(context)!.cancel,
-  //               style: const TextStyle(color: Colors.red),
-  //             ),
-  //             onPressed: () {
-  //               Navigator.of(context).pop(false);
-  //             },
-  //           ),
-  //           TextButton(
-  //             child: Text(
-  //               //     AppLocalizations.of(context)!.co,
-  //               AppLocalizations.of(context)!.confirm,
-  //               style: TextStyle(color: darkblue!),
-  //             ),
-  //             onPressed: () {
-  //               confirmed = true;
-  //               Navigator.of(context).pop(true);
-  //             },
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  //   if (confirmDelete) {
-  //     var res = await httpClient().post("${StaticValues.recoverTrasaction}$id");
-  //     //fetchRecycleTransaction();
-  //     // getUserDailyTransactiondata();
-  //   }
-
-  //   return confirmed;
-  // }
-
-  // Future addTransaction(
-  //     String name,
-  //     String note,
-  //     num amount,
-  //     num partialamount,
-  //     String datetime,
-  //     int type,
-  //     int iscash,
-  //     String catId,
-  //     String currency,
-  //     String walletId) async {
-  //   String result;
-
-  //   print("...............url............. = ${StaticValues.addTransaction}");
-  //   try {
-  //     print("image file ${pickImage!.path}");
-  //     deo.FormData data = pathFile.isEmpty
-  //         ? deo.FormData.fromMap({
-  //             "Name": name,
-  //             "Amount": amount,
-  //             "PartialAmount": partialamount,
-  //             "Note": note,
-  //             "DateTime": datetime,
-  //             "Type": type,
-  //             "PaymentType": iscash,
-  //             "CategoryId": catId,
-  //             "Currency": currency,
-  //             "WalletId": walletId
-  //           })
-  //         : deo.FormData.fromMap({
-  //             "Name": name,
-  //             "Amount": amount,
-  //             "PartialAmount": partialamount,
-  //             "Note": note,
-  //             "DateTime": datetime,
-  //             "Type": type,
-  //             "PaymentType": iscash,
-  //             "File": await deo.MultipartFile.fromFile(
-  //               pickImage!.path,
-  //               filename: basename(pickImage!.path),
-  //             ),
-  //             "CategoryId": catId,
-  //             "Currency": currency,
-  //             "WalletId": walletId
-  //           });
-
-  //     print("...............url............. = ${StaticValues.addTransaction}");
-  //     var response = await httpFormDataClient()
-  //         .post(StaticValues.addTransaction, data: data);
-
-  //     print(response.statusCode);
-  //     print(response.data);
-  //     if (response.statusCode == 200) {
-  //       print("Response status Cose ${response.statusCode}");
-  //       if (response.data != null) {
-  //         print(".................${response.data}........");
-  //       }
-  //     }
-  //     return response.data;
-  //   } catch (e) {
-  //     print("Exception = $e");
-  //   }
-  //   pathFile = "";
-  //   update();
-  // }
 
   void changeLocale(value, context, height, width) async {
     showGeneralDialog(
@@ -651,11 +356,11 @@ class TransactionController extends GetxController {
       throw ArgumentError('The list is empty');
     }
 
-    int max = numbers[0]; // Assume the first element as the maximum
+    int max = numbers[0];
 
     for (int number in numbers) {
       if (number > max) {
-        max = number; // Update the maximum if a larger number is found
+        max = number;
       }
     }
 
@@ -694,29 +399,6 @@ class TransactionController extends GetxController {
     update();
   }
 
-///////////\\]]]]]
-  // checking(List<int> myList) {
-  //   list = [const FlSpot(0, 0)];
-  //   int desiredResult = 10;
-  //   for (var v = 0; v < myList.length; v++) {
-  //     int monthIndex = v + 1;
-  //     int count = myList[v];
-  //     int y4 = 0;
-  //     int y3 = findMaxValueWithIndex(myList) ~/ desiredResult;
-
-  //     if (y3 == 0) {
-  //       y4 = 0;
-  //     } else {
-  //       y4 = count ~/ y3;
-  //       update();
-  //     }
-  //     list.add(FlSpot(monthIndex.toDouble(), y4.toDouble()));
-  //   }
-  //   update();
-  // }
-
-///////////////////////////////////////////////
-
   List<DebitCreditData> debtCreditlst = [];
   fetchDebtsCredits() async {
     debtCreditlst.clear();
@@ -729,8 +411,6 @@ class TransactionController extends GetxController {
     debtCreditlst = debitcreditmodel.data!;
     update();
   }
-
-//////////////////////////////////////////////////////////////
 
   List<wal.Data> walletttt = [];
 
@@ -747,8 +427,6 @@ class TransactionController extends GetxController {
     return walletModel;
   }
 
-  ///////////////////////////////////////////////////
-
   int calculateSum(List<int> numbers) {
     int sum = 0;
     for (int number in numbers) {
@@ -757,20 +435,14 @@ class TransactionController extends GetxController {
     return sum;
   }
 
-  //-----------------Get Wallets------------
-  //----------------------------------------
-
   UserWalletModel? walletModel;
   List<String> walletNames = [];
   List<wal.Data> walletList = [];
   bool isLoadData = false;
-  String? selectedWalletId; // Store the selected wallet ID here
-  String? dropdownValue; // Initialize dropdownValue as null
-
-// ...
+  String? selectedWalletId;
+  String? dropdownValue;
 
   Future<void> getWalletData() async {
-    // Your existing code for fetching wallet data...
     var res = await httpClient().get(StaticValues.getWalletList);
     walletModel = UserWalletModel.fromMap(res.data);
     if (walletModel!.data != null) {
@@ -783,11 +455,9 @@ class TransactionController extends GetxController {
         walletNames.add(wallet.name!);
       }
 
-      // Set the default dropdownValue to the first wallet's name
       if (walletNames.isNotEmpty) {
         dropdownValue = walletNames[0];
-        selectedWalletId =
-            walletModel!.data![0].walletId; // Set the selected wallet ID
+        selectedWalletId = walletModel!.data![0].walletId;
       }
 
       isLoadData = false;
@@ -797,7 +467,6 @@ class TransactionController extends GetxController {
     }
   }
 
-////////////////// GET TRANSACTION
   List<tran.Data> userAllTransaction = [];
 
   Future fetchTransaction() async {
@@ -862,5 +531,110 @@ class TransactionController extends GetxController {
     print(dailyTransactionList.length);
 
     update();
+  }
+
+  Future getuserDeletedTransaction() async {
+    try {
+      deleteTransaction.clear();
+      var res = await httpClient().get(StaticValues.getDeleted);
+      if (res.statusCode == 200) {
+        print(res.data);
+        delTra.GetDeletedTransaction model =
+            delTra.GetDeletedTransaction.fromMap(res.data);
+
+        for (var data in model.data!) {
+          deleteTransaction.add(data);
+        }
+        print("deleted teransaction list length ${deleteTransaction.length}");
+      }
+    } on Exception catch (e) {
+      print(e);
+      // TODO
+    }
+  }
+
+  Future<bool> deleteTransactiondata(
+      BuildContext context, String id, int type, String name) async {
+    bool confirmed = false;
+    bool confirmDelete = await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            AppLocalizations.of(context)!.confirmdeletion,
+            style: TextStyle(color: blue, fontWeight: FontWeight.bold),
+          ),
+          elevation: 10,
+          shadowColor: blue,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          content: Text("Are You Sure You Want To Delete This Transaction?"),
+          actions: <Widget>[
+            TextButton(
+              child: Text(
+                AppLocalizations.of(context)!.cancel,
+                style: const TextStyle(color: Colors.red),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+            ),
+            TextButton(
+              child: Text(
+                AppLocalizations.of(context)!.confirm,
+                style: TextStyle(color: blue),
+              ),
+              onPressed: () {
+                confirmed = true;
+                Navigator.of(context).pop(true);
+              },
+            ),
+          ],
+        );
+      },
+    );
+    if (confirmDelete) {
+      if (name == "daily") {
+        dio.Response res;
+        if (type == 0) {
+          res = await httpClient().delete("${StaticValues.deletepurchase}$id");
+        } else if (type == 1) {
+          res = await httpClient().delete("${StaticValues.deleteSale}$id");
+        } else {
+          res = await httpClient().delete("${StaticValues.deleteExpense}$id");
+        }
+        if (res.statusCode == 200) {
+          getUserDailyTransactiondata();
+        }
+      }
+      if (name == "monthly") {
+        dio.Response res;
+        if (type == 0) {
+          res = await httpClient().delete("${StaticValues.deletepurchase}$id");
+        } else if (type == 1) {
+          res = await httpClient().delete("${StaticValues.deleteSale}$id");
+        } else {
+          res = await httpClient().delete("${StaticValues.deleteExpense}$id");
+        }
+        if (res.statusCode == 200) {
+          getUserMonthTransactiondata();
+        }
+      }
+      if (name == "yearly") {
+        dio.Response res;
+        if (type == 0) {
+          res = await httpClient().delete("${StaticValues.deletepurchase}$id");
+        } else if (type == 1) {
+          res = await httpClient().delete("${StaticValues.deleteSale}$id");
+        } else {
+          res = await httpClient().delete("${StaticValues.deleteExpense}$id");
+        }
+        if (res.statusCode == 200) {
+          getUserYearTransactiondata();
+        }
+      }
+    }
+
+    return confirmed;
   }
 }

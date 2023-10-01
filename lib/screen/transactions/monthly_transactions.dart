@@ -1530,88 +1530,106 @@ class _MonthlyTransactionsState extends State<MonthlyTransactions> {
                                         specificTrans[i];
                                     // return TransactionCard(transaction: transaction);
 
-                                    return Padding(
-                                      padding: const EdgeInsets.only(
-                                        bottom: 8,
-                                      ),
-                                      child: Container(
-                                        color: backgroundColor,
-                                        child: ListTile(
-                                          onTap: () {
-                                            transaction.name == "Purchase"
-                                                ? showPurchaseImageDialog(
-                                                    context, transaction)
-                                                : transaction.name == "Sale"
-                                                    ? showSaleImageDialog(
-                                                        context, transaction)
-                                                    : showExpenseImageDialog(
-                                                        context,
-                                                        transaction,
-                                                      );
-                                          },
-                                          leading: Container(
-                                              decoration: BoxDecoration(
-                                                  color: Colors.blue[900],
-                                                  shape: BoxShape.circle),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: transaction.details!
-                                                                .imageUrl ==
-                                                            "null" ||
-                                                        transaction.details!
-                                                                .imageUrl ==
-                                                            null ||
-                                                        transaction.details!
-                                                            .imageUrl!.isEmpty
-                                                    ? Image.asset(
-                                                        "images/sale.png",
-                                                      )
-                                                    : Image.asset(
-                                                        transaction
-                                                            .details!.imageUrl!,
-                                                        color: Colors.white,
-                                                      ),
-                                              )),
-                                          title: Text(
-                                            transaction.name!,
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          subtitle: Text(transaction.dateTime!
-                                              .substring(0, 10)),
-                                          trailing: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.end,
-                                            children: [
-                                              Text(
-                                                  // ignore: unrelated_type_equality_checks
-                                                  transaction.type == 1
-                                                      ? "+ ${transaction.totalAmount}"
-                                                      : "-${transaction.totalAmount}",
-                                                  style: TextStyle(
-                                                      // ignore: unrelated_type_equality_checks
+                                    return Dismissible(
+                                      key: UniqueKey(),
+                                      confirmDismiss: (direction) async {
+                                        bool delete =
+                                            await TransactionController.to
+                                                .deleteTransactiondata(
+                                                    context,
+                                                    transaction.transactionId
+                                                        .toString(),
+                                                    transaction.type!.toInt(),
+                                                    "monthly");
+
+                                        return delete;
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                          bottom: 8,
+                                        ),
+                                        child: Container(
+                                          color: backgroundColor,
+                                          child: ListTile(
+                                            onTap: () {
+                                              transaction.name == "Purchase"
+                                                  ? showPurchaseImageDialog(
+                                                      context, transaction)
+                                                  : transaction.name == "Sale"
+                                                      ? showSaleImageDialog(
+                                                          context, transaction)
+                                                      : showExpenseImageDialog(
+                                                          context,
+                                                          transaction,
+                                                        );
+                                            },
+                                            leading: Container(
+                                                decoration: BoxDecoration(
+                                                    color: Colors.blue[900],
+                                                    shape: BoxShape.circle),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: transaction.details!
+                                                                  .imageUrl ==
+                                                              "null" ||
+                                                          transaction.details!
+                                                                  .imageUrl ==
+                                                              null ||
+                                                          transaction.details!
+                                                              .imageUrl!.isEmpty
+                                                      ? Image.asset(
+                                                          "images/sale.png",
+                                                        )
+                                                      : Image.asset(
+                                                          transaction.details!
+                                                              .imageUrl!,
+                                                          color: Colors.white,
+                                                        ),
+                                                )),
+                                            title: Text(
+                                              transaction.name!,
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            subtitle: Text(transaction.dateTime!
+                                                .substring(0, 10)),
+                                            trailing: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                    // ignore: unrelated_type_equality_checks
+                                                    transaction.type == 1
+                                                        ? "+ ${transaction.totalAmount}"
+                                                        : "-${transaction.totalAmount}",
+                                                    style: TextStyle(
+                                                        // ignore: unrelated_type_equality_checks
+                                                        color:
+                                                            transaction.type ==
+                                                                    1
+                                                                ? Colors.green
+                                                                : Colors.red,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                Text(
+                                                    // ignore: unrelated_type_equality_checks
+                                                    transaction.type == 1
+                                                        ? transaction.currency!
+                                                        : transaction.currency!,
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       color:
                                                           transaction.type == 1
                                                               ? Colors.green
                                                               : Colors.red,
-                                                      fontWeight:
-                                                          FontWeight.bold)),
-                                              Text(
-                                                  // ignore: unrelated_type_equality_checks
-                                                  transaction.type == 1
-                                                      ? transaction.currency!
-                                                      : transaction.currency!,
-                                                  style: TextStyle(
-                                                    fontSize: 11,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: transaction.type == 1
-                                                        ? Colors.green
-                                                        : Colors.red,
-                                                  )),
-                                            ],
+                                                    )),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),

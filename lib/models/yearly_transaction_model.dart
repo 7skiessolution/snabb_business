@@ -366,6 +366,7 @@ class Data {
 }
 
 class Transactions {
+  String? transactionId;
   String? name;
   double? cashAmount;
   double? bankAmount;
@@ -378,6 +379,7 @@ class Transactions {
   String? currency;
   String? file;
   Transactions({
+    this.transactionId,
     this.name,
     this.cashAmount,
     this.bankAmount,
@@ -392,6 +394,7 @@ class Transactions {
   });
 
   Transactions copyWith({
+    String? transactionId,
     String? name,
     double? cashAmount,
     double? bankAmount,
@@ -405,6 +408,7 @@ class Transactions {
     String? file,
   }) {
     return Transactions(
+      transactionId: transactionId ?? this.transactionId,
       name: name ?? this.name,
       cashAmount: cashAmount ?? this.cashAmount,
       bankAmount: bankAmount ?? this.bankAmount,
@@ -421,6 +425,7 @@ class Transactions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'transactionId': transactionId,
       'name': name,
       'cashAmount': cashAmount,
       'bankAmount': bankAmount,
@@ -437,6 +442,8 @@ class Transactions {
 
   factory Transactions.fromMap(Map<String, dynamic> map) {
     return Transactions(
+      transactionId:
+          map['transactionId'] != null ? map['transactionId'] as String : null,
       name: map['name'] != null ? map['name'] as String : null,
       cashAmount:
           map['cashAmount'] != null ? map['cashAmount'] as double : null,
@@ -464,14 +471,15 @@ class Transactions {
 
   @override
   String toString() {
-    return 'Transactions(name: $name, cashAmount: $cashAmount, bankAmount: $bankAmount, otherAmount: $otherAmount, totalAmount: $totalAmount, note: $note, type: $type, dateTime: $dateTime, details: $details, currency: $currency, file: $file)';
+    return 'Transactions(transactionId: $transactionId, name: $name, cashAmount: $cashAmount, bankAmount: $bankAmount, otherAmount: $otherAmount, totalAmount: $totalAmount, note: $note, type: $type, dateTime: $dateTime, details: $details, currency: $currency, file: $file)';
   }
 
   @override
   bool operator ==(covariant Transactions other) {
     if (identical(this, other)) return true;
 
-    return other.name == name &&
+    return other.transactionId == transactionId &&
+        other.name == name &&
         other.cashAmount == cashAmount &&
         other.bankAmount == bankAmount &&
         other.otherAmount == otherAmount &&
@@ -486,7 +494,8 @@ class Transactions {
 
   @override
   int get hashCode {
-    return name.hashCode ^
+    return transactionId.hashCode ^
+        name.hashCode ^
         cashAmount.hashCode ^
         bankAmount.hashCode ^
         otherAmount.hashCode ^

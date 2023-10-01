@@ -102,10 +102,7 @@ class DrawerScreen extends StatelessWidget {
                           builder: (_) => const DashBoardScreen()));
                 },
                 child: ListTile(
-                  leading: Icon(
-                    Icons.home_outlined,
-                    color: white,
-                  ),
+                  leading: Image.asset("assets/drawericon/dashard.png"),
                   title: Text(
                     "OverView",
                     style: GoogleFonts.poppins(
@@ -124,7 +121,7 @@ class DrawerScreen extends StatelessWidget {
                 child: ListTile(
                   leading: Icon(
                     Icons.people_outline_sharp,
-                    color: white,
+                    color: white.withOpacity(0.7),
                   ),
                   title: Text(
                     "Companies",
@@ -146,7 +143,7 @@ class DrawerScreen extends StatelessWidget {
                 child: ListTile(
                   leading: Icon(
                     Icons.theater_comedy_sharp,
-                    color: white,
+                    color: white.withOpacity(0.7),
                   ),
                   title: Text(
                     "Supplier",
@@ -164,10 +161,7 @@ class DrawerScreen extends StatelessWidget {
                   obj.drawermenueclose();
                 },
                 child: ListTile(
-                  leading: Icon(
-                    Icons.summarize_sharp,
-                    color: white,
-                  ),
+                  leading: Image.asset("assets/drawericon/summary.png"),
                   title: Text(
                     "Summary",
                     style: GoogleFonts.poppins(
@@ -186,10 +180,7 @@ class DrawerScreen extends StatelessWidget {
                           builder: (_) => const TransactionScreen()));
                 },
                 child: ListTile(
-                  leading: Icon(
-                    Icons.data_usage_rounded,
-                    color: white,
-                  ),
+                  leading: Image.asset("assets/drawericon/transaction.png"),
                   title: Text(
                     "Transaction",
                     style: GoogleFonts.poppins(
@@ -207,10 +198,7 @@ class DrawerScreen extends StatelessWidget {
                       MaterialPageRoute(builder: (_) => const DebitScreen()));
                 },
                 child: ListTile(
-                  leading: Icon(
-                    Icons.account_tree_sharp,
-                    color: white,
-                  ),
+                  leading: Image.asset("assets/drawericon/debit.png"),
                   title: Text(
                     "Db/Cr",
                     style: GoogleFonts.poppins(
@@ -229,7 +217,7 @@ class DrawerScreen extends StatelessWidget {
                 child: ListTile(
                   leading: Icon(
                     Icons.wysiwyg_outlined,
-                    color: white,
+                    color: white.withOpacity(0.7),
                   ),
                   title: Text(
                     "Invoice",
@@ -331,10 +319,7 @@ class DrawerScreen extends StatelessWidget {
                   //     MaterialPageRoute(builder: (_) => Preferences()));
                 },
                 child: ListTile(
-                  leading: Icon(
-                    Icons.file_copy_outlined,
-                    color: white,
-                  ),
+                  leading: Image.asset("assets/drawericon/reports.png"),
                   title: Text(
                     "Reports",
                     style: GoogleFonts.poppins(
@@ -375,7 +360,7 @@ class DrawerScreen extends StatelessWidget {
                             child: ListTile(
                               leading: Icon(
                                 Icons.wysiwyg_outlined,
-                                color: white,
+                                color: white.withOpacity(0.7),
                               ),
                               title: Text(
                                 "Daily Sale Report",
@@ -404,7 +389,7 @@ class DrawerScreen extends StatelessWidget {
                             child: ListTile(
                               leading: Icon(
                                 Icons.wysiwyg_outlined,
-                                color: white,
+                                color: white.withOpacity(0.7),
                               ),
                               title: Text(
                                 "Company Sale Report",
@@ -433,7 +418,7 @@ class DrawerScreen extends StatelessWidget {
                             child: ListTile(
                               leading: Icon(
                                 Icons.wysiwyg_outlined,
-                                color: white,
+                                color: white.withOpacity(0.7),
                               ),
                               title: Text(
                                 "Purchase Report",
@@ -455,7 +440,7 @@ class DrawerScreen extends StatelessWidget {
                             child: ListTile(
                               leading: Icon(
                                 Icons.wysiwyg_outlined,
-                                color: white,
+                                color: white.withOpacity(0.7),
                               ),
                               title: Text(
                                 "Supplier Report",
@@ -484,7 +469,7 @@ class DrawerScreen extends StatelessWidget {
                             child: ListTile(
                               leading: Icon(
                                 Icons.wysiwyg_outlined,
-                                color: white,
+                                color: white.withOpacity(0.7),
                               ),
                               title: Text(
                                 "Expense Report",
@@ -527,10 +512,7 @@ class DrawerScreen extends StatelessWidget {
                           builder: (_) => const CalenderScreen()));
                 },
                 child: ListTile(
-                  leading: Icon(
-                    Icons.calendar_month,
-                    color: white,
-                  ),
+                  leading: Image.asset("assets/drawericon/calendar.png"),
                   title: Text(
                     "Calendar",
                     style: GoogleFonts.poppins(
@@ -566,10 +548,7 @@ class DrawerScreen extends StatelessWidget {
                   //     MaterialPageRoute(builder: (_) => const UserProfile()));
                 },
                 child: ListTile(
-                  leading: Icon(
-                    Icons.cloud,
-                    color: white,
-                  ),
+                  leading: Image.asset("assets/drawericon/user.png"),
                   title: Text(
                     "User",
                     style: GoogleFonts.poppins(
@@ -601,10 +580,7 @@ class DrawerScreen extends StatelessWidget {
                       MaterialPageRoute(builder: (_) => const Preferences()));
                 },
                 child: ListTile(
-                  leading: Icon(
-                    Icons.details,
-                    color: white,
-                  ),
+                  leading: Image.asset("assets/drawericon/prefrences.png"),
                   title: Text(
                     "Preferences",
                     style: GoogleFonts.poppins(
@@ -621,10 +597,7 @@ class DrawerScreen extends StatelessWidget {
                       MaterialPageRoute(builder: (_) => const SettingsPage()));
                 },
                 child: ListTile(
-                  leading: Icon(
-                    Icons.settings,
-                    color: white,
-                  ),
+                  leading: Image.asset("assets/drawericon/prefrences.png"),
                   title: Text(
                     "Settings",
                     style: GoogleFonts.poppins(
@@ -652,7 +625,7 @@ class DrawerScreen extends StatelessWidget {
                 child: ListTile(
                     leading: Icon(
                       Icons.logout_rounded,
-                      color: white,
+                      color: white.withOpacity(0.7),
                     ),
                     title: Text(
                       "LogOut",

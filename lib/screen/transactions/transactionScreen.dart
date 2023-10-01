@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:material_segmented_control/material_segmented_control.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
+import 'package:snabb_business/screen/dashboardScreen.dart';
+import 'package:snabb_business/screen/homeScreen.dart';
 import 'package:snabb_business/screen/transactions/daily_transactions.dart';
 import 'package:snabb_business/screen/transactions/monthly_transactions.dart';
 import 'package:snabb_business/screen/transactions/yearly_transactions.dart';
@@ -93,7 +95,55 @@ class _TransactionScreenState extends State<TransactionScreen> {
             color: Colors.white,
             height: height,
             child: Column(children: [
-              AppBarWidgt(text: "Transactions"),
+              SizedBox(
+                height: height * 0.10,
+                // color: Colors.red,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: width * 0.7,
+                      height: height * 0.02,
+                    ),
+                    Card(
+                      elevation: 10,
+                      child: SizedBox(
+                          height: height * 0.06,
+                          width: width * 0.8,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                InkWell(
+                                    onTap: () {
+                                      Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                DashBoardScreen(),
+                                          ),
+                                          (route) => false);
+                                    },
+                                    child: const Icon(Icons.arrow_back_ios)),
+                                Expanded(
+                                  child: Container(
+                                      height: height,
+                                      width: width,
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Transactions",
+                                        style: GoogleFonts.poppins(
+                                            color: darkblue,
+                                            fontSize: width * 0.032,
+                                            fontWeight: FontWeight.w600),
+                                      )),
+                                ),
+                              ],
+                            ),
+                          )),
+                    ),
+                  ],
+                ),
+              ),
               SizedBox(
                 height: height * 0.85,
                 width: width,

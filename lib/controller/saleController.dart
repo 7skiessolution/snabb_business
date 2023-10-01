@@ -45,16 +45,16 @@ class SaleController extends GetxController {
     update();
   }
 
-  Future<void> showPaidDilogue(
+  Future<void> companyDialog(
       BuildContext context, double height, double width) {
     return showDialog(
       context: context,
-      builder: (context) {
+      builder: (dc) {
         return AlertDialog(
           content: Container(
             color: Colors.grey.shade300,
-            height: height * 0.7,
-            width: width * 0.8,
+            height: height * 0.55,
+            width: width,
             child: Stack(
               children: [
                 Container(
@@ -69,16 +69,13 @@ class SaleController extends GetxController {
                   height: height * 0.1,
                   width: width,
                   color: Colors.blue[900]!.withOpacity(0.9),
-                  child: Padding(
-                    padding:
-                        EdgeInsets.only(top: height * 0.03, left: width * 0.02),
-                    child: Text(
-                      "Paid As ",
-                      style: TextStyle(
-                          color: white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Select Company",
+                    style: GoogleFonts.poppins(
+                        color: white,
+                        fontSize: width * 0.035,
+                        fontWeight: FontWeight.w600),
                   ),
                 ),
                 Padding(
@@ -88,7 +85,153 @@ class SaleController extends GetxController {
                       elevation: 10,
                       shadowColor: Colors.blue[900],
                       child: Container(
-                        height: height * 0.65,
+                          height: height * 0.5,
+                          width: width,
+                          color: white,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: height * 0.01,
+                                ),
+                                Expanded(
+                                  child: ListView.builder(
+                                    itemCount:
+                                        HomeController.to.companyList.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return InkWell(
+                                        onTap: () {
+                                          companyName = HomeController
+                                              .to.companyList[index].name
+                                              .toString();
+                                          companyid = HomeController
+                                              .to.companyList[index].companyId
+                                              .toString();
+                                          update();
+                                          Navigator.pop(context);
+                                        },
+                                        child: Card(
+                                          elevation: 10,
+                                          shadowColor: Colors.blue[900],
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: Container(
+                                            height: height * 0.1,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    HomeController
+                                                        .to
+                                                        .companyList[index]
+                                                        .name!,
+                                                    style: GoogleFonts.poppins(
+                                                        color: blue,
+                                                        fontSize: width * 0.035,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                  Text(
+                                                    HomeController
+                                                        .to
+                                                        .companyList[index]
+                                                        .email!,
+                                                    style: GoogleFonts.poppins(
+                                                        color: lightgray,
+                                                        fontSize: width * 0.03,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                  Text(
+                                                    HomeController
+                                                        .to
+                                                        .companyList[index]
+                                                        .telePhone!,
+                                                    style: GoogleFonts.poppins(
+                                                        color: lightgray,
+                                                        fontSize: width * 0.03,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> showPaidDilogue(
+      BuildContext context, double height, double width) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          child: Container(
+            color: Colors.grey.shade300,
+            height: height * 0.8,
+            width: width * 0.9,
+            child: Stack(
+              children: [
+                Container(
+                  height: height * 0.1,
+                  width: width,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage("images/dollar.jpg"))),
+                ),
+                Container(
+                  height: height * 0.1,
+                  width: width,
+                  color: Colors.blue[900]!.withOpacity(0.9),
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Paid As ",
+                    style: GoogleFonts.poppins(
+                        color: white,
+                        fontSize: width * 0.035,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: height * 0.07),
+                  child: Center(
+                    child: Card(
+                      elevation: 10,
+                      shadowColor: Colors.blue[900],
+                      child: Container(
+                        height: height * 0.7,
                         width: width * 0.7,
                         color: white,
                         child: Center(
@@ -115,28 +258,39 @@ class SaleController extends GetxController {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              "Total Invoice Amount",
-                                              style: TextStyle(
-                                                fontSize: width * 0.025,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              "Total Amount".toUpperCase(),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.03,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
-                                                height: height * 0.055,
+                                                height: height * 0.045,
                                                 width: width * 0.5,
                                                 child: TextFormField(
                                                   controller: invoiceAmount,
+                                                  style: GoogleFonts.poppins(
+                                                      // color:Colors.blue[900],
+                                                      fontSize: width * 0.025,
+                                                      fontWeight:
+                                                          FontWeight.w400),
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.only(
+                                                              left:
+                                                                  width * 0.02,
+                                                              top: height *
+                                                                  0.01),
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
-                                                      hintStyle: TextStyle(
-                                                          fontSize:
-                                                              width * 0.025,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
+                                                      hintStyle:
+                                                          GoogleFonts.poppins(
+                                                              // color:Colors.blue[900],
+                                                              fontSize:
+                                                                  width * 0.025,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
                                                       disabledBorder:
                                                           OutlineInputBorder(
                                                         borderRadius:
@@ -213,31 +367,42 @@ class SaleController extends GetxController {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              "Bank",
-                                              style: TextStyle(
-                                                fontSize: width * 0.025,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              "Bank".toUpperCase(),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.03,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
-                                                height: height * 0.055,
+                                                height: height * 0.045,
                                                 width: width * 0.5,
                                                 child: TextFormField(
                                                   controller: bankamount,
                                                   onChanged: (value) {
                                                     getBalance();
                                                   },
+                                                  style: GoogleFonts.poppins(
+                                                      // color:Colors.blue[900],
+                                                      fontSize: width * 0.025,
+                                                      fontWeight:
+                                                          FontWeight.w400),
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.only(
+                                                              left:
+                                                                  width * 0.02,
+                                                              top: height *
+                                                                  0.01),
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
-                                                      hintStyle: TextStyle(
-                                                          fontSize:
-                                                              width * 0.025,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
+                                                      hintStyle:
+                                                          GoogleFonts.poppins(
+                                                              color: lightgray,
+                                                              fontSize:
+                                                                  width * 0.025,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
                                                       disabledBorder:
                                                           OutlineInputBorder(
                                                         borderRadius:
@@ -314,31 +479,42 @@ class SaleController extends GetxController {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              "Cash",
-                                              style: TextStyle(
-                                                fontSize: width * 0.025,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              "Cash".toUpperCase(),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.03,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
-                                                height: height * 0.055,
+                                                height: height * 0.045,
                                                 width: width * 0.5,
                                                 child: TextFormField(
                                                   controller: cashamount,
                                                   onChanged: (value) {
                                                     getBalance();
                                                   },
+                                                  style: GoogleFonts.poppins(
+                                                      // color:Colors.blue[900],
+                                                      fontSize: width * 0.025,
+                                                      fontWeight:
+                                                          FontWeight.w400),
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.only(
+                                                              left:
+                                                                  width * 0.02,
+                                                              top: height *
+                                                                  0.01),
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
-                                                      hintStyle: TextStyle(
-                                                          fontSize:
-                                                              width * 0.025,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
+                                                      hintStyle:
+                                                          GoogleFonts.poppins(
+                                                              color: lightgray,
+                                                              fontSize:
+                                                                  width * 0.025,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
                                                       disabledBorder:
                                                           OutlineInputBorder(
                                                         borderRadius:
@@ -415,31 +591,42 @@ class SaleController extends GetxController {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              "Other",
-                                              style: TextStyle(
-                                                fontSize: width * 0.025,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              "Other".toUpperCase(),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.03,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
-                                                height: height * 0.055,
+                                                height: height * 0.045,
                                                 width: width * 0.5,
                                                 child: TextFormField(
                                                   controller: otheramount,
                                                   onChanged: (value) {
                                                     getBalance();
                                                   },
+                                                  style: GoogleFonts.poppins(
+                                                      // color:Colors.blue[900],
+                                                      fontSize: width * 0.025,
+                                                      fontWeight:
+                                                          FontWeight.w400),
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.only(
+                                                              left:
+                                                                  width * 0.02,
+                                                              top: height *
+                                                                  0.01),
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
-                                                      hintStyle: TextStyle(
-                                                          fontSize:
-                                                              width * 0.025,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
+                                                      hintStyle:
+                                                          GoogleFonts.poppins(
+                                                              color: lightgray,
+                                                              fontSize:
+                                                                  width * 0.025,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
                                                       disabledBorder:
                                                           OutlineInputBorder(
                                                         borderRadius:
@@ -516,14 +703,15 @@ class SaleController extends GetxController {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              "Credit Transaction",
-                                              style: TextStyle(
-                                                fontSize: width * 0.025,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              "Credit Transaction"
+                                                  .toUpperCase(),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.03,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
-                                                height: height * 0.055,
+                                                height: height * 0.045,
                                                 width: width * 0.5,
                                                 child: TextFormField(
                                                   controller:
@@ -531,17 +719,28 @@ class SaleController extends GetxController {
                                                   onChanged: (value) {
                                                     getBalance();
                                                   },
+                                                  style: GoogleFonts.poppins(
+                                                      // color:Colors.blue[900],
+                                                      fontSize: width * 0.025,
+                                                      fontWeight:
+                                                          FontWeight.w400),
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.only(
+                                                              left:
+                                                                  width * 0.02,
+                                                              top: height *
+                                                                  0.01),
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
-                                                      hintStyle: TextStyle(
-                                                          fontSize:
-                                                              width * 0.025,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
+                                                      hintStyle:
+                                                          GoogleFonts.poppins(
+                                                              color: lightgray,
+                                                              fontSize:
+                                                                  width * 0.025,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
                                                       disabledBorder:
                                                           OutlineInputBorder(
                                                         borderRadius:
@@ -618,11 +817,11 @@ class SaleController extends GetxController {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              "Return Date",
-                                              style: TextStyle(
-                                                fontSize: width * 0.025,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              "Return Date".toUpperCase(),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.03,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             InkWell(
                                               onTap: () async {
@@ -643,28 +842,39 @@ class SaleController extends GetxController {
                                                 }
                                               },
                                               child: SizedBox(
-                                                  height: height * 0.055,
+                                                  height: height * 0.045,
                                                   width: width * 0.5,
                                                   child: TextFormField(
-                                                    style: const TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: Colors.black),
                                                     enabled: false,
                                                     controller:
                                                         creditReturnDate,
+                                                    style: GoogleFonts.poppins(
+                                                        // color:Colors.blue[900],
+                                                        fontSize: width * 0.025,
+                                                        fontWeight:
+                                                            FontWeight.w400),
                                                     decoration: InputDecoration(
-                                                        border:
-                                                            InputBorder.none,
+                                                        contentPadding:
+                                                            EdgeInsets.only(
+                                                                left:
+                                                                    width *
+                                                                        0.02,
+                                                                top:
+                                                                    height *
+                                                                        0.01),
+                                                        border: InputBorder
+                                                            .none,
                                                         hintText: "Date",
-                                                        hintStyle: TextStyle(
-                                                            fontSize:
-                                                                width * 0.025,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.5)),
+                                                        hintStyle: GoogleFonts
+                                                            .poppins(
+                                                                color:
+                                                                    lightgray,
+                                                                fontSize:
+                                                                    width *
+                                                                        0.025,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400),
                                                         disabledBorder:
                                                             OutlineInputBorder(
                                                           borderRadius:
@@ -742,29 +952,40 @@ class SaleController extends GetxController {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              "Balance Amount",
-                                              style: TextStyle(
-                                                fontSize: width * 0.025,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              "Balance Amount".toUpperCase(),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.03,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
-                                              height: height * 0.055,
+                                              height: height * 0.045,
                                               width: width * 0.5,
                                               child: IgnorePointer(
                                                 child: TextFormField(
                                                   controller: balanceAmount,
+                                                  style: GoogleFonts.poppins(
+                                                      // color:Colors.blue[900],
+                                                      fontSize: width * 0.025,
+                                                      fontWeight:
+                                                          FontWeight.w400),
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.only(
+                                                              left:
+                                                                  width * 0.02,
+                                                              top: height *
+                                                                  0.01),
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
-                                                      hintStyle: TextStyle(
-                                                          fontSize:
-                                                              width * 0.025,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
+                                                      hintStyle:
+                                                          GoogleFonts.poppins(
+                                                              color: lightgray,
+                                                              fontSize:
+                                                                  width * 0.025,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
                                                       disabledBorder:
                                                           OutlineInputBorder(
                                                         borderRadius:
@@ -825,6 +1046,30 @@ class SaleController extends GetxController {
                                       ],
                                     ),
                                   ),
+                                  SizedBox(height: height * 0.02),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Card(
+                                      child: Container(
+                                        width: width * 0.2,
+                                        height: height * 0.05,
+                                        decoration: BoxDecoration(
+                                            color: blue,
+                                            borderRadius:
+                                                BorderRadius.circular(3)),
+                                        child: Center(
+                                            child: Text(
+                                          "Add",
+                                          style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
+                                        )),
+                                      ),
+                                    ),
+                                  )
                                 ]),
                           ),
                         ),
@@ -842,20 +1087,19 @@ class SaleController extends GetxController {
 
   Future<void> showSaleMethodDilogue(
       BuildContext context, double height, double width) {
-    company = true;
     return showDialog(
       context: context,
       builder: (context) {
         return StatefulBuilder(builder: (context, st) {
-          return AlertDialog(
-            content: Container(
+          return Dialog(
+            child: Container(
               color: Colors.grey.shade300,
-              height: height * 0.35,
+              height: company ? height * 0.6 : height * 0.3,
               width: width * 0.8,
               child: Stack(
                 children: [
                   Container(
-                    height: height * 0.15,
+                    height: height * 0.1,
                     width: width,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
@@ -863,19 +1107,16 @@ class SaleController extends GetxController {
                             image: AssetImage("images/dollar.jpg"))),
                   ),
                   Container(
-                    height: height * 0.15,
+                    height: height * 0.1,
                     width: width,
                     color: Colors.blue[900]!.withOpacity(0.9),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          top: height * 0.03, left: width * 0.02),
-                      child: Text(
-                        "Sale Method",
-                        style: TextStyle(
-                            color: white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold),
-                      ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Select Sale Method",
+                      style: GoogleFonts.poppins(
+                          color: white,
+                          fontSize: width * 0.035,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                   Padding(
@@ -885,7 +1126,7 @@ class SaleController extends GetxController {
                         elevation: 10,
                         shadowColor: Colors.blue[900],
                         child: Container(
-                          height: height * 0.3,
+                          height: company ? height * 0.5 : height * 0.2,
                           width: width * 0.7,
                           color: white,
                           child: SingleChildScrollView(
@@ -899,14 +1140,18 @@ class SaleController extends GetxController {
                                     onTap: () {
                                       companyName = "Daily Sales";
                                       companyid = null;
-                                      st(() {});
+                                      update();
+                                      Navigator.pop(context);
                                     },
                                     child: SizedBox(
                                       height: height * 0.08,
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
+                                            MainAxisAlignment.start,
                                         children: [
+                                          SizedBox(
+                                            width: width * 0.05,
+                                          ),
                                           SizedBox(
                                             width: width * 0.11,
                                             height: height * 0.11,
@@ -915,13 +1160,14 @@ class SaleController extends GetxController {
                                                     "images/dailysale.png")),
                                           ),
                                           SizedBox(
-                                            width: width * 0.1,
+                                            width: width * 0.02,
                                           ),
-                                          const Text(
+                                          Text(
                                             "Daily Sales",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                            style: GoogleFonts.poppins(
+                                                // color: white,
+                                                fontSize: width * 0.035,
+                                                fontWeight: FontWeight.w600),
                                           ),
                                           SizedBox(
                                             width: width * 0.2,
@@ -944,8 +1190,11 @@ class SaleController extends GetxController {
                                       height: height * 0.08,
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
+                                            MainAxisAlignment.start,
                                         children: [
+                                          SizedBox(
+                                            width: width * 0.05,
+                                          ),
                                           SizedBox(
                                             width: width * 0.11,
                                             height: height * 0.11,
@@ -954,16 +1203,17 @@ class SaleController extends GetxController {
                                                     "images/companylogo.png")),
                                           ),
                                           SizedBox(
-                                            width: width * 0.1,
+                                            width: width * 0.02,
                                           ),
-                                          const Text(
+                                          Text(
                                             "Company",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                            style: GoogleFonts.poppins(
+                                                // color: white,
+                                                fontSize: width * 0.035,
+                                                fontWeight: FontWeight.w600),
                                           ),
                                           SizedBox(
-                                            width: width * 0.13,
+                                            width: width * 0.2,
                                           ),
                                           Icon(company
                                               ? Icons.arrow_drop_down_sharp
@@ -972,465 +1222,338 @@ class SaleController extends GetxController {
                                       ),
                                     ),
                                   ),
-                                  !company
-                                      ? InkWell(
-                                          onTap: () {
-                                            showDialog(
-                                              context: context,
-                                              builder: (dc) {
-                                                return AlertDialog(
-                                                  content: Container(
-                                                    color: Colors.grey.shade300,
-                                                    height: height * 0.55,
-                                                    width: width,
-                                                    child: Stack(
-                                                      children: [
-                                                        Container(
-                                                          height: height * 0.15,
-                                                          width: width,
-                                                          decoration: const BoxDecoration(
-                                                              image: DecorationImage(
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                  image: AssetImage(
-                                                                      "images/dollar.jpg"))),
-                                                        ),
-                                                        Container(
-                                                          height: height * 0.15,
-                                                          width: width,
-                                                          color: Colors
-                                                              .blue[900]!
-                                                              .withOpacity(0.9),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsets.only(
-                                                                    top:
-                                                                        height *
-                                                                            0.03,
-                                                                    left: width *
-                                                                        0.02),
-                                                            child: Text(
-                                                              "Select Company",
-                                                              style: TextStyle(
-                                                                  color: white,
-                                                                  fontSize: 15,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  top: height *
-                                                                      0.07),
-                                                          child: Center(
-                                                            child: Card(
-                                                              elevation: 10,
-                                                              shadowColor:
-                                                                  Colors.blue[
-                                                                      900],
-                                                              child: Container(
-                                                                  height:
-                                                                      height *
-                                                                          0.5,
-                                                                  width: width,
-                                                                  color: white,
-                                                                  child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        const EdgeInsets.all(
-                                                                            8.0),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .start,
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .center,
-                                                                      children: [
-                                                                        SizedBox(
-                                                                          height:
-                                                                              height * 0.01,
-                                                                        ),
-                                                                        Expanded(
-                                                                          child:
-                                                                              ListView.builder(
-                                                                            itemCount:
-                                                                                HomeController.to.companyList.length,
-                                                                            itemBuilder:
-                                                                                (BuildContext context, int index) {
-                                                                              return Padding(
-                                                                                padding: const EdgeInsets.all(8.0),
-                                                                                child: InkWell(
-                                                                                  onTap: () {
-                                                                                    companyName = HomeController.to.companyList[index].name.toString();
-                                                                                    companyid = HomeController.to.companyList[index].companyId.toString();
-
-                                                                                    Navigator.pop(context);
-                                                                                    st(
-                                                                                      () {},
-                                                                                    );
-                                                                                  },
-                                                                                  child: Card(
-                                                                                    elevation: 10,
-                                                                                    shadowColor: Colors.blue[900],
-                                                                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                                                                                    child: Container(
-                                                                                      height: height * 0.1,
-                                                                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                                                                                      child: Padding(
-                                                                                        padding: const EdgeInsets.all(8.0),
-                                                                                        child: Column(
-                                                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                          children: [
-                                                                                            Text(
-                                                                                              HomeController.to.companyList[index].name!,
-                                                                                              style: TextStyle(fontSize: width * 0.035, fontWeight: FontWeight.bold, color: Colors.blue[900]),
-                                                                                            ),
-                                                                                            Text(
-                                                                                              HomeController.to.companyList[index].email!,
-                                                                                              style: TextStyle(fontSize: width * 0.03, color: Colors.black),
-                                                                                            ),
-                                                                                            Text(
-                                                                                              HomeController.to.companyList[index].telePhone!,
-                                                                                              style: TextStyle(fontSize: width * 0.035, color: Colors.black),
-                                                                                            ),
-                                                                                          ],
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              );
-                                                                            },
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  )),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                );
-                                              },
-                                            );
-                                          },
-                                          child: const Text(
-                                            "Existing Company",
-                                            style:
-                                                TextStyle(color: Colors.grey),
+                                  company
+                                      ? Padding(
+                                          padding: EdgeInsets.only(
+                                              right: width * 0.08),
+                                          child: InkWell(
+                                            onTap: () {
+                                              companyDialog(
+                                                      context, height, width)
+                                                  .then((value) {
+                                                Navigator.pop(context);
+                                              });
+                                            },
+                                            child: Text(
+                                              "Existing Company",
+                                              style: GoogleFonts.poppins(
+                                                  color: lightgray,
+                                                  fontSize: width * 0.03,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
                                           ),
                                         )
                                       : const SizedBox(),
                                   SizedBox(
                                     height: height * 0.01,
                                   ),
-                                  !company
-                                      ? InkWell(
-                                          onTap: () {
-                                            showDialog(
-                                              context: context,
-                                              builder: (dc) {
-                                                return AlertDialog(
-                                                  content: Container(
-                                                    color: Colors.grey.shade300,
-                                                    height: height * 0.55,
-                                                    width: width * 0.8,
-                                                    child: Stack(
-                                                      children: [
-                                                        Container(
-                                                          height: height * 0.15,
-                                                          width: width,
-                                                          decoration: const BoxDecoration(
-                                                              image: DecorationImage(
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                  image: AssetImage(
-                                                                      "images/dollar.jpg"))),
-                                                        ),
-                                                        Container(
-                                                          height: height * 0.15,
-                                                          width: width,
-                                                          color: Colors
-                                                              .blue[900]!
-                                                              .withOpacity(0.9),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsets.only(
-                                                                    top:
-                                                                        height *
-                                                                            0.03,
-                                                                    left: width *
-                                                                        0.02),
-                                                            child: Text(
-                                                              "Add Company",
-                                                              style: TextStyle(
-                                                                  color: white,
-                                                                  fontSize: 15,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  top: height *
-                                                                      0.07),
-                                                          child: Center(
-                                                            child: Card(
-                                                              elevation: 10,
-                                                              shadowColor:
-                                                                  Colors.blue[
-                                                                      900],
-                                                              child: Container(
-                                                                  height:
-                                                                      height *
-                                                                          0.5,
-                                                                  width: width *
-                                                                      0.7,
-                                                                  color: white,
-                                                                  child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        const EdgeInsets.all(
-                                                                            8.0),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .start,
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .center,
-                                                                      children: [
-                                                                        SizedBox(
-                                                                          height:
-                                                                              height * 0.02,
-                                                                        ),
-                                                                        Text(
-                                                                          "Information",
-                                                                          style: GoogleFonts.lexend(
-                                                                              color: Colors.black,
-                                                                              fontSize: width * 0.04,
-                                                                              fontWeight: FontWeight.bold),
-                                                                        ),
-                                                                        SizedBox(
-                                                                          height:
-                                                                              height * 0.04,
-                                                                        ),
-                                                                        SizedBox(
-                                                                          width:
-                                                                              width * 0.84,
-                                                                          child:
-                                                                              TextFormField(
-                                                                            autovalidateMode:
-                                                                                AutovalidateMode.onUserInteraction,
-                                                                            controller:
-                                                                                mName,
-                                                                            keyboardType:
-                                                                                TextInputType.text,
-                                                                            decoration:
-                                                                                InputDecoration(
-                                                                              errorStyle: const TextStyle(color: Colors.black),
-                                                                              contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                                                                              fillColor: Colors.grey,
-                                                                              hintText: "Company Name",
-                                                                              labelText: "Enter Name",
-                                                                              alignLabelWithHint: true,
-                                                                              enabledBorder: OutlineInputBorder(
-                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                borderSide: BorderSide(color: blue
-                                                                                    //  provider.brightness ==
-                                                                                    //         AppBrightness.dark
-                                                                                    //     ? AppTheme.colorWhite
-                                                                                    //     : AppTheme.colorPrimary,
-                                                                                    ),
-                                                                              ),
-                                                                              focusedBorder: OutlineInputBorder(
-                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                borderSide: BorderSide(color: blue
-                                                                                    // provider.brightness ==
-                                                                                    //         AppBrightness.dark
-                                                                                    //     ? AppTheme.colorWhite
-                                                                                    //   : AppTheme.colorPrimary,
-                                                                                    ),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        SizedBox(
-                                                                          height:
-                                                                              height * 0.015,
-                                                                        ),
-                                                                        SizedBox(
-                                                                          width:
-                                                                              width * 0.84,
-                                                                          child:
-                                                                              TextFormField(
-                                                                            autovalidateMode:
-                                                                                AutovalidateMode.onUserInteraction,
-                                                                            controller:
-                                                                                mEmail,
-                                                                            keyboardType:
-                                                                                TextInputType.text,
-                                                                            decoration:
-                                                                                InputDecoration(
-                                                                              errorStyle: const TextStyle(color: Colors.black),
-                                                                              contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                                                                              fillColor: Colors.grey,
-                                                                              hintText: "Company Email",
-                                                                              labelText: "Enter Email",
-                                                                              alignLabelWithHint: true,
-                                                                              enabledBorder: OutlineInputBorder(
-                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                borderSide: BorderSide(color: blue
-                                                                                    //  provider.brightness ==
-                                                                                    //         AppBrightness.dark
-                                                                                    //     ? AppTheme.colorWhite
-                                                                                    //     : AppTheme.colorPrimary,
-                                                                                    ),
-                                                                              ),
-                                                                              focusedBorder: OutlineInputBorder(
-                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                borderSide: BorderSide(color: blue
-                                                                                    // provider.brightness ==
-                                                                                    //         AppBrightness.dark
-                                                                                    //     ? AppTheme.colorWhite
-                                                                                    //   : AppTheme.colorPrimary,
-                                                                                    ),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        SizedBox(
-                                                                          height:
-                                                                              height * 0.015,
-                                                                        ),
-                                                                        SizedBox(
-                                                                          width:
-                                                                              width * 0.84,
-                                                                          child:
-                                                                              TextFormField(
-                                                                            autovalidateMode:
-                                                                                AutovalidateMode.onUserInteraction,
-                                                                            controller:
-                                                                                nPhone,
-                                                                            keyboardType:
-                                                                                TextInputType.text,
-                                                                            decoration:
-                                                                                InputDecoration(
-                                                                              errorStyle: const TextStyle(color: Colors.black),
-                                                                              contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                                                                              fillColor: Colors.grey,
-                                                                              hintText: "Phone Number",
-                                                                              labelText: "Phone Number",
-                                                                              alignLabelWithHint: true,
-                                                                              enabledBorder: OutlineInputBorder(
-                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                borderSide: BorderSide(color: blue
-                                                                                    //  provider.brightness ==
-                                                                                    //         AppBrightness.dark
-                                                                                    //     ? AppTheme.colorWhite
-                                                                                    //     : AppTheme.colorPrimary,
-                                                                                    ),
-                                                                              ),
-                                                                              focusedBorder: OutlineInputBorder(
-                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                borderSide: BorderSide(color: blue
-                                                                                    // provider.brightness ==
-                                                                                    //         AppBrightness.dark
-                                                                                    //     ? AppTheme.colorWhite
-                                                                                    //   : AppTheme.colorPrimary,
-                                                                                    ),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        SizedBox(
-                                                                          height:
-                                                                              height * 0.04,
-                                                                        ),
-                                                                        Card(
-                                                                          elevation:
-                                                                              5,
-                                                                          shape:
-                                                                              RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
-                                                                          child:
-                                                                              InkWell(
-                                                                            onTap:
-                                                                                () {
-                                                                              Map<String, dynamic> map = {
-                                                                                "name": mName.text,
-                                                                                "email": mEmail.text,
-                                                                                "telePhone": nPhone.text,
-                                                                              };
-
-                                                                              HomeController.to.addCompanyData(map, dc).then((value) {
-                                                                                mName.clear();
-                                                                                mEmail.clear();
-                                                                                nPhone.clear();
-                                                                              });
-                                                                            },
-                                                                            child:
-                                                                                Container(
-                                                                              height: height * 0.06,
-                                                                              width: width * 0.45,
-                                                                              decoration: BoxDecoration(color: blue, borderRadius: BorderRadius.circular(7)),
-                                                                              child: Center(
-                                                                                child: Text(
-                                                                                  "Add Company",
-                                                                                  style: TextStyle(fontSize: width * 0.03, color: Colors.white, fontWeight: FontWeight.bold),
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  )),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                );
-                                              },
-                                            );
-                                          },
-                                          child: const Text(
+                                  company
+                                      ? Padding(
+                                          padding: EdgeInsets.only(
+                                              right: width * 0.12),
+                                          child: Text(
                                             "New Company",
-                                            style:
-                                                TextStyle(color: Colors.grey),
+                                            style: GoogleFonts.poppins(
+                                                color: lightgray,
+                                                fontSize: width * 0.03,
+                                                fontWeight: FontWeight.w400),
                                           ),
                                         )
                                       : const SizedBox(),
-                                  SizedBox(
-                                    height: height * 0.01,
-                                  ),
-                                  Row(
-                                    children: [
-                                      const Text(
-                                        " Name : ",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      Text(
-                                        companyName,
-                                        style: const TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  )
+                                  company
+                                      ? Container(
+                                          height: height * 0.5,
+                                          width: width * 0.7,
+                                          color: white,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                SizedBox(
+                                                  width: width * 0.5,
+                                                  height: height * 0.045,
+                                                  child: TextFormField(
+                                                    autovalidateMode:
+                                                        AutovalidateMode
+                                                            .onUserInteraction,
+                                                    controller: mName,
+                                                    style: GoogleFonts.poppins(
+                                                        // color:Colors.blue[900],
+                                                        fontSize: width * 0.025,
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                    keyboardType:
+                                                        TextInputType.text,
+                                                    decoration: InputDecoration(
+                                                      errorStyle:
+                                                          const TextStyle(
+                                                              color:
+                                                                  Colors.black),
+                                                      contentPadding:
+                                                          const EdgeInsets
+                                                                  .symmetric(
+                                                              vertical: 0,
+                                                              horizontal: 20),
+                                                      fillColor: Colors.grey,
+                                                      hintText: "Company Name",
+                                                      hintStyle:
+                                                          GoogleFonts.poppins(
+                                                              // color:Colors.blue[900],
+                                                              fontSize:
+                                                                  width * 0.025,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
+                                                      labelText: "Enter Name",
+                                                      alignLabelWithHint: true,
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: lightgray
+                                                            //  provider.brightness ==
+                                                            //         AppBrightness.dark
+                                                            //     ? AppTheme.colorWhite
+                                                            //     : AppTheme.colorPrimary,
+                                                            ),
+                                                      ),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: lightgray
+                                                            // provider.brightness ==
+                                                            //         AppBrightness.dark
+                                                            //     ? AppTheme.colorWhite
+                                                            //   : AppTheme.colorPrimary,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: height * 0.01,
+                                                ),
+                                                SizedBox(
+                                                  width: width * 0.5,
+                                                  height: height * 0.045,
+                                                  child: TextFormField(
+                                                    autovalidateMode:
+                                                        AutovalidateMode
+                                                            .onUserInteraction,
+                                                    controller: mEmail,
+                                                    style: GoogleFonts.poppins(
+                                                        // color:Colors.blue[900],
+                                                        fontSize: width * 0.025,
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                    keyboardType:
+                                                        TextInputType.text,
+                                                    decoration: InputDecoration(
+                                                      errorStyle:
+                                                          const TextStyle(
+                                                              color:
+                                                                  Colors.black),
+                                                      contentPadding:
+                                                          const EdgeInsets
+                                                                  .symmetric(
+                                                              vertical: 0,
+                                                              horizontal: 20),
+                                                      fillColor: Colors.grey,
+                                                      hintText: "Company Email",
+                                                      labelText: "Enter Email",
+                                                      hintStyle:
+                                                          GoogleFonts.poppins(
+                                                              // color:Colors.blue[900],
+                                                              fontSize:
+                                                                  width * 0.025,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
+                                                      alignLabelWithHint: true,
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: lightgray
+                                                            //  provider.brightness ==
+                                                            //         AppBrightness.dark
+                                                            //     ? AppTheme.colorWhite
+                                                            //     : AppTheme.colorPrimary,
+                                                            ),
+                                                      ),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: lightgray
+                                                            // provider.brightness ==
+                                                            //         AppBrightness.dark
+                                                            //     ? AppTheme.colorWhite
+                                                            //   : AppTheme.colorPrimary,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: height * 0.01,
+                                                ),
+                                                SizedBox(
+                                                  width: width * 0.5,
+                                                  height: height * 0.045,
+                                                  child: TextFormField(
+                                                    autovalidateMode:
+                                                        AutovalidateMode
+                                                            .onUserInteraction,
+                                                    controller: nPhone,
+                                                    style: GoogleFonts.poppins(
+                                                        // color:Colors.blue[900],
+                                                        fontSize: width * 0.025,
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                    keyboardType:
+                                                        TextInputType.text,
+                                                    decoration: InputDecoration(
+                                                      errorStyle:
+                                                          const TextStyle(
+                                                              color:
+                                                                  Colors.black),
+                                                      contentPadding:
+                                                          const EdgeInsets
+                                                                  .symmetric(
+                                                              vertical: 0,
+                                                              horizontal: 20),
+                                                      fillColor: Colors.grey,
+                                                      hintText: "Phone Number",
+                                                      labelText: "Phone Number",
+                                                      hintStyle:
+                                                          GoogleFonts.poppins(
+                                                              // color:Colors.blue[900],
+                                                              fontSize:
+                                                                  width * 0.025,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
+                                                      alignLabelWithHint: true,
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: lightgray),
+                                                      ),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: lightgray),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: height * 0.02,
+                                                ),
+                                                Card(
+                                                  elevation: 5,
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              7)),
+                                                  child: InkWell(
+                                                    onTap: () {
+                                                      Map<String, dynamic> map =
+                                                          {
+                                                        "name": mName.text,
+                                                        "email": mEmail.text,
+                                                        "telePhone":
+                                                            nPhone.text,
+                                                      };
+
+                                                      HomeController.to
+                                                          .addCompanyData(
+                                                              map, context, "")
+                                                          .then((value) {
+                                                        mName.clear();
+                                                        mEmail.clear();
+                                                        nPhone.clear();
+                                                        Future.delayed(
+                                                            const Duration(
+                                                                seconds: 1),
+                                                            () {
+                                                          companyDialog(context,
+                                                                  height, width)
+                                                              .then((value) {
+                                                            Navigator.pop(
+                                                                context);
+                                                          });
+                                                        });
+                                                      });
+                                                    },
+                                                    child: Container(
+                                                      height: height * 0.045,
+                                                      width: width * 0.45,
+                                                      decoration: BoxDecoration(
+                                                          color: blue,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(7)),
+                                                      child: Center(
+                                                        child: Text(
+                                                          "Add Company",
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.03,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ))
+                                      : const SizedBox()
+
+                                  // SizedBox(
+                                  //   height: height * 0.01,
+                                  // ),
+                                  // Row(
+                                  //   children: [
+                                  //     const Text(
+                                  //       " Name : ",
+                                  //       style: TextStyle(color: Colors.black),
+                                  //     ),
+                                  //     Text(
+                                  //       companyName,
+                                  //       style: const TextStyle(
+                                  //           color: Colors.black,
+                                  //           fontWeight: FontWeight.bold),
+                                  //     ),
+                                  //   ],
+                                  // )
                                 ]),
                           ),
                         ),

@@ -280,7 +280,8 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                 };
                                                 print(map);
                                                 HomeController.to
-                                                    .addCompanyData(map, dc)
+                                                    .addCompanyData(
+                                                        map, dc, "new")
                                                     .then((value) {
                                                   mName.clear();
                                                   mEmail.clear();

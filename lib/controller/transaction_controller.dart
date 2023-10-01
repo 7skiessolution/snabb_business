@@ -154,128 +154,81 @@ class TransactionController extends GetxController {
     }
   }
 
-  Future<void> selectImages(
-      BuildContext context, double height, double width) async {
-    final PermissionStatus status = await Permission.camera.request();
-    final PermissionStatus status1 = await Permission.storage.request();
-    if (status.isGranted && status1.isGranted) {
-      showModalBottomSheet(
-        context: context,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-        builder: (context) {
-          return SizedBox(
-            height: 200,
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.selectcategory,
-                    style: TextStyle(
-                        fontSize: width * 0.04,
-                        fontWeight: FontWeight.bold,
-                        color: darkblue!),
-                  ),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
-                  Text(
-                    AppLocalizations.of(context)!
-                        .doyouwanttoselectanimagefromgallery,
-                    style: TextStyle(
-                      fontSize: width * 0.035,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
-                  SizedBox(
-                    width: width * 0.9,
-                    height: height * 0.07,
-                    child: Row(
-                      children: [
-                        TextButton(
-                          child: Text(AppLocalizations.of(context)!.gallery,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: darkblue!)),
-                          onPressed: () async {
-                            pickImage = await picker.pickImage(
-                                source: ImageSource.gallery);
+  Future<void> selectImages(BuildContext context, double height, double width,
+      bool sourcetype) async {
+    if (sourcetype == true) {
+      final PermissionStatus status = await Permission.camera.request();
+      if (status.isGranted) {
+        pickImage = await picker.pickImage(source: ImageSource.camera);
+        print("my imge ${pickImage.toString()}");
 
-                            if (pickImage != null) {
-                              compressedFile =
-                                  await compressImage(pickImage as XFile);
-                            }
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                        TextButton(
-                          child: Text(AppLocalizations.of(context)!.camera,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: darkblue!)),
-                          onPressed: () async {
-                            Navigator.of(context).pop();
-                            pickImage = await picker.pickImage(
-                                source: ImageSource.camera);
-                            print("my imge ${pickImage.toString()}");
-
-                            if (pickImage != null) {
-                              pathFile = pickImage!.path;
-                              update();
-                              compressedFile = File(pickImage!.path);
-                            }
-                          },
-                        ),
-                        TextButton(
-                          child: Text(
-                            AppLocalizations.of(context)!.cancel,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w600, color: Colors.red),
-                          ),
-                          onPressed: () async {
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+        if (pickImage != null) {
+          pathFile = pickImage!.path;
+          update();
+          compressedFile = File(pickImage!.path);
+        }
+      } else {
+        // ignore: use_build_context_synchronously
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(
+                AppLocalizations.of(context)!.permissiondenied,
               ),
-            ),
-          );
-        },
-      );
-    } else {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text(
-              AppLocalizations.of(context)!.permissiondenied,
-            ),
-            content: Text(
-              AppLocalizations.of(context)!.pleasegrantpermissionphoto,
-            ),
-            actions: <Widget>[
-              TextButton(
-                child: Text(
-                  AppLocalizations.of(context)!.ok,
+              content: Text(
+                AppLocalizations.of(context)!.pleasegrantpermissionphoto,
+              ),
+              actions: <Widget>[
+                TextButton(
+                  child: Text(
+                    AppLocalizations.of(context)!.ok,
+                  ),
+                  onPressed: () async {
+                    await Permission.photos.request();
+                    Navigator.of(context).pop();
+                  },
                 ),
-                onPressed: () async {
-                  await Permission.photos.request();
-                  Navigator.of(context).pop();
-                },
+              ],
+            );
+          },
+        );
+      }
+    } else {
+      final PermissionStatus status1 = await Permission.storage.request();
+      if (status1.isGranted) {
+        pickImage = await picker.pickImage(source: ImageSource.gallery);
+
+        if (pickImage != null) {
+          compressedFile = await compressImage(pickImage as XFile);
+        }
+      } else {
+        // ignore: use_build_context_synchronously
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(
+                AppLocalizations.of(context)!.permissiondenied,
               ),
-            ],
-          );
-        },
-      );
+              content: Text(
+                AppLocalizations.of(context)!.pleasegrantpermissionphoto,
+              ),
+              actions: <Widget>[
+                TextButton(
+                  child: Text(
+                    AppLocalizations.of(context)!.ok,
+                  ),
+                  onPressed: () async {
+                    await Permission.photos.request();
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
     }
   }
 
@@ -568,7 +521,8 @@ class TransactionController extends GetxController {
           shadowColor: blue,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          content: Text("Are You Sure You Want To Delete This Transaction?"),
+          content:
+              const Text("Are You Sure You Want To Delete This Transaction?"),
           actions: <Widget>[
             TextButton(
               child: Text(
@@ -632,6 +586,67 @@ class TransactionController extends GetxController {
         if (res.statusCode == 200) {
           getUserYearTransactiondata();
         }
+      }
+    }
+
+    return confirmed;
+  }
+
+  Future<bool> recoverTransactiondata(
+    BuildContext context,
+    String id,
+    int type,
+  ) async {
+    bool confirmed = false;
+    bool confirmDelete = await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            AppLocalizations.of(context)!.confirmdeletion,
+            style: TextStyle(color: blue, fontWeight: FontWeight.bold),
+          ),
+          elevation: 10,
+          shadowColor: blue,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          content:
+              const Text("Are You Sure You Want To Recover This Transaction?"),
+          actions: <Widget>[
+            TextButton(
+              child: Text(
+                AppLocalizations.of(context)!.cancel,
+                style: const TextStyle(color: Colors.red),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+            ),
+            TextButton(
+              child: Text(
+                AppLocalizations.of(context)!.confirm,
+                style: TextStyle(color: blue),
+              ),
+              onPressed: () {
+                confirmed = true;
+                Navigator.of(context).pop(true);
+              },
+            ),
+          ],
+        );
+      },
+    );
+    if (confirmDelete) {
+      dio.Response res;
+      if (type == 0) {
+        res = await httpClient().delete("${StaticValues.recoverPurchase}$id");
+      } else if (type == 1) {
+        res = await httpClient().delete("${StaticValues.recoverSale}$id");
+      } else {
+        res = await httpClient().delete("${StaticValues.recoverExpense}$id");
+      }
+      if (res.statusCode == 200) {
+        getuserDeletedTransaction();
       }
     }
 

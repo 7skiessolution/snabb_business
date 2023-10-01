@@ -288,9 +288,27 @@ class _SaleScreenState extends State<SaleScreen> {
                                                   fontSize: width * 0.035,
                                                   fontWeight: FontWeight.w600),
                                             ),
-                                            SizedBox(
-                                              width: width * 0.42,
-                                            ),
+                                            obj.companyName == ""
+                                                ? SizedBox(
+                                                    width: width * 0.42,
+                                                  )
+                                                : SizedBox(
+                                                    width: width * 0.42,
+                                                    child: Center(
+                                                      child: Text(
+                                                        obj.companyName,
+                                                        style:
+                                                            GoogleFonts.poppins(
+                                                                color: blue,
+                                                                fontSize:
+                                                                    width *
+                                                                        0.03,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                      ),
+                                                    ),
+                                                  ),
                                             const Icon(
                                                 Icons.arrow_drop_down_sharp)
                                           ]),
@@ -298,111 +316,113 @@ class _SaleScreenState extends State<SaleScreen> {
                                   ),
                                   Padding(
                                     padding:
-                                        EdgeInsets.only(left: width * 0.025),
-                                    child: SizedBox(
-                                      height: height * 0.07,
-                                      width: width * 0.95,
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.attach_money_sharp,
-                                            color: Colors.grey.shade700,
-                                            size: 28,
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Expanded(
-                                            child: SizedBox(
-                                              width: width,
-                                              height: height,
-                                              child: IgnorePointer(
-                                                child: TextFormField(
-                                                  autovalidateMode:
-                                                      AutovalidateMode
-                                                          .onUserInteraction,
-                                                  controller: obj.balanceAmount,
-                                                  decoration: InputDecoration(
-                                                    labelText: 'Balance',
-                                                    labelStyle:
-                                                        GoogleFonts.poppins(
-                                                            color: lightgray,
-                                                            fontSize:
-                                                                width * 0.032,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w500),
+                                        EdgeInsets.only(left: width * 0.12),
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: SizedBox(
+                                        height: height * 0.07,
+                                        width: width * 0.5,
+                                        child: Row(
+                                          children: [
+                                            Expanded(
+                                              child: SizedBox(
+                                                width: width,
+                                                height: height,
+                                                child: IgnorePointer(
+                                                  child: TextFormField(
+                                                    autovalidateMode:
+                                                        AutovalidateMode
+                                                            .onUserInteraction,
+                                                    controller:
+                                                        obj.balanceAmount,
+                                                    decoration: InputDecoration(
+                                                      labelText: 'Balance',
+                                                      labelStyle:
+                                                          GoogleFonts.poppins(
+                                                              color: lightgray,
+                                                              fontSize:
+                                                                  width * 0.032,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500),
+                                                    ),
+                                                    validator: (value) {
+                                                      if (value!.isEmpty) {
+                                                        return "Please Enter Balance";
+                                                      } else {
+                                                        return null;
+                                                      }
+                                                    },
                                                   ),
-                                                  validator: (value) {
-                                                    if (value!.isEmpty) {
-                                                      return "Please Enter Balance";
-                                                    } else {
-                                                      return null;
-                                                    }
-                                                  },
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                          const SizedBox(
-                                            width: 20,
-                                          ),
-                                        ],
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            Icon(
+                                              Icons.attach_money_sharp,
+                                              color: Colors.grey.shade700,
+                                              size: width * 0.07,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
                                   Padding(
                                     padding:
-                                        EdgeInsets.only(left: width * 0.025),
-                                    child: SizedBox(
-                                      height: height * 0.07,
-                                      width: width * 0.95,
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.attach_money_sharp,
-                                            color: Colors.grey.shade700,
-                                            size: 28,
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Expanded(
-                                            child: SizedBox(
-                                              width: width,
-                                              height: height,
-                                              child: IgnorePointer(
-                                                child: TextFormField(
-                                                  autovalidateMode:
-                                                      AutovalidateMode
-                                                          .onUserInteraction,
-                                                  controller: obj.invoiceAmount,
-                                                  decoration: InputDecoration(
-                                                    labelText: 'Value',
-                                                    labelStyle:
-                                                        GoogleFonts.poppins(
-                                                            color: lightgray,
-                                                            fontSize:
-                                                                width * 0.032,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w500),
+                                        EdgeInsets.only(left: width * 0.12),
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: SizedBox(
+                                        height: height * 0.07,
+                                        width: width * 0.5,
+                                        child: Row(
+                                          children: [
+                                            Expanded(
+                                              child: SizedBox(
+                                                width: width,
+                                                height: height,
+                                                child: IgnorePointer(
+                                                  child: TextFormField(
+                                                    autovalidateMode:
+                                                        AutovalidateMode
+                                                            .onUserInteraction,
+                                                    controller:
+                                                        obj.invoiceAmount,
+                                                    decoration: InputDecoration(
+                                                      labelText: 'Value',
+                                                      labelStyle:
+                                                          GoogleFonts.poppins(
+                                                              color: lightgray,
+                                                              fontSize:
+                                                                  width * 0.032,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500),
+                                                    ),
+                                                    validator: (value) {
+                                                      if (value!.isEmpty) {
+                                                        return "Please Enter Value";
+                                                      } else {
+                                                        return null;
+                                                      }
+                                                    },
                                                   ),
-                                                  validator: (value) {
-                                                    if (value!.isEmpty) {
-                                                      return "Please Enter Value";
-                                                    } else {
-                                                      return null;
-                                                    }
-                                                  },
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                          const SizedBox(
-                                            width: 20,
-                                          ),
-                                        ],
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            Icon(
+                                              Icons.attach_money_sharp,
+                                              color: Colors.grey.shade700,
+                                              size: width * 0.07,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -449,50 +469,53 @@ class _SaleScreenState extends State<SaleScreen> {
                                     ),
                                   ),
                                   SizedBox(
-                                    height: height * 0.015,
+                                    height: height * 0.04,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 9),
+                                  SizedBox(
+                                    height: height * 0.05,
+                                    width: width,
                                     child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        Icon(
-                                          Icons.file_present_outlined,
-                                          color: darkblue,
+                                        InkWell(
+                                          onTap: () async {
+                                            TransactionController.to
+                                                .selectImages(context, height,
+                                                    width, true);
+                                          },
+                                          child: SizedBox(
+                                            height: height * 0.05,
+                                            width: width * 0.1,
+                                            child: Icon(
+                                              Icons.camera_alt_rounded,
+                                              color: lightgray,
+                                              size: width * 0.09,
+                                            ),
+                                          ),
                                         ),
-                                        SizedBox(
-                                          width: width * 0.05,
-                                        ),
+                                        SizedBox(width: width * 0.05),
                                         InkWell(
                                           onTap: () {
                                             TransactionController.to
-                                                .selectImages(
-                                                    context, height, width);
+                                                .selectImages(context, height,
+                                                    width, false);
                                           },
-                                          child: Card(
-                                            child: Container(
-                                              width: width * 0.25,
-                                              height: height * 0.05,
-                                              decoration: BoxDecoration(
-                                                  color: darkblue,
-                                                  borderRadius:
-                                                      BorderRadius.circular(3)),
-                                              child: Center(
-                                                  child: Text(
-                                                "Add File",
-                                                style: GoogleFonts.poppins(
-                                                    color: Colors.white,
-                                                    fontSize: width * 0.033,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              )),
+                                          child: SizedBox(
+                                            height: height * 0.05,
+                                            width: width * 0.1,
+                                            child: Icon(
+                                              Icons.folder,
+                                              color: lightgray,
+                                              size: width * 0.09,
                                             ),
                                           ),
-                                        )
+                                        ),
                                       ],
                                     ),
                                   ),
                                   SizedBox(
-                                    height: height * 0.015,
+                                    height: height * 0.04,
                                   ),
                                   Row(
                                     mainAxisAlignment:
@@ -511,7 +534,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                             "Cancle",
                                             style: GoogleFonts.poppins(
                                                 color: Colors.white,
-                                                fontSize: width * 0.032,
+                                                fontSize: width * 0.035,
                                                 fontWeight: FontWeight.w600),
                                           )),
                                         ),
@@ -536,7 +559,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                               "Save",
                                               style: GoogleFonts.poppins(
                                                   color: Colors.white,
-                                                  fontSize: width * 0.032,
+                                                  fontSize: width * 0.035,
                                                   fontWeight: FontWeight.w500),
                                             )),
                                           ),

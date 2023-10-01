@@ -134,10 +134,10 @@ class ExpenseController extends GetxController {
     return showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          content: Container(
+        return Dialog(
+          child: Container(
             color: Colors.grey.shade300,
-            height: height * 0.45,
+            height: height * 0.5,
             width: width * 0.8,
             child: Stack(
               children: [
@@ -153,16 +153,13 @@ class ExpenseController extends GetxController {
                   height: height * 0.1,
                   width: width,
                   color: Colors.blue[900]!.withOpacity(0.9),
-                  child: Padding(
-                    padding:
-                        EdgeInsets.only(top: height * 0.03, left: width * 0.02),
-                    child: Text(
-                      "Paid As ",
-                      style: TextStyle(
-                          color: white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Paid As ",
+                    style: GoogleFonts.poppins(
+                        color: white,
+                        fontSize: width * 0.035,
+                        fontWeight: FontWeight.w600),
                   ),
                 ),
                 Padding(
@@ -172,7 +169,7 @@ class ExpenseController extends GetxController {
                       elevation: 10,
                       shadowColor: Colors.blue[900],
                       child: Container(
-                        height: height * 0.4,
+                        height: height * 0.45,
                         width: width * 0.7,
                         color: white,
                         child: Center(
@@ -193,32 +190,155 @@ class ExpenseController extends GetxController {
                                           height: height * 0.11,
                                           child: const Image(
                                               image: AssetImage(
+                                                  "images/micon.png")),
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Total Expense".toUpperCase(),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.03,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                            SizedBox(
+                                                height: height * 0.045,
+                                                width: width * 0.5,
+                                                child: TextFormField(
+                                                  controller: expenseAmount,
+                                                  style: GoogleFonts.poppins(
+                                                      // color:Colors.blue[900],
+                                                      fontSize: width * 0.025,
+                                                      fontWeight:
+                                                          FontWeight.w400),
+                                                  decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.only(
+                                                              left:
+                                                                  width * 0.02,
+                                                              top: height *
+                                                                  0.01),
+                                                      border: InputBorder.none,
+                                                      hintText: "Amount",
+                                                      hintStyle:
+                                                          GoogleFonts.poppins(
+                                                              // color:Colors.blue[900],
+                                                              fontSize:
+                                                                  width * 0.025,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
+                                                      disabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      ),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      ),
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      ),
+                                                      errorBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        borderSide: BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                      )),
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                )),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.08,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        SizedBox(
+                                          width: width * 0.11,
+                                          height: height * 0.11,
+                                          child: const Image(
+                                              image: AssetImage(
                                                   "images/bank.jpeg")),
                                         ),
                                         Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            const Text(
-                                              "Bank",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                            Text(
+                                              "Bank".toUpperCase(),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.03,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
-                                                height: height * 0.055,
+                                                height: height * 0.045,
                                                 width: width * 0.5,
                                                 child: TextFormField(
                                                   controller: bankamount,
+                                                  style: GoogleFonts.poppins(
+                                                      // color:Colors.blue[900],
+                                                      fontSize: width * 0.025,
+                                                      fontWeight:
+                                                          FontWeight.w400),
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.only(
+                                                              left:
+                                                                  width * 0.02,
+                                                              top: height *
+                                                                  0.01),
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
-                                                      hintStyle: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
+                                                      hintStyle:
+                                                          GoogleFonts.poppins(
+                                                              // color:Colors.blue[900],
+                                                              fontSize:
+                                                                  width * 0.025,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
                                                       disabledBorder:
                                                           OutlineInputBorder(
                                                         borderRadius:
@@ -294,26 +414,40 @@ class ExpenseController extends GetxController {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            const Text(
-                                              "Other",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                            Text(
+                                              "Other".toUpperCase(),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.03,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
-                                                height: height * 0.055,
+                                                height: height * 0.045,
                                                 width: width * 0.5,
                                                 child: TextFormField(
                                                   controller: otheramount,
+                                                  style: GoogleFonts.poppins(
+                                                      // color:Colors.blue[900],
+                                                      fontSize: width * 0.025,
+                                                      fontWeight:
+                                                          FontWeight.w400),
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.only(
+                                                              left:
+                                                                  width * 0.02,
+                                                              top: height *
+                                                                  0.01),
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
-                                                      hintStyle: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
+                                                      hintStyle:
+                                                          GoogleFonts.poppins(
+                                                              // color:Colors.blue[900],
+                                                              fontSize:
+                                                                  width * 0.025,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
                                                       disabledBorder:
                                                           OutlineInputBorder(
                                                         borderRadius:
@@ -389,26 +523,40 @@ class ExpenseController extends GetxController {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            const Text(
-                                              "Cash",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                            Text(
+                                              "Cash".toUpperCase(),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.03,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
-                                                height: height * 0.055,
+                                                height: height * 0.045,
                                                 width: width * 0.5,
                                                 child: TextFormField(
                                                   controller: cashamount,
+                                                  style: GoogleFonts.poppins(
+                                                      // color:Colors.blue[900],
+                                                      fontSize: width * 0.025,
+                                                      fontWeight:
+                                                          FontWeight.w400),
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.only(
+                                                              left:
+                                                                  width * 0.02,
+                                                              top: height *
+                                                                  0.01),
                                                       border: InputBorder.none,
                                                       hintText: "Amount",
-                                                      hintStyle: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
+                                                      hintStyle:
+                                                          GoogleFonts.poppins(
+                                                              // color:Colors.blue[900],
+                                                              fontSize:
+                                                                  width * 0.025,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
                                                       disabledBorder:
                                                           OutlineInputBorder(
                                                         borderRadius:
@@ -467,197 +615,30 @@ class ExpenseController extends GetxController {
                                       ],
                                     ),
                                   ),
-                                  // SizedBox(
-                                  //   height: height * 0.08,
-                                  //   child: Row(
-                                  //     mainAxisAlignment:
-                                  //         MainAxisAlignment.spaceEvenly,
-                                  //     children: [
-                                  //       SizedBox(
-                                  //         width: width * 0.11,
-                                  //         height: height * 0.11,
-                                  //         child: const Image(
-                                  //             image: AssetImage(
-                                  //                 "images/Group 247.jpeg")),
-                                  //       ),
-                                  //       Column(
-                                  //         crossAxisAlignment:
-                                  //             CrossAxisAlignment.start,
-                                  //         children: [
-                                  //           const Text(
-                                  //             "Other",
-                                  //             style: TextStyle(
-                                  //               fontWeight: FontWeight.bold,
-                                  //             ),
-                                  //           ),
-                                  //           SizedBox(
-                                  //               height: height * 0.055,
-                                  //               width: width * 0.5,
-                                  //               child: TextFormField(
-                                  //                 controller: otheramount,
-                                  //                 decoration: InputDecoration(
-                                  //                     border: InputBorder.none,
-                                  //                     hintText: "Amount",
-                                  //                     hintStyle: TextStyle(
-                                  //                         fontWeight:
-                                  //                             FontWeight.w500,
-                                  //                         color: Colors.grey
-                                  //                             .withOpacity(
-                                  //                                 0.5)),
-                                  //                     disabledBorder:
-                                  //                         OutlineInputBorder(
-                                  //                       borderRadius:
-                                  //                           BorderRadius
-                                  //                               .circular(10),
-                                  //                       borderSide: BorderSide(
-                                  //                           color: Colors.grey
-                                  //                               .withOpacity(
-                                  //                                   0.5)),
-                                  //                     ),
-                                  //                     focusedBorder:
-                                  //                         OutlineInputBorder(
-                                  //                       borderRadius:
-                                  //                           BorderRadius
-                                  //                               .circular(10),
-                                  //                       borderSide: BorderSide(
-                                  //                           color: Colors.grey
-                                  //                               .withOpacity(
-                                  //                                   0.5)),
-                                  //                     ),
-                                  //                     focusedErrorBorder:
-                                  //                         OutlineInputBorder(
-                                  //                       borderRadius:
-                                  //                           BorderRadius
-                                  //                               .circular(10),
-                                  //                       borderSide: BorderSide(
-                                  //                           color: Colors.grey
-                                  //                               .withOpacity(
-                                  //                                   0.5)),
-                                  //                     ),
-                                  //                     enabledBorder:
-                                  //                         OutlineInputBorder(
-                                  //                       borderRadius:
-                                  //                           BorderRadius
-                                  //                               .circular(10),
-                                  //                       borderSide: BorderSide(
-                                  //                           color: Colors.grey
-                                  //                               .withOpacity(
-                                  //                                   0.5)),
-                                  //                     ),
-                                  //                     errorBorder:
-                                  //                         OutlineInputBorder(
-                                  //                       borderRadius:
-                                  //                           BorderRadius
-                                  //                               .circular(10),
-                                  //                       borderSide: BorderSide(
-                                  //                           color: Colors.grey
-                                  //                               .withOpacity(
-                                  //                                   0.5)),
-                                  //                     )),
-                                  //                 keyboardType:
-                                  //                     TextInputType.number,
-                                  //               ))
-                                  //         ],
-                                  //       ),
-                                  //     ],
-                                  //   ),
-                                  // ),
-
-                                  SizedBox(
-                                    height: height * 0.08,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        SizedBox(
-                                          width: width * 0.11,
-                                          height: height * 0.11,
-                                          child: const Image(
-                                              image: AssetImage(
-                                                  "images/micon.png")),
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const Text(
-                                              "Total Expense Amount",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                                height: height * 0.055,
-                                                width: width * 0.5,
-                                                child: TextFormField(
-                                                  controller: expenseAmount,
-                                                  decoration: InputDecoration(
-                                                      border: InputBorder.none,
-                                                      hintText: "Amount",
-                                                      hintStyle: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                      disabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        borderSide: BorderSide(
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        borderSide: BorderSide(
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        borderSide: BorderSide(
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                      ),
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        borderSide: BorderSide(
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                      ),
-                                                      errorBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        borderSide: BorderSide(
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                      )),
-                                                  keyboardType:
-                                                      TextInputType.number,
-                                                )),
-                                          ],
-                                        ),
-                                      ],
+                                  SizedBox(height: height * 0.02),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Card(
+                                      child: Container(
+                                        width: width * 0.2,
+                                        height: height * 0.05,
+                                        decoration: BoxDecoration(
+                                            color: blue,
+                                            borderRadius:
+                                                BorderRadius.circular(3)),
+                                        child: Center(
+                                            child: Text(
+                                          "Add",
+                                          style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
+                                        )),
+                                      ),
                                     ),
-                                  ),
+                                  )
                                 ]),
                           ),
                         ),
@@ -691,8 +672,8 @@ class ExpenseController extends GetxController {
       context: context,
       builder: (context) {
         return StatefulBuilder(builder: (context, st) {
-          return AlertDialog(
-            content: Container(
+          return Dialog(
+            child: Container(
               color: Colors.grey.shade300,
               height: height * 0.8,
               width: width * 0.8,
@@ -710,16 +691,13 @@ class ExpenseController extends GetxController {
                     height: height * 0.1,
                     width: width,
                     color: Colors.blue[900]!.withOpacity(0.9),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          top: height * 0.03, left: width * 0.05),
-                      child: Text(
-                        "Select Category",
-                        style: TextStyle(
-                            color: white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold),
-                      ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Select Category",
+                      style: GoogleFonts.poppins(
+                          color: white,
+                          fontSize: width * 0.035,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                   Padding(
@@ -770,11 +748,10 @@ class ExpenseController extends GetxController {
                                                   Text(
                                                     obj.catagorylist[index]
                                                         .name!,
-                                                    style: TextStyle(
+                                                    style: GoogleFonts.poppins(
                                                         fontSize: width * 0.03,
                                                         fontWeight:
-                                                            FontWeight.bold,
-                                                        color: Colors.black),
+                                                            FontWeight.w500),
                                                   ),
                                                 ],
                                               ),
@@ -792,8 +769,8 @@ class ExpenseController extends GetxController {
                                       builder: (dc) {
                                         return StatefulBuilder(
                                             builder: (context, st1) {
-                                          return AlertDialog(
-                                            content: Container(
+                                          return Dialog(
+                                            child: Container(
                                               color: Colors.grey.shade300,
                                               height: height * 0.8,
                                               width: width * 0.8,
@@ -815,22 +792,19 @@ class ExpenseController extends GetxController {
                                                       width: width,
                                                       color: Colors.blue[900]!
                                                           .withOpacity(0.9),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                top: height *
-                                                                    0.03,
-                                                                left: width *
-                                                                    0.02),
-                                                        child: Text(
-                                                          "Add Category",
-                                                          style: TextStyle(
-                                                              color: white,
-                                                              fontSize: 15,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        ),
+                                                      alignment:
+                                                          Alignment.center,
+                                                      child: Text(
+                                                        "Add Category",
+                                                        style:
+                                                            GoogleFonts.poppins(
+                                                                color: white,
+                                                                fontSize:
+                                                                    width *
+                                                                        0.035,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600),
                                                       ),
                                                     ),
                                                     Padding(
@@ -868,9 +842,8 @@ class ExpenseController extends GetxController {
                                                                     SizedBox(
                                                                       width:
                                                                           width,
-                                                                      height:
-                                                                          height *
-                                                                              0.07,
+                                                                      height: height *
+                                                                          0.045,
                                                                       child:
                                                                           Row(
                                                                         children: [
@@ -894,6 +867,7 @@ class ExpenseController extends GetxController {
                                                                               child: TextFormField(
                                                                                 autovalidateMode: AutovalidateMode.onUserInteraction,
                                                                                 controller: name,
+                                                                                style: GoogleFonts.poppins(color: lightgray, fontSize: width * 0.025, fontWeight: FontWeight.w400),
                                                                                 keyboardType: TextInputType.text,
                                                                                 decoration: InputDecoration(
                                                                                   errorStyle: const TextStyle(color: Colors.black),
@@ -901,6 +875,7 @@ class ExpenseController extends GetxController {
                                                                                   fillColor: Colors.grey,
                                                                                   hintText: "Category Name",
                                                                                   labelText: "Category Name",
+                                                                                  hintStyle: GoogleFonts.poppins(color: lightgray, fontSize: width * 0.025, fontWeight: FontWeight.w400),
                                                                                   alignLabelWithHint: true,
                                                                                   enabledBorder: OutlineInputBorder(
                                                                                     borderRadius: BorderRadius.circular(10),
@@ -1035,10 +1010,10 @@ class ExpenseController extends GetxController {
                                           padding: EdgeInsets.only(left: 10.0)),
                                       Text(
                                         "ADD NEW",
-                                        style: TextStyle(
+                                        style: GoogleFonts.poppins(
+                                            color: blue,
                                             fontSize: width * 0.035,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black),
+                                            fontWeight: FontWeight.w600),
                                       ),
                                     ],
                                   ),

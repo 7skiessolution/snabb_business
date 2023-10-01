@@ -81,15 +81,18 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                         },
                                         child:
                                             const Icon(Icons.arrow_back_ios)),
+                                    SizedBox(
+                                      width: width * 0.05,
+                                    ),
                                     Expanded(
                                       child: Container(
                                         height: height,
                                         width: width,
-                                        alignment: Alignment.center,
-                                        child:  Text(
-                                          "Expense",
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "New Expense",
                                           style: GoogleFonts.poppins(
-                                              color:Colors.blue[900],
+                                              color: Colors.blue[900],
                                               fontSize: width * 0.035,
                                               fontWeight: FontWeight.w600),
                                         ),
@@ -126,9 +129,9 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                 child: Text(
                                   "New Entry",
                                   style: GoogleFonts.poppins(
-                                              color:Colors.white,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
+                                      color: Colors.white,
+                                      fontSize: width * 0.035,
+                                      fontWeight: FontWeight.w600),
                                 ),
                               ),
                             ),
@@ -155,21 +158,28 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                   Row(
                                     children: [
                                       SizedBox(
-                                          height: height * 0.07,
-                                          width: width * 0.15,
-                                          child: const CircleAvatar(
-                                            child: CircleAvatar(
-                                              radius: 21,
-                                              backgroundImage: AssetImage(
-                                                  "images/expensive.png"),
+                                        width: width * 0.03,
+                                      ),
+                                      const CircleAvatar(
+                                        radius: 20,
+                                        backgroundImage: AssetImage(
+                                            // widget
+                                            //           .type ==
+                                            //       1
+                                            //   ?
+                                            "images/expensive.png"
+                                            // : widget.type == 0
+                                            //     ? "images/sale.png"
+                                            //     : "images/expensive.png"
                                             ),
-                                          )),
-                                       Padding(
-                                        padding: EdgeInsets.only(left: 8.0),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 8.0),
                                         child: Text(
                                           "Expense",
                                           style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
+                                              // color:Colors.blue[900],
                                               fontSize: width * 0.035,
                                               fontWeight: FontWeight.w700),
                                         ),
@@ -196,10 +206,9 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                             Text(
                                               obj.formatTime,
                                               style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
-                                              
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.032,
+                                                  fontWeight: FontWeight.w500),
                                             ),
                                             SizedBox(
                                               width: width * 0.55,
@@ -227,12 +236,12 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                             SizedBox(
                                               width: width * 0.01,
                                             ),
-                                             Text(
+                                            Text(
                                               'Category',
-                                               style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
+                                              style: GoogleFonts.poppins(
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             obj.selectedCateory == null
                                                 ? SizedBox(
@@ -244,11 +253,14 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                                     child: Text(
                                                       obj.selectedCateory!
                                                           .name!,
-                                                      style: TextStyle(
-                                                          color:
-                                                              Colors.blue[900],
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              color: blue,
+                                                              fontSize:
+                                                                  width * 0.03,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500),
                                                     ),
                                                   ),
                                             const Icon(
@@ -279,12 +291,12 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                             SizedBox(
                                               width: width * 0.05,
                                             ),
-                                             Text(
+                                            Text(
                                               'Paid As',
                                               style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
+                                                  // color:Colors.blue[900],
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
                                               width: width * 0.5,
@@ -296,51 +308,57 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                   ),
                                   Padding(
                                     padding:
-                                        EdgeInsets.only(left: width * 0.025),
-                                    child: SizedBox(
-                                      height: height * 0.07,
-                                      width: width * 0.95,
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.attach_money_sharp,
-                                            color: Colors.grey.shade700,
-                                            size: 28,
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Expanded(
-                                            child: SizedBox(
-                                              width: width,
-                                              height: height,
-                                              child: IgnorePointer(
-                                                child: TextFormField(
+                                        EdgeInsets.only(left: width * 0.12),
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: SizedBox(
+                                        height: height * 0.07,
+                                        width: width * 0.5,
+                                        child: Row(
+                                          children: [
+                                            Expanded(
+                                              child: SizedBox(
+                                                width: width,
+                                                height: height,
+                                                child: IgnorePointer(
+                                                  child: TextFormField(
+                                                    autovalidateMode:
+                                                        AutovalidateMode
+                                                            .onUserInteraction,
                                                     controller:
                                                         obj.expenseAmount,
                                                     decoration: InputDecoration(
                                                       labelText: 'Balance',
-                                       labelStyle: GoogleFonts.poppins(
-                                              color:lightgray,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),                                                    ),
-                                                    autovalidateMode:
-                                                        AutovalidateMode
-                                                            .onUserInteraction,
+                                                      labelStyle:
+                                                          GoogleFonts.poppins(
+                                                              color: lightgray,
+                                                              fontSize:
+                                                                  width * 0.032,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500),
+                                                    ),
                                                     validator: (value) {
                                                       if (value!.isEmpty) {
-                                                        return "Please Enter Balance";
+                                                        return "Please Enter Value";
                                                       } else {
                                                         return null;
                                                       }
-                                                    }),
+                                                    },
+                                                  ),
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          const SizedBox(
-                                            width: 20,
-                                          ),
-                                        ],
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            Icon(
+                                              Icons.attach_money_sharp,
+                                              color: Colors.grey.shade700,
+                                              size: width * 0.07,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -368,10 +386,13 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                                 controller: obj.particular,
                                                 decoration: InputDecoration(
                                                   labelText: 'Particular',
-                                                  labelStyle:   GoogleFonts.poppins(
-                                              color:lightgray,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                                  labelStyle:
+                                                      GoogleFonts.poppins(
+                                                          color: lightgray,
+                                                          fontSize:
+                                                              width * 0.032,
+                                                          fontWeight:
+                                                              FontWeight.w500),
                                                 ),
                                               ),
                                             ),
@@ -384,49 +405,53 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                     ),
                                   ),
                                   SizedBox(
-                                    height: height * 0.015,
+                                    height: height * 0.04,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 9),
+                                  SizedBox(
+                                    height: height * 0.05,
+                                    width: width,
                                     child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        Icon(
-                                          Icons.file_present_outlined,
-                                          color: darkblue,
+                                        InkWell(
+                                          onTap: () async {
+                                            TransactionController.to
+                                                .selectImages(context, height,
+                                                    width, true);
+                                          },
+                                          child: SizedBox(
+                                            height: height * 0.05,
+                                            width: width * 0.1,
+                                            child: Icon(
+                                              Icons.camera_alt_rounded,
+                                              color: lightgray,
+                                              size: width * 0.09,
+                                            ),
+                                          ),
                                         ),
-                                        SizedBox(
-                                          width: width * 0.05,
-                                        ),
+                                        SizedBox(width: width * 0.05),
                                         InkWell(
                                           onTap: () {
                                             TransactionController.to
-                                                .selectImages(
-                                                    context, height, width);
+                                                .selectImages(context, height,
+                                                    width, false);
                                           },
-                                          child: Card(
-                                            child: Container(
-                                              width: width * 0.25,
-                                              height: height * 0.05,
-                                              decoration: BoxDecoration(
-                                                  color: darkblue,
-                                                  borderRadius:
-                                                      BorderRadius.circular(3)),
-                                              child: Center(
-                                                  child: Text(
-                                                "Add File",
-                                                style: GoogleFonts.poppins(
-                                              color:Colors.white,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500), 
-                                              )),
+                                          child: SizedBox(
+                                            height: height * 0.05,
+                                            width: width * 0.1,
+                                            child: Icon(
+                                              Icons.folder,
+                                              color: lightgray,
+                                              size: width * 0.09,
                                             ),
                                           ),
-                                        )
+                                        ),
                                       ],
                                     ),
                                   ),
                                   SizedBox(
-                                    height: height * 0.015,
+                                    height: height * 0.04,
                                   ),
                                   Row(
                                     mainAxisAlignment:
@@ -443,10 +468,10 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                           child: Center(
                                               child: Text(
                                             "Cancle",
-                                             style: GoogleFonts.poppins(
-                                              color:Colors.white,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500), 
+                                            style: GoogleFonts.poppins(
+                                                color: Colors.white,
+                                                fontSize: width * 0.035,
+                                                fontWeight: FontWeight.w600),
                                           )),
                                         ),
                                       ),
@@ -468,10 +493,10 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                             child: Center(
                                                 child: Text(
                                               "Save",
-                                               style: GoogleFonts.poppins(
-                                              color:Colors.white,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500), 
+                                              style: GoogleFonts.poppins(
+                                                  color: Colors.white,
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.w600),
                                             )),
                                           ),
                                         ),

@@ -131,14 +131,17 @@ class HomeController extends GetxController {
   //   }
   //   Navigator.pop(c);
   // }
-  Future addCompanyData(Map<String, dynamic> model, BuildContext c) async {
+  Future addCompanyData(
+      Map<String, dynamic> model, BuildContext c, String routpath) async {
     changeStatus(true);
     var res = await httpClient().post(StaticValues.addCompany, data: model);
     if (res.statusCode == 200) {
       changeStatus(false);
       getCompanydata();
     }
-    Navigator.pop(c);
+    if (routpath == "new") {
+      Navigator.pop(c);
+    }
   }
 
   Future addSupplierData(

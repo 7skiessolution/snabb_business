@@ -79,6 +79,12 @@ class StaticValues {
   static const deleteSale = "Transaction/DeleteSale/";
   static const deleteExpense = "Transaction/DeleteExpense/";
   static const getDeleted = "Transaction/GetDeletedTransactions";
+  ///////////// Recover transaction ///////////////////
+
+  static const recoverExpense = "Transaction/RecoverExpense/";
+  static const recoverPurchase = "Transaction/RecoverPurchase/";
+  static const recoverSale = "Transaction/RecoverSale/";
+
   static String apikey =
       "G8I8cS9Uyncyl0GIXHZfPIosrXnqyTwBZa4Z0utvWG5FrnTGdvxD482MFcDSJLjb8JAjZsqpt4SYyjj3VimcQXTKxcyXsQTjvTJVhRQ9rUDHVzIds2x88oLfFwDtpudS";
 }

@@ -151,7 +151,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                             ),
                       obj.details!.payBackDay == null ||
                               obj.details!.payBackDay == "null"
-                          ? SizedBox()
+                          ? const SizedBox()
                           : SizedBox(
                               height: height * 0.05,
                               width: width * 0.9,
@@ -426,7 +426,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                                   0.9,
                                               child: Stack(
                                                 children: [
-                                                  Container(
+                                                  SizedBox(
                                                       height: height,
                                                       width: width,
                                                       child: PinchZoomImage(
@@ -1492,7 +1492,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                   //     ? const Text("Today")
                                   //     :
                                   Padding(
-                                padding: EdgeInsets.only(right: 12),
+                                padding: const EdgeInsets.only(right: 12),
                                 child:
                                     Text(obj.dailyTransactionList[index].day!),
                               ),
@@ -1548,7 +1548,7 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                                     shape: BoxShape.circle),
                                                 child: Padding(
                                                   padding:
-                                                      const EdgeInsets.all(8.0),
+                                                      const EdgeInsets.all(4.0),
                                                   child: transaction.details!
                                                                   .imageUrl ==
                                                               "null" ||
@@ -1571,8 +1571,26 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.bold),
                                             ),
-                                            subtitle: Text(transaction.dateTime!
-                                                .substring(0, 10)),
+                                            subtitle: Text(
+                                              transaction.type == 2
+                                                  ? transaction
+                                                      .details!.category
+                                                      .toString()
+                                                  : transaction.type == 0
+                                                      ? transaction
+                                                          .details!.name
+                                                          .toString()
+                                                      : (transaction.details!
+                                                                  .saleMethod ==
+                                                              0
+                                                          ? "Daily Sale"
+                                                          : transaction
+                                                              .details!.name
+                                                              .toString()),
+
+                                              // transaction.dateTime!
+                                              //   .substring(0, 10)
+                                            ),
                                             trailing: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.spaceEvenly,
@@ -1594,18 +1612,20 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                                                         fontWeight:
                                                             FontWeight.bold)),
                                                 Text(
+                                                    transaction.dateTime!
+                                                        .substring(0, 10),
                                                     // ignore: unrelated_type_equality_checks
-                                                    transaction.type == 1
-                                                        ? transaction.currency!
-                                                        : transaction.currency!,
-                                                    style: TextStyle(
+                                                    // transaction.type == 1
+                                                    //     ? transaction.currency!
+                                                    //     : transaction.currency!,
+                                                    style: const TextStyle(
                                                       fontSize: 11,
                                                       fontWeight:
-                                                          FontWeight.bold,
-                                                      color:
-                                                          transaction.type == 1
-                                                              ? Colors.green
-                                                              : Colors.red,
+                                                          FontWeight.w400,
+                                                      // color:
+                                                      // transaction.type == 1
+                                                      //     ? Colors.green
+                                                      //     : Colors.red,
                                                     )),
                                               ],
                                             ),

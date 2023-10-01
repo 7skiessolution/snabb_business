@@ -107,7 +107,7 @@ class DrawerScreen extends StatelessWidget {
                     "OverView",
                     style: GoogleFonts.poppins(
                         color: white,
-                        fontSize: width * 0.031,
+                        fontSize: width * 0.03,
                         fontWeight: FontWeight.w400),
                   ),
                 ),
@@ -127,7 +127,7 @@ class DrawerScreen extends StatelessWidget {
                     "Companies",
                     style: GoogleFonts.poppins(
                         color: white,
-                        fontSize: width * 0.031,
+                        fontSize: width * 0.03,
                         fontWeight: FontWeight.w400),
                   ),
                 ),
@@ -149,7 +149,7 @@ class DrawerScreen extends StatelessWidget {
                     "Supplier",
                     style: GoogleFonts.poppins(
                         color: white,
-                        fontSize: width * 0.031,
+                        fontSize: width * 0.03,
                         fontWeight: FontWeight.w400),
                   ),
                 ),
@@ -166,7 +166,7 @@ class DrawerScreen extends StatelessWidget {
                     "Summary",
                     style: GoogleFonts.poppins(
                         color: white,
-                        fontSize: width * 0.031,
+                        fontSize: width * 0.03,
                         fontWeight: FontWeight.w400),
                   ),
                 ),
@@ -185,7 +185,7 @@ class DrawerScreen extends StatelessWidget {
                     "Transaction",
                     style: GoogleFonts.poppins(
                         color: white,
-                        fontSize: width * 0.031,
+                        fontSize: width * 0.03,
                         fontWeight: FontWeight.w400),
                   ),
                 ),
@@ -203,7 +203,7 @@ class DrawerScreen extends StatelessWidget {
                     "Db/Cr",
                     style: GoogleFonts.poppins(
                         color: white,
-                        fontSize: width * 0.031,
+                        fontSize: width * 0.03,
                         fontWeight: FontWeight.w400),
                   ),
                 ),
@@ -223,7 +223,7 @@ class DrawerScreen extends StatelessWidget {
                     "Invoice",
                     style: GoogleFonts.poppins(
                         color: white,
-                        fontSize: width * 0.031,
+                        fontSize: width * 0.03,
                         fontWeight: FontWeight.w400),
                   ),
                 ),
@@ -324,7 +324,7 @@ class DrawerScreen extends StatelessWidget {
                     "Reports",
                     style: GoogleFonts.poppins(
                         color: white,
-                        fontSize: width * 0.031,
+                        fontSize: width * 0.03,
                         fontWeight: FontWeight.w400),
                   ),
                   trailing: Icon(
@@ -366,7 +366,7 @@ class DrawerScreen extends StatelessWidget {
                                 "Daily Sale Report",
                                 style: GoogleFonts.poppins(
                                     color: white,
-                                    fontSize: width * 0.031,
+                                    fontSize: width * 0.03,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -395,7 +395,7 @@ class DrawerScreen extends StatelessWidget {
                                 "Company Sale Report",
                                 style: GoogleFonts.poppins(
                                     color: white,
-                                    fontSize: width * 0.031,
+                                    fontSize: width * 0.03,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -424,7 +424,7 @@ class DrawerScreen extends StatelessWidget {
                                 "Purchase Report",
                                 style: GoogleFonts.poppins(
                                     color: white,
-                                    fontSize: width * 0.031,
+                                    fontSize: width * 0.03,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -446,7 +446,7 @@ class DrawerScreen extends StatelessWidget {
                                 "Supplier Report",
                                 style: GoogleFonts.poppins(
                                     color: white,
-                                    fontSize: width * 0.031,
+                                    fontSize: width * 0.03,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -475,7 +475,7 @@ class DrawerScreen extends StatelessWidget {
                                 "Expense Report",
                                 style: GoogleFonts.poppins(
                                     color: white,
-                                    fontSize: width * 0.031,
+                                    fontSize: width * 0.03,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -517,7 +517,7 @@ class DrawerScreen extends StatelessWidget {
                     "Calendar",
                     style: GoogleFonts.poppins(
                         color: white,
-                        fontSize: width * 0.031,
+                        fontSize: width * 0.03,
                         fontWeight: FontWeight.w400),
                   ),
                 ),
@@ -553,7 +553,7 @@ class DrawerScreen extends StatelessWidget {
                     "User",
                     style: GoogleFonts.poppins(
                         color: white,
-                        fontSize: width * 0.031,
+                        fontSize: width * 0.03,
                         fontWeight: FontWeight.w400),
                   ),
                 ),
@@ -585,7 +585,7 @@ class DrawerScreen extends StatelessWidget {
                     "Preferences",
                     style: GoogleFonts.poppins(
                         color: white,
-                        fontSize: width * 0.031,
+                        fontSize: width * 0.03,
                         fontWeight: FontWeight.w400),
                   ),
                 ),
@@ -602,7 +602,7 @@ class DrawerScreen extends StatelessWidget {
                     "Settings",
                     style: GoogleFonts.poppins(
                         color: white,
-                        fontSize: width * 0.031,
+                        fontSize: width * 0.03,
                         fontWeight: FontWeight.w400),
                   ),
                 ),
@@ -631,7 +631,7 @@ class DrawerScreen extends StatelessWidget {
                       "LogOut",
                       style: GoogleFonts.poppins(
                           color: white,
-                          fontSize: width * 0.031,
+                          fontSize: width * 0.03,
                           fontWeight: FontWeight.w400),
                     )),
               ),
@@ -683,7 +683,7 @@ void showingSuplierdialogue(context, height, width, white) {
                     "Select Supplier",
                     style: GoogleFonts.poppins(
                         color: white,
-                        fontSize: width * 0.031,
+                        fontSize: width * 0.03,
                         fontWeight: FontWeight.w400),
                   ),
                 ),

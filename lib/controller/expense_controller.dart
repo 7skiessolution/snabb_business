@@ -13,7 +13,6 @@ import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:dio/dio.dart' as dio;
 
 class ExpenseController extends GetxController {
@@ -905,11 +904,11 @@ class ExpenseController extends GetxController {
                                                                                   alignLabelWithHint: true,
                                                                                   enabledBorder: OutlineInputBorder(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    borderSide: BorderSide(color: AppColors.blue),
+                                                                                    borderSide: BorderSide(color: blue),
                                                                                   ),
                                                                                   focusedBorder: OutlineInputBorder(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    borderSide: BorderSide(color: AppColors.blue),
+                                                                                    borderSide: BorderSide(color: blue),
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -993,18 +992,14 @@ class ExpenseController extends GetxController {
                                                                           width:
                                                                               width * 0.45,
                                                                           decoration: BoxDecoration(
-                                                                              color: AppColors.blue,
+                                                                              color: blue,
                                                                               borderRadius: BorderRadius.circular(7)),
                                                                           child:
                                                                               Center(
                                                                             child:
                                                                                 Text(
                                                                               "Add Category",
-                                                                             style:   GoogleFonts.poppins(
-                                            color:white,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600), 
-                                             
+                                                                              style: GoogleFonts.poppins(color: white, fontSize: width * 0.035, fontWeight: FontWeight.w600),
                                                                             ),
                                                                           ),
                                                                         ),

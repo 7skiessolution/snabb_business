@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/controller/homeController.dart';
@@ -118,10 +119,10 @@ class PurchaseController extends GetxController {
                                           children: [
                                             Text(
                                               "Total Invoice Amount",
-                                              style:   GoogleFonts.poppins(
-                                              //color:lightgray,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                              style: GoogleFonts.poppins(
+                                                  //color:lightgray,
+                                                  fontSize: width * 0.032,
+                                                  fontWeight: FontWeight.w500),
                                             ),
                                             SizedBox(
                                                 height: height * 0.055,

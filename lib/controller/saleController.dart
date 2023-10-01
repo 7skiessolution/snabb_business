@@ -11,7 +11,6 @@ import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/screen/dashboardScreen.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:path/path.dart';
 
@@ -1249,7 +1248,7 @@ class SaleController extends GetxController {
                                                                               alignLabelWithHint: true,
                                                                               enabledBorder: OutlineInputBorder(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                borderSide: BorderSide(color: AppColors.blue
+                                                                                borderSide: BorderSide(color: blue
                                                                                     //  provider.brightness ==
                                                                                     //         AppBrightness.dark
                                                                                     //     ? AppTheme.colorWhite
@@ -1258,7 +1257,7 @@ class SaleController extends GetxController {
                                                                               ),
                                                                               focusedBorder: OutlineInputBorder(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                borderSide: BorderSide(color: AppColors.blue
+                                                                                borderSide: BorderSide(color: blue
                                                                                     // provider.brightness ==
                                                                                     //         AppBrightness.dark
                                                                                     //     ? AppTheme.colorWhite
@@ -1293,7 +1292,7 @@ class SaleController extends GetxController {
                                                                               alignLabelWithHint: true,
                                                                               enabledBorder: OutlineInputBorder(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                borderSide: BorderSide(color: AppColors.blue
+                                                                                borderSide: BorderSide(color: blue
                                                                                     //  provider.brightness ==
                                                                                     //         AppBrightness.dark
                                                                                     //     ? AppTheme.colorWhite
@@ -1302,7 +1301,7 @@ class SaleController extends GetxController {
                                                                               ),
                                                                               focusedBorder: OutlineInputBorder(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                borderSide: BorderSide(color: AppColors.blue
+                                                                                borderSide: BorderSide(color: blue
                                                                                     // provider.brightness ==
                                                                                     //         AppBrightness.dark
                                                                                     //     ? AppTheme.colorWhite
@@ -1337,7 +1336,7 @@ class SaleController extends GetxController {
                                                                               alignLabelWithHint: true,
                                                                               enabledBorder: OutlineInputBorder(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                borderSide: BorderSide(color: AppColors.blue
+                                                                                borderSide: BorderSide(color: blue
                                                                                     //  provider.brightness ==
                                                                                     //         AppBrightness.dark
                                                                                     //     ? AppTheme.colorWhite
@@ -1346,7 +1345,7 @@ class SaleController extends GetxController {
                                                                               ),
                                                                               focusedBorder: OutlineInputBorder(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                borderSide: BorderSide(color: AppColors.blue
+                                                                                borderSide: BorderSide(color: blue
                                                                                     // provider.brightness ==
                                                                                     //         AppBrightness.dark
                                                                                     //     ? AppTheme.colorWhite
@@ -1385,7 +1384,7 @@ class SaleController extends GetxController {
                                                                                 Container(
                                                                               height: height * 0.06,
                                                                               width: width * 0.45,
-                                                                              decoration: BoxDecoration(color: AppColors.blue, borderRadius: BorderRadius.circular(7)),
+                                                                              decoration: BoxDecoration(color: blue, borderRadius: BorderRadius.circular(7)),
                                                                               child: Center(
                                                                                 child: Text(
                                                                                   "Add Company",

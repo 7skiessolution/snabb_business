@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/screen/dashboardScreen.dart';
 import 'package:snabb_business/screen/purchase/purchaseController.dart';
@@ -87,10 +88,12 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                         height: height,
                                         width: width,
                                         alignment: Alignment.center,
-                                        child: const Text(
+                                        child:  Text(
                                           "Purchase",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
+                                          style: GoogleFonts.poppins(
+                                              color:Colors.blue[900],
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                                         ),
                                       ),
                                     ),
@@ -124,10 +127,10 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                     top: 15.0, left: 20, right: 20),
                                 child: Text(
                                   "New Entry",
-                                  style: TextStyle(
-                                      color: white,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
+                                 style: GoogleFonts.poppins(
+                                              color:Colors.white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                                 ),
                               ),
                             ),
@@ -158,7 +161,7 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                           width: width * 0.15,
                                           child: const CircleAvatar(
                                             child: CircleAvatar(
-                                              radius: 22,
+                                              radius: 21,
                                               backgroundImage: AssetImage(
                                                   // widget
                                                   //           .type ==
@@ -171,12 +174,14 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                                   ),
                                             ),
                                           )),
-                                      const Padding(
+                                       Padding(
                                         padding: EdgeInsets.only(left: 8.0),
                                         child: Text(
                                           "Purchase",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
+                                          style: GoogleFonts.poppins(
+                                             // color:Colors.blue[900],
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w700),
                                         ),
                                       ),
                                     ],
@@ -202,9 +207,10 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                             ),
                                             Text(
                                               obj.formatTime,
-                                              style: const TextStyle(
-                                                fontWeight: FontWeight.w700,
-                                              ),
+                                              style: GoogleFonts.poppins(
+                                             // color:Colors.blue[900],
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),
                                             ),
                                             SizedBox(
                                               width: width * 0.55,
@@ -232,11 +238,12 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                             SizedBox(
                                               width: width * 0.05,
                                             ),
-                                            const Text(
+                                             Text(
                                               'Paid As',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w700,
-                                              ),
+                                              style: GoogleFonts.poppins(
+                                             // color:Colors.blue[900],
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
                                               width: width * 0.5,
@@ -269,11 +276,12 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                             SizedBox(
                                               width: width * 0.05,
                                             ),
-                                            const Text(
+                                             Text(
                                               'Purchase Method',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w700,
-                                              ),
+                                               style: GoogleFonts.poppins(
+                                             // color:Colors.blue[900],
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
                                               width: width * 0.34,
@@ -312,9 +320,10 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                                         obj.balanceAmount,
                                                     decoration: InputDecoration(
                                                       labelText: 'Balance',
-                                                      labelStyle: TextStyle(
-                                                          fontSize: 14,
-                                                          color: lightgray),
+                                                      labelStyle: GoogleFonts.poppins(
+                                              color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),  
                                                     ),
                                                     autovalidateMode:
                                                         AutovalidateMode
@@ -365,9 +374,10 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                                         obj.invoiceAmount,
                                                     decoration: InputDecoration(
                                                       labelText: 'Value',
-                                                      labelStyle: TextStyle(
-                                                          fontSize: 14,
-                                                          color: lightgray),
+                                                      labelStyle: GoogleFonts.poppins(
+                                              color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),  
                                                     ),
                                                     autovalidateMode:
                                                         AutovalidateMode
@@ -413,9 +423,10 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                                 controller: obj.particular,
                                                 decoration: InputDecoration(
                                                   labelText: 'Particular',
-                                                  labelStyle: TextStyle(
-                                                      fontSize: 14,
-                                                      color: lightgray),
+                                                  labelStyle: GoogleFonts.poppins(
+                                              color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),  
                                                 ),
                                               ),
                                             ),
@@ -458,7 +469,10 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                               child: Center(
                                                   child: Text(
                                                 "Add File",
-                                                style: TextStyle(color: white),
+                                                style: GoogleFonts.poppins(
+                                              color:Colors.white,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                                               )),
                                             ),
                                           ),
@@ -484,7 +498,10 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                           child: Center(
                                               child: Text(
                                             "Cancle",
-                                            style: TextStyle(color: white),
+                                            style: GoogleFonts.poppins(
+                                              color:Colors.white,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                                           )),
                                         ),
                                       ),
@@ -506,7 +523,10 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                             child: Center(
                                                 child: Text(
                                               "Save",
-                                              style: TextStyle(color: white),
+                                              style: GoogleFonts.poppins(
+                                              color:Colors.white,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500), 
                                             )),
                                           ),
                                         ),

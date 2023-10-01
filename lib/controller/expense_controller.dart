@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/screen/dashboardScreen.dart';
@@ -999,7 +1000,11 @@ class ExpenseController extends GetxController {
                                                                             child:
                                                                                 Text(
                                                                               "Add Category",
-                                                                              style: TextStyle(fontSize: width * 0.03, color: Colors.white, fontWeight: FontWeight.bold),
+                                                                             style:   GoogleFonts.poppins(
+                                            color:white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600), 
+                                             
                                                                             ),
                                                                           ),
                                                                         ),

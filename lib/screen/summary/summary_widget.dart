@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/models/summary_model.dart';
 import 'package:snabb_business/screen/summary/c/summaryController.dart';
+import 'package:snabb_business/utils/color.dart';
+import 'package:snabb_business/utils/colors.dart';
 
 // ignore: must_be_immutable
 class SummaryWidget extends StatefulWidget {
@@ -79,9 +82,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                             obj.model!.data![index].month
                                                 .toString(),
                                             // "${widget.months[selectedMonth.month - 1]} ${selectedMonth.year}",
-                                            style: TextStyle(
-                                                fontSize: width * 0.03,
-                                                fontWeight: FontWeight.bold),
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: width * 0.03,
+                                              fontWeight: FontWeight.w600),
                                           ),
                                           SizedBox(
                                             height: 100,
@@ -125,11 +129,11 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                   alignment:
                                                       Alignment.centerLeft,
                                                   child: Text(
-                                                    "Sale",
-                                                    style: TextStyle(
-                                                        fontSize: width * 0.03,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    "Sales",
+                                                    style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w400),
                                                     textAlign: TextAlign.left,
                                                   ),
                                                 ),
@@ -145,13 +149,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                     child: FittedBox(
                                                       child: Text(
                                                         " ${HomeController.to.curency} ${snapshot.data!.data![index].transactions!.sale!}",
-                                                        style: TextStyle(
-                                                            color: Colors.green,
-                                                            fontSize:
-                                                                width * 0.03,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
+                                                         style: GoogleFonts.poppins(
+                                              color: AppColors.greencolor,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),
                                                       ),
                                                     ),
                                                   ),
@@ -171,10 +172,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                       Alignment.centerLeft,
                                                   child: Text(
                                                     "Purchase",
-                                                    style: TextStyle(
-                                                        fontSize: width * 0.03,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w400),
                                                     textAlign: TextAlign.left,
                                                   ),
                                                 ),
@@ -190,13 +191,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                     child: FittedBox(
                                                       child: Text(
                                                         "-${HomeController.to.curency} ${obj.model!.data![index].transactions!.purchase!}",
-                                                        style: TextStyle(
-                                                            color: Colors.red,
-                                                            fontSize:
-                                                                width * 0.03,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
+                                                         style: GoogleFonts.poppins(
+                                              color: AppColors.redcolor,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),
                                                       ),
                                                     ),
                                                   ),
@@ -216,10 +214,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                       Alignment.centerLeft,
                                                   child: Text(
                                                     "Expense",
-                                                    style: TextStyle(
-                                                        fontSize: width * 0.03,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+ style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w400),
                                                     textAlign: TextAlign.left,
                                                   ),
                                                 ),
@@ -235,13 +233,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                     child: FittedBox(
                                                       child: Text(
                                                         "-${HomeController.to.curency} ${obj.model!.data![index].transactions!.expense!}",
-                                                        style: TextStyle(
-                                                            fontSize:
-                                                                width * 0.03,
-                                                            color: Colors.blue,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
+ style: GoogleFonts.poppins(
+                                              color: Colors.blue,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),
                                                       ),
                                                     ),
                                                   ),
@@ -261,10 +256,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                       Alignment.centerLeft,
                                                   child: Text(
                                                     "Total",
-                                                    style: TextStyle(
-                                                        fontSize: width * 0.03,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+ style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w600),
                                                     textAlign: TextAlign.left,
                                                   ),
                                                 ),
@@ -282,12 +277,10 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                         balance > 0
                                                             ? "${HomeController.to.curency} $balance"
                                                             : "${HomeController.to.curency} $balance",
-                                                        style: TextStyle(
-                                                            fontSize:
-                                                                width * 0.03,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
+                                                        style: GoogleFonts.poppins(
+                                              color: AppColors.greencolor,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w600),
                                                       ),
                                                     ),
                                                   ),

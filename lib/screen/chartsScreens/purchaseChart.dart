@@ -49,7 +49,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                             child: Text(
                           "Purchase Transaction Details",
                           style: TextStyle(
-                              color: blue,
+                              color: darkblue,
                               fontSize: width * 0.03,
                               fontWeight: FontWeight.bold),
                         )),

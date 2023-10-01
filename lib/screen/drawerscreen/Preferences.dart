@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:snabb_business/screen/budget/BudgetView.dart';
 import 'package:snabb_business/screen/drawerscreen/Calender.dart';
 import 'package:snabb_business/screen/sale/Sale.dart';
@@ -57,10 +58,10 @@ class _PreferencesState extends State<Preferences> {
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
                           child: Text(
                             "Pages",
-                            style: TextStyle(
-                                color: white,
-                                fontSize: width * 0.035,
-                                fontWeight: FontWeight.bold),
+                            style: GoogleFonts.poppins(
+                                              color:Colors.white,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                           ),
                         ),
                         const Expanded(
@@ -150,11 +151,14 @@ class _PreferencesState extends State<Preferences> {
                                       ),
                                       Text(
                                         "${list[index].title}",
-                                        style: TextStyle(
-                                            fontSize: width * 0.035,
-                                            color: indexNumber == index
+                                        style: GoogleFonts.poppins(
+                                           color: indexNumber == index
                                                 ? white
-                                                : Colors.black),
+                                                : Colors.black,
+                                             // color:Colors.blue[900],
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w600),
+                                      
                                       )
                                     ],
                                   ),

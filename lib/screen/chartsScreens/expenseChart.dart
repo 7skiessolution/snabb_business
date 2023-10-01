@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
@@ -45,10 +46,10 @@ class _ExpenseChartState extends State<ExpenseChart> {
                         child: Center(
                             child: Text(
                           "Expense Transaction Details",
-                          style: TextStyle(
-                              color: expensecolor,
-                              fontSize: width * 0.03,
-                              fontWeight: FontWeight.bold),
+                           style:   GoogleFonts.poppins(
+                                              color:expensecolor,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                         )),
                       ),
                       SizedBox(

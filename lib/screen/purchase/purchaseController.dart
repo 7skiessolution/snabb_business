@@ -118,10 +118,10 @@ class PurchaseController extends GetxController {
                                           children: [
                                             Text(
                                               "Total Invoice Amount",
-                                              style: TextStyle(
-                                                fontSize: width * 0.025,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              style:   GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),
                                             ),
                                             SizedBox(
                                                 height: height * 0.055,

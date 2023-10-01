@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool expense = false;
   bool sale = false;
   bool purchase = false;
+
   var newdate = DateFormat.yMMMMd().format(DateTime.now());
   @override
   void initState() {
@@ -63,6 +64,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+    double fontSizeInPixels = 10.0;
+    double fontSizeInDP =
+        fontSizeInPixels / MediaQuery.of(context).devicePixelRatio;
     return GetBuilder<HomeController>(builder: (obj) {
       return Scaffold(
         body: SizedBox(

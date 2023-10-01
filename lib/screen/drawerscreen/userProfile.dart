@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
-import 'package:snabb_business/utils/colors.dart';
 
 import '../../utils/color.dart';
 
@@ -71,7 +70,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     Container(
                       height: height * 0.12,
-                      color: AppColors.blue.withOpacity(0.9),
+                      color: blue.withOpacity(0.9),
                       child: Padding(
                         padding: const EdgeInsets.only(top: 15.0, left: 20),
                         child: Row(
@@ -265,8 +264,7 @@ class _UserProfileState extends State<UserProfile> {
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(10),
-                                          borderSide: BorderSide(
-                                              color: AppColors.blue
+                                          borderSide: BorderSide(color: blue
                                               //  provider.brightness ==
                                               //         AppBrightness.dark
                                               //     ? AppTheme.colorWhite
@@ -276,13 +274,12 @@ class _UserProfileState extends State<UserProfile> {
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(10),
-                                          borderSide:
-                                              BorderSide(color: AppColors.blue
-                                                  // provider.brightness ==
-                                                  //         AppBrightness.dark
-                                                  //     ? AppTheme.colorWhite
-                                                  //   : AppTheme.colorPrimary,
-                                                  ),
+                                          borderSide: BorderSide(color: blue
+                                              // provider.brightness ==
+                                              //         AppBrightness.dark
+                                              //     ? AppTheme.colorWhite
+                                              //   : AppTheme.colorPrimary,
+                                              ),
                                         ),
                                       ),
                                     ),
@@ -332,7 +329,7 @@ class _UserProfileState extends State<UserProfile> {
                                             height: height * 0.05,
                                             width: width * 0.4,
                                             decoration: BoxDecoration(
-                                                color: AppColors.blue,
+                                                color: blue,
                                                 borderRadius:
                                                     BorderRadius.circular(7)),
                                             child: Center(

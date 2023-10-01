@@ -7,7 +7,6 @@ import 'package:snabb_business/models/scheduled_transaction.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/pinch_zoom_image.dart';
 import 'package:snabb_business/utils/schedule_ex.dart';
 
@@ -299,7 +298,7 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                                                   0.9,
                                               child: Stack(
                                                 children: [
-                                                  Container(
+                                                  SizedBox(
                                                       height: height,
                                                       width: width,
                                                       child: PinchZoomImage(
@@ -440,7 +439,7 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
 
     return Scaffold(
       // backgroundColor: Colors.red,
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: backgroundColor,
       key: scaffoldKey,
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton:
@@ -454,7 +453,7 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
               AppBarWidgt(text: "scheduled transaction"),
               Card(
                 elevation: 5,
-                shadowColor: AppColors.blue,
+                shadowColor: blue,
                 child: Container(
                     height: height * 0.1,
                     width: width * 0.9,
@@ -522,7 +521,7 @@ class _ShaduleTransactionScreenState extends State<ShaduleTransactionScreen> {
                               padding: const EdgeInsets.only(top: 8),
                               child: Card(
                                 elevation: 5,
-                                shadowColor: AppColors.blue,
+                                shadowColor: blue,
                                 child: Container(
                                   color: white,
                                   child: ListTile(

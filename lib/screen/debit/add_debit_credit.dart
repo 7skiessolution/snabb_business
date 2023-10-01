@@ -2,7 +2,6 @@
 
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,6 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/models/payment_type_model.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/spinkit.dart';
 
 class AddCreditDebitScreen extends StatefulWidget {
@@ -179,7 +177,7 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                           SizedBox(
                                               height: height * 0.06,
                                               width: width,
-                                              // color: AppColors.backgroundColor,
+                                              // color: backgroundColor,
                                               child: InkWell(
                                                 onTap: () {
                                                   showDialog(
@@ -942,8 +940,7 @@ class _AddCreditDebitScreenState extends State<AddCreditDebitScreen> {
                                                           height: height * 0.05,
                                                           width: width * 0.25,
                                                           decoration: BoxDecoration(
-                                                              color: AppColors
-                                                                  .blue,
+                                                              color: blue,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(

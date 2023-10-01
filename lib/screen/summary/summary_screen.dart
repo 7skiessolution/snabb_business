@@ -6,7 +6,6 @@ import 'package:snabb_business/screen/summary/summary_widget.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:snabb_business/utils/colors.dart';
 
 class SummeryScreen extends StatefulWidget {
   static const routeName = "summary-screen";
@@ -53,7 +52,10 @@ class _SummeryScreenState extends State<SummeryScreen> {
             style: GoogleFonts.montserrat(),
           )),
     };
-    List<Widget> children = [SummaryWidget(), CategoryWidget(months: months)];
+    List<Widget> children = [
+      const SummaryWidget(),
+      CategoryWidget(months: months)
+    ];
     return SafeArea(
       child: Scaffold(
           backgroundColor: backgroundColor,

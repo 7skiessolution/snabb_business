@@ -10,7 +10,6 @@ import 'package:snabb_business/screen/transactions/monthly_transactions.dart';
 import 'package:snabb_business/screen/transactions/yearly_transactions.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 
 class TransactionScreen extends StatefulWidget {
   static const routeName = "transactions-screen";
@@ -88,7 +87,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: backgroundColor,
         body: Container(
             width: width,
             color: Colors.white,

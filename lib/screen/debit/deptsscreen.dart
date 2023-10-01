@@ -11,7 +11,6 @@ import 'package:snabb_business/screen/debit/addDebit.dart';
 import 'package:snabb_business/screen/debit/edit_debit_credit.dart';
 import 'package:snabb_business/screen/debit/view_debitcredit.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/debitbutton.dart';
 import '../../utils/appbarwidget.dart';
 
@@ -50,7 +49,7 @@ class _DebitScreenState extends State<DebitScreen> {
     return SafeArea(
       child: Scaffold(
         extendBody: true,
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: backgroundColor,
         body: SizedBox(
           height: height,
           width: width,

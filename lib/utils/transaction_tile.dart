@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:snabb_business/utils/colors.dart';
+import 'package:snabb_business/utils/color.dart';
 
 class TransactionTile extends StatelessWidget {
   const TransactionTile({
@@ -12,7 +12,7 @@ class TransactionTile extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
-      color: AppColors.tilebackground,
+      color: tilebackground,
       child: Column(
         children: [
           ListTile(
@@ -44,7 +44,7 @@ class TransactionTile extends StatelessWidget {
               ],
             ),
             trailing: VerticalDivider(
-              color: AppColors.blue,
+              color: blue,
               thickness: 4,
             ),
           ),
@@ -69,15 +69,15 @@ class TransactionTile extends StatelessWidget {
             subtitle: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Wallet"),
+                const Text("Wallet"),
                 Text("0/9/2023",
                     style: TextStyle(
                         fontSize: width * 0.03,
                         color: Colors.grey.withOpacity(0.5))),
               ],
             ),
-            trailing: const VerticalDivider(
-              color: AppColors.greencolor,
+            trailing: VerticalDivider(
+              color: greencolor,
               thickness: 4,
             ),
           ),

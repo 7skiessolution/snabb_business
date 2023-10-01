@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:snabb_business/utils/colors.dart';
+import 'package:snabb_business/utils/color.dart';
 
 class CategoryTile extends StatefulWidget {
   const CategoryTile({
@@ -22,7 +22,7 @@ class _CategoryTileState extends State<CategoryTile> {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 7),
       padding: const EdgeInsets.all(12),
-      color: AppColors.tilebackground,
+      color: tilebackground,
       child: Column(
         children: [
           Row(
@@ -38,8 +38,7 @@ class _CategoryTileState extends State<CategoryTile> {
               ),
               Text(
                 "-20,000 PKR",
-                style: TextStyle(
-                    fontSize: width * 0.04, color: AppColors.redcolor),
+                style: TextStyle(fontSize: width * 0.04, color: redcolor),
               ),
             ],
           ),
@@ -72,7 +71,7 @@ class _CategoryTileState extends State<CategoryTile> {
                           style: TextStyle(
                               fontSize: width * 0.04,
                               fontWeight: FontWeight.bold,
-                              color: AppColors.redcolor),
+                              color: redcolor),
                         ),
                         // SizedBox(
                         //   width: width * 0.35,

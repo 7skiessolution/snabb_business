@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/screen/drawerscreen/currency/currency_model_bootom_sheet.dart';
-import 'package:snabb_business/utils/colors.dart';
 
 import '../../utils/appbarwidget.dart';
 import '../../utils/color.dart';
@@ -41,7 +40,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 Container(
                   height: height * 0.1,
-                  color: AppColors.blue.withOpacity(0.9),
+                  color: blue.withOpacity(0.9),
                   child: Padding(
                     padding: const EdgeInsets.only(top: 15.0),
                     child: Row(

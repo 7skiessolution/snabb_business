@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:snabb_business/utils/colors.dart';
+import 'package:snabb_business/utils/color.dart';
 
 class ShaduleTransacrtionListtile extends StatelessWidget {
   const ShaduleTransacrtionListtile({
@@ -15,8 +15,7 @@ class ShaduleTransacrtionListtile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: AppColors.whitecolor,
-          borderRadius: BorderRadius.circular(10)),
+          color: whitecolor, borderRadius: BorderRadius.circular(10)),
       margin: const EdgeInsets.symmetric(vertical: 8),
       padding: const EdgeInsets.all(12),
       child: Column(
@@ -26,15 +25,11 @@ class ShaduleTransacrtionListtile extends StatelessWidget {
             children: [
               Text(
                 "This month",
-                style: TextStyle(
-                    fontSize: width * 0.04,
-                    color: AppColors.blackcolor),
+                style: TextStyle(fontSize: width * 0.04, color: blackcolor),
               ),
               Text(
                 "0.00 PKR",
-                style: TextStyle(
-                    fontSize: width * 0.04,
-                    color: AppColors.blackcolor),
+                style: TextStyle(fontSize: width * 0.04, color: blackcolor),
               ),
             ],
           ),
@@ -46,15 +41,11 @@ class ShaduleTransacrtionListtile extends StatelessWidget {
             children: [
               Text(
                 "Next month",
-                style: TextStyle(
-                    fontSize: width * 0.04,
-                    color: AppColors.blackcolor),
+                style: TextStyle(fontSize: width * 0.04, color: blackcolor),
               ),
               Text(
                 "12,000 PKR",
-                style: TextStyle(
-                    fontSize: width * 0.04,
-                    color: AppColors.greencolor),
+                style: TextStyle(fontSize: width * 0.04, color: greencolor),
               ),
             ],
           ),

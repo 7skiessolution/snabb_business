@@ -6,7 +6,6 @@ import 'package:snabb_business/controller/saleController.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/screen/dashboardScreen.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 
 class SaleScreen extends StatefulWidget {
   const SaleScreen({
@@ -495,7 +494,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                             width: width * 0.2,
                                             height: height * 0.05,
                                             decoration: BoxDecoration(
-                                                color: AppColors.blue,
+                                                color: blue,
                                                 borderRadius:
                                                     BorderRadius.circular(3)),
                                             child: Center(

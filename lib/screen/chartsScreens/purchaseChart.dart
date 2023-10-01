@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
@@ -28,7 +29,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
       builder: (BuildContext context) {
         return AlertDialog(
           elevation: 10,
-          shadowColor: darkblue,
+          shadowColor: blue,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           content: SizedBox(
@@ -48,7 +49,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                             child: Text(
                           "Purchase Transaction Details",
                           style: TextStyle(
-                              color: darkblue,
+                              color: blue,
                               fontSize: width * 0.03,
                               fontWeight: FontWeight.bold),
                         )),
@@ -67,7 +68,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                     Text(
                                       "Name: ",
                                       style: TextStyle(
-                                          color: darkblue,
+                                          color: blue,
                                           fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -90,7 +91,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                     Text(
                                       "Number: ",
                                       style: TextStyle(
-                                          color: darkblue,
+                                          color: blue,
                                           fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -122,7 +123,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                       "Email: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: darkblue,
+                                          color: blue,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.details!.email!,
@@ -150,7 +151,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                     Text(
                                       'payBackDate:'.capitalize!,
                                       style: TextStyle(
-                                          color: darkblue,
+                                          color: blue,
                                           fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -175,7 +176,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                           .date
                                           .capitalize!,
                                       style: TextStyle(
-                                          color: darkblue,
+                                          color: blue,
                                           fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -208,7 +209,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                           .amount
                                           .capitalize!,
                                       style: TextStyle(
-                                          color: darkblue,
+                                          color: blue,
                                           fontSize: width * 0.03,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -231,7 +232,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                     Text(
                                       'Reg#:'.capitalize!,
                                       style: TextStyle(
-                                          color: darkblue,
+                                          color: blue,
                                           fontSize: width * 0.03,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -263,7 +264,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                       "Bank: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: darkblue,
+                                          color: blue,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.bankAmount.toString(),
@@ -284,7 +285,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                       "Cash: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: darkblue,
+                                          color: blue,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.cashAmount.toString(),
@@ -304,7 +305,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                     Text(
                                       "Other: ",
                                       style: TextStyle(
-                                          color: darkblue,
+                                          color: blue,
                                           fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -332,7 +333,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                               child: Text(
                                 "Note: ",
                                 style: TextStyle(
-                                    color: darkblue,
+                                    color: blue,
                                     fontSize: width * 0.025,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -480,8 +481,8 @@ class _PurchaseChartState extends State<PurchaseChart> {
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.04,
                         width: MediaQuery.of(context).size.width * 0.08,
-                        decoration: BoxDecoration(
-                            color: darkblue, shape: BoxShape.circle),
+                        decoration:
+                            BoxDecoration(color: blue, shape: BoxShape.circle),
                         child: const Center(
                           child: Icon(
                             Icons.clear,
@@ -538,220 +539,267 @@ class _PurchaseChartState extends State<PurchaseChart> {
           body: SizedBox(
             height: height,
             width: width,
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                children: [
-                  widget.home
-                      ? const SizedBox()
-                      : AppBarWidgt(text: "Purchase"),
-                  Container(
-                    height: height * 0.21,
-                    width: width,
-                    decoration: BoxDecoration(
-                        color: white, borderRadius: BorderRadius.circular(8)),
+            child: Stack(
+              children: [
+                Container(
+                  height: height,
+                  width: width,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("images/backImage.jpg"))),
+                ),
+                Container(
+                  height: height,
+                  width: width,
+                  color: Colors.white.withOpacity(0.9),
+                ),
+                SizedBox(
+                  height: height,
+                  width: width,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
                     child: Column(
                       children: [
-                        SizedBox(
-                            height: height * 0.20,
+                        widget.home
+                            ? const SizedBox()
+                            : AppBarWidgt(text: "Purchase"),
+                        Card(
+                          elevation: 2,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Container(
+                            height: height * 0.21,
                             width: width,
-                            child: SfCartesianChart(
-                                plotAreaBorderWidth: 0.2,
-                                backgroundColor: white,
-                                primaryXAxis: CategoryAxis(),
-                                primaryYAxis: NumericAxis(
-                                  minimum: 0,
-                                  numberFormat: NumberFormat.compact(),
-                                  // interval: 1000,
-                                  // desiredIntervals:
-                                  //     7, // Set this to the number of desired ticks (7 in this case)
-                                ),
-                                tooltipBehavior: obj.tooltip,
-                                series: <ChartSeries<Chartdata, String>>[
-                                  ColumnSeries<Chartdata, String>(
-                                    dataSource: obj.purchasedata,
-                                    xValueMapper: (Chartdata data, _) => data.x,
-                                    yValueMapper: (Chartdata data, _) => data.y,
-                                    name: 'Purchase',
-                                    color: darkblue,
-                                  ),
-                                ])),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: height * 0.05,
-                    width: width * 0.6,
-                    color: darkblue,
-                    child: Center(
-                      child: Text(
-                        "Purchase Transactions".toUpperCase(),
-                        style: TextStyle(
-                            fontSize: width * 0.035,
-                            fontWeight: FontWeight.w500,
-                            color: white),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: obj.purchaseData.isNotEmpty
-                        ? ListView.builder(
-                            itemCount: obj.purchaseData.length,
-                            itemBuilder: (context, index) {
-                              var data = obj.purchaseData[index];
-                              return InkWell(
-                                onTap: () {
-                                  showPurchaseImageDialog(
-                                      context,
-                                      data,
-                                      MediaQuery.of(context).size.height,
-                                      MediaQuery.of(context).size.width);
-                                },
-                                child: Padding(
-                                  padding: EdgeInsets.only(top: height * 0.015),
-                                  child: Stack(
-                                    children: [
-                                      Container(
-                                        height: height * 0.13,
-                                        width: width,
-                                        decoration: BoxDecoration(
-                                          color: darkblue,
-                                          borderRadius:
-                                              BorderRadius.circular(6),
+                            decoration: BoxDecoration(
+                                color: whitecolor,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                    height: height * 0.20,
+                                    width: width,
+                                    child: SfCartesianChart(
+                                        plotAreaBorderWidth: 0.2,
+                                        backgroundColor: white,
+                                        primaryXAxis: CategoryAxis(),
+                                        primaryYAxis: NumericAxis(
+                                          minimum: 0,
+                                          numberFormat: NumberFormat.compact(),
+                                          // interval: 1000,
+                                          // desiredIntervals:
+                                          //     7, // Set this to the number of desired ticks (7 in this case)
                                         ),
-                                        child: Align(
-                                          alignment: Alignment.bottomCenter,
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                top: 8, bottom: 8),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
-                                              children: [
-                                                Text(
-                                                  "Recieve Payment: ${(data.details!.partialAmount ?? 0.0)} ${obj.curency}",
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontSize: width * 0.025,
-                                                      color: white),
-                                                ),
-                                                Text(
-                                                  "Balamce Amount: ${(data.totalAmount ?? 0.0) - (data.details!.partialAmount ?? 0.0)} ${obj.curency} ",
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontSize: width * 0.025,
-                                                      color: white),
-                                                )
-                                              ],
-                                            ),
+                                        tooltipBehavior: obj.tooltip,
+                                        series: <ChartSeries<Chartdata,
+                                            String>>[
+                                          ColumnSeries<Chartdata, String>(
+                                            dataSource: obj.purchasedata,
+                                            xValueMapper: (Chartdata data, _) =>
+                                                data.x,
+                                            yValueMapper: (Chartdata data, _) =>
+                                                data.y,
+                                            name: 'Purchase',
+                                            color: blue,
                                           ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: height * 0.1,
-                                        width: width,
-                                        decoration: BoxDecoration(
-                                          color: white,
-                                          borderRadius:
-                                              BorderRadius.circular(6),
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
+                                        ])),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: height * 0.02,
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          height: height * 0.05,
+                          width: width * 0.6,
+                          color: blue,
+                          child: Center(
+                            child: Text(
+                              "Purchase Transactions".toUpperCase(),
+                              style: GoogleFonts.poppins(
+                                  color: whitecolor,
+                                  fontSize: width * 0.035,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: obj.purchaseData.isNotEmpty
+                              ? ListView.builder(
+                                  itemCount: obj.purchaseData.length,
+                                  itemBuilder: (context, index) {
+                                    var data = obj.purchaseData[index];
+                                    return InkWell(
+                                      onTap: () {
+                                        showPurchaseImageDialog(
+                                            context,
+                                            data,
+                                            MediaQuery.of(context).size.height,
+                                            MediaQuery.of(context).size.width);
+                                      },
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            top: height * 0.015),
+                                        child: Stack(
                                           children: [
-                                            SizedBox(
-                                              width: width * 0.05,
-                                            ),
-                                            CircleAvatar(
-                                              backgroundColor: darkblue,
-                                              child: Image.asset(
-                                                "images/sale.png",
+                                            Container(
+                                              height: height * 0.13,
+                                              width: width,
+                                              decoration: BoxDecoration(
+                                                color: blue,
+                                                borderRadius:
+                                                    BorderRadius.circular(6),
                                               ),
-                                            ),
-                                            SizedBox(
-                                              width: width * 0.05,
-                                            ),
-                                            Expanded(
-                                              child: Container(
-                                                alignment: Alignment.centerLeft,
-                                                height: height,
-                                                width: width,
-                                                child: Text(
-                                                  data.details!.name ?? "Name",
-                                                  style: TextStyle(
-                                                      fontSize: width * 0.035,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: darkblue),
+                                              child: Align(
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 8, bottom: 8),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceAround,
+                                                    children: [
+                                                      Text(
+                                                        "Recieve Payment: ${(data.details!.partialAmount ?? 0.0)} ${obj.curency}",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize:
+                                                                width * 0.025,
+                                                            color: whitecolor),
+                                                      ),
+                                                      Text(
+                                                        "Balamce Amount: ${(data.totalAmount ?? 0.0) - (data.details!.partialAmount ?? 0.0)} ${obj.curency} ",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize:
+                                                                width * 0.025,
+                                                            color: whitecolor),
+                                                      )
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(
-                                              width: width * 0.05,
-                                            ),
-                                            SizedBox(
+                                            Container(
                                               height: height * 0.1,
-                                              width: width * 0.3,
-                                              child: Column(
+                                              width: width,
+                                              decoration: BoxDecoration(
+                                                color: whitecolor,
+                                                borderRadius:
+                                                    BorderRadius.circular(6),
+                                              ),
+                                              child: Row(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                    MainAxisAlignment
+                                                        .spaceAround,
                                                 children: [
-                                                  Container(
-                                                    height: height * 0.02,
-                                                    width: width * 0.2,
-                                                    decoration: BoxDecoration(
-                                                      color: darkblue,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              2),
+                                                  SizedBox(
+                                                    width: width * 0.05,
+                                                  ),
+                                                  CircleAvatar(
+                                                    backgroundColor: blue,
+                                                    child: Image.asset(
+                                                      "images/sale.png",
                                                     ),
-                                                    child: Center(
+                                                  ),
+                                                  SizedBox(
+                                                    width: width * 0.05,
+                                                  ),
+                                                  Expanded(
+                                                    child: Container(
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      height: height,
+                                                      width: width,
                                                       child: Text(
-                                                        "${data.totalAmount} ${obj.curency}",
+                                                        data.details!.name ??
+                                                            "Name",
                                                         style: TextStyle(
                                                             fontSize:
-                                                                width * 0.02,
+                                                                width * 0.035,
                                                             fontWeight:
                                                                 FontWeight.bold,
-                                                            color: white),
+                                                            color: blue),
                                                       ),
                                                     ),
                                                   ),
                                                   SizedBox(
-                                                    height: height * 0.01,
+                                                    width: width * 0.05,
                                                   ),
-                                                  Text(
-                                                    data.dateTime
-                                                        .toString()
-                                                        .substring(0, 10),
-                                                    style: TextStyle(
-                                                        fontSize: width * 0.02,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: lightgray),
+                                                  SizedBox(
+                                                    height: height * 0.1,
+                                                    width: width * 0.3,
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Container(
+                                                          height: height * 0.02,
+                                                          width: width * 0.2,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: blue,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        2),
+                                                          ),
+                                                          child: Center(
+                                                            child: Text(
+                                                              "${data.totalAmount} ${obj.curency}",
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.02,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color:
+                                                                      whitecolor),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          height: height * 0.01,
+                                                        ),
+                                                        Text(
+                                                          data.dateTime
+                                                              .toString()
+                                                              .substring(0, 10),
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                                  width * 0.02,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              color: lightgray),
+                                                        )
+                                                      ],
+                                                    ),
                                                   )
                                                 ],
                                               ),
-                                            )
+                                            ),
                                           ],
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          )
-                        : const Center(child: Text("No Data Found !")),
-                  )
-                ],
-              ),
+                                    );
+                                  },
+                                )
+                              : const Center(child: Text("No Data Found !")),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

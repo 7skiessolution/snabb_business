@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:snabb_business/controller/logincontroller.dart';
 import 'package:snabb_business/models/signup_model.dart';
 import 'package:snabb_business/utils/TextfieldLogin.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/spinkit.dart';
 
 import '../../utils/color.dart';
@@ -73,13 +72,13 @@ class _LoginScreenState extends State<LoginScreen> {
       return Container(
         width: 50,
         height: 2,
-        color: AppColors.blue,
+        color: blue,
       );
     } else {
       return Container(
         width: 20,
         height: 2,
-        color: AppColors.whitecolor,
+        color: whitecolor,
       );
     }
   }
@@ -104,9 +103,9 @@ class _LoginScreenState extends State<LoginScreen> {
   //* For Password Sufix icon color
   Color setIconColor(var truee) {
     if (true == truee) {
-      return AppColors.blackcolor;
+      return blackcolor;
     } else {
-      return AppColors.blue;
+      return blue;
     }
   }
 
@@ -116,13 +115,13 @@ class _LoginScreenState extends State<LoginScreen> {
       return Container(
         width: 60,
         height: 2,
-        color: AppColors.blue,
+        color: blue,
       );
     } else {
       return Container(
         width: 20,
         height: 2,
-        color: AppColors.whitecolor,
+        color: whitecolor,
       );
     }
   }
@@ -153,6 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
@@ -743,7 +743,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ? Container(
                         height: height,
                         width: width,
-                        color: AppColors.blue.withOpacity(0.5),
+                        color: blue.withOpacity(0.5),
                         child: Padding(
                           padding: EdgeInsets.only(top: height * 0.4),
                           child: Center(
@@ -755,7 +755,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       )
-                    : SizedBox()
+                    : const SizedBox()
               ]),
             ),
           );

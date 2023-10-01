@@ -7,7 +7,6 @@ import 'package:snabb_business/screen/chartsScreens/purchaseChart.dart';
 import 'package:snabb_business/screen/chartsScreens/salesChart.dart';
 import 'package:snabb_business/screen/homeScreen.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/navigation/curvenavigationbar.dart';
 import '../utils/demonshape.dart';
 import '../utils/drawer.dart';
@@ -51,41 +50,59 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           body: SizedBox(
             child: Stack(
               children: [
+                Container(
+                  height: height,
+                  width: width,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("images/backImage.jpg"))),
+                ),
+                Container(
+                  height: height,
+                  width: width,
+                  color: Colors.white.withOpacity(0.9),
+                ),
                 Column(
                   children: [
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 10.0, left: 10, right: 10),
-                      child: Container(
-                        height: height * 0.08,
-                        width: width,
-                        decoration: BoxDecoration(
-                            color: white,
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                scaffoldKey.currentState!.openDrawer();
-                              },
-                              child: Icon(
-                                Icons.notes,
+                      child: Card(
+                        elevation: 7,
+                        shadowColor: Colors.grey[100],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          height: height * 0.08,
+                          width: width,
+                          decoration: BoxDecoration(
+                              color: white,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  scaffoldKey.currentState!.openDrawer();
+                                },
+                                child: Icon(
+                                  Icons.notes,
+                                  color: darkblue,
+                                ),
+                              ),
+                              SizedBox(
+                                width: width * 0.55,
+                              ),
+                              Icon(
+                                Icons.notifications_active_outlined,
                                 color: darkblue,
                               ),
-                            ),
-                            SizedBox(
-                              width: width * 0.55,
-                            ),
-                            Icon(
-                              Icons.notifications_active_outlined,
-                              color: darkblue,
-                            ),
-                            Icon(
-                              Icons.delete_outline,
-                              color: darkblue,
-                            ),
-                          ],
+                              Icon(
+                                Icons.delete_outline,
+                                color: darkblue,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -140,9 +157,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 color: Colors.white,
               ),
             ],
-            color: AppColors.blue,
-            buttonBackgroundColor: AppColors.redcolor,
-            backgroundColor: AppColors.backgroundColor,
+            color: blue,
+            buttonBackgroundColor: redcolor,
+            backgroundColor: Colors.transparent,
             animationCurve: Curves.easeInOut,
             animationDuration: const Duration(milliseconds: 400),
             onTap: (index) {

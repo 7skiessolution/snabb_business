@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
-import 'package:snabb_business/utils/colors.dart';
+import 'package:snabb_business/utils/color.dart';
 
 class SummeryTile extends StatefulWidget {
   const SummeryTile({
@@ -24,7 +24,7 @@ class _SummeryTileState extends State<SummeryTile> {
     var height = MediaQuery.of(context).size.height;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-      color: AppColors.tilebackground,
+      color: tilebackground,
       child: Row(
         children: [
           Container(
@@ -39,7 +39,7 @@ class _SummeryTileState extends State<SummeryTile> {
                 SizedBox(
                   height: height * 0.02,
                 ),
-                Container(
+                SizedBox(
                   width: width * 0.10,
                   child: PieChart(
                     dataMap: dataMap,

@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/controller/homeController.dart';
-import 'package:snabb_business/controller/homeController.dart' as sal;
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:snabb_business/utils/pinch_zoom_image.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import '../../models/dataclassgraphModel.dart';
 import 'package:snabb_business/models/yearly_transaction_model.dart' as yTra;
 
@@ -40,7 +37,7 @@ class _SalesChartState extends State<SalesChart> {
         var width = MediaQuery.of(context).size.width;
         return AlertDialog(
           elevation: 10,
-          shadowColor: AppColors.greencolor,
+          shadowColor: greencolor,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           content: SizedBox(
@@ -60,7 +57,7 @@ class _SalesChartState extends State<SalesChart> {
                             child: Text(
                           "Sale Transaction Details",
                           style: TextStyle(
-                              color: AppColors.greencolor,
+                              color: greencolor,
                               fontSize: width * 0.025,
                               fontWeight: FontWeight.bold),
                         )),
@@ -85,7 +82,7 @@ class _SalesChartState extends State<SalesChart> {
                                             "Name: ",
                                             style: TextStyle(
                                                 fontSize: width * 0.025,
-                                                color: AppColors.greencolor,
+                                                color: greencolor,
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           Text(obj.details!.name!,
@@ -106,7 +103,7 @@ class _SalesChartState extends State<SalesChart> {
                                           Text(
                                             "Number: ",
                                             style: TextStyle(
-                                                color: AppColors.greencolor,
+                                                color: greencolor,
                                                 fontSize: width * 0.025,
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -143,7 +140,7 @@ class _SalesChartState extends State<SalesChart> {
                                             "Email: ",
                                             style: TextStyle(
                                                 fontSize: width * 0.025,
-                                                color: AppColors.greencolor,
+                                                color: greencolor,
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           Text(obj.details!.email!,
@@ -159,7 +156,7 @@ class _SalesChartState extends State<SalesChart> {
                             ),
                       obj.details!.payBackDay == null ||
                               obj.details!.payBackDay == "null"
-                          ? SizedBox()
+                          ? const SizedBox()
                           : SizedBox(
                               height: height * 0.05,
                               width: width * 0.9,
@@ -175,7 +172,7 @@ class _SalesChartState extends State<SalesChart> {
                                           Text(
                                             "PayBack: ",
                                             style: TextStyle(
-                                                color: AppColors.greencolor,
+                                                color: greencolor,
                                                 fontSize: width * 0.025,
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -209,7 +206,7 @@ class _SalesChartState extends State<SalesChart> {
                                       "Amount: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.totalAmount.toString(),
@@ -229,7 +226,7 @@ class _SalesChartState extends State<SalesChart> {
                                     Text(
                                       "Date: ",
                                       style: TextStyle(
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -261,7 +258,7 @@ class _SalesChartState extends State<SalesChart> {
                                       "Partial: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.details!.partialAmount!.toString(),
@@ -282,7 +279,7 @@ class _SalesChartState extends State<SalesChart> {
                                       "Balance: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
@@ -313,7 +310,7 @@ class _SalesChartState extends State<SalesChart> {
                                       "Bank: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.bankAmount.toString(),
@@ -334,7 +331,7 @@ class _SalesChartState extends State<SalesChart> {
                                       "Cash: ",
                                       style: TextStyle(
                                           fontSize: width * 0.025,
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(obj.cashAmount.toString(),
@@ -354,7 +351,7 @@ class _SalesChartState extends State<SalesChart> {
                                     Text(
                                       "Other: ",
                                       style: TextStyle(
-                                          color: AppColors.greencolor,
+                                          color: greencolor,
                                           fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -383,7 +380,7 @@ class _SalesChartState extends State<SalesChart> {
                                 "Note: ",
                                 style: TextStyle(
                                     fontSize: width * 0.025,
-                                    color: AppColors.greencolor,
+                                    color: greencolor,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -434,7 +431,7 @@ class _SalesChartState extends State<SalesChart> {
                                                   0.9,
                                               child: Stack(
                                                 children: [
-                                                  Container(
+                                                  SizedBox(
                                                       height: height,
                                                       width: width,
                                                       child: PinchZoomImage(
@@ -530,9 +527,8 @@ class _SalesChartState extends State<SalesChart> {
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.04,
                         width: MediaQuery.of(context).size.width * 0.08,
-                        decoration: const BoxDecoration(
-                            color: AppColors.greencolor,
-                            shape: BoxShape.circle),
+                        decoration: BoxDecoration(
+                            color: greencolor, shape: BoxShape.circle),
                         child: const Center(
                           child: Icon(
                             Icons.clear,
@@ -580,246 +576,278 @@ class _SalesChartState extends State<SalesChart> {
           body: SizedBox(
             height: height,
             width: width,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Column(
-                children: [
-                  widget.home
-                      ? const SizedBox()
-                      : AppBarWidgt(
-                          text: "Sale",
-                        ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 6, bottom: 12),
-                    child: Container(
-                      height: height * 0.20,
-                      width: width,
-                      decoration: BoxDecoration(
-                          color: white, borderRadius: BorderRadius.circular(8)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          SizedBox(
-                              height: height * 0.19,
-                              width: width,
-                              child: SfCartesianChart(
-                                primaryYAxis: NumericAxis(
-                                  minimum: 0,
-                                  numberFormat: NumberFormat.compact(),
-                                  // interval: 100,
-                                  // desiredIntervals:
-                                  //     100,
-                                ),
-                                backgroundColor: Colors.white,
-                                selectionGesture: ActivationMode.doubleTap,
-                                enableMultiSelection: true,
-                                enableAxisAnimation: true,
-                                primaryXAxis: DateTimeAxis(),
-                                series: <ChartSeries>[
-                                  LineSeries<SalesData, DateTime>(
-                                    legendIconType: LegendIconType.rectangle,
-                                    animationDuration: 5,
-                                    animationDelay: 3,
-                                    name: "Sale",
-                                    color: AppColors.greencolor,
-                                    markerSettings: const MarkerSettings(
-                                      isVisible: true,
-                                      width: 5,
-                                      height: 5,
-                                      borderWidth: 0.5,
-                                      color: AppColors.greencolor,
-                                    ),
-                                    enableTooltip: true,
-                                    isVisible: true,
-                                    dataSource: obj.chartData,
-                                    xValueMapper: (SalesData sales, _) =>
-                                        sales.year,
-                                    yValueMapper: (SalesData sales, _) =>
-                                        sales.sales,
-                                  ),
-                                  LineSeries<SalesData, DateTime>(
-                                    legendIconType: LegendIconType.rectangle,
-                                    animationDuration: 5,
-                                    animationDelay: 3,
-                                    color: AppColors.greencolor,
-                                    markerSettings: const MarkerSettings(
-                                      isVisible: true,
-                                      width: 5,
-                                      height: 5,
-                                      borderWidth: 0.5,
-                                      color: AppColors.greencolor,
-                                    ),
-                                    enableTooltip: true,
-                                    isVisible: true,
-                                    dataSource: obj.chart,
-                                    xValueMapper: (SalesData sales, _) =>
-                                        sales.year,
-                                    yValueMapper: (SalesData sales, _) =>
-                                        sales.sales,
-                                  )
-                                ],
-                              ))
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: height * 0.05,
-                    width: width * 0.6,
-                    color: AppColors.greencolor,
-                    child: Center(
-                      child: Text(
-                        "Sales Transactions".toUpperCase(),
-                        style: TextStyle(
-                            fontSize: width * 0.035,
-                            fontWeight: FontWeight.w500,
-                            color: white),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: obj.salaData.length,
-                      itemBuilder: (context, index) {
-                        var data = obj.salaData[index];
-                        return InkWell(
-                          onTap: () {
-                            showImageDialog(context, data);
-                          },
-                          child: Padding(
-                            padding: EdgeInsets.only(top: height * 0.015),
-                            child: Stack(
+            child: Stack(
+              children: [
+                Container(
+                  height: height,
+                  width: width,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("images/backImage.jpg"))),
+                ),
+                Container(
+                  height: height,
+                  width: width,
+                  color: Colors.white.withOpacity(0.9),
+                ),
+                SizedBox(
+                  height: height,
+                  width: width,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Column(
+                      children: [
+                        widget.home
+                            ? const SizedBox()
+                            : AppBarWidgt(
+                                text: "Sale",
+                              ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 6, bottom: 12),
+                          child: Container(
+                            height: height * 0.20,
+                            width: width,
+                            decoration: BoxDecoration(
+                                color: white,
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Container(
-                                  height: height * 0.13,
-                                  width: width,
-                                  decoration: BoxDecoration(
-                                    color: AppColors.greencolor,
-                                    borderRadius: BorderRadius.circular(6),
-                                  ),
-                                  child: Align(
-                                    alignment: Alignment.bottomCenter,
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                          bottom: height * 0.005),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Text(
-                                            "Recieve Payment: ${(data.totalAmount ?? 0.0)} ${obj.curency} ",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: width * 0.025,
-                                                color: white),
+                                SizedBox(
+                                    height: height * 0.19,
+                                    width: width,
+                                    child: SfCartesianChart(
+                                      primaryYAxis: NumericAxis(
+                                        minimum: 0,
+                                        numberFormat: NumberFormat.compact(),
+                                        // interval: 100,
+                                        // desiredIntervals:
+                                        //     100,
+                                      ),
+                                      backgroundColor: Colors.white,
+                                      selectionGesture:
+                                          ActivationMode.doubleTap,
+                                      enableMultiSelection: true,
+                                      enableAxisAnimation: true,
+                                      primaryXAxis: DateTimeAxis(),
+                                      series: <ChartSeries>[
+                                        LineSeries<SalesData, DateTime>(
+                                          legendIconType:
+                                              LegendIconType.rectangle,
+                                          animationDuration: 5,
+                                          animationDelay: 3,
+                                          name: "Sale",
+                                          color: greencolor,
+                                          markerSettings: MarkerSettings(
+                                            isVisible: true,
+                                            width: 5,
+                                            height: 5,
+                                            borderWidth: 0.5,
+                                            color: greencolor,
                                           ),
-                                          Text(
-                                            "Balance Amount: ${(data.totalAmount ?? 0.0) - (data.details!.partialAmount! ?? 0.0)} ${obj.curency} ",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: width * 0.025,
-                                                color: white),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  height: height * 0.1,
-                                  width: width,
-                                  decoration: BoxDecoration(
-                                    color: white,
-                                    borderRadius: BorderRadius.circular(6),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                          enableTooltip: true,
+                                          isVisible: true,
+                                          dataSource: obj.chartData,
+                                          xValueMapper: (SalesData sales, _) =>
+                                              sales.year,
+                                          yValueMapper: (SalesData sales, _) =>
+                                              sales.sales,
+                                        ),
+                                        LineSeries<SalesData, DateTime>(
+                                          legendIconType:
+                                              LegendIconType.rectangle,
+                                          animationDuration: 5,
+                                          animationDelay: 3,
+                                          color: greencolor,
+                                          markerSettings: MarkerSettings(
+                                            isVisible: true,
+                                            width: 5,
+                                            height: 5,
+                                            borderWidth: 0.5,
+                                            color: greencolor,
+                                          ),
+                                          enableTooltip: true,
+                                          isVisible: true,
+                                          dataSource: obj.chart,
+                                          xValueMapper: (SalesData sales, _) =>
+                                              sales.year,
+                                          yValueMapper: (SalesData sales, _) =>
+                                              sales.sales,
+                                        )
+                                      ],
+                                    ))
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          height: height * 0.05,
+                          width: width * 0.6,
+                          color: greencolor,
+                          child: Center(
+                            child: Text(
+                              "Sales Transactions".toUpperCase(),
+                              style: TextStyle(
+                                  fontSize: width * 0.035,
+                                  fontWeight: FontWeight.w500,
+                                  color: white),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: height * 0.02,
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: obj.salaData.length,
+                            itemBuilder: (context, index) {
+                              var data = obj.salaData[index];
+                              return InkWell(
+                                onTap: () {
+                                  showImageDialog(context, data);
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: height * 0.015),
+                                  child: Stack(
                                     children: [
-                                      SizedBox(
-                                        width: width * 0.05,
-                                      ),
-                                      CircleAvatar(
-                                          backgroundColor: AppColors.greencolor,
-                                          child:
-                                              Image.asset("images/sale.png")),
-                                      SizedBox(
-                                        width: width * 0.05,
-                                      ),
-                                      Expanded(
-                                        child: Container(
-                                          alignment: Alignment.centerLeft,
-                                          height: height,
-                                          width: width,
-                                          child: Text(
-                                            data.details!.name ?? "Name",
-                                            style: TextStyle(
-                                                fontSize: width * 0.035,
-                                                fontWeight: FontWeight.bold,
-                                                color: AppColors.greencolor),
+                                      Container(
+                                        height: height * 0.13,
+                                        width: width,
+                                        decoration: BoxDecoration(
+                                          color: greencolor,
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                        ),
+                                        child: Align(
+                                          alignment: Alignment.bottomCenter,
+                                          child: Padding(
+                                            padding: EdgeInsets.only(
+                                                bottom: height * 0.005),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                Text(
+                                                  "Recieve Payment: ${(data.totalAmount ?? 0.0)} ${obj.curency} ",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: width * 0.025,
+                                                      color: white),
+                                                ),
+                                                Text(
+                                                  "Balance Amount: ${(data.totalAmount ?? 0.0) - (data.details!.partialAmount! ?? 0.0)} ${obj.curency} ",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: width * 0.025,
+                                                      color: white),
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: width * 0.05,
-                                      ),
-                                      SizedBox(
+                                      Container(
                                         height: height * 0.1,
-                                        width: width * 0.3,
-                                        child: Column(
+                                        width: width,
+                                        decoration: BoxDecoration(
+                                          color: white,
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                        ),
+                                        child: Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                              MainAxisAlignment.spaceAround,
                                           children: [
-                                            Container(
-                                              height: height * 0.02,
-                                              width: width * 0.2,
-                                              decoration: BoxDecoration(
-                                                color: AppColors.greencolor,
-                                                borderRadius:
-                                                    BorderRadius.circular(2),
-                                              ),
-                                              child: Center(
+                                            SizedBox(
+                                              width: width * 0.05,
+                                            ),
+                                            CircleAvatar(
+                                                backgroundColor: greencolor,
+                                                child: Image.asset(
+                                                    "images/sale.png")),
+                                            SizedBox(
+                                              width: width * 0.05,
+                                            ),
+                                            Expanded(
+                                              child: Container(
+                                                alignment: Alignment.centerLeft,
+                                                height: height,
+                                                width: width,
                                                 child: Text(
-                                                  "${data.totalAmount} ${obj.curency}",
+                                                  data.details!.name ?? "Name",
                                                   style: TextStyle(
-                                                      fontSize: width * 0.02,
+                                                      fontSize: width * 0.035,
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      color: white),
+                                                      color: greencolor),
                                                 ),
                                               ),
                                             ),
                                             SizedBox(
-                                              height: height * 0.01,
+                                              width: width * 0.05,
                                             ),
-                                            Text(
-                                              data.dateTime
-                                                  .toString()
-                                                  .substring(0, 10),
-                                              style: TextStyle(
-                                                  fontSize: width * 0.02,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: lightgray),
+                                            SizedBox(
+                                              height: height * 0.1,
+                                              width: width * 0.3,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    height: height * 0.02,
+                                                    width: width * 0.2,
+                                                    decoration: BoxDecoration(
+                                                      color: greencolor,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              2),
+                                                    ),
+                                                    child: Center(
+                                                      child: Text(
+                                                        "${data.totalAmount} ${obj.curency}",
+                                                        style: TextStyle(
+                                                            fontSize:
+                                                                width * 0.02,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color: white),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: height * 0.01,
+                                                  ),
+                                                  Text(
+                                                    data.dateTime
+                                                        .toString()
+                                                        .substring(0, 10),
+                                                    style: TextStyle(
+                                                        fontSize: width * 0.02,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: lightgray),
+                                                  )
+                                                ],
+                                              ),
                                             )
                                           ],
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ),
-                              ],
-                            ),
+                              );
+                            },
                           ),
-                        );
-                      },
+                        )
+                      ],
                     ),
-                  )
-                ],
-              ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

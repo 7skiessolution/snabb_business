@@ -1,9 +1,9 @@
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:snabb_business/utils/colors.dart';
+import 'package:snabb_business/utils/color.dart';
 
 class SpinKit {
   static final loadSpinkit = SpinKitWave(
-    color: AppColors.blue,
+    color: blue,
     size: 50.0,
   );
 }

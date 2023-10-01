@@ -14,7 +14,6 @@ import 'package:dio/dio.dart' as deo;
 import 'package:lottie/lottie.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/controller/homeController.dart';
@@ -22,12 +21,10 @@ import 'package:snabb_business/controller/schedule_controller.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/models/payment_type_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wal;
-import 'package:snabb_business/screen/homeScreen.dart';
 import 'package:snabb_business/screen/sale/IncomeDataMode.dart';
 import 'package:snabb_business/screen/sale/income_catagery._model.dart';
 import 'package:snabb_business/screen/sale/user_category_model.dart';
 import 'package:snabb_business/static_data.dart';
-import 'package:snabb_business/utils/colors.dart';
 import 'package:vector_math/vector_math.dart' as math;
 import 'package:uuid/uuid.dart';
 import 'package:snabb_business/utils/color.dart';
@@ -1727,7 +1724,7 @@ class _ScheduleIncomeState extends State<ScheduleIncome> {
                                       SizedBox(
                                           height: height * 0.06,
                                           width: width,
-                                          // color: AppColors.backgroundColor,
+                                          // color: backgroundColor,
                                           child: InkWell(
                                             onTap: () {
                                               showDialog(

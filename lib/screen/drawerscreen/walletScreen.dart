@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/models/currency_model.dart';
 import 'package:snabb_business/utils/color.dart';
-import 'package:snabb_business/utils/colors.dart';
 
 import '../../utils/appbarwidget.dart';
 
@@ -215,7 +214,9 @@ class _WalletScreenState extends State<WalletScreen> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    !widget.home ? AppBarWidgt(text: "Wallet") : const SizedBox(),
+                    !widget.home
+                        ? AppBarWidgt(text: "Wallet")
+                        : const SizedBox(),
                     SizedBox(
                         height: height * 0.85,
                         width: width,
@@ -232,7 +233,7 @@ class _WalletScreenState extends State<WalletScreen> {
                             Container(
                               width: width,
                               height: height * 0.15,
-                              color: AppColors.topcard.withOpacity(0.9),
+                              color: topcard.withOpacity(0.9),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 20.0),
@@ -254,7 +255,7 @@ class _WalletScreenState extends State<WalletScreen> {
                                 left: width * 0.1,
                                 child: Card(
                                   elevation: 10,
-                                  shadowColor: AppColors.blue,
+                                  shadowColor: blue,
                                   child: Container(
                                       height: height * 0.8,
                                       width: width * 0.7,
@@ -275,12 +276,11 @@ class _WalletScreenState extends State<WalletScreen> {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             12)),
-                                                shadowColor: AppColors.blue,
+                                                shadowColor: blue,
                                                 child: Container(
                                                   height: height * 0.12,
                                                   decoration: BoxDecoration(
-                                                      color:
-                                                          AppColors.whitecolor,
+                                                      color: whitecolor,
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               12)),
@@ -326,7 +326,11 @@ class _WalletScreenState extends State<WalletScreen> {
                                                                   width * 0.03,
                                                             ),
                                                             Text(
-                                                              obj.walletList[index].amount.toString(),
+                                                              obj
+                                                                  .walletList[
+                                                                      index]
+                                                                  .amount
+                                                                  .toString(),
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .green,
@@ -439,7 +443,7 @@ class _WalletScreenState extends State<WalletScreen> {
                                                                                         //  brightness.brightness == AppBrightness.light
                                                                                         //     ? AppTheme.colorPrimary
                                                                                         //:
-                                                                                        AppColors.blue,
+                                                                                        blue,
                                                                                     fontWeight: FontWeight.bold),
                                                                               ),
                                                                             ),
@@ -590,7 +594,7 @@ class _WalletScreenState extends State<WalletScreen> {
                                                                                                 //         AppBrightness.dark
                                                                                                 //     ? Colors.white
                                                                                                 //:
-                                                                                                AppColors.blue,
+                                                                                                blue,
                                                                                           ),
                                                                                         ),
                                                                                       ),
@@ -767,7 +771,7 @@ class _WalletScreenState extends State<WalletScreen> {
     //   return Card(
     //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
     //     elevation: 2,
-    //     shadowColor:AppColors.blue,
+    //     shadowColor:blue,
     //     child: Column(
     //       children: [
     //         Row(
@@ -831,7 +835,7 @@ class _WalletScreenState extends State<WalletScreen> {
     //                                               // value.brightness
     //                                               //     ? Colors.white
     //                                                   //:
-    //                                                    AppColors.blue,
+    //                                                    blue,
     //                                             ),
     //                                           ),
     //                                         ),

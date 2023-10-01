@@ -6,7 +6,7 @@ import 'package:snabb_business/models/summary_model.dart';
 import 'package:snabb_business/screen/summary/summary_detail.dart';
 import 'package:snabb_business/screen/transactions/transactionScreen.dart';
 import 'package:snabb_business/static_data.dart';
-import 'package:snabb_business/utils/colors.dart';
+import 'package:snabb_business/utils/color.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class SummaryController extends GetxController {
@@ -35,7 +35,7 @@ class SummaryController extends GetxController {
       builder: (BuildContext context) {
         return AlertDialog(
           elevation: 10,
-          shadowColor: AppColors.blue,
+          shadowColor: blue,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           content: SizedBox(
@@ -65,7 +65,7 @@ class SummaryController extends GetxController {
                           height: MediaQuery.of(context).size.height * 0.045,
                           width: MediaQuery.of(context).size.width * 0.4,
                           decoration: BoxDecoration(
-                              color: AppColors.blue,
+                              color: blue,
                               borderRadius: BorderRadius.circular(7)),
                           child: Center(
                             child: Text(
@@ -96,7 +96,7 @@ class SummaryController extends GetxController {
                           height: MediaQuery.of(context).size.height * 0.045,
                           width: MediaQuery.of(context).size.width * 0.4,
                           decoration: BoxDecoration(
-                              color: AppColors.blue,
+                              color: blue,
                               borderRadius: BorderRadius.circular(7)),
                           child: Center(
                             child: Text(
@@ -127,7 +127,7 @@ class SummaryController extends GetxController {
                           height: MediaQuery.of(context).size.height * 0.045,
                           width: MediaQuery.of(context).size.width * 0.4,
                           decoration: BoxDecoration(
-                              color: AppColors.blue,
+                              color: blue,
                               borderRadius: BorderRadius.circular(7)),
                           child: Center(
                             child: Text(
@@ -158,7 +158,7 @@ class SummaryController extends GetxController {
                           height: MediaQuery.of(context).size.height * 0.045,
                           width: MediaQuery.of(context).size.width * 0.4,
                           decoration: BoxDecoration(
-                              color: AppColors.blue,
+                              color: blue,
                               borderRadius: BorderRadius.circular(7)),
                           child: Center(
                             child: Text(
@@ -186,8 +186,8 @@ class SummaryController extends GetxController {
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.04,
                         width: MediaQuery.of(context).size.width * 0.08,
-                        decoration: BoxDecoration(
-                            color: AppColors.blue, shape: BoxShape.circle),
+                        decoration:
+                            BoxDecoration(color: blue, shape: BoxShape.circle),
                         child: const Center(
                           child: Icon(
                             Icons.clear,

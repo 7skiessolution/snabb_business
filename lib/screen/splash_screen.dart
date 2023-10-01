@@ -71,19 +71,34 @@ class _SplashScreenState extends State<SplashScreen>
     width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: height,
         width: width,
-        color: Colors.white,
-        child: ScaleTransition(
-          scale: animation!,
-          alignment: Alignment.center,
-          child: Image.asset(
-            'images/icon1.png',
-            fit: BoxFit.contain,
-            height: height * 0.6,
-            width: width * 0.6,
-          ),
+        child: Stack(
+          children: [
+            Container(
+              height: height,
+              width: width,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("images/backImage.jpg"))),
+            ),
+            Container(
+              height: height,
+              width: width,
+              color: Colors.white.withOpacity(0.9),
+              child: ScaleTransition(
+                scale: animation!,
+                alignment: Alignment.center,
+                child: Image.asset(
+                  'images/icon1.png',
+                  fit: BoxFit.contain,
+                  height: height * 0.6,
+                  width: width * 0.6,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

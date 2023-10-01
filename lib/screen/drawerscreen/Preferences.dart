@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:snabb_business/screen/budget/BudgetView.dart';
 import 'package:snabb_business/screen/drawerscreen/Calender.dart';
-import 'package:snabb_business/screen/homeScreen.dart';
 import 'package:snabb_business/screen/sale/Sale.dart';
-import 'package:snabb_business/screen/summary/summary_detail.dart';
 import 'package:snabb_business/screen/summary/summary_screen.dart';
 import 'package:snabb_business/screen/transactions/transactionScreen.dart';
-import 'package:snabb_business/utils/colors.dart';
 
 import '../../models/pagemodel.dart';
 import '../../utils/appbarwidget.dart';
@@ -46,7 +43,7 @@ class _PreferencesState extends State<Preferences> {
                 ),
                 Container(
                   height: height * 0.1,
-                  color: AppColors.blue.withOpacity(0.9),
+                  color: blue.withOpacity(0.9),
                   child: Padding(
                     padding: const EdgeInsets.only(top: 15.0),
                     child: Row(

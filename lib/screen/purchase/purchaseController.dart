@@ -1506,12 +1506,16 @@ class PurchaseController extends GetxController {
                                                       children: [
                                                         Text(
                                                           "Type",
-                                                          style: TextStyle(
-                                                              color: Colors
-                                                                  .blue[900],
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color: Colors
+                                                                      .blue,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.03,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
                                                         ),
                                                         Row(
                                                           mainAxisAlignment:
@@ -1532,8 +1536,18 @@ class PurchaseController extends GetxController {
                                                                     value);
                                                               },
                                                             ),
-                                                            const Text(
-                                                                "Individual")
+                                                            Text(
+                                                              "Individual",
+                                                              style: GoogleFonts.poppins(
+                                                                  color:
+                                                                      lightgray,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.03,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                            )
                                                           ],
                                                         ),
                                                         Row(
@@ -1555,8 +1569,18 @@ class PurchaseController extends GetxController {
                                                                     value);
                                                               },
                                                             ),
-                                                            const Text(
-                                                                "Company")
+                                                            Text(
+                                                              "Company",
+                                                              style: GoogleFonts.poppins(
+                                                                  color:
+                                                                      lightgray,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.03,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                            )
                                                           ],
                                                         )
                                                       ],

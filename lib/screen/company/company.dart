@@ -41,15 +41,15 @@ class _CompanyScreenState extends State<CompanyScreen> {
             showDialog(
               context: context,
               builder: (dc) {
-                return AlertDialog(
-                  content: Container(
+                return Dialog(
+                  child: Container(
                     color: Colors.grey.shade300,
                     height: height * 0.55,
                     width: width * 0.8,
                     child: Stack(
                       children: [
                         Container(
-                          height: height * 0.15,
+                          height: height * 0.1,
                           width: width,
                           decoration: const BoxDecoration(
                               image: DecorationImage(
@@ -57,19 +57,16 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                   image: AssetImage("images/dollar.jpg"))),
                         ),
                         Container(
-                          height: height * 0.15,
+                          height: height * 0.1,
                           width: width,
                           color: Colors.blue[900]!.withOpacity(0.9),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                top: height * 0.03, left: width * 0.02),
-                            child: Text(
-                              "Add Company",
-                              style: GoogleFonts.poppins(
-                                  color: white,
-                                  fontSize: width * 0.036,
-                                  fontWeight: FontWeight.w600),
-                            ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Add Company",
+                            style: GoogleFonts.poppins(
+                                color: white,
+                                fontSize: width * 0.03,
+                                fontWeight: FontWeight.w600),
                           ),
                         ),
                         Padding(
@@ -79,7 +76,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                               elevation: 10,
                               shadowColor: Colors.blue[900],
                               child: Container(
-                                  height: height * 0.5,
+                                  height: height * 0.45,
                                   width: width * 0.7,
                                   color: white,
                                   child: Padding(
@@ -109,6 +106,10 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                             autovalidateMode: AutovalidateMode
                                                 .onUserInteraction,
                                             controller: mName,
+                                            style: GoogleFonts.poppins(
+                                                color: lightgray,
+                                                fontSize: width * 0.03,
+                                                fontWeight: FontWeight.w500),
                                             keyboardType: TextInputType.text,
                                             decoration: InputDecoration(
                                               errorStyle: const TextStyle(
@@ -122,11 +123,11 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                               labelText: "Enter Name",
                                               labelStyle: GoogleFonts.poppins(
                                                   //color:lightgray,
-                                                  fontSize: width * 0.032,
+                                                  fontSize: width * 0.03,
                                                   fontWeight: FontWeight.w500),
                                               hintStyle: GoogleFonts.poppins(
                                                   color: lightgray,
-                                                  fontSize: width * 0.032,
+                                                  fontSize: width * 0.03,
                                                   fontWeight: FontWeight.w500),
                                               alignLabelWithHint: true,
                                               enabledBorder: OutlineInputBorder(
@@ -164,6 +165,10 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                 .onUserInteraction,
                                             controller: mEmail,
                                             keyboardType: TextInputType.text,
+                                            style: GoogleFonts.poppins(
+                                                color: lightgray,
+                                                fontSize: width * 0.03,
+                                                fontWeight: FontWeight.w500),
                                             decoration: InputDecoration(
                                               errorStyle: const TextStyle(
                                                   color: Colors.black),
@@ -176,11 +181,11 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                               labelText: "Enter Email",
                                               labelStyle: GoogleFonts.poppins(
                                                   //color:lightgray,
-                                                  fontSize: width * 0.032,
+                                                  fontSize: width * 0.03,
                                                   fontWeight: FontWeight.w500),
                                               hintStyle: GoogleFonts.poppins(
                                                   color: lightgray,
-                                                  fontSize: width * 0.032,
+                                                  fontSize: width * 0.03,
                                                   fontWeight: FontWeight.w500),
                                               alignLabelWithHint: true,
                                               enabledBorder: OutlineInputBorder(
@@ -218,6 +223,10 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                 .onUserInteraction,
                                             controller: nPhone,
                                             keyboardType: TextInputType.text,
+                                            style: GoogleFonts.poppins(
+                                                color: lightgray,
+                                                fontSize: width * 0.03,
+                                                fontWeight: FontWeight.w500),
                                             decoration: InputDecoration(
                                               errorStyle: const TextStyle(
                                                   color: Colors.black),
@@ -230,11 +239,11 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                               labelText: "Phone Number",
                                               labelStyle: GoogleFonts.poppins(
                                                   //color:lightgray,
-                                                  fontSize: width * 0.032,
+                                                  fontSize: width * 0.03,
                                                   fontWeight: FontWeight.w500),
                                               hintStyle: GoogleFonts.poppins(
                                                   color: lightgray,
-                                                  fontSize: width * 0.032,
+                                                  fontSize: width * 0.03,
                                                   fontWeight: FontWeight.w500),
                                               alignLabelWithHint: true,
                                               enabledBorder: OutlineInputBorder(
@@ -416,28 +425,28 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                               children: [
                                                 Text(
                                                   obj.companyList[index].name!,
-                                                  style: TextStyle(
-                                                      fontSize: width * 0.03,
+                                                  style: GoogleFonts.poppins(
+                                                      color: blue,
+                                                      fontSize: width * 0.035,
                                                       fontWeight:
-                                                          FontWeight.bold,
-                                                      color: Colors.blue[900]),
+                                                          FontWeight.w600),
                                                 ),
                                                 Text(
                                                   obj.companyList[index].email!,
                                                   style: GoogleFonts.poppins(
-                                                      color: Colors.black,
-                                                      fontSize: width * 0.031,
+                                                      color: lightgray,
+                                                      fontSize: width * 0.03,
                                                       fontWeight:
-                                                          FontWeight.w400),
+                                                          FontWeight.w500),
                                                 ),
                                                 Text(
                                                   obj.companyList[index]
                                                       .telePhone!,
                                                   style: GoogleFonts.poppins(
-                                                      color: Colors.black,
-                                                      fontSize: width * 0.031,
+                                                      color: lightgray,
+                                                      fontSize: width * 0.03,
                                                       fontWeight:
-                                                          FontWeight.w400),
+                                                          FontWeight.w500),
                                                 ),
                                               ],
                                             ),
@@ -463,10 +472,10 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
-                                                                          30)),
+                                                                          10)),
                                                           content: SizedBox(
                                                             height:
-                                                                height * 0.17,
+                                                                height * 0.12,
                                                             width: width * 0.8,
                                                             child: Column(
                                                               mainAxisAlignment:
@@ -486,10 +495,15 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                                   textAlign:
                                                                       TextAlign
                                                                           .center,
-                                                                  style: TextStyle(
+                                                                  style: GoogleFonts.poppins(
+                                                                      color:
+                                                                          lightgray,
                                                                       fontSize:
                                                                           width *
-                                                                              0.035),
+                                                                              0.03,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500),
                                                                 ),
                                                                 SizedBox(
                                                                   height:
@@ -564,8 +578,8 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                     showDialog(
                                                       context: context,
                                                       builder: (dc) {
-                                                        return AlertDialog(
-                                                          content: Container(
+                                                        return Dialog(
+                                                          child: Container(
                                                             color: Colors
                                                                 .grey.shade300,
                                                             height:
@@ -576,7 +590,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                                 Container(
                                                                   height:
                                                                       height *
-                                                                          0.15,
+                                                                          0.1,
                                                                   width: width,
                                                                   decoration: const BoxDecoration(
                                                                       image: DecorationImage(
@@ -588,30 +602,26 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                                 Container(
                                                                   height:
                                                                       height *
-                                                                          0.15,
+                                                                          0.1,
                                                                   width: width,
                                                                   color: Colors
                                                                       .blue[
                                                                           900]!
                                                                       .withOpacity(
                                                                           0.9),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: EdgeInsets.only(
-                                                                        top: height *
-                                                                            0.03,
-                                                                        left: width *
-                                                                            0.02),
-                                                                    child: Text(
-                                                                      "Update Company",
-                                                                      style: GoogleFonts.poppins(
-                                                                          color:
-                                                                              white,
-                                                                          fontSize: width *
-                                                                              0.035,
-                                                                          fontWeight:
-                                                                              FontWeight.w600),
-                                                                    ),
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .center,
+                                                                  child: Text(
+                                                                    "Update Company",
+                                                                    style: GoogleFonts.poppins(
+                                                                        color:
+                                                                            white,
+                                                                        fontSize:
+                                                                            width *
+                                                                                0.035,
+                                                                        fontWeight:
+                                                                            FontWeight.w600),
                                                                   ),
                                                                 ),
                                                                 Padding(
@@ -653,6 +663,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                                                     autovalidateMode: AutovalidateMode.onUserInteraction,
                                                                                     controller: updateName,
                                                                                     keyboardType: TextInputType.text,
+                                                                                    style: GoogleFonts.poppins(color: lightgray, fontSize: width * 0.03, fontWeight: FontWeight.w500),
                                                                                     decoration: InputDecoration(
                                                                                       errorStyle: const TextStyle(color: Colors.black),
                                                                                       contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
@@ -661,9 +672,9 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                                                       labelText: "Enter Name",
                                                                                       labelStyle: GoogleFonts.poppins(
                                                                                           //color:lightgray,
-                                                                                          fontSize: width * 0.032,
+                                                                                          fontSize: width * 0.03,
                                                                                           fontWeight: FontWeight.w500),
-                                                                                      hintStyle: GoogleFonts.poppins(color: lightgray, fontSize: width * 0.032, fontWeight: FontWeight.w500),
+                                                                                      hintStyle: GoogleFonts.poppins(color: lightgray, fontSize: width * 0.03, fontWeight: FontWeight.w500),
                                                                                       alignLabelWithHint: true,
                                                                                       enabledBorder: OutlineInputBorder(
                                                                                         borderRadius: BorderRadius.circular(10),
@@ -695,6 +706,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                                                     autovalidateMode: AutovalidateMode.onUserInteraction,
                                                                                     controller: updateEmail,
                                                                                     keyboardType: TextInputType.text,
+                                                                                    style: GoogleFonts.poppins(color: lightgray, fontSize: width * 0.03, fontWeight: FontWeight.w500),
                                                                                     decoration: InputDecoration(
                                                                                       errorStyle: const TextStyle(color: Colors.black),
                                                                                       contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
@@ -703,9 +715,9 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                                                       labelText: "Enter Email",
                                                                                       labelStyle: GoogleFonts.poppins(
                                                                                           //color:lightgray,
-                                                                                          fontSize: width * 0.032,
+                                                                                          fontSize: width * 0.03,
                                                                                           fontWeight: FontWeight.w500),
-                                                                                      hintStyle: GoogleFonts.poppins(color: lightgray, fontSize: width * 0.032, fontWeight: FontWeight.w500),
+                                                                                      hintStyle: GoogleFonts.poppins(color: lightgray, fontSize: width * 0.03, fontWeight: FontWeight.w500),
                                                                                       alignLabelWithHint: true,
                                                                                       enabledBorder: OutlineInputBorder(
                                                                                         borderRadius: BorderRadius.circular(10),
@@ -737,6 +749,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                                                     autovalidateMode: AutovalidateMode.onUserInteraction,
                                                                                     controller: updatePhone,
                                                                                     keyboardType: TextInputType.text,
+                                                                                    style: GoogleFonts.poppins(color: lightgray, fontSize: width * 0.03, fontWeight: FontWeight.w500),
                                                                                     decoration: InputDecoration(
                                                                                       errorStyle: const TextStyle(color: Colors.black),
                                                                                       contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
@@ -745,9 +758,9 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                                                       labelText: "Phone Number",
                                                                                       labelStyle: GoogleFonts.poppins(
                                                                                           //color:lightgray,
-                                                                                          fontSize: width * 0.032,
+                                                                                          fontSize: width * 0.03,
                                                                                           fontWeight: FontWeight.w500),
-                                                                                      hintStyle: GoogleFonts.poppins(color: lightgray, fontSize: width * 0.032, fontWeight: FontWeight.w500),
+                                                                                      hintStyle: GoogleFonts.poppins(color: lightgray, fontSize: width * 0.03, fontWeight: FontWeight.w500),
                                                                                       alignLabelWithHint: true,
                                                                                       enabledBorder: OutlineInputBorder(
                                                                                         borderRadius: BorderRadius.circular(10),

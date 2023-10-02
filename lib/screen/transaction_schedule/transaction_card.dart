@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:snabb_business/models/get_all_user_transaction_model.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -225,7 +224,7 @@ class _TransactionCardState extends State<TransactionCard> {
                                                   0.9,
                                               child: Stack(
                                                 children: [
-                                                  Container(
+                                                  SizedBox(
                                                       height: height,
                                                       width: width,
                                                       child: PinchZoomImage(
@@ -357,78 +356,196 @@ class _TransactionCardState extends State<TransactionCard> {
     );
   }
 
+  var height, width;
+
   @override
   Widget build(BuildContext context) {
+    height = MediaQuery.of(context).size.height;
+    width = MediaQuery.of(context).size.width;
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
-      child: Container(
-        color: white,
-        child: ListTile(
-          onTap: () {
-            showImageDialog(
-                context,
-                widget.transaction,
-                MediaQuery.of(context).size.height,
-                MediaQuery.of(context).size.width);
-          },
-          leading: Container(
-              decoration:
-                  BoxDecoration(color: darkblue, shape: BoxShape.circle),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: widget.transaction.imageUrl == null ||
-                        widget.transaction.imageUrl!.isEmpty ||
-                        widget.transaction.imageUrl == "null"
-                    ? Image.asset(
-                        "images/sale.png",
-                        fit: BoxFit.cover,
-                        width: 30,
-                        height: 30,
-                      )
-                    : Image.asset(
-                        widget.transaction.imageUrl.toString(),
-                        fit: BoxFit.cover,
-                        width: 30,
-                        height: 30,
-                        color: Colors.white,
+      child: InkWell(
+        onTap: () {
+          showImageDialog(
+              context,
+              widget.transaction,
+              MediaQuery.of(context).size.height,
+              MediaQuery.of(context).size.width);
+        },
+        child: Container(
+            height: height * 0.1,
+            width: width,
+            color: white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: width * 0.02,
+                ),
+                Container(
+                  height: height * 0.7,
+                  width: width * 0.14,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: widget.transaction.imageUrl == null ||
+                                widget.transaction.imageUrl!.isEmpty ||
+                                widget.transaction.imageUrl == "null"
+                            ? const AssetImage(
+                                "images/sale.png",
+                              )
+                            : AssetImage(
+                                widget.transaction.imageUrl.toString(),
+                              ),
                       ),
-              )),
-          title: Text(
-            widget.transaction.name!,
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-          subtitle: Text(widget.transaction.dateTime!.substring(0, 10)),
-          // .substring(0, 10)),
-          trailing: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                  // ignore: unrelated_type_equality_checks
-                  widget.transaction.type == 1
-                      ? "+ ${widget.transaction.amount}"
-                      : "-${widget.transaction.amount}",
-                  style: TextStyle(
-                      // ignore: unrelated_type_equality_checks
-                      color: widget.transaction.type == 1
-                          ? Colors.green
-                          : Colors.red,
-                      fontWeight: FontWeight.bold)),
-              Text(
-                  // ignore: unrelated_type_equality_checks
-                  widget.transaction.type == 1
-                      ? widget.transaction.currency!
-                      : widget.transaction.currency!,
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.bold,
-                    color: widget.transaction.type == 1
-                        ? Colors.green
-                        : Colors.red,
-                  )),
-            ],
-          ),
-        ),
+                      shape: BoxShape.circle,
+                      color: Colors.red),
+                ),
+                SizedBox(
+                  width: width * 0.05,
+                ),
+                Expanded(
+                  child: SizedBox(
+                    height: height * 0.7,
+                    width: width * 0.01,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.transaction.name!,
+                          style: GoogleFonts.poppins(
+                            fontSize: width * 0.035,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Text(
+                          widget.transaction.dateTime!.substring(0, 10),
+                          style: GoogleFonts.poppins(
+                              fontSize: width * 0.03,
+                              fontWeight: FontWeight.w500,
+                              color: lightgray),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: SizedBox(
+                    height: height * 0.7,
+                    width: width * 0.01,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                            // ignore: unrelated_type_equality_checks
+                            widget.transaction.type == 1
+                                ? "+ ${widget.transaction.amount}"
+                                : "-${widget.transaction.amount}",
+                            style: GoogleFonts.poppins(
+                              // ignore: unrelated_type_equality_checks
+                              fontSize: width * 0.035,
+                              fontWeight: FontWeight.w600,
+                              color: widget.transaction.type == 1
+                                  ? Colors.green
+                                  : Colors.red,
+                            )),
+                        Text(
+                            // ignore: unrelated_type_equality_checks
+                            widget.transaction.type == 1
+                                ? widget.transaction.currency!
+                                : widget.transaction.currency!,
+                            style: GoogleFonts.poppins(
+                              fontSize: width * 0.025,
+                              fontWeight: FontWeight.w500,
+                              color: widget.transaction.type == 1
+                                  ? Colors.green
+                                  : Colors.red,
+                            )),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: width * 0.05,
+                ),
+                Container(
+                  height: height * 0.07,
+                  width: width * 0.015,
+                  color:
+                      widget.transaction.type == 1 ? Colors.green : Colors.red,
+                )
+              ],
+            )
+
+            //  ListTile(
+            //   onTap: () {
+
+            //   },
+            //   leading: Container(
+            //       decoration:
+            //           BoxDecoration(color: darkblue, shape: BoxShape.circle),
+            //       child: Padding(
+            //         padding: const EdgeInsets.all(8.0),
+            //         child: widget.transaction.imageUrl == null ||
+            //                 widget.transaction.imageUrl!.isEmpty ||
+            //                 widget.transaction.imageUrl == "null"
+            //             ? Image.asset(
+            //                 "images/sale.png",
+            //                 fit: BoxFit.cover,
+            //                 width: 30,
+            //                 height: 30,
+            //               )
+            //             : Image.asset(
+            //                 widget.transaction.imageUrl.toString(),
+            //                 fit: BoxFit.cover,
+            //                 width: 30,
+            //                 height: 30,
+            //                 color: Colors.white,
+            //               ),
+            //       )
+            // ),
+            //   title: Text(
+            //     widget.transaction.name!,
+            //     style: const TextStyle(fontWeight: FontWeight.bold),
+            //   ),
+            //   subtitle: Text(
+            //     widget.transaction.dateTime!.substring(0, 10),
+            //     style: TextStyle(fontSize: width * 0.025, color: greencolor),
+            //   ),
+            //   // .substring(0, 10)),
+            //   trailing: Column(
+            //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //     crossAxisAlignment: CrossAxisAlignment.end,
+            //     children: [
+            //       Text(
+            //           // ignore: unrelated_type_equality_checks
+            //           widget.transaction.type == 1
+            //               ? "+ ${widget.transaction.amount}"
+            //               : "-${widget.transaction.amount}",
+            //           style: TextStyle(
+            //               // ignore: unrelated_type_equality_checks
+            //               color: widget.transaction.type == 1
+            //                   ? Colors.green
+            //                   : Colors.red,
+            //               fontWeight: FontWeight.bold)),
+            //       Text(
+            //           // ignore: unrelated_type_equality_checks
+            //           widget.transaction.type == 1
+            //               ? widget.transaction.currency!
+            //               : widget.transaction.currency!,
+            //           style: TextStyle(
+            //             fontSize: 11,
+            //             fontWeight: FontWeight.bold,
+            //             color: widget.transaction.type == 1
+            //                 ? Colors.green
+            //                 : Colors.red,
+            //           )),
+            //     ],
+            //   ),
+            // ),
+            ),
       ),
     );
   }

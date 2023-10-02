@@ -50,16 +50,16 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                   color: white,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
+                    child: SizedBox(
                       width: width,
                       child: Column(
                         children: [
                           Text(
                             "Compare the values of the categories",
-                             style: GoogleFonts.poppins(
-                                             // color: white,
-                                              fontSize: width * 0.03,
-                                              fontWeight: FontWeight.w400),
+                            style: GoogleFonts.poppins(
+                                // color: white,
+                                fontSize: width * 0.03,
+                                fontWeight: FontWeight.w400),
                           ),
                           SizedBox(
                             height: height * 0.02,
@@ -70,9 +70,9 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                               Text(
                                 AppLocalizations.of(context)!.type.capitalize!,
                                 style: GoogleFonts.poppins(
-                                              color: Colors.black,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                    color: Colors.black,
+                                    fontSize: width * 0.032,
+                                    fontWeight: FontWeight.w500),
                               ),
                               Container(
                                 height: size.height * 0.04,
@@ -141,10 +141,10 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                                 horizontal: 5.0),
                                             child: Text(
                                               value,
-                                               style: GoogleFonts.poppins(
-                                              color: Colors.black,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w400),
+                                              style: GoogleFonts.poppins(
+                                                  color: Colors.black,
+                                                  fontSize: width * 0.032,
+                                                  fontWeight: FontWeight.w400),
                                             ),
                                           ),
                                         );
@@ -164,14 +164,14 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                               Text(
                                 AppLocalizations.of(context)!.from.capitalize!,
                                 style: GoogleFonts.poppins(
-                                              color: Colors.black,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                    color: Colors.black,
+                                    fontSize: width * 0.032,
+                                    fontWeight: FontWeight.w500),
                               ),
                               Container(
                                 height: size.height * 0.05,
                                 width: size.width * 0.25,
-                                 alignment: Alignment.center,
+                                alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                     color: Colors.grey.withOpacity(0.5)),
                                 child: TextButton(
@@ -182,10 +182,10 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                       !obj.dateFromPicked
                                           ? AppLocalizations.of(context)!.select
                                           : obj.startdate.toString(),
-                                       style: GoogleFonts.poppins(
-                                              color: Colors.black,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                      style: GoogleFonts.poppins(
+                                          color: Colors.black,
+                                          fontSize: width * 0.032,
+                                          fontWeight: FontWeight.w500),
                                     )),
                               ),
                             ],
@@ -199,14 +199,14 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                               Text(
                                 AppLocalizations.of(context)!.to.capitalize!,
                                 style: GoogleFonts.poppins(
-                                              color: Colors.black,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                    color: Colors.black,
+                                    fontSize: width * 0.032,
+                                    fontWeight: FontWeight.w500),
                               ),
                               Container(
                                 height: size.height * 0.05,
                                 width: size.width * 0.25,
-                                 alignment: Alignment.center,
+                                alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                     color: Colors.grey.withOpacity(0.5)),
                                 child: TextButton(
@@ -217,10 +217,10 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                       !obj.dateToPicked
                                           ? AppLocalizations.of(context)!.select
                                           : obj.enddate.toString(),
-                                     style: GoogleFonts.poppins(
-                                              color: Colors.black,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                      style: GoogleFonts.poppins(
+                                          color: Colors.black,
+                                          fontSize: width * 0.032,
+                                          fontWeight: FontWeight.w500),
                                     )),
                               ),
                             ],
@@ -249,20 +249,18 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                           Text(
                             AppLocalizations.of(context)!.total.capitalize!,
                             style: GoogleFonts.poppins(
-                                              color: Colors.black,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                color: Colors.black,
+                                fontSize: width * 0.03,
+                                fontWeight: FontWeight.w500),
                           ),
                           Text(
                             ' ${obj.totalbalance} ${HomeController.to.curency}',
-                         
-                          style: GoogleFonts.poppins(
-                                              color: obj.totalbalance < 0
+                            style: GoogleFonts.poppins(
+                                color: obj.totalbalance < 0
                                     ? Colors.red
                                     : Colors.green,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
-                           
+                                fontSize: width * 0.032,
+                                fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),
@@ -298,9 +296,9 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                               child: Center(
                                   child: Text(
                                 "No Transaction Found !",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     color: darkblue!,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w600,
                                     fontSize: size.width * 0.035),
                                 textAlign: TextAlign.center,
                               )),

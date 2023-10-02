@@ -6,6 +6,7 @@ import 'package:snabb_business/screen/bottomscreen/expense.dart';
 import 'package:snabb_business/screen/chartsScreens/purchaseChart.dart';
 import 'package:snabb_business/screen/chartsScreens/salesChart.dart';
 import 'package:snabb_business/screen/homeScreen.dart';
+import 'package:snabb_business/screen/recycle/recycle_screen.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/utils/navigation/curvenavigationbar.dart';
 import '../utils/demonshape.dart';
@@ -97,9 +98,19 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                 Icons.notifications_active_outlined,
                                 color: darkblue,
                               ),
-                              Icon(
-                                Icons.delete_outline,
-                                color: darkblue,
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const RecycleScreen(),
+                                      ));
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: darkblue,
+                                ),
                               ),
                             ],
                           ),

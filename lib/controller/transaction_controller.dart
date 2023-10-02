@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/services.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:flutter/material.dart';
@@ -500,6 +501,7 @@ class TransactionController extends GetxController {
         }
         print("deleted teransaction list length ${deleteTransaction.length}");
       }
+      update();
     } on Exception catch (e) {
       print(e);
       // TODO
@@ -514,15 +516,24 @@ class TransactionController extends GetxController {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(
-            AppLocalizations.of(context)!.confirmdeletion,
-            style: TextStyle(color: blue, fontWeight: FontWeight.bold),
+            AppLocalizations.of(context)!.confirmdeletion.toUpperCase(),
+            style: GoogleFonts.poppins(
+                color: blue,
+                fontSize: MediaQuery.of(context).size.width * 0.035,
+                fontWeight: FontWeight.w600),
           ),
           elevation: 10,
           shadowColor: blue,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          content:
-              const Text("Are You Sure You Want To Delete This Transaction?"),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          content: Text(
+            "Are You Sure You Want To Delete This Transaction?",
+            style: GoogleFonts.poppins(
+              fontSize: MediaQuery.of(context).size.width * 0.03,
+              color: lightgray,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
           actions: <Widget>[
             TextButton(
               child: Text(
@@ -603,15 +614,24 @@ class TransactionController extends GetxController {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(
-            AppLocalizations.of(context)!.confirmdeletion,
-            style: TextStyle(color: blue, fontWeight: FontWeight.bold),
+            AppLocalizations.of(context)!.confirmdeletion.toUpperCase(),
+            style: GoogleFonts.poppins(
+                color: blue,
+                fontSize: MediaQuery.of(context).size.width * 0.035,
+                fontWeight: FontWeight.w600),
           ),
           elevation: 10,
           shadowColor: blue,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          content:
-              const Text("Are You Sure You Want To Recover This Transaction?"),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          content: Text(
+            "Are You Sure You Want To Recover This Transaction?",
+            style: GoogleFonts.poppins(
+              fontSize: MediaQuery.of(context).size.width * 0.03,
+              color: lightgray,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
           actions: <Widget>[
             TextButton(
               child: Text(
@@ -639,11 +659,11 @@ class TransactionController extends GetxController {
     if (confirmDelete) {
       dio.Response res;
       if (type == 0) {
-        res = await httpClient().delete("${StaticValues.recoverPurchase}$id");
+        res = await httpClient().post("${StaticValues.recoverPurchase}$id");
       } else if (type == 1) {
-        res = await httpClient().delete("${StaticValues.recoverSale}$id");
+        res = await httpClient().post("${StaticValues.recoverSale}$id");
       } else {
-        res = await httpClient().delete("${StaticValues.recoverExpense}$id");
+        res = await httpClient().post("${StaticValues.recoverExpense}$id");
       }
       if (res.statusCode == 200) {
         getuserDeletedTransaction();

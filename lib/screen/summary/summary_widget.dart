@@ -129,8 +129,8 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                   child: Text(
                                                     "Sales",
                                                     style: GoogleFonts.poppins(
-                                                        color: Colors.black,
-                                                        fontSize: width * 0.032,
+                                                        color: darkblue,
+                                                        fontSize: width * 0.03,
                                                         fontWeight:
                                                             FontWeight.w400),
                                                     textAlign: TextAlign.left,
@@ -145,20 +145,36 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                     width: width,
                                                     alignment:
                                                         Alignment.centerLeft,
-                                                    child: FittedBox(
-                                                      child: Text(
-                                                        " ${HomeController.to.curency} ${snapshot.data!.data![index].transactions!.sale!}",
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                                color:
-                                                                    greencolor,
-                                                                fontSize:
-                                                                    width *
-                                                                        0.032,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
-                                                      ),
+                                                    child: Row(
+                                                      children: [
+                                                        Text(
+                                                          "  ${snapshot.data!.data![index].transactions!.sale!} ",
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color:
+                                                                      greencolor,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.03,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                        ),
+                                                        Text(
+                                                          HomeController
+                                                              .to.curency,
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color:
+                                                                      greencolor,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.025,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ),
                                                 )
@@ -178,8 +194,8 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                   child: Text(
                                                     "Purchase",
                                                     style: GoogleFonts.poppins(
-                                                        color: Colors.black,
-                                                        fontSize: width * 0.032,
+                                                        color: darkblue,
+                                                        fontSize: width * 0.03,
                                                         fontWeight:
                                                             FontWeight.w400),
                                                     textAlign: TextAlign.left,
@@ -194,19 +210,36 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                     width: width,
                                                     alignment:
                                                         Alignment.centerLeft,
-                                                    child: FittedBox(
-                                                      child: Text(
-                                                        "-${HomeController.to.curency} ${obj.model!.data![index].transactions!.purchase!}",
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                                color: redcolor,
-                                                                fontSize:
-                                                                    width *
-                                                                        0.032,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
-                                                      ),
+                                                    child: Row(
+                                                      children: [
+                                                        Text(
+                                                          "-${obj.model!.data![index].transactions!.purchase!} ",
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color:
+                                                                      redcolor,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.03,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                        ),
+                                                        Text(
+                                                          HomeController
+                                                              .to.curency,
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color:
+                                                                      redcolor,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.025,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ),
                                                 )
@@ -226,8 +259,8 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                   child: Text(
                                                     "Expense",
                                                     style: GoogleFonts.poppins(
-                                                        color: Colors.black,
-                                                        fontSize: width * 0.032,
+                                                        color: darkblue,
+                                                        fontSize: width * 0.03,
                                                         fontWeight:
                                                             FontWeight.w400),
                                                     textAlign: TextAlign.left,
@@ -242,20 +275,36 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                     width: width,
                                                     alignment:
                                                         Alignment.centerLeft,
-                                                    child: FittedBox(
-                                                      child: Text(
-                                                        "-${HomeController.to.curency} ${obj.model!.data![index].transactions!.expense!}",
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                                color:
-                                                                    Colors.blue,
-                                                                fontSize:
-                                                                    width *
-                                                                        0.032,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
-                                                      ),
+                                                    child: Row(
+                                                      children: [
+                                                        Text(
+                                                          "-${obj.model!.data![index].transactions!.expense!} ",
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color: Colors
+                                                                      .blue,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.03,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                        ),
+                                                        Text(
+                                                          HomeController
+                                                              .to.curency,
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color: Colors
+                                                                      .blue,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.025,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ),
                                                 )
@@ -276,7 +325,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                     "Total",
                                                     style: GoogleFonts.poppins(
                                                         color: Colors.black,
-                                                        fontSize: width * 0.032,
+                                                        fontSize: width * 0.03,
                                                         fontWeight:
                                                             FontWeight.w600),
                                                     textAlign: TextAlign.left,
@@ -291,22 +340,38 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                                     width: width,
                                                     alignment:
                                                         Alignment.centerLeft,
-                                                    child: FittedBox(
-                                                      child: Text(
-                                                        balance > 0
-                                                            ? "${HomeController.to.curency} $balance"
-                                                            : "${HomeController.to.curency} $balance",
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                                color:
-                                                                    greencolor,
-                                                                fontSize:
-                                                                    width *
-                                                                        0.032,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600),
-                                                      ),
+                                                    child: Row(
+                                                      children: [
+                                                        Text(
+                                                          balance >= 0
+                                                              ? "  $balance "
+                                                              : " -$balance ",
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color:
+                                                                      greencolor,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.03,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600),
+                                                        ),
+                                                        Text(
+                                                          HomeController
+                                                              .to.curency,
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color:
+                                                                      greencolor,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.025,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ),
                                                 )

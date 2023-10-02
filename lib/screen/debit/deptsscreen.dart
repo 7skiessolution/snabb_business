@@ -88,18 +88,18 @@ class _DebitScreenState extends State<DebitScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                AppLocalizations.of(context)!.residualamount,
+                                "Residual Amount",
                                 style: GoogleFonts.poppins(
-                                              color: Colors.white,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                    color: Colors.white,
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.w600),
                               ),
                               Text(
                                 "$balance ${HomeController.to.curency}",
                                 style: GoogleFonts.poppins(
-                                              color: Colors.white,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w600),
+                                    color: Colors.white,
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.w600),
                               )
                             ],
                           ),
@@ -217,12 +217,14 @@ class _DebitScreenState extends State<DebitScreen> {
                                           data.type == 1
                                               ? AppLocalizations.of(context)!
                                                   .debit
+                                                  .toUpperCase()
                                               : AppLocalizations.of(context)!
-                                                  .credit,
+                                                  .credit
+                                                  .toUpperCase(),
                                           style: GoogleFonts.poppins(
                                               color: darkblue,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.w600),
                                         ),
                                         Padding(
                                           padding:
@@ -232,11 +234,11 @@ class _DebitScreenState extends State<DebitScreen> {
                                               Text(
                                                 AppLocalizations.of(context)!
                                                     .you,
-                                                style: TextStyle(
-                                                    fontSize: width * 0.03,
+                                                style: GoogleFonts.poppins(
                                                     color: darkblue,
+                                                    fontSize: width * 0.03,
                                                     fontWeight:
-                                                        FontWeight.bold),
+                                                        FontWeight.w500),
                                               ),
                                               Icon(
                                                 Icons.arrow_right_alt_sharp,
@@ -247,11 +249,11 @@ class _DebitScreenState extends State<DebitScreen> {
                                               ),
                                               Text(
                                                 data.person.toString(),
-                                                style: TextStyle(
-                                                    fontSize: width * 0.03,
+                                                style: GoogleFonts.poppins(
                                                     color: darkblue,
+                                                    fontSize: width * 0.035,
                                                     fontWeight:
-                                                        FontWeight.bold),
+                                                        FontWeight.w600),
                                               ),
                                             ],
                                           ),
@@ -267,24 +269,24 @@ class _DebitScreenState extends State<DebitScreen> {
                                 children: [
                                   Text(
                                     data.date!.toString().substring(0, 10),
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
+                                        color: greencolor,
                                         fontSize: width * 0.03,
-                                        color: Colors.green,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   Text(
                                     "${percentage.toStringAsFixed(1)} %",
-                                    style: TextStyle(
-                                        fontSize: width * 0.03,
+                                    style: GoogleFonts.poppins(
                                         color: darkblue,
-                                        fontWeight: FontWeight.bold),
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   Text(
                                     data.payBackDate!,
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
+                                        color: redcolor,
                                         fontSize: width * 0.03,
-                                        color: Colors.red,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.w500),
                                   ),
                                 ],
                               ),
@@ -301,24 +303,24 @@ class _DebitScreenState extends State<DebitScreen> {
                                 children: [
                                   Text(
                                     '$remaingamount',
-                                     style: GoogleFonts.poppins(
-                                              color:darkblue,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w400),
+                                    style: GoogleFonts.poppins(
+                                        color: darkblue,
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   Text(
                                     '${data.paidAmount} ${HomeController.to.curency}',
                                     style: GoogleFonts.poppins(
-                                              color:darkblue,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w400),
+                                        color: darkblue,
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   Text(
                                     ' ${data.amount}',
                                     style: GoogleFonts.poppins(
-                                              color:darkblue,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w400),
+                                        color: darkblue,
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                 ],
                               ),
@@ -338,9 +340,9 @@ class _DebitScreenState extends State<DebitScreen> {
                                                   .debit
                                               : AppLocalizations.of(context)!
                                                   .creationdate,
-                                           style: GoogleFonts.poppins(
+                                          style: GoogleFonts.poppins(
                                               color: darkblue,
-                                              fontSize: width * 0.032,
+                                              fontSize: width * 0.03,
                                               fontWeight: FontWeight.w500),
                                         ),
                                       ],
@@ -358,16 +360,16 @@ class _DebitScreenState extends State<DebitScreen> {
                                     AppLocalizations.of(context)!
                                         .residualamount,
                                     style: GoogleFonts.poppins(
-                                              color:darkblue,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                        color: darkblue,
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   Text(
                                     '  ${data.paidAmount} ${HomeController.to.curency}',
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
+                                        color: greencolor,
                                         fontSize: width * 0.03,
-                                        color: Colors.green,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   remaingamount != 0
                                       ? InkWell(
@@ -455,22 +457,24 @@ class _DebitScreenState extends State<DebitScreen> {
                                             data.type == 1
                                                 ? AppLocalizations.of(context)!
                                                     .debit
+                                                    .toUpperCase()
                                                 : AppLocalizations.of(context)!
-                                                    .credit,
-                                            style: TextStyle(
-                                                fontSize: width * 0.035,
+                                                    .credit
+                                                    .toUpperCase(),
+                                            style: GoogleFonts.poppins(
                                                 color: darkblue,
-                                                fontWeight: FontWeight.bold),
+                                                fontSize: width * 0.035,
+                                                fontWeight: FontWeight.w600),
                                           ),
                                           Row(
                                             children: [
                                               Text(
                                                 data.person.toString(),
-                                                style: TextStyle(
-                                                    fontSize: width * 0.03,
+                                                style: GoogleFonts.poppins(
                                                     color: darkblue,
+                                                    fontSize: width * 0.03,
                                                     fontWeight:
-                                                        FontWeight.bold),
+                                                        FontWeight.w500),
                                               ),
                                               Icon(
                                                 Icons.arrow_right_alt_sharp,
@@ -482,11 +486,11 @@ class _DebitScreenState extends State<DebitScreen> {
                                               Text(
                                                 AppLocalizations.of(context)!
                                                     .you,
-                                                style: TextStyle(
-                                                    fontSize: width * 0.03,
+                                                style: GoogleFonts.poppins(
                                                     color: darkblue,
+                                                    fontSize: width * 0.03,
                                                     fontWeight:
-                                                        FontWeight.bold),
+                                                        FontWeight.w500),
                                               ),
                                             ],
                                           )
@@ -502,25 +506,25 @@ class _DebitScreenState extends State<DebitScreen> {
                                 children: [
                                   Text(
                                     data.date!.toString().substring(0, 10),
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
+                                        color: greencolor,
                                         fontSize: width * 0.03,
-                                        color: Colors.green,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   Text(
                                     //"${percentage} %",
                                     "${percentage.toStringAsFixed(1)} %",
-                                    style: TextStyle(
-                                        fontSize: width * 0.03,
+                                    style: GoogleFonts.poppins(
                                         color: darkblue,
-                                        fontWeight: FontWeight.bold),
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   Text(
                                     data.payBackDate!,
-                                     style: GoogleFonts.poppins(
-                                              color:darkblue,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w400),
+                                    style: GoogleFonts.poppins(
+                                        color: darkblue,
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                 ],
                               ),
@@ -537,24 +541,24 @@ class _DebitScreenState extends State<DebitScreen> {
                                 children: [
                                   Text(
                                     '$remaingamount',
-                                     style: GoogleFonts.poppins(
-                                              color:darkblue,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w400),
+                                    style: GoogleFonts.poppins(
+                                        color: darkblue,
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   Text(
                                     '${data.paidAmount} ${HomeController.to.curency}',
-                                     style: GoogleFonts.poppins(
-                                              color:darkblue,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w400),
+                                    style: GoogleFonts.poppins(
+                                        color: darkblue,
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   Text(
                                     '${data.amount}',
-                                     style: GoogleFonts.poppins(
-                                              color:darkblue,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w400),
+                                    style: GoogleFonts.poppins(
+                                        color: darkblue,
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                 ],
                               ),
@@ -569,20 +573,18 @@ class _DebitScreenState extends State<DebitScreen> {
                                     AppLocalizations.of(context)!
                                         .residualamount,
                                     style: GoogleFonts.poppins(
-                                              color:darkblue,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w400),
+                                        color: darkblue,
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   Text(
                                     '  ${data.paidAmount}  ${HomeController.to.curency}',
-                                  
-                                   style: GoogleFonts.poppins(
-                                              color: data.type == 0
+                                    style: GoogleFonts.poppins(
+                                        color: data.type == 0
                                             ? Colors.green
                                             : Colors.red,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w400),
-                                   
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   remaingamount != 0
                                       ? InkWell(

@@ -1,8 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:snabb_business/controller/debit-credit/deptviewchartController.dart';
 import 'package:snabb_business/models/add_debit_model.dart';
@@ -133,6 +132,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
@@ -141,425 +141,535 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
       extendBody: true,
       backgroundColor: Colors.grey.shade200,
       body: SafeArea(
-        child: SingleChildScrollView(
+        child: SizedBox(
+          height: height,
+          width: width,
           child: Column(
             children: [
               AppBarWidgt(text: "Dr/Cr"),
               SizedBox(
                 height: height * 0.01,
               ),
-              Text(
-                "${AppLocalizations.of(context)!.credit}: YOU -> to",
-                style: TextStyle(
-                    fontSize: width * 0.025,
-                    color: darkblue,
-                    fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: height * 0.01,
-              ),
-              Center(
-                child: Card(
-                  elevation: 7,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    height: height * 0.4,
-                    width: width * 0.9,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          widget.data!.person!.toUpperCase(),
-                          style: TextStyle(
-                              fontSize: width * 0.025,
-                              color: darkblue,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SizedBox(
-                              width: width * 0.15,
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  "${AppLocalizations.of(context)!.value}: ",
-                                  style: TextStyle(
-                                      fontSize: width * 0.025,
-                                      color: darkblue,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  "${widget.data!.amount}",
-                                  style: TextStyle(
-                                      fontSize: width * 0.025,
-                                      color: darkblue,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SizedBox(
-                              width: width * 0.15,
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  "${AppLocalizations.of(context)!.paid}: ",
-                                  style: TextStyle(
-                                      fontSize: width * 0.025,
-                                      color: darkblue,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  "${widget.data!.paidAmount}",
-                                  style: TextStyle(
-                                      fontSize: width * 0.025,
-                                      color: darkblue,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SizedBox(
-                              width: width * 0.15,
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  "${AppLocalizations.of(context)!.residualamount}: ",
-                                  style: TextStyle(
-                                      fontSize: width * 0.025,
-                                      color: darkblue,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  "${widget.remaing}",
-                                  style: TextStyle(
-                                      fontSize: width * 0.025,
-                                      color: darkblue,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          "${widget.percentage.toStringAsFixed(1)}%",
-                          style: TextStyle(
-                              fontSize: width * 0.025,
-                              color: darkblue,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        LinearPercentIndicator(
-                          lineHeight: 6.0,
-                          percent: widget.slider!.toDouble(),
-                          backgroundColor: Colors.black26,
-                          progressColor: widget.data!.type == 0
-                              ? Colors.green
-                              : Colors.red,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              "${AppLocalizations.of(context)!.accounts}: ",
-                              style: TextStyle(
-                                  fontSize: width * 0.025,
-                                  color: darkblue,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              AppLocalizations.of(context)!.wallet,
-                              style: TextStyle(
-                                  fontSize: width * 0.025,
-                                  color: darkblue,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.wallet,
-                              style: TextStyle(
-                                  fontSize: width * 0.025,
-                                  color: darkblue,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SizedBox(
-                              width: width * 0.08,
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "${AppLocalizations.of(context)!.creationdate}: ",
-                                  style: TextStyle(
-                                      fontSize: width * 0.025,
-                                      color: darkblue,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: width * 0.08,
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  "${widget.data!.date}",
-                                  style: TextStyle(
-                                      fontSize: width * 0.025,
-                                      color: darkblue,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SizedBox(
-                              width: width * 0.08,
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "${AppLocalizations.of(context)!.paybackdate}: ",
-                                  style: TextStyle(
-                                      fontSize: width * 0.025,
-                                      color: darkblue,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: width * 0.08,
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  "${widget.data!.payBackDate}",
-                                  style: TextStyle(
-                                      fontSize: width * 0.025,
-                                      color: darkblue,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Card(
-                elevation: 2,
-                shadowColor: darkblue,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                child: SizedBox(
-                    height: height * 0.24,
-                    width: width * 0.86,
-                    child: Stack(
-                      children: <Widget>[
-                        GetBuilder<ViewDesbitController>(initState: (state) {
-                          ViewDesbitController.to.fetchDebtsCreditstransaction(
-                              widget.data!.transactions!);
-                        }, builder: (obj) {
-                          return SizedBox(
-                            height: height * 0.22,
-                            width: width * 0.86,
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                right: 18,
-                                left: 12,
-                                top: 24,
-                                bottom: 7,
-                              ),
-                              child: InkWell(
-                                onTap: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //       builder: (context) =>
-                                  //           TransactionsScreen(
-                                  //               snabbWallet: widget
-                                  //                   .snabbWallet),
-                                  //     ));
-                                },
-                                child: LineChart(
-                                    // showAvg
-                                    // ? LineChartData()
-                                    // :
-                                    // LineChartData(
-
-                                    LineChartData(
-                                  lineTouchData:
-                                      const LineTouchData(enabled: false),
-                                  gridData: FlGridData(
-                                    show: true,
-                                    drawHorizontalLine: true,
-                                    verticalInterval: 1,
-                                    horizontalInterval: 1,
-                                    getDrawingVerticalLine: (value) {
-                                      return const FlLine(
-                                        color: Color(0xff37434d),
-                                        strokeWidth: 0.5,
-                                      );
-                                    },
-                                    getDrawingHorizontalLine: (value) {
-                                      return const FlLine(
-                                        color: Color(0xff37434d),
-                                        strokeWidth: 0.05,
-                                      );
-                                    },
-                                  ),
-                                  titlesData: FlTitlesData(
-                                    show: true,
-                                    bottomTitles: AxisTitles(
-                                      sideTitles: SideTitles(
-                                        showTitles: true,
-                                        reservedSize: 30,
-                                        getTitlesWidget: bottomTitles,
-                                        interval: 1,
-                                      ),
-                                    ),
-                                    leftTitles: AxisTitles(
-                                      sideTitles: SideTitles(
-                                        showTitles: true,
-                                        getTitlesWidget: leftTitlesWidget,
-                                        reservedSize: 45,
-                                        interval: 1,
-                                      ),
-                                    ),
-                                    topTitles: const AxisTitles(
-                                      sideTitles: SideTitles(showTitles: false),
-                                    ),
-                                    rightTitles: const AxisTitles(
-                                      sideTitles: SideTitles(showTitles: false),
-                                    ),
-                                  ),
-                                  borderData: FlBorderData(
-                                    show: true,
-                                    border: Border.all(
-                                        color: const Color(0xff37434d)),
-                                  ),
-                                  minX: 0,
-                                  maxX: 12,
-                                  minY: -0.58,
-                                  maxY: 14,
-                                  lineBarsData: [
-                                    LineChartBarData(
-                                      spots: obj.list,
-                                      isCurved: true,
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          gradientColors[0],
-                                          gradientColors[1],
-                                        ],
-                                      ),
-                                      barWidth: 2,
-                                      isStrokeJoinRound: false,
-                                      preventCurveOverShooting: false,
-                                      isStrokeCapRound: false,
-                                      dotData: const FlDotData(
-                                        show: false,
-                                      ),
-                                      belowBarData: BarAreaData(
-                                        show: true,
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            ColorTween(
-                                                    begin: gradientColors[0],
-                                                    end: gradientColors[1])
-                                                .lerp(0.2)!
-                                                .withOpacity(0.1),
-                                            ColorTween(
-                                                    begin: gradientColors[0],
-                                                    end: gradientColors[1])
-                                                .lerp(0.2)!
-                                                .withOpacity(0.1),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                )),
-                              ),
-                            ),
-                          );
-                        }),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: SizedBox(
-                            width: 60,
-                            height: 34,
-                            child: TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  showAvg = !showAvg;
-                                });
-                              },
+              Expanded(
+                child: Stack(
+                  children: [
+                    SizedBox(
+                      height: height * 0.1,
+                      width: width,
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: height * 0.1,
+                            width: width,
+                            decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage("images/dollar.jpg"))),
+                          ),
+                          Container(
+                            height: height * 0.1,
+                            width: width,
+                            color: Colors.blue[900]!.withOpacity(0.9),
+                            child: Center(
                               child: Text(
-                                '${AppLocalizations.of(context)!.avg}',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: showAvg
-                                      ? Colors.white.withOpacity(0.5)
-                                      : Colors.white,
-                                ),
+                                "${AppLocalizations.of(context)!.credit}: YOU -> to",
+                                style: GoogleFonts.poppins(
+                                    fontSize: width * 0.03,
+                                    color: white,
+                                    fontWeight: FontWeight.w500),
                               ),
                             ),
                           ),
+                        ],
+                      ),
+                    ),
+                    Center(
+                      child: Card(
+                        elevation: 10,
+                        shadowColor: blue,
+                        child: SizedBox(
+                          height: height * 0.7,
+                          width: width * 0.9,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: height * 0.01,
+                                ),
+                                Center(
+                                  child: Card(
+                                    elevation: 7,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      height: height * 0.4,
+                                      width: width * 0.9,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Text(
+                                            widget.data!.person!.toUpperCase(),
+                                            style: GoogleFonts.poppins(
+                                                fontSize: width * 0.035,
+                                                color: blue,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              SizedBox(
+                                                width: width * 0.15,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text(
+                                                    "${AppLocalizations.of(context)!.value}: ",
+                                                    style: GoogleFonts.poppins(
+                                                        fontSize: width * 0.03,
+                                                        color: blue,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text(
+                                                    "${widget.data!.amount}",
+                                                    style: GoogleFonts.poppins(
+                                                        fontSize: width * 0.03,
+                                                        color: blue,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              SizedBox(
+                                                width: width * 0.15,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text(
+                                                    "${AppLocalizations.of(context)!.paid}: ",
+                                                    style: GoogleFonts.poppins(
+                                                        fontSize: width * 0.03,
+                                                        color: blue,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text(
+                                                    "${widget.data!.paidAmount}",
+                                                    style: GoogleFonts.poppins(
+                                                        fontSize: width * 0.03,
+                                                        color: blue,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              SizedBox(
+                                                width: width * 0.15,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text(
+                                                    "${AppLocalizations.of(context)!.residualamount}: ",
+                                                    style: GoogleFonts.poppins(
+                                                        fontSize: width * 0.03,
+                                                        color: blue,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text(
+                                                    "${widget.remaing}",
+                                                    style: GoogleFonts.poppins(
+                                                        fontSize: width * 0.03,
+                                                        color: blue,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Text(
+                                            "${widget.percentage.toStringAsFixed(1)}%",
+                                            style: GoogleFonts.poppins(
+                                                fontSize: width * 0.03,
+                                                color: blue,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                          LinearPercentIndicator(
+                                            lineHeight: 6.0,
+                                            percent: widget.slider!.toDouble(),
+                                            backgroundColor: Colors.black26,
+                                            progressColor:
+                                                widget.data!.type == 0
+                                                    ? Colors.green
+                                                    : Colors.red,
+                                          ),
+                                          // Row(
+                                          //   mainAxisAlignment:
+                                          //       MainAxisAlignment.spaceEvenly,
+                                          //   children: [
+                                          //     Text(
+                                          //       "${AppLocalizations.of(context)!.accounts}: ",
+                                          //       style: TextStyle(
+                                          //           fontSize: width * 0.025,
+                                          //           color: darkblue,
+                                          //           fontWeight:
+                                          //               FontWeight.bold),
+                                          //     ),
+                                          //     Text(
+                                          //       AppLocalizations.of(context)!
+                                          //           .wallet,
+                                          //       style: GoogleFonts.poppins(
+                                          //           fontSize: width * 0.03,
+                                          //           color: blue,
+                                          //           fontWeight:
+                                          //               FontWeight.w500),
+                                          //     ),
+                                          //   ],
+                                          // ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Text(
+                                                "Information",
+                                                style: GoogleFonts.poppins(
+                                                    fontSize: width * 0.03,
+                                                    color: blue,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              SizedBox(
+                                                width: width * 0.08,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    "${AppLocalizations.of(context)!.creationdate}: ",
+                                                    style: GoogleFonts.poppins(
+                                                        fontSize: width * 0.03,
+                                                        color: blue,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.08,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text(
+                                                    "${widget.data!.date}",
+                                                    style: GoogleFonts.poppins(
+                                                        fontSize: width * 0.025,
+                                                        color: blue,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              SizedBox(
+                                                width: width * 0.08,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    "${AppLocalizations.of(context)!.paybackdate}: ",
+                                                    style: GoogleFonts.poppins(
+                                                        fontSize: width * 0.03,
+                                                        color: blue,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.08,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text(
+                                                    "${widget.data!.payBackDate}",
+                                                    style: GoogleFonts.poppins(
+                                                        fontSize: width * 0.025,
+                                                        color: blue,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Card(
+                                  elevation: 2,
+                                  shadowColor: darkblue,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: SizedBox(
+                                      height: height * 0.24,
+                                      width: width * 0.86,
+                                      child: Stack(
+                                        children: <Widget>[
+                                          GetBuilder<ViewDesbitController>(
+                                              initState: (state) {
+                                            ViewDesbitController.to
+                                                .fetchDebtsCreditstransaction(
+                                                    widget.data!.transactions!);
+                                          }, builder: (obj) {
+                                            return SizedBox(
+                                              height: height * 0.22,
+                                              width: width * 0.86,
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                  right: 18,
+                                                  left: 12,
+                                                  top: 24,
+                                                  bottom: 7,
+                                                ),
+                                                child: InkWell(
+                                                  onTap: () {
+                                                    // Navigator.push(
+                                                    //     context,
+                                                    //     MaterialPageRoute(
+                                                    //       builder: (context) =>
+                                                    //           TransactionsScreen(
+                                                    //               snabbWallet: widget
+                                                    //                   .snabbWallet),
+                                                    //     ));
+                                                  },
+                                                  child: LineChart(
+                                                      // showAvg
+                                                      // ? LineChartData()
+                                                      // :
+                                                      // LineChartData(
+
+                                                      LineChartData(
+                                                    lineTouchData:
+                                                        const LineTouchData(
+                                                            enabled: false),
+                                                    gridData: FlGridData(
+                                                      show: true,
+                                                      drawHorizontalLine: true,
+                                                      verticalInterval: 1,
+                                                      horizontalInterval: 1,
+                                                      getDrawingVerticalLine:
+                                                          (value) {
+                                                        return const FlLine(
+                                                          color:
+                                                              Color(0xff37434d),
+                                                          strokeWidth: 0.5,
+                                                        );
+                                                      },
+                                                      getDrawingHorizontalLine:
+                                                          (value) {
+                                                        return const FlLine(
+                                                          color:
+                                                              Color(0xff37434d),
+                                                          strokeWidth: 0.05,
+                                                        );
+                                                      },
+                                                    ),
+                                                    titlesData: FlTitlesData(
+                                                      show: true,
+                                                      bottomTitles: AxisTitles(
+                                                        sideTitles: SideTitles(
+                                                          showTitles: true,
+                                                          reservedSize: 30,
+                                                          getTitlesWidget:
+                                                              bottomTitles,
+                                                          interval: 1,
+                                                        ),
+                                                      ),
+                                                      leftTitles: AxisTitles(
+                                                        sideTitles: SideTitles(
+                                                          showTitles: true,
+                                                          getTitlesWidget:
+                                                              leftTitlesWidget,
+                                                          reservedSize: 45,
+                                                          interval: 1,
+                                                        ),
+                                                      ),
+                                                      topTitles:
+                                                          const AxisTitles(
+                                                        sideTitles: SideTitles(
+                                                            showTitles: false),
+                                                      ),
+                                                      rightTitles:
+                                                          const AxisTitles(
+                                                        sideTitles: SideTitles(
+                                                            showTitles: false),
+                                                      ),
+                                                    ),
+                                                    borderData: FlBorderData(
+                                                      show: true,
+                                                      border: Border.all(
+                                                          color: const Color(
+                                                              0xff37434d)),
+                                                    ),
+                                                    minX: 0,
+                                                    maxX: 12,
+                                                    minY: -0.58,
+                                                    maxY: 14,
+                                                    lineBarsData: [
+                                                      LineChartBarData(
+                                                        spots: obj.list,
+                                                        isCurved: true,
+                                                        gradient:
+                                                            LinearGradient(
+                                                          colors: [
+                                                            gradientColors[0],
+                                                            gradientColors[1],
+                                                          ],
+                                                        ),
+                                                        barWidth: 2,
+                                                        isStrokeJoinRound:
+                                                            false,
+                                                        preventCurveOverShooting:
+                                                            false,
+                                                        isStrokeCapRound: false,
+                                                        dotData:
+                                                            const FlDotData(
+                                                          show: false,
+                                                        ),
+                                                        belowBarData:
+                                                            BarAreaData(
+                                                          show: true,
+                                                          gradient:
+                                                              LinearGradient(
+                                                            colors: [
+                                                              ColorTween(
+                                                                      begin:
+                                                                          gradientColors[
+                                                                              0],
+                                                                      end: gradientColors[
+                                                                          1])
+                                                                  .lerp(0.2)!
+                                                                  .withOpacity(
+                                                                      0.1),
+                                                              ColorTween(
+                                                                      begin:
+                                                                          gradientColors[
+                                                                              0],
+                                                                      end: gradientColors[
+                                                                          1])
+                                                                  .lerp(0.2)!
+                                                                  .withOpacity(
+                                                                      0.1),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  )),
+                                                ),
+                                              ),
+                                            );
+                                          }),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 8.0),
+                                            child: SizedBox(
+                                              width: 60,
+                                              height: 34,
+                                              child: TextButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    showAvg = !showAvg;
+                                                  });
+                                                },
+                                                child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .avg,
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: showAvg
+                                                        ? Colors.white
+                                                            .withOpacity(0.5)
+                                                        : Colors.white,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
-                      ],
-                    )),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

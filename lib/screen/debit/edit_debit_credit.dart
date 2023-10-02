@@ -1,9 +1,11 @@
 // ignore_for_file: unused_local_variable, prefer_const_constructors, prefer_final_fields, depend_on_referenced_packages, use_build_context_synchronously
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:snabb_business/controller/debit-credit/add_debit_controller.dart';
+import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/models/add_debit_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:snabb_business/screen/sale/IncomeDataMode.dart';
@@ -177,10 +179,10 @@ class _EditDebitCreditScreenState extends State<EditDebitCreditScreen> {
                                   left: width * 0.1, top: height * 0.03),
                               child: Text(
                                 "Edit Entry",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     color: white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
+                                    fontSize: width * 0.35,
+                                    fontWeight: FontWeight.w600),
                               ),
                             ),
                           ),
@@ -407,60 +409,60 @@ class _EditDebitCreditScreenState extends State<EditDebitCreditScreen> {
                                               return null;
                                             },
                                           ),
-
                                           SizedBox(
-                                            height: height / 30,
+                                            height: height * 0.04,
                                           ),
-                                          Row(
-                                            children: [
-                                              Icon(Icons.file_present_outlined,
-                                                  size: width * 0.065),
-                                              SizedBox(
-                                                width: 20,
-                                              ),
-                                              Card(
-                                                elevation: 5,
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5)),
-                                                child: InkWell(
-                                                  onTap: () {
-                                                    obj.selectImage(context);
+                                          SizedBox(
+                                            height: height * 0.05,
+                                            width: width,
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                InkWell(
+                                                  onTap: () async {
+                                                    TransactionController.to
+                                                        .selectImages(
+                                                            context,
+                                                            height,
+                                                            width,
+                                                            true);
                                                   },
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     height: height * 0.05,
-                                                    width: width * 0.2,
-                                                    decoration: BoxDecoration(
-                                                        color: darkblue!,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(3)),
-                                                    child: Center(
-                                                      child: Text(
-                                                        AppLocalizations.of(
-                                                                context)!
-                                                            .addfile,
-                                                        // AppLocalizations.of(context)!.addFile,
-                                                        style: TextStyle(
-                                                            fontSize:
-                                                                width * 0.03,
-                                                            color: Colors.white,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                      ),
+                                                    width: width * 0.1,
+                                                    child: Icon(
+                                                      Icons.camera_alt_rounded,
+                                                      color: lightgray,
+                                                      size: width * 0.09,
                                                     ),
                                                   ),
                                                 ),
-                                              ),
-                                            ],
+                                                SizedBox(width: width * 0.05),
+                                                InkWell(
+                                                  onTap: () {
+                                                    TransactionController.to
+                                                        .selectImages(
+                                                            context,
+                                                            height,
+                                                            width,
+                                                            false);
+                                                  },
+                                                  child: SizedBox(
+                                                    height: height * 0.05,
+                                                    width: width * 0.1,
+                                                    child: Icon(
+                                                      Icons.folder,
+                                                      color: lightgray,
+                                                      size: width * 0.09,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
-
-                                          // !isLoading
-                                          //     ?
                                           SizedBox(
-                                            height: height * 0.025,
+                                            height: height * 0.04,
                                           ),
                                           Center(
                                             child: Row(

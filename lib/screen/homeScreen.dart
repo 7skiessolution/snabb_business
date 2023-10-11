@@ -35,12 +35,13 @@ class _HomeScreenState extends State<HomeScreen> {
     Get.put(ExpenseController());
     Get.put(TransactionController());
     Get.put(PdfController());
-    HomeController.to.saleListOFChart();
+    // HomeController.to.saleListOFChart();
     HomeController.to.expenseList(0);
     HomeController.to.expenseList(2);
     HomeController.to.expenseList(1);
     HomeController.to.getlistExpense(2);
-    HomeController.to.getlistPurchase(0);
+    HomeController.to.getlistExpense(2);
+    HomeController.to.getlistofSale(1);
 
     // HomeController.to.getexpensePurchase(2);
     // HomeController.to.getexpensePurchase(0);
@@ -411,6 +412,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         //   ],
                                         // ),
                                         child: SfCartesianChart(
+                                           primaryXAxis: CategoryAxis(),
                                           primaryYAxis: NumericAxis(
                                             minimum: 0,
                                             numberFormat:
@@ -424,9 +426,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ActivationMode.doubleTap,
                                           enableMultiSelection: true,
                                           enableAxisAnimation: true,
-                                          primaryXAxis: DateTimeAxis(),
                                           series: <ChartSeries>[
-                                            LineSeries<SalesData, DateTime>(
+                                            LineSeries<SalesData, String>(
                                               legendIconType:
                                                   LegendIconType.rectangle,
                                               animationDuration: 5,
@@ -534,8 +535,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     (Chartdata data, _) =>
                                                         data.y,
                                                 name: 'Purchase',
-                                                color: const Color.fromRGBO(
-                                                    8, 142, 255, 1),
+                                                color: blue,
                                               ),
                                             ])),
                                   ),

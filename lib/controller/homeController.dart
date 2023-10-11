@@ -13,6 +13,7 @@ import 'package:snabb_business/models/get_data_year_type_model.dart' as sp;
 import 'package:snabb_business/models/get_sale_purchase.dart';
 import 'package:snabb_business/models/get_type_year_expense.dart' as elist;
 import 'package:snabb_business/models/get_year_type_purchase.dart' as plist;
+import 'package:snabb_business/models/get_year_type_sale.dart' as slist;
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
 import 'package:snabb_business/screen/company/companyModel.dart' as cm;
@@ -451,40 +452,42 @@ class HomeController extends GetxController {
 
   double totalAmountType1 = 0.0;
   List<yTra.Transactions> salesTransaction = [];
-  saleListOFChart() async {
-    var res = await httpClient().get(StaticValues.getYearTrasaction);
-    if (res.statusCode == 200) {
-      chartData.clear();
-      yTra.UserYearTransaction yearTransaction =
-          yTra.UserYearTransaction.fromMap(res.data);
-      for (var element in yearTransaction.data!) {
-        // List<yTra.Transactions> transactions = element.transactions ?? [];
-        print("bal match ${element.transactions}");
-        salesTransaction = element.transactions!
-            .where((transaction) => transaction.type == 1)
-            .toList();
-        print("sale list ${salesTransaction.length}");
-        // Calculate total amounts for each type after subtracting partial amounts
-        totalAmountType1 = salesTransaction
-            .map((transaction) => transaction.totalAmount!)
-            .fold(0, (prev, curr) => prev + curr);
 
-        print("-0=-=-=-=-=- $totalAmountType1");
+  // saleListOFChart() async {
+  //   var res = await httpClient().get(StaticValues.getYearTrasaction);
+  //   if (res.statusCode == 200) {
+  //     chartData.clear();
+  //     yTra.UserYearTransaction yearTransaction =
+  //         yTra.UserYearTransaction.fromMap(res.data);
+  //     for (var element in yearTransaction.data!) {
+  //       // List<yTra.Transactions> transactions = element.transactions ?? [];
+  //       print("bal match ${element.transactions}");
+  //       salesTransaction = element.transactions!
+  //           .where((transaction) => transaction.type == 1)
+  //           .toList();
+  //       print("sale list ${salesTransaction.length}");
+  //       // Calculate total amounts for each type after subtracting partial amounts
+  //       totalAmountType1 = salesTransaction
+  //           .map((transaction) => transaction.totalAmount!)
+  //           .fold(0, (prev, curr) => prev + curr);
 
-        chartData.add(
-          SalesData(DateTime(element.year!), totalAmountType1),
-        );
-        update();
+  //       print("-0=-=-=-=-=- $totalAmountType1");
 
-        // chart = [
-        //   SalesData(DateTime(element.year!), totalAmountType1),
-        // ];
-      }
+  //       chartData.add(
+  //         SalesData(DateTime(element.year!), totalAmountType1),
+  //       );
+  //       update();
 
-      update();
-    }
-    getlistofSale();
-  }
+  //       // chart = [
+  //       //   SalesData(DateTime(element.year!), totalAmountType1),
+  //       // ];
+  //     }
+
+  //     update();
+  //   }
+  //   getlistofSale();
+  // }
+ 
   // saleListOFChart() async {
   //   var res = await httpClient().get(StaticValues.getYearTrasaction);
   //   if (res.statusCode == 200) {
@@ -547,6 +550,9 @@ class HomeController extends GetxController {
           saledatalist.add(
             Chartdata(convertToAbbreviatedMonth(i + 1), e),
           );
+             chartData.add(
+          SalesData(convertToAbbreviatedMonth(i + 1), e),
+        );
           update();
         }
         update();
@@ -560,7 +566,7 @@ class HomeController extends GetxController {
   List<elist.Data> expenseData = [];
   List<plist.Data> purchaseData = [];
   List<sp.Data> salaDatalist = [];
-  List<yTra.Transactions> salaData = [];
+  List<slist.Data> salaData = [];
   DateTime now = DateTime.now();
   getlistPurchase(int type) async {
     print("hi");
@@ -608,20 +614,26 @@ class HomeController extends GetxController {
     }
   }
 
-  getlistofSale() async {
+  getlistofSale(int type) async {
     salaData.clear();
-    var res = await httpClient().get(StaticValues.getYearTrasaction);
+   var  res = await httpClient()
+          .get("${StaticValues.getexpensePurchaseyearType}${now.year}/$type");
     if (res.statusCode == 200) {
       chartData.clear();
-      yTra.UserYearTransaction yearTransaction =
-          yTra.UserYearTransaction.fromMap(res.data);
-      for (var element in yearTransaction.data!) {
-        for (var e in element.transactions!) {
-          if (e.type == 1) {
-            salaData.add(e);
-          }
+     slist.GetSaleYearType salemodel =
+          slist.GetSaleYearType.fromMap(res.data);
+           for (int i = 0; i < salemodel.data!.length; i++) {
+          var e = salemodel.data![i];
+          salaData.add(e);
+          update();
         }
-      }
+      // for (var element in yearTransaction.data!) {
+      //   for (var e in element.transactions!) {
+      //     if (e.type == 1) {
+      //       salaData.add(e);
+      //     }
+      //   }
+      // }
     }
   }
 

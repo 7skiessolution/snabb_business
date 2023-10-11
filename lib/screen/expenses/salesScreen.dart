@@ -65,7 +65,7 @@ class _SalesScreenState extends State<SalesScreen> {
                             enableAxisAnimation: true,
                             primaryXAxis: DateTimeAxis(),
                             series: <ChartSeries>[
-                              LineSeries<SalesData, DateTime>(
+                              LineSeries<SalesData, String>(
                                 legendIconType: LegendIconType.rectangle,
                                 animationDuration: 5,
                                 animationDelay: 3,
@@ -90,26 +90,26 @@ class _SalesScreenState extends State<SalesScreen> {
                                 yValueMapper: (SalesData sales, _) =>
                                     sales.sales,
                               ),
-                              LineSeries<SalesData, DateTime>(
-                                legendIconType: LegendIconType.rectangle,
-                                animationDuration: 5,
-                                animationDelay: 3,
-                                color: lightgreen,
-                                markerSettings: MarkerSettings(
-                                  isVisible: true,
-                                  width: 5,
-                                  height: 5,
-                                  borderWidth: 0.5,
-                                  color: lightgreen,
-                                ),
-                                enableTooltip: true,
-                                isVisible: true,
-                                dataSource: obj.chart,
-                                xValueMapper: (SalesData sales, _) =>
-                                    sales.year,
-                                yValueMapper: (SalesData sales, _) =>
-                                    sales.sales,
-                              )
+                              // LineSeries<SalesData, DateTime>(
+                              //   legendIconType: LegendIconType.rectangle,
+                              //   animationDuration: 5,
+                              //   animationDelay: 3,
+                              //   color: lightgreen,
+                              //   markerSettings: MarkerSettings(
+                              //     isVisible: true,
+                              //     width: 5,
+                              //     height: 5,
+                              //     borderWidth: 0.5,
+                              //     color: lightgreen,
+                              //   ),
+                              //   enableTooltip: true,
+                              //   isVisible: true,
+                              //   dataSource: obj.chart,
+                              //   xValueMapper: (SalesData sales, _) =>
+                              //       sales.year,
+                              //   yValueMapper: (SalesData sales, _) =>
+                              //       sales.sales,
+                              // )
                             ],
                           ))
                     ],

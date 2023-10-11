@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/controller/homeController.dart';
+import 'package:snabb_business/models/get_year_type_sale.dart' as slist;
 import 'package:snabb_business/static_data.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 import 'package:snabb_business/utils/color.dart';
@@ -10,7 +11,6 @@ import 'package:snabb_business/utils/pinch_zoom_image.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../models/dataclassgraphModel.dart';
-import 'package:snabb_business/models/yearly_transaction_model.dart' as yTra;
 
 class SalesChart extends StatefulWidget {
   SalesChart({super.key, required this.home});
@@ -28,7 +28,7 @@ class _SalesChartState extends State<SalesChart> {
 
   Future<void> showImageDialog(
     BuildContext context,
-    yTra.Transactions obj,
+    slist.Data obj,
   ) async {
     return showDialog<void>(
       context: context,
@@ -637,9 +637,10 @@ class _SalesChartState extends State<SalesChart> {
                                               ActivationMode.doubleTap,
                                           enableMultiSelection: true,
                                           enableAxisAnimation: true,
-                                          primaryXAxis: DateTimeAxis(),
+                                                                                    primaryXAxis: CategoryAxis(),
+
                                           series: <ChartSeries>[
-                                            LineSeries<SalesData, DateTime>(
+                                            LineSeries<SalesData, String>(
                                               legendIconType:
                                                   LegendIconType.rectangle,
                                               animationDuration: 5,
@@ -663,29 +664,29 @@ class _SalesChartState extends State<SalesChart> {
                                                   (SalesData sales, _) =>
                                                       sales.sales,
                                             ),
-                                            LineSeries<SalesData, DateTime>(
-                                              legendIconType:
-                                                  LegendIconType.rectangle,
-                                              animationDuration: 5,
-                                              animationDelay: 3,
-                                              color: greencolor,
-                                              markerSettings: MarkerSettings(
-                                                isVisible: true,
-                                                width: 5,
-                                                height: 5,
-                                                borderWidth: 0.5,
-                                                color: greencolor,
-                                              ),
-                                              enableTooltip: true,
-                                              isVisible: true,
-                                              dataSource: obj.chart,
-                                              xValueMapper:
-                                                  (SalesData sales, _) =>
-                                                      sales.year,
-                                              yValueMapper:
-                                                  (SalesData sales, _) =>
-                                                      sales.sales,
-                                            )
+                                            // LineSeries<SalesData, String>(
+                                            //   legendIconType:
+                                            //       LegendIconType.rectangle,
+                                            //   animationDuration: 5,
+                                            //   animationDelay: 3,
+                                            //   color: greencolor,
+                                            //   markerSettings: MarkerSettings(
+                                            //     isVisible: true,
+                                            //     width: 5,
+                                            //     height: 5,
+                                            //     borderWidth: 0.5,
+                                            //     color: greencolor,
+                                            //   ),
+                                            //   enableTooltip: true,
+                                            //   isVisible: true,
+                                            //   dataSource: obj.chart,
+                                            //   xValueMapper:
+                                            //       (SalesData sales, _) =>
+                                            //           sales.year,
+                                            //   yValueMapper:
+                                            //       (SalesData sales, _) =>
+                                            //           sales.sales,
+                                            // )
                                           ],
                                         ),
                                       )),

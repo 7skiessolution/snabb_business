@@ -12,7 +12,6 @@ class SaleScreen extends StatefulWidget {
   const SaleScreen({
     super.key,
   });
-
   @override
   State<SaleScreen> createState() => _SaleScreenState();
 }
@@ -28,7 +27,6 @@ class _SaleScreenState extends State<SaleScreen> {
 
   final _formKey = GlobalKey<FormState>();
   String? selectedimage;
-
   String? maingetimage;
   bool isLoading = false;
   var height, width;
@@ -37,7 +35,6 @@ class _SaleScreenState extends State<SaleScreen> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-
     return KeyboardVisibilityBuilder(builder: (context, visible) {
       return GetBuilder<SaleController>(builder: (obj) {
         return Form(
@@ -181,7 +178,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                         padding:
                                             const EdgeInsets.only(left: 8.0),
                                         child: Text(
-                                          "Sale",
+                                          "Sales",
                                           style: GoogleFonts.poppins(
                                               // color:Colors.blue[900],
                                               fontSize: width * 0.035,
@@ -241,17 +238,19 @@ class _SaleScreenState extends State<SaleScreen> {
                                               width: width * 0.07,
                                             ),
                                             SizedBox(
-                                              width: width * 0.05,
+                                              width: width * 0.07,
                                             ),
-                                            Text(
-                                              'Paid As',
-                                              style: GoogleFonts.poppins(
-                                                  // color:Colors.blue[900],
-                                                  fontSize: width * 0.035,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                            SizedBox(
-                                              width: width * 0.5,
+                                            Expanded(
+                                              child: SizedBox(
+                                                child: Text(
+                                                  'Received As',
+                                                  style: GoogleFonts.poppins(
+                                                      // color:Colors.blue[900],
+                                                      fontSize: width * 0.035,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
+                                              ),
                                             ),
                                             const Icon(
                                                 Icons.arrow_drop_down_sharp)
@@ -279,7 +278,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                               width: width * 0.07,
                                             ),
                                             SizedBox(
-                                              width: width * 0.05,
+                                              width: width * 0.01,
                                             ),
                                             Text(
                                               'Sale Method',
@@ -449,7 +448,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                               child: TextFormField(
                                                 controller: obj.particular,
                                                 decoration: InputDecoration(
-                                                  labelText: 'Particular',
+                                                  labelText: 'Descriptions',
                                                   labelStyle:
                                                       GoogleFonts.poppins(
                                                           color: lightgray,

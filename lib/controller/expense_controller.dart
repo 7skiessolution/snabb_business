@@ -27,7 +27,7 @@ class ExpenseController extends GetxController {
   bool company = true;
   String selectedImagePath = "";
   em.Data? selectedCateory;
-  String formatTime = "Pick Date";
+  String formatTime = "Expense Date";
 
   List<String> categoriespath = [
     "assets/businessicons/entertainment.png",
@@ -1060,7 +1060,7 @@ class ExpenseController extends GetxController {
 
   postexpense(BuildContext context) async {
     try {
-      if (formatTime != "Pick Date") {
+      if (formatTime != "Expense Date") {
         if (selectedCateory != null) {
           dio.FormData data = TransactionController.to.pathFile.isEmpty
               ? dio.FormData.fromMap({

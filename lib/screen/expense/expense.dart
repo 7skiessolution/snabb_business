@@ -177,7 +177,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                         padding:
                                             const EdgeInsets.only(left: 8.0),
                                         child: Text(
-                                          "Expense",
+                                          "Business Expense",
                                           style: GoogleFonts.poppins(
                                               // color:Colors.blue[900],
                                               fontSize: width * 0.035,
@@ -233,11 +233,8 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                               "images/paidas.png",
                                               width: width * 0.07,
                                             ),
-                                            SizedBox(
-                                              width: width * 0.01,
-                                            ),
                                             Text(
-                                              'Category',
+                                              'Expense Category',
                                               style: GoogleFonts.poppins(
                                                   // color:Colors.blue[900],
                                                   fontSize: width * 0.035,
@@ -245,10 +242,10 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                             ),
                                             obj.selectedCateory == null
                                                 ? SizedBox(
-                                                    width: width * 0.46,
+                                                    width: width * 0.35,
                                                   )
                                                 : Container(
-                                                    width: width * 0.46,
+                                                    width: width * 0.4,
                                                     alignment: Alignment.center,
                                                     child: Text(
                                                       obj.selectedCateory!
@@ -287,9 +284,6 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                             Image.asset(
                                               "images/paidas.png",
                                               width: width * 0.07,
-                                            ),
-                                            SizedBox(
-                                              width: width * 0.05,
                                             ),
                                             Text(
                                               'Paid As',
@@ -385,7 +379,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                               child: TextFormField(
                                                 controller: obj.particular,
                                                 decoration: InputDecoration(
-                                                  labelText: 'Particular',
+                                                  labelText: 'Descriptions',
                                                   labelStyle:
                                                       GoogleFonts.poppins(
                                                           color: lightgray,

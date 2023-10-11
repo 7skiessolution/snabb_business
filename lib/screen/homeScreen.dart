@@ -116,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       width: width * 0.2,
                                       child: PieChart(
                                         dataMap: {
-                                          "Sale":
+                                          "Sales":
                                               double.parse("${obj.totalSale}"),
                                           "Purchase": double.parse(
                                               "${obj.totalPurchase}"),
@@ -157,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        "Summary",
+                                        "Business Summary",
                                         style: GoogleFonts.poppins(
                                             color: darkblue,
                                             fontSize: width * 0.035,
@@ -383,7 +383,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     MainAxisAlignment.spaceAround,
                                 children: [
                                   Text(
-                                    "Sale".toUpperCase(),
+                                    "Sales".toUpperCase(),
                                     style: GoogleFonts.poppins(
                                         color: greencolor,
                                         fontSize: width * 0.035,

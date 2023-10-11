@@ -30,7 +30,7 @@ class SaleController extends GetxController {
   bool company = true;
   String companyName = "";
   String? companyid;
-  String formatTime = "Pick Date";
+  String formatTime = "Sales Date";
   double totalBalance = 0.0;
   getBalance() {
     totalBalance = 0.0;
@@ -591,7 +591,7 @@ class SaleController extends GetxController {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              "Other".toUpperCase(),
+                                              "Others".toUpperCase(),
                                               style: GoogleFonts.poppins(
                                                   // color:Colors.blue[900],
                                                   fontSize: width * 0.03,
@@ -817,7 +817,8 @@ class SaleController extends GetxController {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              "Return Date".toUpperCase(),
+                                              "Credit Return Date"
+                                                  .toUpperCase(),
                                               style: GoogleFonts.poppins(
                                                   // color:Colors.blue[900],
                                                   fontSize: width * 0.03,
@@ -1206,14 +1207,14 @@ class SaleController extends GetxController {
                                             width: width * 0.02,
                                           ),
                                           Text(
-                                            "Company",
+                                            "Clients/Custumers",
                                             style: GoogleFonts.poppins(
                                                 // color: white,
                                                 fontSize: width * 0.035,
                                                 fontWeight: FontWeight.w600),
                                           ),
                                           SizedBox(
-                                            width: width * 0.2,
+                                            width: width * 0.1,
                                           ),
                                           Icon(company
                                               ? Icons.arrow_drop_down_sharp
@@ -1225,7 +1226,7 @@ class SaleController extends GetxController {
                                   company
                                       ? Padding(
                                           padding: EdgeInsets.only(
-                                              right: width * 0.08),
+                                              left: width * 0.06),
                                           child: InkWell(
                                             onTap: () {
                                               companyDialog(
@@ -1235,7 +1236,7 @@ class SaleController extends GetxController {
                                               });
                                             },
                                             child: Text(
-                                              "Existing Company",
+                                              "Existing Clients/Custumers",
                                               style: GoogleFonts.poppins(
                                                   color: lightgray,
                                                   fontSize: width * 0.03,
@@ -1250,9 +1251,9 @@ class SaleController extends GetxController {
                                   company
                                       ? Padding(
                                           padding: EdgeInsets.only(
-                                              right: width * 0.12),
+                                              left: width * 0.03),
                                           child: Text(
-                                            "New Company",
+                                            "New Client/Custumer",
                                             style: GoogleFonts.poppins(
                                                 color: lightgray,
                                                 fontSize: width * 0.03,
@@ -1508,7 +1509,7 @@ class SaleController extends GetxController {
                                                     },
                                                     child: Container(
                                                       height: height * 0.045,
-                                                      width: width * 0.45,
+                                                      width: width * 0.5,
                                                       decoration: BoxDecoration(
                                                           color: blue,
                                                           borderRadius:
@@ -1516,7 +1517,7 @@ class SaleController extends GetxController {
                                                                   .circular(7)),
                                                       child: Center(
                                                         child: Text(
-                                                          "Add Company",
+                                                          "Add Client/Custumer",
                                                           style: GoogleFonts
                                                               .poppins(
                                                                   color: Colors
@@ -1588,7 +1589,7 @@ class SaleController extends GetxController {
 
   postsale(BuildContext context) async {
     try {
-      if (formatTime != "Pick Date") {
+      if (formatTime != "Sales Date") {
         if (companyName.isNotEmpty) {
           dio.FormData data = TransactionController.to.pathFile.isEmpty
               ? dio.FormData.fromMap({

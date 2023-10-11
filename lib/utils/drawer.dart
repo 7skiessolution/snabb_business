@@ -200,7 +200,7 @@ class DrawerScreen extends StatelessWidget {
                 child: ListTile(
                   leading: Image.asset("assets/drawericon/debit.png"),
                   title: Text(
-                    "Db/Cr",
+                    "Debit/Credit",
                     style: GoogleFonts.poppins(
                         color: white,
                         fontSize: width * 0.03,

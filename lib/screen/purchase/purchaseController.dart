@@ -32,7 +32,7 @@ class PurchaseController extends GetxController {
   bool newSupplier = false;
   String? supplierid;
   String supplierName = '';
-  String formatTime = "Pick Date";
+  String formatTime = "Purchase Date";
   double totalBalance = 0.0;
 
   getBalance() {
@@ -1887,7 +1887,7 @@ class PurchaseController extends GetxController {
 
   postpurchase(BuildContext context) async {
     try {
-      if (formatTime != "Pick Date") {
+      if (formatTime != "Purchase Date") {
         if (supplierName.isNotEmpty) {
           dio.FormData data = TransactionController.to.pathFile.isEmpty
               ? dio.FormData.fromMap({

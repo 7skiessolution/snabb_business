@@ -195,29 +195,34 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                     child: SizedBox(
                                       height: height * 0.06,
                                       width: width * 0.9,
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            Icon(
-                                              Icons.calendar_today,
-                                              color: Colors.grey.shade700,
-                                              size: 25,
-                                            ),
-                                            SizedBox(
-                                              width: width * 0.05,
-                                            ),
-                                            Text(
-                                              obj.formatTime,
-                                              style: GoogleFonts.poppins(
-                                                  // color:Colors.blue[900],
-                                                  fontSize: width * 0.035,
-                                                  fontWeight: FontWeight.w500),
-                                            ),
-                                            SizedBox(
-                                              width: width * 0.55,
-                                            ),
-                                          ]),
+                                      child: Padding(
+                                        padding:
+                                            EdgeInsets.only(left: width * 0.04),
+                                        child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Icon(
+                                                Icons.calendar_today,
+                                                color: Colors.grey.shade700,
+                                                size: 25,
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.01,
+                                              ),
+                                              Text(
+                                                obj.formatTime,
+                                                style: GoogleFonts.poppins(
+                                                    // color:Colors.blue[900],
+                                                    fontSize: width * 0.035,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.45,
+                                              ),
+                                            ]),
+                                      ),
                                     ),
                                   ),
                                   InkWell(
@@ -237,9 +242,6 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                               "images/paidas.png",
                                               width: width * 0.07,
                                             ),
-                                            SizedBox(
-                                              width: width * 0.05,
-                                            ),
                                             Text(
                                               'Paid As',
                                               style: GoogleFonts.poppins(
@@ -248,7 +250,7 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                                   fontWeight: FontWeight.w600),
                                             ),
                                             SizedBox(
-                                              width: width * 0.5,
+                                              width: width * 0.4,
                                             ),
                                             const Icon(
                                                 Icons.arrow_drop_down_sharp)
@@ -275,11 +277,8 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                               "images/paidas.png",
                                               width: width * 0.07,
                                             ),
-                                            SizedBox(
-                                              width: width * 0.05,
-                                            ),
                                             Text(
-                                              'Purchase Method',
+                                              'Suppliers',
                                               style: GoogleFonts.poppins(
                                                   // color:Colors.blue[900],
                                                   fontSize: width * 0.035,
@@ -389,7 +388,8 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                                     controller:
                                                         obj.invoiceAmount,
                                                     decoration: InputDecoration(
-                                                      labelText: 'Amount',
+                                                      labelText:
+                                                          'Total Purchase',
                                                       labelStyle:
                                                           GoogleFonts.poppins(
                                                               color: lightgray,
@@ -446,7 +446,7 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                               child: TextFormField(
                                                 controller: obj.particular,
                                                 decoration: InputDecoration(
-                                                  labelText: 'Particular',
+                                                  labelText: 'Description',
                                                   labelStyle:
                                                       GoogleFonts.poppins(
                                                           color: lightgray,

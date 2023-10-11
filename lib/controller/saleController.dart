@@ -68,7 +68,7 @@ class SaleController extends GetxController {
                 Container(
                   height: height * 0.1,
                   width: width,
-                  color: Colors.blue[900]!.withOpacity(0.9),
+                  color: greencolor.withOpacity(0.9),
                   alignment: Alignment.center,
                   child: Text(
                     "Select Company",
@@ -83,7 +83,7 @@ class SaleController extends GetxController {
                   child: Center(
                     child: Card(
                       elevation: 10,
-                      shadowColor: Colors.blue[900],
+                      shadowColor: greencolor,
                       child: Container(
                           height: height * 0.5,
                           width: width,
@@ -116,7 +116,7 @@ class SaleController extends GetxController {
                                         },
                                         child: Card(
                                           elevation: 10,
-                                          shadowColor: Colors.blue[900],
+                                          shadowColor: greencolor,
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(10)),
@@ -214,7 +214,7 @@ class SaleController extends GetxController {
                 Container(
                   height: height * 0.1,
                   width: width,
-                  color: Colors.blue[900]!.withOpacity(0.9),
+                  color: greencolor.withOpacity(0.9),
                   alignment: Alignment.center,
                   child: Text(
                     "Paid As ",
@@ -229,7 +229,7 @@ class SaleController extends GetxController {
                   child: Center(
                     child: Card(
                       elevation: 10,
-                      shadowColor: Colors.blue[900],
+                      shadowColor: greencolor,
                       child: Container(
                         height: height * 0.7,
                         width: width * 0.7,
@@ -1057,7 +1057,7 @@ class SaleController extends GetxController {
                                         width: width * 0.2,
                                         height: height * 0.05,
                                         decoration: BoxDecoration(
-                                            color: blue,
+                                            color: greencolor,
                                             borderRadius:
                                                 BorderRadius.circular(3)),
                                         child: Center(
@@ -1110,7 +1110,7 @@ class SaleController extends GetxController {
                   Container(
                     height: height * 0.1,
                     width: width,
-                    color: Colors.blue[900]!.withOpacity(0.9),
+                    color: greencolor.withOpacity(0.9),
                     alignment: Alignment.center,
                     child: Text(
                       "Select Sale Method",
@@ -1125,7 +1125,7 @@ class SaleController extends GetxController {
                     child: Center(
                       child: Card(
                         elevation: 10,
-                        shadowColor: Colors.blue[900],
+                        shadowColor: greencolor,
                         child: Container(
                           height: company ? height * 0.5 : height * 0.2,
                           width: width * 0.7,
@@ -1511,7 +1511,7 @@ class SaleController extends GetxController {
                                                       height: height * 0.045,
                                                       width: width * 0.5,
                                                       decoration: BoxDecoration(
-                                                          color: blue,
+                                                          color: greencolor,
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(7)),

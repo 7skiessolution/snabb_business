@@ -121,7 +121,7 @@ class _ExpandableFloatingActionButtonState
                     ));
               },
               heroTag: "saleTag",
-              backgroundColor: Colors.green,
+              backgroundColor: greencolor,
               child: const Icon(Icons.add),
             ),
         if (_isExpanded) const SizedBox(height: 5),
@@ -135,7 +135,7 @@ class _ExpandableFloatingActionButtonState
                   ));
             },
             heroTag: "expenseTag",
-            backgroundColor: Colors.red,
+            backgroundColor: expensecolor,
             child: const ImageIcon(AssetImage("images/minus.png")),
           ),
         if (_isExpanded) const SizedBox(height: 10),
@@ -149,7 +149,7 @@ class _ExpandableFloatingActionButtonState
                   ));
             },
             heroTag: "purchaseTag",
-            backgroundColor: Colors.blue[900],
+            backgroundColor: blue,
             child: const ImageIcon(AssetImage("images/minus.png")),
           ),
         const SizedBox(height: 10),

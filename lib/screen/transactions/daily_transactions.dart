@@ -1472,239 +1472,236 @@ class _DailyTransactionsState extends State<DailyTransactions> {
                   List<dTra.Transactions> specificTrans = [];
                   specificTrans =
                       obj.dailyTransactionList[index].transactions!.toList();
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: Container(
-                      padding: const EdgeInsets.only(top: 8, bottom: 8),
-                      color: white,
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                padding: const EdgeInsets.only(right: 12),
-                                child:
-                                    Text(obj.dailyTransactionList[index].day!),
-                              ),
+                  return Container(
+                    padding: const EdgeInsets.only(top: 8,),
+                    color: white,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 12),
+                              child:
+                                  Text(obj.dailyTransactionList[index].day!),
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            SizedBox(
-                              height: specificTrans.length * 80,
-                              //specificTrans.length == 1?80: specificTrans.length == 2?160: specificTrans.length == 3?240: specificTrans.length == 3?320 : 400 ,
-                              child: ListView.builder(
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: specificTrans.length,
-                                itemBuilder: (context, i) {
-                                  dTra.Transactions transaction =
-                                      specificTrans[i];
-                                  // return TransactionCard(transaction: transaction);
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          SizedBox(
+                            height: specificTrans.length * height*0.11,
+                            //specificTrans.length == 1?80: specificTrans.length == 2?160: specificTrans.length == 3?240: specificTrans.length == 3?320 : 400 ,
+                            child: ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: specificTrans.length,
+                              itemBuilder: (context, i) {
+                                dTra.Transactions transaction =
+                                    specificTrans[i];
+                                // return TransactionCard(transaction: transaction);
 
-                                  return Padding(
-                                    padding: const EdgeInsets.only(bottom: 8),
-                                    child: Dismissible(
-                                      confirmDismiss: (direction) async {
-                                        bool delete =
-                                            await TransactionController.to
-                                                .deleteTransactiondata(
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 8),
+                                  child: Dismissible(
+                                    confirmDismiss: (direction) async {
+                                      bool delete =
+                                          await TransactionController.to
+                                              .deleteTransactiondata(
+                                                  context,
+                                                  transaction.transactionId
+                                                      .toString(),
+                                                  transaction.type!.toInt(),
+                                                  "daily");
+
+                                      return delete;
+                                    },
+                                    key: UniqueKey(),
+                                    child: InkWell(
+                                      onTap: () {
+                                        transaction.name == "Purchase"
+                                            ? showPurchaseImageDialog(
+                                                context, transaction)
+                                            : transaction.name == "Sale"
+                                                ? showSaleImageDialog(
+                                                    context, transaction)
+                                                : showExpenseImageDialog(
                                                     context,
-                                                    transaction.transactionId
-                                                        .toString(),
-                                                    transaction.type!.toInt(),
-                                                    "daily");
-
-                                        return delete;
+                                                    transaction,
+                                                  );
                                       },
-                                      key: UniqueKey(),
-                                      child: InkWell(
-                                        onTap: () {
-                                          transaction.name == "Purchase"
-                                              ? showPurchaseImageDialog(
-                                                  context, transaction)
-                                              : transaction.name == "Sale"
-                                                  ? showSaleImageDialog(
-                                                      context, transaction)
-                                                  : showExpenseImageDialog(
-                                                      context,
-                                                      transaction,
-                                                    );
-                                        },
-                                        child: Container(
-                                            height: height * 0.1,
-                                            width: width,
-                                            color: backgroundColor,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                SizedBox(
-                                                  width: width * 0.02,
+                                      child: Container(
+                                          height: height * 0.1,
+                                          width: width,
+                                          color: backgroundColor,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              SizedBox(
+                                                width: width * 0.02,
+                                              ),
+                                              Container(
+                                                  height: height * 0.7,
+                                                  width: width * 0.14,
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.blue[900],
+                                                      shape: BoxShape.circle),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            4.0),
+                                                    child: transaction
+                                                                    .details!
+                                                                    .imageUrl ==
+                                                                "null" ||
+                                                            transaction
+                                                                    .details!
+                                                                    .imageUrl ==
+                                                                null ||
+                                                            transaction
+                                                                .details!
+                                                                .imageUrl!
+                                                                .isEmpty
+                                                        ? Image.asset(
+                                                            "images/sale.png",
+                                                          )
+                                                        : Image.asset(
+                                                            transaction
+                                                                .details!
+                                                                .imageUrl!,
+                                                            color:
+                                                                Colors.white,
+                                                          ),
+                                                  )),
+                                              SizedBox(
+                                                width: width * 0.05,
+                                              ),
+                                              Expanded(
+                                                child: SizedBox(
+                                                  height: height * 0.7,
+                                                  width: width * 0.01,
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        transaction.name!,
+                                                        style: GoogleFonts
+                                                            .poppins(
+                                                          fontSize:
+                                                              width * 0.035,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        transaction.type == 2
+                                                            ? transaction
+                                                                .details!
+                                                                .category
+                                                                .toString()
+                                                            : transaction
+                                                                        .type ==
+                                                                    0
+                                                                ? transaction
+                                                                    .details!
+                                                                    .name
+                                                                    .toString()
+                                                                : (transaction
+                                                                            .details!
+                                                                            .saleMethod ==
+                                                                        0
+                                                                    ? "Daily Sale"
+                                                                    : transaction
+                                                                        .details!
+                                                                        .name
+                                                                        .toString()),
+                                                        style: GoogleFonts
+                                                            .poppins(
+                                                                fontSize:
+                                                                    width *
+                                                                        0.03,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                color:
+                                                                    lightgray),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
-                                                Container(
-                                                    height: height * 0.7,
-                                                    width: width * 0.14,
-                                                    decoration: BoxDecoration(
-                                                        color: Colors.blue[900],
-                                                        shape: BoxShape.circle),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              4.0),
-                                                      child: transaction
-                                                                      .details!
-                                                                      .imageUrl ==
-                                                                  "null" ||
-                                                              transaction
-                                                                      .details!
-                                                                      .imageUrl ==
-                                                                  null ||
-                                                              transaction
-                                                                  .details!
-                                                                  .imageUrl!
-                                                                  .isEmpty
-                                                          ? Image.asset(
-                                                              "images/sale.png",
-                                                            )
-                                                          : Image.asset(
-                                                              transaction
-                                                                  .details!
-                                                                  .imageUrl!,
-                                                              color:
-                                                                  Colors.white,
-                                                            ),
-                                                    )),
-                                                SizedBox(
-                                                  width: width * 0.05,
-                                                ),
-                                                Expanded(
-                                                  child: SizedBox(
-                                                    height: height * 0.7,
-                                                    width: width * 0.01,
-                                                    child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceEvenly,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          transaction.name!,
+                                              ),
+                                              Expanded(
+                                                child: SizedBox(
+                                                  height: height * 0.7,
+                                                  width: width * 0.01,
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .end,
+                                                    children: [
+                                                      Text(
+                                                          transaction.type ==
+                                                                  1
+                                                              ? "+ ${transaction.totalAmount}"
+                                                              : "-${transaction.totalAmount}",
                                                           style: GoogleFonts
                                                               .poppins(
                                                             fontSize:
                                                                 width * 0.035,
                                                             fontWeight:
-                                                                FontWeight.w600,
-                                                          ),
-                                                        ),
-                                                        Text(
-                                                          transaction.type == 2
-                                                              ? transaction
-                                                                  .details!
-                                                                  .category
-                                                                  .toString()
-                                                              : transaction
-                                                                          .type ==
-                                                                      0
-                                                                  ? transaction
-                                                                      .details!
-                                                                      .name
-                                                                      .toString()
-                                                                  : (transaction
-                                                                              .details!
-                                                                              .saleMethod ==
-                                                                          0
-                                                                      ? "Daily Sale"
-                                                                      : transaction
-                                                                          .details!
-                                                                          .name
-                                                                          .toString()),
-                                                          style: GoogleFonts
-                                                              .poppins(
-                                                                  fontSize:
-                                                                      width *
-                                                                          0.03,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                  color:
-                                                                      lightgray),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: SizedBox(
-                                                    height: height * 0.7,
-                                                    width: width * 0.01,
-                                                    child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceEvenly,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: [
-                                                        Text(
-                                                            transaction.type ==
+                                                                FontWeight
+                                                                    .w600,
+                                                            color: transaction
+                                                                        .type ==
                                                                     1
-                                                                ? "+ ${transaction.totalAmount}"
-                                                                : "-${transaction.totalAmount}",
-                                                            style: GoogleFonts
-                                                                .poppins(
-                                                              fontSize:
-                                                                  width * 0.035,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              color: transaction
-                                                                          .type ==
-                                                                      1
-                                                                  ? Colors.green
-                                                                  : Colors.red,
-                                                            )),
-                                                        Text(
-                                                          transaction.dateTime!
-                                                              .substring(0, 10),
-                                                          style: GoogleFonts
-                                                              .poppins(
-                                                                  fontSize:
-                                                                      width *
-                                                                          0.03,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                  color:
-                                                                      lightgray),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                                ? Colors.green
+                                                                : Colors.red,
+                                                          )),
+                                                      Text(
+                                                        transaction.dateTime!
+                                                            .substring(0, 10),
+                                                        style: GoogleFonts
+                                                            .poppins(
+                                                                fontSize:
+                                                                    width *
+                                                                        0.03,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                color:
+                                                                    lightgray),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  width: width * 0.05,
-                                                ),
-                                                Container(
-                                                  height: height * 0.07,
-                                                  width: width * 0.015,
-                                                  color: transaction.type == 1
-                                                      ? Colors.green
-                                                      : Colors.red,
-                                                )
-                                              ],
-                                            )),
-                                      ),
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.05,
+                                              ),
+                                              Container(
+                                                height: height * 0.07,
+                                                width: width * 0.015,
+                                                color: transaction.type == 1
+                                                    ? Colors.green
+                                                    : Colors.red,
+                                              )
+                                            ],
+                                          )),
                                     ),
-                                  );
-                                },
-                              ),
-                            )
-                          ]),
-                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          )
+                        ]),
                   );
                 },
               ),

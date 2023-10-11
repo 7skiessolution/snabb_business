@@ -144,73 +144,75 @@ class _TransactionScreenState extends State<TransactionScreen> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: height * 0.85,
-                width: width,
-                child: Stack(
-                  children: [
-                    Container(
-                      width: width,
-                      height: height * 0.15,
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage("images/dollar.jpg"))),
-                    ),
-                    Container(
-                      width: width,
-                      height: height * 0.15,
-                      color: Colors.blue[900]!.withOpacity(0.9),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              IconButton(
-                                  onPressed: () {
-                                    if (index > 0) {
-                                      setState(() {
-                                        index--;
-                                      });
-                                    }
-                                  },
-                                  icon: Icon(
-                                    Icons.arrow_back_ios,
-                                    color: white,
-                                  )),
-                              Text(
-                                cat[index].toString(),
-                                style: TextStyle(
-                                    fontSize: width * 0.04,
-                                    color: white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              IconButton(
-                                  onPressed: () {
-                                    if (index < 2) {
-                                      setState(() {
-                                        index++;
-                                      });
-                                    }
-                                  },
-                                  icon: Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: white,
-                                  )),
-                            ]),
+              Expanded(
+                child: SizedBox(
+                  height: height ,
+                  width: width,
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: width,
+                        height: height * 0.15,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage("images/dollar.jpg"))),
                       ),
-                    ),
-                    Positioned(
-                        top: height * 0.1,
-                        right: width * 0.015,
-                        left: width * 0.015,
-                        child: Container(
-                          height: height * 0.7,
-                          width: width,
-                          color: Colors.white,
-                          child: pagechildren[index],
-                        ))
-                  ],
+                      Container(
+                        width: width,
+                        height: height * 0.15,
+                        color: blue.withOpacity(0.9),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                IconButton(
+                                    onPressed: () {
+                                      if (index > 0) {
+                                        setState(() {
+                                          index--;
+                                        });
+                                      }
+                                    },
+                                    icon: Icon(
+                                      Icons.arrow_back_ios,
+                                      color: white,
+                                    )),
+                                Text(
+                                  cat[index].toString(),
+                                  style: TextStyle(
+                                      fontSize: width * 0.04,
+                                      color: white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                IconButton(
+                                    onPressed: () {
+                                      if (index < 2) {
+                                        setState(() {
+                                          index++;
+                                        });
+                                      }
+                                    },
+                                    icon: Icon(
+                                      Icons.arrow_forward_ios,
+                                      color: white,
+                                    )),
+                              ]),
+                        ),
+                      ),
+                      Positioned(
+                          top: height * 0.1,
+                          right: width * 0.015,
+                          left: width * 0.015,
+                          child: Container(
+                            height: height * 0.7,
+                            width: width,
+                            color: Colors.white,
+                            child: pagechildren[index],
+                          ))
+                    ],
+                  ),
                 ),
               )
             ])),

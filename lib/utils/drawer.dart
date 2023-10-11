@@ -51,7 +51,7 @@ class DrawerScreen extends StatelessWidget {
                         image: AssetImage("images/dollar.jpg"))),
               ),
               Container(
-                color: Colors.blue[900]!.withOpacity(0.9),
+                color: blue.withOpacity(0.9),
                 height: height,
                 width: width,
                 child: Row(

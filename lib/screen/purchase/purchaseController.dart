@@ -71,7 +71,7 @@ class PurchaseController extends GetxController {
                 Container(
                   height: height * 0.1,
                   width: width,
-                  color: Colors.blue[900]!.withOpacity(0.9),
+                  color: blue.withOpacity(0.9),
                   alignment: Alignment.center,
                   child: Text(
                     "Select Supplier",
@@ -100,104 +100,107 @@ class PurchaseController extends GetxController {
                                 SizedBox(
                                   height: height * 0.01,
                                 ),
-                                ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount:
-                                      HomeController.to.supplierList.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: InkWell(
-                                        onTap: () {
-                                          supplierName = HomeController
-                                              .to.supplierList[index].name
-                                              .toString();
-                                          supplierid = HomeController
-                                              .to.supplierList[index].supplierId
-                                              .toString();
-                                          print(
-                                              "name supplier ------$supplierName");
-                                          // st(
-                                          //   () {},
-                                          // );
-                                          Navigator.pop(context);
-                                        },
-                                        child: Card(
-                                          elevation: 10,
-                                          shadowColor: Colors.blue[900],
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                          child: Container(
-                                            height: height * 0.1,
-                                            decoration: BoxDecoration(
+                                Expanded(
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount:
+                                        HomeController.to.supplierList.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: InkWell(
+                                          onTap: () {
+                                            supplierName = HomeController
+                                                .to.supplierList[index].name
+                                                .toString();
+                                            supplierid = HomeController
+                                                .to.supplierList[index].supplierId
+                                                .toString();
+                                            print(
+                                                "name supplier ------$supplierName");
+                                            // st(
+                                            //   () {},
+                                            // );
+                                            update();
+                                            Navigator.pop(context);
+                                          },
+                                          child: Card(
+                                            elevation: 10,
+                                            shadowColor: Colors.blue[900],
+                                            shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(10)),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: SizedBox(
-                                                height: height,
-                                                width: width,
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      HomeController
-                                                          .to
-                                                          .supplierList[index]
-                                                          .name!,
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              color: blue,
-                                                              fontSize:
-                                                                  width * 0.035,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                    Text(
-                                                      HomeController
-                                                          .to
-                                                          .supplierList[index]
-                                                          .email!,
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              color: lightgray,
-                                                              fontSize:
-                                                                  width * 0.03,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500),
-                                                    ),
-                                                    Text(
-                                                      HomeController
-                                                          .to
-                                                          .supplierList[index]
-                                                          .telePhone!,
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              color: lightgray,
-                                                              fontSize:
-                                                                  width * 0.03,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                  ],
+                                            child: Container(
+                                              height: height * 0.1,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10)),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: SizedBox(
+                                                  height: height,
+                                                  width: width,
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        HomeController
+                                                            .to
+                                                            .supplierList[index]
+                                                            .name!,
+                                                        style:
+                                                            GoogleFonts.poppins(
+                                                                color: blue,
+                                                                fontSize:
+                                                                    width * 0.035,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600),
+                                                      ),
+                                                      Text(
+                                                        HomeController
+                                                            .to
+                                                            .supplierList[index]
+                                                            .email!,
+                                                        style:
+                                                            GoogleFonts.poppins(
+                                                                color: lightgray,
+                                                                fontSize:
+                                                                    width * 0.03,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                      ),
+                                                      Text(
+                                                        HomeController
+                                                            .to
+                                                            .supplierList[index]
+                                                            .telePhone!,
+                                                        style:
+                                                            GoogleFonts.poppins(
+                                                                color: lightgray,
+                                                                fontSize:
+                                                                    width * 0.03,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  },
+                                      );
+                                    },
+                                  ),
                                 ),
                               ],
                             ),
@@ -236,7 +239,7 @@ class PurchaseController extends GetxController {
                 Container(
                   height: height * 0.1,
                   width: width,
-                  color: Colors.blue[900]!.withOpacity(0.9),
+                  color: blue.withOpacity(0.9),
                   alignment: Alignment.center,
                   child: Text(
                     "Paid As ",
@@ -251,7 +254,7 @@ class PurchaseController extends GetxController {
                   child: Center(
                     child: Card(
                       elevation: 10,
-                      shadowColor: Colors.blue[900],
+                      shadowColor: blue,
                       child: Container(
                         height: height * 0.7,
                         width: width * 0.7,
@@ -1131,7 +1134,7 @@ class PurchaseController extends GetxController {
                   Container(
                     height: height * 0.1,
                     width: width,
-                    color: Colors.blue[900]!.withOpacity(0.9),
+                    color: blue.withOpacity(0.9),
                     alignment: Alignment.center,
                     child: Text(
                       "Purchase Method",
@@ -1146,7 +1149,7 @@ class PurchaseController extends GetxController {
                     child: Center(
                       child: Card(
                         elevation: 10,
-                        shadowColor: Colors.blue[900],
+                        shadowColor: blue,
                         child: Container(
                           height: newSupplier == true
                               ? height * 0.7
@@ -1508,8 +1511,7 @@ class PurchaseController extends GetxController {
                                                           "Type",
                                                           style: GoogleFonts
                                                               .poppins(
-                                                                  color: Colors
-                                                                      .blue,
+                                                                  color:blue,
                                                                   fontSize:
                                                                       width *
                                                                           0.03,
@@ -1523,9 +1525,7 @@ class PurchaseController extends GetxController {
                                                                   .start,
                                                           children: <Widget>[
                                                             Radio(
-                                                              activeColor:
-                                                                  Colors.blue[
-                                                                      900],
+                                                              activeColor:blue,
                                                               value:
                                                                   obj.type[0],
                                                               groupValue:
@@ -1556,9 +1556,7 @@ class PurchaseController extends GetxController {
                                                                   .start,
                                                           children: <Widget>[
                                                             Radio(
-                                                              activeColor:
-                                                                  Colors.blue[
-                                                                      900],
+                                                              activeColor:blue,
                                                               value:
                                                                   obj.type[1],
                                                               groupValue:
@@ -1995,5 +1993,6 @@ class PurchaseController extends GetxController {
     if (selectedDate != null) {
       formatTime = DateFormat("dd-MM-yyyy").format(selectedDate);
     }
+    update();
   }
 }

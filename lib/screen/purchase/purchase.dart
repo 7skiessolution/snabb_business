@@ -94,7 +94,7 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                         child: Text(
                                           "New Purchase",
                                           style: GoogleFonts.poppins(
-                                              color: Colors.blue[900],
+                                              color: blue,
                                               fontSize: width * 0.035,
                                               fontWeight: FontWeight.w600),
                                         ),
@@ -124,7 +124,7 @@ class _PurchasescreenState extends State<Purchasescreen> {
                             Container(
                               height: height * 0.12,
                               width: width,
-                              color: Colors.blue[900]!.withOpacity(0.9),
+                              color: blue.withOpacity(0.9),
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                     top: 15.0, left: 20, right: 20),
@@ -356,11 +356,9 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                             const SizedBox(
                                               width: 10,
                                             ),
-                                            Icon(
-                                              Icons.attach_money_sharp,
-                                              color: Colors.grey.shade700,
-                                              size: width * 0.07,
-                                            ),
+                                            Text(HomeController.to.curency,style: TextStyle(color: Colors.grey.shade700,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.bold),),
                                           ],
                                         ),
                                       ),
@@ -413,11 +411,9 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                             const SizedBox(
                                               width: 10,
                                             ),
-                                            Icon(
-                                              Icons.attach_money_sharp,
-                                              color: Colors.grey.shade700,
-                                              size: width * 0.07,
-                                            ),
+                                           Text(HomeController.to.curency,style: TextStyle(color: Colors.grey.shade700,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.bold),),
                                           ],
                                         ),
                                       ),
@@ -528,7 +524,7 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                                   BorderRadius.circular(3)),
                                           child: Center(
                                               child: Text(
-                                            "Cancle",
+                                            "Cancel",
                                             style: GoogleFonts.poppins(
                                                 color: Colors.white,
                                                 fontSize: width * 0.032,

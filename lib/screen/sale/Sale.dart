@@ -81,7 +81,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                               (route) => false);
                                         },
                                         child:
-                                            const Icon(Icons.arrow_back_ios)),
+                                             Icon(Icons.arrow_back_ios,color: blue,)),
                                     SizedBox(
                                       width: width * 0.05,
                                     ),
@@ -93,7 +93,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                         child: Text(
                                           "New Sale",
                                           style: GoogleFonts.poppins(
-                                              color: Colors.blue[900],
+                                              color: greencolor,
                                               fontSize: width * 0.035,
                                               fontWeight: FontWeight.w600),
                                         ),
@@ -123,7 +123,7 @@ class _SaleScreenState extends State<SaleScreen> {
                             Container(
                               height: height * 0.12,
                               width: width,
-                              color: Colors.blue[900]!.withOpacity(0.9),
+                              color: greencolor.withOpacity(0.9),
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                     top: 15.0, left: 20, right: 20),
@@ -146,7 +146,7 @@ class _SaleScreenState extends State<SaleScreen> {
                         alignment: Alignment.topCenter,
                         child: Card(
                           elevation: 10,
-                          shadowColor: Colors.blue[900],
+                          shadowColor: blue,
                           child: SizedBox(
                             height: height * 0.81,
                             width: width * 0.95,
@@ -298,7 +298,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                                         obj.companyName,
                                                         style:
                                                             GoogleFonts.poppins(
-                                                                color: blue,
+                                                                color: greencolor,
                                                                 fontSize:
                                                                     width *
                                                                         0.03,
@@ -359,11 +359,10 @@ class _SaleScreenState extends State<SaleScreen> {
                                             const SizedBox(
                                               width: 10,
                                             ),
-                                            Icon(
-                                              Icons.attach_money_sharp,
-                                              color: Colors.grey.shade700,
-                                              size: width * 0.07,
-                                            ),
+                                            Text(HomeController.to.curency,style: TextStyle(color: Colors.grey.shade700,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.bold),),
+                                          
                                           ],
                                         ),
                                       ),
@@ -415,11 +414,9 @@ class _SaleScreenState extends State<SaleScreen> {
                                             const SizedBox(
                                               width: 10,
                                             ),
-                                            Icon(
-                                              Icons.attach_money_sharp,
-                                              color: Colors.grey.shade700,
-                                              size: width * 0.07,
-                                            ),
+                                          Text(HomeController.to.curency,style: TextStyle(color: Colors.grey.shade700,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.bold),),
                                           ],
                                         ),
                                       ),
@@ -530,7 +527,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                                   BorderRadius.circular(3)),
                                           child: Center(
                                               child: Text(
-                                            "Cancle",
+                                            "Cancel",
                                             style: GoogleFonts.poppins(
                                                 color: Colors.white,
                                                 fontSize: width * 0.035,

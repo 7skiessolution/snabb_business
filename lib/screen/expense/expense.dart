@@ -3,6 +3,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:snabb_business/controller/expense_controller.dart';
+import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/screen/dashboardScreen.dart';
 import 'package:snabb_business/utils/color.dart';
@@ -92,7 +93,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                         child: Text(
                                           "New Expense",
                                           style: GoogleFonts.poppins(
-                                              color: Colors.blue[900],
+                                              color: expensecolor,
                                               fontSize: width * 0.035,
                                               fontWeight: FontWeight.w600),
                                         ),
@@ -122,7 +123,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                             Container(
                               height: height * 0.12,
                               width: width,
-                              color: Colors.blue[900]!.withOpacity(0.9),
+                              color: expensecolor.withOpacity(0.9),
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                     top: 15.0, left: 20, right: 20),
@@ -145,7 +146,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                         alignment: Alignment.topCenter,
                         child: Card(
                           elevation: 10,
-                          shadowColor: Colors.blue[900],
+                          shadowColor: expensecolor,
                           child: SizedBox(
                             height: height * 0.81,
                             width: width * 0.95,
@@ -252,7 +253,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                                           .name!,
                                                       style:
                                                           GoogleFonts.poppins(
-                                                              color: blue,
+                                                              color: expensecolor,
                                                               fontSize:
                                                                   width * 0.03,
                                                               fontWeight:
@@ -346,11 +347,9 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                             const SizedBox(
                                               width: 10,
                                             ),
-                                            Icon(
-                                              Icons.attach_money_sharp,
-                                              color: Colors.grey.shade700,
-                                              size: width * 0.07,
-                                            ),
+                                           Text(HomeController.to.curency,style: TextStyle(color: Colors.grey.shade700,
+                                              fontSize: width * 0.035,
+                                              fontWeight: FontWeight.bold),),
                                           ],
                                         ),
                                       ),
@@ -461,7 +460,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                                   BorderRadius.circular(3)),
                                           child: Center(
                                               child: Text(
-                                            "Cancle",
+                                            "Cancel",
                                             style: GoogleFonts.poppins(
                                                 color: Colors.white,
                                                 fontSize: width * 0.035,

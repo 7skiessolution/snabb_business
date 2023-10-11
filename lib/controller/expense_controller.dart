@@ -152,7 +152,7 @@ class ExpenseController extends GetxController {
                 Container(
                   height: height * 0.1,
                   width: width,
-                  color: Colors.blue[900]!.withOpacity(0.9),
+                  color: expensecolor.withOpacity(0.9),
                   alignment: Alignment.center,
                   child: Text(
                     "Paid As ",
@@ -625,7 +625,7 @@ class ExpenseController extends GetxController {
                                         width: width * 0.2,
                                         height: height * 0.05,
                                         decoration: BoxDecoration(
-                                            color: blue,
+                                            color: expensecolor,
                                             borderRadius:
                                                 BorderRadius.circular(3)),
                                         child: Center(
@@ -690,7 +690,7 @@ class ExpenseController extends GetxController {
                   Container(
                     height: height * 0.1,
                     width: width,
-                    color: Colors.blue[900]!.withOpacity(0.9),
+                    color: expensecolor.withOpacity(0.9),
                     alignment: Alignment.center,
                     child: Text(
                       "Select Category",
@@ -790,7 +790,7 @@ class ExpenseController extends GetxController {
                                                     Container(
                                                       height: height * 0.1,
                                                       width: width,
-                                                      color: Colors.blue[900]!
+                                                      color:expensecolor
                                                           .withOpacity(0.9),
                                                       alignment:
                                                           Alignment.center,
@@ -814,7 +814,7 @@ class ExpenseController extends GetxController {
                                                         child: Card(
                                                           elevation: 10,
                                                           shadowColor:
-                                                              Colors.blue[900],
+                                                              expensecolor,
                                                           child: Container(
                                                               height:
                                                                   height * 0.75,
@@ -853,7 +853,7 @@ class ExpenseController extends GetxController {
                                                                             width:
                                                                                 width * 0.1,
                                                                             decoration: selectedImagePath == ""
-                                                                                ? BoxDecoration(shape: BoxShape.circle, color: Colors.blue[900])
+                                                                                ? BoxDecoration(shape: BoxShape.circle, color: expensecolor)
                                                                                 : BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: AssetImage(selectedImagePath))),
                                                                           ),
                                                                           SizedBox(
@@ -967,7 +967,7 @@ class ExpenseController extends GetxController {
                                                                           width:
                                                                               width * 0.45,
                                                                           decoration: BoxDecoration(
-                                                                              color: blue,
+                                                                              color: expensecolor,
                                                                               borderRadius: BorderRadius.circular(7)),
                                                                           child:
                                                                               Center(
@@ -1001,7 +1001,7 @@ class ExpenseController extends GetxController {
                                       IconButton(
                                         icon: Icon(
                                           Icons.add,
-                                          color: Colors.black,
+                                          color: expensecolor,
                                           size: width * 0.055,
                                         ),
                                         onPressed: () => {},
@@ -1011,7 +1011,7 @@ class ExpenseController extends GetxController {
                                       Text(
                                         "ADD NEW",
                                         style: GoogleFonts.poppins(
-                                            color: blue,
+                                            color: expensecolor,
                                             fontSize: width * 0.035,
                                             fontWeight: FontWeight.w600),
                                       ),
@@ -1056,6 +1056,7 @@ class ExpenseController extends GetxController {
     if (selectedDate != null) {
       formatTime = DateFormat("dd-MM-yyyy").format(selectedDate);
     }
+    update();
   }
 
   postexpense(BuildContext context) async {

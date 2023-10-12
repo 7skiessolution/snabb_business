@@ -56,9 +56,9 @@ class _SettingsPageState extends State<SettingsPage> {
                           child: Text(
                             "Settings",
                             style: GoogleFonts.poppins(
-                                              color:Colors.white,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
+                                color: Colors.white,
+                                fontSize: width * 0.035,
+                                fontWeight: FontWeight.w600),
                           ),
                         ),
                         const Expanded(
@@ -85,69 +85,153 @@ class _SettingsPageState extends State<SettingsPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Basic Setting",
+                                "Basic Setting".toUpperCase(),
                                 style: GoogleFonts.poppins(
-                                              color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w600),
+                                    color: blue,
+                                    fontSize: width * 0.032,
+                                    fontWeight: FontWeight.w600),
                               ),
                               SizedBox(
                                 height: height * 0.02,
                               ),
-                              Text(
-                                "Language",
-                                style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w600),
-                              ),
                               SizedBox(
-                                height: height * 0.012,
-                              ),
-                              Text(
-                                "English",
-                                style: GoogleFonts.poppins(
-                                            //  color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w400),
-                              ),
-                              SizedBox(
-                                height: height * 0.02,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  CureencyBottomSheet.addCurrencyBottomSheet(
-                                      context: context,
-                                      height: height,
-                                      width: width);
-                                },
-                                child: Text(
-                                  "Currency",
-                                  style: GoogleFonts.poppins(
-                                            //  color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w600),
+                                height: height * 0.08,
+                                width: width,
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: SizedBox(
+                                        height: height,
+                                        width: width,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Language",
+                                              style: GoogleFonts.poppins(
+                                                  //  color:Colors.blue[900],
+                                                  fontSize: width * 0.032,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                            SizedBox(
+                                              height: height * 0.012,
+                                            ),
+                                            Text(
+                                              "English",
+                                              style: GoogleFonts.poppins(
+                                                  //  color:Colors.blue[900],
+                                                  fontSize: width * 0.032,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.012,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        CureencyBottomSheet
+                                            .addCurrencyBottomSheet(
+                                                context: context,
+                                                height: height,
+                                                width: width);
+                                      },
+                                      child: Container(
+                                        height: height * 0.04,
+                                        width: width * 0.15,
+                                        decoration: BoxDecoration(
+                                            color: lightgray.withOpacity(0.5),
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          "Change",
+                                          style:
+                                              TextStyle(fontSize: width * 0.03),
+                                        ),
+                                      ),
+                                    )
+                                  ],
                                 ),
                               ),
                               SizedBox(
-                                height: height * 0.012,
+                                height: height * 0.02,
                               ),
-                              Text(
-                                obj.profilemodel!.data!.currency!,
-                                style: GoogleFonts.poppins(
-                                            //  color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w400),
+                              SizedBox(
+                                height: height * 0.08,
+                                width: width,
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: SizedBox(
+                                        height: height,
+                                        width: width,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Currency",
+                                              style: GoogleFonts.poppins(
+                                                  //  color:Colors.blue[900],
+                                                  fontSize: width * 0.032,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                            SizedBox(
+                                              height: height * 0.012,
+                                            ),
+                                            Text(
+                                              obj.profilemodel!.data!.currency!,
+                                              style: GoogleFonts.poppins(
+                                                  //  color:Colors.blue[900],
+                                                  fontSize: width * 0.032,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.012,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        CureencyBottomSheet
+                                            .addCurrencyBottomSheet(
+                                                context: context,
+                                                height: height,
+                                                width: width);
+                                      },
+                                      child: Container(
+                                        height: height * 0.04,
+                                        width: width * 0.15,
+                                        decoration: BoxDecoration(
+                                            color: lightgray.withOpacity(0.5),
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          "Change",
+                                          style:
+                                              TextStyle(fontSize: width * 0.03),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                               SizedBox(
                                 height: height * 0.04,
                               ),
                               Text(
-                                "Other",
-                                 style: GoogleFonts.poppins(
-                                              color:Colors.blue[900],
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
+                                "Other".toUpperCase(),
+                                style: GoogleFonts.poppins(
+                                    color: blue,
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.w600),
                               ),
                               SizedBox(
                                 height: height * 0.02,
@@ -155,39 +239,39 @@ class _SettingsPageState extends State<SettingsPage> {
                               Text(
                                 "Feedback & Support",
                                 style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                    // color:Colors.blue[900],
+                                    fontSize: width * 0.032,
+                                    fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
                                 height: height * 0.012,
                               ),
                               Text(
                                 "FAQ",
-                               style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                style: GoogleFonts.poppins(
+                                    // color:Colors.blue[900],
+                                    fontSize: width * 0.032,
+                                    fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
                                 height: height * 0.012,
                               ),
                               Text(
                                 "Privacy",
-                                 style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                style: GoogleFonts.poppins(
+                                    // color:Colors.blue[900],
+                                    fontSize: width * 0.032,
+                                    fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
                                 height: height * 0.012,
                               ),
                               Text(
                                 "Terms of service",
-                                 style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                style: GoogleFonts.poppins(
+                                    // color:Colors.blue[900],
+                                    fontSize: width * 0.032,
+                                    fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
                                 height: height * 0.012,
@@ -195,9 +279,9 @@ class _SettingsPageState extends State<SettingsPage> {
                               Text(
                                 "Quick start guide",
                                 style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                    // color:Colors.blue[900],
+                                    fontSize: width * 0.032,
+                                    fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
                                 height: height * 0.012,
@@ -205,9 +289,9 @@ class _SettingsPageState extends State<SettingsPage> {
                               Text(
                                 "Licenses",
                                 style: GoogleFonts.poppins(
-                                             // color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                    // color:Colors.blue[900],
+                                    fontSize: width * 0.032,
+                                    fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
                                 height: height * 0.012,

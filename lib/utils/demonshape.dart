@@ -162,7 +162,7 @@ class _ExpandableFloatingActionButtonState
                   child: FloatingActionButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40)),
-                backgroundColor: red,
+                backgroundColor: gold,
                 onPressed: _toggleExpanded,
                 child: AnimatedIcon(
                   icon: AnimatedIcons.add_event,

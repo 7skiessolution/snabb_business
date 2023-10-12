@@ -384,8 +384,8 @@ class _TransactionCardState extends State<TransactionCard> {
                   width: width * 0.02,
                 ),
                 Container(
-                  height: height * 0.7,
-                  width: width * 0.14,
+                  height: height * 0.6,
+                  width: width * 0.12,
                   decoration: BoxDecoration(
                       image: DecorationImage(
                         image: widget.transaction.imageUrl == null ||
@@ -399,7 +399,7 @@ class _TransactionCardState extends State<TransactionCard> {
                               ),
                       ),
                       shape: BoxShape.circle,
-                      color: Colors.red),
+                      color: Colors.white),
                 ),
                 SizedBox(
                   width: width * 0.05,

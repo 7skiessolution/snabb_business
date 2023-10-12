@@ -95,11 +95,14 @@ class DrawerScreen extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => SummeryScreen()));
                   obj.drawermenueclose();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => const DashBoardScreen()));
+                  // obj.drawermenueclose();
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (_) => const DashBoardScreen()));
                 },
                 child: ListTile(
                   leading: Image.asset("assets/drawericon/dashard.png"),
@@ -154,23 +157,23 @@ class DrawerScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => SummeryScreen()));
-                  obj.drawermenueclose();
-                },
-                child: ListTile(
-                  leading: Image.asset("assets/drawericon/summary.png"),
-                  title: Text(
-                    "Summary",
-                    style: GoogleFonts.poppins(
-                        color: white,
-                        fontSize: width * 0.03,
-                        fontWeight: FontWeight.w400),
-                  ),
-                ),
-              ),
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.push(context,
+              //         MaterialPageRoute(builder: (_) => SummeryScreen()));
+              //     obj.drawermenueclose();
+              //   },
+              //   child: ListTile(
+              //     leading: Image.asset("assets/drawericon/summary.png"),
+              //     title: Text(
+              //       "Summary",
+              //       style: GoogleFonts.poppins(
+              //           color: white,
+              //           fontSize: width * 0.03,
+              //           fontWeight: FontWeight.w400),
+              //     ),
+              //   ),
+              // ),
               InkWell(
                 onTap: () {
                   obj.drawermenueclose();

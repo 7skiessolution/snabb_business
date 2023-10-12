@@ -62,7 +62,7 @@ class _SummeryScreenState extends State<SummeryScreen> {
           key: scaffoldKey,
           body: Column(
             children: [
-              AppBarWidgt(text: AppLocalizations.of(context)!.summary),
+              AppBarWidgt(text: "OverView"),
               SizedBox(
                 height: height * 0.85,
                 width: width,
@@ -79,7 +79,7 @@ class _SummeryScreenState extends State<SummeryScreen> {
                     Container(
                       width: width,
                       height: height * 0.15,
-                      color: Colors.blue[900]!.withOpacity(0.9),
+                      color: blue.withOpacity(0.9),
                     ),
                     Positioned(
                         top: height * 0.03,
@@ -90,111 +90,112 @@ class _SummeryScreenState extends State<SummeryScreen> {
                           width: width * 0.7,
                           child: Column(
                             children: [
-                              SizedBox(
-                                width: width,
-                                height: height * 0.08,
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        child: _currentSelection == 0
-                                            ? Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    'Summary',
-                                                    style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
-                                                  ),
-                                                  Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: width * 0.15,
-                                                        right: width * 0.15),
-                                                    child: Divider(
-                                                      color: white,
-                                                      thickness: 2,
-                                                    ),
-                                                  )
-                                                ],
-                                              )
-                                            : Padding(
-                                                padding: EdgeInsets.only(
-                                                    top: height * 0.00),
-                                                child: Center(
-                                                  child: InkWell(
-                                                    onTap: () {
-                                                      _currentSelection = 0;
-                                                      setState(() {});
-                                                    },
-                                                    child: Text(
-                                                      'Summary',
-                                                       style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: SizedBox(
-                                        child: _currentSelection == 1
-                                            ? Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    'Category',
-                                                    style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
-                                                  ),
-                                                  Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: width * 0.15,
-                                                        right: width * 0.15),
-                                                    child: Divider(
-                                                      color: white,
-                                                      thickness: 2,
-                                                    ),
-                                                  )
-                                                ],
-                                              )
-                                            : Padding(
-                                                padding: EdgeInsets.only(
-                                                    top: height * 0.00),
-                                                child: Center(
-                                                  child: InkWell(
-                                                    onTap: () {
-                                                      _currentSelection = 1;
-                                                      setState(() {});
-                                                    },
-                                                    child: Text(
-                                                      'Category',
-                                                      style: GoogleFonts.poppins(
-                                              color: white,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Expanded(child: children[_currentSelection])
+                              // SizedBox(
+                              //   width: width,
+                              //   height: height * 0.08,
+                              //   child: Row(
+                              //     children: [
+                              //       Expanded(
+                              //         child: SizedBox(
+                              //           child: _currentSelection == 0
+                              //               ? Column(
+                              //                   mainAxisAlignment:
+                              //                       MainAxisAlignment.end,
+                              //                   crossAxisAlignment:
+                              //                       CrossAxisAlignment.center,
+                              //                   children: [
+                              //                     Text(
+                              //                       'Summary',
+                              //                       style: GoogleFonts.poppins(
+                              //                 color: white,
+                              //                 fontSize: width * 0.035,
+                              //                 fontWeight: FontWeight.w600),
+                              //                     ),
+                              //                     Padding(
+                              //                       padding: EdgeInsets.only(
+                              //                           left: width * 0.15,
+                              //                           right: width * 0.15),
+                              //                       child: Divider(
+                              //                         color: white,
+                              //                         thickness: 2,
+                              //                       ),
+                              //                     )
+                              //                   ],
+                              //                 )
+                              //               : Padding(
+                              //                   padding: EdgeInsets.only(
+                              //                       top: height * 0.00),
+                              //                   child: Center(
+                              //                     child: InkWell(
+                              //                       onTap: () {
+                              //                         _currentSelection = 0;
+                              //                         setState(() {});
+                              //                       },
+                              //                       child: Text(
+                              //                         'Summary',
+                              //                          style: GoogleFonts.poppins(
+                              //                 color: white,
+                              //                 fontSize: width * 0.035,
+                              //                 fontWeight: FontWeight.w600),
+                              //                       ),
+                              //                     ),
+                              //                   ),
+                              //                 ),
+                              //         ),
+                              //       ),
+                              //       Expanded(
+                              //         child: SizedBox(
+                              //           child: _currentSelection == 1
+                              //               ? Column(
+                              //                   mainAxisAlignment:
+                              //                       MainAxisAlignment.end,
+                              //                   crossAxisAlignment:
+                              //                       CrossAxisAlignment.center,
+                              //                   children: [
+                              //                     Text(
+                              //                       'Category',
+                              //                       style: GoogleFonts.poppins(
+                              //                 color: white,
+                              //                 fontSize: width * 0.035,
+                              //                 fontWeight: FontWeight.w600),
+                              //                     ),
+                              //                     Padding(
+                              //                       padding: EdgeInsets.only(
+                              //                           left: width * 0.15,
+                              //                           right: width * 0.15),
+                              //                       child: Divider(
+                              //                         color: white,
+                              //                         thickness: 2,
+                              //                       ),
+                              //                     )
+                              //                   ],
+                              //                 )
+                              //               : Padding(
+                              //                   padding: EdgeInsets.only(
+                              //                       top: height * 0.00),
+                              //                   child: Center(
+                              //                     child: InkWell(
+                              //                       onTap: () {
+                              //                         _currentSelection = 1;
+                              //                         setState(() {});
+                              //                       },
+                              //                       child: Text(
+                              //                         'Category',
+                              //                         style: GoogleFonts.poppins(
+                              //                 color: white,
+                              //                 fontSize: width * 0.035,
+                              //                 fontWeight: FontWeight.w600),
+                              //                       ),
+                              //                     ),
+                              //                   ),
+                              //                 ),
+                              //         ),
+                              //       ),
+                              //     ],
+                              //   ),
+                              // ),
+                              //   Expanded(child: children[_currentSelection])
+                              Expanded(child: CategoryWidget(months: months))
                             ],
                           ),
                         ))

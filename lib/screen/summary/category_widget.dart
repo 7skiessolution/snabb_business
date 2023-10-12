@@ -55,7 +55,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                       child: Column(
                         children: [
                           Text(
-                            "Compare the values of the categories",
+                            "Compare the values of the Summary",
                             style: GoogleFonts.poppins(
                                 // color: white,
                                 fontSize: width * 0.03,
@@ -64,96 +64,139 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                           SizedBox(
                             height: height * 0.02,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                AppLocalizations.of(context)!.type.capitalize!,
-                                style: GoogleFonts.poppins(
-                                    color: Colors.black,
-                                    fontSize: width * 0.032,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Container(
-                                height: size.height * 0.04,
-                                width: size.width * 0.25,
-                                decoration: BoxDecoration(
-                                    color: Colors.grey.withOpacity(0.5)),
-                                child: DropdownButtonHideUnderline(
-                                  child: DropdownButton<String>(
-                                    dropdownColor: Colors.white,
-                                    focusColor: Colors.black,
-                                    value: obj.selectedType,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: size.width * 0.035),
-                                    onChanged: (newValue) {
-                                      obj.selectedType = newValue as String;
-                                      obj.update();
-
-                                      if (obj.startdate != null) {
-                                        obj.getcategory(
-                                            obj.selectedType == "Sale"
-                                                ? 1
-                                                : obj.selectedType == "Expense"
-                                                    ? 2
-                                                    : obj.selectedType ==
-                                                            "Purchase"
-                                                        ? 0
-                                                        : 3,
-                                            obj.startdate!,
-                                            obj.enddate);
-                                      }
-
-                                      print("=-=-==-=-=- ${obj.selectedType}");
-                                    },
-                                    items: obj.types
-                                        .map<DropdownMenuItem<String>>(
-                                            (String value) {
-                                      return DropdownMenuItem<String>(
-                                        value: value,
-                                        child: Text(
-                                          value,
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: size.width * 0.035),
-                                        ),
-                                      );
-                                    }).toList(),
-                                    hint: Text(AppLocalizations.of(context)!
-                                        .selecttype
-                                        .capitalize!),
-                                    icon: const Icon(
-                                      Icons.arrow_drop_down,
+                          Padding(
+                            padding: EdgeInsets.only(
+                              left: width * 0.08,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  AppLocalizations.of(context)!
+                                      .type
+                                      .capitalize!,
+                                  style: GoogleFonts.poppins(
                                       color: Colors.black,
-                                    ),
-                                    elevation: 1,
-                                    isExpanded: true,
-                                    isDense: true,
-                                    selectedItemBuilder:
-                                        (BuildContext context) {
-                                      return obj.types
-                                          .map<Widget>((String value) {
-                                        return Container(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 5.0),
-                                            child: Text(
-                                              value,
-                                              style: GoogleFonts.poppins(
-                                                  color: Colors.black,
-                                                  fontSize: width * 0.032,
-                                                  fontWeight: FontWeight.w400),
-                                            ),
+                                      fontSize: width * 0.032,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                Container(
+                                  height: size.height * 0.04,
+                                  width: size.width * 0.25,
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.withOpacity(0.5)),
+                                  child: DropdownButtonHideUnderline(
+                                    child: DropdownButton<String>(
+                                      dropdownColor: Colors.white,
+                                      focusColor: Colors.black,
+                                      value: obj.selectedType,
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: size.width * 0.035),
+                                      onChanged: (newValue) {
+                                        obj.selectedType = newValue as String;
+                                        obj.update();
+
+                                        if (obj.startdate != null) {
+                                          obj.getcategory(
+                                              obj.selectedType == "Sale"
+                                                  ? 1
+                                                  : obj.selectedType ==
+                                                          "Expense"
+                                                      ? 2
+                                                      : obj.selectedType ==
+                                                              "Purchase"
+                                                          ? 0
+                                                          : 3,
+                                              obj.startdate!,
+                                              obj.enddate);
+                                        }
+
+                                        print(
+                                            "=-=-==-=-=- ${obj.selectedType}");
+                                      },
+                                      items: obj.types
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text(
+                                            value,
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: size.width * 0.035),
                                           ),
                                         );
-                                      }).toList();
-                                    },
+                                      }).toList(),
+                                      hint: Text(AppLocalizations.of(context)!
+                                          .selecttype
+                                          .capitalize!),
+                                      icon: const Icon(
+                                        Icons.arrow_drop_down,
+                                        color: Colors.black,
+                                      ),
+                                      elevation: 1,
+                                      isExpanded: true,
+                                      isDense: true,
+                                      selectedItemBuilder:
+                                          (BuildContext context) {
+                                        return obj.types
+                                            .map<Widget>((String value) {
+                                          return Container(
+                                            alignment: Alignment.centerLeft,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 5.0),
+                                              child: Text(
+                                                value,
+                                                style: GoogleFonts.poppins(
+                                                    color: Colors.black,
+                                                    fontSize: width * 0.032,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ),
+                                          );
+                                        }).toList();
+                                      },
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: height * 0.01,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: width * 0.08, right: width * 0.1),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  AppLocalizations.of(context)!
+                                      .from
+                                      .capitalize!
+                                      .toUpperCase(),
+                                  style: GoogleFonts.poppins(
+                                      color: blue,
+                                      fontSize: width * 0.032,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                Text(
+                                  AppLocalizations.of(context)!
+                                      .to
+                                      .capitalize!
+                                      .toUpperCase(),
+                                  style: GoogleFonts.poppins(
+                                      color: blue,
+                                      fontSize: width * 0.032,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            ),
                           ),
                           SizedBox(
                             height: height * 0.01,
@@ -161,13 +204,6 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                AppLocalizations.of(context)!.from.capitalize!,
-                                style: GoogleFonts.poppins(
-                                    color: Colors.black,
-                                    fontSize: width * 0.032,
-                                    fontWeight: FontWeight.w500),
-                              ),
                               Container(
                                 height: size.height * 0.05,
                                 width: size.width * 0.25,
@@ -187,21 +223,6 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                           fontSize: width * 0.032,
                                           fontWeight: FontWeight.w500),
                                     )),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: height * 0.01,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                AppLocalizations.of(context)!.to.capitalize!,
-                                style: GoogleFonts.poppins(
-                                    color: Colors.black,
-                                    fontSize: width * 0.032,
-                                    fontWeight: FontWeight.w500),
                               ),
                               Container(
                                 height: size.height * 0.05,

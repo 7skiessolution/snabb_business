@@ -532,6 +532,7 @@ class HomeController extends GetxController {
         purchasedata.clear();
       } else if (type == 1) {
         saledatalist.clear();
+        chartData.clear();
       }
       GetSalePurhase salepurchasemodel = GetSalePurhase.fromMap(res.data);
       for (int i = 0; i < salepurchasemodel.data!.length; i++) {
@@ -637,28 +638,28 @@ class HomeController extends GetxController {
     }
   }
 
-  getexpensePurchase(int type) async {
-    DateTime a = DateTime.now();
-    var res = await httpClient()
-        .get("${StaticValues.getSalePurchaseType}$type/${a.year}");
-    if (res.statusCode == 200) {
-      if (type == 1) {
-        salaDatalist.clear();
-      }
-      sp.GetDataYearType expensepurchasemodel =
-          sp.GetDataYearType.fromMap(res.data);
-      for (int i = 0; i < expensepurchasemodel.data!.length; i++) {
-        var e = expensepurchasemodel.data![i];
-        if (type == 1) {
-          salaDatalist.add(e);
-        }
-        update();
-      }
-      print("purchase list ${purchaseData.length}");
-      print("expense list ${expenseData.length}");
-      print("sale list ${salaDatalist.length}");
-    }
-  }
+  // getexpensePurchase(int type) async {
+  //   DateTime a = DateTime.now();
+  //   var res = await httpClient()
+  //       .get("${StaticValues.getSalePurchaseType}$type/${a.year}");
+  //   if (res.statusCode == 200) {
+  //     if (type == 1) {
+  //       salaDatalist.clear();
+  //     }
+  //     sp.GetDataYearType expensepurchasemodel =
+  //         sp.GetDataYearType.fromMap(res.data);
+  //     for (int i = 0; i < expensepurchasemodel.data!.length; i++) {
+  //       var e = expensepurchasemodel.data![i];
+  //       if (type == 1) {
+  //         salaDatalist.add(e);
+  //       }
+  //       update();
+  //     }
+  //     print("purchase list ${purchaseData.length}");
+  //     print("expense list ${expenseData.length}");
+  //     print("sale list ${salaDatalist.length}");
+  //   }
+  // }
 
   // Function to convert full month names to lowercase abbreviated month names
   String convertToAbbreviatedMonth(int fullMonthName) {

@@ -143,14 +143,14 @@ class _SettingsPageState extends State<SettingsPage> {
                                         height: height * 0.04,
                                         width: width * 0.15,
                                         decoration: BoxDecoration(
-                                            color: lightgray.withOpacity(0.5),
+                                            color: blue,
                                             borderRadius:
                                                 BorderRadius.circular(5)),
                                         alignment: Alignment.center,
                                         child: Text(
                                           "Change",
                                           style:
-                                              TextStyle(fontSize: width * 0.03),
+                                              TextStyle(fontSize: width * 0.03,color: Colors.white),
                                         ),
                                       ),
                                     )

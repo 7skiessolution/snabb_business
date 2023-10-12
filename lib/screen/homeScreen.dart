@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeController.to.expenseList(2);
     HomeController.to.expenseList(1);
     HomeController.to.getlistExpense(2);
-    HomeController.to.getlistExpense(2);
+    HomeController.to.getlistPurchase(0);
     HomeController.to.getlistofSale(1);
 
     // HomeController.to.getexpensePurchase(2);

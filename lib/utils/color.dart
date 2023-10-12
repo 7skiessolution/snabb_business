@@ -16,4 +16,4 @@ Color greencolor = const Color(0xff006400);
 Color whitecolor = Colors.white;
 Color blackcolor = Colors.black;
 Color blue = Color(0xff001F3F);
-Color gold = Color(0xffFFD700);
+Color gold = Color.fromARGB(255, 223, 195, 31);

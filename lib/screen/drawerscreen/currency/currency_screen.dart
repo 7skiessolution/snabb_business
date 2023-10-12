@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/models/currency_model.dart';
 import 'package:snabb_business/utils/color.dart';
@@ -64,8 +65,7 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(CurrencyModell.currencyList[index].name!,
-                            style: TextStyle(fontSize: size.width * 0.03)),
+                        
                         Radio(
                           value: CurrencyModell.currencyList[index].value!,
                           activeColor: blue,

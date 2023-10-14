@@ -6,8 +6,8 @@ import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/models/signup_model.dart';
 import 'package:snabb_business/screen/dashboardScreen.dart';
 import 'package:snabb_business/static_data.dart';
-import 'package:snabb_business/screen/homeScreen.dart';
 import 'package:dio/dio.dart' as deo;
+import 'package:snabb_business/utils/color.dart';
 
 class LoginController extends GetxController {
   static LoginController get to => Get.find();
@@ -23,10 +23,10 @@ class LoginController extends GetxController {
       res.data['status'];
       Fluttertoast.showToast(
           msg: res.data["status"],
-          backgroundColor: Colors.blue,
+          backgroundColor: blue,
           textColor: Colors.white,
           gravity: ToastGravity.BOTTOM,
-          fontSize: 17,
+          fontSize: 15,
           //timeInSecForIosWeb: 1,
           toastLength: Toast.LENGTH_LONG);
     }
@@ -35,51 +35,11 @@ class LoginController extends GetxController {
         backgroundColor: Colors.red,
         textColor: Colors.white,
         gravity: ToastGravity.BOTTOM,
-        fontSize: 17,
+        fontSize: 15,
         //timeInSecForIosWeb: 1,
         toastLength: Toast.LENGTH_LONG);
     return res;
   }
-
-  // Future signup(SignupModel model) async {
-  //   var res =
-  //       await httpClient().post(StaticValues.registerUser, data: model.toMap());
-  //   res.data["status"];
-  //   if (res.statusCode == 200) {
-  //     if (res.data["status"] == "success") {
-  //       Fluttertoast.showToast(
-  //           msg: res.data["status"],
-  //           backgroundColor: Colors.blue,
-  //           textColor: Colors.white,
-  //           gravity: ToastGravity.BOTTOM,
-  //           fontSize: 17,
-  //           //timeInSecForIosWeb: 1,
-  //           toastLength: Toast.LENGTH_LONG);
-  //     } else {
-  //       Fluttertoast.showToast(
-  //           msg: res.data["status"],
-  //           backgroundColor: Colors.blue,
-  //           textColor: Colors.white,
-  //           gravity: ToastGravity.BOTTOM,
-  //           fontSize: 17,
-  //           //timeInSecForIosWeb: 1,
-  //           toastLength: Toast.LENGTH_LONG);
-  //     }
-
-  //     res.data["status"];
-  //   } else {
-  //     Fluttertoast.showToast(
-  //         msg: res.data["status"],
-  //         backgroundColor: Colors.blue,
-  //         textColor: Colors.white,
-  //         gravity: ToastGravity.BOTTOM,
-  //         fontSize: 17,
-  //         //timeInSecForIosWeb: 1,
-  //         toastLength: Toast.LENGTH_LONG);
-  //   }
-
-  //   return res;
-  // }
 
   changeLogin(bool v) {
     isLogin = v;

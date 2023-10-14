@@ -8,6 +8,7 @@ import 'package:snabb_business/pdf/pdfs/company_sale_pdf.dart';
 import 'package:snabb_business/pdf/pdfs/daily_sale_report.dart';
 import 'package:snabb_business/pdf/pdfs/expense_report_pdf.dart';
 import 'package:snabb_business/pdf/pdfs/purchase_report_pdf.dart';
+import 'package:snabb_business/pdf/pdfs/report_selection_page.dart';
 import 'package:snabb_business/pdf/pdfs/supplier_report_pdf.dart';
 import 'package:snabb_business/screen/auth/loginScreen.dart';
 import 'package:snabb_business/screen/company/company.dart';
@@ -317,9 +318,12 @@ class DrawerScreen extends StatelessWidget {
 
               InkWell(
                 onTap: () {
-                  obj.reportMenue();
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (_) => Preferences()));
+                  //  obj.reportMenue();
+                  obj.drawermenueclose();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const ReportSelectionPage()));
                 },
                 child: ListTile(
                   leading: Image.asset("assets/drawericon/reports.png"),
@@ -330,183 +334,15 @@ class DrawerScreen extends StatelessWidget {
                         fontSize: width * 0.03,
                         fontWeight: FontWeight.w400),
                   ),
-                  trailing: Icon(
-                    obj.reports == true
-                        ? Icons.keyboard_arrow_down_outlined
-                        : Icons.keyboard_arrow_right,
-                    color: Colors.white,
-                  ),
+                  // trailing: Icon(
+                  //   obj.reports == true
+                  //       ? Icons.keyboard_arrow_down_outlined
+                  //       : Icons.keyboard_arrow_right,
+                  //   color: Colors.white,
+                  // ),
                 ),
               ),
-              obj.reports == true
-                  ? SizedBox(
-                      height: height * 0.35,
-                      child: Column(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              obj.drawermenueclose();
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        DailySaleReportPDFScreen(
-                                      dailysaleReportList:
-                                          PdfController.to.dailyslaesReportlist,
-                                    ),
-                                  ));
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (_) => DailySaleReport()));
-                            },
-                            child: ListTile(
-                              leading: Icon(
-                                Icons.wysiwyg_outlined,
-                                color: white.withOpacity(0.7),
-                              ),
-                              title: Text(
-                                "Daily Sale Report",
-                                style: GoogleFonts.poppins(
-                                    color: white,
-                                    fontSize: width * 0.03,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        CompanySaleReportPDFScreen(
-                                      companysaleReportList:
-                                          PdfController.to.compenysaleslist,
-                                    ),
-                                  ));
-                              // obj.drawermenueclose();
-                              // Navigator.push(context,
-                              //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
-                            },
-                            child: ListTile(
-                              leading: Icon(
-                                Icons.wysiwyg_outlined,
-                                color: white.withOpacity(0.7),
-                              ),
-                              title: Text(
-                                "Company Sale Report",
-                                style: GoogleFonts.poppins(
-                                    color: white,
-                                    fontSize: width * 0.03,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        PurchaseReportPDFScreen(
-                                      purchaseReportList:
-                                          PdfController.to.purchaseReportList,
-                                    ),
-                                  ));
-                              // obj.drawermenueclose();
-                              // Navigator.push(context,
-                              //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
-                            },
-                            child: ListTile(
-                              leading: Icon(
-                                Icons.wysiwyg_outlined,
-                                color: white.withOpacity(0.7),
-                              ),
-                              title: Text(
-                                "Purchase Report",
-                                style: GoogleFonts.poppins(
-                                    color: white,
-                                    fontSize: width * 0.03,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              showingSuplierdialogue(
-                                  context, height, width, white);
-                              // obj.drawermenueclose();
-                              // Navigator.push(context,
-                              //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
-                            },
-                            child: ListTile(
-                              leading: Icon(
-                                Icons.wysiwyg_outlined,
-                                color: white.withOpacity(0.7),
-                              ),
-                              title: Text(
-                                "Supplier Report",
-                                style: GoogleFonts.poppins(
-                                    color: white,
-                                    fontSize: width * 0.03,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        ExpenseReportPDFScreen(
-                                      expenseReportList:
-                                          PdfController.to.expenseReportList,
-                                    ),
-                                  ));
-                              // obj.drawermenueclose();
-                              // Navigator.push(context,
-                              //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
-                            },
-                            child: ListTile(
-                              leading: Icon(
-                                Icons.wysiwyg_outlined,
-                                color: white.withOpacity(0.7),
-                              ),
-                              title: Text(
-                                "Expense Report",
-                                style: GoogleFonts.poppins(
-                                    color: white,
-                                    fontSize: width * 0.03,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          // InkWell(
-                          //   onTap: () {
-                          //     // obj.drawermenueclose();
-                          //     // Navigator.push(context,
-                          //     //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
-                          //   },
-                          //   child: ListTile(
-                          //     leading: Icon(
-                          //       Icons.wysiwyg_outlined,
-                          //       color: white,
-                          //     ),
-                          //     title: Text(
-                          //       "Cashflow Report",
-                          //       style: TextStyle(
-                          //           color: white,
-                          //           fontSize: width * 0.03,
-                          //           fontWeight: FontWeight.w500),
-                          //     ),
-                          //   ),
-                          // ),
-                        ],
-                      ),
-                    )
-                  : const SizedBox(),
+
               InkWell(
                 onTap: () {
                   Navigator.push(
@@ -547,8 +383,6 @@ class DrawerScreen extends StatelessWidget {
                       MaterialPageRoute(builder: (_) => const UserProfile()));
 
                   obj.drawermenueclose();
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (_) => const UserProfile()));
                 },
                 child: ListTile(
                   leading: Image.asset("assets/drawericon/user.png"),
@@ -579,6 +413,7 @@ class DrawerScreen extends StatelessWidget {
               InkWell(
                 onTap: () {
                   obj.drawermenueclose();
+
                   Navigator.push(context,
                       MaterialPageRoute(builder: (_) => const Preferences()));
                 },

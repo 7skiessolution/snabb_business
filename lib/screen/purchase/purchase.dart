@@ -211,7 +211,7 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                                 width: width * 0.01,
                                               ),
                                               Text(
-                                                obj.formatTime,
+                                                 obj.formatTime=="Purchase Date"?obj.formatTime: obj.formatTime.substring(0,10),
                                                 style: GoogleFonts.poppins(
                                                     // color:Colors.blue[900],
                                                     fontSize: width * 0.035,

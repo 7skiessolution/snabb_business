@@ -620,7 +620,7 @@ class HomeController extends GetxController {
    var  res = await httpClient()
           .get("${StaticValues.getexpensePurchaseyearType}${now.year}/$type");
     if (res.statusCode == 200) {
-      chartData.clear();
+      
      slist.GetSaleYearType salemodel =
           slist.GetSaleYearType.fromMap(res.data);
            for (int i = 0; i < salemodel.data!.length; i++) {

@@ -42,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeController.to.getlistExpense(2);
     HomeController.to.getlistPurchase(0);
     HomeController.to.getlistofSale(1);
+    
 
     // HomeController.to.getexpensePurchase(2);
     // HomeController.to.getexpensePurchase(0);
@@ -53,10 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeController.to.getSupplierdata();
     ExpenseController.to.getCatageries();
     // pdf
-    PdfController.to.fetchcompenysales();
-    PdfController.to.fetchdailyslaesReport();
-    PdfController.to.fetchexpenseReport();
-    PdfController.to.fetchpurchaseReport();
+    // PdfController.to.fetchcompenysales();
+    // PdfController.to.fetchdailyslaesReport();
+    // PdfController.to.fetchexpenseReport();
+    // PdfController.to.fetchpurchaseReport();
 
     super.initState();
   }

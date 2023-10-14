@@ -1043,9 +1043,7 @@ class ExpenseController extends GetxController {
         toastLength: Toast.LENGTH_LONG);
   }
 
-  Future<void> selectDate(
-    BuildContext context,
-  ) async {
+  Future<void> selectDate(BuildContext context) async {
     final DateTime? selectedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -1054,11 +1052,34 @@ class ExpenseController extends GetxController {
     );
 
     if (selectedDate != null) {
+      DateTime a= DateTime.now();
       formatTime = DateFormat("dd-MM-yyyy").format(selectedDate);
+    var now = DateFormat("hh:mm a").format(a);
+      print("time of now is ${now}");
+      formatTime =formatTime+" ${time12to24Format(now)}";
+      update();
     }
-    update();
   }
+  String time12to24Format(String time) {
+// var time = "12:01 AM";
+ int h = int.parse(time.split(":").first);
+ int m = int.parse(time.split(":").last.substring(0,2));
+  if (time.toLowerCase().contains("pm")) {
+   if (h != 12) {
+     h = h + 12;
+   }
+ }
+ if (time.toLowerCase().contains("am")) {
+   if (h == 12) {
+     h = 00;
+   }
+ }
+ String newTime = "${h == 0 ? "00" : h}:${m == 0 ? "00" : m}";
+ print(newTime);
 
+ return newTime;
+}
+ 
   postexpense(BuildContext context) async {
     try {
       if (formatTime != "Expense Date") {

@@ -205,7 +205,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                               width: width * 0.05,
                                             ),
                                             Text(
-                                              obj.formatTime,
+                                             obj.formatTime=="Expense Date"?obj.formatTime: obj.formatTime.substring(0,10),
                                               style: GoogleFonts.poppins(
                                                   // color:Colors.blue[900],
                                                   fontSize: width * 0.032,

@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeController.to.getlistExpense(2);
     HomeController.to.getlistPurchase(0);
     HomeController.to.getlistofSale(1);
-    
+    // HomeController.to.monthexpenseList(1);
 
     // HomeController.to.getexpensePurchase(2);
     // HomeController.to.getexpensePurchase(0);
@@ -360,6 +360,55 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
+                      Container(
+                        height: height * 0.06,
+                        width: width,
+                        // color: Colors.amber,
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                "Graph".toUpperCase(),
+                                style: GoogleFonts.poppins(
+                                    color: blue,
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              SizedBox(
+                                width: width * 0.2,
+                              ),
+                              DropdownButton(
+                                value: obj.dropdownvalue,
+                                icon: const Icon(Icons.keyboard_arrow_down),
+                                items: obj.items.map((String items) {
+                                  return DropdownMenuItem(
+                                    value: items,
+                                    child: Text(
+                                      items,
+                                      style: GoogleFonts.poppins(
+                                          // color:Colors.blue[900],
+                                          fontSize: width * 0.03,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  );
+                                }).toList(),
+                                onChanged: (String? newValue) {
+                                  obj.dropdownvalue = newValue!;
+                                  obj.update();
+                                },
+                              ),
+                              InkWell(
+                                onTap: () => obj.selectDate(context),
+                                child: Text(
+                                  obj.formatTime.substring(0, 10),
+                                  style: GoogleFonts.poppins(
+                                      // color:Colors.blue[900],
+                                      fontSize: width * 0.03,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                            ]),
+                      ),
                       InkWell(
                         onTap: () {
                           Navigator.push(
@@ -373,7 +422,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)),
                           child: Container(
-                            height: height * 0.20,
+                            height: height * 0.18,
                             width: width,
                             decoration: BoxDecoration(
                                 color: white,
@@ -393,87 +442,49 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   Expanded(
                                     child: SizedBox(
-                                        width: width,
-                                        // child: SfCartesianChart(
-                                        //   primaryXAxis: DateTimeAxis(
-                                        //     title: AxisTitle(text: 'Year'),
-                                        //   ),
-                                        //   primaryYAxis: NumericAxis(
-                                        //     title: AxisTitle(text: 'Total Sales'),
-                                        //   ),
-                                        //   series: <ChartSeries<SalesData, DateTime>>[
-                                        //     LineSeries<SalesData, DateTime>(
-                                        //       dataSource: obj.chartData,
-                                        //       xValueMapper: (SalesData sales, _) =>
-                                        //           sales.year,
-                                        //       yValueMapper: (SalesData sales, _) =>
-                                        //           sales.sales,
-                                        //       name: 'Total Sales',
-                                        //     ),
-                                        //   ],
-                                        // ),
-                                        child: SfCartesianChart(
-                                           primaryXAxis: CategoryAxis(),
-                                          primaryYAxis: NumericAxis(
-                                            minimum: 0,
-                                            numberFormat:
-                                                NumberFormat.compact(),
-                                            // interval: 100,
-                                            // desiredIntervals:
-                                            //     100,
-                                          ),
-                                          backgroundColor: Colors.white,
-                                          selectionGesture:
-                                              ActivationMode.doubleTap,
-                                          enableMultiSelection: true,
-                                          enableAxisAnimation: true,
-                                          series: <ChartSeries>[
-                                            LineSeries<SalesData, String>(
-                                              legendIconType:
-                                                  LegendIconType.rectangle,
-                                              animationDuration: 5,
-                                              animationDelay: 3,
-                                              name: "Sale",
-                                              color: greencolor,
-                                              markerSettings: MarkerSettings(
-                                                isVisible: true,
-                                                width: 5,
-                                                height: 5,
-                                                borderWidth: 0.5,
-                                                color: greencolor,
-                                              ),
-                                              enableTooltip: true,
+                                      width: width,
+                                      child: SfCartesianChart(
+                                        primaryXAxis: CategoryAxis(),
+                                        primaryYAxis: NumericAxis(
+                                          minimum: 0,
+                                          numberFormat: NumberFormat.compact(),
+                                          // interval: 100,
+                                          // desiredIntervals:
+                                          //     100,
+                                        ),
+                                        backgroundColor: Colors.white,
+                                        selectionGesture:
+                                            ActivationMode.doubleTap,
+                                        enableMultiSelection: true,
+                                        enableAxisAnimation: true,
+                                        series: <ChartSeries>[
+                                          LineSeries<SalesData, String>(
+                                            legendIconType:
+                                                LegendIconType.rectangle,
+                                            animationDuration: 5,
+                                            animationDelay: 3,
+                                            name: "Sale",
+                                            color: greencolor,
+                                            markerSettings: MarkerSettings(
                                               isVisible: true,
-                                              dataSource: obj.chartData,
-                                              xValueMapper:
-                                                  (SalesData sales, _) =>
-                                                      sales.year,
-                                              yValueMapper:
-                                                  (SalesData sales, _) =>
-                                                      sales.sales,
+                                              width: 5,
+                                              height: 5,
+                                              borderWidth: 0.5,
+                                              color: greencolor,
                                             ),
-                                            // LineSeries<SalesData, DateTime>(
-                                            //   legendIconType: LegendIconType.rectangle,
-                                            //   animationDuration: 5,
-                                            //   animationDelay: 3,
-                                            //   color: lightgreen,
-                                            //   markerSettings: MarkerSettings(
-                                            //     isVisible: true,
-                                            //     width: 5,
-                                            //     height: 5,
-                                            //     borderWidth: 0.5,
-                                            //     color: lightgreen,
-                                            //   ),
-                                            //   enableTooltip: true,
-                                            //   isVisible: true,
-                                            //   dataSource: obj.chart,
-                                            //   xValueMapper: (SalesData sales, _) =>
-                                            //       sales.year,
-                                            //   yValueMapper: (SalesData sales, _) =>
-                                            //       sales.sales,
-                                            // )
-                                          ],
-                                        )),
+                                            enableTooltip: true,
+                                            isVisible: true,
+                                            dataSource: obj.chartData,
+                                            xValueMapper:
+                                                (SalesData sales, _) =>
+                                                    sales.year,
+                                            yValueMapper:
+                                                (SalesData sales, _) =>
+                                                    sales.sales,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   )
                                 ],
                               ),
@@ -495,7 +506,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)),
                           child: Container(
-                            height: height * 0.20,
+                            height: height * 0.18,
                             width: width,
                             decoration: BoxDecoration(
                                 color: white,
@@ -559,7 +570,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)),
                           child: Container(
-                            height: height * 0.25,
+                            height: height * 0.22,
                             width: width,
                             decoration: BoxDecoration(
                                 color: white,

@@ -6,6 +6,7 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:snabb_business/api/ApiStore.dart';
 import 'package:snabb_business/models/currency_model.dart';
@@ -487,7 +488,7 @@ class HomeController extends GetxController {
   //   }
   //   getlistofSale();
   // }
- 
+
   // saleListOFChart() async {
   //   var res = await httpClient().get(StaticValues.getYearTrasaction);
   //   if (res.statusCode == 200) {
@@ -520,12 +521,13 @@ class HomeController extends GetxController {
   //     update();
   //   }
   // }
-
+  final monthsToDisplay = ['Jan', " ", 'Mar', 'Jun', 'Sep', 'Dec'];
   expenseList(int type) async {
-    DateTime a = DateTime.now();
+    print("select date ${selectdate.year}");
     var res = await httpClient()
-        .get("${StaticValues.getSalePurchaseType}$type/${a.year}");
+        .get("${StaticValues.getSalePurchaseType}$type/${selectdate.year}");
     if (res.statusCode == 200) {
+      print("res ${res.data} ");
       if (type == 2) {
         expensedata.clear();
       } else if (type == 0) {
@@ -534,26 +536,48 @@ class HomeController extends GetxController {
         saledatalist.clear();
         chartData.clear();
       }
+      update();
       GetSalePurhase salepurchasemodel = GetSalePurhase.fromMap(res.data);
       for (int i = 0; i < salepurchasemodel.data!.length; i++) {
         var e = salepurchasemodel.data![i];
+        String month = convertToAbbreviatedMonth(i + 1);
         if (type == 2) {
-          expensedata.add(
-            Chartdata(convertToAbbreviatedMonth(i + 1), e),
-          );
+          if (monthsToDisplay.contains(month)) {
+            expensedata.add(
+              Chartdata(month, e),
+            );
+          } else {
+            expensedata.add(
+              Chartdata(" ", e),
+            );
+          }
           update();
         } else if (type == 0) {
-          purchasedata.add(
-            Chartdata(convertToAbbreviatedMonth(i + 1), e),
-          );
+          if (monthsToDisplay.contains(month)) {
+            purchasedata.add(
+              Chartdata(month, e),
+            );
+          } else {
+            purchasedata.add(
+              Chartdata(" ", e),
+            );
+          }
+
           update();
         } else if (type == 1) {
+          if (monthsToDisplay.contains(month)) {
+            chartData.add(
+              SalesData(month, e),
+            );
+          } else {
+            chartData.add(
+              SalesData(" ", e),
+            );
+          }
           saledatalist.add(
             Chartdata(convertToAbbreviatedMonth(i + 1), e),
           );
-             chartData.add(
-          SalesData(convertToAbbreviatedMonth(i + 1), e),
-        );
+
           update();
         }
         update();
@@ -561,8 +585,79 @@ class HomeController extends GetxController {
       print("purchase ${purchasedata.length}");
       print("expense ${expensedata.length}");
       print("sale ${saledatalist.length}");
+
+      chartData.forEach((element) {
+        print("Sale graph ${element.year}");
+      });
     }
   }
+
+  // monthexpenseList(int type) async {
+  //   print("select date ${selectdate.year}");
+  //   var res = await httpClient().get(
+  //       "${StaticValues.getSalePurchaseType}$type/${selectdate.year}/${selectdate.month}");
+  //   if (res.statusCode == 200) {
+  //     print("res ${res.data} ");
+  //     if (type == 2) {
+  //       expensedata.clear();
+  //     } else if (type == 0) {
+  //       purchasedata.clear();
+  //     } else if (type == 1) {
+  //       saledatalist.clear();
+  //       chartData.clear();
+  //     }
+  //     update();
+  //     GetSalePurhase salepurchasemodel = GetSalePurhase.fromMap(res.data);
+  //     for (int i = 0; i < salepurchasemodel.data!.length; i++) {
+  //       var e = salepurchasemodel.data![i];
+  //       String day = convertToDay(i + 1);
+  //       if (type == 2) {
+  //         if (day.contains("1")) {
+  //           print("object");
+  //           expensedata.add(
+  //             Chartdata(month, e),
+  //           );
+  //         } else {
+  //           expensedata.add(
+  //             Chartdata("", e),
+  //           );
+  //         }
+  //         update();
+  //         } else if (type == 0) {
+  //           if (monthsToDisplay.contains(month)) {
+  //             purchasedata.add(
+  //               Chartdata(month, e),
+  //             );
+  //           } else {
+  //             purchasedata.add(
+  //               Chartdata("", e),
+  //             );
+  //           }
+
+  //           update();
+  //         } else if (type == 1) {
+  //           if (monthsToDisplay.contains(month)) {
+  //             chartData.add(
+  //               SalesData(month, e),
+  //             );
+  //           } else {
+  //             chartData.add(
+  //               SalesData("", e),
+  //             );
+  //           }
+  //           saledatalist.add(
+  //             Chartdata(convertToAbbreviatedMonth(i + 1), e),
+  //           );
+
+  //         update();
+  //       }
+  //       update();
+  //     }
+  //     print("purchase ${purchasedata.length}");
+  //     print("expense ${expensedata.length}");
+  //     print("sale ${saledatalist.length}");
+  //   }
+  // }
 
   List<elist.Data> expenseData = [];
   List<plist.Data> purchaseData = [];
@@ -617,17 +712,15 @@ class HomeController extends GetxController {
 
   getlistofSale(int type) async {
     salaData.clear();
-   var  res = await httpClient()
-          .get("${StaticValues.getexpensePurchaseyearType}${now.year}/$type");
+    var res = await httpClient()
+        .get("${StaticValues.getexpensePurchaseyearType}${now.year}/$type");
     if (res.statusCode == 200) {
-      
-     slist.GetSaleYearType salemodel =
-          slist.GetSaleYearType.fromMap(res.data);
-           for (int i = 0; i < salemodel.data!.length; i++) {
-          var e = salemodel.data![i];
-          salaData.add(e);
-          update();
-        }
+      slist.GetSaleYearType salemodel = slist.GetSaleYearType.fromMap(res.data);
+      for (int i = 0; i < salemodel.data!.length; i++) {
+        var e = salemodel.data![i];
+        salaData.add(e);
+        update();
+      }
       // for (var element in yearTransaction.data!) {
       //   for (var e in element.transactions!) {
       //     if (e.type == 1) {
@@ -690,6 +783,52 @@ class HomeController extends GetxController {
         return 'Dec';
       default:
         return 'unknown';
+    }
+  }
+
+  String convertToDay(int day) {
+    if (day >= 11 && day <= 13) {
+      return '$day' + 'th';
+    }
+    switch (day % 10) {
+      case 1:
+        return '$day' + 'st';
+      case 2:
+        return '$day' + 'nd';
+      case 3:
+        return '$day' + 'rd';
+      default:
+        return '$day' + 'th';
+    }
+  }
+
+  String dropdownvalue = 'Yearly';
+
+  // List of items in our dropdown menu
+  var items = [
+    'Yearly',
+    'Monthly',
+    'Daily',
+  ];
+  DateTime selectdate = DateTime.now();
+  String formatTime = DateFormat("dd-MM-yyyy").format(DateTime.now());
+  Future<void> selectDate(BuildContext context) async {
+    final DateTime? selectedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    if (selectedDate != null) {
+      selectdate = selectedDate;
+      formatTime = DateFormat("dd-MM-yyyy").format(selectedDate);
+      chartData.clear();
+
+      expenseList(0);
+      expenseList(2);
+      expenseList(1);
+      update();
     }
   }
 }

@@ -33,7 +33,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
         key: _formKey,
         backgroundColor: backgroundColor,
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.blue[900],
+          backgroundColor: blue,
           child: const Icon(Icons.add),
           onPressed: () {
             loading = true;
@@ -74,7 +74,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                           child: Center(
                             child: Card(
                               elevation: 10,
-                              shadowColor: Colors.blue[900],
+                              shadowColor: blue,
                               child: Container(
                                   height: height * 0.45,
                                   width: width * 0.7,
@@ -376,7 +376,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                   //bottom: height * 0.02,
                   child: Card(
                     elevation: 10,
-                    shadowColor: Colors.blue[900],
+                    shadowColor: blue,
                     child: GetBuilder<HomeController>(builder: (obj) {
                       return Container(
                         height: height * 0.75,
@@ -391,7 +391,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                               padding: const EdgeInsets.all(8.0),
                               child: Card(
                                 elevation: 10,
-                                shadowColor: Colors.blue[900],
+                                shadowColor: blue,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Container(
@@ -515,31 +515,57 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                                     context);
                                                               },
                                                               child: Container(
-                                                               width: width*0.15,
-                                                                height: height*0.05,
-                                                               decoration: BoxDecoration(color: red,borderRadius: BorderRadius.circular(10)),
-                                                               alignment: Alignment.center,
-                                                                    child:Text(
-                                                                        "No",style: TextStyle(color: Colors.white,),),
+                                                                width: width *
+                                                                    0.15,
+                                                                height: height *
+                                                                    0.05,
+                                                                decoration: BoxDecoration(
+                                                                    color: red,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10)),
+                                                                alignment:
+                                                                    Alignment
+                                                                        .center,
+                                                                child: Text(
+                                                                  "No",
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
+                                                                ),
                                                               ),
                                                             ),
                                                             TextButton(
-
                                                               onPressed: () {
                                                                 Navigator.pop(
                                                                     context);
                                                               },
                                                               child: Container(
-                                                                width: width*0.15,
-                                                                height: height*0.05,
-                                                               decoration: BoxDecoration(color: blue,borderRadius: BorderRadius.circular(10)),
-                                                               alignment: Alignment.center,
-                                                                child:
-                                                                    const Text(
-                                                                        "Yes",style: TextStyle(color: Colors.white,),
-
-                                                                        )
-                                                              ),
+                                                                  width: width *
+                                                                      0.15,
+                                                                  height:
+                                                                      height *
+                                                                          0.05,
+                                                                  decoration: BoxDecoration(
+                                                                      color:
+                                                                          blue,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              10)),
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .center,
+                                                                  child:
+                                                                      const Text(
+                                                                    "Yes",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                                  )),
                                                             ),
                                                           ],
                                                         );
@@ -833,7 +859,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                 //   //bottom: height * 0.02,
                 //   child: Card(
                 //     elevation: 10,
-                //     shadowColor: Colors.blue[900],
+                //     shadowColor: blue,
                 //     child: Container(
                 //         height: height * 0.5,
                 //         width: width * 0.9,

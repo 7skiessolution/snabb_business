@@ -38,7 +38,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
         key: _formKey,
         backgroundColor: backgroundColor,
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.blue[900],
+          backgroundColor: blue,
           child: const Icon(Icons.add),
           onPressed: () {
             loading = true;
@@ -65,7 +65,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                           Container(
                             height: height * 0.1,
                             width: width,
-                            color: Colors.blue[900]!.withOpacity(0.9),
+                            color: blue!.withOpacity(0.9),
                             alignment: Alignment.center,
                             child: Text(
                               "Add Supplier",
@@ -80,7 +80,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                             child: Center(
                               child: Card(
                                 elevation: 10,
-                                shadowColor: Colors.blue[900],
+                                shadowColor: blue,
                                 child: Container(
                                     height: obj.select == "Company"
                                         ? height * 0.7
@@ -321,8 +321,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                         MainAxisAlignment.start,
                                                     children: <Widget>[
                                                       Radio(
-                                                        activeColor:
-                                                            Colors.blue[900],
+                                                        activeColor: blue,
                                                         value: obj.type[0],
                                                         groupValue: obj.select,
                                                         onChanged: (value) {
@@ -350,8 +349,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                         MainAxisAlignment.start,
                                                     children: <Widget>[
                                                       Radio(
-                                                        activeColor:
-                                                            Colors.blue[900],
+                                                        activeColor: blue,
                                                         value: obj.type[1],
                                                         groupValue: obj.select,
                                                         onChanged: (value) {
@@ -667,7 +665,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                   //bottom: height * 0.02,
                   child: Card(
                     elevation: 10,
-                    shadowColor: Colors.blue[900],
+                    shadowColor: blue,
                     child: GetBuilder<HomeController>(builder: (obj) {
                       return Container(
                         height: height * 0.75,
@@ -684,7 +682,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                 onTap: () {},
                                 child: Card(
                                   elevation: 10,
-                                  shadowColor: Colors.blue[900],
+                                  shadowColor: blue,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10)),
                                   child: Container(
@@ -861,7 +859,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                                             style: TextStyle(
                                                                                 fontWeight: FontWeight.bold,
                                                                                 fontSize: width * 0.04,
-                                                                                color: Colors.blue[900]),
+                                                                                color: blue),
                                                                           ),
                                                                         ),
                                                                         SizedBox(
@@ -978,7 +976,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                                         elevation:
                                                                             10,
                                                                         shadowColor:
-                                                                            Colors.blue[900],
+                                                                            blue,
                                                                         child: Container(
                                                                             height: obj.supplierList[index].isCompany! ? height * 0.6 : height * 0.4,
                                                                             width: width * 0.7,
@@ -1272,7 +1270,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                 //   //bottom: height * 0.02,
                 //   child: Card(
                 //     elevation: 10,
-                //     shadowColor: Colors.blue[900],
+                //     shadowColor: blue,
                 //     child: Container(
                 //         height: height * 0.5,
                 //         width: width * 0.9,

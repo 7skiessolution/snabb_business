@@ -10,6 +10,7 @@ import 'package:snabb_business/controller/transaction_controller.dart';
 import 'package:snabb_business/pdf/c/pdf_controller.dart';
 import 'package:snabb_business/screen/chartsScreens/purchaseChart.dart';
 import 'package:snabb_business/screen/chartsScreens/salesChart.dart';
+import 'package:snabb_business/screen/sale/try_chart.dart';
 import 'package:snabb_business/utils/color.dart';
 import 'package:snabb_business/models/dataclassgraphModel.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -443,47 +444,51 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Expanded(
                                     child: SizedBox(
                                       width: width,
-                                      child: SfCartesianChart(
-                                        primaryXAxis: CategoryAxis(),
-                                        primaryYAxis: NumericAxis(
-                                          minimum: 0,
-                                          numberFormat: NumberFormat.compact(),
-                                          // interval: 100,
-                                          // desiredIntervals:
-                                          //     100,
-                                        ),
-                                        backgroundColor: Colors.white,
-                                        selectionGesture:
-                                            ActivationMode.doubleTap,
-                                        enableMultiSelection: true,
-                                        enableAxisAnimation: true,
-                                        series: <ChartSeries>[
-                                          LineSeries<SalesData, String>(
-                                            legendIconType:
-                                                LegendIconType.rectangle,
-                                            animationDuration: 5,
-                                            animationDelay: 3,
-                                            name: "Sale",
-                                            color: greencolor,
-                                            markerSettings: MarkerSettings(
-                                              isVisible: true,
-                                              width: 5,
-                                              height: 5,
-                                              borderWidth: 0.5,
-                                              color: greencolor,
-                                            ),
-                                            enableTooltip: true,
-                                            isVisible: true,
-                                            dataSource: obj.chartData,
-                                            xValueMapper:
-                                                (SalesData sales, _) =>
-                                                    sales.year,
-                                            yValueMapper:
-                                                (SalesData sales, _) =>
-                                                    sales.sales,
-                                          ),
-                                        ],
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: LineChart(),
                                       ),
+                                      // child: SfCartesianChart(
+                                      //   primaryXAxis: CategoryAxis(),
+                                      //   primaryYAxis: NumericAxis(
+                                      //     minimum: 0,
+                                      //     numberFormat: NumberFormat.compact(),
+                                      //     // interval: 100,
+                                      //     // desiredIntervals:
+                                      //     //     100,
+                                      //   ),
+                                      //   backgroundColor: Colors.white,
+                                      //   selectionGesture:
+                                      //       ActivationMode.doubleTap,
+                                      //   enableMultiSelection: true,
+                                      //   enableAxisAnimation: true,
+                                      //   series: <ChartSeries>[
+                                      //     LineSeries<SalesData, String>(
+                                      //       legendIconType:
+                                      //           LegendIconType.rectangle,
+                                      //       animationDuration: 5,
+                                      //       animationDelay: 3,
+                                      //       name: "Sale",
+                                      //       color: greencolor,
+                                      //       markerSettings: MarkerSettings(
+                                      //         isVisible: true,
+                                      //         width: 5,
+                                      //         height: 5,
+                                      //         borderWidth: 0.5,
+                                      //         color: greencolor,
+                                      //       ),
+                                      //       enableTooltip: true,
+                                      //       isVisible: true,
+                                      //       dataSource: obj.chartData,
+                                      //       xValueMapper:
+                                      //           (SalesData sales, _) =>
+                                      //               sales.year,
+                                      //       yValueMapper:
+                                      //           (SalesData sales, _) =>
+                                      //               sales.sales,
+                                      //     ),
+                                      //   ],
+                                      // ),
                                     ),
                                   )
                                 ],

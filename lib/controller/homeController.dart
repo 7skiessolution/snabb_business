@@ -541,36 +541,33 @@ class HomeController extends GetxController {
       }
       update();
       GetSalePurhase salepurchasemodel = GetSalePurhase.fromMap(res.data);
-      for (int i = 0; i < salepurchasemodel.data!.length;i= i+2) {
+      for (int i = 0; i < salepurchasemodel.data!.length; i = i + 2) {
         var e = salepurchasemodel.data![i];
-        var e2=salepurchasemodel.data![i+1];
-        String month = "${i+1}-${i+2}";
+        var e2 = salepurchasemodel.data![i + 1];
+        String month = "${i + 1}-${i + 2}";
         if (type == 2) {
-             int total = e+e2;
-          
-            expensedata.add(
-              Chartdata( month,total),
-            );
-         
+          int total = e + e2;
+
+          expensedata.add(
+            Chartdata(month, total),
+          );
+
           update();
         } else if (type == 0) {
-          int total = e+e2;
-          
-            purchasedata.add(
-               Chartdata( month,total),
-            );
-          
+          int total = e + e2;
+
+          purchasedata.add(
+            Chartdata(month, total),
+          );
 
           update();
         } else if (type == 1) {
-          int total = e+e2;
+          int total = e + e2;
           update();
-            chartData.add(
-             
+          chartData.add(
+            SalesData(month, total),
+          );
 
-              SalesData(month,total),
-            );
-          
           saledatalist.add(
             Chartdata(convertToAbbreviatedMonth(i + 1), e),
           );
@@ -582,81 +579,78 @@ class HomeController extends GetxController {
       print("purchase ${purchasedata.length}");
       print("expense ${expensedata.length}");
       print("sale ${saledatalist.length}");
- if (type == 1) {
-  chartData.forEach((element) { 
-   print("chartdata ${element.sales}");
-  });
-}
-     
+      if (type == 1) {
+        chartData.forEach((element) {
+          print("chartdata ${element.sales}");
+        });
+      }
     }
   }
 
-  // monthexpenseList(int type) async {
-  //   print("select date ${selectdate.year}");
-  //   var res = await httpClient().get(
-  //       "${StaticValues.getSalePurchaseType}$type/${selectdate.year}/${selectdate.month}");
-  //   if (res.statusCode == 200) {
-  //     print("res ${res.data} ");
-  //     if (type == 2) {
-  //       expensedata.clear();
-  //     } else if (type == 0) {
-  //       purchasedata.clear();
-  //     } else if (type == 1) {
-  //       saledatalist.clear();
-  //       chartData.clear();
-  //     }
-  //     update();
-  //     GetSalePurhase salepurchasemodel = GetSalePurhase.fromMap(res.data);
-  //     for (int i = 0; i < salepurchasemodel.data!.length; i++) {
-  //       var e = salepurchasemodel.data![i];
-  //       String day = convertToDay(i + 1);
-  //       if (type == 2) {
-  //         if (day.contains("1")) {
-  //           print("object");
-  //           expensedata.add(
-  //             Chartdata(month, e),
-  //           );
-  //         } else {
-  //           expensedata.add(
-  //             Chartdata("", e),
-  //           );
-  //         }
-  //         update();
-  //         } else if (type == 0) {
-  //           if (monthsToDisplay.contains(month)) {
-  //             purchasedata.add(
-  //               Chartdata(month, e),
-  //             );
-  //           } else {
-  //             purchasedata.add(
-  //               Chartdata("", e),
-  //             );
-  //           }
+  monthexpenseList(int type) async {
+    print("select date ${selectdate.year}");
+    var res = await httpClient().get(
+        "${StaticValues.getSalePurchaseType}$type/${selectdate.year}/${selectdate.month}");
+    if (res.statusCode == 200) {
+      print("res ${res.data} ");
+      if (type == 2) {
+        expensedata.clear();
+      } else if (type == 0) {
+        purchasedata.clear();
+      } else if (type == 1) {
+        saledatalist.clear();
+        chartData.clear();
+      }
+      update();
+      GetSalePurhase salepurchasemodel = GetSalePurhase.fromMap(res.data);
+      for (int i = 0; i < 30; i = i + 5) {
+        var e = salepurchasemodel.data![i];
+        var e2 = salepurchasemodel.data![i + 1];
+        var e3 = salepurchasemodel.data![i + 2];
+        var e4 = salepurchasemodel.data![i + 3];
+        var e5 = salepurchasemodel.data![i + 4];
+        var e6 = 0;
+        if (i == 25) {
+          e6 = salepurchasemodel.data![i + 5];
+        }
+        String month = "${i + 1}-${i + 5}";
+        int total = e + e2 + e3 + e4 + e5 + e6;
+        if (type == 2) {
+          expensedata.add(
+            Chartdata(month, total),
+          );
 
-  //           update();
-  //         } else if (type == 1) {
-  //           if (monthsToDisplay.contains(month)) {
-  //             chartData.add(
-  //               SalesData(month, e),
-  //             );
-  //           } else {
-  //             chartData.add(
-  //               SalesData("", e),
-  //             );
-  //           }
-  //           saledatalist.add(
-  //             Chartdata(convertToAbbreviatedMonth(i + 1), e),
-  //           );
+          update();
+        } else if (type == 0) {
+          purchasedata.add(
+            Chartdata(month, total),
+          );
 
-  //         update();
-  //       }
-  //       update();
-  //     }
-  //     print("purchase ${purchasedata.length}");
-  //     print("expense ${expensedata.length}");
-  //     print("sale ${saledatalist.length}");
-  //   }
-  // }
+          update();
+        } else if (type == 1) {
+          update();
+          chartData.add(
+            SalesData(month, total),
+          );
+
+          saledatalist.add(
+            Chartdata(convertToAbbreviatedMonth(i + 1), e),
+          );
+
+          update();
+        }
+        update();
+      }
+      print("purchase ${purchasedata.length}");
+      print("expense ${expensedata.length}");
+      print("sale ${saledatalist.length}");
+      if (type == 1) {
+        chartData.forEach((element) {
+          print("chartdata ${element.sales}");
+        });
+      }
+    }
+  }
 
   List<elist.Data> expenseData = [];
   List<plist.Data> purchaseData = [];
@@ -824,9 +818,9 @@ class HomeController extends GetxController {
       formatTime = DateFormat("dd-MM-yyyy").format(selectedDate);
       chartData.clear();
 
-      expenseList(0);
-      expenseList(2);
-      expenseList(1);
+      monthexpenseList(0);
+      monthexpenseList(1);
+      monthexpenseList(2);
       update();
     }
   }

@@ -141,7 +141,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               Image.asset(
                 'images/home.png',
                 fit: BoxFit.cover,
-                color: blue,
+                color: Colors.white,
                 width: width * 0.06,
               ),
               // const Icon(

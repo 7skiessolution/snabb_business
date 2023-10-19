@@ -1579,34 +1579,34 @@ class SaleController extends GetxController {
     );
 
     if (selectedDate != null) {
-      DateTime a= DateTime.now();
+      DateTime a = DateTime.now();
       formatTime = DateFormat("dd-MM-yyyy").format(selectedDate);
-    var now = DateFormat("hh:mm a").format(a);
+      var now = DateFormat("hh:mm a").format(a);
       print("time of now is ${now}");
-      formatTime =formatTime+" ${time12to24Format(now)}";
+      formatTime = formatTime + " ${time12to24Format(now)}";
       update();
     }
   }
+
   String time12to24Format(String time) {
 // var time = "12:01 AM";
- int h = int.parse(time.split(":").first);
- int m = int.parse(time.split(":").last.substring(0,2));
-  if (time.toLowerCase().contains("pm")) {
-   if (h != 12) {
-     h = h + 12;
-   }
- }
- if (time.toLowerCase().contains("am")) {
-   if (h == 12) {
-     h = 00;
-   }
- }
- String newTime = "${h == 0 ? "00" : h}:${m == 0 ? "00" : m}";
- print(newTime);
+    int h = int.parse(time.split(":").first);
+    int m = int.parse(time.split(":").last.substring(0, 2));
+    if (time.toLowerCase().contains("pm")) {
+      if (h != 12) {
+        h = h + 12;
+      }
+    }
+    if (time.toLowerCase().contains("am")) {
+      if (h == 12) {
+        h = 00;
+      }
+    }
+    String newTime = "${h == 0 ? "00" : h}:${m == 0 ? "00" : m}";
+    print(newTime);
 
- return newTime;
-}
- 
+    return newTime;
+  }
 
   //// sale api
 
@@ -1695,7 +1695,7 @@ class SaleController extends GetxController {
     company = true;
     companyName = "";
     companyid = null;
-    formatTime = "Pick Date";
+    formatTime = "Sales Date";
     update();
   }
 

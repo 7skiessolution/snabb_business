@@ -114,8 +114,8 @@ class PurchaseController extends GetxController {
                                             supplierName = HomeController
                                                 .to.supplierList[index].name
                                                 .toString();
-                                            supplierid = HomeController
-                                                .to.supplierList[index].supplierId
+                                            supplierid = HomeController.to
+                                                .supplierList[index].supplierId
                                                 .toString();
                                             print(
                                                 "name supplier ------$supplierName");
@@ -135,7 +135,8 @@ class PurchaseController extends GetxController {
                                               height: height * 0.1,
                                               decoration: BoxDecoration(
                                                   borderRadius:
-                                                      BorderRadius.circular(10)),
+                                                      BorderRadius.circular(
+                                                          10)),
                                               child: Padding(
                                                 padding:
                                                     const EdgeInsets.all(8.0),
@@ -147,7 +148,8 @@ class PurchaseController extends GetxController {
                                                         MainAxisAlignment
                                                             .spaceEvenly,
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Text(
                                                         HomeController
@@ -158,7 +160,8 @@ class PurchaseController extends GetxController {
                                                             GoogleFonts.poppins(
                                                                 color: blue,
                                                                 fontSize:
-                                                                    width * 0.035,
+                                                                    width *
+                                                                        0.035,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600),
@@ -170,9 +173,11 @@ class PurchaseController extends GetxController {
                                                             .email!,
                                                         style:
                                                             GoogleFonts.poppins(
-                                                                color: lightgray,
+                                                                color:
+                                                                    lightgray,
                                                                 fontSize:
-                                                                    width * 0.03,
+                                                                    width *
+                                                                        0.03,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500),
@@ -184,9 +189,11 @@ class PurchaseController extends GetxController {
                                                             .telePhone!,
                                                         style:
                                                             GoogleFonts.poppins(
-                                                                color: lightgray,
+                                                                color:
+                                                                    lightgray,
                                                                 fontSize:
-                                                                    width * 0.03,
+                                                                    width *
+                                                                        0.03,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600),
@@ -1511,7 +1518,7 @@ class PurchaseController extends GetxController {
                                                           "Type",
                                                           style: GoogleFonts
                                                               .poppins(
-                                                                  color:blue,
+                                                                  color: blue,
                                                                   fontSize:
                                                                       width *
                                                                           0.03,
@@ -1525,7 +1532,7 @@ class PurchaseController extends GetxController {
                                                                   .start,
                                                           children: <Widget>[
                                                             Radio(
-                                                              activeColor:blue,
+                                                              activeColor: blue,
                                                               value:
                                                                   obj.type[0],
                                                               groupValue:
@@ -1556,7 +1563,7 @@ class PurchaseController extends GetxController {
                                                                   .start,
                                                           children: <Widget>[
                                                             Radio(
-                                                              activeColor:blue,
+                                                              activeColor: blue,
                                                               value:
                                                                   obj.type[1],
                                                               groupValue:
@@ -1965,7 +1972,7 @@ class PurchaseController extends GetxController {
     newSupplier = true;
     supplierName = "";
     supplierid = null;
-    formatTime = "Pick Date";
+    formatTime = "Purchase Date";
     update();
   }
 
@@ -1989,32 +1996,32 @@ class PurchaseController extends GetxController {
     );
 
     if (selectedDate != null) {
-      DateTime a= DateTime.now();
+      DateTime a = DateTime.now();
       formatTime = DateFormat("dd-MM-yyyy").format(selectedDate);
-    var now = DateFormat("hh:mm a").format(a);
+      var now = DateFormat("hh:mm a").format(a);
       print("time of now is ${now}");
-      formatTime =formatTime+" ${time12to24Format(now)}";
+      formatTime = formatTime + " ${time12to24Format(now)}";
       update();
     }
   }
+
   String time12to24Format(String time) {
 // var time = "12:01 AM";
- int h = int.parse(time.split(":").first);
- int m = int.parse(time.split(":").last.substring(0,2));
-  if (time.toLowerCase().contains("pm")) {
-   if (h != 12) {
-     h = h + 12;
-   }
- }
- if (time.toLowerCase().contains("am")) {
-   if (h == 12) {
-     h = 00;
-   }
- }
- String newTime = "${h == 0 ? "00" : h}:${m == 0 ? "00" : m}";
- print(newTime);
+    int h = int.parse(time.split(":").first);
+    int m = int.parse(time.split(":").last.substring(0, 2));
+    if (time.toLowerCase().contains("pm")) {
+      if (h != 12) {
+        h = h + 12;
+      }
+    }
+    if (time.toLowerCase().contains("am")) {
+      if (h == 12) {
+        h = 00;
+      }
+    }
+    String newTime = "${h == 0 ? "00" : h}:${m == 0 ? "00" : m}";
+    print(newTime);
 
- return newTime;
-}
- 
+    return newTime;
+  }
 }

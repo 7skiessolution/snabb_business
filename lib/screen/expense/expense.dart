@@ -205,7 +205,9 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                               width: width * 0.05,
                                             ),
                                             Text(
-                                             obj.formatTime=="Expense Date"?obj.formatTime: obj.formatTime.substring(0,10),
+                                              obj.formatTime == "Expense Date"
+                                                  ? obj.formatTime
+                                                  : obj.formatTime,
                                               style: GoogleFonts.poppins(
                                                   // color:Colors.blue[900],
                                                   fontSize: width * 0.032,
@@ -253,7 +255,8 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                                           .name!,
                                                       style:
                                                           GoogleFonts.poppins(
-                                                              color: expensecolor,
+                                                              color:
+                                                                  expensecolor,
                                                               fontSize:
                                                                   width * 0.03,
                                                               fontWeight:
@@ -347,9 +350,13 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                             const SizedBox(
                                               width: 10,
                                             ),
-                                           Text(HomeController.to.curency,style: TextStyle(color: Colors.grey.shade700,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.bold),),
+                                            Text(
+                                              HomeController.to.curency,
+                                              style: TextStyle(
+                                                  color: Colors.grey.shade700,
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ],
                                         ),
                                       ),

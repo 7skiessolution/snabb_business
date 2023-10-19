@@ -55,7 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeController.to.getSupplierdata();
     ExpenseController.to.getCatageries();
     // pdf
-    // PdfController.to.fetchcompenysales();
     // PdfController.to.fetchdailyslaesReport();
     // PdfController.to.fetchexpenseReport();
     // PdfController.to.fetchpurchaseReport();
@@ -444,7 +443,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Expanded(
                                     child: SizedBox(
                                       width: width,
-                                    
                                       child: SfCartesianChart(
                                         primaryXAxis: CategoryAxis(),
                                         primaryYAxis: NumericAxis(

@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:snabb_business/utils/color.dart';
 
 class LineChart extends StatelessWidget {
+   final List<SaleData> salesData;
+
+  LineChart(this.salesData);
   @override
   Widget build(BuildContext context) {
     // Sample sales data (adjust this data as needed)
-    final List<SaleData> salesData = [
-      SaleData(500000, 'Jan'),
-      SaleData(780000, ''),
-      SaleData(60008090, 'Mar'),
-      SaleData(700000, 'Apr'),
-      SaleData(50000000, ''),
-      SaleData(7800000, ''),
-      SaleData(600000, 'Mar'),
-      SaleData(7000000, 'Apr'),
-    ];
+    // final List<SaleData> salesData = [
+    //   SaleData(0, 'Jan'),
+    //   SaleData(0, ''),
+    //   SaleData(0, 'Mar'),
+    //   SaleData(0, 'Apr'),
+    //   SaleData(0, ''),
+    //   SaleData(0, ''),
+    //   SaleData(0, 'Mar'),
+    //   SaleData(0, 'Apr'),
+    // ];
 
     // Calculate the maximum sales value
     final maxSales =
@@ -32,7 +36,7 @@ class LineChart extends StatelessWidget {
 
 class LineChartPainter extends CustomPainter {
   final List<SaleData> salesData;
-  final double maxSales;
+  final int maxSales;
 
   LineChartPainter(this.salesData, this.maxSales);
 
@@ -81,7 +85,7 @@ class LineChartPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.blue
+      ..color = greencolor
       ..strokeWidth = 2.0
       ..style = PaintingStyle.stroke;
 
@@ -94,7 +98,11 @@ class LineChartPainter extends CustomPainter {
     for (var i = 0; i < salesData.length; i++) {
       final data = salesData[i];
       final xPosition = i * size.width / (salesData.length - 1);
-      final yPosition = size.height - (data.sales / maxSales) * size.height;
+double  yPosition = size.height - (data.sales / maxSales) * size.height;
+if (maxSales == 0) {
+  // If maxSales is zero, set yPosition to the bottom of the chart
+  yPosition = size.height;
+}
 
       if (i == 0) {
         path.moveTo(xPosition, yPosition);
@@ -104,22 +112,24 @@ class LineChartPainter extends CustomPainter {
 
       // Draw data points as circles
       final dotPaint = Paint()
-        ..color = Colors.red
+        ..color = greencolor
         ..style = PaintingStyle.fill;
-      canvas.drawCircle(Offset(xPosition, yPosition), 5, dotPaint);
+      canvas.drawCircle(Offset(xPosition, yPosition), 3, dotPaint);
     }
 
     canvas.drawPath(path, paint);
 
-    final gridCount = 5; // The number of grid lines
+    const gridCount = 5; // The number of grid lines
     for (var i = 0; i < gridCount; i++) {
       final yPosition = (1 - (i / (gridCount - 1))) * size.height;
       final yLabel = formatNumber(maxSales * (i / (gridCount - 1)));
-
+final gridPaint = Paint()
+        ..color = Colors.grey.withOpacity(0.5)
+        ..strokeWidth = 0.5;
       canvas.drawLine(
         Offset(0, yPosition),
         Offset(size.width, yPosition),
-        paint,
+        gridPaint,
       );
 
       final textPainter = TextPainter(
@@ -162,7 +172,7 @@ class LineChartPainter extends CustomPainter {
 }
 
 class SaleData {
-  final double sales;
+  final int sales;
   final String month;
 
   SaleData(this.sales, this.month);

@@ -18,6 +18,9 @@ import 'package:snabb_business/models/get_year_type_sale.dart' as slist;
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
 import 'package:snabb_business/screen/company/companyModel.dart' as cm;
+import 'package:snabb_business/screen/expense/try_expense_chart.dart';
+import 'package:snabb_business/screen/purchase/try_purchase_chart.dart';
+import 'package:snabb_business/screen/sale/try_chart.dart';
 import 'package:snabb_business/screen/schedule_transaction/add_Schedule_income.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:snabb_business/screen/suppliers/supplierModel.dart' as sm;
@@ -521,7 +524,7 @@ class HomeController extends GetxController {
   //     update();
   //   }
   // }
-  final monthsToDisplay = ['Jan', " ", 'Mar', 'Jun', 'Sep', 'Dec'];
+
   expenseList(int type) async {
     print("select date ${selectdate.year}");
     var res = await httpClient()
@@ -538,42 +541,36 @@ class HomeController extends GetxController {
       }
       update();
       GetSalePurhase salepurchasemodel = GetSalePurhase.fromMap(res.data);
-      for (int i = 0; i < salepurchasemodel.data!.length; i++) {
+      for (int i = 0; i < salepurchasemodel.data!.length;i= i+2) {
         var e = salepurchasemodel.data![i];
-        String month = convertToAbbreviatedMonth(i + 1);
+        var e2=salepurchasemodel.data![i+1];
+        String month = "${i+1}-${i+2}";
         if (type == 2) {
-          if (monthsToDisplay.contains(month)) {
+             int total = e+e2;
+          
             expensedata.add(
-              Chartdata(month, e),
+              Chartdata( month,total),
             );
-          } else {
-            expensedata.add(
-              Chartdata(" ", e),
-            );
-          }
+         
           update();
         } else if (type == 0) {
-          if (monthsToDisplay.contains(month)) {
+          int total = e+e2;
+          
             purchasedata.add(
-              Chartdata(month, e),
+               Chartdata( month,total),
             );
-          } else {
-            purchasedata.add(
-              Chartdata(" ", e),
-            );
-          }
+          
 
           update();
         } else if (type == 1) {
-          if (monthsToDisplay.contains(month)) {
+          int total = e+e2;
+          update();
             chartData.add(
-              SalesData(month, e),
+             
+
+              SalesData(month,total),
             );
-          } else {
-            chartData.add(
-              SalesData(" ", e),
-            );
-          }
+          
           saledatalist.add(
             Chartdata(convertToAbbreviatedMonth(i + 1), e),
           );
@@ -585,10 +582,12 @@ class HomeController extends GetxController {
       print("purchase ${purchasedata.length}");
       print("expense ${expensedata.length}");
       print("sale ${saledatalist.length}");
-
-      chartData.forEach((element) {
-        print("Sale graph ${element.year}");
-      });
+ if (type == 1) {
+  chartData.forEach((element) { 
+   print("chartdata ${element.sales}");
+  });
+}
+     
     }
   }
 

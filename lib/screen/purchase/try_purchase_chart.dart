@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:snabb_business/utils/color.dart';
 
 class BarChartWidget extends StatelessWidget {
+  final List<PurchaseData> purchaseData;
+
+  BarChartWidget(this.purchaseData);
   @override
   Widget build(BuildContext context) {
     // Sample purchase data (adjust this data as needed)
-    final List<PurchaseData> purchaseData = [
-      PurchaseData(200000, 'Jan'),
-      PurchaseData(350000, ''),
-      PurchaseData(40088090, 'Mar'),
-      PurchaseData(500000, 'Apr'),
-      PurchaseData(90000000, ''),
-      PurchaseData(1800000, ''),
-      PurchaseData(600000, 'Jul'),
-      PurchaseData(700000, 'Aug'),
-      PurchaseData(500000, 'Apr'),
-      PurchaseData(9000000, ''),
-      PurchaseData(1800000, ''),
-      PurchaseData(600000, 'Jul'),
-      PurchaseData(700000, 'Aug'),
-    ];
+    // final List<PurchaseData> purchaseData = [
+    //   PurchaseData(0, 'Jan'),
+    //   PurchaseData(0, '1-2'),
+    //   PurchaseData(800, '3-4'),
+    //   PurchaseData(0, '4-6'),
+    //   PurchaseData(0, '7-8'),
+    //   PurchaseData(0, '10-12'),
+   
+    // ];
 
     // Calculate the maximum purchase value
     final maxPurchase =
@@ -29,7 +27,7 @@ class BarChartWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.width, // Set the width to full width
       padding: EdgeInsets.only(
           left: MediaQuery.of(context).size.width * 0.07,
-          bottom: MediaQuery.of(context).size.height * 0.02),
+          bottom: MediaQuery.of(context).size.height * 0.022),
       // Add padding
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -44,7 +42,7 @@ class BarChartWidget extends StatelessWidget {
 
 class BarChartPainter extends CustomPainter {
   final List<PurchaseData> purchaseData;
-  final double maxPurchase;
+  final int maxPurchase;
   final BoxConstraints constraints;
 
   BarChartPainter(this.purchaseData, this.maxPurchase, this.constraints);
@@ -95,7 +93,7 @@ class BarChartPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.blue
+      ..color = blue
       ..style = PaintingStyle.fill;
 
     if (purchaseData.isEmpty) {
@@ -107,37 +105,6 @@ class BarChartPainter extends CustomPainter {
     const maxGridLines = 4; // Set the number of grid lines
 
     final gridInterval = maxPurchase / maxGridLines;
-
-    for (var i = 0; i < purchaseData.length; i++) {
-      final data = purchaseData[i];
-      final xPosition = (i * 2 + 1) * barWidth;
-      final barHeight = (data.amount / maxPurchase) * size.height;
-
-      final rect = Rect.fromPoints(
-        Offset(xPosition - barWidth / 2, size.height),
-        Offset(xPosition + barWidth / 2, size.height - barHeight),
-      );
-
-      canvas.drawRect(rect, paint);
-    }
-
-    // Draw X-axis labels
-    for (var i = 0; i < purchaseData.length; i++) {
-      final data = purchaseData[i];
-      final xPosition = (i * 2 + 1) * barWidth;
-      final textPainter = TextPainter(
-        text: TextSpan(
-          text: data.month,
-          style: const TextStyle(fontSize: 12, color: Colors.black),
-        ),
-        textDirection: TextDirection.ltr,
-      );
-      textPainter.layout();
-      textPainter.paint(
-        canvas,
-        Offset(xPosition - textPainter.width / 2, size.height + 10),
-      );
-    }
 
     // Draw Y-axis labels and grid lines
     for (var i = 0; i <= maxGridLines; i++) {
@@ -167,6 +134,40 @@ class BarChartPainter extends CustomPainter {
         gridPaint,
       );
     }
+
+    for (var i = 0; i < purchaseData.length; i++) {
+      final data = purchaseData[i];
+      final xPosition = (i * 2 + 1) * barWidth;
+      final barHeight = maxPurchase == 0 ? 0.0 : (data.amount / maxPurchase) * size.height;
+
+
+      final rect = Rect.fromPoints(
+        Offset(xPosition - barWidth / 2, size.height),
+        Offset(xPosition + barWidth / 2, size.height - barHeight),
+      );
+
+      canvas.drawRect(rect, paint);
+    }
+
+    // Draw X-axis labels
+    for (var i = 0; i < purchaseData.length; i++) {
+      final data = purchaseData[i];
+      final xPosition = (i * 2 + 1) * barWidth;
+      final textPainter = TextPainter(
+        text: TextSpan(
+          text: data.month,
+          style: const TextStyle(fontSize: 12, color: Colors.black),
+        ),
+        textDirection: TextDirection.ltr,
+      );
+      textPainter.layout();
+      textPainter.paint(
+        canvas,
+        Offset(xPosition - textPainter.width / 2, size.height + 10),
+      );
+    }
+
+    
   }
 
   @override
@@ -176,7 +177,7 @@ class BarChartPainter extends CustomPainter {
 }
 
 class PurchaseData {
-  final double amount;
+  final int amount;
   final String month;
 
   PurchaseData(this.amount, this.month);

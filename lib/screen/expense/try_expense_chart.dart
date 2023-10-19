@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:snabb_business/utils/color.dart';
 
 class ExpenseWidget extends StatelessWidget {
+    final List<ExpenseData> expenseData;
+
+  ExpenseWidget(this.expenseData);
   @override
   Widget build(BuildContext context) {
     // Sample expense data (adjust this data as needed)
-    final List<ExpenseData> expenseData = [
-      ExpenseData(200000, 'Jan'),
-      ExpenseData(350000, ''),
-      ExpenseData(40088090, 'Mar'),
-      ExpenseData(500000, 'Apr'),
-      ExpenseData(90000000, ''),
-      ExpenseData(1800000, ''),
-    ];
+    // final List<ExpenseData> expenseData = [
+    //   ExpenseData(0, '1-2'),
+    //   ExpenseData(890, '3-4'),
+    //   ExpenseData(0, '5-6'),
+    //   ExpenseData(0, '7-8'),
+    //   ExpenseData(6777, '9-10'),
+    //   ExpenseData(0, '11-12'),
+    // ];
 
     // Calculate the maximum expense value
     final maxExpense =
@@ -21,8 +25,8 @@ class ExpenseWidget extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.18, // Set the height
       width: MediaQuery.of(context).size.width, // Set the width to full width
       padding: EdgeInsets.only(
-          left: MediaQuery.of(context).size.width * 0.07,
-          bottom: MediaQuery.of(context).size.height * 0.02),
+          left: MediaQuery.of(context).size.width * 0.09,
+          bottom: MediaQuery.of(context).size.height * 0.023),
       // Add padding
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -37,7 +41,7 @@ class ExpenseWidget extends StatelessWidget {
 
 class RotatedBarChartPainter extends CustomPainter {
   final List<ExpenseData> expenseData;
-  final double maxExpense;
+  final int maxExpense;
   final BoxConstraints constraints;
 
   RotatedBarChartPainter(this.expenseData, this.maxExpense, this.constraints);
@@ -57,7 +61,7 @@ class RotatedBarChartPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.blue // Set a single color for all bars
+      ..color = expensecolor // Set a single color for all bars
       ..style = PaintingStyle.fill;
 
     if (expenseData.isEmpty) {
@@ -68,11 +72,38 @@ class RotatedBarChartPainter extends CustomPainter {
     const maxGridLines = 4; // Set the number of grid lines
 
     final gridInterval = maxExpense / maxGridLines;
+     for (var i = 0; i <= maxGridLines; i++) {
+      final value = gridInterval * i;
+      final xPosition = (i / maxGridLines) * (size.width * 0.8);
+      final xLabel = formatNumber(value);
+      final textPainter = TextPainter(
+        text: TextSpan(
+          text: xLabel,
+          style: const TextStyle(fontSize: 12, color: Colors.black),
+        ),
+        textDirection: TextDirection.ltr,
+      );
+      textPainter.layout();
+      textPainter.paint(
+        canvas,
+        Offset(xPosition - textPainter.width / 2, size.height + 10),
+      );
+
+      // Draw X-axis grid lines
+      final gridPaint = Paint()
+        ..color = Colors.grey.withOpacity(0.5)
+        ..strokeWidth = 0.5;
+      canvas.drawLine(
+        Offset(xPosition, 0),
+        Offset(xPosition, size.height),
+        gridPaint,
+      );
+    }
 
     for (var i = 0; i < expenseData.length; i++) {
       final data = expenseData[i];
       final yPosition = (i * 2 + 1) * barHeight;
-      final barWidth = (data.amount / maxExpense) * (size.width * 0.8);
+      final barWidth =  maxExpense==0? 0.0:(data.amount / maxExpense) * (size.width * 0.8);
 
       final rect = Rect.fromPoints(
         Offset(0, yPosition - barHeight / 2),
@@ -101,33 +132,7 @@ class RotatedBarChartPainter extends CustomPainter {
     }
 
     // Draw X-axis labels and grid lines
-    for (var i = 0; i <= maxGridLines; i++) {
-      final value = gridInterval * i;
-      final xPosition = (i / maxGridLines) * (size.width * 0.8);
-      final xLabel = formatNumber(value);
-      final textPainter = TextPainter(
-        text: TextSpan(
-          text: xLabel,
-          style: const TextStyle(fontSize: 12, color: Colors.black),
-        ),
-        textDirection: TextDirection.ltr,
-      );
-      textPainter.layout();
-      textPainter.paint(
-        canvas,
-        Offset(xPosition - textPainter.width / 2, size.height + 10),
-      );
-
-      // Draw X-axis grid lines
-      final gridPaint = Paint()
-        ..color = Colors.grey.withOpacity(0.5)
-        ..strokeWidth = 0.5;
-      canvas.drawLine(
-        Offset(xPosition, 0),
-        Offset(xPosition, size.height),
-        gridPaint,
-      );
-    }
+   
   }
 
   @override
@@ -137,7 +142,7 @@ class RotatedBarChartPainter extends CustomPainter {
 }
 
 class ExpenseData {
-  final double amount;
+  final int amount;
   final String month;
 
   ExpenseData(this.amount, this.month);

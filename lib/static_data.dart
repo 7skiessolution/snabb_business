@@ -85,6 +85,9 @@ class StaticValues {
   static const recoverPurchase = "Transaction/RecoverPurchase/";
   static const recoverSale = "Transaction/RecoverSale/";
 
+  /// day wise graph
+  static const getdayWiseGraph = "Transaction/GetDayWiseSalePurchaseExpense/";
+
   static String apikey =
       "G8I8cS9Uyncyl0GIXHZfPIosrXnqyTwBZa4Z0utvWG5FrnTGdvxD482MFcDSJLjb8JAjZsqpt4SYyjj3VimcQXTKxcyXsQTjvTJVhRQ9rUDHVzIds2x88oLfFwDtpudS";
 }

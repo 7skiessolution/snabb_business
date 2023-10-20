@@ -18,9 +18,9 @@ import 'package:snabb_business/models/get_year_type_sale.dart' as slist;
 import 'package:snabb_business/models/user_profile_model.dart';
 import 'package:snabb_business/models/user_wallet_model.dart' as wm;
 import 'package:snabb_business/screen/company/companyModel.dart' as cm;
-import 'package:snabb_business/screen/expense/try_expense_chart.dart';
-import 'package:snabb_business/screen/purchase/try_purchase_chart.dart';
-import 'package:snabb_business/screen/sale/try_chart.dart';
+// import 'package:snabb_business/screen/expense/try_expense_chart.dart';
+// import 'package:snabb_business/screen/purchase/try_purchase_chart.dart';
+// import 'package:snabb_business/screen/sale/try_chart.dart';
 import 'package:snabb_business/screen/schedule_transaction/add_Schedule_income.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:snabb_business/screen/suppliers/supplierModel.dart' as sm;
@@ -569,7 +569,7 @@ class HomeController extends GetxController {
           );
 
           saledatalist.add(
-            Chartdata(convertToAbbreviatedMonth(i + 1), e),
+            Chartdata(month, total),
           );
 
           update();
@@ -634,7 +634,68 @@ class HomeController extends GetxController {
           );
 
           saledatalist.add(
-            Chartdata(convertToAbbreviatedMonth(i + 1), e),
+            Chartdata(month, total),
+          );
+
+          update();
+        }
+        update();
+      }
+      print("purchase ${purchasedata.length}");
+      print("expense ${expensedata.length}");
+      print("sale ${saledatalist.length}");
+      if (type == 1) {
+        chartData.forEach((element) {
+          print("chartdata ${element.sales}");
+        });
+      }
+    }
+  }
+  dayexpenseList(int type) async {
+    print("select date ${selectdate.year}");
+    var res = await httpClient().get(
+        "${StaticValues.getdayWiseGraph}$type/${selectdate.year}/${selectdate.month}/${selectdate.day}");
+    if (res.statusCode == 200) {
+      print("res ${res.data} ");
+      if (type == 2) {
+        expensedata.clear();
+      } else if (type == 0) {
+        purchasedata.clear();
+      } else if (type == 1) {
+        saledatalist.clear();
+        chartData.clear();
+      }
+      update();
+      GetSalePurhase salepurchasemodel = GetSalePurhase.fromMap(res.data);
+      print("month, total ${salepurchasemodel.data!.length}");
+      for (int i = 0; i < 24; i = i + 4) {
+        var e = salepurchasemodel.data![i];
+        var e2 = salepurchasemodel.data![i + 1];
+        var e3 = salepurchasemodel.data![i + 2];
+        var e4 = salepurchasemodel.data![i + 3];
+        
+        String month = "${i + 1}-${i + 4}";
+        int total = e + e2 + e3 + e4;
+        if (type == 2) {
+          expensedata.add(
+            Chartdata(month, total),
+          );
+
+          update();
+        } else if (type == 0) {
+          purchasedata.add(
+            Chartdata(month, total),
+          );
+
+          update();
+        } else if (type == 1) {
+          update();
+          chartData.add(
+            SalesData(month, total),
+          );
+
+          saledatalist.add(
+            Chartdata(month, total),
           );
 
           update();
@@ -747,52 +808,23 @@ class HomeController extends GetxController {
   //   }
   // }
 
-  // Function to convert full month names to lowercase abbreviated month names
-  String convertToAbbreviatedMonth(int fullMonthName) {
-    switch (fullMonthName) {
-      case 1:
-        return 'Jan';
-      case 2:
-        return 'Feb';
-      case 3:
-        return 'Mar';
-      case 4:
-        return 'Apr';
-      case 5:
-        return 'May';
-      case 6:
-        return 'Jun';
-      case 7:
-        return 'Jul';
-      case 8:
-        return 'Aug';
-      case 9:
-        return 'Sep';
-      case 10:
-        return 'Oct';
-      case 11:
-        return 'Nov';
-      case 12:
-        return 'Dec';
-      default:
-        return 'unknown';
-    }
-  }
+  
 
-  String convertToDay(int day) {
-    if (day >= 11 && day <= 13) {
-      return '$day' + 'th';
-    }
-    switch (day % 10) {
-      case 1:
-        return '$day' + 'st';
-      case 2:
-        return '$day' + 'nd';
-      case 3:
-        return '$day' + 'rd';
-      default:
-        return '$day' + 'th';
-    }
+  getinggraph(String v){
+if(v=="Yearly"){
+expenseList(0);
+expenseList(1);
+expenseList(2);
+}else if(v=="Monthly"){
+monthexpenseList(0);
+monthexpenseList(1);
+monthexpenseList(2);
+}else{
+  dayexpenseList(0);
+  dayexpenseList(1);
+  dayexpenseList(2);
+}
+update();
   }
 
   String dropdownvalue = 'Yearly';
@@ -818,9 +850,7 @@ class HomeController extends GetxController {
       formatTime = DateFormat("dd-MM-yyyy").format(selectedDate);
       chartData.clear();
 
-      monthexpenseList(0);
-      monthexpenseList(1);
-      monthexpenseList(2);
+      getinggraph(dropdownvalue);
       update();
     }
   }

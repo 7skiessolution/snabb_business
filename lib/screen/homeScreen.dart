@@ -395,6 +395,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 onChanged: (String? newValue) {
                                   obj.dropdownvalue = newValue!;
                                   obj.update();
+                                  obj.getinggraph(newValue);
                                 },
                               ),
                               InkWell(

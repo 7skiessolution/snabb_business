@@ -409,7 +409,12 @@ class _CompanySaleReportPDFScreenState
 
     //////////////////////////////////////////
     int i = 1;
-    for (var u = 0; u <= 5; u++) {
+    double prevvalue=0;
+    double totalS=0;
+    double totalE=0;
+    double totalP=0;
+    
+    for (var u in widget.cashflowReportList) {
       cashFlowlistofPDF.add(pw.Table(
           border: pw.TableBorder.all(color: p.PdfColors.grey, width: 2),
           children: [
@@ -422,7 +427,7 @@ class _CompanySaleReportPDFScreenState
                     child: pw.Align(
                       alignment: pw.Alignment.center,
                       child: pw.Text(
-                        "67-89-8999",
+                        u.date.toString(),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -435,7 +440,7 @@ class _CompanySaleReportPDFScreenState
                     width: 80,
                     child: pw.Center(
                       child: pw.Text(
-                        i.toString(),
+                       prevvalue.toStringAsFixed(2),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -448,7 +453,7 @@ class _CompanySaleReportPDFScreenState
                     width: 80,
                     child: pw.Center(
                       child: pw.Text(
-                        "677676",
+                        u.sale!.toStringAsFixed(2),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -462,7 +467,7 @@ class _CompanySaleReportPDFScreenState
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
                       child: pw.Text(
-                        "677877",
+                        u.purchase!.toStringAsFixed(2),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -476,7 +481,7 @@ class _CompanySaleReportPDFScreenState
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
                       child: pw.Text(
-                        "656565",
+                        u.expense!.toStringAsFixed(2),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -490,7 +495,7 @@ class _CompanySaleReportPDFScreenState
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
                       child: pw.Text(
-                        "789789897",
+                        (prevvalue- u.sale! -u.purchase!-u.expense!).toString(),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -500,6 +505,10 @@ class _CompanySaleReportPDFScreenState
                   ),
                 ])
           ]));
+          prevvalue=prevvalue- u.sale! -u.purchase!-u.expense!;
+          totalE=totalE+u.expense!;
+          totalS=totalS+u.sale!;
+          totalP=totalP+u.purchase!;
       i++;
     }
     cashFlowlistofPDF.add(pw.Column(children: [
@@ -539,7 +548,7 @@ class _CompanySaleReportPDFScreenState
                       child: pw.Padding(
                         padding: pw.EdgeInsets.symmetric(vertical: 3),
                         child: pw.Text(
-                          '5646574',
+                          totalS.toStringAsFixed(2),
                           style: pw.TextStyle(
                               fontSize: 8,
                               fontWeight: pw.FontWeight.bold,
@@ -558,7 +567,7 @@ class _CompanySaleReportPDFScreenState
                       child: pw.Padding(
                         padding: pw.EdgeInsets.symmetric(vertical: 3),
                         child: pw.Text(
-                          '5646574',
+                          totalP.toStringAsFixed(2),
                           style: pw.TextStyle(
                               fontSize: 8,
                               fontWeight: pw.FontWeight.bold,
@@ -577,7 +586,7 @@ class _CompanySaleReportPDFScreenState
                       child: pw.Padding(
                         padding: pw.EdgeInsets.symmetric(vertical: 3),
                         child: pw.Text(
-                          '5646574',
+                          totalE.toStringAsFixed(2),
                           style: pw.TextStyle(
                               fontSize: 8,
                               fontWeight: pw.FontWeight.bold,
@@ -596,7 +605,7 @@ class _CompanySaleReportPDFScreenState
                       child: pw.Padding(
                         padding: pw.EdgeInsets.symmetric(vertical: 3),
                         child: pw.Text(
-                          'Profit  5646574',
+                          'Profit  ${(totalS-totalP-totalE).toStringAsFixed(2)}',
                           style: pw.TextStyle(
                               fontSize: 8,
                               fontWeight: pw.FontWeight.bold,

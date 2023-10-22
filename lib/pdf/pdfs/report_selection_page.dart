@@ -592,7 +592,8 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                                   PdfController.to
                                       .cashflowReport(fromDate, toDate);
                                 }
-                                Navigator.push(
+                                Future.delayed(Duration(seconds: 3),(){
+                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
@@ -614,6 +615,8 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                                             PdfController.to.purchaseReportList,
                                       ),
                                     ));
+                                });
+                               
                               } else {
                                 Fluttertoast.showToast(
                                     msg: " Please Select Date !",

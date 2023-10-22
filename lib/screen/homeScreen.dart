@@ -55,9 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeController.to.getSupplierdata();
     ExpenseController.to.getCatageries();
     // pdf
-    // PdfController.to.fetchdailyslaesReport();
-    // PdfController.to.fetchexpenseReport();
-    // PdfController.to.fetchpurchaseReport();
 
     super.initState();
   }

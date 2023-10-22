@@ -27,7 +27,7 @@ class CategoryController extends GetxController {
   getcategory(int type, String start, String end) async {
     list.clear();
     var res = await httpClient().get(
-        "${StaticValues.searchSummary}$type&StartDate=$start&EndDate=$end");
+        "${StaticValues.searchSummary}$type&StartDate=$start%2000%3A00&EndDate=$end%2000%3A00");
     print("-------search ${res.data}");
     summary.SearchSummary model = summary.SearchSummary.fromMap(res.data);
     model.data!.forEach((element) {

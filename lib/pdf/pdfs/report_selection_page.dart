@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:snabb_business/pdf/c/pdf_controller.dart';
 import 'package:snabb_business/pdf/pdfs/company_sale_pdf.dart';
 import 'package:snabb_business/pdf/pdfs/daily_sale_report.dart';
@@ -16,6 +18,33 @@ class ReportSelectionPage extends StatefulWidget {
 }
 
 class _ReportSelectionPageState extends State<ReportSelectionPage> {
+  bool daily = false;
+  bool company = false;
+  bool expense = false;
+  bool purchase = false;
+  bool flow = false;
+  String fromDate = "Select Date";
+  String toDate = "Select Date";
+  void _selectDate(
+      BuildContext context, bool isFrom, StateSetter setState) async {
+    DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (picked != null) {
+      setState(() {
+        if (isFrom) {
+          fromDate = DateFormat("dd-MM-yyyy").format(picked);
+        } else {
+          toDate = DateFormat("dd-MM-yyyy").format(picked);
+        }
+      });
+    }
+  }
+
   var height, width;
   @override
   Widget build(BuildContext context) {
@@ -87,6 +116,42 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                           ),
                           SizedBox(
                             height: height * 0.02,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Text(
+                                "From: ",
+                                style: GoogleFonts.poppins(
+                                    color: blackcolor,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width *
+                                            0.035,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              InkWell(
+                                  onTap: () {
+                                    _selectDate(context, true, setState);
+                                  },
+                                  child: Text(fromDate)),
+                              SizedBox(
+                                width: width * 0.1,
+                              ),
+                              Text(
+                                "To:",
+                                style: GoogleFonts.poppins(
+                                    color: blackcolor,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width *
+                                            0.035,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              InkWell(
+                                  onTap: () {
+                                    _selectDate(context, false, setState);
+                                  },
+                                  child: Text(toDate)),
+                            ],
                           ),
                           // Padding(
                           //   padding: EdgeInsets.only(
@@ -272,15 +337,15 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                           // ),
                           InkWell(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        DailySaleReportPDFScreen(
-                                      dailysaleReportList:
-                                          PdfController.to.dailyslaesReportlist,
-                                    ),
-                                  ));
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //       builder: (context) =>
+                              //           DailySaleReportPDFScreen(
+                              //         dailysaleReportList:
+                              //             PdfController.to.dailyslaesReportlist,
+                              //       ),
+                              //     ));
                               // Navigator.push(
                               //     context,
                               //     MaterialPageRoute(
@@ -291,6 +356,14 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                                 Icons.wysiwyg_outlined,
                                 color: blue,
                               ),
+                              trailing: Checkbox(
+                                  value: daily,
+                                  activeColor: blue,
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      daily = newValue as bool;
+                                    });
+                                  }),
                               title: Text(
                                 "Daily Sale Report",
                                 style: GoogleFonts.poppins(
@@ -302,17 +375,15 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                           ),
                           InkWell(
                             onTap: () {
-                              // PdfController.to.fetchcompenysales();
-
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        CompanySaleReportPDFScreen(
-                                      companysaleReportList:
-                                          PdfController.to.compenysaleslist,
-                                    ),
-                                  ));
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //       builder: (context) =>
+                              //           CompanySaleReportPDFScreen(
+                              //         companysaleReportList:
+                              //             PdfController.to.compenysaleslist,
+                              //       ),
+                              //     ));
                               // obj.drawermenueclose();
                               // Navigator.push(context,
                               //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
@@ -322,6 +393,14 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                                 Icons.wysiwyg_outlined,
                                 color: blue,
                               ),
+                              trailing: Checkbox(
+                                  value: company,
+                                  activeColor: blue,
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      company = newValue as bool;
+                                    });
+                                  }),
                               title: Text(
                                 "Company Sale Report",
                                 style: GoogleFonts.poppins(
@@ -333,15 +412,15 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                           ),
                           InkWell(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        PurchaseReportPDFScreen(
-                                      purchaseReportList:
-                                          PdfController.to.purchaseReportList,
-                                    ),
-                                  ));
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //       builder: (context) =>
+                              //           PurchaseReportPDFScreen(
+                              //         purchaseReportList:
+                              //             PdfController.to.purchaseReportList,
+                              //       ),
+                              //     ));
                               // obj.drawermenueclose();
                               // Navigator.push(context,
                               //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
@@ -351,6 +430,14 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                                 Icons.wysiwyg_outlined,
                                 color: blue,
                               ),
+                              trailing: Checkbox(
+                                  value: purchase,
+                                  activeColor: blue,
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      purchase = newValue as bool;
+                                    });
+                                  }),
                               title: Text(
                                 "Purchase Report",
                                 style: GoogleFonts.poppins(
@@ -360,10 +447,18 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                               ),
                             ),
                           ),
+
                           InkWell(
                             onTap: () {
-                              // showingSuplierdialogue(
-                              //     context, height, width, white);
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //       builder: (context) =>
+                              //           ExpenseReportPDFScreen(
+                              //         expenseReportList:
+                              //             PdfController.to.expenseReportList,
+                              //       ),
+                              //     ));
                               // obj.drawermenueclose();
                               // Navigator.push(context,
                               //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
@@ -373,35 +468,14 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                                 Icons.wysiwyg_outlined,
                                 color: blue,
                               ),
-                              title: Text(
-                                "Supplier Report",
-                                style: GoogleFonts.poppins(
-                                    color: blue,
-                                    fontSize: width * 0.03,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        ExpenseReportPDFScreen(
-                                      expenseReportList:
-                                          PdfController.to.expenseReportList,
-                                    ),
-                                  ));
-                              // obj.drawermenueclose();
-                              // Navigator.push(context,
-                              //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
-                            },
-                            child: ListTile(
-                              leading: Icon(
-                                Icons.wysiwyg_outlined,
-                                color: blue,
-                              ),
+                              trailing: Checkbox(
+                                  value: expense,
+                                  activeColor: blue,
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      expense = newValue as bool;
+                                    });
+                                  }),
                               title: Text(
                                 "Expense Report",
                                 style: GoogleFonts.poppins(
@@ -411,26 +485,88 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                               ),
                             ),
                           ),
-                          InkWell(
-                            onTap: () {
-                              // obj.drawermenueclose();
-                              // Navigator.push(context,
-                              //     MaterialPageRoute(builder: (_) => const InvoiceScreen()));
-                            },
-                            child: ListTile(
-                              leading: Icon(
-                                Icons.wysiwyg_outlined,
-                                color: blue,
-                              ),
-                              title: Text(
-                                "Cashflow Report",
-                                style: GoogleFonts.poppins(
-                                    color: blue,
-                                    fontSize: width * 0.03,
-                                    fontWeight: FontWeight.w400),
-                              ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.wysiwyg_outlined,
+                              color: blue,
+                            ),
+                            trailing: Checkbox(
+                                value: flow,
+                                activeColor: blue,
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    flow = newValue as bool;
+                                  });
+                                }),
+                            title: Text(
+                              "Cashflow Report",
+                              style: GoogleFonts.poppins(
+                                  color: blue,
+                                  fontSize: width * 0.03,
+                                  fontWeight: FontWeight.w400),
                             ),
                           ),
+                          SizedBox(
+                            height: height * 0.03,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              if (fromDate != "Select Date" &&
+                                  toDate != "Select Date") {
+                                if (daily) {
+                                  PdfController.to
+                                      .fetchdailyslaesReport(fromDate, toDate);
+                                }
+                                if (expense) {
+                                  PdfController.to
+                                      .fetchexpenseReport(fromDate, toDate);
+                                }
+                                if (purchase) {
+                                  PdfController.to
+                                      .fetchpurchaseReport(fromDate, toDate);
+                                }
+                                if (company) {
+                                  PdfController.to
+                                      .fetchcompenysales(fromDate, toDate);
+                                }
+                                if (flow) {
+                                  PdfController.to
+                                      .cashflowReport(fromDate, toDate);
+                                }
+                              } else {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          CompanySaleReportPDFScreen(),
+                                    ));
+                                Fluttertoast.showToast(
+                                    msg: " Please Select Date !",
+                                    backgroundColor: Colors.blue[900],
+                                    textColor: Colors.white,
+                                    gravity: ToastGravity.BOTTOM,
+                                    fontSize: 17,
+                                    timeInSecForIosWeb: 1,
+                                    toastLength: Toast.LENGTH_LONG);
+                              }
+                            },
+                            child: Container(
+                              height: height * 0.06,
+                              width: width * 0.35,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(7),
+                                  color: blue),
+                              child: Center(
+                                child: Text(
+                                  "Generate",
+                                  style: GoogleFonts.poppins(
+                                      color: white,
+                                      fontSize: width * 0.035,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     ),

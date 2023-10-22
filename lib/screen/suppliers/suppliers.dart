@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:snabb_business/controller/homeController.dart';
+import 'package:snabb_business/pdf/c/pdf_controller.dart';
+import 'package:snabb_business/pdf/pdfs/supplier_report_pdf.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
 
 import '../../utils/color.dart';
@@ -27,6 +31,121 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
   TextEditingController updateaddress = TextEditingController();
   bool loading = true;
   final _formKey = GlobalKey<FormState>();
+
+  String fromDate = "Select Date";
+  String toDate = "Select Date";
+
+  Future _openDateRangePicker(BuildContext context, String id) async {
+    fromDate = "Select Date";
+    toDate = "Select Date";
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Select Date Range"),
+          content: StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        "From: ",
+                        style: GoogleFonts.poppins(
+                            color: blackcolor,
+                            fontSize: MediaQuery.of(context).size.width * 0.035,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      InkWell(
+                          onTap: () {
+                            _selectDate(context, true, setState);
+                          },
+                          child: Text(fromDate)),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        "To:",
+                        style: GoogleFonts.poppins(
+                            color: blackcolor,
+                            fontSize: MediaQuery.of(context).size.width * 0.035,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      InkWell(
+                          onTap: () {
+                            _selectDate(context, false, setState);
+                          },
+                          child: Text(toDate)),
+                    ],
+                  ),
+                ],
+              );
+            },
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              child: Text('Generate'),
+              onPressed: () {
+                if (fromDate != "Select Date" && toDate != "Select Date") {
+                  PdfController.to
+                      .fetchsupplierReport(id, fromDate, toDate)
+                      .then((value) {
+                    Navigator.of(context).pop();
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SupplierReportPDFScreen(
+                              supplierReportList: value),
+                        ));
+                  });
+                } else {
+                  Fluttertoast.showToast(
+                      msg: " Please Select Date !",
+                      backgroundColor: Colors.blue[900],
+                      textColor: Colors.white,
+                      gravity: ToastGravity.BOTTOM,
+                      fontSize: 17,
+                      timeInSecForIosWeb: 1,
+                      toastLength: Toast.LENGTH_LONG);
+                }
+              },
+            ),
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _selectDate(
+      BuildContext context, bool isFrom, StateSetter setState) async {
+    DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (picked != null) {
+      setState(() {
+        if (isFrom) {
+          fromDate = DateFormat("dd-MM-yyyy").format(picked);
+        } else {
+          toDate = DateFormat("dd-MM-yyyy").format(picked);
+        }
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -1247,7 +1366,19 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                       );
                                                     },
                                                     child:
-                                                        const Icon(Icons.edit))
+                                                        const Icon(Icons.edit)),
+                                                InkWell(
+                                                    onTap: () {
+                                                      _openDateRangePicker(
+                                                          context,
+                                                          HomeController
+                                                              .to
+                                                              .supplierList[
+                                                                  index]
+                                                              .supplierId!);
+                                                    },
+                                                    child: Icon(
+                                                        Icons.picture_as_pdf))
                                               ],
                                             ),
                                           ),

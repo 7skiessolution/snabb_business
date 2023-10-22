@@ -70,6 +70,7 @@ class StaticValues {
   static const getpurchaseReport = "Transaction/PurchaseReport";
   static const getsuppliersReport = "Transaction/SupplierReport";
   static const getexpenseReport = "Transaction/ExpenseReport";
+  static const getcashflowReport = "Transaction/CashFlow";
   ////////////// expense and purchase
 
   static const getexpensePurchaseyearType = "Transaction/GetYearTransactions/";

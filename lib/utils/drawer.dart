@@ -554,21 +554,21 @@ void showingSuplierdialogue(context, height, width, white) {
                                     padding: const EdgeInsets.all(8.0),
                                     child: InkWell(
                                       onTap: () {
-                                        PdfController.to
-                                            .fetchsupplierReport(HomeController
-                                                .to
-                                                .supplierList[index]
-                                                .supplierId!)
-                                            .then((value) {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SupplierReportPDFScreen(
-                                                        supplierReportList:
-                                                            value),
-                                              ));
-                                        });
+                                        // PdfController.to
+                                        //     .fetchsupplierReport(HomeController
+                                        //         .to
+                                        //         .supplierList[index]
+                                        //         .supplierId!)
+                                        //     .then((value) {
+                                        //   Navigator.push(
+                                        //       context,
+                                        //       MaterialPageRoute(
+                                        //         builder: (context) =>
+                                        //             SupplierReportPDFScreen(
+                                        //                 supplierReportList:
+                                        //                     value),
+                                        //       ));
+                                        // });
                                         // supplierName = HomeController.to.supplierList[index].name.toString();
                                         // supplierid = HomeController.to.supplierList[index].supplierId.toString();
                                         // print("name supplier ------$supplierName");

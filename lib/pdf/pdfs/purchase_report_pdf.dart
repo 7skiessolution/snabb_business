@@ -19,15 +19,15 @@ class PurchaseReportPDFScreen extends StatefulWidget {
 }
 
 class _PurchaseReportPDFScreenState extends State<PurchaseReportPDFScreen> {
-  List<pw.Widget> listofPDF = [];
+  List<pw.Widget> purchaseListOfPDF = [];
   double total = 0.0;
 
   generatelist() {
-    listofPDF.clear();
+    purchaseListOfPDF.clear();
 
     // print("list of days $listofdays");
     // ///////////////////////
-    listofPDF.add(
+    purchaseListOfPDF.add(
       pw.Header(
         level: 0,
         child: pw.Text(
@@ -40,7 +40,7 @@ class _PurchaseReportPDFScreenState extends State<PurchaseReportPDFScreen> {
       ),
     );
 
-    listofPDF.add(pw.Column(children: [
+    purchaseListOfPDF.add(pw.Column(children: [
       pw.SizedBox(height: 20),
       pw.Container(
         height: 25,
@@ -202,7 +202,7 @@ class _PurchaseReportPDFScreenState extends State<PurchaseReportPDFScreen> {
 
     ///
     for (var u in widget.purchaseReportList!) {
-      listofPDF.add(pw.Table(
+      purchaseListOfPDF.add(pw.Table(
           border: pw.TableBorder.all(color: p.PdfColors.grey, width: 2),
           children: [
             pw.TableRow(
@@ -343,7 +343,7 @@ class _PurchaseReportPDFScreenState extends State<PurchaseReportPDFScreen> {
       i++;
     }
 
-    listofPDF.add(pw.Column(children: [
+    purchaseListOfPDF.add(pw.Column(children: [
       pw.SizedBox(height: 10),
       pw.SizedBox(height: 5),
     ]));
@@ -355,7 +355,7 @@ class _PurchaseReportPDFScreenState extends State<PurchaseReportPDFScreen> {
     pdf.addPage(
       pw.MultiPage(
         build: (pw.Context context) {
-          return listofPDF;
+          return purchaseListOfPDF;
         },
       ),
     );

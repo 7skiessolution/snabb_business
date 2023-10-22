@@ -98,7 +98,7 @@ class PdfController extends GetxController {
   }
 
   Future<List<CashFlowData>> cashflowReport(String from, String to) async {
-    supplierReportList.clear();
+    cashflowReportList.clear();
     CashFlowReport? cashflow;
     var res = await httpClient().get(
         "${StaticValues.getcashflowReport}?StartDate=$from%2000%3A00&EndDate=$to%2000%3A00");

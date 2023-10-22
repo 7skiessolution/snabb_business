@@ -19,15 +19,15 @@ class DailySaleReportPDFScreen extends StatefulWidget {
 }
 
 class _DailySaleReportPDFScreenState extends State<DailySaleReportPDFScreen> {
-  List<pw.Widget> listofPDF = [];
+  List<pw.Widget> dailyListOfPDF = [];
   double total = 0.0;
 
   generatelist() {
-    listofPDF.clear();
+    dailyListOfPDF.clear();
 
     // print("list of days $listofdays");
     // ///////////////////////
-    listofPDF.add(
+    dailyListOfPDF.add(
       pw.Header(
         level: 0,
         child: pw.Text(
@@ -40,7 +40,7 @@ class _DailySaleReportPDFScreenState extends State<DailySaleReportPDFScreen> {
       ),
     );
 
-    listofPDF.add(pw.Column(children: [
+    dailyListOfPDF.add(pw.Column(children: [
       pw.SizedBox(height: 20),
       pw.Container(
         height: 25,
@@ -202,7 +202,7 @@ class _DailySaleReportPDFScreenState extends State<DailySaleReportPDFScreen> {
 
     ///
     for (var u in widget.dailysaleReportList!) {
-      listofPDF.add(pw.Table(
+      dailyListOfPDF.add(pw.Table(
           border: pw.TableBorder.all(color: p.PdfColors.grey, width: 2),
           children: [
             pw.TableRow(
@@ -343,7 +343,7 @@ class _DailySaleReportPDFScreenState extends State<DailySaleReportPDFScreen> {
       i++;
     }
 
-    listofPDF.add(pw.Column(children: [
+    dailyListOfPDF.add(pw.Column(children: [
       pw.SizedBox(height: 10),
       pw.SizedBox(height: 5),
     ]));
@@ -355,7 +355,7 @@ class _DailySaleReportPDFScreenState extends State<DailySaleReportPDFScreen> {
     pdf.addPage(
       pw.MultiPage(
         build: (pw.Context context) {
-          return listofPDF;
+          return dailyListOfPDF;
         },
       ),
     );

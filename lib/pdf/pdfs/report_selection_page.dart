@@ -107,6 +107,9 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                       color: white,
                       child: Column(
                         children: [
+                          SizedBox(
+                            height: height * 0.05,
+                          ),
                           Text(
                             "Compare the values of the Report",
                             style: GoogleFonts.poppins(
@@ -117,41 +120,101 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                           SizedBox(
                             height: height * 0.02,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Text(
-                                "From: ",
-                                style: GoogleFonts.poppins(
-                                    color: blackcolor,
-                                    fontSize:
-                                        MediaQuery.of(context).size.width *
-                                            0.035,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              InkWell(
-                                  onTap: () {
-                                    _selectDate(context, true, setState);
-                                  },
-                                  child: Text(fromDate)),
-                              SizedBox(
-                                width: width * 0.1,
-                              ),
-                              Text(
-                                "To:",
-                                style: GoogleFonts.poppins(
-                                    color: blackcolor,
-                                    fontSize:
-                                        MediaQuery.of(context).size.width *
-                                            0.035,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              InkWell(
-                                  onTap: () {
-                                    _selectDate(context, false, setState);
-                                  },
-                                  child: Text(toDate)),
-                            ],
+                          SizedBox(
+                            height: height * 0.12,
+                            width: width,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Expanded(
+                                  child: SizedBox(
+                                    height: height,
+                                    width: width,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Text(
+                                          "From",
+                                          style: GoogleFonts.poppins(
+                                              color: blue,
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.035,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                        InkWell(
+                                            onTap: () {
+                                              _selectDate(
+                                                  context, true, setState);
+                                            },
+                                            child: Container(
+                                                height: height * 0.05,
+                                                width: width * 0.25,
+                                                alignment: Alignment.center,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.grey
+                                                        .withOpacity(0.5)),
+                                                child: Text(
+                                                  fromDate,
+                                                  style: GoogleFonts.poppins(
+                                                      color: Colors.black,
+                                                      fontSize: width * 0.032,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ))),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: width * 0.1,
+                                ),
+                                Expanded(
+                                  child: SizedBox(
+                                    height: height,
+                                    width: width,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Text(
+                                          "To",
+                                          style: GoogleFonts.poppins(
+                                              color: blue,
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.035,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                        InkWell(
+                                            onTap: () {
+                                              _selectDate(
+                                                  context, false, setState);
+                                            },
+                                            child: Container(
+                                                height: height * 0.05,
+                                                width: width * 0.25,
+                                                alignment: Alignment.center,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.grey
+                                                        .withOpacity(0.5)),
+                                                child: Text(
+                                                  toDate,
+                                                  style: GoogleFonts.poppins(
+                                                      color: Colors.black,
+                                                      fontSize: width * 0.032,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ))),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                           // Padding(
                           //   padding: EdgeInsets.only(
@@ -255,9 +318,7 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                           //     ],
                           //   ),
                           // ),
-                          SizedBox(
-                            height: height * 0.01,
-                          ),
+
                           // Padding(
                           //   padding: EdgeInsets.only(
                           //       left: width * 0.08, right: width * 0.1),
@@ -287,9 +348,7 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                           //     ],
                           //   ),
                           // ),
-                          SizedBox(
-                            height: height * 0.01,
-                          ),
+
                           // Row(
                           //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           //   children: [
@@ -533,13 +592,29 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                                   PdfController.to
                                       .cashflowReport(fromDate, toDate);
                                 }
-                              } else {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          CompanySaleReportPDFScreen(),
+                                          CompanySaleReportPDFScreen(
+                                        company: company,
+                                        daily: daily,
+                                        expense: expense,
+                                        flow: flow,
+                                        purchase: purchase,
+                                        cashflowReportList:
+                                            PdfController.to.cashflowReportList,
+                                        compenysaleslist:
+                                            PdfController.to.compenysaleslist,
+                                        dailyslaesReportlist: PdfController
+                                            .to.dailyslaesReportlist,
+                                        expenseReportList:
+                                            PdfController.to.expenseReportList,
+                                        purchaseReportList:
+                                            PdfController.to.purchaseReportList,
+                                      ),
                                     ));
+                              } else {
                                 Fluttertoast.showToast(
                                     msg: " Please Select Date !",
                                     backgroundColor: Colors.blue[900],

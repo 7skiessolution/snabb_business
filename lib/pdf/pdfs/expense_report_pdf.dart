@@ -18,15 +18,15 @@ class ExpenseReportPDFScreen extends StatefulWidget {
 }
 
 class _ExpenseReportPDFScreenState extends State<ExpenseReportPDFScreen> {
-  List<pw.Widget> listofPDF = [];
+  List<pw.Widget> expenceListOfPDF = [];
   double total = 0.0;
 
   generatelist() {
-    listofPDF.clear();
+    expenceListOfPDF.clear();
 
     // print("list of days $listofdays");
     // ///////////////////////
-    listofPDF.add(
+    expenceListOfPDF.add(
       pw.Header(
         level: 0,
         child: pw.Text(
@@ -39,7 +39,7 @@ class _ExpenseReportPDFScreenState extends State<ExpenseReportPDFScreen> {
       ),
     );
 
-    listofPDF.add(pw.Column(children: [
+    expenceListOfPDF.add(pw.Column(children: [
       pw.SizedBox(height: 20),
       pw.Container(
         height: 25,
@@ -201,7 +201,7 @@ class _ExpenseReportPDFScreenState extends State<ExpenseReportPDFScreen> {
 
     ///
     for (var u in widget.expenseReportList!) {
-      listofPDF.add(pw.Table(
+      expenceListOfPDF.add(pw.Table(
           border: pw.TableBorder.all(color: p.PdfColors.grey, width: 2),
           children: [
             pw.TableRow(
@@ -340,7 +340,7 @@ class _ExpenseReportPDFScreenState extends State<ExpenseReportPDFScreen> {
       i++;
     }
 
-    listofPDF.add(pw.Column(children: [
+    expenceListOfPDF.add(pw.Column(children: [
       pw.SizedBox(height: 10),
       pw.SizedBox(height: 5),
     ]));
@@ -352,7 +352,7 @@ class _ExpenseReportPDFScreenState extends State<ExpenseReportPDFScreen> {
     pdf.addPage(
       pw.MultiPage(
         build: (pw.Context context) {
-          return listofPDF;
+          return expenceListOfPDF;
         },
       ),
     );

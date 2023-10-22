@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_launcher_icons/main.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,61 +36,123 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
   String fromDate = "Select Date";
   String toDate = "Select Date";
 
-  Future _openDateRangePicker(BuildContext context, String id) async {
+  Future _openDateRangePicker(
+      BuildContext context, String id, var height, var width) async {
     fromDate = "Select Date";
     toDate = "Select Date";
     return showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Select Date Range"),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          title: Text(
+            "Select Date Range",
+            style: GoogleFonts.poppins(
+                color: blue,
+                fontSize: width * 0.035,
+                fontWeight: FontWeight.w600),
+          ),
           content: StatefulBuilder(
             builder: (BuildContext context, StateSetter setState) {
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        "From: ",
-                        style: GoogleFonts.poppins(
-                            color: blackcolor,
-                            fontSize: MediaQuery.of(context).size.width * 0.035,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      InkWell(
-                          onTap: () {
-                            _selectDate(context, true, setState);
-                          },
-                          child: Text(fromDate)),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        "To:",
-                        style: GoogleFonts.poppins(
-                            color: blackcolor,
-                            fontSize: MediaQuery.of(context).size.width * 0.035,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      InkWell(
-                          onTap: () {
-                            _selectDate(context, false, setState);
-                          },
-                          child: Text(toDate)),
-                    ],
+                  SizedBox(
+                    height: height * 0.12,
+                    width: width,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Expanded(
+                          child: SizedBox(
+                            height: height,
+                            width: width,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  "From",
+                                  style: GoogleFonts.poppins(
+                                      color: blue,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.035,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                InkWell(
+                                    onTap: () {
+                                      _selectDate(context, true, setState);
+                                    },
+                                    child: Container(
+                                        height: height * 0.05,
+                                        width: width * 0.25,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                            color:
+                                                Colors.grey.withOpacity(0.5)),
+                                        child: Text(
+                                          fromDate,
+                                          style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),
+                                        ))),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: width * 0.1,
+                        ),
+                        Expanded(
+                          child: SizedBox(
+                            height: height,
+                            width: width,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  "To",
+                                  style: GoogleFonts.poppins(
+                                      color: blue,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.035,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                InkWell(
+                                    onTap: () {
+                                      _selectDate(context, false, setState);
+                                    },
+                                    child: Container(
+                                        height: height * 0.05,
+                                        width: width * 0.25,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                            color:
+                                                Colors.grey.withOpacity(0.5)),
+                                        child: Text(
+                                          toDate,
+                                          style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: width * 0.032,
+                                              fontWeight: FontWeight.w500),
+                                        ))),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               );
             },
           ),
           actions: <Widget>[
-            ElevatedButton(
-              child: Text('Generate'),
-              onPressed: () {
+            InkWell(
+              onTap: () {
                 if (fromDate != "Select Date" && toDate != "Select Date") {
                   PdfController.to
                       .fetchsupplierReport(id, fromDate, toDate)
@@ -114,9 +177,28 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                       toastLength: Toast.LENGTH_LONG);
                 }
               },
+              child: Container(
+                  height: height * 0.05,
+                  width: width * 0.25,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: blue, borderRadius: BorderRadius.circular(10)),
+                  child: Text(
+                    'Generate',
+                    style: GoogleFonts.poppins(
+                        color: whitecolor,
+                        fontSize: width * 0.032,
+                        fontWeight: FontWeight.w500),
+                  )),
             ),
             TextButton(
-              child: Text('Cancel'),
+              child: Text(
+                'Cancel',
+                style: GoogleFonts.poppins(
+                    color: red,
+                    fontSize: width * 0.032,
+                    fontWeight: FontWeight.w500),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -1375,7 +1457,9 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                                                               .to
                                                               .supplierList[
                                                                   index]
-                                                              .supplierId!);
+                                                              .supplierId!,
+                                                          height,
+                                                          width);
                                                     },
                                                     child: Icon(
                                                         Icons.picture_as_pdf))

@@ -68,7 +68,7 @@ class _DebitfloatingButtonState extends State<DebitfloatingButton>
                           const AddCreditDebitScreen(balanceType: "Credit"),
                     ));
               },
-              backgroundColor: Colors.red,
+              backgroundColor: expensecolor,
               child: const ImageIcon(AssetImage("images/minus.png")),
             ),
         if (_isExpanded) const SizedBox(height: 5),
@@ -84,7 +84,7 @@ class _DebitfloatingButtonState extends State<DebitfloatingButton>
                         const AddCreditDebitScreen(balanceType: "Debit"),
                   ));
             },
-            backgroundColor: Colors.green,
+            backgroundColor: greencolor,
             child: const Icon(Icons.add),
           ),
         const SizedBox(height: 10),
@@ -97,7 +97,7 @@ class _DebitfloatingButtonState extends State<DebitfloatingButton>
                   child: FloatingActionButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40)),
-                backgroundColor: red,
+                backgroundColor: gold,
                 onPressed: _toggleExpanded,
                 child: AnimatedIcon(
                   icon: AnimatedIcons.add_event,

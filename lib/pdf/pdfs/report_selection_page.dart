@@ -592,31 +592,30 @@ class _ReportSelectionPageState extends State<ReportSelectionPage> {
                                   PdfController.to
                                       .cashflowReport(fromDate, toDate);
                                 }
-                                Future.delayed(Duration(seconds: 3),(){
-                                   Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          CompanySaleReportPDFScreen(
-                                        company: company,
-                                        daily: daily,
-                                        expense: expense,
-                                        flow: flow,
-                                        purchase: purchase,
-                                        cashflowReportList:
-                                            PdfController.to.cashflowReportList,
-                                        compenysaleslist:
-                                            PdfController.to.compenysaleslist,
-                                        dailyslaesReportlist: PdfController
-                                            .to.dailyslaesReportlist,
-                                        expenseReportList:
-                                            PdfController.to.expenseReportList,
-                                        purchaseReportList:
-                                            PdfController.to.purchaseReportList,
-                                      ),
-                                    ));
+                                Future.delayed(const Duration(seconds: 1), () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            CompanySaleReportPDFScreen(
+                                          company: company,
+                                          daily: daily,
+                                          expense: expense,
+                                          flow: flow,
+                                          purchase: purchase,
+                                          cashflowReportList: PdfController
+                                              .to.cashflowReportList,
+                                          compenysaleslist:
+                                              PdfController.to.compenysaleslist,
+                                          dailyslaesReportlist: PdfController
+                                              .to.dailyslaesReportlist,
+                                          expenseReportList: PdfController
+                                              .to.expenseReportList,
+                                          purchaseReportList: PdfController
+                                              .to.purchaseReportList,
+                                        ),
+                                      ));
                                 });
-                               
                               } else {
                                 Fluttertoast.showToast(
                                     msg: " Please Select Date !",

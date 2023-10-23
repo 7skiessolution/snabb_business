@@ -15,7 +15,7 @@ List<Pages> list = [
   ),
   Pages(
     icon: Icons.note,
-    title: "Summary",
+    title: "Overview",
     ontap: () {},
   ),
   Pages(

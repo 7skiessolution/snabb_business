@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:snabb_business/screen/invoice/company_model.dart';
 import 'package:snabb_business/screen/invoice/items_model.dart';
@@ -93,14 +94,16 @@ class InvoiceController extends GetxController {
                   shadowColor: Colors.white,
                   backgroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
+                      borderRadius: BorderRadius.circular(10)),
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         'Add Item:',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: darkblue!),
+                        style: GoogleFonts.poppins(
+                            color: blue,
+                            fontSize: width * 0.03,
+                            fontWeight: FontWeight.w600),
                       ),
                       InkWell(
                         splashColor: Colors.grey.withOpacity(0.15),
@@ -166,7 +169,7 @@ class InvoiceController extends GetxController {
                                                       color: Colors.black,
                                                       fontSize: 14,
                                                       fontWeight:
-                                                          FontWeight.w500),
+                                                          FontWeight.w100),
                                                 )
                                               ],
                                             ),
@@ -245,8 +248,8 @@ class InvoiceController extends GetxController {
                                               children: [
                                                 InkWell(
                                                   onTap: () {
-                                                    edititem(
-                                                        context, index, true);
+                                                    edititem(context, index,
+                                                        true, width);
                                                   },
                                                   child: Icon(
                                                     Icons.edit,
@@ -299,7 +302,8 @@ class InvoiceController extends GetxController {
         });
   }
 
-  Future<void> edititem(BuildContext context, int index, bool edit) async {
+  Future<void> edititem(
+      BuildContext context, int index, bool edit, var width) async {
     if (edit) {
       amount.text = itemList[index].amount.toString();
       tax.text = itemList[index].tax.toString();
@@ -326,10 +330,13 @@ class InvoiceController extends GetxController {
               shadowColor: Colors.white,
               backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
+                  borderRadius: BorderRadius.circular(10)),
               title: Text(
                 edit ? 'Edit Item :' : 'Add Item :',
-                style: TextStyle(fontWeight: FontWeight.bold, color: darkblue!),
+                style: GoogleFonts.poppins(
+                    color: blue,
+                    fontSize: width * 0.03,
+                    fontWeight: FontWeight.w600),
               ),
               content: SizedBox(
                 height: size.height * 0.26,
@@ -353,13 +360,12 @@ class InvoiceController extends GetxController {
                               filled: true,
                               fillColor: Colors.grey.withOpacity(0.15),
                               labelText: 'Name',
-                              labelStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: size.width * 0.03,
-                                fontWeight: FontWeight.w500,
-                              ),
+                              labelStyle: GoogleFonts.poppins(
+                                  //color:lightgray,
+                                  fontSize: width * 0.03,
+                                  fontWeight: FontWeight.w600),
                               enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(10),
                                 borderSide: const BorderSide(
                                   color: Colors.black45,
                                   width: 1.5,
@@ -367,19 +373,19 @@ class InvoiceController extends GetxController {
                               ),
                               errorBorder: const OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(50)),
+                                    BorderRadius.all(Radius.circular(10)),
                                 borderSide: BorderSide(
                                   width: 1.5,
                                   color: Colors.red,
                                 ),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(10),
                                 borderSide: const BorderSide(
                                     color: Colors.red, width: 2),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(
                                   color: darkblue!,
                                   width: 1.5,
@@ -387,10 +393,10 @@ class InvoiceController extends GetxController {
                                 ),
                               ),
                               hintText: 'Name',
-                              hintStyle: TextStyle(
-                                color: Colors.grey,
-                                fontSize: size.width * 0.03,
-                              ),
+                              hintStyle: GoogleFonts.poppins(
+                                  //color:lightgray,
+                                  fontSize: width * 0.03,
+                                  fontWeight: FontWeight.w600),
                               prefixIcon: Icon(
                                 Icons.shopping_bag_outlined,
                                 color: Colors.black,
@@ -417,13 +423,12 @@ class InvoiceController extends GetxController {
                               filled: true,
                               fillColor: Colors.grey.withOpacity(0.15),
                               labelText: 'Quantity',
-                              labelStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: size.width * 0.03,
-                                fontWeight: FontWeight.w500,
-                              ),
+                              labelStyle: GoogleFonts.poppins(
+                                  //color:lightgray,
+                                  fontSize: width * 0.03,
+                                  fontWeight: FontWeight.w600),
                               enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(10),
                                 borderSide: const BorderSide(
                                   color: Colors.black45,
                                   width: 1.5,
@@ -431,19 +436,19 @@ class InvoiceController extends GetxController {
                               ),
                               errorBorder: const OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(50)),
+                                    BorderRadius.all(Radius.circular(10)),
                                 borderSide: BorderSide(
                                   width: 1.5,
                                   color: Colors.red,
                                 ),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(10),
                                 borderSide: const BorderSide(
                                     color: Colors.red, width: 2),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(
                                   color: darkblue!,
                                   width: 1.5,
@@ -451,10 +456,10 @@ class InvoiceController extends GetxController {
                                 ),
                               ),
                               hintText: 'Quantity',
-                              hintStyle: TextStyle(
-                                color: Colors.grey,
-                                fontSize: size.width * 0.03,
-                              ),
+                              hintStyle: GoogleFonts.poppins(
+                                  //color:lightgray,
+                                  fontSize: width * 0.03,
+                                  fontWeight: FontWeight.w600),
                               prefixIcon: Icon(
                                 Icons.format_list_numbered_outlined,
                                 color: Colors.black,
@@ -482,13 +487,12 @@ class InvoiceController extends GetxController {
                               filled: true,
                               fillColor: Colors.grey.withOpacity(0.15),
                               labelText: 'Amount',
-                              labelStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: size.width * 0.03,
-                                fontWeight: FontWeight.w500,
-                              ),
+                              labelStyle: GoogleFonts.poppins(
+                                  //color:lightgray,
+                                  fontSize: width * 0.03,
+                                  fontWeight: FontWeight.w600),
                               enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(10),
                                 borderSide: const BorderSide(
                                   color: Colors.black45,
                                   width: 1.5,
@@ -496,19 +500,19 @@ class InvoiceController extends GetxController {
                               ),
                               errorBorder: const OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(50)),
+                                    BorderRadius.all(Radius.circular(10)),
                                 borderSide: BorderSide(
                                   width: 1.5,
                                   color: Colors.red,
                                 ),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(10),
                                 borderSide: const BorderSide(
                                     color: Colors.red, width: 2),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(
                                   color: darkblue!,
                                   width: 1.5,
@@ -516,10 +520,10 @@ class InvoiceController extends GetxController {
                                 ),
                               ),
                               hintText: 'Amount',
-                              hintStyle: TextStyle(
-                                color: Colors.grey,
-                                fontSize: size.width * 0.03,
-                              ),
+                              hintStyle: GoogleFonts.poppins(
+                                  //color:lightgray,
+                                  fontSize: width * 0.03,
+                                  fontWeight: FontWeight.w600),
                               prefixIcon: Icon(
                                 Icons.align_vertical_bottom_rounded,
                                 color: Colors.black,
@@ -547,13 +551,12 @@ class InvoiceController extends GetxController {
                               filled: true,
                               fillColor: Colors.grey.withOpacity(0.15),
                               labelText: 'Tax',
-                              labelStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: size.width * 0.03,
-                                fontWeight: FontWeight.w500,
-                              ),
+                              labelStyle: GoogleFonts.poppins(
+                                  //color:lightgray,
+                                  fontSize: width * 0.03,
+                                  fontWeight: FontWeight.w600),
                               enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(10),
                                 borderSide: const BorderSide(
                                   color: Colors.black45,
                                   width: 1.5,
@@ -561,19 +564,19 @@ class InvoiceController extends GetxController {
                               ),
                               errorBorder: const OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(50)),
+                                    BorderRadius.all(Radius.circular(10)),
                                 borderSide: BorderSide(
                                   width: 1.5,
                                   color: Colors.red,
                                 ),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(10),
                                 borderSide: const BorderSide(
                                     color: Colors.red, width: 2),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(
                                   color: darkblue!,
                                   width: 1.5,
@@ -581,10 +584,10 @@ class InvoiceController extends GetxController {
                                 ),
                               ),
                               hintText: 'Tax',
-                              hintStyle: TextStyle(
-                                color: Colors.grey,
-                                fontSize: size.width * 0.03,
-                              ),
+                              hintStyle: GoogleFonts.poppins(
+                                  //color:lightgray,
+                                  fontSize: width * 0.03,
+                                  fontWeight: FontWeight.w600),
                               prefixIcon: Icon(
                                 Icons.align_vertical_bottom_rounded,
                                 color: Colors.black,
@@ -650,10 +653,10 @@ class InvoiceController extends GetxController {
                   },
                   child: Text(
                     "Save",
-                    style: TextStyle(
-                        color: darkblue!,
-                        fontWeight: FontWeight.w500,
-                        fontSize: size.width * 0.045),
+                    style: GoogleFonts.poppins(
+                        color: blue,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w600),
                   ),
                 ),
                 SizedBox(
@@ -670,10 +673,10 @@ class InvoiceController extends GetxController {
                   },
                   child: Text(
                     "Cancel",
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.w500,
-                        fontSize: size.width * 0.045),
+                    style: GoogleFonts.poppins(
+                        color: red,
+                        fontSize: width * 0.03,
+                        fontWeight: FontWeight.w600),
                   ),
                 )
               ],

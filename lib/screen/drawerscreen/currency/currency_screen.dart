@@ -46,10 +46,10 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
             Center(
               child: Text(
                 AppLocalizations.of(context)!.chooseyourcurrency,
-                style: TextStyle(
-                    fontSize: size.width * 0.035,
-                    fontWeight: FontWeight.bold,
-                    color: blue),
+                style: GoogleFonts.poppins(
+                    color: blue,
+                    fontSize: size.width * 0.03,
+                    fontWeight: FontWeight.w600),
               ),
             ),
             const SizedBox(
@@ -65,7 +65,13 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        
+                        Text(
+                          CurrencyModell.currencyList[index].value!,
+                          style: GoogleFonts.poppins(
+                              color: blue,
+                              fontSize: size.width * 0.03,
+                              fontWeight: FontWeight.w400),
+                        ),
                         Radio(
                           value: CurrencyModell.currencyList[index].value!,
                           activeColor: blue,

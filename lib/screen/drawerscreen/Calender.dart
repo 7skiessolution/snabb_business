@@ -49,16 +49,16 @@ class _CalenderScreenState extends State<CalenderScreen> {
                   Container(
                     height: height * 0.12,
                     width: width,
-                    color: Colors.blue[900]!.withOpacity(0.9),
+                    color: blue.withOpacity(0.9),
                     child: Padding(
                       padding:
                           const EdgeInsets.only(top: 15.0, left: 20, right: 20),
                       child: Text(
                         "Calendar",
                         style: GoogleFonts.poppins(
-                                              color:white,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
+                            color: white,
+                            fontSize: width * 0.035,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                   ),

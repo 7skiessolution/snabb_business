@@ -23,8 +23,7 @@ class _UserProfileState extends State<UserProfile> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Radio(
-        
-          activeColor: Colors.blue[900],
+          activeColor: blue,
           value: gender[btnValue],
           groupValue: select,
           onChanged: (value) {
@@ -34,10 +33,11 @@ class _UserProfileState extends State<UserProfile> {
             });
           },
         ),
-        Text(title,style: GoogleFonts.poppins(
-                                              color:Colors.blue[900],
-                                              fontSize: 11,
-                                              fontWeight: FontWeight.w600),)
+        Text(
+          title,
+          style: GoogleFonts.poppins(
+              color: blue, fontSize: 11, fontWeight: FontWeight.w600),
+        )
       ],
     );
   }
@@ -87,10 +87,10 @@ class _UserProfileState extends State<UserProfile> {
                                   EdgeInsets.only(top: 12, left: width * 0.05),
                               child: Text(
                                 "Profile",
-                                 style: GoogleFonts.poppins(
-                                              color:white,
-                                              fontSize: width * 0.04,
-                                              fontWeight: FontWeight.w600),
+                                style: GoogleFonts.poppins(
+                                    color: white,
+                                    fontSize: width * 0.04,
+                                    fontWeight: FontWeight.w600),
                               ),
                             ),
                           ],
@@ -103,7 +103,7 @@ class _UserProfileState extends State<UserProfile> {
                       //bottom: height * 0.02,
                       child: Card(
                         elevation: 10,
-                        shadowColor: Colors.blue[900],
+                        shadowColor: blue,
                         child: Container(
                             height: height * 0.65,
                             width: width * 0.9,
@@ -130,7 +130,7 @@ class _UserProfileState extends State<UserProfile> {
                                                 width: width * 0.2,
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
-                                                    color: Colors.blue[900]),
+                                                    color: blue),
                                                 child: Icon(
                                                   Icons.person,
                                                   color: Colors.white,
@@ -146,7 +146,7 @@ class _UserProfileState extends State<UserProfile> {
                                                         fit: BoxFit.cover,
                                                         image: NetworkImage(
                                                             "${StaticValues.imageUrl}${HomeController.to.profilemodel!.data!.imageUrl}")),
-                                                    color: Colors.blue[900]),
+                                                    color: blue),
                                               ),
                                       )),
                                   SizedBox(
@@ -154,10 +154,10 @@ class _UserProfileState extends State<UserProfile> {
                                   ),
                                   Text(
                                     "User Information",
-                                   style: GoogleFonts.poppins(
-                                              color:Colors.black,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w500),
+                                    style: GoogleFonts.poppins(
+                                        color: Colors.black,
+                                        fontSize: width * 0.035,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   SizedBox(
                                     height: height * 0.01,
@@ -175,9 +175,10 @@ class _UserProfileState extends State<UserProfile> {
                                                   Text(
                                                     "Name : ",
                                                     style: GoogleFonts.poppins(
-                                              color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w600),
+                                                        color: blue,
+                                                        fontSize: width * 0.032,
+                                                        fontWeight:
+                                                            FontWeight.w600),
                                                   ),
                                                   Text(
                                                     HomeController
@@ -185,10 +186,11 @@ class _UserProfileState extends State<UserProfile> {
                                                         .profilemodel!
                                                         .data!
                                                         .name!,
-                                                   style: GoogleFonts.poppins(
-                                            //  color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                                    style: GoogleFonts.poppins(
+                                                        //  color:blue,
+                                                        fontSize: width * 0.032,
+                                                        fontWeight:
+                                                            FontWeight.w500),
                                                   ),
                                                 ],
                                               )),
@@ -200,10 +202,11 @@ class _UserProfileState extends State<UserProfile> {
                                               children: [
                                                 Text(
                                                   "Gender : ",
-style: GoogleFonts.poppins(
-                                              color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w600),
+                                                  style: GoogleFonts.poppins(
+                                                      color: blue,
+                                                      fontSize: width * 0.032,
+                                                      fontWeight:
+                                                          FontWeight.w600),
                                                 ),
                                                 Text(
                                                   HomeController
@@ -211,10 +214,11 @@ style: GoogleFonts.poppins(
                                                       .profilemodel!
                                                       .data!
                                                       .gender!,
-                                                style: GoogleFonts.poppins(
-                                            //  color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                                  style: GoogleFonts.poppins(
+                                                      //  color:blue,
+                                                      fontSize: width * 0.032,
+                                                      fontWeight:
+                                                          FontWeight.w500),
                                                 ),
                                               ],
                                             )),
@@ -227,16 +231,15 @@ style: GoogleFonts.poppins(
                                       children: [
                                         Text(
                                           "Email : ",
-                                         style: GoogleFonts.poppins(
-                                              color:Colors.blue[900],
+                                          style: GoogleFonts.poppins(
+                                              color: blue,
                                               fontSize: width * 0.032,
                                               fontWeight: FontWeight.w600),
                                         ),
                                         Text(
                                           HomeController
                                               .to.profilemodel!.data!.email!,
-                                         style: GoogleFonts.poppins(
-                                            
+                                          style: GoogleFonts.poppins(
                                               fontSize: width * 0.032,
                                               fontWeight: FontWeight.w500),
                                         ),
@@ -247,7 +250,7 @@ style: GoogleFonts.poppins(
                                     height: height * 0.03,
                                   ),
                                   Divider(
-                                    color: Colors.blue[900],
+                                    color: blue,
                                   ),
                                   SizedBox(
                                     height: height * 0.03,
@@ -269,13 +272,13 @@ style: GoogleFonts.poppins(
                                         hintText: "Name",
                                         labelText: "Name",
                                         hintStyle: GoogleFonts.poppins(
-                                              color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
-                                        labelStyle:  GoogleFonts.poppins(
-                                              color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w500),
+                                            color: blue,
+                                            fontSize: width * 0.032,
+                                            fontWeight: FontWeight.w500),
+                                        labelStyle: GoogleFonts.poppins(
+                                            color: blue,
+                                            fontSize: width * 0.032,
+                                            fontWeight: FontWeight.w500),
                                         alignLabelWithHint: true,
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius:
@@ -311,7 +314,7 @@ style: GoogleFonts.poppins(
                                         Text(
                                           "Select Gender",
                                           style: GoogleFonts.poppins(
-                                              color:Colors.blue[900],
+                                              color: blue,
                                               fontSize: width * 0.032,
                                               fontWeight: FontWeight.w600),
                                         ),
@@ -352,10 +355,11 @@ style: GoogleFonts.poppins(
                                             child: Center(
                                               child: Text(
                                                 "Update",
-                                               style: GoogleFonts.poppins(
-                                              color:Colors.white,
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w600),
+                                                style: GoogleFonts.poppins(
+                                                    color: Colors.white,
+                                                    fontSize: width * 0.032,
+                                                    fontWeight:
+                                                        FontWeight.w600),
                                               ),
                                             ),
                                           ),

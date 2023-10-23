@@ -146,7 +146,7 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
           width: width,
           child: Column(
             children: [
-              AppBarWidgt(text: "Dr/Cr"),
+              AppBarWidgt(text: "Debit/Credit"),
               SizedBox(
                 height: height * 0.01,
               ),
@@ -169,16 +169,16 @@ class _ViewDebitScreenState extends State<ViewDebitScreen> {
                           Container(
                             height: height * 0.1,
                             width: width,
-                            color: Colors.blue[900]!.withOpacity(0.9),
-                            child: Center(
-                              child: Text(
-                                "${AppLocalizations.of(context)!.credit}: YOU -> to",
-                                style: GoogleFonts.poppins(
-                                    fontSize: width * 0.03,
-                                    color: white,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
+                            color: blue.withOpacity(0.9),
+                            // child: Center(
+                            //  child: Text(
+                            //     "${AppLocalizations.of(context)!.credit}: YOU -> to",
+                            //     style: GoogleFonts.poppins(
+                            //         fontSize: width * 0.03,
+                            //         color: white,
+                            //         fontWeight: FontWeight.w500),
+                            //   ),
+                            // ),
                           ),
                         ],
                       ),

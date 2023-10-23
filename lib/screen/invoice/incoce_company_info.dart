@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:snabb_business/screen/invoice/company_model.dart';
 import 'package:snabb_business/screen/invoice/invoice_controllers.dart';
 import 'package:snabb_business/utils/appbarwidget.dart';
@@ -62,7 +63,7 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                         Container(
                           height: height * 0.12,
                           width: width,
-                          color: Colors.blue[900]!.withOpacity(0.9),
+                          color: blue.withOpacity(0.9),
                           child: const Padding(
                             padding:
                                 EdgeInsets.only(top: 15.0, left: 20, right: 20),
@@ -85,7 +86,7 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                     alignment: Alignment.topCenter,
                     child: Card(
                         elevation: 10,
-                        shadowColor: Colors.blue[900],
+                        shadowColor: blue,
                         child: SizedBox(
                           height: height * 0.8,
                           width: width * 0.9,
@@ -95,10 +96,10 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                               children: [
                                 Text(
                                   "Company Information",
-                                  style: TextStyle(
-                                      color: Colors.blue[900],
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: width * 0.04),
+                                  style: GoogleFonts.poppins(
+                                      color: blue,
+                                      fontSize: width * 0.03,
+                                      fontWeight: FontWeight.w600),
                                 ),
                                 SizedBox(
                                   height: height * 0.02,
@@ -128,6 +129,10 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                                                 vertical: 0, horizontal: 20),
                                         fillColor: Colors.grey,
                                         hintText: "Company Name",
+                                        hintStyle: GoogleFonts.poppins(
+                                            //color:lightgray,
+                                            fontSize: width * 0.03,
+                                            fontWeight: FontWeight.w600),
                                         alignLabelWithHint: true,
                                         errorBorder: InputBorder.none,
                                         enabledBorder: OutlineInputBorder(
@@ -180,6 +185,11 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                                                         horizontal: 20),
                                                 fillColor: Colors.grey,
                                                 hintText: "City",
+                                                hintStyle: GoogleFonts.poppins(
+                                                    //color:lightgray,
+                                                    fontSize: width * 0.03,
+                                                    fontWeight:
+                                                        FontWeight.w600),
                                                 alignLabelWithHint: true,
                                                 errorBorder: InputBorder.none,
                                                 enabledBorder:
@@ -234,6 +244,11 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                                                         horizontal: 20),
                                                 fillColor: Colors.grey,
                                                 hintText: "State",
+                                                hintStyle: GoogleFonts.poppins(
+                                                    //color:lightgray,
+                                                    fontSize: width * 0.03,
+                                                    fontWeight:
+                                                        FontWeight.w600),
                                                 errorBorder: InputBorder.none,
                                                 alignLabelWithHint: true,
                                                 enabledBorder:
@@ -283,6 +298,10 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                                                 vertical: 0, horizontal: 20),
                                         fillColor: Colors.grey,
                                         hintText: "Company Address",
+                                        hintStyle: GoogleFonts.poppins(
+                                            //color:lightgray,
+                                            fontSize: width * 0.03,
+                                            fontWeight: FontWeight.w600),
                                         alignLabelWithHint: true,
                                         errorBorder: InputBorder.none,
                                         enabledBorder: OutlineInputBorder(
@@ -336,6 +355,11 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                                                         horizontal: 20),
                                                 fillColor: Colors.grey,
                                                 hintText: "Country",
+                                                hintStyle: GoogleFonts.poppins(
+                                                    //color:lightgray,
+                                                    fontSize: width * 0.03,
+                                                    fontWeight:
+                                                        FontWeight.w600),
                                                 errorBorder: InputBorder.none,
                                                 alignLabelWithHint: true,
                                                 enabledBorder:
@@ -390,6 +414,11 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                                                         horizontal: 20),
                                                 fillColor: Colors.grey,
                                                 hintText: "Postal",
+                                                hintStyle: GoogleFonts.poppins(
+                                                    //color:lightgray,
+                                                    fontSize: width * 0.03,
+                                                    fontWeight:
+                                                        FontWeight.w600),
                                                 errorBorder: InputBorder.none,
                                                 alignLabelWithHint: true,
                                                 enabledBorder:
@@ -419,10 +448,10 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                                 ),
                                 Text(
                                   "Invoice To",
-                                  style: TextStyle(
-                                      color: Colors.blue[900],
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: width * 0.04),
+                                  style: GoogleFonts.poppins(
+                                      color: blue,
+                                      fontSize: width * 0.03,
+                                      fontWeight: FontWeight.w600),
                                 ),
                                 SizedBox(
                                   height: height * 0.02,
@@ -452,6 +481,10 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                                                 vertical: 0, horizontal: 20),
                                         fillColor: Colors.grey,
                                         hintText: "Company Name",
+                                        hintStyle: GoogleFonts.poppins(
+                                            //color:lightgray,
+                                            fontSize: width * 0.03,
+                                            fontWeight: FontWeight.w600),
                                         alignLabelWithHint: true,
                                         errorBorder: InputBorder.none,
                                         enabledBorder: OutlineInputBorder(
@@ -504,6 +537,11 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                                                         horizontal: 20),
                                                 fillColor: Colors.grey,
                                                 hintText: "City",
+                                                hintStyle: GoogleFonts.poppins(
+                                                    //color:lightgray,
+                                                    fontSize: width * 0.03,
+                                                    fontWeight:
+                                                        FontWeight.w600),
                                                 alignLabelWithHint: true,
                                                 errorBorder: InputBorder.none,
                                                 enabledBorder:
@@ -557,6 +595,11 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                                                         horizontal: 20),
                                                 fillColor: Colors.grey,
                                                 hintText: "State",
+                                                hintStyle: GoogleFonts.poppins(
+                                                    //color:lightgray,
+                                                    fontSize: width * 0.03,
+                                                    fontWeight:
+                                                        FontWeight.w600),
                                                 alignLabelWithHint: true,
                                                 errorBorder: InputBorder.none,
                                                 enabledBorder:
@@ -606,6 +649,10 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                                                 vertical: 0, horizontal: 20),
                                         fillColor: Colors.grey,
                                         hintText: "Company Address",
+                                        hintStyle: GoogleFonts.poppins(
+                                            //color:lightgray,
+                                            fontSize: width * 0.03,
+                                            fontWeight: FontWeight.w600),
                                         alignLabelWithHint: true,
                                         errorBorder: InputBorder.none,
                                         enabledBorder: OutlineInputBorder(
@@ -658,6 +705,11 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                                                         horizontal: 20),
                                                 fillColor: Colors.grey,
                                                 hintText: "Country",
+                                                hintStyle: GoogleFonts.poppins(
+                                                    //color:lightgray,
+                                                    fontSize: width * 0.03,
+                                                    fontWeight:
+                                                        FontWeight.w600),
                                                 alignLabelWithHint: true,
                                                 errorBorder: InputBorder.none,
                                                 enabledBorder:
@@ -711,6 +763,11 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                                                         horizontal: 20),
                                                 fillColor: Colors.grey,
                                                 hintText: "Postal",
+                                                hintStyle: GoogleFonts.poppins(
+                                                    //color:lightgray,
+                                                    fontSize: width * 0.03,
+                                                    fontWeight:
+                                                        FontWeight.w600),
                                                 alignLabelWithHint: true,
                                                 enabledBorder:
                                                     OutlineInputBorder(
@@ -771,14 +828,15 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                                     width: width * 0.4,
                                     alignment: Alignment.center,
                                     decoration: BoxDecoration(
-                                        color: Colors.blue[900],
+                                        color: blue,
                                         borderRadius:
                                             BorderRadius.circular(10)),
                                     child: Text(
                                       "Save",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: width * 0.04),
+                                      style: GoogleFonts.poppins(
+                                          color: whitecolor,
+                                          fontSize: width * 0.03,
+                                          fontWeight: FontWeight.w600),
                                     ),
                                   ),
                                 )

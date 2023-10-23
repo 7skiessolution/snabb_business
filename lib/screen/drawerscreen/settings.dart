@@ -73,7 +73,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   left: width * 0.05,
                   child: Card(
                     elevation: 10,
-                    shadowColor: Colors.blue[900],
+                    shadowColor: blue,
                     child: GetBuilder<HomeController>(builder: (obj) {
                       return Container(
                         height: height * 0.75,
@@ -110,7 +110,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                             Text(
                                               "Language",
                                               style: GoogleFonts.poppins(
-                                                  //  color:Colors.blue[900],
+                                                  //  color:blue,
                                                   fontSize: width * 0.032,
                                                   fontWeight: FontWeight.w600),
                                             ),
@@ -120,7 +120,75 @@ class _SettingsPageState extends State<SettingsPage> {
                                             Text(
                                               "English",
                                               style: GoogleFonts.poppins(
-                                                  //  color:Colors.blue[900],
+                                                  //  color:blue,
+                                                  fontSize: width * 0.032,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.012,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        // CureencyBottomSheet
+                                        //     .addCurrencyBottomSheet(
+                                        //         context: context,
+                                        //         height: height,
+                                        //         width: width);
+                                      },
+                                      child: Container(
+                                        height: height * 0.04,
+                                        width: width * 0.15,
+                                        decoration: BoxDecoration(
+                                            color: blue,
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          "Change",
+                                          style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.025,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: height * 0.02,
+                              ),
+                              SizedBox(
+                                height: height * 0.08,
+                                width: width,
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: SizedBox(
+                                        height: height,
+                                        width: width,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Currency",
+                                              style: GoogleFonts.poppins(
+                                                  //  color:blue,
+                                                  fontSize: width * 0.032,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                            SizedBox(
+                                              height: height * 0.012,
+                                            ),
+                                            Text(
+                                              obj.profilemodel!.data!.currency!,
+                                              style: GoogleFonts.poppins(
+                                                  //  color:blue,
                                                   fontSize: width * 0.032,
                                                   fontWeight: FontWeight.w400),
                                             ),
@@ -149,74 +217,10 @@ class _SettingsPageState extends State<SettingsPage> {
                                         alignment: Alignment.center,
                                         child: Text(
                                           "Change",
-                                          style:
-                                              TextStyle(fontSize: width * 0.03,color: Colors.white),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: height * 0.02,
-                              ),
-                              SizedBox(
-                                height: height * 0.08,
-                                width: width,
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        height: height,
-                                        width: width,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Currency",
-                                              style: GoogleFonts.poppins(
-                                                  //  color:Colors.blue[900],
-                                                  fontSize: width * 0.032,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                            SizedBox(
-                                              height: height * 0.012,
-                                            ),
-                                            Text(
-                                              obj.profilemodel!.data!.currency!,
-                                              style: GoogleFonts.poppins(
-                                                  //  color:Colors.blue[900],
-                                                  fontSize: width * 0.032,
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.012,
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        CureencyBottomSheet
-                                            .addCurrencyBottomSheet(
-                                                context: context,
-                                                height: height,
-                                                width: width);
-                                      },
-                                      child: Container(
-                                        height: height * 0.04,
-                                        width: width * 0.15,
-                                        decoration: BoxDecoration(
-                                            color: lightgray.withOpacity(0.5),
-                                            borderRadius:
-                                                BorderRadius.circular(5)),
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          "Change",
-                                          style:
-                                              TextStyle(fontSize: width * 0.03),
+                                          style: GoogleFonts.poppins(
+                                              color: white,
+                                              fontSize: width * 0.025,
+                                              fontWeight: FontWeight.w400),
                                         ),
                                       ),
                                     )
@@ -239,7 +243,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               Text(
                                 "Feedback & Support",
                                 style: GoogleFonts.poppins(
-                                    // color:Colors.blue[900],
+                                    // color:blue,
                                     fontSize: width * 0.032,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -249,7 +253,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               Text(
                                 "FAQ",
                                 style: GoogleFonts.poppins(
-                                    // color:Colors.blue[900],
+                                    // color:blue,
                                     fontSize: width * 0.032,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -259,7 +263,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               Text(
                                 "Privacy",
                                 style: GoogleFonts.poppins(
-                                    // color:Colors.blue[900],
+                                    // color:blue,
                                     fontSize: width * 0.032,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -269,7 +273,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               Text(
                                 "Terms of service",
                                 style: GoogleFonts.poppins(
-                                    // color:Colors.blue[900],
+                                    // color:blue,
                                     fontSize: width * 0.032,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -279,7 +283,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               Text(
                                 "Quick start guide",
                                 style: GoogleFonts.poppins(
-                                    // color:Colors.blue[900],
+                                    // color:blue,
                                     fontSize: width * 0.032,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -289,7 +293,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               Text(
                                 "Licenses",
                                 style: GoogleFonts.poppins(
-                                    // color:Colors.blue[900],
+                                    // color:blue,
                                     fontSize: width * 0.032,
                                     fontWeight: FontWeight.w500),
                               ),

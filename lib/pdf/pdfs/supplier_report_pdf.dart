@@ -29,15 +29,27 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
     // ///////////////////////
     listofPDF.add(
       pw.Header(
-        level: 0,
-        child: pw.Text(
-          "Snabb Business",
-          style: pw.TextStyle(
-              fontSize: 24,
-              fontWeight: pw.FontWeight.bold,
-              color: p.PdfColors.indigo),
-        ),
-      ),
+          level: 0,
+          child: pw.Row(
+              mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+              children: [
+                pw.Text(
+                  "Snabb Business",
+                  style: pw.TextStyle(
+                    fontSize: 24,
+                    fontWeight: pw.FontWeight.bold,
+                    color: p.PdfColor.fromHex("006400"),
+                  ),
+                ),
+                pw.Text(
+                  "Suplier Sales Sheet",
+                  style: pw.TextStyle(
+                    fontSize: 17,
+                    fontWeight: pw.FontWeight.bold,
+                    color: p.PdfColor.fromHex("006400"),
+                  ),
+                ),
+              ])),
     );
 
     listofPDF.add(pw.Column(children: [
@@ -45,7 +57,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
       pw.Container(
         height: 25,
         width: 250,
-        color: p.PdfColors.indigo,
+        color: p.PdfColor.fromHex("006400"),
         child: pw.Align(
           alignment: pw.Alignment.center,
           child: pw.Text(
@@ -66,7 +78,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                   pw.Container(
                     height: 25,
                     width: 95,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Align(
                       alignment: pw.Alignment.center,
                       child: pw.Text(
@@ -81,7 +93,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Ref #',
@@ -95,7 +107,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Supplier\'s\n   Name',
@@ -109,7 +121,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'OnCash',
@@ -123,7 +135,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'OnBank',
@@ -137,7 +149,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Other',
@@ -151,7 +163,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                   pw.Container(
                     height: 25,
                     width: 90,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Credit Transaction',
@@ -166,7 +178,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Total',
@@ -180,7 +192,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Balance',
@@ -194,7 +206,7 @@ class _SupplierReportPDFScreenState extends State<SupplierReportPDFScreen> {
                   pw.Container(
                     height: 25,
                     width: 95,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Return Date',

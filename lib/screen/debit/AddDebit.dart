@@ -94,7 +94,7 @@ class _AddDebitState extends State<AddDebit> {
                                 Container(
                                   height: height * 0.12,
                                   width: width,
-                                  color: Colors.blue[900]!.withOpacity(0.9),
+                                  color: blue.withOpacity(0.9),
                                 ),
                               ],
                             ),

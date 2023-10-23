@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart' as p;
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
+import 'package:snabb_business/controller/homeController.dart';
 import 'package:snabb_business/pdf/m/cash_flow_model.dart';
 import 'package:snabb_business/pdf/m/company_sales_report_model.dart';
 import 'package:snabb_business/pdf/m/daily_sales_report_model.dart';
@@ -58,27 +59,49 @@ class _CompanySaleReportPDFScreenState
     /////////////////////////
     cashFlowlistofPDF.add(
       pw.Header(
-        level: 0,
-        child: pw.Text(
-          "Snabb Business",
-          style: pw.TextStyle(
-              fontSize: 24,
-              fontWeight: pw.FontWeight.bold,
-              color: p.PdfColors.black),
-        ),
-      ),
+          level: 0,
+          child: pw.Row(
+              mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+              children: [
+                pw.Text(
+                  "Snabb Business",
+                  style: pw.TextStyle(
+                    fontSize: 24,
+                    fontWeight: pw.FontWeight.bold,
+                    color: p.PdfColor.fromHex("001F3F"),
+                  ),
+                ),
+                pw.Text(
+                  "Cash Flow Sheet",
+                  style: pw.TextStyle(
+                    fontSize: 17,
+                    fontWeight: pw.FontWeight.bold,
+                    color: p.PdfColor.fromHex("001F3F"),
+                  ),
+                ),
+              ])),
     );
     dailyListOfPDF.add(
       pw.Header(
-        level: 0,
-        child: pw.Text(
-          "Snabb Business",
-          style: pw.TextStyle(
-              fontSize: 24,
-              fontWeight: pw.FontWeight.bold,
-              color: p.PdfColors.green),
-        ),
-      ),
+          level: 0,
+          child: pw.Row(
+              mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+              children: [
+                pw.Text(
+                  "Snabb Business",
+                  style: pw.TextStyle(
+                      fontSize: 24,
+                      fontWeight: pw.FontWeight.bold,
+                      color: p.PdfColor.fromHex("006400")),
+                ),
+                pw.Text(
+                  "Daily Sale Sheet",
+                  style: pw.TextStyle(
+                      fontSize: 17,
+                      fontWeight: pw.FontWeight.bold,
+                      color: p.PdfColor.fromHex("006400")),
+                ),
+              ])),
     );
     cashFlowlistofPDF.add(pw.Column(children: [
       pw.SizedBox(height: 20),
@@ -152,10 +175,9 @@ class _CompanySaleReportPDFScreenState
                                 height: 13,
                                 width: 80,
                                 decoration: pw.BoxDecoration(
-                                  border:
-                                      pw.Border.all(color: p.PdfColors.grey),
-                                  color: p.PdfColors.blue900,
-                                ),
+                                    border:
+                                        pw.Border.all(color: p.PdfColors.grey),
+                                    color: p.PdfColor.fromHex("006400")),
                                 child: pw.Center(
                                   child: pw.Text(
                                     'Sales',
@@ -196,7 +218,7 @@ class _CompanySaleReportPDFScreenState
                                   decoration: pw.BoxDecoration(
                                     border:
                                         pw.Border.all(color: p.PdfColors.grey),
-                                    color: p.PdfColors.green,
+                                    color: p.PdfColor.fromHex("001F3F"),
                                   ),
                                   child: pw.Center(
                                     child: pw.Text(
@@ -212,10 +234,9 @@ class _CompanySaleReportPDFScreenState
                                   height: 13,
                                   width: 80,
                                   decoration: pw.BoxDecoration(
-                                    border:
-                                        pw.Border.all(color: p.PdfColors.grey),
-                                    color: p.PdfColors.brown400,
-                                  ),
+                                      border: pw.Border.all(
+                                          color: p.PdfColors.grey),
+                                      color: p.PdfColor.fromHex("07b2d9")),
                                   child: pw.Center(
                                     child: pw.Text(
                                       'Expenses',
@@ -255,7 +276,7 @@ class _CompanySaleReportPDFScreenState
       pw.Container(
         height: 25,
         width: 250,
-        color: p.PdfColors.green,
+        color: p.PdfColor.fromHex("006400"),
         child: pw.Align(
           alignment: pw.Alignment.center,
           child: pw.Text(
@@ -276,7 +297,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 100,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Align(
                       alignment: pw.Alignment.center,
                       child: pw.Text(
@@ -291,7 +312,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Invoice #',
@@ -305,7 +326,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'OnCash',
@@ -319,7 +340,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'OnBank',
@@ -333,7 +354,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Other',
@@ -347,7 +368,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Credit Transaction',
@@ -362,7 +383,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Total',
@@ -376,7 +397,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Balance',
@@ -390,7 +411,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 100,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Return Date',
@@ -409,11 +430,11 @@ class _CompanySaleReportPDFScreenState
 
     //////////////////////////////////////////
     int i = 1;
-    double prevvalue=0;
-    double totalS=0;
-    double totalE=0;
-    double totalP=0;
-    
+    double prevvalue = 0;
+    double totalS = 0;
+    double totalE = 0;
+    double totalP = 0;
+
     for (var u in widget.cashflowReportList) {
       cashFlowlistofPDF.add(pw.Table(
           border: pw.TableBorder.all(color: p.PdfColors.grey, width: 2),
@@ -440,7 +461,7 @@ class _CompanySaleReportPDFScreenState
                     width: 80,
                     child: pw.Center(
                       child: pw.Text(
-                       prevvalue.toStringAsFixed(2),
+                        prevvalue.toStringAsFixed(2),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -495,7 +516,8 @@ class _CompanySaleReportPDFScreenState
                         child: pw.Padding(
                       padding: const pw.EdgeInsets.symmetric(vertical: 2),
                       child: pw.Text(
-                        (prevvalue- u.sale! -u.purchase!-u.expense!).toString(),
+                        (prevvalue - u.sale! - u.purchase! - u.expense!)
+                            .toString(),
                         style: pw.TextStyle(
                             fontSize: 9,
                             fontWeight: pw.FontWeight.normal,
@@ -505,10 +527,10 @@ class _CompanySaleReportPDFScreenState
                   ),
                 ])
           ]));
-          prevvalue=prevvalue- u.sale! -u.purchase!-u.expense!;
-          totalE=totalE+u.expense!;
-          totalS=totalS+u.sale!;
-          totalP=totalP+u.purchase!;
+      prevvalue = prevvalue - u.sale! - u.purchase! - u.expense!;
+      totalE = totalE + u.expense!;
+      totalS = totalS + u.sale!;
+      totalP = totalP + u.purchase!;
       i++;
     }
     cashFlowlistofPDF.add(pw.Column(children: [
@@ -548,7 +570,7 @@ class _CompanySaleReportPDFScreenState
                       child: pw.Padding(
                         padding: pw.EdgeInsets.symmetric(vertical: 3),
                         child: pw.Text(
-                          totalS.toStringAsFixed(2),
+                          "${totalS.toStringAsFixed(2)} ${HomeController.to.curency}",
                           style: pw.TextStyle(
                               fontSize: 8,
                               fontWeight: pw.FontWeight.bold,
@@ -567,7 +589,7 @@ class _CompanySaleReportPDFScreenState
                       child: pw.Padding(
                         padding: pw.EdgeInsets.symmetric(vertical: 3),
                         child: pw.Text(
-                          totalP.toStringAsFixed(2),
+                          "${totalP.toStringAsFixed(2)} ${HomeController.to.curency}",
                           style: pw.TextStyle(
                               fontSize: 8,
                               fontWeight: pw.FontWeight.bold,
@@ -586,7 +608,7 @@ class _CompanySaleReportPDFScreenState
                       child: pw.Padding(
                         padding: pw.EdgeInsets.symmetric(vertical: 3),
                         child: pw.Text(
-                          totalE.toStringAsFixed(2),
+                          "${totalE.toStringAsFixed(2)} ${HomeController.to.curency}",
                           style: pw.TextStyle(
                               fontSize: 8,
                               fontWeight: pw.FontWeight.bold,
@@ -605,7 +627,7 @@ class _CompanySaleReportPDFScreenState
                       child: pw.Padding(
                         padding: pw.EdgeInsets.symmetric(vertical: 3),
                         child: pw.Text(
-                          'Profit  ${(totalS-totalP-totalE).toStringAsFixed(2)}',
+                          'Profit  ${(totalS - totalP - totalE).toStringAsFixed(2)}',
                           style: pw.TextStyle(
                               fontSize: 8,
                               fontWeight: pw.FontWeight.bold,
@@ -770,15 +792,27 @@ class _CompanySaleReportPDFScreenState
 ///////////////////////////////////
     companylistofPDF.add(
       pw.Header(
-        level: 0,
-        child: pw.Text(
-          "Snabb Business",
-          style: pw.TextStyle(
-              fontSize: 24,
-              fontWeight: pw.FontWeight.bold,
-              color: p.PdfColors.green),
-        ),
-      ),
+          level: 0,
+          child: pw.Row(
+              mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+              children: [
+                pw.Text(
+                  "Snabb Business",
+                  style: pw.TextStyle(
+                    fontSize: 24,
+                    fontWeight: pw.FontWeight.bold,
+                    color: p.PdfColor.fromHex("006400"),
+                  ),
+                ),
+                pw.Text(
+                  "Company Sale Sheet",
+                  style: pw.TextStyle(
+                    fontSize: 17,
+                    fontWeight: pw.FontWeight.bold,
+                    color: p.PdfColor.fromHex("006400"),
+                  ),
+                ),
+              ])),
     );
 
     companylistofPDF.add(pw.Column(children: [
@@ -786,7 +820,7 @@ class _CompanySaleReportPDFScreenState
       pw.Container(
         height: 25,
         width: 250,
-        color: p.PdfColors.green,
+        color: p.PdfColor.fromHex("006400"),
         child: pw.Align(
           alignment: pw.Alignment.center,
           child: pw.Text(
@@ -807,7 +841,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 100,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Align(
                       alignment: pw.Alignment.center,
                       child: pw.Text(
@@ -822,7 +856,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Invoice #',
@@ -836,7 +870,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'OnCash',
@@ -850,7 +884,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'OnBank',
@@ -864,7 +898,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Other',
@@ -878,7 +912,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 85,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Credit Transaction',
@@ -893,7 +927,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Total',
@@ -907,7 +941,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Balance',
@@ -921,7 +955,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 95,
-                    color: p.PdfColors.green,
+                    color: p.PdfColor.fromHex("006400"),
                     child: pw.Center(
                       child: pw.Text(
                         'Return Date',
@@ -1088,15 +1122,25 @@ class _CompanySaleReportPDFScreenState
 //////////////////////////////////////////////////////////////////////
     expenceListOfPDF.add(
       pw.Header(
-        level: 0,
-        child: pw.Text(
-          "Snabb Business",
-          style: pw.TextStyle(
-              fontSize: 24,
-              fontWeight: pw.FontWeight.bold,
-              color: p.PdfColors.blue),
-        ),
-      ),
+          level: 0,
+          child: pw.Row(
+              mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+              children: [
+                pw.Text(
+                  "Snabb Business",
+                  style: pw.TextStyle(
+                      fontSize: 24,
+                      fontWeight: pw.FontWeight.bold,
+                      color: p.PdfColor.fromHex("07b2d9")),
+                ),
+                pw.Text(
+                  "Expense Sheet",
+                  style: pw.TextStyle(
+                      fontSize: 17,
+                      fontWeight: pw.FontWeight.bold,
+                      color: p.PdfColor.fromHex("07b2d9")),
+                ),
+              ])),
     );
 
     expenceListOfPDF.add(pw.Column(children: [
@@ -1104,7 +1148,7 @@ class _CompanySaleReportPDFScreenState
       pw.Container(
         height: 25,
         width: 250,
-        color: p.PdfColors.blue,
+        color: p.PdfColor.fromHex("07b2d9"),
         child: pw.Align(
           alignment: pw.Alignment.center,
           child: pw.Text(
@@ -1125,7 +1169,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 100,
-                    color: p.PdfColors.blue,
+                    color: p.PdfColor.fromHex("07b2d9"),
                     child: pw.Align(
                       alignment: pw.Alignment.center,
                       child: pw.Text(
@@ -1140,7 +1184,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.blue,
+                    color: p.PdfColor.fromHex("07b2d9"),
                     child: pw.Center(
                       child: pw.Text(
                         'Narrations',
@@ -1154,7 +1198,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.blue,
+                    color: p.PdfColor.fromHex("07b2d9"),
                     child: pw.Center(
                       child: pw.Text(
                         'Expense Type',
@@ -1168,7 +1212,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.blue,
+                    color: p.PdfColor.fromHex("07b2d9"),
                     child: pw.Center(
                       child: pw.Text(
                         'By Cash',
@@ -1182,7 +1226,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.blue,
+                    color: p.PdfColor.fromHex("07b2d9"),
                     child: pw.Center(
                       child: pw.Text(
                         'By Bank',
@@ -1196,7 +1240,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.blue,
+                    color: p.PdfColor.fromHex("07b2d9"),
                     child: pw.Center(
                       child: pw.Text(
                         'Total',
@@ -1211,7 +1255,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.blue,
+                    color: p.PdfColor.fromHex("07b2d9"),
                     child: pw.Center(
                       child: pw.Text(
                         'Balance',
@@ -1408,15 +1452,27 @@ class _CompanySaleReportPDFScreenState
     /////////////////////////////////////////
     purchaseListOfPDF.add(
       pw.Header(
-        level: 0,
-        child: pw.Text(
-          "Snabb Business",
-          style: pw.TextStyle(
-              fontSize: 24,
-              fontWeight: pw.FontWeight.bold,
-              color: p.PdfColors.indigo),
-        ),
-      ),
+          level: 0,
+          child: pw.Row(
+              mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+              children: [
+                pw.Text(
+                  "Snabb Business",
+                  style: pw.TextStyle(
+                    fontSize: 24,
+                    fontWeight: pw.FontWeight.bold,
+                    color: p.PdfColor.fromHex("001F3F"),
+                  ),
+                ),
+                pw.Text(
+                  "Purchase Sheet",
+                  style: pw.TextStyle(
+                    fontSize: 17,
+                    fontWeight: pw.FontWeight.bold,
+                    color: p.PdfColor.fromHex("001F3F"),
+                  ),
+                ),
+              ])),
     );
 
     purchaseListOfPDF.add(pw.Column(children: [
@@ -1424,7 +1480,7 @@ class _CompanySaleReportPDFScreenState
       pw.Container(
         height: 25,
         width: 250,
-        color: p.PdfColors.indigo,
+        color: p.PdfColor.fromHex("001F3F"),
         child: pw.Align(
           alignment: pw.Alignment.center,
           child: pw.Text(
@@ -1445,7 +1501,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 100,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("001F3F"),
                     child: pw.Align(
                       alignment: pw.Alignment.center,
                       child: pw.Text(
@@ -1460,7 +1516,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("001F3F"),
                     child: pw.Center(
                       child: pw.Text(
                         'No #',
@@ -1474,7 +1530,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("001F3F"),
                     child: pw.Center(
                       child: pw.Text(
                         'OnCash',
@@ -1488,7 +1544,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("001F3F"),
                     child: pw.Center(
                       child: pw.Text(
                         'OnBank',
@@ -1502,7 +1558,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("001F3F"),
                     child: pw.Center(
                       child: pw.Text(
                         'Other',
@@ -1516,7 +1572,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 85,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("001F3F"),
                     child: pw.Center(
                       child: pw.Text(
                         'Credit Transaction',
@@ -1531,7 +1587,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("001F3F"),
                     child: pw.Center(
                       child: pw.Text(
                         'Total',
@@ -1545,7 +1601,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 80,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("001F3F"),
                     child: pw.Center(
                       child: pw.Text(
                         'Balance',
@@ -1559,7 +1615,7 @@ class _CompanySaleReportPDFScreenState
                   pw.Container(
                     height: 25,
                     width: 95,
-                    color: p.PdfColors.indigo,
+                    color: p.PdfColor.fromHex("001F3F"),
                     child: pw.Center(
                       child: pw.Text(
                         'Return Date',
@@ -1576,11 +1632,11 @@ class _CompanySaleReportPDFScreenState
       pw.SizedBox(height: 10),
     ]));
 
-    /// for loop lagna ha idhr or ya list us k andr
+    /// for loop
     int a = 1;
 
     ///
-    for (var u in widget.purchaseReportList!) {
+    for (var u in widget.purchaseReportList) {
       purchaseListOfPDF.add(pw.Table(
           border: pw.TableBorder.all(color: p.PdfColors.grey, width: 2),
           children: [

@@ -173,7 +173,7 @@ class _EditDebitCreditScreenState extends State<EditDebitCreditScreen> {
                           Container(
                             height: height * 0.12,
                             width: width,
-                            color: Colors.blue[900]!.withOpacity(0.9),
+                            color: blue.withOpacity(0.9),
                             child: Padding(
                               padding: EdgeInsets.only(
                                   left: width * 0.1, top: height * 0.03),

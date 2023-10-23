@@ -59,9 +59,9 @@ class _PreferencesState extends State<Preferences> {
                           child: Text(
                             "Pages",
                             style: GoogleFonts.poppins(
-                                              color:Colors.white,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
+                                color: Colors.white,
+                                fontSize: width * 0.035,
+                                fontWeight: FontWeight.w600),
                           ),
                         ),
                         const Expanded(
@@ -76,7 +76,7 @@ class _PreferencesState extends State<Preferences> {
                   left: width * 0.05,
                   child: Card(
                     elevation: 10,
-                    shadowColor: Colors.blue[900],
+                    shadowColor: blue,
                     child: Container(
                       height: height * 0.4,
                       width: width * 0.9,
@@ -143,7 +143,7 @@ class _PreferencesState extends State<Preferences> {
                                           size: 35,
                                           color: indexNumber == index
                                               ? white
-                                              : Colors.blue[900],
+                                              : blue,
                                         ),
                                       ),
                                       SizedBox(
@@ -152,13 +152,12 @@ class _PreferencesState extends State<Preferences> {
                                       Text(
                                         "${list[index].title}",
                                         style: GoogleFonts.poppins(
-                                           color: indexNumber == index
+                                            color: indexNumber == index
                                                 ? white
                                                 : Colors.black,
-                                             // color:Colors.blue[900],
-                                              fontSize: width * 0.032,
-                                              fontWeight: FontWeight.w600),
-                                      
+                                            // color:blue,
+                                            fontSize: width * 0.032,
+                                            fontWeight: FontWeight.w600),
                                       )
                                     ],
                                   ),

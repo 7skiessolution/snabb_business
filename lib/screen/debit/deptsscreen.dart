@@ -58,7 +58,7 @@ class _DebitScreenState extends State<DebitScreen> {
             children: [
               Align(
                   alignment: Alignment.topCenter,
-                  child: AppBarWidgt(text: "Dr/Cr")),
+                  child: AppBarWidgt(text: "Debit/Credit")),
               Padding(
                 padding: EdgeInsets.only(top: height * 0.1),
                 child: SizedBox(
@@ -77,33 +77,33 @@ class _DebitScreenState extends State<DebitScreen> {
                       Container(
                         height: height * 0.12,
                         width: width,
-                        color: Colors.blue[900]!.withOpacity(0.9),
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              left: width * 0.1,
-                              top: height * 0.03,
-                              right: width * 0.1),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Residual Amount",
-                                style: GoogleFonts.poppins(
-                                    color: Colors.white,
-                                    fontSize: width * 0.035,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                "$balance ${HomeController.to.curency}",
-                                style: GoogleFonts.poppins(
-                                    color: Colors.white,
-                                    fontSize: width * 0.035,
-                                    fontWeight: FontWeight.w600),
-                              )
-                            ],
-                          ),
-                        ),
+                        color: blue.withOpacity(0.9),
+                        // child: Padding(
+                        //   padding: EdgeInsets.only(
+                        //       left: width * 0.1,
+                        //       top: height * 0.03,
+                        //       right: width * 0.1),
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //     crossAxisAlignment: CrossAxisAlignment.start,
+                        //     children: [
+                        //       Text(
+                        //         "Residual Amount",
+                        //         style: GoogleFonts.poppins(
+                        //             color: Colors.white,
+                        //             fontSize: width * 0.035,
+                        //             fontWeight: FontWeight.w600),
+                        //       ),
+                        //       Text(
+                        //         "$balance ${HomeController.to.curency}",
+                        //         style: GoogleFonts.poppins(
+                        //             color: Colors.white,
+                        //             fontSize: width * 0.035,
+                        //             fontWeight: FontWeight.w600),
+                        //       )
+                        //     ],
+                        //   ),
+                        // ),
                       ),
                     ],
                   ),
@@ -244,7 +244,7 @@ class _DebitScreenState extends State<DebitScreen> {
                                                 Icons.arrow_right_alt_sharp,
                                                 size: 35,
                                                 color: data.type == 0
-                                                    ? Colors.green
+                                                    ? greencolor
                                                     : Colors.black,
                                               ),
                                               Text(

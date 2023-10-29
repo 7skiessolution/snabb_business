@@ -60,6 +60,7 @@ class TextFileldLogin extends StatefulWidget {
     required this.validator,
     required this.hint,
     required this.controller,
+    required this.issufix,
     required this.prefixIcon,
     Key? key,
   }) : super(key: key);
@@ -67,6 +68,7 @@ class TextFileldLogin extends StatefulWidget {
   final TextEditingController controller;
   final String hint;
   final IconData prefixIcon;
+  bool issufix;
   final String? Function(String?) validator;
 
   @override
@@ -74,13 +76,37 @@ class TextFileldLogin extends StatefulWidget {
 }
 
 class _TextFileldLoginState extends State<TextFileldLogin> {
+  bool _obscureText = true;
+  //* Toggles the password show status
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
+  //* For Password Sufix icon color
+  Color setIconColor(var truee) {
+    if (true == truee) {
+      return blue;
+    } else {
+      return lightgray;
+    }
+  }
+
+  @override
+  void initState() {
+    _obscureText = widget.issufix;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: TextFormField(
         validator: widget.validator,
         controller: widget.controller,
+        obscureText: _obscureText,
         cursorColor: darkblue,
         decoration: InputDecoration(
           border: OutlineInputBorder(
@@ -94,6 +120,18 @@ class _TextFileldLoginState extends State<TextFileldLogin> {
             widget.prefixIcon,
             color: lightgray,
           ),
+          suffixIcon: widget.issufix
+              ? IconButton(
+                  icon: Icon(
+                    _obscureText ? Icons.visibility : Icons.visibility_off,
+                    size: 15,
+                    color: setIconColor(_obscureText),
+                  ),
+                  onPressed: () {
+                    _toggle();
+                  },
+                )
+              : SizedBox(),
           errorStyle: TextStyle(fontSize: 12),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),

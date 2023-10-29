@@ -32,6 +32,7 @@ class SaleController extends GetxController {
   String? companyid;
   String formatTime = "Sales Date";
   double totalBalance = 0.0;
+  bool loading = true;
   getBalance() {
     totalBalance = 0.0;
     totalBalance = totalBalance + (double.tryParse(bankamount.text) ?? 0.0);
@@ -44,6 +45,8 @@ class SaleController extends GetxController {
             .toString();
     update();
   }
+
+  bool conpany = true;
 
   Future<void> companyDialog(
       BuildContext context, double height, double width) {
@@ -1479,33 +1482,41 @@ class SaleController extends GetxController {
                                                               7)),
                                                   child: InkWell(
                                                     onTap: () {
-                                                      Map<String, dynamic> map =
-                                                          {
-                                                        "name": mName.text,
-                                                        "email": mEmail.text,
-                                                        "telePhone":
-                                                            nPhone.text,
-                                                      };
+                                                      if (conpany) {
+                                                        company = false;
+                                                        st(
+                                                          () {},
+                                                        );
+                                                        Map<String, dynamic>
+                                                            map = {
+                                                          "name": mName.text,
+                                                          "email": mEmail.text,
+                                                          "telePhone":
+                                                              nPhone.text,
+                                                        };
 
-                                                      HomeController.to
-                                                          .addCompanyData(
-                                                              map, context, "")
-                                                          .then((value) {
-                                                        mName.clear();
-                                                        mEmail.clear();
-                                                        nPhone.clear();
-                                                        Future.delayed(
-                                                            const Duration(
-                                                                seconds: 1),
-                                                            () {
-                                                          companyDialog(context,
-                                                                  height, width)
-                                                              .then((value) {
-                                                            Navigator.pop(
-                                                                context);
+                                                        HomeController.to
+                                                            .addCompanyData(map,
+                                                                context, "")
+                                                            .then((value) {
+                                                          mName.clear();
+                                                          mEmail.clear();
+                                                          nPhone.clear();
+                                                          Future.delayed(
+                                                              const Duration(
+                                                                  seconds: 1),
+                                                              () {
+                                                            companyDialog(
+                                                                    context,
+                                                                    height,
+                                                                    width)
+                                                                .then((value) {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            });
                                                           });
                                                         });
-                                                      });
+                                                      }
                                                     },
                                                     child: Container(
                                                       height: height * 0.045,

@@ -637,8 +637,7 @@ class _SalesChartState extends State<SalesChart> {
                                               ActivationMode.doubleTap,
                                           enableMultiSelection: true,
                                           enableAxisAnimation: true,
-                                                                                    primaryXAxis: CategoryAxis(),
-
+                                          primaryXAxis: CategoryAxis(),
                                           series: <ChartSeries>[
                                             LineSeries<SalesData, String>(
                                               legendIconType:
@@ -800,7 +799,7 @@ class _SalesChartState extends State<SalesChart> {
                                                   width: width,
                                                   child: Text(
                                                     data.details!.name ??
-                                                        "Name",
+                                                        "Daily Sales",
                                                     style: GoogleFonts.poppins(
                                                         color: greencolor,
                                                         fontSize: width * 0.035,

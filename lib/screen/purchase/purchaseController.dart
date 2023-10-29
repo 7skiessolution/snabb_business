@@ -34,7 +34,8 @@ class PurchaseController extends GetxController {
   String supplierName = '';
   String formatTime = "Purchase Date";
   double totalBalance = 0.0;
-
+  bool loading = true;
+  bool supp = true;
   getBalance() {
     totalBalance = 0.0;
     totalBalance = totalBalance + (double.tryParse(bankamount.text) ?? 0.0);
@@ -1781,63 +1782,73 @@ class PurchaseController extends GetxController {
                                                                         7)),
                                                     child: InkWell(
                                                       onTap: () {
-                                                        Map<String, dynamic>
-                                                            map;
-                                                        if (obj.select ==
-                                                            "Company") {
-                                                          map = {
-                                                            "name": name.text,
-                                                            "email": email.text,
-                                                            "telePhone":
-                                                                number.text,
-                                                            "address":
-                                                                address.text,
-                                                            "companyReg":
-                                                                regNo.text,
-                                                            "isCompany": true,
-                                                          };
-                                                        } else {
-                                                          map = {
-                                                            "name": name.text,
-                                                            "email": email.text,
-                                                            "telePhone":
-                                                                number.text,
-                                                            "address": "",
-                                                            "companyReg": "",
-                                                            "isCompany": false,
-                                                          };
-                                                        }
+                                                        if (supp) {
+                                                          supp = false;
+                                                          st(
+                                                            () {},
+                                                          );
+                                                          Map<String, dynamic>
+                                                              map;
+                                                          if (obj.select ==
+                                                              "Company") {
+                                                            map = {
+                                                              "name": name.text,
+                                                              "email":
+                                                                  email.text,
+                                                              "telePhone":
+                                                                  number.text,
+                                                              "address":
+                                                                  address.text,
+                                                              "companyReg":
+                                                                  regNo.text,
+                                                              "isCompany": true,
+                                                            };
+                                                          } else {
+                                                            map = {
+                                                              "name": name.text,
+                                                              "email":
+                                                                  email.text,
+                                                              "telePhone":
+                                                                  number.text,
+                                                              "address": "",
+                                                              "companyReg": "",
+                                                              "isCompany":
+                                                                  false,
+                                                            };
+                                                          }
 
-                                                        HomeController.to
-                                                            .addSupplierData(
-                                                          map,
-                                                        )
-                                                            .then((value) {
-                                                          name.clear();
-                                                          regNo.clear();
-                                                          email.clear();
-                                                          number.clear();
-                                                          address.clear();
-                                                          // st(
-                                                          //   () {
-                                                          //     newSupplier =
-                                                          //         false;
-                                                          //   },
-                                                          // );
-                                                          Future.delayed(
-                                                              const Duration(
-                                                                  seconds: 1),
-                                                              () {
-                                                            supplierDialog(
-                                                                    context,
-                                                                    height,
-                                                                    width)
-                                                                .then((value) {
-                                                              Navigator.pop(
-                                                                  context);
+                                                          HomeController.to
+                                                              .addSupplierData(
+                                                            map,
+                                                          )
+                                                              .then((value) {
+                                                            name.clear();
+                                                            regNo.clear();
+                                                            email.clear();
+                                                            number.clear();
+                                                            address.clear();
+                                                            // st(
+                                                            //   () {
+                                                            //     newSupplier =
+                                                            //         false;
+                                                            //   },
+                                                            // );
+                                                            Future.delayed(
+                                                                const Duration(
+                                                                    seconds: 1),
+                                                                () {
+                                                              supplierDialog(
+                                                                      context,
+                                                                      height,
+                                                                      width)
+                                                                  .then(
+                                                                      (value) {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              });
                                                             });
                                                           });
-                                                        });
+                                                        }
                                                       },
                                                       child: Container(
                                                         height: height * 0.045,

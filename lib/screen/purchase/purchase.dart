@@ -211,7 +211,11 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                                 width: width * 0.01,
                                               ),
                                               Text(
-                                                 obj.formatTime=="Purchase Date"?obj.formatTime: obj.formatTime.substring(0,10),
+                                                obj.formatTime ==
+                                                        "Purchase Date"
+                                                    ? obj.formatTime
+                                                    : obj.formatTime
+                                                        .substring(0, 10),
                                                 style: GoogleFonts.poppins(
                                                     // color:Colors.blue[900],
                                                     fontSize: width * 0.035,
@@ -262,6 +266,7 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                   ),
                                   InkWell(
                                     onTap: () {
+                                      obj.supp = true;
                                       obj.showSaleMethodDilogue(
                                           context, height, width);
                                     },
@@ -356,9 +361,13 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                             const SizedBox(
                                               width: 10,
                                             ),
-                                            Text(HomeController.to.curency,style: TextStyle(color: Colors.grey.shade700,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.bold),),
+                                            Text(
+                                              HomeController.to.curency,
+                                              style: TextStyle(
+                                                  color: Colors.grey.shade700,
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -411,9 +420,13 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                             const SizedBox(
                                               width: 10,
                                             ),
-                                           Text(HomeController.to.curency,style: TextStyle(color: Colors.grey.shade700,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.bold),),
+                                            Text(
+                                              HomeController.to.curency,
+                                              style: TextStyle(
+                                                  color: Colors.grey.shade700,
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -536,7 +549,11 @@ class _PurchasescreenState extends State<Purchasescreen> {
                                         onTap: () {
                                           if (_formKey.currentState!
                                               .validate()) {
-                                            obj.postpurchase(context);
+                                            if (obj.loading) {
+                                              obj.postpurchase(context);
+                                              obj.loading = false;
+                                              obj.update();
+                                            }
                                           }
                                         },
                                         child: Card(

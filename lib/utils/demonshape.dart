@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:snabb_business/controller/expense_controller.dart';
+import 'package:snabb_business/controller/saleController.dart';
 import 'package:snabb_business/screen/expense/expense.dart';
 import 'package:snabb_business/screen/purchase/purchase.dart';
+import 'package:snabb_business/screen/purchase/purchaseController.dart';
 import 'package:snabb_business/screen/sale/Sale.dart';
 import 'package:snabb_business/utils/color.dart';
 
@@ -76,7 +80,9 @@ class _ExpandableFloatingActionButtonState
   @override
   void initState() {
     super.initState();
-
+    Get.put(SaleController());
+    Get.put(ExpenseController());
+    Get.put(PurchaseController());
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 300),
@@ -114,6 +120,7 @@ class _ExpandableFloatingActionButtonState
           if (_isExpanded)
             FloatingActionButton(
               onPressed: () {
+                SaleController.to.loading = true;
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -128,6 +135,7 @@ class _ExpandableFloatingActionButtonState
         if (_isExpanded)
           FloatingActionButton(
             onPressed: () {
+              ExpenseController.to.loading = true;
               Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -142,6 +150,7 @@ class _ExpandableFloatingActionButtonState
         if (_isExpanded)
           FloatingActionButton(
             onPressed: () {
+              PurchaseController.to.loading = true;
               Navigator.push(
                   context,
                   MaterialPageRoute(

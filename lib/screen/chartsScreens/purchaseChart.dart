@@ -662,7 +662,7 @@ class _PurchaseChartState extends State<PurchaseChart> {
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsets.only(
-                                                            top: 8, bottom: 8),
+                                                            top: 8, bottom: 3),
                                                     child: Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment

@@ -479,7 +479,11 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                         onTap: () {
                                           if (_formKey.currentState!
                                               .validate()) {
-                                            obj.postexpense(context);
+                                            if (obj.loading) {
+                                              obj.postexpense(context);
+                                              obj.loading = false;
+                                              obj.update();
+                                            }
                                           }
                                         },
                                         child: Card(

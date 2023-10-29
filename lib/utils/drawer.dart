@@ -198,8 +198,10 @@ class DrawerScreen extends StatelessWidget {
               InkWell(
                 onTap: () {
                   obj.drawermenueclose();
+
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => const DebitScreen()));
+                  MaterialPageRoute(builder: (_) => const DebitScreen()));
+
                 },
                 child: ListTile(
                   leading: Image.asset("assets/drawericon/debit.png"),

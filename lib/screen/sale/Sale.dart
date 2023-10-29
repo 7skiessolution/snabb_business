@@ -80,8 +80,10 @@ class _SaleScreenState extends State<SaleScreen> {
                                               ),
                                               (route) => false);
                                         },
-                                        child:
-                                             Icon(Icons.arrow_back_ios,color: blue,)),
+                                        child: Icon(
+                                          Icons.arrow_back_ios,
+                                          color: blue,
+                                        )),
                                     SizedBox(
                                       width: width * 0.05,
                                     ),
@@ -208,7 +210,10 @@ class _SaleScreenState extends State<SaleScreen> {
                                               width: width * 0.05,
                                             ),
                                             Text(
-                                             obj.formatTime=="Sales Date"?obj.formatTime: obj.formatTime.substring(0,10),
+                                              obj.formatTime == "Sales Date"
+                                                  ? obj.formatTime
+                                                  : obj.formatTime
+                                                      .substring(0, 10),
                                               style: GoogleFonts.poppins(
                                                   // color:Colors.blue[900],
                                                   fontSize: width * 0.035,
@@ -262,6 +267,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                   ),
                                   InkWell(
                                     onTap: () {
+                                      obj.conpany = true;
                                       obj.showSaleMethodDilogue(
                                           context, height, width);
                                     },
@@ -298,7 +304,8 @@ class _SaleScreenState extends State<SaleScreen> {
                                                         obj.companyName,
                                                         style:
                                                             GoogleFonts.poppins(
-                                                                color: greencolor,
+                                                                color:
+                                                                    greencolor,
                                                                 fontSize:
                                                                     width *
                                                                         0.03,
@@ -359,10 +366,13 @@ class _SaleScreenState extends State<SaleScreen> {
                                             const SizedBox(
                                               width: 10,
                                             ),
-                                            Text(HomeController.to.curency,style: TextStyle(color: Colors.grey.shade700,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.bold),),
-                                          
+                                            Text(
+                                              HomeController.to.curency,
+                                              style: TextStyle(
+                                                  color: Colors.grey.shade700,
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -414,9 +424,13 @@ class _SaleScreenState extends State<SaleScreen> {
                                             const SizedBox(
                                               width: 10,
                                             ),
-                                          Text(HomeController.to.curency,style: TextStyle(color: Colors.grey.shade700,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.bold),),
+                                            Text(
+                                              HomeController.to.curency,
+                                              style: TextStyle(
+                                                  color: Colors.grey.shade700,
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -539,7 +553,11 @@ class _SaleScreenState extends State<SaleScreen> {
                                         onTap: () {
                                           if (_formKey.currentState!
                                               .validate()) {
-                                            obj.postsale(context);
+                                            if (obj.loading) {
+                                              obj.postsale(context);
+                                              obj.loading = false;
+                                              obj.update();
+                                            }
                                           }
                                         },
                                         child: Card(

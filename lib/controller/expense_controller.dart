@@ -28,7 +28,7 @@ class ExpenseController extends GetxController {
   String selectedImagePath = "";
   em.Data? selectedCateory;
   String formatTime = "Expense Date";
-
+  bool loading = true;
   List<String> categoriespath = [
     "assets/businessicons/entertainment.png",
     "assets/businessicons/business-travel.png",

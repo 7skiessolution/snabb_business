@@ -627,7 +627,7 @@ class _CompanySaleReportPDFScreenState
                       child: pw.Padding(
                         padding: pw.EdgeInsets.symmetric(vertical: 3),
                         child: pw.Text(
-                          'Profit  ${(totalS - totalP - totalE).toStringAsFixed(2)}',
+                          'Total  ${(totalS - totalP - totalE).toStringAsFixed(2)}',
                           style: pw.TextStyle(
                               fontSize: 8,
                               fontWeight: pw.FontWeight.bold,

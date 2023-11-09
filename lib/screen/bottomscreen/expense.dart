@@ -85,7 +85,7 @@ class _ExpenseChart1State extends State<ExpenseChart1> {
                         ),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.06,
+                        height: MediaQuery.of(context).size.height * 0.05,
                         width: MediaQuery.of(context).size.width * 0.9,
                         child: Row(
                           children: [
@@ -102,10 +102,18 @@ class _ExpenseChart1State extends State<ExpenseChart1> {
                                           fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Text(obj.details!.category.toString(),
-                                        style: TextStyle(
-                                          fontSize: width * 0.025,
-                                        )),
+                                    Expanded(
+                                      child: Container(
+                                        height: height,
+                                        width: width,
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                            obj.details!.category.toString(),
+                                            style: TextStyle(
+                                              fontSize: width * 0.025,
+                                            )),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),

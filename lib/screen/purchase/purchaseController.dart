@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,6 +34,7 @@ class PurchaseController extends GetxController {
   String? supplierid;
   String supplierName = '';
   String formatTime = "Purchase Date";
+  String paybackTime = "Date";
   double totalBalance = 0.0;
   bool loading = true;
   bool supp = true;
@@ -858,21 +860,7 @@ class PurchaseController extends GetxController {
                                             ),
                                             InkWell(
                                               onTap: () async {
-                                                final DateTime? selectedDate =
-                                                    await showDatePicker(
-                                                  context: context,
-                                                  initialDate: DateTime.now(),
-                                                  firstDate: DateTime(2000),
-                                                  lastDate: DateTime(2100),
-                                                );
-
-                                                if (selectedDate != null) {
-                                                  creditReturnDate.text =
-                                                      DateFormat("dd-MM-yyyy")
-                                                          .format(selectedDate);
-
-                                                  update();
-                                                }
+                                                selectPayBackDate(context);
                                               },
                                               child: SizedBox(
                                                   height: height * 0.045,
@@ -1119,493 +1107,325 @@ class PurchaseController extends GetxController {
   }
 
   Future<void> showSaleMethodDilogue(
-      BuildContext context, double height, double width) {
+    BuildContext context,
+    double height,
+    double width,
+    var formkey1,
+  ) {
     return showDialog(
       context: context,
       builder: (context) {
         return StatefulBuilder(builder: (context, st) {
-          return Dialog(
-            child: Container(
-              color: Colors.grey.shade300,
-              height: newSupplier == true ? height * 0.8 : height * 0.3,
-              width: width * 0.8,
-              child: Stack(
-                children: [
-                  Container(
-                    height: height * 0.1,
-                    width: width,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage("images/dollar.jpg"))),
-                  ),
-                  Container(
-                    height: height * 0.1,
-                    width: width,
-                    color: blue.withOpacity(0.9),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Purchase Method",
-                      style: GoogleFonts.poppins(
-                          color: white,
-                          fontSize: width * 0.035,
-                          fontWeight: FontWeight.w600),
+          return Form(
+            key: formkey1,
+            child: Dialog(
+              child: Container(
+                color: Colors.grey.shade300,
+                height: newSupplier == true ? height * 0.8 : height * 0.3,
+                width: width * 0.8,
+                child: Stack(
+                  children: [
+                    Container(
+                      height: height * 0.1,
+                      width: width,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("images/dollar.jpg"))),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: height * 0.07),
-                    child: Center(
-                      child: Card(
-                        elevation: 10,
-                        shadowColor: blue,
-                        child: Container(
-                          height: newSupplier == true
-                              ? height * 0.7
-                              : height * 0.25,
-                          width: width * 0.75,
-                          color: white,
-                          child: SingleChildScrollView(
-                            child: Column(
-                                // crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  SizedBox(
-                                    height: height * 0.01,
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      supplierDialog(context, height, width)
-                                          .then((value) {
-                                        Navigator.pop(context);
-                                      });
+                    Container(
+                      height: height * 0.1,
+                      width: width,
+                      color: blue.withOpacity(0.9),
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Purchase Method",
+                        style: GoogleFonts.poppins(
+                            color: white,
+                            fontSize: width * 0.035,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: height * 0.07),
+                      child: Center(
+                        child: Card(
+                          elevation: 10,
+                          shadowColor: blue,
+                          child: Container(
+                            height: newSupplier == true
+                                ? height * 0.7
+                                : height * 0.25,
+                            width: width * 0.75,
+                            color: white,
+                            child: SingleChildScrollView(
+                              child: Column(
+                                  // crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    SizedBox(
+                                      height: height * 0.01,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        supplierDialog(context, height, width)
+                                            .then((value) {
+                                          Navigator.pop(context);
+                                        });
 
-                                      // supplierName = "Individual";
-                                      // supplierid = null;
-                                      // st(
-                                      //   () {},
-                                      // );
-                                    },
-                                    child: SizedBox(
-                                      height: height * 0.08,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          SizedBox(
-                                            width: width * 0.05,
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.11,
-                                            height: height * 0.11,
-                                            child: const Image(
-                                                image: AssetImage(
-                                                    "images/companylogo.png")),
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.03,
-                                          ),
-                                          Text(
-                                            "EXISTING SUPPLIER",
-                                            style: GoogleFonts.poppins(
-                                                // color: white,
-                                                fontSize: width * 0.035,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Expanded(
-                                            child: SizedBox(
+                                        // supplierName = "Individual";
+                                        // supplierid = null;
+                                        // st(
+                                        //   () {},
+                                        // );
+                                      },
+                                      child: SizedBox(
+                                        height: height * 0.08,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            SizedBox(
+                                              width: width * 0.05,
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.11,
+                                              height: height * 0.11,
+                                              child: const Image(
+                                                  image: AssetImage(
+                                                      "images/companylogo.png")),
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.03,
+                                            ),
+                                            Text(
+                                              "EXISTING SUPPLIER",
+                                              style: GoogleFonts.poppins(
+                                                  // color: white,
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                            Expanded(
+                                              child: SizedBox(
+                                                width: width,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: height * 0.01,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        newSupplier = !newSupplier;
+                                        st(
+                                          () {},
+                                        );
+                                      },
+                                      child: SizedBox(
+                                        height: height * 0.08,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            SizedBox(
+                                              width: width * 0.05,
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.11,
+                                              height: height * 0.11,
+                                              child: const Image(
+                                                  image: AssetImage(
+                                                      "images/companylogo.png")),
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.02,
+                                            ),
+                                            Text(
+                                              "NEW SUPPLIER",
+                                              style: GoogleFonts.poppins(
+                                                  // color: white,
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                            Expanded(
+                                              child: SizedBox(
+                                                width: width * 0.2,
+                                              ),
+                                            ),
+                                            Icon(newSupplier
+                                                ? Icons.arrow_drop_down_sharp
+                                                : Icons.arrow_drop_up_sharp)
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: height * 0.01,
+                                    ),
+                                    newSupplier == true
+                                        ? GetBuilder<HomeController>(
+                                            builder: (obj) {
+                                            return SizedBox(
+                                              height: height,
                                               width: width,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.01,
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      newSupplier = !newSupplier;
-                                      st(
-                                        () {},
-                                      );
-                                    },
-                                    child: SizedBox(
-                                      height: height * 0.08,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          SizedBox(
-                                            width: width * 0.05,
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.11,
-                                            height: height * 0.11,
-                                            child: const Image(
-                                                image: AssetImage(
-                                                    "images/companylogo.png")),
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.02,
-                                          ),
-                                          Text(
-                                            "NEW SUPPLIER",
-                                            style: GoogleFonts.poppins(
-                                                // color: white,
-                                                fontSize: width * 0.035,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Expanded(
-                                            child: SizedBox(
-                                              width: width * 0.2,
-                                            ),
-                                          ),
-                                          Icon(newSupplier
-                                              ? Icons.arrow_drop_down_sharp
-                                              : Icons.arrow_drop_up_sharp)
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.01,
-                                  ),
-                                  newSupplier == true
-                                      ? GetBuilder<HomeController>(
-                                          builder: (obj) {
-                                          return SizedBox(
-                                            height: height,
-                                            width: width,
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.end,
-                                                children: [
-                                                  SizedBox(
-                                                    width: width * 0.5,
-                                                    height: height * 0.045,
-                                                    child: TextFormField(
-                                                      autovalidateMode:
-                                                          AutovalidateMode
-                                                              .onUserInteraction,
-                                                      controller: name,
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              // color:Colors.blue[900],
-                                                              fontSize:
-                                                                  width * 0.025,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400),
-                                                      keyboardType:
-                                                          TextInputType.text,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        errorStyle:
-                                                            const TextStyle(
-                                                                color: Colors
-                                                                    .black),
-                                                        contentPadding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                vertical: 0,
-                                                                horizontal: 20),
-                                                        fillColor: Colors.grey,
-                                                        hintText:
-                                                            "Supplier Name",
-                                                        labelText: "Enter Name",
-                                                        hintStyle:
-                                                            GoogleFonts.poppins(
-                                                                // color:Colors.blue[900],
-                                                                fontSize:
-                                                                    width *
-                                                                        0.025,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400),
-                                                        alignLabelWithHint:
-                                                            true,
-                                                        enabledBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          borderSide: BorderSide(
-                                                              color: lightgray
-                                                              //  provider.brightness ==
-                                                              //         AppBrightness.dark
-                                                              //     ? AppTheme.colorWhite
-                                                              //     : AppTheme.colorPrimary,
-                                                              ),
-                                                        ),
-                                                        focusedBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          borderSide: BorderSide(
-                                                              color: lightgray
-                                                              // provider.brightness ==
-                                                              //         AppBrightness.dark
-                                                              //     ? AppTheme.colorWhite
-                                                              //   : AppTheme.colorPrimary,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: height * 0.01,
-                                                  ),
-                                                  SizedBox(
-                                                    width: width * 0.5,
-                                                    height: height * 0.045,
-                                                    child: TextFormField(
-                                                      autovalidateMode:
-                                                          AutovalidateMode
-                                                              .onUserInteraction,
-                                                      controller: email,
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              // color:Colors.blue[900],
-                                                              fontSize:
-                                                                  width * 0.025,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400),
-                                                      keyboardType:
-                                                          TextInputType.text,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        errorStyle:
-                                                            const TextStyle(
-                                                                color: Colors
-                                                                    .black),
-                                                        contentPadding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                vertical: 0,
-                                                                horizontal: 20),
-                                                        fillColor: Colors.grey,
-                                                        hintText:
-                                                            "Supplier Email",
-                                                        labelText:
-                                                            "Enter Email",
-                                                        hintStyle:
-                                                            GoogleFonts.poppins(
-                                                                // color:Colors.blue[900],
-                                                                fontSize:
-                                                                    width *
-                                                                        0.025,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400),
-                                                        alignLabelWithHint:
-                                                            true,
-                                                        enabledBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          borderSide: BorderSide(
-                                                              color: lightgray
-                                                              //  provider.brightness ==
-                                                              //         AppBrightness.dark
-                                                              //     ? AppTheme.colorWhite
-                                                              //     : AppTheme.colorPrimary,
-                                                              ),
-                                                        ),
-                                                        focusedBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          borderSide: BorderSide(
-                                                              color: lightgray
-                                                              // provider.brightness ==
-                                                              //         AppBrightness.dark
-                                                              //     ? AppTheme.colorWhite
-                                                              //   : AppTheme.colorPrimary,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: height * 0.01,
-                                                  ),
-                                                  SizedBox(
-                                                    width: width * 0.5,
-                                                    height: height * 0.045,
-                                                    child: TextFormField(
-                                                      autovalidateMode:
-                                                          AutovalidateMode
-                                                              .onUserInteraction,
-                                                      controller: number,
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              // color:Colors.blue[900],
-                                                              fontSize:
-                                                                  width * 0.025,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400),
-                                                      keyboardType:
-                                                          TextInputType.text,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        errorStyle:
-                                                            const TextStyle(
-                                                                color: Colors
-                                                                    .black),
-                                                        contentPadding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                vertical: 0,
-                                                                horizontal: 20),
-                                                        fillColor: Colors.grey,
-                                                        hintText: "Number",
-                                                        labelText: "Number",
-                                                        hintStyle:
-                                                            GoogleFonts.poppins(
-                                                                // color:Colors.blue[900],
-                                                                fontSize:
-                                                                    width *
-                                                                        0.025,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400),
-                                                        alignLabelWithHint:
-                                                            true,
-                                                        enabledBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          borderSide: BorderSide(
-                                                              color: blue
-                                                              //  provider.brightness ==
-                                                              //         AppBrightness.dark
-                                                              //     ? AppTheme.colorWhite
-                                                              //     : AppTheme.colorPrimary,
-                                                              ),
-                                                        ),
-                                                        focusedBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          borderSide: BorderSide(
-                                                              color: blue
-                                                              // provider.brightness ==
-                                                              //         AppBrightness.dark
-                                                              //     ? AppTheme.colorWhite
-                                                              //   : AppTheme.colorPrimary,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: height * 0.01,
-                                                  ),
-                                                  SizedBox(
-                                                    height: height * 0.06,
-                                                    child: Row(
-                                                      children: [
-                                                        Text(
-                                                          "Type",
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.end,
+                                                  children: [
+                                                    SizedBox(
+                                                      width: width * 0.5,
+                                                      child: TextFormField(
+                                                          autovalidateMode:
+                                                              AutovalidateMode
+                                                                  .onUserInteraction,
+                                                          controller: name,
                                                           style: GoogleFonts
                                                               .poppins(
-                                                                  color: blue,
+                                                                  // color:Colors.blue[900],
                                                                   fontSize:
                                                                       width *
-                                                                          0.03,
+                                                                          0.025,
                                                                   fontWeight:
                                                                       FontWeight
-                                                                          .w500),
-                                                        ),
-                                                        Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          children: <Widget>[
-                                                            Radio(
-                                                              activeColor: blue,
-                                                              value:
-                                                                  obj.type[0],
-                                                              groupValue:
-                                                                  obj.select,
-                                                              onChanged:
-                                                                  (value) {
-                                                                obj.changeValue(
-                                                                    value);
-                                                              },
-                                                            ),
-                                                            Text(
-                                                              "Individual",
-                                                              style: GoogleFonts.poppins(
+                                                                          .w400),
+                                                          keyboardType:
+                                                              TextInputType
+                                                                  .text,
+                                                          decoration:
+                                                              InputDecoration(
+                                                            errorStyle:
+                                                                const TextStyle(
+                                                                    color: Colors
+                                                                        .red),
+                                                            contentPadding:
+                                                                const EdgeInsets
+                                                                    .symmetric(
+                                                                    vertical: 0,
+                                                                    horizontal:
+                                                                        20),
+                                                            fillColor:
+                                                                Colors.grey,
+                                                            hintText:
+                                                                "Supplier Name",
+                                                            labelText:
+                                                                "Enter Name",
+                                                            hintStyle: GoogleFonts
+                                                                .poppins(
+                                                                    // color:Colors.blue[900],
+                                                                    fontSize:
+                                                                        width *
+                                                                            0.025,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400),
+                                                            alignLabelWithHint:
+                                                                true,
+                                                            enabledBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              borderSide: BorderSide(
                                                                   color:
-                                                                      lightgray,
-                                                                  fontSize:
-                                                                      width *
-                                                                          0.03,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500),
-                                                            )
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          children: <Widget>[
-                                                            Radio(
-                                                              activeColor: blue,
-                                                              value:
-                                                                  obj.type[1],
-                                                              groupValue:
-                                                                  obj.select,
-                                                              onChanged:
-                                                                  (value) {
-                                                                obj.changeValue(
-                                                                    value);
-                                                              },
+                                                                      lightgray
+                                                                  //  provider.brightness ==
+                                                                  //         AppBrightness.dark
+                                                                  //     ? AppTheme.colorWhite
+                                                                  //     : AppTheme.colorPrimary,
+                                                                  ),
                                                             ),
-                                                            Text(
-                                                              "Company",
-                                                              style: GoogleFonts.poppins(
+                                                            focusedBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              borderSide: BorderSide(
                                                                   color:
-                                                                      lightgray,
-                                                                  fontSize:
-                                                                      width *
-                                                                          0.03,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500),
-                                                            )
-                                                          ],
-                                                        )
-                                                      ],
+                                                                      lightgray
+                                                                  // provider.brightness ==
+                                                                  //         AppBrightness.dark
+                                                                  //     ? AppTheme.colorWhite
+                                                                  //   : AppTheme.colorPrimary,
+                                                                  ),
+                                                            ),
+                                                            focusedErrorBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                      color: Colors
+                                                                          .red),
+                                                            ),
+                                                            errorBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                      color: Colors
+                                                                          .red),
+                                                            ),
+                                                          ),
+                                                          validator: (value) {
+                                                            if (value!
+                                                                .isEmpty) {
+                                                              return "Required";
+                                                            }
+                                                          }),
                                                     ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: height * 0.01,
-                                                  ),
-                                                  obj.select == "Company"
-                                                      ? SizedBox(
-                                                          width: width * 0.5,
-                                                          height:
-                                                              height * 0.045,
-                                                          child: TextFormField(
-                                                            autovalidateMode:
-                                                                AutovalidateMode
-                                                                    .onUserInteraction,
-                                                            controller: regNo,
-                                                            style: GoogleFonts
+                                                    SizedBox(
+                                                      height: height * 0.01,
+                                                    ),
+                                                    SizedBox(
+                                                      width: width * 0.5,
+                                                      child: TextFormField(
+                                                          autovalidateMode:
+                                                              AutovalidateMode
+                                                                  .onUserInteraction,
+                                                          controller: email,
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  // color:Colors.blue[900],
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.025,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                          keyboardType:
+                                                              TextInputType
+                                                                  .text,
+                                                          decoration:
+                                                              InputDecoration(
+                                                            errorStyle:
+                                                                const TextStyle(
+                                                                    color: Colors
+                                                                        .red),
+                                                            contentPadding:
+                                                                const EdgeInsets
+                                                                    .symmetric(
+                                                                    vertical: 0,
+                                                                    horizontal:
+                                                                        20),
+                                                            fillColor:
+                                                                Colors.grey,
+                                                            hintText:
+                                                                "Supplier Email",
+                                                            labelText:
+                                                                "Enter Email",
+                                                            hintStyle: GoogleFonts
                                                                 .poppins(
                                                                     // color:Colors.blue[900],
                                                                     fontSize:
@@ -1614,86 +1434,121 @@ class PurchaseController extends GetxController {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400),
-                                                            keyboardType:
-                                                                TextInputType
-                                                                    .text,
-                                                            decoration:
-                                                                InputDecoration(
-                                                              errorStyle:
-                                                                  const TextStyle(
+                                                            alignLabelWithHint:
+                                                                true,
+                                                            enabledBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              borderSide: BorderSide(
+                                                                  color:
+                                                                      lightgray
+                                                                  //  provider.brightness ==
+                                                                  //         AppBrightness.dark
+                                                                  //     ? AppTheme.colorWhite
+                                                                  //     : AppTheme.colorPrimary,
+                                                                  ),
+                                                            ),
+                                                            focusedBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              borderSide: BorderSide(
+                                                                  color:
+                                                                      lightgray
+                                                                  // provider.brightness ==
+                                                                  //         AppBrightness.dark
+                                                                  //     ? AppTheme.colorWhite
+                                                                  //   : AppTheme.colorPrimary,
+                                                                  ),
+                                                            ),
+                                                            focusedErrorBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              borderSide:
+                                                                  BorderSide(
                                                                       color: Colors
-                                                                          .black),
-                                                              contentPadding:
-                                                                  const EdgeInsets
-                                                                          .symmetric(
-                                                                      vertical:
-                                                                          0,
-                                                                      horizontal:
-                                                                          20),
-                                                              fillColor:
-                                                                  Colors.grey,
-                                                              hintText:
-                                                                  "Company Reg",
-                                                              labelText: "Reg",
-                                                              hintStyle: GoogleFonts
-                                                                  .poppins(
-                                                                      // color:Colors.blue[900],
-                                                                      fontSize:
-                                                                          width *
-                                                                              0.025,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400),
-                                                              alignLabelWithHint:
-                                                                  true,
-                                                              enabledBorder:
-                                                                  OutlineInputBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10),
-                                                                borderSide: BorderSide(
-                                                                    color: blue
-                                                                    //  provider.brightness ==
-                                                                    //         AppBrightness.dark
-                                                                    //     ? AppTheme.colorWhite
-                                                                    //     : AppTheme.colorPrimary,
-                                                                    ),
-                                                              ),
-                                                              focusedBorder:
-                                                                  OutlineInputBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10),
-                                                                borderSide: BorderSide(
-                                                                    color: blue
-                                                                    // provider.brightness ==
-                                                                    //         AppBrightness.dark
-                                                                    //     ? AppTheme.colorWhite
-                                                                    //   : AppTheme.colorPrimary,
-                                                                    ),
-                                                              ),
+                                                                          .red),
+                                                            ),
+                                                            errorBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                      color: Colors
+                                                                          .red),
                                                             ),
                                                           ),
-                                                        )
-                                                      : const SizedBox(),
-                                                  obj.select == "Company"
-                                                      ? SizedBox(
-                                                          height: height * 0.01,
-                                                        )
-                                                      : const SizedBox(),
-                                                  obj.select == "Company"
-                                                      ? SizedBox(
-                                                          width: width * 0.5,
-                                                          height:
-                                                              height * 0.045,
-                                                          child: TextFormField(
-                                                            autovalidateMode:
-                                                                AutovalidateMode
-                                                                    .onUserInteraction,
-                                                            controller: address,
-                                                            style: GoogleFonts
+                                                          validator: (value) {
+                                                            if (value!
+                                                                .isEmpty) {
+                                                              return 'Required';
+                                                            }
+                                                            if (!RegExp(
+                                                                    r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                                                                .hasMatch(
+                                                                    value)) {
+                                                              return "Please Enter Email";
+                                                            }
+                                                            return null;
+                                                          }),
+                                                    ),
+                                                    SizedBox(
+                                                      height: height * 0.01,
+                                                    ),
+                                                    SizedBox(
+                                                      width: width * 0.5,
+                                                      child: TextFormField(
+                                                          autovalidateMode:
+                                                              AutovalidateMode
+                                                                  .onUserInteraction,
+                                                          keyboardType:
+                                                              TextInputType
+                                                                  .number,
+                                                          textInputAction:
+                                                              TextInputAction
+                                                                  .done,
+                                                          inputFormatters: <TextInputFormatter>[
+                                                            FilteringTextInputFormatter
+                                                                .digitsOnly
+                                                          ],
+                                                          controller: number,
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  // color:Colors.blue[900],
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.025,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                          decoration:
+                                                              InputDecoration(
+                                                            errorStyle:
+                                                                const TextStyle(
+                                                                    color: Colors
+                                                                        .red),
+                                                            contentPadding:
+                                                                const EdgeInsets
+                                                                    .symmetric(
+                                                                    vertical: 0,
+                                                                    horizontal:
+                                                                        20),
+                                                            fillColor:
+                                                                Colors.grey,
+                                                            hintText: "Number",
+                                                            labelText: "Number",
+                                                            hintStyle: GoogleFonts
                                                                 .poppins(
                                                                     // color:Colors.blue[900],
                                                                     fontSize:
@@ -1702,170 +1557,78 @@ class PurchaseController extends GetxController {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400),
-                                                            keyboardType:
-                                                                TextInputType
-                                                                    .text,
-                                                            decoration:
-                                                                InputDecoration(
-                                                              errorStyle:
-                                                                  const TextStyle(
+                                                            alignLabelWithHint:
+                                                                true,
+                                                            enabledBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              borderSide: BorderSide(
+                                                                  color: blue
+                                                                  //  provider.brightness ==
+                                                                  //         AppBrightness.dark
+                                                                  //     ? AppTheme.colorWhite
+                                                                  //     : AppTheme.colorPrimary,
+                                                                  ),
+                                                            ),
+                                                            focusedBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              borderSide: BorderSide(
+                                                                  color: blue
+                                                                  // provider.brightness ==
+                                                                  //         AppBrightness.dark
+                                                                  //     ? AppTheme.colorWhite
+                                                                  //   : AppTheme.colorPrimary,
+                                                                  ),
+                                                            ),
+                                                            focusedErrorBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              borderSide:
+                                                                  BorderSide(
                                                                       color: Colors
-                                                                          .black),
-                                                              contentPadding:
-                                                                  const EdgeInsets
-                                                                          .symmetric(
-                                                                      vertical:
-                                                                          0,
-                                                                      horizontal:
-                                                                          20),
-                                                              fillColor:
-                                                                  Colors.grey,
-                                                              hintText:
-                                                                  "Address",
-                                                              labelText:
-                                                                  "Address",
-                                                              hintStyle: GoogleFonts
-                                                                  .poppins(
-                                                                      // color:Colors.blue[900],
-                                                                      fontSize:
-                                                                          width *
-                                                                              0.025,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400),
-                                                              alignLabelWithHint:
-                                                                  true,
-                                                              enabledBorder:
-                                                                  OutlineInputBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10),
-                                                                borderSide: BorderSide(
-                                                                    color: blue
-                                                                    //  provider.brightness ==
-                                                                    //         AppBrightness.dark
-                                                                    //     ? AppTheme.colorWhite
-                                                                    //     : AppTheme.colorPrimary,
-                                                                    ),
-                                                              ),
-                                                              focusedBorder:
-                                                                  OutlineInputBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10),
-                                                                borderSide: BorderSide(
-                                                                    color: blue
-                                                                    // provider.brightness ==
-                                                                    //         AppBrightness.dark
-                                                                    //     ? AppTheme.colorWhite
-                                                                    //   : AppTheme.colorPrimary,
-                                                                    ),
-                                                              ),
+                                                                          .red),
+                                                            ),
+                                                            errorBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                      color: Colors
+                                                                          .red),
                                                             ),
                                                           ),
-                                                        )
-                                                      : const SizedBox(),
-                                                  obj.select == "Company"
-                                                      ? SizedBox(
-                                                          height: height * 0.01,
-                                                        )
-                                                      : const SizedBox(),
-                                                  Card(
-                                                    elevation: 5,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        7)),
-                                                    child: InkWell(
-                                                      onTap: () {
-                                                        if (supp) {
-                                                          supp = false;
-                                                          st(
-                                                            () {},
-                                                          );
-                                                          Map<String, dynamic>
-                                                              map;
-                                                          if (obj.select ==
-                                                              "Company") {
-                                                            map = {
-                                                              "name": name.text,
-                                                              "email":
-                                                                  email.text,
-                                                              "telePhone":
-                                                                  number.text,
-                                                              "address":
-                                                                  address.text,
-                                                              "companyReg":
-                                                                  regNo.text,
-                                                              "isCompany": true,
-                                                            };
-                                                          } else {
-                                                            map = {
-                                                              "name": name.text,
-                                                              "email":
-                                                                  email.text,
-                                                              "telePhone":
-                                                                  number.text,
-                                                              "address": "",
-                                                              "companyReg": "",
-                                                              "isCompany":
-                                                                  false,
-                                                            };
-                                                          }
-
-                                                          HomeController.to
-                                                              .addSupplierData(
-                                                            map,
-                                                          )
-                                                              .then((value) {
-                                                            name.clear();
-                                                            regNo.clear();
-                                                            email.clear();
-                                                            number.clear();
-                                                            address.clear();
-                                                            // st(
-                                                            //   () {
-                                                            //     newSupplier =
-                                                            //         false;
-                                                            //   },
-                                                            // );
-                                                            Future.delayed(
-                                                                const Duration(
-                                                                    seconds: 1),
-                                                                () {
-                                                              supplierDialog(
-                                                                      context,
-                                                                      height,
-                                                                      width)
-                                                                  .then(
-                                                                      (value) {
-                                                                Navigator.pop(
-                                                                    context);
-                                                              });
-                                                            });
-                                                          });
-                                                        }
-                                                      },
-                                                      child: Container(
-                                                        height: height * 0.045,
-                                                        width: width * 0.45,
-                                                        decoration: BoxDecoration(
-                                                            color: blue,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        7)),
-                                                        child: Center(
-                                                          child: Text(
-                                                            "Add Supplier",
+                                                          validator: (value) {
+                                                            if (value!
+                                                                .isEmpty) {
+                                                              return "Required";
+                                                            }
+                                                          }),
+                                                    ),
+                                                    SizedBox(
+                                                      height: height * 0.01,
+                                                    ),
+                                                    SizedBox(
+                                                      height: height * 0.06,
+                                                      child: Row(
+                                                        children: [
+                                                          Text(
+                                                            "Type",
                                                             style: GoogleFonts
                                                                 .poppins(
-                                                                    color:
-                                                                        white,
+                                                                    color: blue,
                                                                     fontSize:
                                                                         width *
                                                                             0.03,
@@ -1873,26 +1636,435 @@ class PurchaseController extends GetxController {
                                                                         FontWeight
                                                                             .w500),
                                                           ),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            children: <Widget>[
+                                                              Radio(
+                                                                activeColor:
+                                                                    blue,
+                                                                value:
+                                                                    obj.type[0],
+                                                                groupValue:
+                                                                    obj.select,
+                                                                onChanged:
+                                                                    (value) {
+                                                                  obj.changeValue(
+                                                                      value);
+                                                                },
+                                                              ),
+                                                              Text(
+                                                                "Individual",
+                                                                style: GoogleFonts.poppins(
+                                                                    color:
+                                                                        lightgray,
+                                                                    fontSize:
+                                                                        width *
+                                                                            0.03,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500),
+                                                              )
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            children: <Widget>[
+                                                              Radio(
+                                                                activeColor:
+                                                                    blue,
+                                                                value:
+                                                                    obj.type[1],
+                                                                groupValue:
+                                                                    obj.select,
+                                                                onChanged:
+                                                                    (value) {
+                                                                  obj.changeValue(
+                                                                      value);
+                                                                },
+                                                              ),
+                                                              Text(
+                                                                "Company",
+                                                                style: GoogleFonts.poppins(
+                                                                    color:
+                                                                        lightgray,
+                                                                    fontSize:
+                                                                        width *
+                                                                            0.03,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500),
+                                                              )
+                                                            ],
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: height * 0.01,
+                                                    ),
+                                                    obj.select == "Company"
+                                                        ? SizedBox(
+                                                            width: width * 0.5,
+                                                            child:
+                                                                TextFormField(
+                                                              autovalidateMode:
+                                                                  AutovalidateMode
+                                                                      .onUserInteraction,
+                                                              controller: regNo,
+                                                              style: GoogleFonts
+                                                                  .poppins(
+                                                                      // color:Colors.blue[900],
+                                                                      fontSize:
+                                                                          width *
+                                                                              0.025,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400),
+                                                              keyboardType:
+                                                                  TextInputType
+                                                                      .text,
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                errorStyle:
+                                                                    const TextStyle(
+                                                                        color: Colors
+                                                                            .red),
+                                                                contentPadding:
+                                                                    const EdgeInsets
+                                                                        .symmetric(
+                                                                        vertical:
+                                                                            0,
+                                                                        horizontal:
+                                                                            20),
+                                                                fillColor:
+                                                                    Colors.grey,
+                                                                hintText:
+                                                                    "Company Reg",
+                                                                labelText:
+                                                                    "Reg",
+                                                                hintStyle: GoogleFonts
+                                                                    .poppins(
+                                                                        // color:Colors.blue[900],
+                                                                        fontSize:
+                                                                            width *
+                                                                                0.025,
+                                                                        fontWeight:
+                                                                            FontWeight.w400),
+                                                                alignLabelWithHint:
+                                                                    true,
+                                                                enabledBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10),
+                                                                  borderSide: BorderSide(
+                                                                      color:
+                                                                          blue
+                                                                      //  provider.brightness ==
+                                                                      //         AppBrightness.dark
+                                                                      //     ? AppTheme.colorWhite
+                                                                      //     : AppTheme.colorPrimary,
+                                                                      ),
+                                                                ),
+                                                                focusedBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10),
+                                                                  borderSide: BorderSide(
+                                                                      color:
+                                                                          blue
+                                                                      // provider.brightness ==
+                                                                      //         AppBrightness.dark
+                                                                      //     ? AppTheme.colorWhite
+                                                                      //   : AppTheme.colorPrimary,
+                                                                      ),
+                                                                ),
+                                                                focusedErrorBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10),
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                          color:
+                                                                              Colors.red),
+                                                                ),
+                                                                errorBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10),
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                          color:
+                                                                              Colors.red),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          )
+                                                        : const SizedBox(),
+                                                    obj.select == "Company"
+                                                        ? SizedBox(
+                                                            height:
+                                                                height * 0.01,
+                                                          )
+                                                        : const SizedBox(),
+                                                    obj.select == "Company"
+                                                        ? SizedBox(
+                                                            width: width * 0.5,
+                                                            child:
+                                                                TextFormField(
+                                                              autovalidateMode:
+                                                                  AutovalidateMode
+                                                                      .onUserInteraction,
+                                                              controller:
+                                                                  address,
+                                                              style: GoogleFonts
+                                                                  .poppins(
+                                                                      // color:Colors.blue[900],
+                                                                      fontSize:
+                                                                          width *
+                                                                              0.025,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400),
+                                                              keyboardType:
+                                                                  TextInputType
+                                                                      .text,
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                errorStyle: const TextStyle(
+                                                                    color: Colors
+                                                                        .black),
+                                                                contentPadding:
+                                                                    const EdgeInsets
+                                                                        .symmetric(
+                                                                        vertical:
+                                                                            0,
+                                                                        horizontal:
+                                                                            20),
+                                                                fillColor:
+                                                                    Colors.grey,
+                                                                hintText:
+                                                                    "Address",
+                                                                labelText:
+                                                                    "Address",
+                                                                hintStyle: GoogleFonts
+                                                                    .poppins(
+                                                                        // color:Colors.blue[900],
+                                                                        fontSize:
+                                                                            width *
+                                                                                0.025,
+                                                                        fontWeight:
+                                                                            FontWeight.w400),
+                                                                alignLabelWithHint:
+                                                                    true,
+                                                                enabledBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10),
+                                                                  borderSide: BorderSide(
+                                                                      color:
+                                                                          blue
+                                                                      //  provider.brightness ==
+                                                                      //         AppBrightness.dark
+                                                                      //     ? AppTheme.colorWhite
+                                                                      //     : AppTheme.colorPrimary,
+                                                                      ),
+                                                                ),
+                                                                focusedBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10),
+                                                                  borderSide: BorderSide(
+                                                                      color:
+                                                                          blue
+                                                                      // provider.brightness ==
+                                                                      //         AppBrightness.dark
+                                                                      //     ? AppTheme.colorWhite
+                                                                      //   : AppTheme.colorPrimary,
+                                                                      ),
+                                                                ),
+                                                                focusedErrorBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10),
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                          color:
+                                                                              Colors.red),
+                                                                ),
+                                                                errorBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10),
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                          color:
+                                                                              Colors.red),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          )
+                                                        : const SizedBox(),
+                                                    obj.select == "Company"
+                                                        ? SizedBox(
+                                                            height:
+                                                                height * 0.01,
+                                                          )
+                                                        : const SizedBox(),
+                                                    Card(
+                                                      elevation: 5,
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          7)),
+                                                      child: InkWell(
+                                                        onTap: () {
+                                                          if (formkey1
+                                                              .currentState!
+                                                              .validate()) {
+                                                            if (supp) {
+                                                              supp = false;
+                                                              st(
+                                                                () {},
+                                                              );
+                                                              Map<String,
+                                                                  dynamic> map;
+                                                              if (obj.select ==
+                                                                  "Company") {
+                                                                map = {
+                                                                  "name":
+                                                                      name.text,
+                                                                  "email": email
+                                                                      .text,
+                                                                  "telePhone":
+                                                                      number
+                                                                          .text,
+                                                                  "address":
+                                                                      address
+                                                                          .text,
+                                                                  "companyReg":
+                                                                      regNo
+                                                                          .text,
+                                                                  "isCompany":
+                                                                      true,
+                                                                };
+                                                              } else {
+                                                                map = {
+                                                                  "name":
+                                                                      name.text,
+                                                                  "email": email
+                                                                      .text,
+                                                                  "telePhone":
+                                                                      number
+                                                                          .text,
+                                                                  "address": "",
+                                                                  "companyReg":
+                                                                      "",
+                                                                  "isCompany":
+                                                                      false,
+                                                                };
+                                                              }
+
+                                                              HomeController.to
+                                                                  .addSupplierData(
+                                                                map,
+                                                              )
+                                                                  .then(
+                                                                      (value) {
+                                                                name.clear();
+                                                                regNo.clear();
+                                                                email.clear();
+                                                                number.clear();
+                                                                address.clear();
+                                                                // st(
+                                                                //   () {
+                                                                //     newSupplier =
+                                                                //         false;
+                                                                //   },
+                                                                // );
+                                                                Future.delayed(
+                                                                    const Duration(
+                                                                        seconds:
+                                                                            1),
+                                                                    () {
+                                                                  supplierDialog(
+                                                                          context,
+                                                                          height,
+                                                                          width)
+                                                                      .then(
+                                                                          (value) {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  });
+                                                                });
+                                                              });
+                                                            }
+                                                          }
+                                                        },
+                                                        child: Container(
+                                                          height:
+                                                              height * 0.045,
+                                                          width: width * 0.45,
+                                                          decoration: BoxDecoration(
+                                                              color: blue,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          7)),
+                                                          child: Center(
+                                                            child: Text(
+                                                              "Add Supplier",
+                                                              style: GoogleFonts.poppins(
+                                                                  color: white,
+                                                                  fontSize:
+                                                                      width *
+                                                                          0.03,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                          );
-                                        })
-                                      : const SizedBox(),
-                                  SizedBox(
-                                    height: height * 0.01,
-                                  )
-                                ]),
+                                            );
+                                          })
+                                        : const SizedBox(),
+                                    SizedBox(
+                                      height: height * 0.01,
+                                    )
+                                  ]),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
           );
@@ -1918,7 +2090,7 @@ class PurchaseController extends GetxController {
                           (double.tryParse(balanceAmount.text) ?? 0.0),
                   "Note": particular.text,
                   "DateTime": formatTime,
-                  "PayBackDay": creditReturnDate.text,
+                  "PayBackDay": paybackTime,
                   "Currency": HomeController.to.curency,
                   "SupplierId": supplierid,
                   "SaleMethod": 1,
@@ -2012,6 +2184,25 @@ class PurchaseController extends GetxController {
       var now = DateFormat("hh:mm a").format(a);
       print("time of now is ${now}");
       formatTime = formatTime + " ${time12to24Format(now)}";
+      update();
+    }
+  }
+
+  Future<void> selectPayBackDate(BuildContext context) async {
+    final DateTime? selectedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    if (selectedDate != null) {
+      DateTime a = DateTime.now();
+      paybackTime = DateFormat("dd-MM-yyyy").format(selectedDate);
+      var now = DateFormat("hh:mm a").format(a);
+      print("time of now is ${now}");
+      paybackTime = paybackTime + " ${time12to24Format(now)}";
+      creditReturnDate.text = paybackTime.substring(0, 10);
       update();
     }
   }

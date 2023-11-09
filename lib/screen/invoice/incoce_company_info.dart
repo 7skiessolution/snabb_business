@@ -92,755 +92,970 @@ class _InvoicCompanyINfoState extends State<InvoicCompanyINfo> {
                           width: width * 0.9,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  "Company Information",
-                                  style: GoogleFonts.poppins(
-                                      color: blue,
-                                      fontSize: width * 0.03,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                SizedBox(
-                                  height: height * 0.02,
-                                ),
-                                Card(
-                                  elevation: 7,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: SizedBox(
-                                    width: width * 0.8,
-                                    height: height * 0.055,
-                                    child: TextFormField(
-                                      controller: companyNameController,
-                                      keyboardType: TextInputType.text,
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Required';
-                                        }
-                                        return null;
-                                      },
-                                      decoration: InputDecoration(
-                                        errorStyle:
-                                            const TextStyle(color: Colors.red),
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 0, horizontal: 20),
-                                        fillColor: Colors.grey,
-                                        hintText: "Company Name",
-                                        hintStyle: GoogleFonts.poppins(
-                                            //color:lightgray,
-                                            fontSize: width * 0.03,
-                                            fontWeight: FontWeight.w600),
-                                        alignLabelWithHint: true,
-                                        errorBorder: InputBorder.none,
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide:
-                                              BorderSide(color: darkblue!),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide:
-                                              BorderSide(color: darkblue!),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: width * 0.8,
-                                  height: height * 0.07,
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        child: Card(
-                                          elevation: 7,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: SizedBox(
-                                            width: width,
-                                            height: height,
-                                            child: TextFormField(
-                                              controller: companyCityController,
-                                              validator: (value) {
-                                                if (value == null ||
-                                                    value.isEmpty) {
-                                                  return 'Required';
-                                                }
-                                                return null;
-                                              },
-                                              keyboardType: TextInputType.text,
-                                              decoration: InputDecoration(
-                                                errorStyle: const TextStyle(
-                                                    color: Colors.red),
-                                                contentPadding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 0,
-                                                        horizontal: 20),
-                                                fillColor: Colors.grey,
-                                                hintText: "City",
-                                                hintStyle: GoogleFonts.poppins(
-                                                    //color:lightgray,
-                                                    fontSize: width * 0.03,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                                alignLabelWithHint: true,
-                                                errorBorder: InputBorder.none,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: width * 0.02,
-                                      ),
-                                      Expanded(
-                                        child: Card(
-                                          elevation: 7,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: SizedBox(
-                                            width: width,
-                                            height: height,
-                                            child: TextFormField(
-                                              validator: (value) {
-                                                if (value == null ||
-                                                    value.isEmpty) {
-                                                  return 'Required';
-                                                }
-                                                return null;
-                                              },
-                                              controller:
-                                                  companyStateController,
-                                              keyboardType: TextInputType.text,
-                                              decoration: InputDecoration(
-                                                errorStyle: const TextStyle(
-                                                    color: Colors.red),
-                                                contentPadding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 0,
-                                                        horizontal: 20),
-                                                fillColor: Colors.grey,
-                                                hintText: "State",
-                                                hintStyle: GoogleFonts.poppins(
-                                                    //color:lightgray,
-                                                    fontSize: width * 0.03,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                                errorBorder: InputBorder.none,
-                                                alignLabelWithHint: true,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Card(
-                                  elevation: 7,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: SizedBox(
-                                    width: width * 0.8,
-                                    height: height * 0.055,
-                                    child: TextFormField(
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Required';
-                                        }
-                                        return null;
-                                      },
-                                      controller: companyAddressController,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                        errorStyle:
-                                            const TextStyle(color: Colors.red),
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 0, horizontal: 20),
-                                        fillColor: Colors.grey,
-                                        hintText: "Company Address",
-                                        hintStyle: GoogleFonts.poppins(
-                                            //color:lightgray,
-                                            fontSize: width * 0.03,
-                                            fontWeight: FontWeight.w600),
-                                        alignLabelWithHint: true,
-                                        errorBorder: InputBorder.none,
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide:
-                                              BorderSide(color: darkblue!),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide:
-                                              BorderSide(color: darkblue!),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: width * 0.8,
-                                  height: height * 0.07,
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        child: Card(
-                                          elevation: 7,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: SizedBox(
-                                            width: width,
-                                            height: height,
-                                            child: TextFormField(
-                                              validator: (value) {
-                                                if (value == null ||
-                                                    value.isEmpty) {
-                                                  return 'Required';
-                                                }
-                                                return null;
-                                              },
-                                              controller:
-                                                  companyCountryController,
-                                              keyboardType: TextInputType.text,
-                                              decoration: InputDecoration(
-                                                errorStyle: const TextStyle(
-                                                    color: Colors.red),
-                                                contentPadding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 0,
-                                                        horizontal: 20),
-                                                fillColor: Colors.grey,
-                                                hintText: "Country",
-                                                hintStyle: GoogleFonts.poppins(
-                                                    //color:lightgray,
-                                                    fontSize: width * 0.03,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                                errorBorder: InputBorder.none,
-                                                alignLabelWithHint: true,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: width * 0.02,
-                                      ),
-                                      Expanded(
-                                        child: Card(
-                                          elevation: 7,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: SizedBox(
-                                            width: width,
-                                            height: height,
-                                            child: TextFormField(
-                                              validator: (value) {
-                                                if (value == null ||
-                                                    value.isEmpty) {
-                                                  return 'Required';
-                                                }
-                                                return null;
-                                              },
-                                              controller:
-                                                  companyPostalController,
-                                              keyboardType: TextInputType.text,
-                                              decoration: InputDecoration(
-                                                errorStyle: const TextStyle(
-                                                    color: Colors.red),
-                                                contentPadding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 0,
-                                                        horizontal: 20),
-                                                fillColor: Colors.grey,
-                                                hintText: "Postal",
-                                                hintStyle: GoogleFonts.poppins(
-                                                    //color:lightgray,
-                                                    fontSize: width * 0.03,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                                errorBorder: InputBorder.none,
-                                                alignLabelWithHint: true,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: height * 0.02,
-                                ),
-                                Text(
-                                  "Invoice To",
-                                  style: GoogleFonts.poppins(
-                                      color: blue,
-                                      fontSize: width * 0.03,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                SizedBox(
-                                  height: height * 0.02,
-                                ),
-                                Card(
-                                  elevation: 7,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: SizedBox(
-                                    width: width * 0.8,
-                                    height: height * 0.055,
-                                    child: TextFormField(
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Required';
-                                        }
-                                        return null;
-                                      },
-                                      controller: toNameController,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                        errorStyle:
-                                            const TextStyle(color: Colors.red),
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 0, horizontal: 20),
-                                        fillColor: Colors.grey,
-                                        hintText: "Company Name",
-                                        hintStyle: GoogleFonts.poppins(
-                                            //color:lightgray,
-                                            fontSize: width * 0.03,
-                                            fontWeight: FontWeight.w600),
-                                        alignLabelWithHint: true,
-                                        errorBorder: InputBorder.none,
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide:
-                                              BorderSide(color: darkblue!),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide:
-                                              BorderSide(color: darkblue!),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: width * 0.8,
-                                  height: height * 0.07,
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        child: Card(
-                                          elevation: 7,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: SizedBox(
-                                            width: width,
-                                            height: height,
-                                            child: TextFormField(
-                                              validator: (value) {
-                                                if (value == null ||
-                                                    value.isEmpty) {
-                                                  return 'Required';
-                                                }
-                                                return null;
-                                              },
-                                              controller: toCityController,
-                                              keyboardType: TextInputType.text,
-                                              decoration: InputDecoration(
-                                                errorStyle: const TextStyle(
-                                                    color: Colors.red),
-                                                contentPadding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 0,
-                                                        horizontal: 20),
-                                                fillColor: Colors.grey,
-                                                hintText: "City",
-                                                hintStyle: GoogleFonts.poppins(
-                                                    //color:lightgray,
-                                                    fontSize: width * 0.03,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                                alignLabelWithHint: true,
-                                                errorBorder: InputBorder.none,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: width * 0.02,
-                                      ),
-                                      Expanded(
-                                        child: Card(
-                                          elevation: 7,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: SizedBox(
-                                            width: width,
-                                            height: height,
-                                            child: TextFormField(
-                                              validator: (value) {
-                                                if (value == null ||
-                                                    value.isEmpty) {
-                                                  return 'Required';
-                                                }
-                                                return null;
-                                              },
-                                              controller: toStateController,
-                                              keyboardType: TextInputType.text,
-                                              decoration: InputDecoration(
-                                                errorStyle: const TextStyle(
-                                                    color: Colors.red),
-                                                contentPadding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 0,
-                                                        horizontal: 20),
-                                                fillColor: Colors.grey,
-                                                hintText: "State",
-                                                hintStyle: GoogleFonts.poppins(
-                                                    //color:lightgray,
-                                                    fontSize: width * 0.03,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                                alignLabelWithHint: true,
-                                                errorBorder: InputBorder.none,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Card(
-                                  elevation: 7,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: SizedBox(
-                                    width: width * 0.8,
-                                    height: height * 0.055,
-                                    child: TextFormField(
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Required';
-                                        }
-                                        return null;
-                                      },
-                                      controller: toAddressController,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                        errorStyle:
-                                            const TextStyle(color: Colors.red),
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 0, horizontal: 20),
-                                        fillColor: Colors.grey,
-                                        hintText: "Company Address",
-                                        hintStyle: GoogleFonts.poppins(
-                                            //color:lightgray,
-                                            fontSize: width * 0.03,
-                                            fontWeight: FontWeight.w600),
-                                        alignLabelWithHint: true,
-                                        errorBorder: InputBorder.none,
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide:
-                                              BorderSide(color: darkblue!),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide:
-                                              BorderSide(color: darkblue!),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: width * 0.8,
-                                  height: height * 0.07,
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        child: Card(
-                                          elevation: 7,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: SizedBox(
-                                            width: width,
-                                            height: height,
-                                            child: TextFormField(
-                                              validator: (value) {
-                                                if (value == null ||
-                                                    value.isEmpty) {
-                                                  return 'Required';
-                                                }
-                                                return null;
-                                              },
-                                              controller: toCountryController,
-                                              keyboardType: TextInputType.text,
-                                              decoration: InputDecoration(
-                                                errorStyle: const TextStyle(
-                                                    color: Colors.red),
-                                                contentPadding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 0,
-                                                        horizontal: 20),
-                                                fillColor: Colors.grey,
-                                                hintText: "Country",
-                                                hintStyle: GoogleFonts.poppins(
-                                                    //color:lightgray,
-                                                    fontSize: width * 0.03,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                                alignLabelWithHint: true,
-                                                errorBorder: InputBorder.none,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: width * 0.02,
-                                      ),
-                                      Expanded(
-                                        child: Card(
-                                          elevation: 7,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: SizedBox(
-                                            width: width,
-                                            height: height,
-                                            child: TextFormField(
-                                              validator: (value) {
-                                                if (value == null ||
-                                                    value.isEmpty) {
-                                                  return 'Required';
-                                                }
-                                                return null;
-                                              },
-                                              controller: toPostalController,
-                                              keyboardType: TextInputType.text,
-                                              decoration: InputDecoration(
-                                                errorStyle: const TextStyle(
-                                                    color: Colors.red),
-                                                contentPadding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 0,
-                                                        horizontal: 20),
-                                                fillColor: Colors.grey,
-                                                hintText: "Postal",
-                                                hintStyle: GoogleFonts.poppins(
-                                                    //color:lightgray,
-                                                    fontSize: width * 0.03,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                                alignLabelWithHint: true,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                                errorBorder: InputBorder.none,
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: darkblue!),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: height * 0.04,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    if (formKey.currentState!.validate()) {
-                                      CompanyModel companyModel = CompanyModel(
-                                          address:
-                                              companyAddressController.text,
-                                          city: companyCityController.text,
-                                          companyName:
-                                              companyNameController.text,
-                                          country:
-                                              companyCountryController.text,
-                                          postal: companyPostalController.text,
-                                          state: companyStateController.text);
-
-                                      CompanyModel tocompanyModel =
-                                          CompanyModel(
-                                              address: toAddressController.text,
-                                              city: toCityController.text,
-                                              companyName:
-                                                  toNameController.text,
-                                              country: toCountryController.text,
-                                              postal: toPostalController.text,
-                                              state: toStateController.text);
-                                      InvoiceController.to.saveCompanyInfo(
-                                          companyModel, tocompanyModel);
-                                      Navigator.pop(context);
-                                    }
-                                  },
-                                  child: Container(
-                                    height: height * 0.06,
-                                    width: width * 0.4,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "Company Information",
+                                    style: GoogleFonts.poppins(
                                         color: blue,
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Text(
-                                      "Save",
-                                      style: GoogleFonts.poppins(
-                                          color: whitecolor,
-                                          fontSize: width * 0.03,
-                                          fontWeight: FontWeight.w600),
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.02,
+                                  ),
+                                  Card(
+                                    elevation: 7,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: SizedBox(
+                                      width: width * 0.8,
+                                      child: TextFormField(
+                                        controller: companyNameController,
+                                        keyboardType: TextInputType.text,
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Required';
+                                          }
+                                          return null;
+                                        },
+                                        decoration: InputDecoration(
+                                          errorStyle: const TextStyle(
+                                              color: Colors.red),
+                                          contentPadding:
+                                              const EdgeInsets.symmetric(
+                                                  vertical: 0, horizontal: 20),
+                                          fillColor: Colors.grey,
+                                          hintText: "Company Name",
+                                          hintStyle: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.03,
+                                              fontWeight: FontWeight.w600),
+                                          alignLabelWithHint: true,
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: darkblue!),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: darkblue!),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: Colors.red),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: Colors.red),
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                )
-                              ],
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: width * 0.02),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: Card(
+                                            elevation: 7,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: SizedBox(
+                                              width: width,
+                                              child: TextFormField(
+                                                controller:
+                                                    companyCityController,
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Required';
+                                                  }
+                                                  return null;
+                                                },
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                decoration: InputDecoration(
+                                                  errorStyle: const TextStyle(
+                                                      color: Colors.red),
+                                                  contentPadding:
+                                                      const EdgeInsets
+                                                          .symmetric(
+                                                          vertical: 0,
+                                                          horizontal: 20),
+                                                  fillColor: Colors.grey,
+                                                  hintText: "City",
+                                                  hintStyle:
+                                                      GoogleFonts.poppins(
+                                                          //color:lightgray,
+                                                          fontSize:
+                                                              width * 0.03,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                  alignLabelWithHint: true,
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.02,
+                                        ),
+                                        Expanded(
+                                          child: Card(
+                                            elevation: 7,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: SizedBox(
+                                              width: width,
+                                              child: TextFormField(
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Required';
+                                                  }
+                                                  return null;
+                                                },
+                                                controller:
+                                                    companyStateController,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                decoration: InputDecoration(
+                                                  errorStyle: const TextStyle(
+                                                      color: Colors.red),
+                                                  contentPadding:
+                                                      const EdgeInsets
+                                                          .symmetric(
+                                                          vertical: 0,
+                                                          horizontal: 20),
+                                                  fillColor: Colors.grey,
+                                                  hintText: "State",
+                                                  hintStyle:
+                                                      GoogleFonts.poppins(
+                                                          //color:lightgray,
+                                                          fontSize:
+                                                              width * 0.03,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  alignLabelWithHint: true,
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Card(
+                                    elevation: 7,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: SizedBox(
+                                      width: width * 0.8,
+                                      child: TextFormField(
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Required';
+                                          }
+                                          return null;
+                                        },
+                                        controller: companyAddressController,
+                                        keyboardType: TextInputType.text,
+                                        decoration: InputDecoration(
+                                          errorStyle: const TextStyle(
+                                              color: Colors.red),
+                                          contentPadding:
+                                              const EdgeInsets.symmetric(
+                                                  vertical: 0, horizontal: 20),
+                                          fillColor: Colors.grey,
+                                          hintText: "Company Address",
+                                          hintStyle: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.03,
+                                              fontWeight: FontWeight.w600),
+                                          alignLabelWithHint: true,
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: Colors.red),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: Colors.red),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: darkblue!),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: darkblue!),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: width * 0.02),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: Card(
+                                            elevation: 7,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: SizedBox(
+                                              width: width,
+                                              child: TextFormField(
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Required';
+                                                  }
+                                                  return null;
+                                                },
+                                                controller:
+                                                    companyCountryController,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                decoration: InputDecoration(
+                                                  errorStyle: const TextStyle(
+                                                      color: Colors.red),
+                                                  contentPadding:
+                                                      const EdgeInsets
+                                                          .symmetric(
+                                                          vertical: 0,
+                                                          horizontal: 20),
+                                                  fillColor: Colors.grey,
+                                                  hintText: "Country",
+                                                  hintStyle:
+                                                      GoogleFonts.poppins(
+                                                          //color:lightgray,
+                                                          fontSize:
+                                                              width * 0.03,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  alignLabelWithHint: true,
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.02,
+                                        ),
+                                        Expanded(
+                                          child: Card(
+                                            elevation: 7,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: SizedBox(
+                                              width: width,
+                                              child: TextFormField(
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Required';
+                                                  }
+                                                  return null;
+                                                },
+                                                controller:
+                                                    companyPostalController,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                decoration: InputDecoration(
+                                                  errorStyle: const TextStyle(
+                                                      color: Colors.red),
+                                                  contentPadding:
+                                                      const EdgeInsets
+                                                          .symmetric(
+                                                          vertical: 0,
+                                                          horizontal: 20),
+                                                  fillColor: Colors.grey,
+                                                  hintText: "Postal",
+                                                  hintStyle:
+                                                      GoogleFonts.poppins(
+                                                          //color:lightgray,
+                                                          fontSize:
+                                                              width * 0.03,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  alignLabelWithHint: true,
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.02,
+                                  ),
+                                  Text(
+                                    "Invoice To",
+                                    style: GoogleFonts.poppins(
+                                        color: blue,
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.02,
+                                  ),
+                                  Card(
+                                    elevation: 7,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: SizedBox(
+                                      width: width * 0.8,
+                                      child: TextFormField(
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Required';
+                                          }
+                                          return null;
+                                        },
+                                        controller: toNameController,
+                                        keyboardType: TextInputType.text,
+                                        decoration: InputDecoration(
+                                          errorStyle: const TextStyle(
+                                              color: Colors.red),
+                                          contentPadding:
+                                              const EdgeInsets.symmetric(
+                                                  vertical: 0, horizontal: 20),
+                                          fillColor: Colors.grey,
+                                          hintText: "Company Name",
+                                          hintStyle: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.03,
+                                              fontWeight: FontWeight.w600),
+                                          alignLabelWithHint: true,
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: Colors.red),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: Colors.red),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: darkblue!),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: darkblue!),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: width * 0.02),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: Card(
+                                            elevation: 7,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: SizedBox(
+                                              width: width,
+                                              child: TextFormField(
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Required';
+                                                  }
+                                                  return null;
+                                                },
+                                                controller: toCityController,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                decoration: InputDecoration(
+                                                  errorStyle: const TextStyle(
+                                                      color: Colors.red),
+                                                  contentPadding:
+                                                      const EdgeInsets
+                                                          .symmetric(
+                                                          vertical: 0,
+                                                          horizontal: 20),
+                                                  fillColor: Colors.grey,
+                                                  hintText: "City",
+                                                  hintStyle:
+                                                      GoogleFonts.poppins(
+                                                          //color:lightgray,
+                                                          fontSize:
+                                                              width * 0.03,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                  alignLabelWithHint: true,
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.02,
+                                        ),
+                                        Expanded(
+                                          child: Card(
+                                            elevation: 7,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: SizedBox(
+                                              width: width,
+                                              child: TextFormField(
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Required';
+                                                  }
+                                                  return null;
+                                                },
+                                                controller: toStateController,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                decoration: InputDecoration(
+                                                  errorStyle: const TextStyle(
+                                                      color: Colors.red),
+                                                  contentPadding:
+                                                      const EdgeInsets
+                                                          .symmetric(
+                                                          vertical: 0,
+                                                          horizontal: 20),
+                                                  fillColor: Colors.grey,
+                                                  hintText: "State",
+                                                  hintStyle:
+                                                      GoogleFonts.poppins(
+                                                          //color:lightgray,
+                                                          fontSize:
+                                                              width * 0.03,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                  alignLabelWithHint: true,
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Card(
+                                    elevation: 7,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: SizedBox(
+                                      width: width * 0.8,
+                                      child: TextFormField(
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Required';
+                                          }
+                                          return null;
+                                        },
+                                        controller: toAddressController,
+                                        keyboardType: TextInputType.text,
+                                        decoration: InputDecoration(
+                                          errorStyle: const TextStyle(
+                                              color: Colors.red),
+                                          contentPadding:
+                                              const EdgeInsets.symmetric(
+                                                  vertical: 0, horizontal: 20),
+                                          fillColor: Colors.grey,
+                                          hintText: "Company Address",
+                                          hintStyle: GoogleFonts.poppins(
+                                              //color:lightgray,
+                                              fontSize: width * 0.03,
+                                              fontWeight: FontWeight.w600),
+                                          alignLabelWithHint: true,
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: Colors.red),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: Colors.red),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: darkblue!),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide:
+                                                BorderSide(color: darkblue!),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: width * 0.02),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: Card(
+                                            elevation: 7,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: SizedBox(
+                                              width: width,
+                                              child: TextFormField(
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Required';
+                                                  }
+                                                  return null;
+                                                },
+                                                controller: toCountryController,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                decoration: InputDecoration(
+                                                  errorStyle: const TextStyle(
+                                                      color: Colors.red),
+                                                  contentPadding:
+                                                      const EdgeInsets
+                                                          .symmetric(
+                                                          vertical: 0,
+                                                          horizontal: 20),
+                                                  fillColor: Colors.grey,
+                                                  hintText: "Country",
+                                                  hintStyle:
+                                                      GoogleFonts.poppins(
+                                                          //color:lightgray,
+                                                          fontSize:
+                                                              width * 0.03,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                  alignLabelWithHint: true,
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.02,
+                                        ),
+                                        Expanded(
+                                          child: Card(
+                                            elevation: 7,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: SizedBox(
+                                              width: width,
+                                              child: TextFormField(
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Required';
+                                                  }
+                                                  return null;
+                                                },
+                                                controller: toPostalController,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                decoration: InputDecoration(
+                                                  errorStyle: const TextStyle(
+                                                      color: Colors.red),
+                                                  contentPadding:
+                                                      const EdgeInsets
+                                                          .symmetric(
+                                                          vertical: 0,
+                                                          horizontal: 20),
+                                                  fillColor: Colors.grey,
+                                                  hintText: "Postal",
+                                                  hintStyle:
+                                                      GoogleFonts.poppins(
+                                                          //color:lightgray,
+                                                          fontSize:
+                                                              width * 0.03,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                  alignLabelWithHint: true,
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    borderSide: BorderSide(
+                                                        color: darkblue!),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.04,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      if (formKey.currentState!.validate()) {
+                                        CompanyModel companyModel =
+                                            CompanyModel(
+                                                address:
+                                                    companyAddressController
+                                                        .text,
+                                                city:
+                                                    companyCityController.text,
+                                                companyName:
+                                                    companyNameController.text,
+                                                country:
+                                                    companyCountryController
+                                                        .text,
+                                                postal: companyPostalController
+                                                    .text,
+                                                state: companyStateController
+                                                    .text);
+
+                                        CompanyModel tocompanyModel =
+                                            CompanyModel(
+                                                address:
+                                                    toAddressController.text,
+                                                city: toCityController.text,
+                                                companyName:
+                                                    toNameController.text,
+                                                country:
+                                                    toCountryController.text,
+                                                postal: toPostalController.text,
+                                                state: toStateController.text);
+                                        InvoiceController.to.saveCompanyInfo(
+                                            companyModel, tocompanyModel);
+                                        Navigator.pop(context);
+                                      }
+                                    },
+                                    child: Container(
+                                      height: height * 0.06,
+                                      width: width * 0.4,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          color: blue,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Text(
+                                        "Save",
+                                        style: GoogleFonts.poppins(
+                                            color: whitecolor,
+                                            fontSize: width * 0.03,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         )),

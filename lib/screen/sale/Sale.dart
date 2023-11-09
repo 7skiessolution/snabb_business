@@ -26,6 +26,7 @@ class _SaleScreenState extends State<SaleScreen> {
   }
 
   final _formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   String? selectedimage;
   String? maingetimage;
   bool isLoading = false;
@@ -269,7 +270,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                     onTap: () {
                                       obj.conpany = true;
                                       obj.showSaleMethodDilogue(
-                                          context, height, width);
+                                          context, height, width, formKey);
                                     },
                                     child: Container(
                                       height: height * 0.06,
@@ -531,22 +532,27 @@ class _SaleScreenState extends State<SaleScreen> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
-                                      Card(
-                                        child: Container(
-                                          width: width * 0.2,
-                                          height: height * 0.05,
-                                          decoration: BoxDecoration(
-                                              color: Colors.red,
-                                              borderRadius:
-                                                  BorderRadius.circular(3)),
-                                          child: Center(
-                                              child: Text(
-                                            "Cancel",
-                                            style: GoogleFonts.poppins(
-                                                color: Colors.white,
-                                                fontSize: width * 0.035,
-                                                fontWeight: FontWeight.w600),
-                                          )),
+                                      InkWell(
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Card(
+                                          child: Container(
+                                            width: width * 0.2,
+                                            height: height * 0.05,
+                                            decoration: BoxDecoration(
+                                                color: Colors.red,
+                                                borderRadius:
+                                                    BorderRadius.circular(3)),
+                                            child: Center(
+                                                child: Text(
+                                              "Cancel",
+                                              style: GoogleFonts.poppins(
+                                                  color: Colors.white,
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.w600),
+                                            )),
+                                          ),
                                         ),
                                       ),
                                       InkWell(

@@ -227,6 +227,9 @@ class _PDFPreviewState extends State<PDFPreview> {
 
     /// for loop lagna ha idhr or ya list us k andr
     ///
+    ///
+    double total = 0.0;
+    double tax = 0.0;
     for (int i = 0; i < widget.model.productList!.length; i++) {
       listofPDF.add(pw.Table(
           border: pw.TableBorder.all(color: p.PdfColors.grey, width: 2),
@@ -304,6 +307,8 @@ class _PDFPreviewState extends State<PDFPreview> {
                   ),
                 ])
           ]));
+      total = total + widget.model.productList![i].amount!.toDouble();
+      tax = tax + widget.model.productList![i].tax!.toDouble();
     }
 
     listofPDF.add(pw.Column(children: [
@@ -328,7 +333,7 @@ class _PDFPreviewState extends State<PDFPreview> {
               child: pw.Padding(
             padding: const pw.EdgeInsets.symmetric(vertical: 2),
             child: pw.Text(
-              '7856576476464645657846456476453y5475376',
+              total.toStringAsFixed(2),
               style: pw.TextStyle(
                   fontSize: 10,
                   fontWeight: pw.FontWeight.normal,
@@ -338,65 +343,65 @@ class _PDFPreviewState extends State<PDFPreview> {
         ),
       ]),
       pw.SizedBox(height: 10),
-      pw.Row(children: [
-        pw.Expanded(child: pw.SizedBox()),
-        pw.Container(
-            width: 100,
-            child: pw.Align(
-              alignment: pw.Alignment.centerLeft,
-              child: pw.Text(
-                'Discount :',
-                style: pw.TextStyle(
-                    fontSize: 12,
-                    fontWeight: pw.FontWeight.bold,
-                    color: p.PdfColors.black),
-              ),
-            )),
-        pw.Container(
-          width: 115,
-          child: pw.Center(
-              child: pw.Padding(
-            padding: const pw.EdgeInsets.symmetric(vertical: 2),
-            child: pw.Text(
-              '0',
-              style: pw.TextStyle(
-                  fontSize: 10,
-                  fontWeight: pw.FontWeight.normal,
-                  color: p.PdfColors.black),
-            ),
-          )),
-        ),
-      ]),
-      pw.SizedBox(height: 5),
-      pw.Row(children: [
-        pw.Expanded(child: pw.SizedBox()),
-        pw.Container(
-            width: 100,
-            child: pw.Align(
-              alignment: pw.Alignment.centerLeft,
-              child: pw.Text(
-                'Tax Rate :',
-                style: pw.TextStyle(
-                    fontSize: 12,
-                    fontWeight: pw.FontWeight.bold,
-                    color: p.PdfColors.black),
-              ),
-            )),
-        pw.Container(
-          width: 115,
-          child: pw.Center(
-              child: pw.Padding(
-            padding: const pw.EdgeInsets.symmetric(vertical: 2),
-            child: pw.Text(
-              '0%',
-              style: pw.TextStyle(
-                  fontSize: 10,
-                  fontWeight: pw.FontWeight.normal,
-                  color: p.PdfColors.black),
-            ),
-          )),
-        ),
-      ]),
+      // pw.Row(children: [
+      //   pw.Expanded(child: pw.SizedBox()),
+      //   pw.Container(
+      //       width: 100,
+      //       child: pw.Align(
+      //         alignment: pw.Alignment.centerLeft,
+      //         child: pw.Text(
+      //           'Discount :',
+      //           style: pw.TextStyle(
+      //               fontSize: 12,
+      //               fontWeight: pw.FontWeight.bold,
+      //               color: p.PdfColors.black),
+      //         ),
+      //       )),
+      //   pw.Container(
+      //     width: 115,
+      //     child: pw.Center(
+      //         child: pw.Padding(
+      //       padding: const pw.EdgeInsets.symmetric(vertical: 2),
+      //       child: pw.Text(
+      //         '0',
+      //         style: pw.TextStyle(
+      //             fontSize: 10,
+      //             fontWeight: pw.FontWeight.normal,
+      //             color: p.PdfColors.black),
+      //       ),
+      //     )),
+      //   ),
+      // ]),
+      // pw.SizedBox(height: 5),
+      // pw.Row(children: [
+      //   pw.Expanded(child: pw.SizedBox()),
+      //   pw.Container(
+      //       width: 100,
+      //       child: pw.Align(
+      //         alignment: pw.Alignment.centerLeft,
+      //         child: pw.Text(
+      //           'Tax Rate :',
+      //           style: pw.TextStyle(
+      //               fontSize: 12,
+      //               fontWeight: pw.FontWeight.bold,
+      //               color: p.PdfColors.black),
+      //         ),
+      //       )),
+      //   pw.Container(
+      //     width: 115,
+      //     child: pw.Center(
+      //         child: pw.Padding(
+      //       padding: const pw.EdgeInsets.symmetric(vertical: 2),
+      //       child: pw.Text(
+      //         '0%',
+      //         style: pw.TextStyle(
+      //             fontSize: 10,
+      //             fontWeight: pw.FontWeight.normal,
+      //             color: p.PdfColors.black),
+      //       ),
+      //     )),
+      //   ),
+      // ]),
       pw.SizedBox(height: 5),
       pw.Row(children: [
         pw.Expanded(child: pw.SizedBox()),
@@ -418,7 +423,7 @@ class _PDFPreviewState extends State<PDFPreview> {
               child: pw.Padding(
             padding: const pw.EdgeInsets.symmetric(vertical: 2),
             child: pw.Text(
-              '682367',
+              tax.toStringAsFixed(2),
               style: pw.TextStyle(
                   fontSize: 10,
                   fontWeight: pw.FontWeight.normal,
@@ -452,7 +457,7 @@ class _PDFPreviewState extends State<PDFPreview> {
               child: pw.Padding(
             padding: const pw.EdgeInsets.symmetric(vertical: 2),
             child: pw.Text(
-              '7856576476464645657846456476453y5475376',
+              total.toStringAsFixed(2),
               style: pw.TextStyle(
                   fontSize: 10,
                   fontWeight: pw.FontWeight.normal,

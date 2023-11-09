@@ -46,10 +46,10 @@ class _ExpenseChartState extends State<ExpenseChart> {
                         child: Center(
                             child: Text(
                           "Expense Transaction Details",
-                           style:   GoogleFonts.poppins(
-                                              color:expensecolor,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
+                          style: GoogleFonts.poppins(
+                              color: expensecolor,
+                              fontSize: width * 0.035,
+                              fontWeight: FontWeight.w600),
                         )),
                       ),
                       SizedBox(
@@ -100,10 +100,18 @@ class _ExpenseChartState extends State<ExpenseChart> {
                                           fontSize: width * 0.025,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Text(obj.details!.category.toString(),
-                                        style: TextStyle(
-                                          fontSize: width * 0.025,
-                                        )),
+                                    Expanded(
+                                      child: Container(
+                                        height: height,
+                                        width: width,
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                            obj.details!.category.toString(),
+                                            style: TextStyle(
+                                              fontSize: width * 0.025,
+                                            )),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),

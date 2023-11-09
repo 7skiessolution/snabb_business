@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:snabb_business/controller/homeController.dart';
@@ -30,7 +31,6 @@ class _CompanyScreenState extends State<CompanyScreen> {
 
     return SafeArea(
       child: Scaffold(
-        key: _formKey,
         backgroundColor: backgroundColor,
         floatingActionButton: FloatingActionButton(
           backgroundColor: blue,
@@ -41,292 +41,426 @@ class _CompanyScreenState extends State<CompanyScreen> {
             showDialog(
               context: context,
               builder: (dc) {
-                return Dialog(
-                  child: Container(
-                    color: Colors.grey.shade300,
-                    height: height * 0.55,
-                    width: width * 0.8,
-                    child: Stack(
-                      children: [
-                        Container(
-                          height: height * 0.1,
-                          width: width,
-                          decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("images/dollar.jpg"))),
-                        ),
-                        Container(
-                          height: height * 0.1,
-                          width: width,
-                          color: blue.withOpacity(0.9),
-                          alignment: Alignment.center,
-                          child: Text(
-                            "Add Company",
-                            style: GoogleFonts.poppins(
-                                color: white,
-                                fontSize: width * 0.03,
-                                fontWeight: FontWeight.w600),
+                return Form(
+                  key: _formKey,
+                  child: Dialog(
+                    child: Container(
+                      color: Colors.grey.shade300,
+                      height: height * 0.55,
+                      width: width * 0.8,
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: height * 0.1,
+                            width: width,
+                            decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage("images/dollar.jpg"))),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: height * 0.07),
-                          child: Center(
-                            child: Card(
-                              elevation: 10,
-                              shadowColor: blue,
-                              child: Container(
-                                  height: height * 0.45,
-                                  width: width * 0.7,
+                          Container(
+                            height: height * 0.1,
+                            width: width,
+                            color: blue.withOpacity(0.9),
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Add Company",
+                              style: GoogleFonts.poppins(
                                   color: white,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height: height * 0.02,
-                                        ),
-                                        Text(
-                                          "Information",
-                                          style: GoogleFonts.poppins(
-                                              color: blackcolor,
-                                              fontSize: width * 0.035,
-                                              fontWeight: FontWeight.w600),
-                                        ),
-                                        SizedBox(
-                                          height: height * 0.04,
-                                        ),
-                                        SizedBox(
-                                          width: width * 0.84,
-                                          child: TextFormField(
-                                            autovalidateMode: AutovalidateMode
-                                                .onUserInteraction,
-                                            controller: mName,
-                                            style: GoogleFonts.poppins(
-                                                color: lightgray,
-                                                fontSize: width * 0.03,
-                                                fontWeight: FontWeight.w500),
-                                            keyboardType: TextInputType.text,
-                                            decoration: InputDecoration(
-                                              errorStyle: const TextStyle(
-                                                  color: Colors.black),
-                                              contentPadding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 0,
-                                                      horizontal: 20),
-                                              fillColor: Colors.grey,
-                                              hintText: "Company Name",
-                                              labelText: "Enter Name",
-                                              labelStyle: GoogleFonts.poppins(
-                                                  //color:lightgray,
-                                                  fontSize: width * 0.03,
-                                                  fontWeight: FontWeight.w500),
-                                              hintStyle: GoogleFonts.poppins(
-                                                  color: lightgray,
-                                                  fontSize: width * 0.03,
-                                                  fontWeight: FontWeight.w500),
-                                              alignLabelWithHint: true,
-                                              enabledBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                borderSide: BorderSide(
-                                                    color: blue
-                                                    //  provider.brightness ==
-                                                    //         AppBrightness.dark
-                                                    //     ? AppTheme.colorWhite
-                                                    //     : AppTheme.colorPrimary,
-                                                    ),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                borderSide: BorderSide(
-                                                    color: blue
-                                                    // provider.brightness ==
-                                                    //         AppBrightness.dark
-                                                    //     ? AppTheme.colorWhite
-                                                    //   : AppTheme.colorPrimary,
-                                                    ),
-                                              ),
+                                  fontSize: width * 0.03,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: height * 0.07),
+                            child: Center(
+                              child: Card(
+                                elevation: 10,
+                                shadowColor: blue,
+                                child: Container(
+                                    height: height * 0.45,
+                                    width: width * 0.7,
+                                    color: white,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              height: height * 0.02,
                                             ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: height * 0.015,
-                                        ),
-                                        SizedBox(
-                                          width: width * 0.84,
-                                          child: TextFormField(
-                                            autovalidateMode: AutovalidateMode
-                                                .onUserInteraction,
-                                            controller: mEmail,
-                                            keyboardType: TextInputType.text,
-                                            style: GoogleFonts.poppins(
-                                                color: lightgray,
-                                                fontSize: width * 0.03,
-                                                fontWeight: FontWeight.w500),
-                                            decoration: InputDecoration(
-                                              errorStyle: const TextStyle(
-                                                  color: Colors.black),
-                                              contentPadding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 0,
-                                                      horizontal: 20),
-                                              fillColor: Colors.grey,
-                                              hintText: "Company Email",
-                                              labelText: "Enter Email",
-                                              labelStyle: GoogleFonts.poppins(
-                                                  //color:lightgray,
-                                                  fontSize: width * 0.03,
-                                                  fontWeight: FontWeight.w500),
-                                              hintStyle: GoogleFonts.poppins(
-                                                  color: lightgray,
-                                                  fontSize: width * 0.03,
-                                                  fontWeight: FontWeight.w500),
-                                              alignLabelWithHint: true,
-                                              enabledBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                borderSide: BorderSide(
-                                                    color: blue
-                                                    //  provider.brightness ==
-                                                    //         AppBrightness.dark
-                                                    //     ? AppTheme.colorWhite
-                                                    //     : AppTheme.colorPrimary,
-                                                    ),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                borderSide: BorderSide(
-                                                    color: blue
-                                                    // provider.brightness ==5
-                                                    //         AppBrightness.dark
-                                                    //     ? AppTheme.colorWhite
-                                                    //   : AppTheme.colorPrimary,
-                                                    ),
-                                              ),
+                                            Text(
+                                              "Information",
+                                              style: GoogleFonts.poppins(
+                                                  color: blackcolor,
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.w600),
                                             ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: height * 0.015,
-                                        ),
-                                        SizedBox(
-                                          width: width * 0.84,
-                                          child: TextFormField(
-                                            autovalidateMode: AutovalidateMode
-                                                .onUserInteraction,
-                                            controller: nPhone,
-                                            keyboardType: TextInputType.text,
-                                            style: GoogleFonts.poppins(
-                                                color: lightgray,
-                                                fontSize: width * 0.03,
-                                                fontWeight: FontWeight.w500),
-                                            decoration: InputDecoration(
-                                              errorStyle: const TextStyle(
-                                                  color: Colors.black),
-                                              contentPadding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 0,
-                                                      horizontal: 20),
-                                              fillColor: Colors.grey,
-                                              hintText: "Phone Number",
-                                              labelText: "Phone Number",
-                                              labelStyle: GoogleFonts.poppins(
-                                                  //color:lightgray,
-                                                  fontSize: width * 0.03,
-                                                  fontWeight: FontWeight.w500),
-                                              hintStyle: GoogleFonts.poppins(
-                                                  color: lightgray,
-                                                  fontSize: width * 0.03,
-                                                  fontWeight: FontWeight.w500),
-                                              alignLabelWithHint: true,
-                                              enabledBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                borderSide: BorderSide(
-                                                    color: blue
-                                                    //  provider.brightness ==
-                                                    //         AppBrightness.dark
-                                                    //     ? AppTheme.colorWhite
-                                                    //     : AppTheme.colorPrimary,
-                                                    ),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                borderSide: BorderSide(
-                                                    color: blue
-                                                    // provider.brightness ==
-                                                    //         AppBrightness.dark
-                                                    //     ? AppTheme.colorWhite
-                                                    //   : AppTheme.colorPrimary,
-                                                    ),
-                                              ),
+                                            SizedBox(
+                                              height: height * 0.04,
                                             ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: height * 0.02,
-                                        ),
-                                        Card(
-                                          elevation: 5,
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(7)),
-                                          child: InkWell(
-                                            onTap: () {
-                                              if (loading) {
-                                                Map<String, dynamic> map = {
-                                                  "name": mName.text,
-                                                  "email": mEmail.text,
-                                                  "telePhone": nPhone.text,
-                                                };
-                                                print(map);
-                                                HomeController.to
-                                                    .addCompanyData(
-                                                        map, dc, "new")
-                                                    .then((value) {
-                                                  mName.clear();
-                                                  mEmail.clear();
-                                                  nPhone.clear();
-                                                });
-                                              }
-                                              loading = false;
-                                              setState(() {});
-                                            },
-                                            child: Container(
-                                              height: height * 0.06,
-                                              width: width * 0.45,
-                                              decoration: BoxDecoration(
-                                                  color: blue,
+                                            SizedBox(
+                                              width: width * 0.84,
+                                              child: TextFormField(
+                                                  autovalidateMode:
+                                                      AutovalidateMode
+                                                          .onUserInteraction,
+                                                  controller: mName,
+                                                  style: GoogleFonts.poppins(
+                                                      color: lightgray,
+                                                      fontSize: width * 0.03,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                  keyboardType:
+                                                      TextInputType.text,
+                                                  decoration: InputDecoration(
+                                                    errorStyle: const TextStyle(
+                                                        color: Colors.red),
+                                                    contentPadding:
+                                                        const EdgeInsets
+                                                            .symmetric(
+                                                            vertical: 0,
+                                                            horizontal: 20),
+                                                    fillColor: Colors.grey,
+                                                    hintText: "Company Name",
+                                                    labelText: "Enter Name",
+                                                    labelStyle:
+                                                        GoogleFonts.poppins(
+                                                            //color:lightgray,
+                                                            fontSize:
+                                                                width * 0.03,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
+                                                    hintStyle:
+                                                        GoogleFonts.poppins(
+                                                            color: lightgray,
+                                                            fontSize:
+                                                                width * 0.03,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
+                                                    alignLabelWithHint: true,
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      borderSide: BorderSide(
+                                                          color: blue
+                                                          //  provider.brightness ==
+                                                          //         AppBrightness.dark
+                                                          //     ? AppTheme.colorWhite
+                                                          //     : AppTheme.colorPrimary,
+                                                          ),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      borderSide: BorderSide(
+                                                          color: blue
+                                                          // provider.brightness ==
+                                                          //         AppBrightness.dark
+                                                          //     ? AppTheme.colorWhite
+                                                          //   : AppTheme.colorPrimary,
+                                                          ),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      borderSide: BorderSide(
+                                                          color: Colors.red),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      borderSide: BorderSide(
+                                                          color: Colors.red),
+                                                    ),
+                                                  ),
+                                                  validator: (value) {
+                                                    if (value!.isEmpty) {
+                                                      return "Required";
+                                                    }
+                                                  }),
+                                            ),
+                                            SizedBox(
+                                              height: height * 0.015,
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.84,
+                                              child: TextFormField(
+                                                  autovalidateMode:
+                                                      AutovalidateMode
+                                                          .onUserInteraction,
+                                                  controller: mEmail,
+                                                  keyboardType:
+                                                      TextInputType.text,
+                                                  style: GoogleFonts.poppins(
+                                                      color: lightgray,
+                                                      fontSize: width * 0.03,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                  decoration: InputDecoration(
+                                                    errorStyle: const TextStyle(
+                                                        color: Colors.red),
+                                                    contentPadding:
+                                                        const EdgeInsets
+                                                            .symmetric(
+                                                            vertical: 0,
+                                                            horizontal: 20),
+                                                    fillColor: Colors.grey,
+                                                    hintText: "Company Email",
+                                                    labelText: "Enter Email",
+                                                    labelStyle:
+                                                        GoogleFonts.poppins(
+                                                            //color:lightgray,
+                                                            fontSize:
+                                                                width * 0.03,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
+                                                    hintStyle:
+                                                        GoogleFonts.poppins(
+                                                            color: lightgray,
+                                                            fontSize:
+                                                                width * 0.03,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
+                                                    alignLabelWithHint: true,
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      borderSide: BorderSide(
+                                                          color: blue
+                                                          //  provider.brightness ==
+                                                          //         AppBrightness.dark
+                                                          //     ? AppTheme.colorWhite
+                                                          //     : AppTheme.colorPrimary,
+                                                          ),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      borderSide: BorderSide(
+                                                          color: blue
+                                                          // provider.brightness ==5
+                                                          //         AppBrightness.dark
+                                                          //     ? AppTheme.colorWhite
+                                                          //   : AppTheme.colorPrimary,
+                                                          ),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      borderSide: BorderSide(
+                                                          color: Colors.red),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      borderSide: BorderSide(
+                                                          color: Colors.red),
+                                                    ),
+                                                  ),
+                                                  validator: (value) {
+                                                    if (value!.isEmpty) {
+                                                      return 'Required';
+                                                    }
+                                                    if (!RegExp(
+                                                            r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                                                        .hasMatch(value)) {
+                                                      return "Please Enter Email";
+                                                    }
+                                                    return null;
+                                                  }),
+                                            ),
+                                            SizedBox(
+                                              height: height * 0.015,
+                                            ),
+                                            SizedBox(
+                                              width: width * 0.84,
+                                              child: TextFormField(
+                                                  autovalidateMode:
+                                                      AutovalidateMode
+                                                          .onUserInteraction,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  textInputAction:
+                                                      TextInputAction.done,
+                                                  inputFormatters: <TextInputFormatter>[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly
+                                                  ],
+                                                  controller: nPhone,
+                                                  style: GoogleFonts.poppins(
+                                                      color: lightgray,
+                                                      fontSize: width * 0.03,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                  decoration: InputDecoration(
+                                                    errorStyle: const TextStyle(
+                                                        color: Colors.red),
+                                                    contentPadding:
+                                                        const EdgeInsets
+                                                            .symmetric(
+                                                            vertical: 0,
+                                                            horizontal: 20),
+                                                    fillColor: Colors.grey,
+                                                    hintText: "Phone Number",
+                                                    labelText: "Phone Number",
+                                                    labelStyle:
+                                                        GoogleFonts.poppins(
+                                                            //color:lightgray,
+                                                            fontSize:
+                                                                width * 0.03,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
+                                                    hintStyle:
+                                                        GoogleFonts.poppins(
+                                                            color: lightgray,
+                                                            fontSize:
+                                                                width * 0.03,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
+                                                    alignLabelWithHint: true,
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      borderSide: BorderSide(
+                                                          color: blue
+                                                          //  provider.brightness ==
+                                                          //         AppBrightness.dark
+                                                          //     ? AppTheme.colorWhite
+                                                          //     : AppTheme.colorPrimary,
+                                                          ),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      borderSide: BorderSide(
+                                                          color: blue
+                                                          // provider.brightness ==
+                                                          //         AppBrightness.dark
+                                                          //     ? AppTheme.colorWhite
+                                                          //   : AppTheme.colorPrimary,
+                                                          ),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      borderSide: BorderSide(
+                                                          color: Colors.red),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      borderSide: BorderSide(
+                                                          color: Colors.red),
+                                                    ),
+                                                  ),
+                                                  validator: (value) {
+                                                    if (value!.isEmpty) {
+                                                      return "Required";
+                                                    }
+                                                  }),
+                                            ),
+                                            SizedBox(
+                                              height: height * 0.02,
+                                            ),
+                                            Card(
+                                              elevation: 5,
+                                              shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(7)),
-                                              child: Center(
-                                                child: Text(
-                                                  "Add Company",
-                                                  style: GoogleFonts.poppins(
-                                                      color: white,
-                                                      fontSize: width * 0.035,
-                                                      fontWeight:
-                                                          FontWeight.w600),
+                                              child: InkWell(
+                                                onTap: () {
+                                                  if (_formKey.currentState!
+                                                      .validate()) {
+                                                    if (loading) {
+                                                      Map<String, dynamic> map =
+                                                          {
+                                                        "name": mName.text,
+                                                        "email": mEmail.text,
+                                                        "telePhone":
+                                                            nPhone.text,
+                                                      };
+                                                      print(map);
+                                                      HomeController.to
+                                                          .addCompanyData(
+                                                              map, dc, "new")
+                                                          .then((value) {
+                                                        mName.clear();
+                                                        mEmail.clear();
+                                                        nPhone.clear();
+                                                      });
+                                                    }
+                                                  }
+                                                  loading = false;
+                                                  setState(() {});
+                                                },
+                                                child: Container(
+                                                  height: height * 0.06,
+                                                  width: width * 0.45,
+                                                  decoration: BoxDecoration(
+                                                      color: blue,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              7)),
+                                                  child: Center(
+                                                    child: Text(
+                                                      "Add Company",
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              color: white,
+                                                              fontSize:
+                                                                  width * 0.035,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
-                                  )),
+                                      ),
+                                    )),
+                              ),
                             ),
-                          ),
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 );
@@ -475,7 +609,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                                           10)),
                                                           content: SizedBox(
                                                             height:
-                                                                height * 0.13,
+                                                                height * 0.12,
                                                             width: width * 0.8,
                                                             child: Column(
                                                               mainAxisAlignment:
@@ -488,7 +622,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                                   color: Colors
                                                                       .red,
                                                                   size: width *
-                                                                      0.15,
+                                                                      0.12,
                                                                 ),
                                                                 Text(
                                                                   "Are You Sure You Want To Delete Company",
@@ -509,68 +643,169 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                             ),
                                                           ),
                                                           actions: [
-                                                            TextButton(
-                                                              onPressed: () {
+                                                            InkWell(
+                                                              onTap: () {
                                                                 Navigator.pop(
                                                                     context);
                                                               },
-                                                              child: Container(
-                                                                width: width *
-                                                                    0.15,
-                                                                height: height *
-                                                                    0.05,
-                                                                decoration: BoxDecoration(
-                                                                    color: red,
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            10)),
-                                                                alignment:
-                                                                    Alignment
-                                                                        .center,
-                                                                child: Text(
-                                                                  "No",
-                                                                  style:
-                                                                      TextStyle(
+                                                              child: Text(
+                                                                "No",
+                                                                style: GoogleFonts.poppins(
                                                                     color: Colors
-                                                                        .white,
-                                                                  ),
-                                                                ),
+                                                                        .red,
+                                                                    fontSize:
+                                                                        width *
+                                                                            0.04,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500),
                                                               ),
                                                             ),
-                                                            TextButton(
-                                                              onPressed: () {
-                                                                Navigator.pop(
-                                                                    context);
+                                                            SizedBox(
+                                                              width:
+                                                                  width * 0.03,
+                                                            ),
+                                                            InkWell(
+                                                              onTap: () {
+                                                                HomeController
+                                                                    .to
+                                                                    .deleteCompanydata(
+                                                                        obj.companyList[index]
+                                                                            .companyId!,
+                                                                        context);
                                                               },
-                                                              child: Container(
-                                                                  width: width *
-                                                                      0.15,
-                                                                  height:
-                                                                      height *
-                                                                          0.05,
-                                                                  decoration: BoxDecoration(
-                                                                      color:
-                                                                          blue,
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              10)),
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .center,
-                                                                  child:
-                                                                      const Text(
-                                                                    "Yes",
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                    ),
-                                                                  )),
+                                                              child: Text(
+                                                                "Yes",
+                                                                style: GoogleFonts.poppins(
+                                                                    color: blue,
+                                                                    fontSize:
+                                                                        width *
+                                                                            0.04,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                              width:
+                                                                  width * 0.02,
                                                             ),
                                                           ],
                                                         );
                                                       },
                                                     );
+
+                                                    // showDialog(
+                                                    //   context: context,
+                                                    //   builder: (dc) {
+                                                    //     return AlertDialog(
+                                                    //       shape: RoundedRectangleBorder(
+                                                    //           borderRadius:
+                                                    //               BorderRadius
+                                                    //                   .circular(
+                                                    //                       10)),
+                                                    //       content: SizedBox(
+                                                    //         height:
+                                                    //             height * 0.13,
+                                                    //         width: width * 0.8,
+                                                    //         child: Column(
+                                                    //           mainAxisAlignment:
+                                                    //               MainAxisAlignment
+                                                    //                   .spaceEvenly,
+                                                    //           children: [
+                                                    //             Icon(
+                                                    //               Icons
+                                                    //                   .info_outline,
+                                                    //               color: Colors
+                                                    //                   .red,
+                                                    //               size: width *
+                                                    //                   0.15,
+                                                    //             ),
+                                                    //             Text(
+
+                                                    //               textAlign:
+                                                    //                   TextAlign
+                                                    //                       .center,
+                                                    //               style: GoogleFonts.poppins(
+                                                    //                   color:
+                                                    //                       lightgray,
+                                                    //                   fontSize:
+                                                    //                       width *
+                                                    //                           0.03,
+                                                    //                   fontWeight:
+                                                    //                       FontWeight
+                                                    //                           .w500),
+                                                    //             ),
+                                                    //           ],
+                                                    //         ),
+                                                    //       ),
+                                                    //       actions: [
+                                                    //         TextButton(
+                                                    //           onPressed: () {
+                                                    //             Navigator.pop(
+                                                    //                 context);
+                                                    //           },
+                                                    //           child: Container(
+                                                    //             width: width *
+                                                    //                 0.15,
+                                                    //             height: height *
+                                                    //                 0.05,
+                                                    //             decoration: BoxDecoration(
+                                                    //                 color: red,
+                                                    //                 borderRadius:
+                                                    //                     BorderRadius.circular(
+                                                    //                         10)),
+                                                    //             alignment:
+                                                    //                 Alignment
+                                                    //                     .center,
+                                                    //             child: Text(
+                                                    //               "No",
+                                                    //               style:
+                                                    //                   TextStyle(
+                                                    //                 color: Colors
+                                                    //                     .white,
+                                                    //               ),
+                                                    //             ),
+                                                    //           ),
+                                                    //         ),
+                                                    //         TextButton(
+                                                    //           onPressed: () {
+                                                    //             HomeController
+                                                    //                 .to
+                                                    //                 .deleteCompanydata(
+                                                    //                     obj.companyList[index]
+                                                    //                         .companyId!,
+                                                    //                     context);
+                                                    //           },
+                                                    //           child: Container(
+                                                    //               width: width *
+                                                    //                   0.15,
+                                                    //               height:
+                                                    //                   height *
+                                                    //                       0.05,
+                                                    //               decoration: BoxDecoration(
+                                                    //                   color:
+                                                    //                       blue,
+                                                    //                   borderRadius:
+                                                    //                       BorderRadius.circular(
+                                                    //                           10)),
+                                                    //               alignment:
+                                                    //                   Alignment
+                                                    //                       .center,
+                                                    //               child:
+                                                    //                   const Text(
+                                                    //                 "Yes",
+                                                    //                 style:
+                                                    //                     TextStyle(
+                                                    //                   color: Colors
+                                                    //                       .white,
+                                                    //                 ),
+                                                    //               )),
+                                                    //         ),
+                                                    //       ],
+                                                    //     );
+                                                    //   },
+                                                    // );
                                                   },
                                                   child:
                                                       const Icon(Icons.delete)),

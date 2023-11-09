@@ -180,6 +180,7 @@ class HomeController extends GetxController {
     var res = await httpClient().delete("${StaticValues.deleteCompany}$id");
     if (res.statusCode == 200) {
       getCompanydata();
+      Navigator.pop(c);
       Fluttertoast.showToast(
           msg: res.data["status"],
           backgroundColor: Colors.red,
@@ -651,6 +652,7 @@ class HomeController extends GetxController {
       }
     }
   }
+
   dayexpenseList(int type) async {
     print("select date ${selectdate.year}");
     var res = await httpClient().get(
@@ -673,7 +675,7 @@ class HomeController extends GetxController {
         var e2 = salepurchasemodel.data![i + 1];
         var e3 = salepurchasemodel.data![i + 2];
         var e4 = salepurchasemodel.data![i + 3];
-        
+
         String month = "${i + 1}-${i + 4}";
         int total = e + e2 + e3 + e4;
         if (type == 2) {
@@ -808,23 +810,21 @@ class HomeController extends GetxController {
   //   }
   // }
 
-  
-
-  getinggraph(String v){
-if(v=="Yearly"){
-expenseList(0);
-expenseList(1);
-expenseList(2);
-}else if(v=="Monthly"){
-monthexpenseList(0);
-monthexpenseList(1);
-monthexpenseList(2);
-}else{
-  dayexpenseList(0);
-  dayexpenseList(1);
-  dayexpenseList(2);
-}
-update();
+  getinggraph(String v) {
+    if (v == "Yearly") {
+      expenseList(0);
+      expenseList(1);
+      expenseList(2);
+    } else if (v == "Monthly") {
+      monthexpenseList(0);
+      monthexpenseList(1);
+      monthexpenseList(2);
+    } else {
+      dayexpenseList(0);
+      dayexpenseList(1);
+      dayexpenseList(2);
+    }
+    update();
   }
 
   String dropdownvalue = 'Yearly';

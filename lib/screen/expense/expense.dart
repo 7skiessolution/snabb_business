@@ -213,8 +213,10 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                                   fontSize: width * 0.032,
                                                   fontWeight: FontWeight.w500),
                                             ),
-                                            SizedBox(
-                                              width: width * 0.55,
+                                            Expanded(
+                                              child: SizedBox(
+                                                width: width,
+                                              ),
                                             ),
                                           ]),
                                     ),
@@ -457,22 +459,27 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
-                                      Card(
-                                        child: Container(
-                                          width: width * 0.2,
-                                          height: height * 0.05,
-                                          decoration: BoxDecoration(
-                                              color: Colors.red,
-                                              borderRadius:
-                                                  BorderRadius.circular(3)),
-                                          child: Center(
-                                              child: Text(
-                                            "Cancel",
-                                            style: GoogleFonts.poppins(
-                                                color: Colors.white,
-                                                fontSize: width * 0.035,
-                                                fontWeight: FontWeight.w600),
-                                          )),
+                                      InkWell(
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Card(
+                                          child: Container(
+                                            width: width * 0.2,
+                                            height: height * 0.05,
+                                            decoration: BoxDecoration(
+                                                color: Colors.red,
+                                                borderRadius:
+                                                    BorderRadius.circular(3)),
+                                            child: Center(
+                                                child: Text(
+                                              "Cancel",
+                                              style: GoogleFonts.poppins(
+                                                  color: Colors.white,
+                                                  fontSize: width * 0.035,
+                                                  fontWeight: FontWeight.w600),
+                                            )),
+                                          ),
                                         ),
                                       ),
                                       InkWell(
